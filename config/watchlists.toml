@@ -1,0 +1,30 @@
+# Watchlists : alerte « 👀 » dès qu'une offre (toutes sources, Denner compris)
+# correspond. `query` et `exclude` sont des expressions régulières (sans LLM).
+# Filtres possibles : max_price, max_unit_price + unit ("CHF/kg", "CHF/l",
+# "CHF/pièce"), min_score, family, merchant.
+
+[[watchlists]]
+name = "Poulet ≤ 12 CHF/kg"
+query = "poulet|hähnchen|chicken|geflügel"
+exclude = "nuggets|wienerli|würst|bouillon|sauce|chips"
+max_unit_price = 12.0
+unit = "CHF/kg"
+
+[[watchlists]]
+name = "Bœuf haché ≤ 14 CHF/kg"
+query = "rinds?hack|hackfleisch rind|beef mince"
+max_unit_price = 14.0
+unit = "CHF/kg"
+
+[[watchlists]]
+name = "Œufs ≤ 0.35 CHF/pièce"
+query = "eier\\b"
+exclude = "spätzle|nudeln|likör"
+max_unit_price = 0.35
+unit = "CHF/pièce"
+
+[[watchlists]]
+name = "Créatine / whey ≤ 30 CHF/kg"
+query = "kreatin|creatine|whey|protein ?pulver"
+max_unit_price = 30.0
+unit = "CHF/kg"

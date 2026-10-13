@@ -38,4 +38,11 @@ def load(root: Path | None = None) -> Config:
         settings = tomllib.load(f)
     with open(root / "config" / "preferences.toml", "rb") as f:
         prefs = tomllib.load(f)
+    # Extensions V3 (facultatives) : sources universelles et watchlists.
+    for name, key in (("sources.toml", "sources"), ("watchlists.toml", "watchlists")):
+        p = root / "config" / name
+        if p.exists():
+            with open(p, "rb") as f:
+                data = tomllib.load(f)
+            settings[key] = data.get(key, data)
     return Config(settings=settings, prefs=prefs, root=root)

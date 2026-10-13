@@ -78,8 +78,24 @@ recap_not_before_hour = 7
 # Les alertes individuelles ignorent les offres portant ces étiquettes
 # (elles restent visibles dans la liste complète et le dashboard).
 exclude_tags_from_alerts = ["porc", "fruits_de_mer"]
+# Les « Ultra deals » (≥ 9/10) peuvent passer outre les heures calmes si true.
+ultra_overrides_quiet_hours = false
 
 [export]
 # Offres terminées conservées dans la vue principale du dashboard (jours).
 recent_days = 30
 records_top_n = 150
+
+# ---------------------------------------------------------------------------
+# V3 — moteur universel (St. Gallen Deal Radar)
+# ---------------------------------------------------------------------------
+[universal.alerts]
+min_confidence = 0.5
+ultra = 9.0
+immediate = 8.0
+free_fast = 7.0
+critical_min_score = 7.0
+anomaly = 7.0
+max_immediate_per_source = 4
+digest_hour = 18
+exclude_tags = ["porc", "fruits_de_mer"]

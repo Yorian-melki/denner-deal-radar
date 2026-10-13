@@ -20,3 +20,29 @@ autres = 0.15
 # Mots-clés favoris (nom allemand) : +0.15 de pertinence, onglet « Favoris ».
 [favorites]
 keywords = ["Eier", "Poulet", "Rind", "Hackfleisch", "Milch", "Quark", "Joghurt", "Reis", "Kartoffeln", "Haferflocken"]
+
+# V3 — pertinence par famille d'opportunité (0–1). N'affecte jamais le Deal Score.
+[family_relevance]
+grocery = 0.8
+surplus = 0.9
+free = 0.6
+digital_free = 0.3
+student = 0.8
+restaurant = 0.6
+transport = 0.6
+event = 0.5
+tech = 0.5
+flash = 0.45
+refurbished = 0.5
+secondhand = 0.45
+retail = 0.4
+travel = 0.45
+subscription = 0.35
+cashback = 0.35
+coupon = 0.35
+contest = 0.1
+local_news = 0.4
+
+[profile]
+# Éligibilité aux offres étudiantes (HSG). Modifiez si besoin.
+student = true
