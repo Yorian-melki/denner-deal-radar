@@ -7,7 +7,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Deal Radar">
-<title>Denner Deal Radar · St-Gall</title>
+<title>St. Gallen Deal Radar</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -16,12 +18,51 @@
   <div class="brand">
     <span class="logo">📡</span>
     <div>
-      <h1>Denner Deal Radar</h1>
+      <h1>St. Gallen Deal Radar</h1>
       <p id="updated" class="muted">Chargement…</p>
     </div>
   </div>
   <div id="banner" class="banner" hidden></div>
+  <div class="modes"><a href="#u/accueil" id="mode-u">🌍 Toutes les offres</a><a href="#semaine" id="mode-d">🛒 Denner</a></div>
 </header>
+<nav class="tabs" id="u-nav" hidden></nav>
+<section class="controls-wrap" id="u-controls-wrap" hidden>
+  <div class="controls" id="u-controls">
+    <input id="u-q" type="search" placeholder="Rechercher (produit, marque, marchand)…" autocomplete="off">
+    <div class="row">
+      <select id="u-sort" aria-label="Tri">
+        <option value="score">Tri : note</option><option value="savings">Tri : économie CHF</option>
+        <option value="disc">Tri : réduction</option><option value="unit">Tri : prix unitaire</option>
+        <option value="end">Tri : fin proche</option><option value="new">Tri : nouveauté</option>
+        <option value="rel">Tri : pertinence perso</option><option value="price">Tri : prix</option>
+        <option value="anomaly">Tri : anomalie</option>
+      </select>
+      <select id="u-minscore" aria-label="Note min"><option value="">Toutes notes</option><option>5</option><option>7</option><option>8</option><option>9</option></select>
+      <select id="u-scope" aria-label="Zone"><option value="">Partout</option><option value="LOCALISH">St-Gall & proche</option><option value="ONLINE">En ligne</option><option value="NATIONAL">National</option><option value="TRAVEL_ACCESSIBLE">Déplacement</option></select>
+    </div>
+    <details class="morefilters"><summary>Plus de filtres</summary>
+      <div class="row">
+        <select id="u-source" aria-label="Source"></select>
+        <select id="u-merchant" aria-label="Marchand"></select>
+        <select id="u-cond" aria-label="État"><option value="">Neuf / occasion</option><option value="new">Neuf</option><option value="refurb">Reconditionné</option><option value="open_box">Open-box</option><option value="used">Occasion</option></select>
+      </div>
+      <div class="row">
+        <input id="u-maxprice" type="number" inputmode="decimal" placeholder="Prix max CHF">
+        <input id="u-mindisc" type="number" inputmode="numeric" placeholder="Réduction min %">
+        <input id="u-minconf" type="number" inputmode="numeric" placeholder="Confiance min %">
+      </div>
+      <div class="row">
+        <select id="u-urg" aria-label="Urgence"><option value="">Toute urgence</option><option value="HIGH">Haute +</option><option value="VERY_HIGH">Très haute +</option><option value="CRITICAL">Critique</option></select>
+      </div>
+      <label class="toggle"><input type="checkbox" id="u-free"> Gratuit uniquement</label>
+      <label class="toggle"><input type="checkbox" id="u-student"> Offres étudiantes</label>
+      <label class="toggle"><input type="checkbox" id="u-coupon"> Avec coupon</label>
+      <label class="toggle"><input type="checkbox" id="u-cashback"> Avec cashback</label>
+      <label class="toggle"><input type="checkbox" id="u-dupes"> Afficher les doublons fusionnés</label>
+    </details>
+    <label class="toggle"><input type="checkbox" id="u-hidepref" checked> Masquer porc &amp; fruits de mer</label>
+  </div>
+</section>
 <nav class="tabs" id="tabs">
     <a href="#nouveautes">Nouveautés</a>
     <a href="#semaine">Top semaine</a>
@@ -33,7 +74,7 @@
     <a href="#magasins">Magasins</a>
     <a href="#etat">État</a>
   </nav>
-<section class="controls-wrap">
+<section class="controls-wrap" id="d-controls-wrap">
   <div class="controls" id="controls">
     <input id="q" type="search" placeholder="Rechercher (nom allemand, ex. Poulet)…" autocomplete="off">
     <div class="chips" id="chips"></div>
@@ -58,7 +99,7 @@
 </section>
 <main id="main"></main>
 <footer class="foot muted">
-  Note /10 <b>absolue</b> (seuils fixes, jamais relative à la semaine) ·
+  Note /10 <b>absolue</b> (seuils fixes, jamais relative) · confiance, urgence et pertinence affichées séparément ·
   « éligible » = offre publiée nationalement, stock en magasin <b>non vérifié</b> ·
   Données publiques denner.ch · Aucun LLM en fonctionnement.
 </footer>
@@ -75,6 +116,8 @@
     </div>
   </article>
 </template>
+<script src="universal.js"></script>
 <script src="app.js"></script>
+<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});</script>
 </body>
 </html>
