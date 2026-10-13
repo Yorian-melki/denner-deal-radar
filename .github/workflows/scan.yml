@@ -1,0 +1,103 @@
+name: scan
+
+# Horaires en UTC. Zurich = UTC+2 (été) / UTC+1 (hiver) : chaque créneau tombe
+# dans la bonne plage locale dans les deux cas. Les crons GitHub peuvent être
+# retardés ou sautés : les créneaux « rattrapage » (+30 min) ne collectent que si
+# le précédent n'a pas abouti (garde min_interval_minutes = 35 dans settings.toml).
+on:
+  schedule:
+    # 4 relevés quotidiens + rattrapage
+    - cron: "7 5 * * *"      # ~07:07 CEST / 06:07 CET
+    - cron: "37 5 * * *"     #   rattrapage
+    - cron: "7 10 * * *"     # ~12:07 / 11:07
+    - cron: "37 10 * * *"    #   rattrapage
+    - cron: "7 15 * * *"     # ~17:07 / 16:07
+    - cron: "37 15 * * *"    #   rattrapage
+    - cron: "37 19 * * *"    # ~21:37 / 20:37
+    # Lundi : offres « Wochenstart » (publiées vers 02:00 locale)
+    - cron: "47 0 * * 1"
+    - cron: "17 3 * * 1"
+    # Mardi/mercredi : avant-premières de la semaine suivante
+    - cron: "37 12 * * 2,3"
+    - cron: "37 17 * * 3"
+    # Jeudi : bascule de la semaine (publiée vers 04:00 locale)
+    - cron: "47 2 * * 4"
+    - cron: "47 3 * * 4"
+    - cron: "37 6 * * 4"
+    - cron: "7 8 * * 4"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Ignorer l'intervalle minimal"
+        type: boolean
+        default: true
+      dry_run:
+        description: "Dry-run (rien n'est écrit ni envoyé)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: radar-data
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Collecte Denner
+        id: scan
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          ARGS=""
+          if [ "${{ inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
+          if [ "${{ inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run --out-dry site/data"; fi
+          python -m radar scan $ARGS
+
+      - name: Sauvegarde de l'historique (git)
+        if: always() && inputs.dry_run != true
+        run: |
+          git config user.name "deal-radar-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then echo "rien à commiter"; exit 0; fi
+          git commit -m "data: relevé $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push && exit 0
+            sleep $((i * 7))
+          done
+          exit 1
+
+      - name: Préparer le dashboard
+        if: always()
+        run: |
+          test -f site/data/offers.json || python -m radar export --out site/data
+      - uses: actions/upload-pages-artifact@v3
+        if: always()
+        with:
+          path: site
+
+  deploy:
+    needs: scan
+    if: always() && needs.scan.result != 'cancelled'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

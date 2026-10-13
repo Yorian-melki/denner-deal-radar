@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#c8102e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Deal Radar">
+<title>Denner Deal Radar · St-Gall</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <span class="logo">📡</span>
+    <div>
+      <h1>Denner Deal Radar</h1>
+      <p id="updated" class="muted">Chargement…</p>
+    </div>
+  </div>
+  <div id="banner" class="banner" hidden></div>
+</header>
+<nav class="tabs" id="tabs">
+    <a href="#nouveautes">Nouveautés</a>
+    <a href="#semaine">Top semaine</a>
+    <a href="#prochaine">Semaine proch.</a>
+    <a href="#fin">Fin bientôt</a>
+    <a href="#30j">Top 30 j</a>
+    <a href="#records">Records</a>
+    <a href="#recherche">Recherche</a>
+    <a href="#magasins">Magasins</a>
+    <a href="#etat">État</a>
+  </nav>
+<section class="controls-wrap">
+  <div class="controls" id="controls">
+    <input id="q" type="search" placeholder="Rechercher (nom allemand, ex. Poulet)…" autocomplete="off">
+    <div class="chips" id="chips"></div>
+    <div class="row">
+      <select id="sort" aria-label="Tri">
+        <option value="score">Tri : note</option>
+        <option value="disc">Tri : réduction</option>
+        <option value="unit">Tri : prix unitaire</option>
+        <option value="end">Tri : fin la plus proche</option>
+        <option value="rel">Tri : pertinence perso</option>
+        <option value="price">Tri : prix</option>
+      </select>
+      <select id="minscore" aria-label="Note minimale">
+        <option value="">Toutes notes</option>
+        <option value="5">≥ 5</option><option value="7">≥ 7</option><option value="8">≥ 8</option>
+      </select>
+      <select id="store" aria-label="Magasin"></select>
+    </div>
+    <label class="toggle"><input type="checkbox" id="hidepref" checked> Masquer porc &amp; fruits de mer</label>
+    <label class="toggle"><input type="checkbox" id="showfar"> Inclure offres hors Suisse alémanique</label>
+  </div>
+</section>
+<main id="main"></main>
+<footer class="foot muted">
+  Note /10 <b>absolue</b> (seuils fixes, jamais relative à la semaine) ·
+  « éligible » = offre publiée nationalement, stock en magasin <b>non vérifié</b> ·
+  Données publiques denner.ch · Aucun LLM en fonctionnement.
+</footer>
+<template id="card">
+  <article class="card">
+    <div class="img"><img loading="lazy" alt=""></div>
+    <div class="body">
+      <div class="head"><span class="score"></span><span class="slabel"></span><button class="fav" aria-label="Favori">☆</button></div>
+      <h3 class="name"></h3>
+      <p class="sub muted"></p>
+      <div class="prices"></div>
+      <ul class="facts"></ul>
+      <a class="link" target="_blank" rel="noopener">Voir sur denner.ch ↗</a>
+    </div>
+  </article>
+</template>
+<script src="app.js"></script>
+</body>
+</html>

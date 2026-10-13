@@ -1,0 +1,22 @@
+# Préférences personnelles : elles influencent UNIQUEMENT la « pertinence
+# personnelle » et les filtres. Elles ne modifient jamais le Deal Score et ne
+# suppriment aucune offre de la base.
+
+# Étiquettes à exclure de ma pertinence (les offres restent en base).
+exclude_tags = ["porc", "fruits_de_mer"]
+
+# Poids de pertinence par groupe (0 = aucun intérêt, 1 = priorité maximale).
+[relevance]
+proteines = 1.0
+laitier_oeufs = 1.0
+feculents = 0.85
+fruits_legumes = 0.85
+nourriture = 0.6
+boissons = 0.3
+entretien = 0.3
+hygiene = 0.2
+autres = 0.15
+
+# Mots-clés favoris (nom allemand) : +0.15 de pertinence, onglet « Favoris ».
+[favorites]
+keywords = ["Eier", "Poulet", "Rind", "Hackfleisch", "Milch", "Quark", "Joghurt", "Reis", "Kartoffeln", "Haferflocken"]

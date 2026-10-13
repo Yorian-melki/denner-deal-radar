@@ -1,0 +1,38 @@
+name: watchdog
+
+# Filet de sécurité : si aucune collecte n'a réussi depuis `stale_after_hours`,
+# alerte Telegram + relance d'une collecte forcée.
+on:
+  schedule:
+    - cron: "23 1,7,13,18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Fraîcheur des données
+        id: wd
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          set +e
+          python -m radar watchdog --no-save
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+      - name: Relancer une collecte
+        if: steps.wd.outputs.code == '3'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run scan.yml -f force=true

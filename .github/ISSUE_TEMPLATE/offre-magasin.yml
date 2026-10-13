@@ -1,0 +1,31 @@
+name: Offre vue en magasin
+description: Ajouter une réduction vue en rayon (non publiée en ligne). Joindre la photo de l'étiquette.
+title: "Offre magasin : "
+labels: ["offre-manuelle"]
+body:
+  - type: input
+    attributes: {label: Produit, description: "Nom exact sur l'étiquette (allemand)"}
+    validations: {required: true}
+  - type: input
+    attributes: {label: Prix promo (CHF), placeholder: "3.95"}
+    validations: {required: true}
+  - type: input
+    attributes: {label: Prix habituel (CHF), description: "Prix barré Denner, si affiché", placeholder: "5.90"}
+  - type: input
+    attributes: {label: Contenance, placeholder: "500 g"}
+  - type: dropdown
+    attributes:
+      label: Magasin
+      options:
+        - "s1145123 — Neumarkt, Kornhausstrasse 28"
+        - "s1145081 — Langgasse 26"
+        - "s1144945 — Silberturm, Rorschacherstrasse 152-154"
+        - "s1146069 — Neudorf, Rorschacherstrasse 292"
+        - "s1145508 — Lukasstrasse 69"
+        - "s1145228 — Zürcherstrasse 41"
+        - "s1145534 — Fürstenlandstrasse 157"
+    validations: {required: true}
+  - type: input
+    attributes: {label: Valable jusqu'au, placeholder: "2026-10-21"}
+  - type: textarea
+    attributes: {label: Remarque et photo, description: "Glissez la photo de l'étiquette ici (date courte, démarque…)"}

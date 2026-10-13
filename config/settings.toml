@@ -1,0 +1,85 @@
+# Denner Deal Radar — configuration (aucun secret ici : les jetons Telegram
+# sont lus depuis les variables d'environnement / secrets GitHub).
+
+[general]
+timezone = "Europe/Zurich"
+# Région linguistique des magasins suivis (St. Gallen = Suisse alémanique).
+# Sert à exclure les offres « Nur in der französischen Schweiz erhältlich ».
+home_region = "de"
+# URL publique du dashboard (utilisée dans les liens Telegram).
+dashboard_url = "https://yorian-melki.github.io/denner-deal-radar/"
+
+[collect]
+base_url = "https://www.denner.ch"
+lang = "de"
+hits_per_page = 100            # vérifié : l'API accepte 100 (3 pages au lieu de 10)
+# Flux interrogés. Les flux « highlight » ne sont PAS inclus dans les flux
+# hebdomadaires : il faut les demander séparément (vérifié le 13.10.2026).
+flags = [
+  "promo_current_week",
+  "promo_next_week",
+  "weekend_highlight",
+  "weekend_highlight_next_week",
+  "start_of_the_week_highlight",
+]
+# Les flux highlight annoncés par l'API (includeHighlights) mais absents de
+# la liste ci-dessus sont collectés automatiquement et signalés.
+auto_discover_flags = true
+timeout_s = 30
+retries = 4
+backoff_s = 2.0
+delay_between_requests_s = 0.8
+user_agent = "DennerDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar; personal price watcher)"
+# Une collecte n'est pas relancée si la dernière réussite date de moins de N minutes
+# (les crons GitHub sont volontairement redondants pour le rattrapage).
+min_interval_minutes = 35
+# Contrôle de couverture HTML (pages officielles) et robots.txt : au plus 1x / N heures.
+html_audit_every_hours = 20
+robots_check_every_hours = 20
+# Découverte des magasins : au plus 1x / N jours.
+stores_check_every_days = 6
+
+[health]
+# Si un flux renvoie moins de X % de sa médiane récente, la collecte est
+# considérée suspecte : aucune disparition d'offre n'est enregistrée.
+min_ratio_vs_median = 0.4
+# Une offre absente de N collectes complètes consécutives est déclarée retirée.
+missing_scans_before_withdrawn = 2
+# Alerte technique après N échecs consécutifs.
+failure_alert_after = 2
+# Données considérées obsolètes après N heures sans collecte réussie.
+stale_after_hours = 14
+
+[scoring]
+# Écart supposé entre le prix habituel Denner et le prix concurrent cité
+# lors d'un « Konkurrenzvergleich » (référence non vérifiable chez Denner).
+competitor_reference_haircut = 0.20
+exceptional_threshold = 8.0
+
+[notify]
+enabled = true
+# Pas de message entre ces heures (heure de Zurich) ; les messages sont mis
+# en file d'attente et envoyés à la collecte suivante.
+quiet_start = 22
+quiet_end = 7
+# Alerte individuelle pour une offre nouvelle si score >= ce seuil.
+individual_alert_min_score = 8.0
+# Baisse de prix : alerte si le nouveau score >= ce seuil.
+price_drop_alert_min_score = 5.0
+# Nombre d'offres listées dans un récapitulatif.
+top_n = 10
+# Rappel avant expiration : offres score >= X finissant dans moins de N heures.
+expiry_reminder_min_score = 7.0
+expiry_reminder_hours = 30
+# Récapitulatifs (heure locale minimale d'envoi).
+monday_recap = true
+thursday_recap = true
+recap_not_before_hour = 7
+# Les alertes individuelles ignorent les offres portant ces étiquettes
+# (elles restent visibles dans la liste complète et le dashboard).
+exclude_tags_from_alerts = ["porc", "fruits_de_mer"]
+
+[export]
+# Offres terminées conservées dans la vue principale du dashboard (jours).
+recent_days = 30
+records_top_n = 150
