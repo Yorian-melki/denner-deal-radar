@@ -31,6 +31,8 @@ CONDITION_FACTOR = {  # valeur d'un article par rapport au neuf de référence
     "refurbished_third_party": 0.85, "used": 0.75, "damaged": 0.5,
 }
 WEAK_REFERENCE_CAP = 7.5
+# (économie absolue max, note max) — hors supermarché et anti-gaspi (prix unitaires bas par nature)
+SAVINGS_CAPS = [(5.0, 6.0), (15.0, 7.5), (30.0, 8.5)]
 # Valeur nette (CHF) -> note pour le gratuit / gratuit numérique (seuils fixes)
 FREE_CURVE = [(0, 0.0), (5, 1.5), (15, 3.0), (30, 5.0), (80, 7.0), (200, 8.0), (500, 9.0), (1500, 10.0)]
 
@@ -150,6 +152,13 @@ def _discount_based(deal: dict, history: list[dict] | None) -> UScore:
         elif saving >= 100:
             adj += 0.3
             comps.append((f"économie absolue notable (~CHF {saving:.0f})", 0.3))
+        elif deal.get("family") not in ("grocery", "surplus"):
+            # Biais de pourcentage : −80 % sur CHF 2.50 n'est pas une affaire exceptionnelle.
+            for limit, cap in SAVINGS_CAPS:
+                if saving < limit and base + adj > cap:
+                    comps.append((f"économie absolue < CHF {limit:g} : note plafonnée à {cap}", cap - (base + adj)))
+                    adj = cap - base
+                    break
         elif saving < 1.0 and base + adj > 6:
             cap = 6 - (base + adj)
             adj += cap

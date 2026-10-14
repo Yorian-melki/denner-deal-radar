@@ -342,3 +342,12 @@ def test_coupon_and_cashback_scoring():
 def test_same_game_across_sources():
     from radar.core.entity import canonical_game_id
     assert canonical_game_id("TerraScape (Epic Games) Giveaway") == canonical_game_id("TerraScape")
+
+
+def test_savings_caps_against_percentage_bias():
+    tiny = score_deal(D(current_price=0.5, reference_price=2.5, reference_price_type="merchant_previous"))
+    mid = score_deal(D(current_price=3.0, reference_price=30.0, reference_price_type="merchant_previous"))  # CHF 27 économisés
+    big = score_deal(D(current_price=69.75, reference_price=279, reference_price_type="merchant_previous"))
+    assert tiny.score == 6.0 and mid.score == 8.5 and big.score > 9
+    food = score_deal(D(family="grocery", current_price=2.0, reference_price=5.0, reference_price_type="merchant_previous"))
+    assert food.score == pytest.approx(curve(60), abs=0.05)   # supermarché : pas de plafond par CHF

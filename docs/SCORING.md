@@ -54,7 +54,9 @@ de percentile, de normalisation hebdomadaire ni de quota. Une semaine peut avoir
 | achat minimum 2 / ≥ 3 unités | −8 % / −15 % de la note de base |
 | plus bas prix jamais observé | +0,3 |
 | économie absolue ≥ CHF 100 / ≥ CHF 300 | +0,3 / +0,5 |
-| économie absolue < CHF 1 | note plafonnée à 6 (biais de pourcentage) |
+| économie absolue < CHF 5 / < 15 / < 30 (hors supermarché, anti-gaspi) | note plafonnée à 6 / 7,5 / 8,5 (biais de pourcentage) |
+| supermarché : économie < CHF 1 | note plafonnée à 6 |
+| référence faible (PVC, concurrent, communauté, valeur annoncée) non confirmée | note plafonnée à 7,5 |
 | anti-gaspi à plus de 5 km | −0,5 |
 | cashback non garanti | non déduit (affiché séparément) |
 

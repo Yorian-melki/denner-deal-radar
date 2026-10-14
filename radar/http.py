@@ -60,6 +60,9 @@ class Http:
                 if r.status_code in (429, 500, 502, 503, 504):
                     raise requests.HTTPError(f"HTTP {r.status_code}", response=r)
                 r.raise_for_status()
+                ctype = r.headers.get("Content-Type", "")
+                if "charset" not in ctype.lower() and (r.encoding or "").lower() in ("iso-8859-1", "latin-1"):
+                    r.encoding = "utf-8"   # requests suppose ISO-8859-1 sans charset déclaré
                 return r
             except (requests.ConnectionError, requests.Timeout, requests.HTTPError) as e:
                 last_exc = e
