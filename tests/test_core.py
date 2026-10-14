@@ -96,6 +96,13 @@ def test_msrp_and_competitor_are_discounted():
     assert msrp.confidence < own.confidence
 
 
+def test_weak_reference_alone_cannot_be_exceptional():
+    s = score_deal(D(current_price=6, reference_price=29, reference_price_type="msrp"))
+    assert s.score == 7.5 and any("non confirmée" in c for c, _ in s.components)
+    ok = score_deal(D(current_price=6, reference_price=29, reference_price_type="merchant_previous"))
+    assert ok.score > 7.5
+
+
 def test_fake_promotion_with_inflated_reference():
     """Exemple I : « −70 % » mais référence gonflée et prix habituel identique."""
     hist = [{"deal_id": f"o{i}", "current_price": 30.0, "reference_price": 35.0,
@@ -269,12 +276,16 @@ def test_lifecycle_states():
 
 def test_alert_policy_dedup_and_antispam(env):
     cfg, store, http = env
-    run_connector(FakeConn([{"id": 9, "t": "Super deal", "p": 10, "r": 100}]), store, cfg, http, NOW, None)
-    live = enrich(store, cfg, cfg.prefs, NOW)
-    m1 = [m for m in ualerts.build(live, cfg, NOW, store) if m["key"].startswith("u:")]
+    run_connector(FakeConn(ITEMS), store, cfg, http, NOW, None)
+    boot = [m for m in ualerts.build(enrich(store, cfg, cfg.prefs, NOW), cfg, NOW, store) if m["key"].startswith("u:") and "digest" not in m["key"]]
+    assert boot == []   # 1re collecte d'une source : aucune avalanche d'alertes
+    later = NOW + dt.timedelta(hours=1)
+    run_connector(FakeConn(ITEMS + [{"id": 9, "t": "Super deal", "p": 10, "r": 100}]), store, cfg, http, later, None)
+    live = enrich(store, cfg, cfg.prefs, later)
+    m1 = [m for m in ualerts.build(live, cfg, later, store) if m["key"].startswith("u:") and "digest" not in m["key"]]
     assert len(m1) == 1 and "ULTRA" in m1[0]["text"]
     assert "Pourquoi" in m1[0]["text"] and "Confiance" in m1[0]["text"]
-    m2 = [m for m in ualerts.build(live, cfg, NOW, store) if m["key"].startswith("u:") and "digest" not in m["key"]]
+    m2 = [m for m in ualerts.build(live, cfg, later, store) if m["key"].startswith("u:") and "digest" not in m["key"]]
     assert m2 == []   # même deal, même prix : pas de renvoi
 
 

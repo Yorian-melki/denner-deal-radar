@@ -110,11 +110,12 @@ def write_export(store: UStore, radar_store: Store, cfg, now, out: Path, live=No
     ranked = sorted((d for d in store.all_deals() if d.get("best_score") is not None),
                     key=lambda d: d["best_score"], reverse=True)[:150]
     ids = {d["deal_id"] for d in allx}
+    ranked_ids = {d["deal_id"] for d in ranked}
     for d in ranked:
         if d["deal_id"] not in ids:
             allx.append(d)
     for d in allx:
-        d["record"] = d in ranked or d.get("record", False)
+        d["record"] = d["deal_id"] in ranked_ids or d.get("record", False)
     payload = {"generated_at": now.replace(microsecond=0).isoformat(),
                "deals": [{k: v for k, v in d.items() if k not in KEEP_FIELDS_DROP} for d in allx]}
     out.mkdir(parents=True, exist_ok=True)
@@ -143,6 +144,17 @@ def sources_report(store: UStore, cfg, now, radar_store: Store, deals: list[dict
                       "last_success": rs.get("last_success"), "last_attempt": rs.get("last_attempt"),
                       "state": "OK" if not rs.get("consecutive_failures") else "SCRAPE_FAILURE",
                       "items": len(radar_store.offers), "reliability": 1.0 if not rs.get("consecutive_failures") else 0.5})
+    # Promotion des statuts selon la santé réelle : INTEGRATED -> FUNCTIONAL -> MONITORED.
+    by_conn = {h["id"]: h for h in health}
+    for s in reg:
+        h = by_conn.get(s.get("connector") or "")
+        if not h:
+            continue
+        runs = len(store.source_state(h["id"]).get("recent", [])) if h["id"] != "denner" else 99
+        if h.get("state") in ("OK", "EMPTY_VALID", "NOT_MODIFIED") and not h.get("stale"):
+            s["status"] = "MONITORED" if runs >= 10 and (h.get("reliability") or 0) >= 0.8 else "FUNCTIONAL"
+        elif h.get("state") == "PARTIAL":
+            s["status"] = "PARTIAL"
     status_count: dict[str, int] = {}
     for s in reg:
         status_count[s.get("status", "DISCOVERED")] = status_count.get(s.get("status", "DISCOVERED"), 0) + 1

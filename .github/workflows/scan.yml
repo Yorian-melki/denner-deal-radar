@@ -86,6 +86,7 @@ jobs:
         if: always()
         run: |
           test -f site/data/offers.json || python -m radar export --out site/data
+          python -m radar u-export --out site/data || echo "export universel indisponible (Denner non affecté)"
       - uses: actions/upload-pages-artifact@v3
         if: always()
         with:

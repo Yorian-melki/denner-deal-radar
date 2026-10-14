@@ -30,6 +30,7 @@ CONDITION_FACTOR = {  # valeur d'un article par rapport au neuf de référence
     "new": 1.0, "open_box": 0.95, "returned": 0.92, "refurbished_manufacturer": 0.90,
     "refurbished_third_party": 0.85, "used": 0.75, "damaged": 0.5,
 }
+WEAK_REFERENCE_CAP = 7.5
 # Valeur nette (CHF) -> note pour le gratuit / gratuit numérique (seuils fixes)
 FREE_CURVE = [(0, 0.0), (5, 1.5), (15, 3.0), (30, 5.0), (80, 7.0), (200, 8.0), (500, 9.0), (1500, 10.0)]
 
@@ -156,6 +157,12 @@ def _discount_based(deal: dict, history: list[dict] | None) -> UScore:
         comps.append(("cashback incertain : non déduit du prix", 0.0))
 
     score = 0.0 if d <= 0 else max(0.0, min(10.0, base + adj))
+    # Une référence faible (PVC, concurrent, communauté, valeur annoncée) non
+    # confirmée par l'historique ne peut pas suffire à une note « exceptionnelle ».
+    weak = rtype in ("msrp", "competitor", "community_claimed", "declared_value")
+    if weak and stats.get("n", 0) < 3 and not deal.get("corroborated_by") and score > WEAK_REFERENCE_CAP:
+        comps.append((f"référence {rtype} non confirmée : note plafonnée à {WEAK_REFERENCE_CAP}", WEAK_REFERENCE_CAP - score))
+        score = WEAK_REFERENCE_CAP
     return UScore(round(score, 1), conf, d, saving, comps, integrity)
 
 

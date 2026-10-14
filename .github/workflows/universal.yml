@@ -1,0 +1,94 @@
+name: universal
+
+# Moteur universel V3. Un seul workflow pour toutes les sources : chaque
+# exécution ne collecte que les connecteurs dont l'intervalle propre est écoulé
+# (`--due`, cf. tier/interval de chaque connecteur). Toutes les 30 min en
+# journée, toutes les 2 h la nuit (Europe/Zurich ≈ UTC+1/+2).
+on:
+  schedule:
+    - cron: "17,47 4-21 * * *"
+    - cron: "17 23,1,3 * * *"
+  workflow_dispatch:
+    inputs:
+      sources:
+        description: "Sources à forcer (ids séparés par des espaces, vide = celles qui sont dues)"
+        default: ""
+      dry_run:
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: radar-data
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Collecte universelle
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SOURCES: ${{ inputs.sources }}
+        run: |
+          ARGS="--due"
+          if [ -n "$SOURCES" ]; then ARGS="--source $SOURCES"; fi
+          if [ "${{ inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run --out-dry site/data"; fi
+          python -m radar u-scan $ARGS
+
+      - name: Sauvegarde de l'historique (git)
+        if: always() && inputs.dry_run != true
+        run: |
+          git config user.name "deal-radar-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/universal
+          if git diff --cached --quiet; then echo "rien à commiter"; exit 0; fi
+          git commit -m "data(universal): relevé $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push && exit 0
+            sleep $((i * 7))
+          done
+          exit 1
+
+      - name: Instantanés bruts (débogage, 14 jours)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-${{ github.run_id }}
+          path: raw/
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Préparer le dashboard
+        if: always()
+        run: |
+          python -m radar export --out site/data
+          python -m radar u-export --out site/data
+      - uses: actions/upload-pages-artifact@v3
+        if: always()
+        with:
+          path: site
+
+  deploy:
+    needs: scan
+    if: always() && needs.scan.result != 'cancelled'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

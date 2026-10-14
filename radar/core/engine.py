@@ -106,6 +106,8 @@ def run_connector(c: Connector, store: UStore, cfg, http, now: dt.datetime, raw_
     st.update(last_state=state, last_latency_s=latency, last_items=len(fresh),
               last_error=res.error, last_warnings=res.warnings[:5], requests=http.requests_made - req0)
     if ok:
+        if not st.get("last_success") and fresh:
+            st["bootstrap_at"] = at   # 1re collecte réussie : pas d'avalanche d'alertes
         st["last_success"] = at
         st["consecutive_failures"] = 0
     else:

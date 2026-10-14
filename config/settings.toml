@@ -97,5 +97,7 @@ free_fast = 7.0
 critical_min_score = 7.0
 anomaly = 7.0
 max_immediate_per_source = 4
+# Économie minimale (CHF) pour une alerte immédiate hors gratuit/anti-gaspi/supermarché.
+min_savings_chf = 15.0
 digest_hour = 18
 exclude_tags = ["porc", "fruits_de_mer"]

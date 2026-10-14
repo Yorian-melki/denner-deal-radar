@@ -71,7 +71,7 @@ def detail(d: dict, cfg) -> str:
         L.append(f"Économie réelle estimée : {d['effective_discount']:.0f} %"
                  + (f" (~CHF {d['net_savings']:.2f})" if d.get("net_savings") else ""))
     if d.get("unit_price"):
-        L.append(f"Prix unitaire : CHF {chf(d['unit_price'])} {d.get('unit', '')}")
+        L.append(f"Prix unitaire : {chf(d['unit_price'])} {d.get('unit') or ''}")
     if d.get("ends_at"):
         L.append(f"Fin : {N.day(d['ends_at'])} {d['ends_at'][11:16]}")
     if d.get("pickup_window"):
@@ -104,6 +104,9 @@ def reason_for(d: dict, cfg) -> str | None:
         return None
     if set(d.get("tags") or []) & set(a.get("exclude_tags", [])):
         return None
+    if d["family"] not in ("free", "digital_free", "surplus", "grocery") and d.get("net_savings") is not None \
+            and d["net_savings"] < a.get("min_savings_chf", 15.0):
+        return None   # biais de pourcentage : −70 % sur CHF 6 n'est pas une alerte
     if s is not None and conf >= a.get("min_confidence", 0.5):
         if s >= a.get("ultra", 9.0):
             return "ultra"
@@ -146,6 +149,9 @@ def build(live: list[dict], cfg, now: dt.datetime, store) -> list[dict]:
     cands = sorted((d for d in live if d["source_id"] != "denner"),
                    key=lambda d: (d.get("deal_score") or 0, d.get("score_confidence") or 0), reverse=True)
     for d in cands:
+        boot = store.source_state(d["source_id"]).get("bootstrap_at")
+        if boot and (d.get("first_seen_at") or "") <= boot:
+            continue   # catalogue initial d'une nouvelle source : enregistré sans alerte
         reason = reason_for(d, cfg)
         if not reason or not should_send(d, ns):
             continue
