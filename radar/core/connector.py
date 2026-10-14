@@ -77,6 +77,11 @@ class Context:
                 self.source_state["http_cache"][url] = entry
         return r
 
+    def post_json(self, url: str, body: dict, headers: dict | None = None) -> dict:
+        """POST JSON poli (robots.txt, délai, retries via Http.request)."""
+        h = {"Content-Type": "application/json", "Accept": "application/json", **(headers or {})}
+        return self.http.request("POST", url, json=body, headers=h).json()
+
 
 class Connector:
     id: str = ""
