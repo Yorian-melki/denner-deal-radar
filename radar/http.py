@@ -25,13 +25,21 @@ class Http:
         self.requests_made = 0
         self._robots: dict[str, Protego] = {}
         self._last = 0.0
+        self._last_by_host: dict[str, float] = {}
 
     # -- robots.txt -------------------------------------------------------
     def load_robots(self, base: str) -> Protego:
         host = urlparse(base).netloc
         if host not in self._robots:
-            r = self._raw("GET", f"{base}/robots.txt")
-            self._robots[host] = Protego.parse(r.text)
+            try:
+                r = self._raw("GET", f"{base}/robots.txt")
+                text = r.text
+            except requests.HTTPError as e:
+                status = getattr(e.response, "status_code", None)
+                if status is None or not 400 <= status < 500:
+                    raise   # 5xx / réseau : prudence, pas de collecte
+                text = ""   # RFC 9309 §2.3.1.3 : robots.txt 4xx = aucune restriction
+            self._robots[host] = Protego.parse(text)
         return self._robots[host]
 
     def allowed(self, url: str) -> bool:
@@ -42,17 +50,24 @@ class Http:
     # -- requests ---------------------------------------------------------
     def _raw(self, method: str, url: str, **kw) -> requests.Response:
         last_exc: Exception | None = None
+        host = urlparse(url).netloc
+        rules = self._robots.get(host)
+        crawl = (rules.crawl_delay(self.s.headers["User-Agent"]) or rules.crawl_delay("*") or 0) if rules else 0
+        delay = max(self.delay, float(crawl))   # Crawl-delay respecté, retries compris
         for attempt in range(self.retries + 1):
-            wait = self.delay - (time.monotonic() - self._last)
+            wait = delay - (time.monotonic() - self._last_by_host.get(host, 0.0))
             if wait > 0:
                 time.sleep(wait)
             try:
-                self._last = time.monotonic()
+                self._last = self._last_by_host[host] = time.monotonic()
                 self.requests_made += 1
                 r = self.s.request(method, url, timeout=self.timeout, **kw)
                 if r.status_code in (429, 500, 502, 503, 504):
                     raise requests.HTTPError(f"HTTP {r.status_code}", response=r)
                 r.raise_for_status()
+                ctype = r.headers.get("Content-Type", "")
+                if "charset" not in ctype.lower() and (r.encoding or "").lower() in ("iso-8859-1", "latin-1"):
+                    r.encoding = "utf-8"   # requests suppose ISO-8859-1 sans charset déclaré
                 return r
             except (requests.ConnectionError, requests.Timeout, requests.HTTPError) as e:
                 last_exc = e

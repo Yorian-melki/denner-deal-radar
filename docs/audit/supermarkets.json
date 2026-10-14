@@ -1,0 +1,1176 @@
+[
+ {
+  "id": "migros",
+  "name": "Migros (in-store weekly promotions)",
+  "family": "supermarket",
+  "url": "https://www.migros.ch/de/offers/home",
+  "geographic_relevance": "High. Many Migros stores in St. Gallen (Genossenschaft Migros Ostschweiz, region code 'gmos'). On 2026-10-14 region=gmos and region=national returned identical id lists (13/1/26 items).",
+  "data_available": "Weekly in-store promotions: single products (PRODUCT) and range deals (GROUP_PROMOTION, e.g. 'Gesamtes Lindt Sortiment -20%'). Group promos list productIds which can be expanded to per-product promo prices via product-cards.",
+  "method": "api_json",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.migros.ch/authentication/public/v1/api/guest",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept": "application/json",
+     "Origin": "https://www.migros.ch",
+     "Referer": "https://www.migros.ch/de/offers/home"
+    },
+    "body": null,
+    "note": "Anonymous guest token: read response header 'leshopch' and send it as request header 'leshopch' on all following calls. Without it the API returns 401 (observed)."
+   },
+   {
+    "method": "GET",
+    "url": "https://www.migros.ch/product-display/public/v1/promotions/instore/{kind}?region=gmos&language=de",
+    "kinds": [
+     "new",
+     "weekend",
+     "personalized"
+    ],
+    "headers": {
+     "leshopch": "<token>",
+     "Accept": "application/json"
+    },
+    "body": null,
+    "note": "Returns {items:[{id,type:PRODUCT|GROUP_PROMOTION}],numberOfItems}. 'personalized' here is NOT user-specific (guest) – it held 26 items incl. most group promos."
+   },
+   {
+    "method": "POST",
+    "url": "https://www.migros.ch/product-display/public/v4/product-cards",
+    "headers": {
+     "leshopch": "<token>",
+     "Content-Type": "application/json"
+    },
+    "body": {
+     "offerFilter": {
+      "storeType": "OFFLINE",
+      "region": "gmos",
+      "ongoingOfferDate": "YYYY-MM-DDT00:00:00"
+     },
+     "productFilter": {
+      "uids": [
+       "<=40 int uids"
+      ]
+     }
+    }
+   },
+   {
+    "method": "GET",
+    "url": "https://www.migros.ch/product-display/public/v2/promotions-details/{id1,id2,...}?language=de&region=gmos",
+    "headers": {
+     "leshopch": "<token>"
+    },
+    "body": null
+   }
+  ],
+  "auth": "Anonymous guest token fetched by the public website itself (no account). robots.txt allows /authentication/public/v1/api/guest and /product-display/public/... (checked with protego).",
+  "robots": {
+   "status": "allowed",
+   "relevant_lines": [
+    "Disallow: */promotion/",
+    "Disallow: */offers/instore/",
+    "Disallow: */offers/coupons/",
+    "Disallow: *?query="
+   ],
+   "notes": "Used paths contain '/promotions/' and '/promotions-details/' (plural) – protego can_fetch=True for all four endpoints. The richer /product-display/public/v1/products/promotion/search is DISALLOWED (protego False) – do not use."
+  },
+  "constraints": "Token per session; keep <=1 req/s. Reference repo notes /products/promotion/search would list ~4x more promotions but is robots-disallowed. Website HTML (/de/offers/home) returned a 'maintenance' title page to curl – API only.",
+  "publication_frequency": "Weekly (new promos Thursday per observed startDate 2026-10-08); some promos run 2 weeks (to 2026-10-21).",
+  "offer_duration": "Mostly Thu–Wed (2026-10-08..2026-10-14); some 1–2 weeks.",
+  "pagination": "None on instore lists; product-cards batched by 40 uids; promotions-details accepts comma-separated ids (27 ids in one call worked).",
+  "ids_available": "uid (int), migrosId, gtins[] (EAN list) on product cards; group promo id",
+  "regular_price_available": true,
+  "promo_price_available": true,
+  "unit_price_available": true,
+  "dates_available": true,
+  "images": true,
+  "stock": "productAvailability (ONLINE_AND_INSTORE etc.), no store stock",
+  "expected_value": 5,
+  "integration_difficulty": 3,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "All 4 calls returned 200 with polite UA on 2026-10-14; 13 product + 27 group promotions retrieved; a 40-uid expansion of group 'Demeter' returned 40 cards all with promotionPrice.",
+  "recommended_poll": "1x/day (06:00) + Thursday 07:00",
+  "sample_count": 80,
+  "parser_spec": {
+   "requests_for_full_coverage": "1 guest + 3 instore + ceil(products/40) product-cards + 1 promotions-details (+ optional ceil(624/40)=16 product-cards to expand group promotions) ≈ 6 (or ~22 with expansion)",
+   "collection_size": "2026-10-14: 13 PRODUCT + 27 GROUP_PROMOTION ids (dedupe by type:id across the 3 kinds); 27 groups list 624 distinct productIds",
+   "product_card (response is a JSON list)": {
+    "skip_if": "offer.promotionPrice missing (1 of 13 had no offer block: 'Meatballs' weekend item)",
+    "id": "uid (also migrosId)",
+    "title": "name",
+    "brand": "brand (may be absent)",
+    "subtitle_size": "offer.quantity (e.g. '500g', '1 Stück'); description = 'Brand · Name'",
+    "current_price": "offer.promotionPrice.effectiveValue (float); display: offer.promotionPrice.advertisedDisplayValue ('1.–')",
+    "reference_price": "offer.price.effectiveValue = Migros regular shelf price ('statt' price; offer.priceInsteadOfLabel=='statt')",
+    "discount_pct": "badges[type=='PERCENTAGE_PROMOTION'].description e.g. '26%'; VITAMIN_FRANC_PROMOTION ('1.–') = fixed price; badge '20x' + 'Neu' = 20x Cumulus points, NOT a price cut (price==promotionPrice) → filter out or tag as points",
+    "unit_price": "offer.promotionPrice.unitPrice {unit,value}; offer.quantityPrice e.g. '1.–/Stück'",
+    "validity": "offer.promotionDateRange.startDate / endDate (YYYY-MM-DD)",
+    "image": "images[0].url with '{stack}' replaced, e.g. 'mo-custom/v-w-400-h-340' (per reference repo)",
+    "url": "productUrls",
+    "category": "breadcrumb[0].name (full path breadcrumb[*].name)",
+    "ean": "gtins[0]"
+   },
+   "group_promotion (promotions-details JSON list)": {
+    "id": "id",
+    "title": "description (e.g. 'Gesamtes Lindt Schokoladen-Sortiment')",
+    "discount": "badges[].description: '20%'; extra badge like 'Ab 2 Stück' = minimum quantity condition",
+    "example_price": "regex on discountHint: '(\\d+[.,]\\d{2}|\\d+\\.–)\\s*</strong>\\s*statt\\s*(\\d+[.,]\\d{2}|\\d+\\.–)' → (promo, regular) of the quoted example",
+    "validity": "startDate / endDate",
+    "image": "image.url ({stack})",
+    "category": "categories[0].name",
+    "products": "productIds[] → POST product-cards to get per-product prices"
+   }
+  },
+  "notes": "Reference repo LYL010-ADELA/grocery-discount scrapers/migros.py endpoints verified working 2026-10-14. Percentage filtering must ignore Cumulus '20x' badges.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "lidl",
+  "name": "Lidl Schweiz (weekly action landing pages)",
+  "family": "discounter",
+  "url": "https://www.lidl.ch/",
+  "geographic_relevance": "High. Lidl stores in/around St. Gallen; national prices.",
+  "data_available": "Each action landing page (/c/de-CH/<slug>/a<id>) server-renders product tiles with data-grid-data JSON: title, brand, price, oldPrice, discount %, Lidl Plus price, store start/end epoch, image, URL, category.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.lidl.ch/",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null,
+    "note": "Discover current landing-page IDs: regex href=\"(/c/de-CH/[^\"]+/a\\d+)\" (30 found 2026-10-14). IDs change every week – the reference repo's hard-coded /c/de-CH/wochenaktion/a10102783 now returns 404."
+   },
+   {
+    "method": "GET",
+    "url": "https://www.lidl.ch/c/de-CH/wochenaktion/a10104196",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null,
+    "note": "current week (start 2026-10-08), 101 tiles; a10104656 = next week (start 2026-10-15), 106 tiles"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "status": "allowed",
+   "relevant_lines": [
+    "Disallow: /q/search?id=*",
+    "Disallow: /1* … /9*",
+    "Disallow: /cdn/assets/cwv/"
+   ],
+   "notes": "/c/de-CH/... and /p/de-CH/... allowed (protego True)."
+  },
+  "constraints": "Pages 300KB–1.1MB each. Same results with polite and browser UA (myracloud CDN). Lidl Plus app-only prices appear under 'lidlPlus' (66 of 700 records).",
+  "publication_frequency": "Weekly (Thu) + mid-week themed pages (Mon); next week's pages already online.",
+  "offer_duration": "Food weekly Thu–Wed (storeStartDate..storeEndDate); non-food 'ab <date>' while stocks last (storeEndDate often missing: present on 415/700).",
+  "pagination": "None; all tiles server-rendered per landing page. Dedupe by productId across pages.",
+  "ids_available": "productId/erpNumber (Lidl internal), ians[] (internal item no., not EAN)",
+  "regular_price_available": "partial (oldPrice on 114/700 records; 30/101 on current wochenaktion; many tiles show discountText 'Aktion' with oldPrice 0)",
+  "promo_price_available": true,
+  "unit_price_available": "in keyfacts.description text e.g. '100 g = 0.58'",
+  "dates_available": true,
+  "images": true,
+  "stock": "stockAvailability field present (not inspected in depth)",
+  "expected_value": 5,
+  "integration_difficulty": 2,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "30 landing pages fetched (all 200, robots allowed) → 700 unique products 2026-10-14.",
+  "recommended_poll": "1x/day + Monday/Thursday 07:00",
+  "sample_count": 700,
+  "parser_spec": {
+   "requests_for_full_coverage": "1 (homepage) + N landing pages (30 on 2026-10-14; restrict to wochenaktion/super-wochenende/xxl-sparen/lidl-plus-angebote for food ≈ 6–8)",
+   "extract": "regex data-grid-data=\"([^\"]+)\" → html.unescape → json.loads",
+   "id": "productId",
+   "title": "fullTitle (brand-prefixed) or title",
+   "brand": "brand.name",
+   "subtitle_size": "strip tags of html.unescape(keyfacts.description) e.g. 'Herkunft: Schweiz  Pro 500 g  100 g = 0.58'; keyfacts.supplementalDescription",
+   "current_price": "price.price (float); if null and lidlPlus present: lidlPlus[0].price.price (app-only)",
+   "reference_price": "price.oldPrice or price.discount.deletedPrice = Lidl's previous/regular price ('statt'); 0 or missing when discountText=='Aktion'",
+   "discount_pct": "price.discount.percentageDiscount (int) ; text price.discount.discountText ('-27%', '-40 Fr.', 'Aktion')",
+   "validity": "storeStartDate / storeEndDate (epoch seconds, Europe/Zurich; e.g. 1792015199 = 2026-10-14 23:59:59)",
+   "image": "image (imgproxy URL)",
+   "url": "'https://www.lidl.ch' + canonicalUrl",
+   "category": "category ('Food'/'Non Food'); keyfacts.wonCategoryPrimary path"
+  },
+  "notes": "Reference repo scrapers/lidl.py parsing logic still valid, but its 3 hard-coded page IDs are stale (404) – must discover IDs from the homepage each run.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "lidl-plus",
+  "name": "Lidl Plus (app coupons/prices)",
+  "family": "discounter/loyalty",
+  "url": "https://www.lidl.ch/c/de-CH/lidl-plus-angebote/a10020520",
+  "geographic_relevance": "National",
+  "data_available": "Lidl Plus price for some items is exposed in the public web tile JSON (field lidlPlus); app coupons themselves require the app/login.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.lidl.ch/c/de-CH/lidl-plus-angebote/a10020520",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null
+   }
+  ],
+  "auth": "none for the web page; app coupons require account (not used)",
+  "robots": {
+   "status": "allowed",
+   "relevant_lines": []
+  },
+  "constraints": "Only the public web tiles; coupon activation needs app login → not used.",
+  "publication_frequency": "weekly",
+  "offer_duration": "varies (start dates 08.10/12.10/15.10/19.10 seen)",
+  "pagination": "none",
+  "ids_available": "productId",
+  "regular_price_available": "partial",
+  "promo_price_available": true,
+  "unit_price_available": "text",
+  "dates_available": true,
+  "images": true,
+  "stock": "n/a",
+  "expected_value": 3,
+  "integration_difficulty": 1,
+  "reliability": 4,
+  "status": "PARTIAL",
+  "status_reason": "Covered by the 'lidl' connector (64 tiles on the Lidl-Plus page, 66 records with lidlPlus block); app-only coupons not accessible without login.",
+  "recommended_poll": "with lidl",
+  "sample_count": 64,
+  "notes": "Tag offers 'Lidl Plus app required'.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "aldi-suisse",
+  "name": "ALDI SUISSE Aktionen",
+  "family": "discounter",
+  "url": "https://www.aldi-suisse.ch/de/aktionen-und-angebote",
+  "geographic_relevance": "High. Aldi stores in St. Gallen area; national pricing.",
+  "data_available": "Per-start-date promotion pages (Nuxt SSR) with product objects: sku, name, brand, sellingSize, price, comparison (unit) price, rare wasPrice, onSaleDate, badges, images, categories.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.aldi-suisse.ch/de",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null,
+    "note": "Discover date pages: regex href=\"/de/aktionen-und-angebote/(\\d{4}-\\d{2}-\\d{2})\" (5 dates on 2026-10-14: 10-05, 10-08, 10-12, 10-15, 10-19)"
+   },
+   {
+    "method": "GET",
+    "url": "https://www.aldi-suisse.ch/de/aktionen-und-angebote/{YYYY-MM-DD}[?page=N]",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null,
+    "note": "60 products/page; ?page=2 explicitly allowed by robots ('Allow: /*?page=*') – tested, returned offset 60"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "status": "allowed",
+   "relevant_lines": [
+    "Disallow: /tools",
+    "Disallow: /*?q=",
+    "Allow: /*?page=*"
+   ]
+  },
+  "constraints": "UA-based/fingerprint blocking observed: generic Chrome UA (+Accept headers) → 403 AkamaiGHost; polite StGallenDealRadar UA → 200. Keep the honest UA. Non-existent paths return 404 with a 593KB page.",
+  "publication_frequency": "Twice weekly (Monday and Thursday start dates).",
+  "offer_duration": "'ab <date>' while stocks last; no end date in data.",
+  "pagination": "pagination object {offset,limit:60,totalCount}; totals 2026-10-14: 153+48+49+71+125 = 446 across 5 date pages → 9 requests",
+  "ids_available": "sku (18-digit internal), abstractSku",
+  "regular_price_available": "rare (price.wasPriceDisplay present on 1 of 277 fetched)",
+  "promo_price_available": "price.amountRelevant is the action price (no 'promo vs regular' distinction)",
+  "unit_price_available": true,
+  "dates_available": "start only (onSaleDate)",
+  "images": true,
+  "stock": "notForSale flag only",
+  "expected_value": 4,
+  "integration_difficulty": 3,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "All 5 date pages + a page=2 fetched (200) with polite UA; 277 unique products decoded (+60 from page 2).",
+  "recommended_poll": "1x/day (Mon & Thu mornings essential)",
+  "sample_count": 337,
+  "parser_spec": {
+   "extract": "<script id=\"__NUXT_DATA__\" type=\"application/json\"> → JSON array in Nuxt 'devalue' format: every int inside a dict/list is an index into the array; wrapper lists ['Reactive'|'ShallowReactive'|'Ref'|..., idx] unwrap to idx. Resolve recursively, then walk for dicts having keys sku+price+onSaleDate (tested: 49/49 on 2026-10-12 page).",
+   "pagination": "walk for dict with key totalCount → {offset,limit,totalCount}; fetch ?page=2.. while offset+limit < totalCount",
+   "id": "sku",
+   "title": "name",
+   "brand": "brandName",
+   "subtitle_size": "sellingSize (e.g. '500 g')",
+   "current_price": "price.amountRelevant / 100 (int Rappen) ; display price.amountRelevantDisplay 'CHF\\u00a04.49'",
+   "reference_price": "price.wasPriceDisplay (string, previous price; usually null)",
+   "discount_pct": "not provided; compute only when wasPriceDisplay present",
+   "unit_price": "price.comparisonDisplay e.g. 'CHF 0.90/100 g'",
+   "validity": "onSaleDate (YYYY-MM-DD, start); end unknown",
+   "badges": "badges[].items[].displayText e.g. 'Tiefpreis','Vegan','Tiefgekühlt'",
+   "image": "assets[0].url with '{width}'→e.g. 400 and '{slug}'→urlSlugText",
+   "url": "https://www.aldi-suisse.ch/de/produkt/{urlSlugText}-{sku} (format seen in page hrefs)",
+   "category": "categories[].name (mostly 'Aktionen')"
+  },
+  "notes": "Aldi CH rarely publishes a 'statt' price, so deal-scoring needs own price history.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "volg",
+  "name": "Volg Wochenaktionen",
+  "family": "supermarket (village)",
+  "url": "https://www.volg.ch/sortiment/wochenaktionen/",
+  "geographic_relevance": "High for the region: Volg (fenaco) has a dense network of village stores in eastern Switzerland incl. around St. Gallen (store list not verified).",
+  "data_available": "3 sections: Frische-Aktionen (Wed–Sat), Volg-Aktionen and Weitere Aktionen (Mon–Sat) with title, -%, size/unit price, promo price, 'statt' price, image.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.volg.ch/sortiment/wochenaktionen/",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "status": "allowed",
+   "relevant_lines": [
+    "Disallow: /typo3/",
+    "User-agent: GPTBot / Disallow: /"
+   ],
+   "notes": "Only GPTBot is fully disallowed; '*' allows the page."
+  },
+  "constraints": "Single 52KB TYPO3 page.",
+  "publication_frequency": "Weekly (Mon; fresh offers Wed).",
+  "offer_duration": "Mon–Sat / Wed–Sat",
+  "pagination": "none – 1 request gives everything",
+  "ids_available": "numeric promo id from image filename (promo_76798); 'Weitere Aktionen' have no image/id",
+  "regular_price_available": true,
+  "promo_price_available": true,
+  "unit_price_available": true,
+  "dates_available": "section header text 'Mo. 12.10. bis Sa. 17.10.' (year implicit)",
+  "images": "yes (except 'Weitere Aktionen')",
+  "stock": "no",
+  "expected_value": 4,
+  "integration_difficulty": 1,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "200 OK, 25 offers parsed with CSS selectors 2026-10-14.",
+  "recommended_poll": "1x/day (Mon & Wed essential)",
+  "sample_count": 25,
+  "parser_spec": {
+   "container": "section.c-section that contains div.c-product; section label = h2.c-section__subtitle first text node; validity = h2.c-section__subtitle > span text ('Mi. 14.10. bis Sa. 17.10.') → regex '(\\d{1,2})\\.(\\d{1,2})\\. bis \\w+\\. (\\d{1,2})\\.(\\d{1,2})\\.' + current year",
+   "item": "div.c-product",
+   "title": ".c-product__title",
+   "brand": "not separate (first word of title)",
+   "subtitle_size": ".c-product__description (e.g. 'div. Sorten, z.B.Bohnen, 2 x 500 g (100 g = 1.99)')",
+   "current_price": ".c-product__price-main ('2.55', '-.80' style possible)",
+   "reference_price": ".c-product__price .u-text-nowrap → strip 'statt ' ('statt 27.-'); regular Volg price",
+   "discount_pct": ".c-product__reduction ('-30%'; absent in 'Weitere Aktionen' → compute)",
+   "unit_price": "regex '\\((\\d+ ?\\w+) = ([\\d.–-]+)\\)' on description",
+   "image": "img[src] relative → prefix https://www.volg.ch",
+   "id": "regex 'promo_(\\d+)' on image src; else hash(title+validity)",
+   "url": "page URL",
+   "category": "section label",
+   "price_normalisation": "'27.-'→27.00, '-.80'→0.80"
+  },
+  "notes": "Tiny but very local; complements Denner/Migros for village shoppers.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "action",
+  "name": "Action Schweiz Wochenangebote",
+  "family": "hard-discount non-food",
+  "url": "https://www.action.com/de-ch/wochenangebote/",
+  "geographic_relevance": "Medium: Action has Swiss stores; a St. Gallen-area store not verified.",
+  "data_available": "Weekly deals grid (Next.js SSR HTML) with title, variant/size, price, original price, -%, unit price, product id, image, URL; week dates in header.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.action.com/de-ch/wochenangebote/?page={1..N}",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "status": "allowed",
+   "relevant_lines": [
+    "Disallow: */p/*?page=",
+    "Disallow: /p/",
+    "Disallow: *?filter",
+    "Disallow: *sort="
+   ],
+   "notes": "/de-ch/wochenangebote/?page=N allowed (protego True). Do not paginate product pages under /p/."
+  },
+  "constraints": "Cloudflare but no challenge for polite UA. Out-of-range page (7) silently returns page 1 again → stop when GridPaginationLink max reached or ids repeat.",
+  "publication_frequency": "Weekly (Wednesday).",
+  "offer_duration": "Wed–Tue (14.10.–20.10.)",
+  "pagination": "23 cards/page, 6 pages (5×23+11=126 on 2026-10-14); max page from [data-testid=GridPaginationLink]",
+  "ids_available": "Action product id in URL (/p/3218318/); EAN appears in image filename (e.g. 3218318_8718964303373-111_01) – regex '/(\\d+)_(\\d{13})-' (observed, not guaranteed)",
+  "regular_price_available": true,
+  "promo_price_available": true,
+  "unit_price_available": true,
+  "dates_available": true,
+  "images": true,
+  "stock": "no",
+  "expected_value": 3,
+  "integration_difficulty": 2,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "6 pages fetched 200; 126 offers.",
+  "recommended_poll": "1x/day (Wed essential)",
+  "sample_count": 126,
+  "parser_spec": {
+   "week_dates": "[data-testid=weekdeals-dates] text '14.10. bis 20.10.'",
+   "item": "[data-testid=product-card]",
+   "id": "regex '/p/(\\d+)/' on [data-testid=product-card-link][href]",
+   "title": "[data-testid=product-card-title]",
+   "subtitle_size": "[data-testid=product-card-description] ('Ø 18 cm | 140 LEDs')",
+   "current_price": "[data-testid=product-card-price-whole] + '.' + [data-testid=product-card-price-fractional]",
+   "reference_price": "[data-testid=product-card-price-original-amount] (Action's previous price)",
+   "discount_pct": "[data-testid=product-card-price-discount-percentage] ('-16%')",
+   "unit_price": "[data-testid=product-card-price-description] ('CHF 4.99/st')",
+   "image": "[data-testid=product-card-image][src]",
+   "url": "'https://www.action.com' + href",
+   "category": "not on card ([data-testid=product-tag] = 'Wochenangebote')"
+  },
+  "notes": "Non-food heavy; useful for household deals.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "ottos",
+  "name": "OTTO'S (Aktionen / Online-Katalog / Sale)",
+  "family": "discounter (non-food + food)",
+  "url": "https://www.ottos.ch/de/c/promo_onlinecatalogue",
+  "geographic_relevance": "Medium-high: OTTO'S has stores in eastern Switzerland (St. Gallen-area branch not verified).",
+  "data_available": "Angular SSR pages embed <script id=ng-state> with SAP Commerce search results: products with price, insteadOfPrice, discount label, stock status, categories, images.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.ottos.ch/de/c/promo_onlinecatalogue?currentPage={0..46}",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null,
+    "note": "1121 results / 24 per page = 47 pages"
+   },
+   {
+    "method": "GET",
+    "url": "https://www.ottos.ch/de/c/sale?currentPage={0..5}",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null,
+    "note": "137 results"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "status": "allowed",
+   "relevant_lines": [
+    "Crawl-delay: 10",
+    "Disallow: /api/*",
+    "Disallow: */search*",
+    "Disallow: /*?sort"
+   ],
+   "notes": "Must wait 10 s between requests. api.ottos.ch /occ JSON not used (www /api/* disallowed). '?page=' is ignored – use '?currentPage=' (tested)."
+  },
+  "constraints": "Crawl-delay 10 → full promo catalogue ≈ 47 requests ≈ 8 min/run. No validity dates exposed.",
+  "publication_frequency": "Continuous / weekly flyer (/de/prospekte)",
+  "offer_duration": "unknown (no dates in data)",
+  "pagination": "ng-state ...results.pagination {currentPage,pageSize:24,totalPages,totalResults}",
+  "ids_available": "code (OTTO'S article no.)",
+  "regular_price_available": "partial (insteadOfPrice on 8/24 of first promo page; '-x%' labels on others)",
+  "promo_price_available": true,
+  "unit_price_available": "unitName only",
+  "dates_available": false,
+  "images": true,
+  "stock": "stock.stockLevelStatus (online)",
+  "expected_value": 3,
+  "integration_difficulty": 3,
+  "reliability": 3,
+  "status": "INTEGRABLE",
+  "status_reason": "Pages fetched 200 with 10 s delay; ng-state parsed (72 unique products fetched in tests; 1121 available).",
+  "recommended_poll": "1x/day (night, honoring Crawl-delay)",
+  "sample_count": 72,
+  "parser_spec": {
+   "extract": "json.loads(<script id=\"ng-state\" type=\"application/json\">) → ['cx-state']['product']['search']['results']",
+   "pagination": "results.pagination.totalPages; request ?currentPage=k (0-based)",
+   "item": "results.products[]",
+   "id": "code",
+   "title": "name",
+   "brand": "brand",
+   "subtitle_size": "in name (e.g. 'Fanta Orange 24 x 33 cl')",
+   "current_price": "price.value",
+   "reference_price": "insteadOfPrice.value = OTTO'S 'statt' price (often a competitor/market comparison price – meaning not verified)",
+   "discount_pct": "productLabels[style=='priceDiscountPercentage'].message.raw ('-50%')",
+   "labels": "productLabels[].style: priceHit, priceMegaHit, newOnline, advertisement",
+   "image": "images.PRIMARY[0]['product-main'].url",
+   "url": "'https://www.ottos.ch/de' + url",
+   "category": "categories[2:].name",
+   "stock": "stock.stockLevelStatus"
+  },
+  "notes": "Supermarkt & Weine items present (e.g. Fanta 24x33cl -50%).",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "landi",
+  "name": "LANDI Top-Angebote",
+  "family": "agri/DIY discounter",
+  "url": "https://www.landi.ch/laden/aktuell/top-angebote",
+  "geographic_relevance": "High: LANDI stores across canton St. Gallen (store list not verified).",
+  "data_available": "840 'Top Angebot' tiles: article no., title, price (encoded in price-image URL), image, category slug. No reference price, no dates ('nur solange Vorrat').",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.landi.ch/laden/aktuell/top-angebote",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "status": "allowed",
+   "relevant_lines": [
+    "Disallow: /searchresult?query=",
+    "Disallow: /login"
+   ]
+  },
+  "constraints": "Single 2.4MB page. Price only as image URL parameter.",
+  "publication_frequency": "weekly/rolling",
+  "offer_duration": "while stocks last (no dates)",
+  "pagination": "none (840 items in one page)",
+  "ids_available": "data-productcode (LANDI Art.Nr.)",
+  "regular_price_available": false,
+  "promo_price_available": true,
+  "unit_price_available": false,
+  "dates_available": false,
+  "images": true,
+  "stock": "click&collect/delivery buttons only",
+  "expected_value": 2,
+  "integration_difficulty": 1,
+  "reliability": 3,
+  "status": "INTEGRABLE",
+  "status_reason": "1 request, 840 offers parsed 2026-10-14; low deal signal without reference prices.",
+  "recommended_poll": "1x/day",
+  "sample_count": 840,
+  "parser_spec": {
+   "item": "div.product-item",
+   "id": "a.product-link[data-productcode]",
+   "title": "a.product-link[title]",
+   "current_price": "regex '[?&]p=([\\d.]+)' on img.product-image-price[src] (e.g. /landiprice.ashx?p=89.00&h=53&ta=True)",
+   "reference_price": "none",
+   "label": ".price-text ('Top Angebot'), .price-subtext ('nur solange Vorrat'), .meta-line-content (feature bullets)",
+   "image": "img.product-image-main[src] (relative)",
+   "url": "'https://www.landi.ch' + href",
+   "category": "href.split('/')[2].rsplit('_',1)[0]"
+  },
+  "notes": "Mostly non-food (heaters, clothing, pet food, wine).",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "aktionis-coop",
+  "name": "Coop deals via aktionis.ch (aggregator, CouponPlus AG)",
+  "family": "aggregator → supermarket (Coop)",
+  "url": "https://www.aktionis.ch/vendors/coop",
+  "geographic_relevance": "High (Coop is a top-2 retailer in St. Gallen); national deals.",
+  "data_available": "Coop (and Migros, Spar, Volg, Lidl, Aldi, Denner, OTTO'S, Coop Megastore) promotions re-published as cards: title, description, new price, old price, %, validity range, image, deal URL.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.aktionis.ch/vendors/coop[/{page}]",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null,
+    "note": "51 cards/page; pages 1..22 on 2026-10-14 (page 22: 37 cards, page 25: 0)"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "status": "allowed",
+   "relevant_lines": [
+    "Disallow: /login",
+    "Disallow: /profile/",
+    "Disallow: *.pdf",
+    "Disallow: /dealtarget/",
+    "Disallow: /app"
+   ]
+  },
+  "constraints": "Third-party aggregator: data accuracy/latency depends on aktionis; terms page (CouponPlus AG) scanned – no explicit anti-scraping clause found by keyword search, but content reuse rights not verified. Prefer linking to aktionis/Coop and storing facts only.",
+  "publication_frequency": "Daily updates (Coop promos Tue/Thu-based)",
+  "offer_duration": "per card 'dd.mm.yyyy - dd.mm.yyyy'",
+  "pagination": "/vendors/coop/{n}; stop when 0 cards. ~1108 Coop deals (21×51+37) on 2026-10-14",
+  "ids_available": "data-upox-id (aktionis deal id)",
+  "regular_price_available": true,
+  "promo_price_available": true,
+  "unit_price_available": false,
+  "dates_available": true,
+  "images": true,
+  "stock": "no",
+  "expected_value": 4,
+  "integration_difficulty": 2,
+  "reliability": 3,
+  "status": "INTEGRABLE",
+  "status_reason": "Pages 1,6,10,15,20,22 fetched 200; parsed 292 Coop cards; total ≈1108.",
+  "recommended_poll": "1x/day",
+  "sample_count": 292,
+  "parser_spec": {
+   "item": "div.card.dealtype-deal",
+   "id": "[data-upox-id]",
+   "title": ".card-title",
+   "subtitle": ".card-description (truncated)",
+   "merchant": ".card-merchant img[alt] ('Coop')",
+   "current_price": ".price-new ('29.–')",
+   "reference_price": ".price-old (retailer's regular price as republished)",
+   "discount_pct": ".price-discount ('57%')",
+   "validity": ".card-date '13.10.2026 - 14.10.2026' → regex '(\\d{2}\\.\\d{2}\\.\\d{4}) - (\\d{2}\\.\\d{2}\\.\\d{4})'",
+   "image": ".card-image img[src]",
+   "url": "'https://www.aktionis.ch' + a[href]",
+   "category": "not on card",
+   "pagination": "ul.pagination a"
+  },
+  "notes": "Only practical Coop source because coop.ch is DataDome-protected. Other vendor counts 2026-10-14: migros 167, spar 17, coop-megastore 22.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "coop",
+  "name": "Coop (coop.ch Aktionen)",
+  "family": "supermarket",
+  "url": "https://www.coop.ch/de/aktionen/",
+  "geographic_relevance": "High",
+  "data_available": "Not accessible",
+  "method": "blocked",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.coop.ch/robots.txt",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "result": "403 (Server: DataDome)"
+   },
+   {
+    "method": "GET",
+    "url": "https://www.coop.ch/de/",
+    "result": "polite UA 403 DataDome; browser UA 302 → DataDome"
+   }
+  ],
+  "auth": "n/a",
+  "robots": {
+   "status": "unknown – robots.txt itself returns 403 DataDome"
+  },
+  "constraints": "DataDome bot protection (X-DataDome: protected). Not bypassed by policy.",
+  "publication_frequency": "weekly",
+  "offer_duration": "n/a",
+  "pagination": "n/a",
+  "ids_available": "n/a",
+  "regular_price_available": null,
+  "promo_price_available": null,
+  "unit_price_available": null,
+  "dates_available": null,
+  "images": null,
+  "stock": null,
+  "expected_value": 5,
+  "integration_difficulty": 5,
+  "reliability": 1,
+  "status": "BLOCKED",
+  "status_reason": "DataDome 403 for both polite and browser UA, including robots.txt.",
+  "recommended_poll": "none",
+  "sample_count": 0,
+  "notes": "Use aktionis-coop instead. coopzeitung.ch (200 OK) has /de/angebote.html – not parsed (not verified).",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "spar",
+  "name": "SPAR Schweiz weekly flyer (iPaper)",
+  "family": "supermarket",
+  "url": "https://www.spar.ch/aktuelles/angebote",
+  "geographic_relevance": "Medium: SPAR stores exist in eastern Switzerland (St. Gallen-area locations not verified).",
+  "data_available": "Website offer list is client-side (Vue) – its JSON API base could not be resolved (/api/offers* returns {status:ok,data:[]}). The weekly iPaper flyer (angebote.spar.ch) embeds per-page plain text 'pageTexts' with '<n>% SPAREN <title/desc> <price> statt <old>' patterns + validity line.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.spar.ch/aktuelles/angebote",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null,
+    "note": "Discover flyer URL: regex https://angebote\\.spar\\.ch/flugblatt/\\d{4}/spar-angebote-kw\\d{2}-\\d{4}/ (kw41 & kw42 linked)"
+   },
+   {
+    "method": "GET",
+    "url": "https://angebote.spar.ch/flugblatt/2026/spar-angebote-kw42-2026/",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "status": "allowed",
+   "relevant_lines": [
+    "angebote.spar.ch: Disallow: /*.js, /*.xml, /*.ashx …",
+    "www.spar.ch: Disallow: /*?id=*, /*cHash"
+   ],
+   "notes": "Flyer HTML page allowed; iPaper enrichment JSON on cdn.ipaper.io has robots 403 (unknown) – not needed."
+  },
+  "constraints": "Text-layer parsing: title and description are merged; ~90% recall (94 matches vs 104 'statt'). PDF download exists in iPaper but not used.",
+  "publication_frequency": "Weekly (KW), flyer for next week online Wed.",
+  "offer_duration": "Thu–Wed ('Gültig von Do., 15.10.26 – Mi., 21.10.26')",
+  "pagination": "1 flyer page = all 17 pages' texts",
+  "ids_available": false,
+  "regular_price_available": true,
+  "promo_price_available": true,
+  "unit_price_available": "in text ('100 g = 3.95')",
+  "dates_available": true,
+  "images": "page images only",
+  "stock": "no",
+  "expected_value": 3,
+  "integration_difficulty": 3,
+  "reliability": 3,
+  "status": "INTEGRABLE",
+  "status_reason": "2 requests; 94 offers regex-extracted from KW42 flyer pageTexts 2026-10-14.",
+  "recommended_poll": "1x/day (Wed/Thu)",
+  "sample_count": 94,
+  "parser_spec": {
+   "extract": "regex '\"pageTexts\":(\\[.*?\\])\\s*,\\s*\"' (DOTALL) → json.loads → list of page strings",
+   "offer_regex": "(\\d{1,2})% SPAREN (.+?) ((?:\\d+[.,]\\d{2}|\\d+\\.[–-]|[–-]\\.\\d{2})) statt ((?:\\d+[.,]\\d{2}|\\d+\\.[–-]|[–-]\\.\\d{2}))",
+   "id": "hash(kw + page + title)",
+   "title": "group 2 (contains title + size + origin, e.g. 'Black Angus Rindshuft ca. 700 g, 100 g = 3.95 b Uruguay')",
+   "current_price": "group 3",
+   "reference_price": "group 4 (SPAR regular price, 'statt')",
+   "discount_pct": "group 1",
+   "validity": "regex 'Gültig von (.+?\\d{2}\\.\\d{2}\\.\\d{2}) – (.+?\\d{2}\\.\\d{2}\\.\\d{2})' on pageTexts[0]",
+   "image": "none per offer (og:image of flyer)",
+   "url": "flyer URL",
+   "category": "none"
+  },
+  "notes": "Same iPaper technique works for TopCC (Spar group). spar.ch webpack chunk 4283 shows OffersService using paths '/offers/offers' & '/offers/eurospar-offers' but the API base URL could not be located; not guessed further.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "topcc",
+  "name": "TopCC Wochen-Hits (iPaper flyer)",
+  "family": "cash & carry",
+  "url": "https://wochenhits.topcc.ch/flugblatt/2026/topcc-wochen-hits-2026-kw42",
+  "geographic_relevance": "Low-medium (cash&carry; St. Gallen-area market not verified). Prices are net excl. VAT ('Nettopreise exkl. MwSt.').",
+  "data_available": "iPaper pageTexts (24 pages) with 'statt <old> <int> <dec> <title>' patterns; validity '12.10. – 17.10.2026'.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://wochenhits.topcc.ch/flugblatt/{yyyy}/topcc-wochen-hits-{yyyy}-kw{ww}",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null,
+    "note": "URL linked from https://www.topcc.ch/"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "status": "allowed (protego True)",
+   "relevant_lines": []
+  },
+  "constraints": "Messy text order; price split '3 99'; wholesale pack sizes; excl. VAT.",
+  "publication_frequency": "weekly",
+  "offer_duration": "Mon–Sat",
+  "pagination": "none",
+  "ids_available": false,
+  "regular_price_available": true,
+  "promo_price_available": true,
+  "unit_price_available": "partial",
+  "dates_available": true,
+  "images": false,
+  "stock": "no",
+  "expected_value": 2,
+  "integration_difficulty": 4,
+  "reliability": 2,
+  "status": "PARTIAL",
+  "status_reason": "Fetched 200; rough regex '(\\S+) statt (\\d+\\.\\d{2}) (\\d+) (\\d{2}) (.+?)(?= \\S+ statt |$)' matched 108/109 'statt' but titles bleed into neighbours.",
+  "recommended_poll": "1x/week",
+  "sample_count": 108,
+  "notes": "Not recommended for v1.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "aligro",
+  "name": "Aligro Actions (cash & carry)",
+  "family": "cash & carry",
+  "url": "https://www.aligro.ch/actions",
+  "geographic_relevance": "Low: Aligro markets are mainly in western Switzerland (+ ZH area); no St. Gallen market verified.",
+  "data_available": "Server-rendered 'pagination' attribute JSON with up to 48 articles per category page: SKU, names (fr/de), TTC/HT prices, discount rate, promo flags, images.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.aligro.ch/actions",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null,
+    "note": "101 sub-category links /actions/\\d{4}-slug; validity window attributes"
+   },
+   {
+    "method": "GET",
+    "url": "https://www.aligro.ch/actions/{code}-{slug}",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "body": null
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "status": "allowed",
+   "relevant_lines": [
+    "Disallow: /admin",
+    "Disallow: /panier"
+   ]
+  },
+  "constraints": "Root page shows total_items 3348 but only 48 server-side; ?page= ignored (tested) → walk ~101 category pages.",
+  "publication_frequency": "weekly",
+  "offer_duration": "Mon–Sat (actions-start-date 2026-10-12 / end 2026-10-17); nextWeek flag",
+  "pagination": "per-category pages (≤48 items each)",
+  "ids_available": "sKU, article.articleNumber",
+  "regular_price_available": true,
+  "promo_price_available": true,
+  "unit_price_available": "quantityLabel only",
+  "dates_available": true,
+  "images": true,
+  "stock": "availability flag",
+  "expected_value": 1,
+  "integration_difficulty": 2,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "Reference repo method verified: /actions + 3 categories fetched 200 (48+14+15+2 items).",
+  "recommended_poll": "1x/week (low relevance)",
+  "sample_count": 79,
+  "parser_spec": {
+   "extract": "regex 'pagination=\"(\\{&quot;[^\"]+)\"' → html.unescape → json.loads → items[]",
+   "validity": "regex 'actions-start-date=\"([\\d-]+)[^\"]*\"\\s*\\n?\\s*actions-end-date=\"([\\d-]+)' on /actions",
+   "id": "sKU",
+   "title": "translations.de.description or translations.fr.description (root page only had 'fr')",
+   "brand": "translations.*.brand",
+   "subtitle_size": "translations.*.quantityLabel / weightVolume",
+   "current_price": "mainArticleDetailPrice.unitPriceTTC (incl. VAT)",
+   "reference_price": "mainArticleDetailPrice.unitPriceWithoutDiscountTTC (regular Aligro price)",
+   "discount_pct": "round(discountRatePrivate*100)",
+   "image": "images.main['image/jpeg'] (drop /build/missing-picture)",
+   "url": "href.self",
+   "category": "article.articleGroup.translations.*.wording",
+   "flags": "mainArticleDetailPrice.nextWeek"
+  },
+  "notes": "Keep only if a St. Gallen-area user travels to Aligro; otherwise skip.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "manor-food",
+  "name": "Manor (Food campaigns / weekly offers / sale)",
+  "family": "department store / food",
+  "url": "https://www.manor.ch/de/u/angebote-der-woche",
+  "geographic_relevance": "High (Manor St. Gallen city store exists – not verified in this audit).",
+  "data_available": "'Angebote der Woche' = marketing teasers (Manora restaurant deals, links). Food campaign pages (e.g. /de/u/manorfood-ita) embed indexedProduct JSON with priceValue/originalPrice/stock; online sale collection shows 5478 items.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.manor.ch/de/u/angebote-der-woche",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    }
+   },
+   {
+    "method": "GET",
+    "url": "https://www.manor.ch/de/u/manorfood-ita",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    }
+   },
+   {
+    "method": "GET",
+    "url": "https://www.manor.ch/de/produktkollektionen/sale/shop/h/specialprice/web",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    }
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "status": "allowed",
+   "relevant_lines": [
+    "Disallow: /*?_=*",
+    "Disallow: /de/cart",
+    "Disallow: /de/checkout"
+   ]
+  },
+  "constraints": "Campaign URLs change; Next.js flight payload parsing needed; sale is mostly fashion/beauty.",
+  "publication_frequency": "weekly campaigns",
+  "offer_duration": "not exposed",
+  "pagination": "sale: totalResults 5478 (paging not tested)",
+  "ids_available": "manorProductCatalog id",
+  "regular_price_available": true,
+  "promo_price_available": true,
+  "unit_price_available": "normalizedSize",
+  "dates_available": false,
+  "images": true,
+  "stock": "stock.level/status",
+  "expected_value": 2,
+  "integration_difficulty": 4,
+  "reliability": 2,
+  "status": "PARTIAL",
+  "status_reason": "Pages 200; product JSON present (originalPrice/priceValue seen on food page, ~22 products) but no stable 'all food offers' feed; parser not built.",
+  "recommended_poll": "1x/week",
+  "sample_count": 0,
+  "notes": "Another agent saved samples/manor_sale.json (not produced by this audit).",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "mueller",
+  "name": "Müller Schweiz (Drogerie) Aktionen/Prospekte",
+  "family": "drugstore",
+  "url": "https://www.mueller.ch/prospekte/",
+  "geographic_relevance": "High: Müller has a St. Gallen store (not verified in this audit).",
+  "data_available": "Aktionen page has no server-side product data; Prospekte page links 9 flyer assets on S3 (OTC, Parfümerie PF04, Schreibwaren, Spielwaren Halloween).",
+  "method": "pdf",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.mueller.ch/prospekte/",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "note": "regex https://mueller-dam-bucket\\.s3\\.eu-central-1\\.amazonaws\\.com/prod/public/shop-master/prospekte/[^\"\\\\|?]+"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "status": "allowed",
+   "relevant_lines": [
+    "Disallow: /cart/",
+    "Disallow: /checkout/",
+    "Disallow: /my-account/"
+   ]
+  },
+  "constraints": "Flyer files not downloaded/parsed in this audit (not verified whether text-extractable).",
+  "publication_frequency": "flyers every few weeks",
+  "offer_duration": "per flyer",
+  "pagination": "n/a",
+  "ids_available": "not verified",
+  "regular_price_available": "not verified",
+  "promo_price_available": "not verified",
+  "unit_price_available": "not verified",
+  "dates_available": "in filenames (e.g. 01_10_2026)",
+  "images": "flyer",
+  "stock": "no",
+  "expected_value": 2,
+  "integration_difficulty": 4,
+  "reliability": 2,
+  "status": "PARTIAL",
+  "status_reason": "Listing works (200); offer content only in PDFs – not parsed.",
+  "recommended_poll": "1x/week",
+  "sample_count": 0,
+  "notes": "",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "dm-drogerie",
+  "name": "dm-drogerie markt Schweiz",
+  "family": "drugstore",
+  "url": "https://www.dm.ch/",
+  "geographic_relevance": "n/a",
+  "data_available": "none",
+  "method": "none",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.dm.ch/de/",
+    "result": "DNS/connection error"
+   },
+   {
+    "method": "GET",
+    "url": "https://www.dm-drogeriemarkt.ch/",
+    "result": "DNS/connection error"
+   }
+  ],
+  "auth": "n/a",
+  "robots": {
+   "status": "n/a"
+  },
+  "constraints": "Domains do not resolve from here; no Swiss dm web shop found.",
+  "publication_frequency": "n/a",
+  "offer_duration": "n/a",
+  "pagination": "n/a",
+  "ids_available": null,
+  "regular_price_available": null,
+  "promo_price_available": null,
+  "unit_price_available": null,
+  "dates_available": null,
+  "images": null,
+  "stock": null,
+  "expected_value": 1,
+  "integration_difficulty": 5,
+  "reliability": 1,
+  "status": "ASSESSED",
+  "status_reason": "No reachable Swiss dm site (ConnectionError on both domains 2026-10-14).",
+  "recommended_poll": "none",
+  "sample_count": 0,
+  "notes": "Whether dm operates Swiss stores: not verified.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "profital",
+  "name": "Profital (flyer aggregator app)",
+  "family": "aggregator",
+  "url": "https://www.profital.ch/",
+  "geographic_relevance": "national",
+  "data_available": "Landing page only (Webflow) linking to app stores; no web flyer data.",
+  "method": "none",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.profital.ch/",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "result": "200, marketing page (Bring! Labs)"
+   }
+  ],
+  "auth": "app",
+  "robots": {
+   "status": "robots.txt empty/allowed"
+  },
+  "constraints": "Data only inside app (private API) – not used.",
+  "publication_frequency": "n/a",
+  "offer_duration": "n/a",
+  "pagination": "n/a",
+  "ids_available": null,
+  "regular_price_available": null,
+  "promo_price_available": null,
+  "unit_price_available": null,
+  "dates_available": null,
+  "images": null,
+  "stock": null,
+  "expected_value": 1,
+  "integration_difficulty": 5,
+  "reliability": 1,
+  "status": "ASSESSED",
+  "status_reason": "No public web data.",
+  "recommended_poll": "none",
+  "sample_count": 0,
+  "notes": "",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "prodega-transgourmet",
+  "name": "Prodega / Transgourmet",
+  "family": "cash & carry (B2B)",
+  "url": "https://www.transgourmet.ch/de/aktionen-broschueren",
+  "geographic_relevance": "Low (business customers only).",
+  "data_available": "Brochure/market-report PDFs only; prices need customer login.",
+  "method": "pdf",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.prodega.ch/",
+    "result": "redirect to https://www.transgourmet.ch/de"
+   },
+   {
+    "method": "GET",
+    "url": "https://www.transgourmet.ch/de/aktionen-broschueren",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)"
+    },
+    "result": "200; ~20 PDF links (Marktbericht, Care, Cook magazine)"
+   }
+  ],
+  "auth": "customer login for prices (not used)",
+  "robots": {
+   "status": "allowed for HTML"
+  },
+  "constraints": "B2B; not consumer deals.",
+  "publication_frequency": "irregular",
+  "offer_duration": "n/a",
+  "pagination": "n/a",
+  "ids_available": null,
+  "regular_price_available": false,
+  "promo_price_available": false,
+  "unit_price_available": false,
+  "dates_available": false,
+  "images": false,
+  "stock": null,
+  "expected_value": 1,
+  "integration_difficulty": 5,
+  "reliability": 2,
+  "status": "ASSESSED",
+  "status_reason": "No consumer promo data without login.",
+  "recommended_poll": "none",
+  "sample_count": 0,
+  "notes": "",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "denner",
+  "name": "Denner (existing connector)",
+  "family": "discounter",
+  "url": "https://www.denner.ch/",
+  "geographic_relevance": "High",
+  "data_available": "Existing connector POST https://www.denner.ch/nuxt-api/promotions",
+  "method": "api_json",
+  "endpoints": [
+   {
+    "method": "POST",
+    "url": "https://www.denner.ch/nuxt-api/promotions",
+    "note": "already implemented; not re-tested here"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "status": "allowed",
+   "relevant_lines": [
+    "Allow: /",
+    "Disallow: /de/checkout",
+    "Disallow: /de/shopping-list"
+   ],
+   "notes": "protego can_fetch('/nuxt-api/promotions') = True"
+  },
+  "constraints": "",
+  "publication_frequency": "weekly",
+  "offer_duration": "weekly",
+  "pagination": "see existing connector",
+  "ids_available": "see connector",
+  "regular_price_available": true,
+  "promo_price_available": true,
+  "unit_price_available": "see connector",
+  "dates_available": true,
+  "images": true,
+  "stock": null,
+  "expected_value": 5,
+  "integration_difficulty": 1,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "Existing; only robots re-checked 2026-10-14.",
+  "recommended_poll": "as configured",
+  "sample_count": 0,
+  "notes": "Reference only.",
+  "last_verified": "2026-10-14"
+ }
+]

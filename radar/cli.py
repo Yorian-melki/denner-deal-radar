@@ -471,6 +471,8 @@ def main(argv=None) -> int:
     p = sub.add_parser("add-manual-from-issue")
     p.add_argument("--body-file", required=True)
     p.set_defaults(fn=cmd_add_from_issue)
+    from . import ucli
+    ucli.register(sub)
     args = ap.parse_args(argv)
     return args.fn(args)
 

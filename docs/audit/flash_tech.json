@@ -1,0 +1,1526 @@
+[
+ {
+  "id": "daydeal",
+  "name": "DayDeal.ch (BRACK/Competec)",
+  "family": "flash_sale",
+  "url": "https://www.daydeal.ch/de/",
+  "geographic_relevance": "national CH (ships from BRACK Willisau); online only",
+  "delivery_to_switzerland": true,
+  "data_available": "7 live deals: Tagesdeal (24h) + 6 category 'Wochendeals' (7 days each: IT & Multimedia, Haushalt & Wohnen, Supermarkt & Drogerie, Familie & Baby, Baumarkt & Hobby, Sport & Freizeit). Per deal: title, subtitle (model), specialPrice, originalPrice, calculatedDiscount, comparison basis text, start/end ISO timestamps, BRACK SKU + pdpUrl, images, variants with per-variant price/stock, availability % remaining, sold-out flag.",
+  "method": "api_json",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://broadcast.daydeal.ch/get_latest_data?tenant=Daydeal&lang=de",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9",
+     "Accept": "application/json"
+    },
+    "note": "Public endpoint called anonymously by daydeal.ch SPA (config url.api.broadcast). robots.txt of broadcast.daydeal.ch explicitly 'Allow: /get_latest_data'."
+   },
+   {
+    "method": "GET",
+    "url": "https://www.daydeal.ch/de/",
+    "note": "Same data embedded as window.__REACT_QUERY_STATE__ (queryKey ['activeDeals','de']) – fallback."
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.daydeal.ch": "allowed (User-agent: * / Disallow: empty)",
+   "broadcast.daydeal.ch": "User-agent: * Disallow: / Allow: /get_latest_data  -> endpoint allowed",
+   "deal.daydeal.ch": "Disallow: / -> /api/ui/deal/past (past deals) and /deal/by/category_slug NOT allowed, not used"
+  },
+  "constraints": "Same response for honest UA and browser UA (no bot protection observed). Response 159 KB JSON list of 2 events: deals_update (full deals) and availability_update (stock %).",
+  "publication_frequency": "Tagesdeal: new every day at 09:00 Europe/Zurich (observed startDate 2026-10-13T09:00+02:00, endDate 2026-10-14T09:00+02:00; site meta: 'täglich ab 9:00 Uhr'). Category deals: 7-day runs starting 09:00 on staggered days.",
+  "offer_duration": "Tagesdeal 24h (09:00-09:00); category deals 7 days; ends early when sold out",
+  "stock_published": "yes: availability.availablePercentage (0-100) + isSoldOut + buyable; variants[].items[].stock absolute units",
+  "pagination": "none (single request returns all live deals)",
+  "ids_available": "deal id, BRACK sku (product id at brack.ch, pdpUrl), navisionId; no EAN in payload (EAN obtainable from BRACK listing data via SKU)",
+  "price_fields": {
+   "current": "specialPrice (string CHF)",
+   "reference": "originalPrice",
+   "reference_meaning": "field 'comparison' e.g. 'Self-comparison Brack.ch' = BRACK's own regular price",
+   "discount": "calculatedDiscount (%)"
+  },
+  "shipping_cost_info": "not in payload (deliveryInformation null in sample)",
+  "dates": "startDate/endDate ISO8601 with offset",
+  "images": "mainImage + media[].source -> https://images.daydeal.ch/files/<name> (verified 200 image/jpeg)",
+  "expected_value": 5,
+  "integration_difficulty": 1,
+  "reliability": 5,
+  "status": "INTEGRABLE",
+  "status_reason": "Public, robots-allowed JSON endpoint; tested parser on live response (7 deals, 100% price+reference).",
+  "alternative": "window.__REACT_QUERY_STATE__ in https://www.daydeal.ch/de/ HTML",
+  "recommended_poll": "every 15 min (stock %), plus forced poll at 09:01 Europe/Zurich",
+  "sample_count": 7,
+  "sample_file": "/private/tmp/claude-502/audit/samples/daydeal.json",
+  "parser_spec": {
+   "function": "parse_daydeal in /private/tmp/claude-502/audit/ft_tools/ft_parsers.py",
+   "steps": "payload=json list; deals = event 'deals_update'.payload; availability = event 'availability_update'.payload keyed by id",
+   "id": "deal.id",
+   "title": "deal.title + ' ' + deal.subtitle",
+   "brand": "not separate (subtitle starts with brand+model)",
+   "gtin": "none; deal.sku = BRACK SKU",
+   "current_price": "float(deal.specialPrice)",
+   "reference_price": "float(deal.originalPrice); meaning deal.comparison ('Self-comparison Brack.ch')",
+   "discount": "deal.calculatedDiscount",
+   "stock": "availability[id].availablePercentage (% remaining) -> sold% = 100 - value; isSoldOut",
+   "start_end": "deal.startDate / deal.endDate",
+   "url": "https://www.daydeal.ch/de/deal/<deal.slug> (tagesdeal) or /de/category/<category.slug>",
+   "image": "https://images.daydeal.ch/files/ + deal.mainImage",
+   "category": "deal.category.name",
+   "condition": "new",
+   "warranty": "not in payload",
+   "variants": "deal.variants[].items[] -> name, specialPrice, originalPrice, calculatedDiscount, stock",
+   "requests_full_coverage": 1
+  },
+  "notes": "DayDeal is BRACK's daily-deal brand; daydeal 'Deal der Woche' = category deals (7-day). BRACK /sale page also embeds daydealBanners JSON with start/end.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "qoqa",
+  "name": "QoQa.ch",
+  "family": "flash_sale",
+  "url": "https://www.qoqa.ch/de",
+  "geographic_relevance": "national CH (Romandie-based, DE site); some 'Experience' offers are Romandie-local (url_de null)",
+  "delivery_to_switzerland": true,
+  "data_available": "All live offers (33 at test time) across universes (Tech & Co., Sport, Mode, Wohnen, Wein & Spirituosen, Küche, Uhren, Experience...). List: id, name, universe, sub_universes, price_range_min/max, started_at, ends_at, remaining_stock_percent, discount label, urls. Detail: products[].variants[] with price, regular_price, stock_status, content_markdown (incl. 'Spätestes Versanddatum').",
+  "method": "api_json",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://api.qoqa.ch/v2/agents/offers?locale=de",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9",
+     "Accept": "application/json"
+    }
+   },
+   {
+    "method": "GET",
+    "url": "https://api.qoqa.ch/v2/agents/offers/{id}?locale=de",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9",
+     "Accept": "application/json"
+    }
+   },
+   {
+    "method": "GET",
+    "url": "https://api.qoqa.ch/v2/agents/openapi.json",
+    "note": "documented OpenAPI 3 spec; discovered via https://www.qoqa.ch/.well-known/ard.json (linked as 'Agentmap' in robots.txt). Described by QoQa as 'Public REST API built only for AI agents, ... no key needed'. MCP server https://mcp.qoqa.ch also listed."
+   }
+  ],
+  "auth": "none (documented public API)",
+  "robots": {
+   "www.qoqa.ch": "allowed except /*/offers/*/cart and /*/offers/*/comments",
+   "api.qoqa.ch": "User-agent: * Disallow: /admin/ /carts/ /sidekiq/ ... -> /v2/agents/* allowed"
+  },
+  "constraints": "No images and no brand/EAN fields in agent API. Price list level only gives ranges; reference price only in detail (regular_price).",
+  "publication_frequency": "Offers start at 10:00, 12:00 or 20:00 Europe/Zurich (observed started_at values); multiple per day per universe",
+  "offer_duration": "mostly 24-48h; wine offers up to ~6 days; ends_at = start + N days + 15 min (e.g. 12:00 -> 12:15)",
+  "stock_published": "remaining_stock_percent (list); variant stock_status (detail)",
+  "pagination": "none; list returns all live offers ('count')",
+  "ids_available": "offer id, public_identifier UUID, product id, variant UUID; no EAN",
+  "price_fields": {
+   "current": "price_range_min/max (list), variants[].price (detail)",
+   "reference": "variants[].regular_price",
+   "reference_meaning": "QoQa 'regular price' (basis not specified in API)",
+   "discount": "list 'discount' label e.g. '-25%' / 'Bis zu -71%' (null for many)"
+  },
+  "shipping_cost_info": "not in API; content_markdown mentions latest shipping date only",
+  "dates": "started_at / ends_at ISO8601",
+  "images": "not in agent API (only on HTML offer page)",
+  "expected_value": 5,
+  "integration_difficulty": 1,
+  "reliability": 5,
+  "status": "INTEGRABLE",
+  "status_reason": "Documented, keyless, robots-allowed JSON API; tested list (33 offers) + detail (3 variants).",
+  "alternative": "MCP server https://mcp.qoqa.ch (same data); HTML offer pages for images",
+  "recommended_poll": "list every 30 min + at 10:01/12:01/20:01; detail once per new offer id",
+  "sample_count": 33,
+  "sample_file": "/private/tmp/claude-502/audit/samples/qoqa.json (+ qoqa_offer_detail.json)",
+  "parser_spec": {
+   "function": "parse_qoqa_list / parse_qoqa_detail in /private/tmp/claude-502/audit/ft_tools/ft_parsers.py",
+   "id": "offers[].id",
+   "title": "offers[].name (brand is first word(s) but not separate)",
+   "brand": "none",
+   "gtin": "none",
+   "current_price": "price_range_min (+price_range_max); detail: products[].variants[].price",
+   "reference_price": "detail variants[].regular_price",
+   "discount": "parse int from offers[].discount ('-25%'); or compute 1-price/regular_price",
+   "stock": "remaining_stock_percent -> sold%=100-x; detail stock_status",
+   "start_end": "started_at / ends_at",
+   "url": "url_de or url_fr",
+   "image": "none",
+   "category": "universe (+sub_universes)",
+   "condition": "new",
+   "warranty": "not in API",
+   "requests_full_coverage": "1 list + N detail (N = new offers, ~10-20/day)"
+  },
+  "notes": "QoQa sister brands (Qwine, Qsport, Qooking...) appear as universes in the same feed.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "digitec_daily_deal",
+  "name": "Digitec Tagesangebot",
+  "family": "electronics_retail",
+  "url": "https://www.digitec.ch/de/daily-deal",
+  "geographic_relevance": "national CH; Digitec/Galaxus also has a store/pickup in St. Gallen (not verified here)",
+  "delivery_to_switzerland": true,
+  "data_available": "Daily deal products incl. the previous ~7 days' deals: name, brand, nameExtensions, price incl./excl. VAT, insteadOfPrice (type SALES_PRICE_BEFORE + rebate %), salesInformation (validFrom, numberOfItems, numberOfItemsSold), availability class, productType, images, rating.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.digitec.ch/de/daily-deal",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9"
+    },
+    "parse": "<script id=__NEXT_DATA__> -> props.pageProps.preloadedQuery.rawResponse.data.dailyDealProducts[]"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.digitec.ch": "/de/daily-deal allowed (protego). Disallowed relevant: */SaleNew, */SaleIso, */Search, */explore*, */*filterGrid=, /webview/*, specific graphql paths"
+  },
+  "constraints": "UA-based blocking OBSERVED in reverse: our honest bot UA -> 200; a bare Chrome UA without other browser headers -> 403 'Access denied' (bot manager). Product detail pages timed out (2x 30s) for our UA. JSON-LD on page only WebSite/Organization (no Offer).",
+  "publication_frequency": "new deal(s) daily at 00:00 Europe/Zurich (validFrom 2026-10-13T22:00:00Z observed)",
+  "offer_duration": "24h or until sold out (end time not published; inferred next midnight)",
+  "stock_published": "yes: numberOfItems and numberOfItemsSold (absolute units)",
+  "pagination": "none",
+  "ids_available": "databaseId (Digitec/Galaxus product id), offer.shopOfferId; no EAN on this page",
+  "price_fields": {
+   "current": "price.amountInclusive",
+   "reference": "insteadOfPrice.price.amountInclusive",
+   "reference_meaning": "insteadOfPrice.type = SALES_PRICE_BEFORE (own previous sales price); rebate = %",
+   "discount": "insteadOfPrice.rebate"
+  },
+  "shipping_cost_info": "not on page",
+  "dates": "salesInformation.validFrom (UTC)",
+  "images": "https://www.digitec.ch/im + previewImage.relativeUrl (verified 200 image/jpeg with ?impolicy=ProductTileImage&resizeWidth=300)",
+  "expected_value": 5,
+  "integration_difficulty": 2,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "SSR __NEXT_DATA__ JSON on robots-allowed page; parser tested (8 products incl. previous days).",
+  "alternative": "none needed; liquidation/sale listings only partially SSR (see digitec_galaxus_sale)",
+  "recommended_poll": "00:05 Europe/Zurich + every 30-60 min for stock",
+  "sample_count": 8,
+  "sample_file": "/private/tmp/claude-502/audit/samples/digitec_daily_deal.html",
+  "parser_spec": {
+   "function": "extract_next_data + parse_dg_daily in /private/tmp/claude-502/audit/ft_tools/ft_parsers.py",
+   "id": "product.databaseId",
+   "title": "brand.name + name + nameExtensions.properties",
+   "brand": "product.brand.name",
+   "gtin": "none",
+   "current_price": "product.price.amountInclusive",
+   "reference_price": "product.insteadOfPrice.price.amountInclusive (may be null, e.g. Galaxus deal of 2026-10-14)",
+   "discount": "insteadOfPrice.rebate",
+   "stock": "salesInformation.numberOfItems - numberOfItemsSold; sold% = sold/items",
+   "start_end": "salesInformation.validFrom; today's deal = max(validFrom); end not published",
+   "url": "https://www.digitec.ch + relativeUrl",
+   "image": "https://www.digitec.ch/im + previewImage.relativeUrl",
+   "category": "productType.name",
+   "condition": "new (offer.shopOfferType RETAIL)",
+   "warranty": "not on page",
+   "requests_full_coverage": 1
+  },
+  "notes": "dailyDealProducts lists the current deal plus deals from previous days (many sold out: numberOfItemsSold==numberOfItems). Variants of one deal appear as separate products (e.g. sizes).",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "galaxus_daily_deal",
+  "name": "Galaxus Tagesangebot",
+  "family": "general_retail",
+  "url": "https://www.galaxus.ch/de/daily-deal",
+  "geographic_relevance": "national CH; Digitec/Galaxus also has a store/pickup in St. Gallen (not verified here)",
+  "delivery_to_switzerland": true,
+  "data_available": "Daily deal products incl. the previous ~7 days' deals: name, brand, nameExtensions, price incl./excl. VAT, insteadOfPrice (type SALES_PRICE_BEFORE + rebate %), salesInformation (validFrom, numberOfItems, numberOfItemsSold), availability class, productType, images, rating.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.galaxus.ch/de/daily-deal",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9"
+    },
+    "parse": "<script id=__NEXT_DATA__> -> props.pageProps.preloadedQuery.rawResponse.data.dailyDealProducts[]"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.galaxus.ch": "/de/daily-deal allowed (protego). Disallowed relevant: */SaleNew, */SaleIso, */Search, */explore*, */*filterGrid=, /webview/*, specific graphql paths"
+  },
+  "constraints": "UA-based blocking OBSERVED in reverse: our honest bot UA -> 200; a bare Chrome UA without other browser headers -> 403 'Access denied' (bot manager). Product detail pages timed out (2x 30s) for our UA. JSON-LD on page only WebSite/Organization (no Offer).",
+  "publication_frequency": "new deal(s) daily at 00:00 Europe/Zurich (validFrom 2026-10-13T22:00:00Z observed)",
+  "offer_duration": "24h or until sold out (end time not published; inferred next midnight)",
+  "stock_published": "yes: numberOfItems and numberOfItemsSold (absolute units)",
+  "pagination": "none",
+  "ids_available": "databaseId (Digitec/Galaxus product id), offer.shopOfferId; no EAN on this page",
+  "price_fields": {
+   "current": "price.amountInclusive",
+   "reference": "insteadOfPrice.price.amountInclusive",
+   "reference_meaning": "insteadOfPrice.type = SALES_PRICE_BEFORE (own previous sales price); rebate = %",
+   "discount": "insteadOfPrice.rebate"
+  },
+  "shipping_cost_info": "not on page",
+  "dates": "salesInformation.validFrom (UTC)",
+  "images": "https://www.galaxus.ch/im + previewImage.relativeUrl (verified 200 image/jpeg with ?impolicy=ProductTileImage&resizeWidth=300)",
+  "expected_value": 5,
+  "integration_difficulty": 2,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "SSR __NEXT_DATA__ JSON on robots-allowed page; parser tested (23 products incl. previous days).",
+  "alternative": "none needed; liquidation/sale listings only partially SSR (see digitec_galaxus_sale)",
+  "recommended_poll": "00:05 Europe/Zurich + every 30-60 min for stock",
+  "sample_count": 23,
+  "sample_file": "/private/tmp/claude-502/audit/samples/galaxus_daily_deal.html",
+  "parser_spec": {
+   "function": "extract_next_data + parse_dg_daily in /private/tmp/claude-502/audit/ft_tools/ft_parsers.py",
+   "id": "product.databaseId",
+   "title": "brand.name + name + nameExtensions.properties",
+   "brand": "product.brand.name",
+   "gtin": "none",
+   "current_price": "product.price.amountInclusive",
+   "reference_price": "product.insteadOfPrice.price.amountInclusive (may be null, e.g. Galaxus deal of 2026-10-14)",
+   "discount": "insteadOfPrice.rebate",
+   "stock": "salesInformation.numberOfItems - numberOfItemsSold; sold% = sold/items",
+   "start_end": "salesInformation.validFrom; today's deal = max(validFrom); end not published",
+   "url": "https://www.galaxus.ch + relativeUrl",
+   "image": "https://www.galaxus.ch/im + previewImage.relativeUrl",
+   "category": "productType.name",
+   "condition": "new (offer.shopOfferType RETAIL)",
+   "warranty": "not on page",
+   "requests_full_coverage": 1
+  },
+  "notes": "dailyDealProducts lists the current deal plus deals from previous days (many sold out: numberOfItemsSold==numberOfItems). Variants of one deal appear as separate products (e.g. sizes).",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "digitec_galaxus_sale",
+  "name": "Digitec/Galaxus Ausverkauf / Sale / Occasionen",
+  "family": "electronics_retail",
+  "url": "https://www.digitec.ch/de/sale",
+  "geographic_relevance": "national CH",
+  "delivery_to_switzerland": true,
+  "data_available": "SSR contains only 'topSale' (1 product with price, insteadOfPrice, salesInformation). Full listings are loaded client-side (GraphQL).",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.digitec.ch/de/sale",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9"
+    }
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.digitec.ch": "/de/sale allowed; */SaleNew, */SaleIso, */*filterGrid=, */Search, */explore* disallowed"
+  },
+  "constraints": "Listing data not SSR; client GraphQL API not tested (would be undocumented internal API). Product pages timed out.",
+  "publication_frequency": "continuous",
+  "offer_duration": "unknown",
+  "stock_published": "topSale: numberOfItems/Sold",
+  "pagination": "n/a",
+  "ids_available": "databaseId",
+  "price_fields": {
+   "current": "price.amountInclusive",
+   "reference": "insteadOfPrice (SALES_PRICE_BEFORE)"
+  },
+  "shipping_cost_info": "n/a",
+  "dates": "n/a",
+  "images": "as daily deal",
+  "expected_value": 3,
+  "integration_difficulty": 4,
+  "reliability": 3,
+  "status": "PARTIAL",
+  "status_reason": "Only 1 product SSR'd on /de/sale; occasions/returned items not reachable without client API.",
+  "alternative": "digitec_daily_deal / galaxus_daily_deal",
+  "recommended_poll": "skip",
+  "sample_count": 1,
+  "notes": "Occasion ('retourniert') listings not tested beyond this.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "brack_sale",
+  "name": "BRACK.CH Sale (Ausverkauf 'trade', Aktionen 'offer', Occasionen 'occassion')",
+  "family": "electronics_retail",
+  "url": "https://www.brack.ch/sale",
+  "geographic_relevance": "national CH (Willisau)",
+  "delivery_to_switzerland": true,
+  "data_available": "Category listings filtered by filter[Art][]=trade|offer|occassion embed a productDataMap JSON (48 products/page) with SKU, EAN, manufacturer, name, price with/without VAT (Rappen), standardPrice, inventory.current, flags (sellout, eol, occasion, specialOffer...), images, breadcrumbs. Facet counts (it-multimedia): trade 666, offer 1573, occassion 1735.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.brack.ch/it-multimedia?filter%5BArt%5D%5B%5D=trade",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9"
+    },
+    "parse": "<script type=application/json> starting with {\"productDataMap\":"
+   },
+   {
+    "method": "GET",
+    "url": "https://www.brack.ch/it-multimedia?page=2&filter%5BArt%5D%5B%5D=trade",
+    "note": "pagination link format found in HTML"
+   },
+   {
+    "method": "GET",
+    "url": "https://www.brack.ch/it-multimedia?filter%5BArt%5D%5B%5D=occassion",
+    "note": "occasions"
+   },
+   {
+    "note": "other top categories linked from /sale: /haushalt-wohnen, /supermarkt-familie, /beauty-gesundheit/gesundheit, /baumarkt-hobby, /sport-freizeit (same filter)"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.brack.ch": "allowed for category+filter URLs; Disallow: /json/*, /api/*, /action/*, /*page*query=, /*sortProducts=, /*?tx= -> do NOT add sortProducts (the /sale page's own links include it)"
+  },
+  "constraints": "Page ~750 KB HTML; /aktionen timed out once. CollectionPage JSON-LD present too (ItemList of Product) but productDataMap is richer. Occasion items have no standardPrice and no EAN.",
+  "publication_frequency": "continuous (stock/price changes); sellout items",
+  "offer_duration": "until sold out",
+  "stock_published": "yes: inventory.current (units)",
+  "pagination": "?page=N, 48 per page; ~14 pages for it-multimedia trade",
+  "ids_available": "BRACK SKU, EAN (itemNumbers.ean; empty for occasions), manufacturer.code",
+  "price_fields": {
+   "current": "price.priceWithVat/100",
+   "reference": "price.standardPrice.priceWithVat/100",
+   "reference_meaning": "BRACK standard price (own regular price)",
+   "discount": "computed"
+  },
+  "shipping_cost_info": "not in productDataMap",
+  "dates": "dates.visibilityStartDate/EndDate (mostly placeholder 1970/2050)",
+  "images": "https://cdn.competec.ch + images[0].sizes[].src",
+  "expected_value": 4,
+  "integration_difficulty": 2,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "Embedded JSON on robots-allowed URLs; parser tested on trade (48 items, 100% EAN+ref) and occassion (48 items).",
+  "alternative": "CollectionPage JSON-LD on same page",
+  "recommended_poll": "2x daily; ~1 req/s",
+  "sample_count": 96,
+  "sample_file": "/private/tmp/claude-502/audit/samples/brack_sale.json (extracted productDataMap)",
+  "parser_spec": {
+   "function": "extract_brack + parse_brack in /private/tmp/claude-502/audit/ft_tools/ft_parsers.py",
+   "id": "sku",
+   "title": "description.nameWithoutManufacturer",
+   "brand": "manufacturer.name",
+   "gtin": "itemNumbers.ean (may be '')",
+   "current_price": "price.priceWithVat / 100",
+   "reference_price": "price.standardPrice.priceWithVat / 100 (absent for occasions)",
+   "discount": "1 - current/reference",
+   "stock": "inventory.current",
+   "start_end": "none",
+   "url": "https://www.brack.ch + url",
+   "image": "https://cdn.competec.ch + images[0].sizes[0].src",
+   "category": "breadcrumbs[].name",
+   "condition": "'occasion' if 'occasion' in labelsAll else new; 'sellout' flag = Ausverkauf",
+   "warranty": "none",
+   "requests_full_coverage": "sum(ceil(count/48)) over 6 top categories x filters; trade it-multimedia alone = 14"
+  },
+  "notes": "Prices are integers in Rappen (955 = CHF 9.55).",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "deindeal",
+  "name": "DeinDeal.ch",
+  "family": "flash_sale",
+  "url": "https://www.deindeal.ch/de",
+  "geographic_relevance": "national CH",
+  "delivery_to_switzerland": true,
+  "data_available": "Homepage __NEXT_DATA__ classicSales: 107 campaigns (102 'ps' brand sales, 5 'dotd' deals) with title, 'bis zu -X%' label, availableFrom/Until, images, shippingCosts (CHF 5.90), delivery estimate. Campaign page __NEXT_DATA__: products[] with price, anchorPrice, discount %, brandLabel, options[].qty stock, images.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.deindeal.ch/de",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9"
+    },
+    "parse": "__NEXT_DATA__.props.pageProps.classicSales"
+   },
+   {
+    "method": "GET",
+    "url": "https://www.deindeal.ch/de/{slug}/c/{id}",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9"
+    },
+    "parse": "__NEXT_DATA__.props.pageProps.products"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.deindeal.ch": "campaign pages allowed; disallowed /*/account/*, /*/m/*, /*/search*, /*/d/h/*, /*/d/p/*, hash/mglh params"
+  },
+  "constraints": "Cloudflare in front but no challenge for either UA. Homepage only gives campaign-level 'up to' discounts; product prices need 1 request per campaign.",
+  "publication_frequency": "campaigns start 07:00 (availableFrom '... 07:00:00'); many campaigns long-running (till 2026-12-31)",
+  "offer_duration": "campaign-level weeks/months; 'dotd' items also long-running despite the name",
+  "stock_published": "per option qty",
+  "pagination": "none per campaign page (all products in products[]; availableProducts/soldOutProducts lists)",
+  "ids_available": "campaign id, product id; no EAN",
+  "price_fields": {
+   "current": "products[].price",
+   "reference": "products[].anchorPrice",
+   "reference_meaning": "DeinDeal crossed-out 'statt' price (basis not stated)",
+   "discount": "products[].discount"
+  },
+  "shipping_cost_info": "shippingCosts.value (CHF 5.90) at campaign level",
+  "dates": "availableFrom/availableUntil (local, no tz)",
+  "images": "soyouz2.deindeal.ch/api/img?... URLs",
+  "expected_value": 3,
+  "integration_difficulty": 2,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "Next.js SSR JSON tested: 107 campaigns + Tefal campaign product (price/anchor/qty).",
+  "alternative": "sitemap.xml",
+  "recommended_poll": "daily 07:15 for new campaigns; campaign pages 1x/day",
+  "sample_count": 108,
+  "sample_file": "/private/tmp/claude-502/audit/samples/deindeal.json (+ deindeal_sale_page.json)",
+  "parser_spec": {
+   "function": "extract_next_data + parse_deindeal_home / parse_deindeal_sale in /private/tmp/claude-502/audit/ft_tools/ft_parsers.py",
+   "id": "campaign id / products[].id",
+   "title": "products[].title",
+   "brand": "products[].brandLabel",
+   "gtin": "none",
+   "current_price": "products[].price",
+   "reference_price": "products[].anchorPrice",
+   "discount": "products[].discount",
+   "stock": "sum(options[].qty)",
+   "start_end": "pageProps.availableFrom / availableUntil",
+   "url": "https://www.deindeal.ch/de/{categorynameSlugified}/c/{id}",
+   "image": "products[].images[0]",
+   "category": "products[].productType",
+   "condition": "new",
+   "warranty": "none",
+   "requests_full_coverage": "1 + 107 campaign pages"
+  },
+  "notes": "Mostly fashion/home brand sales; low tech share at test time.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "fust_deals",
+  "name": "Fust Deals (+ Occasionen)",
+  "family": "electronics_retail",
+  "url": "https://www.fust.ch/promos/fust-deals",
+  "geographic_relevance": "national CH; Fust has stores incl. St. Gallen region (pickup message 'in 97 Filialen')",
+  "delivery_to_switzerland": true,
+  "data_available": "Fust-Deals page: Next.js RSC payload contains products[] (26) with code, brandName, name, price (instead/regular), discountPrice, productPriceType, stock.stockLevel, availability (delivery/pickup), images, url, isOccasion. Occasionen page (/promos/occasionen): products NOT SSR'd.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.fust.ch/promos/fust-deals",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9"
+    },
+    "parse": "concat self.__next_f.push([1,'...']) chunks, find '\"products\":[' array with discountPrice"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.fust.ch": "/promos/* allowed; Disallow /api, /*/api/, /search*, /*?q=*, /*?text=*, pageSize param"
+  },
+  "constraints": "Ausstellungsgeräte/occasions only flagged via isOccasion / in-store; occasion listing not available server-side.",
+  "publication_frequency": "campaign-based (unknown cadence)",
+  "offer_duration": "unknown (not in payload)",
+  "stock_published": "stock.stockLevel + stockLevelStatus",
+  "pagination": "pagination object: pageSize 200, totalResults 26 (single page)",
+  "ids_available": "Fust article code; no EAN in payload",
+  "price_fields": {
+   "current": "discountPrice.value",
+   "reference": "price.value",
+   "reference_meaning": "productPriceType INSTEAD_PRICE (Fust 'statt' price) or DEFAULT",
+   "discount": "computed"
+  },
+  "shipping_cost_info": "not in payload",
+  "dates": "none",
+  "images": "https://www.fust.ch + images[].url",
+  "expected_value": 3,
+  "integration_difficulty": 3,
+  "reliability": 3,
+  "status": "INTEGRABLE",
+  "status_reason": "Parser tested on RSC payload (26 products, 100% price+reference).",
+  "alternative": "Fust product sitemaps (PRODUCT-de-CHF)",
+  "recommended_poll": "daily",
+  "sample_count": 26,
+  "sample_file": "/private/tmp/claude-502/audit/samples/fust_deals.json (extracted RSC products array)",
+  "parser_spec": {
+   "function": "rsc_products(raw,'discountPrice') + parse_fust in /private/tmp/claude-502/audit/ft_tools/ft_parsers.py",
+   "id": "code",
+   "title": "name",
+   "brand": "brandName",
+   "gtin": "none",
+   "current_price": "(discountPrice or price).value",
+   "reference_price": "price.value if discountPrice",
+   "discount": "computed",
+   "stock": "stock.stockLevel",
+   "start_end": "none",
+   "url": "https://www.fust.ch + url",
+   "image": "https://www.fust.ch + images[0].url",
+   "category": "zifLabelDescription",
+   "condition": "isOccasion -> occasion else new",
+   "warranty": "hasWarrantyExtension flag only",
+   "requests_full_coverage": 1
+  },
+  "notes": "RSC format is a Next.js internal serialization – brittle on redesigns.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "mediamarkt_ch",
+  "name": "MediaMarkt Schweiz (Top-Deals, Outlet, Lagerausverkauf)",
+  "family": "electronics_retail",
+  "url": "https://www.mediamarkt.ch/de/campaign/top-deals",
+  "geographic_relevance": "national CH; MediaMarkt has a St. Gallen store (not verified here)",
+  "delivery_to_switzerland": true,
+  "data_available": "Campaign pages SSR window.__PRELOADED_STATE__.apolloState with only carousel products (top-deals 18, outlet 23): EAN, productName, manufacturer, price.amount, strikePrice {amount,type RRP}, discountPercentage, shippingCost (marketplace), seller, online status, image, urlRelative.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.mediamarkt.ch/de/campaign/top-deals",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9"
+    }
+   },
+   {
+    "method": "GET",
+    "url": "https://www.mediamarkt.ch/de/campaign/outlet",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9"
+    }
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.mediamarkt.ch": "/de/campaign/* allowed; Disallow: *de/promo-list/* (the actual full deal/outlet lists e.g. /de/promo-list/mm_outlet_tv_audio, mm_weekly_specials), Search, /api/v1/graphql?operationName=GetPaidBundles/GetFreeBundles"
+  },
+  "constraints": "Full lists live on robots-disallowed promo-list pages -> not used. Product pages have no Product JSON-LD. Payload contains JS 'undefined' (replace before json.loads). ~1 MB pages.",
+  "publication_frequency": "unknown",
+  "offer_duration": "unknown",
+  "stock_published": "isAvailableAndBuyable only",
+  "pagination": "carousels limited (limit 6 per collection)",
+  "ids_available": "EAN (CofrCoreFeature.ean), MediaMarkt product id",
+  "price_fields": {
+   "current": "CofrPriceFeature.price.amount",
+   "reference": "strikePrice.amount",
+   "reference_meaning": "strikePrice.type 'RRP' (manufacturer RRP) when present"
+  },
+  "shipping_cost_info": "price.shippingCost for marketplace offers",
+  "dates": "none",
+  "images": "assets.mmsrg.com links",
+  "expected_value": 3,
+  "integration_difficulty": 4,
+  "reliability": 3,
+  "status": "PARTIAL",
+  "status_reason": "Only small SSR carousels on allowed pages (41 products seen); complete outlet/deal lists are robots-disallowed.",
+  "alternative": "none compliant for full lists",
+  "recommended_poll": "daily (carousel only) or skip",
+  "sample_count": 41,
+  "notes": "Many top-deal carousel items are marketplace sellers (sellerName).",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "interdiscount",
+  "name": "Interdiscount (incl. Microspot, which now redirects here)",
+  "family": "electronics_retail",
+  "url": "https://www.interdiscount.ch/de",
+  "geographic_relevance": "national CH",
+  "delivery_to_switzerland": true,
+  "data_available": "none retrievable",
+  "method": "blocked",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.interdiscount.ch/de",
+    "result": "403 DataDome captcha page (geo.captcha-delivery.com) for both bot UA and browser UA"
+   },
+   {
+    "method": "GET",
+    "url": "https://www.microspot.ch/de",
+    "result": "redirects to https://www.interdiscount.ch/de -> same 403 DataDome"
+   },
+   {
+    "method": "GET",
+    "url": "https://www.interdiscount.ch/sitemap.xml",
+    "result": "200 sitemap index (robots-allowed) – URLs only, no prices"
+   }
+  ],
+  "auth": "n/a",
+  "robots": {
+   "www.interdiscount.ch": "pages allowed except watchlist/cart/checkout/account/comparison/search=/sort=; Yandex fully disallowed"
+  },
+  "constraints": "DataDome bot protection -> treated as blocked; not bypassed.",
+  "publication_frequency": "n/a",
+  "offer_duration": "n/a",
+  "stock_published": "n/a",
+  "pagination": "n/a",
+  "ids_available": "n/a",
+  "price_fields": {},
+  "shipping_cost_info": "n/a",
+  "dates": "n/a",
+  "images": "n/a",
+  "expected_value": 4,
+  "integration_difficulty": 5,
+  "reliability": 1,
+  "status": "BLOCKED",
+  "status_reason": "DataDome captcha on every HTML page for both UAs.",
+  "alternative": "sitemap.xml for URL discovery only; deals via aggregators",
+  "recommended_poll": "none",
+  "sample_count": 0,
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "toppreise",
+  "name": "Toppreise.ch (price comparator)",
+  "family": "price_comparator",
+  "url": "https://www.toppreise.ch/",
+  "geographic_relevance": "national CH",
+  "delivery_to_switzerland": true,
+  "data_available": "none from this network",
+  "method": "blocked",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.toppreise.ch/robots.txt",
+    "result": "403 custom page: access from 'your IP address or the network of your Internet provider' blocked due to attacks (both UAs)"
+   },
+   {
+    "method": "GET",
+    "url": "https://www.toppreise.ch/",
+    "result": "same 403"
+   }
+  ],
+  "auth": "n/a",
+  "robots": {
+   "www.toppreise.ch": "robots.txt itself returns 403 -> could not be evaluated"
+  },
+  "constraints": "IP/network-level block (not a CAPTCHA). Might work from a residential Swiss IP – not tested; no public API observed.",
+  "publication_frequency": "n/a",
+  "offer_duration": "n/a",
+  "stock_published": "n/a",
+  "pagination": "n/a",
+  "ids_available": "n/a",
+  "price_fields": {},
+  "shipping_cost_info": "n/a",
+  "dates": "n/a",
+  "images": "n/a",
+  "expected_value": 5,
+  "integration_difficulty": 5,
+  "reliability": 1,
+  "status": "BLOCKED",
+  "status_reason": "HTTP 403 network block incl. robots.txt.",
+  "alternative": "Re-test from the production host's IP; otherwise use retailer reference prices (BRACK standardPrice, Digitec insteadOfPrice, MediaMarkt RRP) as baselines",
+  "recommended_poll": "none",
+  "sample_count": 0,
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "revendo",
+  "name": "Revendo.ch (refurbished Apple/Android + Outlet)",
+  "family": "refurbished",
+  "url": "https://www.revendo.ch/",
+  "geographic_relevance": "national CH (Swiss refurbisher with physical stores; St. Gallen store not verified)",
+  "delivery_to_switzerland": true,
+  "data_available": "Shopify catalogue: 1750 products (Produkt 1096, Outlet 378, Zubehör 271...) with variants (price, compare_at_price, sku, available), vendor, product_type, tags, body_html (condition text), images, published/updated timestamps.",
+  "method": "api_json",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.revendo.ch/products.json?limit=250&page={1..7}",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9",
+     "Accept": "application/json"
+    }
+   }
+  ],
+  "auth": "none (standard public Shopify storefront JSON)",
+  "robots": {
+   "www.revendo.ch": "/products.json not disallowed (protego allowed). Disallowed: /cart.js, /recommendations/products, /services, /sf_*, collections with sort_by/+/multi filter, /checkout, /account. robots.txt also contains free-text 'agent instructions' recommending a third-party Shopify skill/UCP – treated as data, ignored."
+  },
+  "constraints": "Pages 1-1.4 MB each; 7 requests for full catalogue. compare_at_price present for only ~4% of variants in first 15 products (outlet items).",
+  "publication_frequency": "continuous (Outlet items published individually, e.g. 2026-10-13T18:02)",
+  "offer_duration": "until sold (single units)",
+  "stock_published": "variants[].available (boolean)",
+  "pagination": "page=N, limit=250; stop when <250",
+  "ids_available": "Shopify product/variant id, sku (e.g. 'outlet-636768'); no EAN",
+  "price_fields": {
+   "current": "variants[].price",
+   "reference": "variants[].compare_at_price",
+   "reference_meaning": "Shopify compare-at ('statt') price set by Revendo"
+  },
+  "shipping_cost_info": "not in products.json",
+  "dates": "published_at / created_at / updated_at",
+  "images": "images[].src (cdn.shopify.com)",
+  "expected_value": 4,
+  "integration_difficulty": 1,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "Public Shopify JSON, robots-allowed, full catalogue fetched (1750 products/7 requests); parser tested.",
+  "alternative": "sitemap",
+  "recommended_poll": "every 2-4 h (new Outlet units)",
+  "sample_count": 1750,
+  "sample_file": "/private/tmp/claude-502/audit/samples/revendo.json (limit=15 response)",
+  "parser_spec": {
+   "function": "parse_revendo in /private/tmp/claude-502/audit/ft_tools/ft_parsers.py",
+   "id": "variants[].id",
+   "title": "product.title (+variant title)",
+   "brand": "vendor",
+   "gtin": "none",
+   "current_price": "float(variant.price)",
+   "reference_price": "float(variant.compare_at_price) or null",
+   "discount": "computed",
+   "stock": "variant.available",
+   "start_end": "published_at",
+   "url": "https://www.revendo.ch/products/<handle>",
+   "image": "images[0].src",
+   "category": "product_type ('Outlet','Produkt','Zubehör')",
+   "condition": "Outlet -> outlet/B-grade; else refurbished; details in body_html 'Technischer Zustand'",
+   "warranty": "in body_html text only",
+   "requests_full_coverage": 7
+  },
+  "notes": "Diff on variant id + updated_at to detect new outlet units / price drops.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "refurbed_ch",
+  "name": "refurbed.ch",
+  "family": "refurbished",
+  "url": "https://www.refurbed.ch/",
+  "geographic_relevance": "national CH marketplace (sellers EU/CH)",
+  "delivery_to_switzerland": true,
+  "data_available": "Model pages (/p/<model>/) carry JSON-LD ProductGroup with hasVariant[] (color/storage) each with Offer price CHF, availability, RefurbishedCondition, priceValidUntil; shipping (0 CHF) and 30-day free return policy objects. Category pages only AggregateOffer (low/high).",
+  "method": "html_jsonld",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.refurbed.ch/p/iphone-13/",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9",
+     "Accept-Encoding": "gzip, deflate"
+    },
+    "note": "requests' brotli decoding failed on one page -> request gzip"
+   },
+   {
+    "method": "GET",
+    "url": "https://www.refurbed.ch/c/iphones/",
+    "note": "model URL discovery (/p/... links) + AggregateOffer"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.refurbed.ch": "allowed except /login/, /logout/, /signup/, /account/ (+ blocks for some SEO bots)"
+  },
+  "constraints": "One request per model; no reference/new price in structured data (text only says 'bis zu 40% weniger').",
+  "publication_frequency": "continuous",
+  "offer_duration": "priceValidUntil ~7 days ahead",
+  "stock_published": "availability InStock/OutOfStock only",
+  "pagination": "category pages: ?page=N",
+  "ids_available": "refurbed sku/variant id; no EAN/MPN of manufacturer",
+  "price_fields": {
+   "current": "hasVariant[].offers.price",
+   "reference": null,
+   "reference_meaning": "none – track own price history"
+  },
+  "shipping_cost_info": "OfferShippingDetails shippingRate 0 CHF to CH; delivery 1-2 days handling + 1-2 transit",
+  "dates": "priceValidUntil",
+  "images": "files.refurbed.com/ii/*.jpg",
+  "expected_value": 3,
+  "integration_difficulty": 2,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "Schema.org Offer JSON-LD tested on iPhone 13 page (12 variants).",
+  "alternative": "sitemap.xml",
+  "recommended_poll": "daily for a watchlist of models",
+  "sample_count": 12,
+  "sample_file": "/private/tmp/claude-502/audit/samples/refurbed.json (JSON-LD blocks)",
+  "parser_spec": {
+   "function": "extract_jsonld + parse_refurbed in /private/tmp/claude-502/audit/ft_tools/ft_parsers.py",
+   "id": "hasVariant[].sku",
+   "title": "hasVariant[].name",
+   "brand": "ProductGroup.brand.name",
+   "gtin": "none",
+   "current_price": "hasVariant[].offers.price",
+   "reference_price": "none",
+   "discount": "n/a (compute vs own history or vs Apple/BRACK new price)",
+   "stock": "offers.availability",
+   "start_end": "offers.priceValidUntil",
+   "url": "offers.url",
+   "image": "hasVariant[].image",
+   "category": "from category page",
+   "condition": "refurbished (RefurbishedCondition)",
+   "warranty": "min. 12 months (page text)",
+   "requests_full_coverage": "1 per model page (~16 iPhone models; hundreds overall)"
+  },
+  "notes": "Best used as price tracker for chosen models, not as deal feed.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "apple_refurb_ch",
+  "name": "Apple Store CH – Refurbished",
+  "family": "refurbished",
+  "url": "https://www.apple.com/ch-de/shop/refurbished/mac",
+  "geographic_relevance": "national CH (Apple Store CH)",
+  "delivery_to_switzerland": true,
+  "data_available": "window.REFURB_GRID_BOOTSTRAP.tiles: partNumber, title, currentPrice (raw_amount CHF), productDetailsUrl, image, filter dimensions (capacity, screen size, year, color, memory), basePartNumber. Counts 2026-10-14: mac 145, ipad 89, iphone 49, watch 46 (appletv: no grid).",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.apple.com/ch-de/shop/refurbished/{mac|ipad|iphone|watch}",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9"
+    }
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.apple.com": "allowed; disallowed only */shop/browse/overlay/*, */shop/iphone/payments/overlay/*, /cn/*/aow/*, /tmall*"
+  },
+  "constraints": "No reference price in tiles (fullMrpPrice empty). No stock count (item disappears when sold).",
+  "publication_frequency": "continuous restocks",
+  "offer_duration": "until sold",
+  "stock_published": "presence only",
+  "pagination": "none (all tiles per category)",
+  "ids_available": "Apple part number (F...SM/A refurb; basePartNumber)",
+  "price_fields": {
+   "current": "price.currentPrice.raw_amount",
+   "reference": null,
+   "reference_meaning": "none; new-product price would require separate lookup (refurb 'F' part vs new 'M' part – untested)"
+  },
+  "shipping_cost_info": "not in payload",
+  "dates": "none",
+  "images": "store.storeimages.cdn-apple.com srcSet",
+  "expected_value": 3,
+  "integration_difficulty": 2,
+  "reliability": 5,
+  "status": "INTEGRABLE",
+  "status_reason": "Embedded JSON parsed on all 4 category pages; parser tested (145 Mac tiles).",
+  "alternative": "none",
+  "recommended_poll": "every 2-4 h (restock detection by partNumber diff)",
+  "sample_count": 329,
+  "sample_file": "/private/tmp/claude-502/audit/samples/apple_refurb_ch.json (100 of 145 Mac tiles)",
+  "parser_spec": {
+   "function": "extract_apple + parse_apple in /private/tmp/claude-502/audit/ft_tools/ft_parsers.py",
+   "id": "tiles[].partNumber",
+   "title": "tiles[].title",
+   "brand": "Apple",
+   "gtin": "none",
+   "current_price": "float(tiles[].price.currentPrice.raw_amount)",
+   "reference_price": "none",
+   "discount": "n/a",
+   "stock": "presence in list",
+   "start_end": "none",
+   "url": "https://www.apple.com + productDetailsUrl (strip ?fnode)",
+   "image": "image.sources[0].srcSet",
+   "category": "lob",
+   "condition": "refurbished",
+   "warranty": "not in payload (Apple refurb policy: 1 year – not verified here)",
+   "requests_full_coverage": 4
+  },
+  "notes": "Same UA and browser UA responses identical.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "manor_sale",
+  "name": "Manor Sale (Reduzierte Artikel)",
+  "family": "fashion_home",
+  "url": "https://www.manor.ch/de/produktkollektionen/sale/shop/h/specialprice/web",
+  "geographic_relevance": "national CH; Manor department store in St. Gallen (not verified here)",
+  "delivery_to_switzerland": true,
+  "data_available": "__NEXT_DATA__ initialApolloState IndexedProduct entries (48 = first page): code, brandName, name, gtin, priceValue, originalPrice, uvpPrice, stock level/status, discountLabels, images, category path, link. totalResults reported 1031 (other loads 1902/6525 – inconsistent).",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.manor.ch/de/produktkollektionen/sale/shop/h/specialprice/web",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9"
+    },
+    "parse": "__NEXT_DATA__.props.pageProps.initialApolloState['IndexedProduct:*']"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.manor.ch": "allowed; disallowed cart/checkout/my-account, /en/, */search*, several query params"
+  },
+  "constraints": "Only page 0 (48 items) is server-rendered; ?page=1 redirected back to page 0 – deeper pages need client GraphQL (not tested). Use sub-collections to widen coverage.",
+  "publication_frequency": "continuous",
+  "offer_duration": "unknown",
+  "stock_published": "stock.level + status",
+  "pagination": "not available via SSR",
+  "ids_available": "Manor code, GTIN (internal 200... or EAN)",
+  "price_fields": {
+   "current": "priceValue.amount",
+   "reference": "originalPrice.amount",
+   "reference_meaning": "Manor regular price; uvpPrice (RRP) also given"
+  },
+  "shipping_cost_info": "not in payload",
+  "dates": "none",
+  "images": "i8.amplience.net/i/manor/<id>",
+  "expected_value": 3,
+  "integration_difficulty": 2,
+  "reliability": 3,
+  "status": "INTEGRABLE",
+  "status_reason": "SSR JSON parsed (48 items, 98% with reference price, 100% GTIN) but limited to first page.",
+  "alternative": "'Angebote der Woche' page /de/u/angebote-der-woche (SSR, not parsed)",
+  "recommended_poll": "daily",
+  "sample_count": 48,
+  "sample_file": "/private/tmp/claude-502/audit/samples/manor_sale.json (IndexedProduct entries)",
+  "parser_spec": {
+   "function": "extract_next_data + parse_manor in /private/tmp/claude-502/audit/ft_tools/ft_parsers.py",
+   "id": "code",
+   "title": "brandName + name",
+   "brand": "brandName",
+   "gtin": "gtin",
+   "current_price": "priceValue.amount",
+   "reference_price": "originalPrice.amount (if > current)",
+   "discount": "computed (also discountLabels '-70%')",
+   "stock": "stock.level",
+   "start_end": "none",
+   "url": "link",
+   "image": "imageUrls.desktop",
+   "category": "category[]",
+   "condition": "new",
+   "warranty": "none",
+   "requests_full_coverage": "1 per collection page (48 items max each)"
+  },
+  "notes": "Mostly fashion/home.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "decathlon_ch",
+  "name": "Decathlon Schweiz – Aktion & Second Life",
+  "family": "fashion_home",
+  "url": "https://www.decathlon.ch/de/deals/aktion",
+  "geographic_relevance": "national CH; Decathlon store St. Gallen region not verified",
+  "delivery_to_switzerland": true,
+  "data_available": "Next.js RSC payload products[] (40/page): label, brand, price valueWithTaxes, referenceValueWithTaxes, discountPercentage, promo start/end, priceType, commercialMessages, seller (1P/3P marketplace), images, url, sports. Second-life: informativePrice (new price) + 'Refurbished - ... - SEHR GUT' grades.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.decathlon.ch/de/deals/aktion?from={0,40,80..}&size=40",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9",
+     "Accept-Encoding": "gzip, deflate"
+    }
+   },
+   {
+    "method": "GET",
+    "url": "https://www.decathlon.ch/de/boutiques/second-life?from=0&size=40",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9"
+    }
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.decathlon.ch": "allowed (from/size params not disallowed); disallowed /api/*, /*sort=*, /*?offer=*, /r/*page=*, checkout/account"
+  },
+  "constraints": "UA-dependent: bot UA -> 200; bare Chrome UA -> 403 Cloudflare 'Just a moment' challenge. Aktion has 65516 promo items (pagination total 250 pages cap) – far too many to crawl fully; second-life 5146 items/128 pages.",
+  "publication_frequency": "continuous; promo windows per item",
+  "offer_duration": "price.start/end per item (e.g. 2026-09-15 -> 2026-10-31)",
+  "stock_published": "no counts (availableOnline/sellableOnline flags)",
+  "pagination": "?from=N&size=40; pagination.next given",
+  "ids_available": "supermodelId, model id, skuId; no EAN",
+  "price_fields": {
+   "current": "models[0].price.currencies.main.valueWithTaxes",
+   "reference": "referenceValueWithTaxes (promo) or informativePrice (second-life new price)",
+   "reference_meaning": "crossed-out reference price / new-item price"
+  },
+  "shipping_cost_info": "not in payload",
+  "dates": "price.start / price.end (ISO UTC)",
+  "images": "contents.mediadecathlon.com",
+  "expected_value": 3,
+  "integration_difficulty": 3,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "Parser tested on aktion p1 (40, 100% ref) and second-life p1 (40, 82% ref); p2 verified.",
+  "alternative": "filter sub-deals pages (/de/deals/aktion-herren etc.)",
+  "recommended_poll": "daily, first N pages only",
+  "sample_count": 120,
+  "sample_file": "/private/tmp/claude-502/audit/samples/decathlon_deals.json (RSC products array)",
+  "parser_spec": {
+   "function": "rsc_products(raw,'supermodelId') + parse_decathlon in /private/tmp/claude-502/audit/ft_tools/ft_parsers.py",
+   "id": "products[].id",
+   "title": "models[0].label",
+   "brand": "models[0].brand",
+   "gtin": "none",
+   "current_price": "models[0].price.currencies.main.valueWithTaxes",
+   "reference_price": "referenceValueWithTaxes or informativePrice",
+   "discount": "discountPercentage or computed",
+   "stock": "n/a",
+   "start_end": "price.currencies.main.start/end",
+   "url": "https://www.decathlon.ch + models[0].url",
+   "image": "images[0].src",
+   "category": "models[0].nature",
+   "condition": "SECOND_LIFE commercialMessage -> refurbished (grade in label)",
+   "warranty": "none",
+   "requests_full_coverage": "aktion 250+ pages (impractical) / second-life 128"
+  },
+  "notes": "RSC '$undefined' sentinels must be treated as null.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "ochsner_outlet",
+  "name": "Ochsner Sport Outlet",
+  "family": "fashion_home",
+  "url": "https://www.ochsnersport.ch/de-ch/c/alle-outlet-4175",
+  "geographic_relevance": "national CH; Ochsner Sport stores incl. St. Gallen area (not verified)",
+  "delivery_to_switzerland": true,
+  "data_available": "Angular ng-state transfer JSON (gzip+base64) with the storefront API response: 24 products/page, totalResults 4500 (188 pages). Fields: brand, name, articleNo, productType, variants with GTIN/EAN and size, priceRange (withTax, beforeSaleWithTax, appliedReductions), lowestPriorPrice, isSoldOut, images public_id, url.",
+  "method": "html",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.ochsnersport.ch/de-ch/c/alle-outlet-4175?page={1..188}",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9"
+    },
+    "parse": "<script id=ng-state> JSON; key containing 'categories' -> gunzip(base64) -> body"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.ochsnersport.ch": "User-agent: * with no Disallow -> all allowed; api.ochsnersport.ch robots 404 (not used directly)"
+  },
+  "constraints": "Large pages (~880 KB). 188 requests for full coverage. Same response for both UAs.",
+  "publication_frequency": "continuous",
+  "offer_duration": "unknown",
+  "stock_published": "isSoldOut; variant-level stock not inspected",
+  "pagination": "?page=N (24/page)",
+  "ids_available": "product id, articleNo, productCode, variant GTIN/EAN",
+  "price_fields": {
+   "current": "priceRange.min.withTax/100",
+   "reference": "priceRange.min.beforeSaleWithTax/100",
+   "reference_meaning": "price before sale (appliedReductions category 'sale')"
+  },
+  "shipping_cost_info": "not inspected",
+  "dates": "createdAt/updatedAt/firstLiveAt",
+  "images": "images[].public_id (CDN base not resolved)",
+  "expected_value": 3,
+  "integration_difficulty": 3,
+  "reliability": 4,
+  "status": "INTEGRABLE",
+  "status_reason": "Decoded SSR state; parser tested p1 (24 items, 100% GTIN+ref); p2 verified.",
+  "alternative": "sitemap index /de-ch/de-ch-sitemap-index.xml",
+  "recommended_poll": "daily, first 10-20 pages sorted default",
+  "sample_count": 48,
+  "sample_file": "/private/tmp/claude-502/audit/samples/ochsner_outlet.json (decoded body, facets dropped)",
+  "parser_spec": {
+   "function": "extract_ochsner + parse_ochsner in /private/tmp/claude-502/audit/ft_tools/ft_parsers.py",
+   "id": "products[].id",
+   "title": "attributes.brand.values.label + attributes.name.values.label",
+   "brand": "attributes.brand.values.label",
+   "gtin": "first variants[].attributes.gtin.values.value",
+   "current_price": "priceRange.min.withTax/100",
+   "reference_price": "priceRange.min.beforeSaleWithTax/100",
+   "discount": "computed (=appliedReductions relative)",
+   "stock": "isSoldOut",
+   "start_end": "none",
+   "url": "https://www.ochsnersport.ch + url",
+   "image": "images[0].public_id (CDN unresolved)",
+   "category": "attributes.productType.values.label",
+   "condition": "new (outlet)",
+   "warranty": "none",
+   "requests_full_coverage": 188
+  },
+  "notes": "Prices in Rappen.",
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "samsung_ch_offers",
+  "name": "Samsung Schweiz Angebote",
+  "family": "electronics_retail",
+  "url": "https://www.samsung.com/ch/offer/",
+  "geographic_relevance": "national CH",
+  "delivery_to_switzerland": true,
+  "data_available": "JSON-LD ItemList with 11 Products (name, url, image, Offer price CHF, availability). /ch/outlet/ and /ch/refurbished/ -> 404.",
+  "method": "html_jsonld",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.samsung.com/ch/offer/",
+    "headers": {
+     "User-Agent": "StGallenDealRadar/1.0 (+https://github.com/Yorian-melki/denner-deal-radar)",
+     "Accept-Language": "de-CH,de;q=0.9"
+    }
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.samsung.com": "allowed for our UA ('Disallow: /ch/' applies only to Yandex group)"
+  },
+  "constraints": "No reference/strike price in JSON-LD; offer mechanics (cashback etc.) only in HTML.",
+  "publication_frequency": "campaign",
+  "offer_duration": "unknown",
+  "stock_published": "availability",
+  "pagination": "none",
+  "ids_available": "model code in URL (e.g. sm-x946bzareue)",
+  "price_fields": {
+   "current": "offers.price",
+   "reference": null
+  },
+  "shipping_cost_info": "n/a",
+  "dates": "n/a",
+  "images": "images.samsung.com",
+  "expected_value": 2,
+  "integration_difficulty": 2,
+  "reliability": 3,
+  "status": "PARTIAL",
+  "status_reason": "Prices available but no reference price; small list; no outlet.",
+  "alternative": "none",
+  "recommended_poll": "weekly",
+  "sample_count": 11,
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "ikea_ch",
+  "name": "IKEA Schweiz – Zweite Chance Markt / Angebote",
+  "family": "fashion_home",
+  "url": "https://www.ikea.com/ch/de/second-hand/buy-from-ikea/",
+  "geographic_relevance": "LOCAL: IKEA St. Gallen store_id 917 listed in second-hand store config",
+  "delivery_to_switzerland": true,
+  "data_available": "Second-hand page HTML only contains store config (incl. 'IKEA St. Gallen' store_id 917, reserved_hours 48); offers are loaded client-side from web-api.ikea.com/circular/circular-asis. /ch/de/offers/ has carousel cards with data-price only (bestsellers, no reference).",
+  "method": "blocked",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.ikea.com/ch/de/circular/second-hand/",
+    "result": "200 -> redirects to /ch/de/second-hand/buy-from-ikea/, no offers SSR"
+   },
+   {
+    "method": "GET",
+    "url": "https://web-api.ikea.com/robots.txt",
+    "result": "User-agent: * Disallow: / (Allow /dimma/assets/ only)"
+   }
+  ],
+  "auth": "n/a",
+  "robots": {
+   "web-api.ikea.com": "Disallow: / -> circular API not allowed",
+   "www.ikea.com": "/ch/de/asisonline/_next/static/* JS chunks disallowed (protego)"
+  },
+  "constraints": "As-is offers only via robots-disallowed API.",
+  "publication_frequency": "n/a",
+  "offer_duration": "reserve 48h",
+  "stock_published": "n/a",
+  "pagination": "n/a",
+  "ids_available": "n/a",
+  "price_fields": {},
+  "shipping_cost_info": "pickup only (as-is)",
+  "dates": "n/a",
+  "images": "n/a",
+  "expected_value": 4,
+  "integration_difficulty": 5,
+  "reliability": 1,
+  "status": "BLOCKED",
+  "status_reason": "Offer data only in robots-disallowed web-api.ikea.com.",
+  "alternative": "none compliant",
+  "recommended_poll": "none",
+  "sample_count": 0,
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "zalando_ch",
+  "name": "Zalando CH / outlet",
+  "family": "fashion_home",
+  "url": "https://www.zalando.ch/",
+  "geographic_relevance": "national CH",
+  "delivery_to_switzerland": true,
+  "data_available": "none",
+  "method": "blocked",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.zalando.ch/",
+    "result": "robots.txt: HTTP 403 from Akamai (server AkamaiNetStorage, x-edge-error: halt, page 'Die Website ist derzeit nicht erreichbar') for both bot UA and browser UA"
+   }
+  ],
+  "auth": "n/a",
+  "robots": {
+   "status": "could not be retrieved"
+  },
+  "constraints": "Bot protection / network block; not bypassed.",
+  "publication_frequency": "n/a",
+  "offer_duration": "n/a",
+  "stock_published": "n/a",
+  "pagination": "n/a",
+  "ids_available": "n/a",
+  "price_fields": {},
+  "shipping_cost_info": "n/a",
+  "dates": "n/a",
+  "images": "n/a",
+  "expected_value": 4,
+  "integration_difficulty": 5,
+  "reliability": 1,
+  "status": "BLOCKED",
+  "status_reason": "robots.txt: HTTP 403 from Akamai (server AkamaiNetStorage, x-edge-error: halt, page 'Die Website ist derzeit nicht erreichbar') for both bot UA and browser UA",
+  "alternative": "none",
+  "recommended_poll": "none",
+  "sample_count": 0,
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "zalando_lounge_ch",
+  "name": "Zalando Lounge CH",
+  "family": "fashion_home",
+  "url": "https://www.zalando-lounge.ch/",
+  "geographic_relevance": "national CH",
+  "delivery_to_switzerland": true,
+  "data_available": "none",
+  "method": "blocked",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.zalando-lounge.ch/",
+    "result": "connection timeouts (no response in 20-25 s) for robots.txt with both UAs; membership/login site"
+   }
+  ],
+  "auth": "n/a",
+  "robots": {
+   "status": "could not be retrieved"
+  },
+  "constraints": "Bot protection / network block; not bypassed.",
+  "publication_frequency": "n/a",
+  "offer_duration": "n/a",
+  "stock_published": "n/a",
+  "pagination": "n/a",
+  "ids_available": "n/a",
+  "price_fields": {},
+  "shipping_cost_info": "n/a",
+  "dates": "n/a",
+  "images": "n/a",
+  "expected_value": 3,
+  "integration_difficulty": 5,
+  "reliability": 1,
+  "status": "BLOCKED",
+  "status_reason": "connection timeouts (no response in 20-25 s) for robots.txt with both UAs; membership/login site",
+  "alternative": "none",
+  "recommended_poll": "none",
+  "sample_count": 0,
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "hm_ch",
+  "name": "H&M Schweiz",
+  "family": "fashion_home",
+  "url": "https://www2.hm.com/de_ch/",
+  "geographic_relevance": "national CH",
+  "delivery_to_switzerland": true,
+  "data_available": "none",
+  "method": "blocked",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www2.hm.com/de_ch/",
+    "result": "bot UA: connection dropped (curl 000); browser UA: 403 Akamai 'Access Denied' (errors.edgesuite.net)"
+   }
+  ],
+  "auth": "n/a",
+  "robots": {
+   "status": "could not be retrieved"
+  },
+  "constraints": "Bot protection / network block; not bypassed.",
+  "publication_frequency": "n/a",
+  "offer_duration": "n/a",
+  "stock_published": "n/a",
+  "pagination": "n/a",
+  "ids_available": "n/a",
+  "price_fields": {},
+  "shipping_cost_info": "n/a",
+  "dates": "n/a",
+  "images": "n/a",
+  "expected_value": 2,
+  "integration_difficulty": 5,
+  "reliability": 1,
+  "status": "BLOCKED",
+  "status_reason": "bot UA: connection dropped (curl 000); browser UA: 403 Akamai 'Access Denied' (errors.edgesuite.net)",
+  "alternative": "none",
+  "recommended_poll": "none",
+  "sample_count": 0,
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "conrad_ch",
+  "name": "Conrad.ch",
+  "family": "electronics_retail",
+  "url": "https://www.conrad.ch/",
+  "geographic_relevance": "national CH",
+  "delivery_to_switzerland": true,
+  "data_available": "none",
+  "method": "blocked",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.conrad.ch/",
+    "result": "403 Cloudflare 'Just a moment' challenge for both UAs (robots.txt also 403)"
+   }
+  ],
+  "auth": "n/a",
+  "robots": {
+   "status": "could not be retrieved"
+  },
+  "constraints": "Bot protection / network block; not bypassed.",
+  "publication_frequency": "n/a",
+  "offer_duration": "n/a",
+  "stock_published": "n/a",
+  "pagination": "n/a",
+  "ids_available": "n/a",
+  "price_fields": {},
+  "shipping_cost_info": "n/a",
+  "dates": "n/a",
+  "images": "n/a",
+  "expected_value": 3,
+  "integration_difficulty": 5,
+  "reliability": 1,
+  "status": "BLOCKED",
+  "status_reason": "403 Cloudflare 'Just a moment' challenge for both UAs (robots.txt also 403)",
+  "alternative": "none",
+  "recommended_poll": "none",
+  "sample_count": 0,
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "nettoshop_ch",
+  "name": "nettoshop.ch",
+  "family": "electronics_retail",
+  "url": "https://www.nettoshop.ch/",
+  "geographic_relevance": "national CH (appliances)",
+  "delivery_to_switzerland": true,
+  "data_available": "Homepage 200 with content for both UAs but DataDome script embedded; only 29 links, no promo/outlet links found; not explored further.",
+  "method": "none",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.nettoshop.ch/",
+    "result": "200, DataDome tag present"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "www.nettoshop.ch": "Disallow /api, /search, /*?q=*, cart/checkout/my-account"
+  },
+  "constraints": "DataDome present – risk of challenge on deeper crawling.",
+  "publication_frequency": "unknown",
+  "offer_duration": "unknown",
+  "stock_published": "unknown",
+  "pagination": "unknown",
+  "ids_available": "unknown",
+  "price_fields": {},
+  "shipping_cost_info": "unknown",
+  "dates": "unknown",
+  "images": "unknown",
+  "expected_value": 2,
+  "integration_difficulty": 4,
+  "reliability": 2,
+  "status": "ASSESSED",
+  "status_reason": "Reachable homepage; no deal data located.",
+  "alternative": "none",
+  "recommended_poll": "none",
+  "sample_count": 0,
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "blick_deal",
+  "name": "Blick Deal / Box by Blick",
+  "family": "flash_sale",
+  "url": "https://www.blickdeal.ch/",
+  "geographic_relevance": "national CH",
+  "delivery_to_switzerland": true,
+  "data_available": "blickdeal.ch redirects to https://box.blick.ch ('Box by Blick | Spannende Produkte und die besten Deals'); www.blick.ch/deals -> 404. Not analysed further.",
+  "method": "none",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.blickdeal.ch/",
+    "result": "200 after redirect to box.blick.ch"
+   }
+  ],
+  "auth": "none",
+  "robots": {
+   "box.blick.ch": "fetched page allowed (protego)"
+  },
+  "constraints": "n/a",
+  "publication_frequency": "unknown",
+  "offer_duration": "unknown",
+  "stock_published": "unknown",
+  "pagination": "unknown",
+  "ids_available": "unknown",
+  "price_fields": {},
+  "shipping_cost_info": "unknown",
+  "dates": "unknown",
+  "images": "unknown",
+  "expected_value": 2,
+  "integration_difficulty": 3,
+  "reliability": 2,
+  "status": "DISCOVERED",
+  "status_reason": "Redirect target identified; no data structure analysed.",
+  "alternative": "none",
+  "recommended_poll": "none",
+  "sample_count": 0,
+  "last_verified": "2026-10-14"
+ },
+ {
+  "id": "melectronics_steg",
+  "name": "melectronics.ch / steg-electronics.ch (defunct)",
+  "family": "electronics_retail",
+  "url": "https://www.melectronics.ch/",
+  "geographic_relevance": "n/a",
+  "delivery_to_switzerland": null,
+  "data_available": "melectronics.ch redirects to https://www.migros.ch/content/melectronics (content page); steg-electronics.ch redirects to weltbild.ch/pages/steg-liquidation.",
+  "method": "none",
+  "endpoints": [
+   {
+    "method": "GET",
+    "url": "https://www.melectronics.ch/de/",
+    "result": "-> migros.ch/content/melectronics"
+   },
+   {
+    "method": "GET",
+    "url": "https://www.steg-electronics.ch/",
+    "result": "-> weltbild.ch/pages/steg-liquidation"
+   }
+  ],
+  "auth": "n/a",
+  "robots": {},
+  "constraints": "Shops no longer operate as electronics retailers.",
+  "publication_frequency": "n/a",
+  "offer_duration": "n/a",
+  "stock_published": "n/a",
+  "pagination": "n/a",
+  "ids_available": "n/a",
+  "price_fields": {},
+  "shipping_cost_info": "n/a",
+  "dates": "n/a",
+  "images": "n/a",
+  "expected_value": 1,
+  "integration_difficulty": 5,
+  "reliability": 1,
+  "status": "ASSESSED",
+  "status_reason": "Defunct / redirected.",
+  "alternative": "none",
+  "recommended_poll": "none",
+  "sample_count": 0,
+  "last_verified": "2026-10-14"
+ }
+]

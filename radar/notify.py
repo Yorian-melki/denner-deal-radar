@@ -308,7 +308,8 @@ def flush(store, cfg, now: dt.datetime, dry_run: bool = False, force: bool = Fal
         res["reason"] = "TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID absents"
         box[:] = box[-40:]
         return res
-    urgent = [m for m in box if m["key"].startswith(("tech:", "test:"))]
+    override = bool(cfg.s("notify", "ultra_overrides_quiet_hours", False))
+    urgent = [m for m in box if m["key"].startswith(("tech:", "test:")) or (override and m.get("ultra"))]
     if in_quiet_hours(cfg, now) and not force:
         to_send = urgent
         res["reason"] = "heures calmes : seules les alertes techniques partent"

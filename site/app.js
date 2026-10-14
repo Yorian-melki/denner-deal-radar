@@ -36,6 +36,7 @@ async function load() {
   const [o, m] = await Promise.all([fetch("data/offers.json" + bust).then((r) => r.json()), fetch("data/meta.json" + bust).then((r) => r.json())]);
   S.offers = o.offers.map((x) => ({ ...x, status: status(x) }));
   S.meta = m;
+  window.__DENNER_META = m;
   header();
   buildControls();
   route();
@@ -74,7 +75,24 @@ function buildControls() {
   }
 }
 
+function setMode(universal) {
+  $("#tabs").hidden = universal;
+  $("#d-controls-wrap").hidden = universal;
+  $("#u-nav").hidden = !universal;
+  $("#u-controls-wrap").hidden = !universal;
+  $("#mode-u").classList.toggle("on", universal);
+  $("#mode-d").classList.toggle("on", !universal);
+}
+
 function route() {
+  const h = location.hash;
+  if (!h || h === "#" || h.startsWith("#u/")) {
+    setMode(true);
+    if (!h || h === "#") history.replaceState(null, "", "#u/accueil");
+    return window.U.route(location.hash);
+  }
+  setMode(false);
+  header();
   const [v, q] = (location.hash.slice(1) || "nouveautes").split("?");
   S.view = v; S.params = Object.fromEntries(new URLSearchParams(q || "")); S.limit = 60;
   document.querySelectorAll("#tabs a").forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + v));

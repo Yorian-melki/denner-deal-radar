@@ -1,0 +1,17 @@
+[
+ {"gap": "Too Good To Go (paniers anti-gaspi en temps réel)", "reason": "Site web : blocage par user-agent (HTTP 429, Vercel) ; API mobile : connexion à un compte obligatoire. Aucun contournement.", "alternative": "Plan statique public (253 commerces St-Gall, sans prix ni dispo) ; RestEssBar St-Gall (horaires) ; activer les favoris + notifications dans l'app TGTG elle-même."},
+ {"gap": "Coop (catalogue coop.ch)", "reason": "Protection anti-bot DataDome.", "alternative": "Promotions Coop du canton de St-Gall via l'agrégateur Rappn (robots.txt autorise /de/aktionen)."},
+ {"gap": "Stock et assortiment par magasin (toutes enseignes)", "reason": "Aucune enseigne ne publie de stock par succursale.", "alternative": "Statut « éligible — stock non vérifié » ; saisie manuelle d'une offre vue en rayon (formulaire GitHub, photo)."},
+ {"gap": "Réductions en rayon (étiquettes jaunes, dates courtes, démarques)", "reason": "Jamais publiées en ligne.", "alternative": "Formulaire « Offre vue en magasin » (sans LLM)."},
+ {"gap": "Offres personnalisées (Cumulus, Supercard, Lidl Plus, apps)", "reason": "Dépendent d'un compte ; inaccessibles et non généralisables.", "alternative": "Marquées PERSONALIZED si détectées ; jamais présentées comme disponibles pour tous."},
+ {"gap": "Billets CFF dégriffés (Supersaver / Sparbillett)", "reason": "Aucune API tarifaire publique ; sbb.ch répond 403 à notre user-agent honnête ; transport.opendata.ch interdit /v1/ dans robots.txt.", "alternative": "Bus FlixBus (API non documentée, non intégrée par prudence) ; vérification manuelle des Sparbillette."},
+ {"gap": "Ricardo / Facebook Marketplace (occasion)", "reason": "Ricardo : CAPTCHA Cloudflare ; Facebook : robots.txt interdit.", "alternative": "Tutti et Anibis (canton SG), objets gratuits."},
+ {"gap": "Toppreise (comparateur, historique du marché)", "reason": "Blocage réseau (403) depuis l'environnement de test.", "alternative": "Historique propre du radar + EAN BRACK/Migros pour le rapprochement ; retester depuis GitHub Actions."},
+ {"gap": "Interdiscount, MediaMarkt (listes complètes), IKEA Zweite Chance, Zalando, H&M, Conrad", "reason": "DataDome / Akamai / Cloudflare, ou chemins interdits par robots.txt (MediaMarkt /promo-list/, IKEA API).", "alternative": "Ventes flash Digitec/Galaxus/DayDeal/QoQa/BRACK couvrent l'électronique."},
+ {"gap": "SHSG (avantages étudiants HSG)", "reason": "API protégée (HTTP 401).", "alternative": "UNiDAYS, Student Beans ; agenda HSG (JSON-LD)."},
+ {"gap": "Concours suisses", "reason": "Aucun agrégateur suisse joignable ; probabilité de gain jamais publiée.", "alternative": "Catégorie concours séparée ; aucune espérance de gain inventée."},
+ {"gap": "Cashback garanti", "reason": "Les taux affichés sont conditionnels (achat validé, délai, plafond).", "alternative": "Prix payé affiché ; prix après cashback seulement « si validé »."},
+ {"gap": "Restaurants, lunch deals, happy hours", "reason": "Pas de source structurée ; Just Eat / Uber Eats ne publient pas leurs promos en pages statiques.", "alternative": "Promos de livraison via Student Beans ; offres d'ouverture via les actualités de la Ville."},
+ {"gap": "Spar (liste web)", "reason": "Chargée en JavaScript, API non trouvée.", "alternative": "Via Rappn (canton SG)."},
+ {"gap": "Recherche exhaustive d'Internet", "reason": "Impossible sans LLM ni crawler général ; la découverte est un processus de maintenance.", "alternative": "Registre de 122 sources ; revue trimestrielle (docs/ADDING_A_SOURCE.md)."}
+]
