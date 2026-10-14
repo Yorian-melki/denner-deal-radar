@@ -246,6 +246,9 @@ def enrich(store: UStore, cfg, prefs: dict, now: dt.datetime, extra: list[dict] 
     return live
 
 
+RELEVANCE_PENALTY_TAGS = {"departure_unknown": 0.6, "porc_possible": 0.5}
+
+
 def relevance(d: dict, prefs: dict) -> float:
     tags = set(d.get("tags") or [])
     if tags & set(prefs.get("exclude_tags", [])):
@@ -256,6 +259,9 @@ def relevance(d: dict, prefs: dict) -> float:
         r = max(r, float(prefs.get("relevance", {}).get(d.get("group") or "", 0)))
         if "proteines" in tags:
             r = max(r, float(prefs.get("relevance", {}).get("proteines", 1.0)))
+    for tag, factor in RELEVANCE_PENALTY_TAGS.items():
+        if tag in tags:
+            r *= factor
     title = (d.get("title") or "").lower()
     if any(k.lower() in title for k in prefs.get("favorites", {}).get("keywords", [])):
         r += 0.15

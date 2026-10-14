@@ -92,6 +92,8 @@ def make_deal(**kw) -> dict:
         raise ValueError(f"reference_price_type inconnu: {rt}")
     if d.get("condition") and d["condition"] not in CONDITIONS:
         raise ValueError(f"condition inconnue: {d['condition']}")
+    if isinstance(d.get("conditions"), str):
+        d["conditions"] = [d["conditions"]]
     d.setdefault("access", "PUBLIC")
     if d["access"] not in ACCESS:
         raise ValueError(f"access inconnu: {d['access']}")

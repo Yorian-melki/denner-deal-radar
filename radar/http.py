@@ -25,6 +25,7 @@ class Http:
         self.requests_made = 0
         self._robots: dict[str, Protego] = {}
         self._last = 0.0
+        self._last_by_host: dict[str, float] = {}
 
     # -- robots.txt -------------------------------------------------------
     def load_robots(self, base: str) -> Protego:
@@ -49,12 +50,16 @@ class Http:
     # -- requests ---------------------------------------------------------
     def _raw(self, method: str, url: str, **kw) -> requests.Response:
         last_exc: Exception | None = None
+        host = urlparse(url).netloc
+        rules = self._robots.get(host)
+        crawl = (rules.crawl_delay(self.s.headers["User-Agent"]) or rules.crawl_delay("*") or 0) if rules else 0
+        delay = max(self.delay, float(crawl))   # Crawl-delay respecté, retries compris
         for attempt in range(self.retries + 1):
-            wait = self.delay - (time.monotonic() - self._last)
+            wait = delay - (time.monotonic() - self._last_by_host.get(host, 0.0))
             if wait > 0:
                 time.sleep(wait)
             try:
-                self._last = time.monotonic()
+                self._last = self._last_by_host[host] = time.monotonic()
                 self.requests_made += 1
                 r = self.s.request(method, url, timeout=self.timeout, **kw)
                 if r.status_code in (429, 500, 502, 503, 504):

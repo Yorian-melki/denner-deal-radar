@@ -198,10 +198,17 @@ def _free(deal: dict) -> UScore:
 def _subscription(deal: dict, history) -> UScore:
     months = deal.get("commitment_months")
     promo, regular = deal.get("current_price"), deal.get("regular_monthly_price")
+    if not months and deal.get("promo_lifetime"):
+        months = 24
     if not (months and promo is not None and regular):
         return _discount_based(deal, history)
     after = deal.get("price_after_promo", regular)
     promo_months = deal.get("promo_months", months)
+    if deal.get("promo_lifetime"):
+        # Rabais à vie : horizon de comparaison d'au moins 24 mois, sinon les frais
+        # d'activation écrasent un engagement minimal d'1–2 mois.
+        months = max(months, 24)
+        promo_months = months
     tco = promo * min(promo_months, months) + after * max(0, months - promo_months) + deal.get("activation_fee", 0)
     tco_ref = regular * months
     d = max(0.0, (1 - tco / tco_ref) * 100)

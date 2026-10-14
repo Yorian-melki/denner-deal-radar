@@ -39,6 +39,10 @@ def test_make_deal_validates_and_never_invents():
         make_deal(deal_id="x", source_id="s", family="retail")  # titre manquant
 
 
+def test_conditions_always_a_list():
+    assert D(conditions="ab 2 Stück")["conditions"] == ["ab 2 Stück"]
+
+
 def test_total_acquisition_cost_lists_assumptions():
     d = D(current_price=10, shipping_cost=7.9, geographic_scope="ONLINE")
     assert total_acquisition_cost(d) == (17.9, ["livraison 7.90 inclus"])
