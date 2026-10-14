@@ -62,8 +62,8 @@ def run_connector(c: Connector, store: UStore, cfg, http, now: dt.datetime, raw_
     at = iso(now)
     st = store.source_state(c.id)
     st["last_attempt"] = at
-    ctx = Context(http=http, cfg=cfg, now=now, source_state=st)
     t0 = time.monotonic()
+    ctx = Context(http=http, cfg=cfg, now=now, source_state=st, deadline=t0 + c.time_budget_s)
     req0 = http.requests_made
     try:
         res = c.fetch(ctx)

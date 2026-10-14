@@ -12,6 +12,7 @@ import re
 
 from ..core.connector import Connector, FetchResult
 from ..core.deal import make_deal
+from ..http import HostUnavailable
 from . import register
 
 CATEGORIES = ["it-multimedia", "haushalt-wohnen", "supermarkt-familie", "sport-freizeit", "baumarkt-hobby"]
@@ -34,6 +35,7 @@ class Brack(Connector):
     interval_minutes = 480
     base_url = "https://www.brack.ch"
     expected_min_items = 20
+    time_budget_s = 240
 
     def fetch(self, ctx):
         items, errors = [], []
@@ -42,6 +44,9 @@ class Brack(Connector):
                 url = f"{self.base_url}/{cat}?filter%5BArt%5D%5B%5D={f}"
                 try:
                     data = extract(ctx.get(url).text)
+                except (TimeoutError, HostUnavailable) as e:
+                    errors.append(f"{cat}/{f}: {e}")
+                    break
                 except Exception as e:  # noqa: BLE001
                     errors.append(f"{cat}/{f}: {e}")
                     continue

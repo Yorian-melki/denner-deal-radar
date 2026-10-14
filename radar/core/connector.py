@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import datetime as dt
 import logging
+import time
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -59,9 +60,15 @@ class Context:
     cfg: Any
     now: dt.datetime
     source_state: dict            # état persistant propre au connecteur (ETag, curseurs…)
+    deadline: float | None = None  # time.monotonic() au-delà duquel le connecteur s'arrête
+
+    def _check_deadline(self) -> None:
+        if self.deadline is not None and time.monotonic() > self.deadline:
+            raise TimeoutError("budget de temps du connecteur dépassé")
 
     def get(self, url: str, conditional: bool = False, **kw) -> requests.Response:
         """GET poli ; avec ``conditional``, envoie ETag / If-Modified-Since mémorisés."""
+        self._check_deadline()
         headers = kw.pop("headers", {}) or {}
         cache = self.source_state.setdefault("http_cache", {}).get(url, {})
         if conditional:
@@ -79,6 +86,7 @@ class Context:
 
     def post_json(self, url: str, body: dict, headers: dict | None = None) -> dict:
         """POST JSON poli (robots.txt, délai, retries via Http.request)."""
+        self._check_deadline()
         h = {"Content-Type": "application/json", "Accept": "application/json", **(headers or {})}
         return self.http.request("POST", url, json=body, headers=h).json()
 
@@ -93,6 +101,7 @@ class Connector:
     # Garde-fous de santé : nombre d'éléments minimum attendu quand tout va bien.
     expected_min_items: int = 1
     window_ttl_hours: float = 72
+    time_budget_s: float = 180      # au-delà, le connecteur est interrompu (isolé)
     documentation: str = ""
 
     @property

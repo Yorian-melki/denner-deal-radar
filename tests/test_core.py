@@ -358,3 +358,36 @@ def test_savings_caps_against_percentage_bias():
     assert tiny.score == 6.0 and mid.score == 8.5 and big.score > 9
     food = score_deal(D(family="grocery", current_price=2.0, reference_price=5.0, reference_price_type="merchant_previous"))
     assert food.score == pytest.approx(curve(60), abs=0.05)   # supermarché : pas de plafond par CHF
+
+
+def test_dead_host_circuit_breaker(monkeypatch):
+    import requests
+    from radar.http import HostUnavailable
+    h = Http("test", retries=1, delay=0, backoff=0)
+    h._robots["slow.example"] = __import__("protego").Protego.parse("")
+    calls = []
+
+    def timeout(method, url, **kw):
+        calls.append(url)
+        raise requests.Timeout("read timed out")
+    monkeypatch.setattr(h.s, "request", timeout)
+    with pytest.raises(requests.Timeout):
+        h.get("https://slow.example/a")
+    with pytest.raises(HostUnavailable):
+        h.get("https://slow.example/b")
+    assert len(calls) == 2   # 1 essai + 1 retry, puis plus aucune requête
+
+
+def test_connector_time_budget(env):
+    import time as _t
+    cfg, store, http = env
+
+    class Slow(FakeConn):
+        time_budget_s = 0.01
+
+        def fetch(self, ctx):
+            _t.sleep(0.02)
+            ctx.get("https://example.org/x")
+            return FetchResult(items=[], complete=True)
+    r = run_connector(Slow(), store, cfg, http, NOW, None)
+    assert r["state"] == "SCRAPE_FAILURE" and "budget" in r["error"]

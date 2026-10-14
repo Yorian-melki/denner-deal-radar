@@ -16,6 +16,10 @@ class RobotsDisallowed(RuntimeError):
     pass
 
 
+class HostUnavailable(RuntimeError):
+    """Hôte injoignable plus tôt dans cette exécution : on n'insiste pas."""
+
+
 class Http:
     def __init__(self, user_agent: str, timeout: float = 30, retries: int = 4,
                  backoff: float = 2.0, delay: float = 0.8):
@@ -26,6 +30,7 @@ class Http:
         self._robots: dict[str, Protego] = {}
         self._last = 0.0
         self._last_by_host: dict[str, float] = {}
+        self._dead_hosts: dict[str, str] = {}   # coupe-circuit : hôte -> dernière erreur réseau
 
     # -- robots.txt -------------------------------------------------------
     def load_robots(self, base: str) -> Protego:
@@ -51,6 +56,8 @@ class Http:
     def _raw(self, method: str, url: str, **kw) -> requests.Response:
         last_exc: Exception | None = None
         host = urlparse(url).netloc
+        if host in self._dead_hosts:
+            raise HostUnavailable(f"{host} injoignable ({self._dead_hosts[host]})")
         rules = self._robots.get(host)
         crawl = (rules.crawl_delay(self.s.headers["User-Agent"]) or rules.crawl_delay("*") or 0) if rules else 0
         delay = max(self.delay, float(crawl))   # Crawl-delay respecté, retries compris
@@ -79,6 +86,8 @@ class Http:
                     log.warning("%s %s échoue (%s), nouvel essai dans %.1fs", method, url, e, sleep)
                     time.sleep(sleep)
         assert last_exc is not None
+        if isinstance(last_exc, (requests.ConnectionError, requests.Timeout)):
+            self._dead_hosts[host] = type(last_exc).__name__
         raise last_exc
 
     def request(self, method: str, url: str, **kw) -> requests.Response:

@@ -50,7 +50,14 @@ def cmd_uscan(args) -> int:
     if args.due:
         conns = [c for c in conns if engine.is_due(c, store.source_state(c.id), now)]
     raw_dir = Path(args.raw_dir) if args.raw_dir else None
-    runs = [engine.run_connector(c, store, cfg, http, now, raw_dir) for c in conns]
+    # Budget global : au-delà, les sources restantes restent « dues » pour le passage suivant.
+    import time as _time
+    t0, runs = _time.monotonic(), []
+    for c in conns:
+        if _time.monotonic() - t0 > args.max_minutes * 60:
+            log.warning("budget global de %s min atteint : %s reporté", args.max_minutes, c.id)
+            continue
+        runs.append(engine.run_connector(c, store, cfg, http, now, raw_dir))
 
     radar_store = Store(cfg.data_dir)
     den = denner_v2.deals(radar_store, now)
@@ -223,6 +230,7 @@ def register(sub) -> None:
     p.add_argument("--out", default="site/data")
     p.add_argument("--out-dry")
     p.add_argument("--raw-dir", default="raw")
+    p.add_argument("--max-minutes", type=float, default=18.0, help="budget global de collecte")
     p.add_argument("--now")
     p.set_defaults(fn=cmd_uscan)
     p = sub.add_parser("u-export")
