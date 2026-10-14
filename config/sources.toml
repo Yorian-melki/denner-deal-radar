@@ -1,0 +1,23 @@
+# Réglages par source (facultatif). `enabled = false` retire la source des
+# collectes automatiques ; elle reste utilisable manuellement :
+#   python -m radar u-scan --source tutti_free anibis_free saiten_events brack
+#
+# Constat du 14.10.2026 : ces sites fonctionnent depuis une connexion
+# résidentielle mais refusent les adresses IP de datacenter (GitHub Actions /
+# Azure). Aucun contournement (proxy, déguisement) n'est utilisé.
+
+[sources.tutti_free]
+enabled = false
+blocked_reason = "HTTP 403 depuis les IP de datacenter (GitHub Actions)"
+
+[sources.anibis_free]
+enabled = false
+blocked_reason = "HTTP 403 depuis les IP de datacenter (GitHub Actions)"
+
+[sources.saiten_events]
+enabled = false
+blocked_reason = "page de contrôle au lieu du JSON depuis les IP de datacenter"
+
+[sources.brack]
+enabled = false
+blocked_reason = "aucune réponse (timeout) depuis les IP de datacenter"

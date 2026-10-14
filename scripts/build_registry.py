@@ -55,6 +55,12 @@ def priority(s: dict) -> float:
     return round(ev * freq * local * detect * rel / max(diff, 1) * 2, 2)
 
 
+import tomllib
+
+SOURCES_CONF = tomllib.loads((ROOT / "config" / "sources.toml").read_text("utf-8")).get("sources", {}) \
+    if (ROOT / "config" / "sources.toml").exists() else {}
+
+
 def build() -> list[dict]:
     from radar.connectors import REGISTRY, _load_all
     _load_all()
@@ -63,8 +69,13 @@ def build() -> list[dict]:
         for s in json.loads((ROOT / "docs" / "audit" / f"{a}.json").read_text("utf-8")):
             conn = CONNECTOR.get(s["id"])
             status = s.get("status", "DISCOVERED")
+            reason_override = None
             if conn and (conn in REGISTRY or conn == "denner"):
                 status = "INTEGRATED"
+                blocked = SOURCES_CONF.get(conn, {})
+                if blocked.get("enabled") is False:
+                    status, reason_override = "PARTIAL", "Connecteur prêt, mais " + blocked.get("blocked_reason", "désactivé") + \
+                        " : fonctionne seulement en scan manuel depuis une connexion résidentielle."
             robots = s.get("robots")
             reg.append({
                 "id": s["id"], "name": s.get("name"), "family": norm_family(s.get("family")), "url": s.get("url"),
@@ -75,7 +86,7 @@ def build() -> list[dict]:
                 "constraints": s.get("constraints") or s.get("constraints_terms"),
                 "expected_value": s.get("expected_value"), "integration_difficulty": s.get("integration_difficulty"),
                 "reliability": s.get("reliability"), "audit_status": s.get("status"), "status": status,
-                "status_reason": s.get("status_reason"), "alternative": s.get("alternative"),
+                "status_reason": reason_override or s.get("status_reason"), "alternative": s.get("alternative"),
                 "notes": s.get("notes"), "connector": conn if status == "INTEGRATED" else None,
                 "priority": priority(s), "last_verified": s.get("last_verified"), "audit_file": a,
             })
