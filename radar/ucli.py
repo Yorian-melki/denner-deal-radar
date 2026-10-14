@@ -96,7 +96,20 @@ def _technical(store: UStore, cfg, conns, now) -> list[dict]:
 # Export dashboard
 # --------------------------------------------------------------------------
 
-KEEP_FIELDS_DROP = {"raw", "http_cache"}
+# Champs inutiles à l'application web (allège l'export servi sur iPhone).
+KEEP_FIELDS_DROP = {"raw", "http_cache", "source_offer_id", "last_changed_at", "last_seen_at", "source_type",
+                    "accessibility_notes", "offer_type", "geographic_note", "missing_scans", "reference_note",
+                    "source_updated", "activation_fee_note", "promo_end_raw", "subcategory", "kind", "engine",
+                    "regular_price", "availability_confidence"}
+
+
+def _slim(d: dict) -> dict:
+    out = {k: v for k, v in d.items() if k not in KEEP_FIELDS_DROP}
+    if out.get("geographic_scope_resolved") == out.get("geographic_scope"):
+        out.pop("geographic_scope", None)
+    if isinstance(out.get("description"), str):
+        out["description"] = out["description"][:160]
+    return out
 
 
 def write_export(store: UStore, radar_store: Store, cfg, now, out: Path, live=None, den=None) -> None:
@@ -117,7 +130,7 @@ def write_export(store: UStore, radar_store: Store, cfg, now, out: Path, live=No
     for d in allx:
         d["record"] = d["deal_id"] in ranked_ids or d.get("record", False)
     payload = {"generated_at": now.replace(microsecond=0).isoformat(),
-               "deals": [{k: v for k, v in d.items() if k not in KEEP_FIELDS_DROP} for d in allx]}
+               "deals": [_slim(d) for d in allx]}
     out.mkdir(parents=True, exist_ok=True)
     (out / "universal.json").write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":"), default=str), "utf-8")
     (out / "sources.json").write_text(json.dumps(sources_report(store, cfg, now, radar_store, allx), ensure_ascii=False,

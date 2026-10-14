@@ -19,6 +19,7 @@ from pathlib import Path
 from ..storage import _dump, _read, _write_if_changed
 
 ARCHIVE_AFTER_DAYS = 90
+VOLATILE = {"urgency", "urgency_reasons"}
 
 
 class UStore:
@@ -110,7 +111,9 @@ class UStore:
     def save(self) -> list[str]:
         changed = []
         for sid, deals in self.deals.items():
-            if _write_if_changed(self.dir / "deals" / f"{sid}.json", _dump(deals)):
+            # Champs dépendant de l'heure courante : recalculés à chaque exécution, jamais stockés.
+            stored = {k: {f: v for f, v in d.items() if f not in VOLATILE} for k, d in deals.items()}
+            if _write_if_changed(self.dir / "deals" / f"{sid}.json", _dump(stored)):
                 changed.append(f"deals/{sid}")
         for sid, hist in self.history.items():
             if _write_if_changed(self.dir / "history" / f"{sid}.json", _dump(hist)):

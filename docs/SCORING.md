@@ -67,7 +67,9 @@ de percentile, de normalisation hebdomadaire ni de quota. Une semaine peut avoir
   200 → 8 · 500 → 9 · 1500 → 10. Valeur inconnue → non évalué. Un canapé gratuit
   nécessitant CHF 150 de transport n'est pas 10/10.
 * **Abonnement** : coût total sur la période d'engagement (promo puis prix normal,
-  frais d'activation) vs prix normal × durée.
+  frais d'activation ; rabais « à vie » : 24 mois) vs prix catalogue × durée × 0,6 —
+  les prix catalogue des opérateurs suisses sont rarement payés (« Aktionen »
+  quasi permanentes). Confiance 40 %, note plafonnée à 7,5 sans historique.
 * **Concours** : jamais la valeur du lot. Espérance = probabilité × lot − coût,
   seulement si la probabilité est publiée ; sinon non évalué.
 * **Denner** : modèle V2 conservé tel quel (`score_model = denner_v2`).

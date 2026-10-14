@@ -5,7 +5,7 @@
 //   une offre expirée depuis n'est jamais affichée comme actuelle.
 const SHELL = "shell-v3.1";
 const DATA = "data-v3";
-const SHELL_FILES = ["./", "index.html", "style.css", "app.js", "universal.js", "manifest.webmanifest",
+const SHELL_FILES = ["./", "index.html", "style.css?v=3.0.0", "app.js?v=3.0.0", "universal.js?v=3.0.0", "manifest.webmanifest",
   "icons/icon-180.png", "icons/icon-192.png", "icons/icon-512.png"];
 
 self.addEventListener("install", (e) => {

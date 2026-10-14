@@ -1,8 +1,36 @@
-# 📡 Denner Deal Radar — St. Gallen
+# 📡 St. Gallen Deal Radar (V3) — anciennement Denner Deal Radar
 
-Détecte, historise, note (0–10, échelle **absolue**) et signale sur Telegram
-toutes les promotions Denner publiées en ligne pour les 7 succursales de
-St-Gall. Fonctionne seul sur GitHub Actions : **0 CHF, 0 token LLM**.
+Moteur de détection d'opportunités économiques exploitables depuis Saint-Gall :
+supermarchés, ventes flash, tech, reconditionné, gratuit, coupons, étudiants,
+événements, abonnements, voyage. Chaque offre reçoit une note **absolue** (0–10),
+une confiance, une urgence et une pertinence personnelle séparées. Alertes
+Telegram, application web installable (PWA). Fonctionne seul sur GitHub Actions :
+**0 CHF, 0 token LLM**.
+
+**V3 :** 28 sources actives (Denner V2 + 27 connecteurs), 122 sources auditées.
+Documentation : [ARCHITECTURE](docs/ARCHITECTURE.md) · [SCORING](docs/SCORING.md) ·
+[COVERAGE](docs/COVERAGE.md) · [SOURCE_AUDIT](docs/SOURCE_AUDIT.md) ·
+[COSTS](docs/COSTS.md) · [ADDING_A_SOURCE](docs/ADDING_A_SOURCE.md).
+Point de restauration de la V2 : tag `v2-denner-baseline`.
+
+### Commandes V3
+
+```bash
+python -m radar u-scan --dry-run                 # toutes les sources, rien n'est écrit ni envoyé
+python -m radar u-scan --source qoqa daydeal     # sources précises
+python -m radar u-scan --due                     # seulement les sources dont l'intervalle est écoulé
+python -m radar u-sources                        # registre des connecteurs et santé
+python -m radar u-health                         # code 1 si une source est en panne ou obsolète
+python -m radar u-export                         # régénère les données du dashboard
+python -m radar notify-test                      # test Telegram
+```
+
+Watchlists (sans LLM) : `config/watchlists.toml` (ex. poulet ≤ 12 CHF/kg).
+Préférences : `config/preferences.toml`. Seuils d'alerte : `config/settings.toml`.
+
+---
+
+## Denner (moteur V2, inchangé)
 
 * Dashboard : https://yorian-melki.github.io/denner-deal-radar/
 * Audit des sources : [docs/AUDIT.md](docs/AUDIT.md)

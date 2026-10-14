@@ -232,12 +232,21 @@ def digest(live: list[dict], cfg, now: dt.datetime, store) -> list[dict]:
     for d in new:
         by_fam[d["family"]] = by_fam.get(d["family"], 0) + 1
     L = ["📰 <b>ST. GALLEN DEAL RADAR — récapitulatif du jour</b>", ""]
-    top = [d for d in new if d.get("deal_score") is not None][:10]
+    # Diversité : au plus 3 offres par source dans le top (la note, elle, n'est pas modifiée).
+    top, per = [], {}
+    for d in new:
+        if d.get("deal_score") is None or per.get(d["source_id"], 0) >= 3:
+            continue
+        per[d["source_id"]] = per.get(d["source_id"], 0) + 1
+        top.append(d)
+        if len(top) == 10:
+            break
     if top and top[0]["deal_score"] < 5:
         L.append("ℹ️ Aucune nouveauté ne dépasse 5/10 aujourd'hui.\n")
     for i, d in enumerate(top, 1):
         L.append(f"{i}. <b>{d['deal_score']:.1f}</b> {FAMILY_EMOJI.get(d['family'], '')} {N.esc(d['title'][:70])}"
-                 + (f" — CHF {chf(d.get('current_price'))}" if d.get("current_price") is not None else ""))
+                 + (f" — CHF {chf(d.get('current_price'))}" if d.get("current_price") is not None else "")
+                 + f" · {N.esc(d.get('merchant') or d['source_id'])}")
     L += ["", "📊 " + " · ".join(f"{FAMILY_EMOJI.get(f, '')} {n}" for f, n in sorted(by_fam.items(), key=lambda x: -x[1])),
           f"🔗 <a href=\"{cfg.dashboard_url.rstrip('/')}/#u/nouveautes\">Voir les {len(new)} nouveautés</a>"]
     return [{"key": f"u:digest:{today}", "text": "\n".join(L)}]

@@ -31,6 +31,7 @@ CONDITION_FACTOR = {  # valeur d'un article par rapport au neuf de référence
     "refurbished_third_party": 0.85, "used": 0.75, "damaged": 0.5,
 }
 WEAK_REFERENCE_CAP = 7.5
+SUBSCRIPTION_REFERENCE_FACTOR = 0.6   # prix catalogue télécom ≈ rarement payé
 # (économie absolue max, note max) — hors supermarché et anti-gaspi (prix unitaires bas par nature)
 SAVINGS_CAPS = [(5.0, 6.0), (15.0, 7.5), (30.0, 8.5)]
 # Valeur nette (CHF) -> note pour le gratuit / gratuit numérique (seuils fixes)
@@ -196,6 +197,11 @@ def _free(deal: dict) -> UScore:
 
 
 def _subscription(deal: dict, history) -> UScore:
+    """Abonnement : coût total sur la période (promo, puis prix après promo, frais).
+
+    Le « prix normal » des opérateurs suisses est un prix catalogue rarement payé
+    (les « Aktionen » sont quasi permanentes) : référence pondérée à 0,6, confiance
+    faible, note plafonnée tant que l'historique ne confirme pas le prix habituel."""
     months = deal.get("commitment_months")
     promo, regular = deal.get("current_price"), deal.get("regular_monthly_price")
     if not months and deal.get("promo_lifetime"):
@@ -210,11 +216,15 @@ def _subscription(deal: dict, history) -> UScore:
         months = max(months, 24)
         promo_months = months
     tco = promo * min(promo_months, months) + after * max(0, months - promo_months) + deal.get("activation_fee", 0)
-    tco_ref = regular * months
+    tco_ref = regular * months * SUBSCRIPTION_REFERENCE_FACTOR
     d = max(0.0, (1 - tco / tco_ref) * 100)
     s = curve(d)
-    return UScore(round(s, 1), 0.7, d, tco_ref - tco,
-                  [(f"coût total sur {months} mois {tco:.2f} vs {tco_ref:.2f}", round(s, 2))], "ok")
+    comps = [(f"coût total sur {months:.0f} mois {tco:.2f} vs {regular * months:.2f} au prix catalogue (pondéré ×{SUBSCRIPTION_REFERENCE_FACTOR})", round(s, 2))]
+    stats = history_stats(history or [], exclude_deal=deal.get("deal_id"))
+    if stats.get("n", 0) < 3 and s > WEAK_REFERENCE_CAP:
+        comps.append((f"prix catalogue opérateur non confirmé : note plafonnée à {WEAK_REFERENCE_CAP}", WEAK_REFERENCE_CAP - s))
+        s = WEAK_REFERENCE_CAP
+    return UScore(round(s, 1), 0.4, d, regular * months * SUBSCRIPTION_REFERENCE_FACTOR - tco, comps, "unknown")
 
 
 def _coupon(deal: dict) -> UScore:

@@ -26,6 +26,7 @@ from .uscoring import accessibility, score_deal
 log = logging.getLogger("radar.core")
 TRACKED = ("current_price", "reference_price", "ends_at", "starts_at", "stock_remaining",
            "stock_percent_sold", "conditions", "minimum_quantity", "shipping_cost")
+SEEN_GRANULARITY = dt.timedelta(hours=6)
 REFRESH_SKIP = {"first_seen_at", "deal_id", "missing_scans", "lifecycle", "removed_at"}
 
 
@@ -153,7 +154,10 @@ def apply(store: UStore, c: Connector, fresh: dict[str, dict], state: str, now: 
         for k in set(old) - set(d) - REFRESH_SKIP - DERIVED:
             if k not in ("last_seen_at", "last_changed_at", "canonical_entity_id"):
                 old.pop(k)
-        old["last_seen_at"] = at
+        # Granularité 6 h : évite de réécrire des milliers d'enregistrements (et de
+        # gonfler l'historique git) à chaque collecte toutes les 30 min.
+        if not old.get("last_seen_at") or now - dt.datetime.fromisoformat(old["last_seen_at"]) >= SEEN_GRANULARITY:
+            old["last_seen_at"] = at
         old["missing_scans"] = 0
         if changes:
             old["last_changed_at"] = at
@@ -272,7 +276,8 @@ def reliability(st: dict) -> float:
     runs = st.get("recent", [])
     if not runs:
         return 0.8
-    ok = sum(1 for r in runs if r["state"] in ("OK", "EMPTY_VALID", "NOT_MODIFIED")) / len(runs)
+    # PARTIAL = collecte utilisable mais incomplète (souvent par conception) : réussite, petite pénalité.
+    ok = sum(1 for r in runs if r["state"] in ("OK", "EMPTY_VALID", "NOT_MODIFIED", "PARTIAL")) / len(runs)
     partial = sum(1 for r in runs if r["state"] == "PARTIAL") / len(runs)
     items = sum(r["items"] for r in runs) or 1
     rej = min(1.0, sum(r["rejected"] for r in runs) / items)

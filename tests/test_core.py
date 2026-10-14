@@ -153,8 +153,11 @@ def test_surplus_declared_value_is_haircut():
 def test_subscription_total_cost_of_ownership():
     s = score_deal(D(family="subscription", current_price=10, regular_monthly_price=30, commitment_months=24,
                      promo_months=12, price_after_promo=30))
-    # 12×10 + 12×30 = 480 vs 720 -> 33 %
-    assert s.effective_discount == pytest.approx(33.3, abs=0.1)
+    # 12×10 + 12×30 = 480 vs 720×0,6 = 432 -> aucun gain réel face au prix catalogue pondéré
+    assert s.effective_discount == pytest.approx(0.0, abs=0.1)
+    life = score_deal(D(family="subscription", current_price=34.9, regular_monthly_price=135, commitment_months=2,
+                        promo_lifetime=True))
+    assert life.score == 7.5 and life.confidence <= 0.4   # « 34.90 au lieu de 133.– à vie » : plafonné
 
 
 def test_contest_without_probability_has_no_value():

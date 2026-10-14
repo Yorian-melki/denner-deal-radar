@@ -197,10 +197,15 @@
   function home(main) {
     const live = U.deals.filter(isLive).filter((d) => !d.duplicate_of && d.eligible_home !== false);
     const hide = (d) => ($("#u-hidepref") || { checked: true }).checked && (d.tags || []).some((t) => t === "porc" || t === "fruits_de_mer");
+    const diverse = (list, n = 6, perSource = 2) => {   // diversité : 2 offres max par source
+      const out = [], per = {};
+      for (const d of list) { if ((per[d.source_id] || 0) < perSource) { per[d.source_id] = (per[d.source_id] || 0) + 1; out.push(d); } if (out.length === n) break; }
+      return out;
+    };
     const sec = (t, list, link) => {
       if (!list.length) return;
       const h = el("h2", null, t); main.append(h);
-      grid(main, list.slice(0, 6));
+      grid(main, diverse(list));
       if (link) { const a = el("a", "link", "Tout voir →"); a.href = link; main.append(a); }
     };
     const best = sort(live.filter((d) => !hide(d) && d.life !== "UPCOMING"));
