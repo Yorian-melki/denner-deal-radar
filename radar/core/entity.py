@@ -111,3 +111,13 @@ def deduplicate(deals: list[dict]) -> dict:
         if not d["corroborated_by"]:
             d.pop("corroborated_by")
     return {"merged": merged, "possible": possible}
+
+
+GAME_NOISE = re.compile(r"\b(steam|epic|gog|key|giveaway|free|gratis|kostenlos|game|games|pc|dlc|\(.*?\))\b", re.I)
+
+
+def canonical_game_id(title: str) -> str:
+    """« TerraScape (Epic Games) Giveaway » et « TerraScape » -> game:terrascape."""
+    t = re.sub(r"\(.*?\)", " ", title or "")
+    t = GAME_NOISE.sub(" ", norm_text(t))
+    return "game:" + slug(" ".join(t.split()))

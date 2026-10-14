@@ -19,7 +19,7 @@ from pathlib import Path
 from ..categories import classify
 from . import analytics as A
 from .connector import Connector, Context, FetchResult
-from .entity import canonical_entity_id, deduplicate
+from .entity import canonical_entity_id, canonical_game_id, deduplicate
 from .store import UStore
 from .uscoring import accessibility, score_deal
 
@@ -85,6 +85,8 @@ def run_connector(c: Connector, store: UStore, cfg, http, now: dt.datetime, raw_
             continue
         if d is None:
             continue
+        if d.get("family") == "digital_free" and not d.get("gtin"):
+            d["canonical_entity_id"] = canonical_game_id(d["title"])   # Epic + GamerPower = même jeu
         d.setdefault("canonical_entity_id", canonical_entity_id(d))
         fresh[d["deal_id"]] = d
     if res.items and len(rejected) > 0.5 * len(res.items):
@@ -101,7 +103,7 @@ def run_connector(c: Connector, store: UStore, cfg, http, now: dt.datetime, raw_
     if state in ("OK", "EMPTY_VALID"):
         st["counts"] = (hist_counts + [len(fresh)])[-12:]
 
-    stats = apply(store, c, fresh, state, now)
+    stats = apply(store, c, fresh, state, now, window_ttl=c.window_ttl_hours if res.window else None)
     ok = state in ("OK", "PARTIAL", "EMPTY_VALID", "NOT_MODIFIED")
     st.update(last_state=state, last_latency_s=latency, last_items=len(fresh),
               last_error=res.error, last_warnings=res.warnings[:5], requests=http.requests_made - req0)
@@ -125,7 +127,8 @@ def run_connector(c: Connector, store: UStore, cfg, http, now: dt.datetime, raw_
     return run
 
 
-def apply(store: UStore, c: Connector, fresh: dict[str, dict], state: str, now: dt.datetime) -> dict:
+def apply(store: UStore, c: Connector, fresh: dict[str, dict], state: str, now: dt.datetime,
+          window_ttl: float | None = None) -> dict:
     at = iso(now)
     known = store.source_deals(c.id)
     stats = {"new": 0, "changed": 0, "removed": 0}
@@ -161,7 +164,17 @@ def apply(store: UStore, c: Connector, fresh: dict[str, dict], state: str, now: 
                 store.event("price_drop" if p1 < p0 else "price_increase", at, old, old=p0, new=p1)
             else:
                 store.event("changed", at, old, fields=sorted(changes))
-    if state in ("OK", "EMPTY_VALID"):
+    if window_ttl is not None and state in ("OK", "PARTIAL"):
+        cutoff = (now - dt.timedelta(hours=window_ttl)).isoformat()
+        for did, rec in known.items():
+            if did not in fresh and rec.get("lifecycle") not in ("EXPIRED", "REMOVED") \
+                    and (rec.get("last_seen_at") or "") < cutoff:
+                rec["lifecycle"] = "REMOVED"
+                rec["removed_at"] = at
+                rec["removed_reason"] = f"non revue depuis {window_ttl:.0f} h (flux à fenêtre)"
+                store.event("removed", at, rec, reason="window_ttl")
+                stats["removed"] += 1
+    elif state in ("OK", "EMPTY_VALID"):
         threshold = 2
         for did, rec in known.items():
             if did in fresh or rec.get("lifecycle") in ("EXPIRED", "REMOVED"):

@@ -55,7 +55,9 @@ NUMERIC = {"regular_price", "reference_price", "current_price", "checkout_price"
            "effective_price", "shipping_cost", "mandatory_fees", "unit_price", "quantity",
            "minimum_quantity", "discount_absolute", "discount_percentage", "historical_median",
            "historical_low", "market_price", "declared_value", "stock_remaining", "stock_percent_sold",
-           "estimated_transport_cost", "distance_km"}
+           "estimated_transport_cost", "distance_km", "minimum_order_value", "coupon_value", "cashback_rate",
+           "stated_worth", "regular_monthly_price", "commitment_months", "promo_months", "price_after_promo",
+           "activation_fee", "units_offered", "price_max"}
 
 REQUIRED = ("deal_id", "source_id", "title", "family")
 

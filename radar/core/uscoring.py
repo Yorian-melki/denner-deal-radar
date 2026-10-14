@@ -76,6 +76,10 @@ def score_deal(deal: dict, history: list[dict] | None = None) -> UScore:
         return _free(deal)
     if fam == "subscription":
         return _subscription(deal, history)
+    if fam == "coupon" and deal.get("current_price") is None:
+        return _coupon(deal)
+    if fam == "cashback" and deal.get("current_price") is None:
+        return _cashback(deal)
     return _discount_based(deal, history)
 
 
@@ -195,6 +199,31 @@ def _subscription(deal: dict, history) -> UScore:
     s = curve(d)
     return UScore(round(s, 1), 0.7, d, tco_ref - tco,
                   [(f"coût total sur {months} mois {tco:.2f} vs {tco_ref:.2f}", round(s, 2))], "ok")
+
+
+def _coupon(deal: dict) -> UScore:
+    """Coupon : % annoncé, ou valeur fixe ÷ minimum de commande (réduction maximale
+    atteignable). Confiance faible : validité et cumul non vérifiés."""
+    pct, val, mini = deal.get("discount_percentage"), deal.get("coupon_value"), deal.get("minimum_order_value")
+    if pct:
+        d, why = pct, f"code de réduction {pct:g} %"
+    elif val and mini:
+        d, why = min(100.0, val / mini * 100), f"CHF {val:g} dès CHF {mini:g} d'achat"
+    else:
+        return UScore(None, 0.2, components=[("valeur du coupon ou minimum d'achat inconnu", None)])
+    s = curve(d)
+    return UScore(round(s, 1), 0.35, d, val, [(f"{why} : {d:.0f} % au mieux", round(s, 2))], "unknown")
+
+
+def _cashback(deal: dict) -> UScore:
+    """Cashback non garanti : taux × 0,6 (incertitude de validation, délai, plafond)."""
+    rate = deal.get("cashback_rate")
+    if not rate:
+        return UScore(None, 0.2, components=[("taux de cashback inconnu", None)])
+    d = rate * 0.6
+    s = curve(d)
+    return UScore(round(s, 1), 0.3, d, None,
+                  [(f"cashback {rate:g} % conditionnel, compté à 60 %", round(s, 2))], "unknown")
 
 
 def _contest(deal: dict) -> UScore:

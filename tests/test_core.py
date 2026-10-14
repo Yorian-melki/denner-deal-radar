@@ -8,7 +8,7 @@ from radar.core import analytics as A
 from radar.core import ualerts
 from radar.core.connector import Connector, FetchResult
 from radar.core.deal import make_deal, total_acquisition_cost
-from radar.core.engine import apply, enrich, lifecycle, run_connector
+from radar.core.engine import enrich, lifecycle, run_connector
 from radar.core.entity import canonical_entity_id, deduplicate, valid_gtin
 from radar.core.store import UStore
 from radar.core.uscoring import accessibility, free_curve, score_deal
@@ -299,3 +299,46 @@ def test_watchlist_unit_price(env):
     cfg.settings["watchlists"] = [w]
     assert len(ualerts.watchlist_alerts([d], cfg, NOW, store)) == 1
     assert ualerts.watchlist_alerts([d], cfg, NOW, store) == []   # pas de doublon
+
+
+def test_robots_404_means_allow(monkeypatch):
+    import requests
+    h = Http("test", retries=0, delay=0)
+
+    def boom(method, url, **kw):
+        r = requests.Response()
+        r.status_code = 404
+        raise requests.HTTPError("404", response=r)
+    monkeypatch.setattr(h, "_raw", boom)
+    assert h.allowed("https://example.org/anything")
+
+
+def test_window_feed_items_expire_by_ttl_not_by_absence(env):
+    cfg, store, http = env
+
+    class Win(FakeConn):
+        window_ttl_hours = 24
+
+        def fetch(self, ctx):
+            r = super().fetch(ctx)
+            r.window = True
+            return r
+    run_connector(Win(ITEMS), store, cfg, http, NOW, None)
+    for h in (1, 2, 3):
+        run_connector(Win([ITEMS[1]]), store, cfg, http, NOW + dt.timedelta(hours=h), None)
+    assert store.source_deals("fake")["fake:1"]["lifecycle"] == "ACTIVE"
+    run_connector(Win([ITEMS[1]]), store, cfg, http, NOW + dt.timedelta(hours=30), None)
+    assert store.source_deals("fake")["fake:1"]["lifecycle"] == "REMOVED"
+
+
+def test_coupon_and_cashback_scoring():
+    c = score_deal(D(family="coupon", coupon_value=15, minimum_order_value=100))
+    assert c.score == pytest.approx(curve(15), abs=0.05) and c.confidence < 0.5
+    cb = score_deal(D(family="cashback", cashback_rate=30))
+    assert cb.effective_discount == pytest.approx(18) and cb.confidence <= 0.3
+    assert score_deal(D(family="coupon")).score is None
+
+
+def test_same_game_across_sources():
+    from radar.core.entity import canonical_game_id
+    assert canonical_game_id("TerraScape (Epic Games) Giveaway") == canonical_game_id("TerraScape")

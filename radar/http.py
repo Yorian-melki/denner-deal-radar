@@ -30,8 +30,15 @@ class Http:
     def load_robots(self, base: str) -> Protego:
         host = urlparse(base).netloc
         if host not in self._robots:
-            r = self._raw("GET", f"{base}/robots.txt")
-            self._robots[host] = Protego.parse(r.text)
+            try:
+                r = self._raw("GET", f"{base}/robots.txt")
+                text = r.text
+            except requests.HTTPError as e:
+                status = getattr(e.response, "status_code", None)
+                if status is None or not 400 <= status < 500:
+                    raise   # 5xx / réseau : prudence, pas de collecte
+                text = ""   # RFC 9309 §2.3.1.3 : robots.txt 4xx = aucune restriction
+            self._robots[host] = Protego.parse(text)
         return self._robots[host]
 
     def allowed(self, url: str) -> bool:

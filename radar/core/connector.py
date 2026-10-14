@@ -37,6 +37,9 @@ class FetchResult:
     warnings: list[str] = field(default_factory=list)
     not_modified: bool = False      # 304 : rien n'a changé depuis la dernière collecte
     raw: Any = None                 # instantané brut (pour débogage, non versionné)
+    # Flux « fenêtre » (N éléments les plus récents) : une absence ne signifie PAS
+    # un retrait ; l'offre expire après ``Connector.window_ttl_hours`` sans être revue.
+    window: bool = False
     meta: dict = field(default_factory=dict)
 
     @property
@@ -84,6 +87,7 @@ class Connector:
     base_url: str = ""
     # Garde-fous de santé : nombre d'éléments minimum attendu quand tout va bien.
     expected_min_items: int = 1
+    window_ttl_hours: float = 72
     documentation: str = ""
 
     @property
