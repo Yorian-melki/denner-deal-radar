@@ -321,15 +321,16 @@
     7,
     7,
     7,
+    7,
     7
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-15T10:22:32+02:00",
+   "last_attempt": "2026-10-15T11:10:03+02:00",
    "last_error": null,
    "last_items": 7,
-   "last_latency_s": 1.3,
+   "last_latency_s": 1.43,
    "last_state": "OK",
-   "last_success": "2026-10-15T10:22:32+02:00",
+   "last_success": "2026-10-15T11:10:03+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -383,6 +384,13 @@
     },
     {
      "at": "2026-10-15T10:22:32+02:00",
+     "items": 7,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-10-15T11:10:03+02:00",
      "items": 7,
      "rejected": 0,
      "state": "OK",
@@ -478,12 +486,12 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "http_cache": {},
-   "last_attempt": "2026-10-15T10:22:32+02:00",
+   "last_attempt": "2026-10-15T11:10:03+02:00",
    "last_error": null,
    "last_items": 85,
-   "last_latency_s": 2.43,
+   "last_latency_s": 2.72,
    "last_state": "PARTIAL",
-   "last_success": "2026-10-15T10:22:32+02:00",
+   "last_success": "2026-10-15T11:10:03+02:00",
    "last_warnings": [
     "mobile : 50/51 offres (suite via POST non suivie)",
     "5 date(s) « Aktion bis » invalide(s) ignorée(s)"
@@ -540,6 +548,13 @@
     },
     {
      "at": "2026-10-15T10:22:32+02:00",
+     "items": 85,
+     "rejected": 0,
+     "state": "PARTIAL",
+     "warn": 2
+    },
+    {
+     "at": "2026-10-15T11:10:03+02:00",
      "items": 85,
      "rejected": 0,
      "state": "PARTIAL",
@@ -1165,24 +1180,25 @@
     57,
     57,
     57,
+    59,
     59
    ],
    "http_cache": {
     "https://www.preispirat.ch/cat/freebies/feed/": {
-     "etag": "W/\"5489519c113f3689bb6a3514f729f750\"",
-     "last_modified": "Thu, 15 Oct 2026 08:02:02 GMT"
+     "etag": "W/\"283357963c02a43c51e6f02190721df4\"",
+     "last_modified": "Thu, 15 Oct 2026 08:45:57 GMT"
     },
     "https://www.preispirat.ch/feed/": {
-     "etag": "W/\"5489519c113f3689bb6a3514f729f750\"",
-     "last_modified": "Thu, 15 Oct 2026 08:02:02 GMT"
+     "etag": "W/\"283357963c02a43c51e6f02190721df4\"",
+     "last_modified": "Thu, 15 Oct 2026 08:45:57 GMT"
     }
    },
-   "last_attempt": "2026-10-15T10:22:32+02:00",
+   "last_attempt": "2026-10-15T11:10:03+02:00",
    "last_error": null,
    "last_items": 59,
-   "last_latency_s": 2.86,
+   "last_latency_s": 2.72,
    "last_state": "OK",
-   "last_success": "2026-10-15T10:22:32+02:00",
+   "last_success": "2026-10-15T11:10:03+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -1240,6 +1256,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-15T11:10:03+02:00",
+     "items": 59,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -1256,7 +1279,8 @@
     38,
     38,
     38,
-    37
+    37,
+    38
    ],
    "details": {
     "86941": [
@@ -1985,6 +2009,7 @@
       "stock": "available"
      }
     ],
+    "97431": [],
     "97474": [
      {
       "price": 75.9,
@@ -4025,12 +4050,12 @@
     ]
    },
    "http_cache": {},
-   "last_attempt": "2026-10-15T10:22:32+02:00",
+   "last_attempt": "2026-10-15T11:10:03+02:00",
    "last_error": null,
-   "last_items": 37,
-   "last_latency_s": 1.91,
+   "last_items": 38,
+   "last_latency_s": 1.84,
    "last_state": "OK",
-   "last_success": "2026-10-15T10:22:32+02:00",
+   "last_success": "2026-10-15T11:10:03+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -4088,6 +4113,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-15T11:10:03+02:00",
+     "items": 38,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -4097,12 +4129,12 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "http_cache": {},
-   "last_attempt": "2026-10-15T10:22:32+02:00",
+   "last_attempt": "2026-10-15T11:10:03+02:00",
    "last_error": null,
    "last_items": 553,
-   "last_latency_s": 34.55,
+   "last_latency_s": 37.9,
    "last_state": "PARTIAL",
-   "last_success": "2026-10-15T10:22:32+02:00",
+   "last_success": "2026-10-15T11:10:03+02:00",
    "last_warnings": [
     "coop: 3 page(s) lue(s), suite non collectée (volume limité)",
     "aligro: 2 page(s) lue(s), suite non collectée (volume limité)",
@@ -4160,6 +4192,13 @@
     },
     {
      "at": "2026-10-15T10:22:32+02:00",
+     "items": 553,
+     "rejected": 0,
+     "state": "PARTIAL",
+     "warn": 3
+    },
+    {
+     "at": "2026-10-15T11:10:03+02:00",
      "items": 553,
      "rejected": 0,
      "state": "PARTIAL",
