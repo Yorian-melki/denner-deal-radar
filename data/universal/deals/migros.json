@@ -1979,10 +1979,10 @@
   "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/7fe41557e7b3dcd53b83125870dae9989a37a98c/migros-coffee-caramel-macchiato.jpg",
   "last_changed_at": "2026-10-15T03:31:07+02:00",
   "last_seen_at": "2026-10-15T03:31:07+02:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Migros",
   "merchant_sku": "204556800000",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_type": "weekly_promotion",
   "package_size": "270ml",
@@ -1990,6 +1990,7 @@
   "promotion_integrity": "unknown",
   "quantity": 0.27,
   "regular_price": 0.95,
+  "removed_at": "2026-10-15T16:11:18+02:00",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -2047,7 +2048,7 @@
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
   "merchant_sku": "204556600000",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "weekly_promotion",
   "package_size": "270ml",
@@ -2076,6 +2077,72 @@
   "total_acquisition_cost": 0.95,
   "unit": "CHF/l",
   "unit_price": 3.5
+ },
+ "migros:100228568": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "gtin:07623187044235",
+  "category": "Milchprodukte, Eier & frische Fertiggerichte",
+  "condition": "new",
+  "conditions": [
+   "20x points Cumulus (bonus fidélité, pas une baisse de prix)"
+  ],
+  "cost_assumptions": [],
+  "current_price": 3.5,
+  "deal_id": "migros:100228568",
+  "deal_score": null,
+  "description": "Picknick Eier · Import, Freilandhaltung",
+  "discount_badge": "20x, Neu",
+  "effective_discount": null,
+  "ends_at": "2026-10-28T23:59:59+01:00",
+  "extra_tags": [
+   "cumulus_points"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-10-15T16:11:18+02:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "laitier_oeufs",
+  "gtin": "7623187044235",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/5c609b3dc1b320d71a388470b61ec91298f0c953/picknick-eier-import-freilandhaltung.jpg",
+  "last_changed_at": "2026-10-15T16:11:18+02:00",
+  "last_seen_at": "2026-10-15T16:11:18+02:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "merchant_sku": "196591300700",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "weekly_promotion",
+  "package_size": "6 Stück",
+  "personal_relevance": 1.0,
+  "promotion_integrity": "unknown",
+  "quantity": 6.0,
+  "regular_price": 3.5,
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "migros",
+  "source_offer_id": "100228568",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/product/196591300700",
+  "starts_at": "2026-10-15T00:00:00+02:00",
+  "store_type": "instore",
+  "subcategory": "Milch, Butter & Eier > Eier",
+  "tags": [
+   "cumulus_points",
+   "nourriture",
+   "proteines"
+  ],
+  "title": "Picknick Eier",
+  "total_acquisition_cost": 3.5,
+  "unit": "CHF/pièce",
+  "unit_price": 0.58
  },
  "migros:grp:2337614": {
   "access": "PUBLIC",
@@ -3767,7 +3834,7 @@
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.4,
-  "products_count": 54,
+  "products_count": 55,
   "promotion_integrity": "ok",
   "reference_price_type": "stated_percent_only",
   "score_components": [
@@ -4216,7 +4283,7 @@
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.8,
-  "products_count": 11,
+  "products_count": 12,
   "promotion_integrity": "ok",
   "reference_price_type": "stated_percent_only",
   "score_components": [

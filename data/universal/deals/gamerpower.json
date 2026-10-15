@@ -26,7 +26,7 @@
   "last_seen_at": "2026-10-15T10:22:32+02:00",
   "lifecycle": "ACTIVE",
   "merchant": "GOG",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "free_game",
   "personal_relevance": 0.3,
@@ -746,6 +746,54 @@
   "source_url": "https://www.gamerpower.com/voidtrain-big-catch-dlc-giveaway",
   "tags": [],
   "title": "Voidtrain - Big Catch (DLC)",
+  "total_acquisition_cost": 0.0
+ },
+ "gamerpower:world-of-tanks-halloween-gift-packs": {
+  "access": "PUBLIC",
+  "accessibility": 0.9,
+  "accessibility_notes": [
+   "compte requis"
+  ],
+  "canonical_entity_id": "game:world-of-tanks-halloween-gift-packs",
+  "condition": "new",
+  "cost_assumptions": [
+   "frais de livraison inconnus (non inclus)"
+  ],
+  "current_price": 0.0,
+  "deal_id": "gamerpower:world-of-tanks-halloween-gift-packs",
+  "deal_score": null,
+  "delivery_scope": "DIGITAL",
+  "description": "Halloween is here! Log in or register to World of Tanks and unlock a premium tier tank, plus more in-game goodies!",
+  "effective_discount": null,
+  "family": "digital_free",
+  "first_seen_at": "2026-10-15T16:11:18+02:00",
+  "geographic_scope": "ONLINE",
+  "geographic_scope_resolved": "ONLINE",
+  "group": "digital_free",
+  "image_url": "https://www.gamerpower.com/offers/1b/wot-halloween.jpg",
+  "last_changed_at": "2026-10-15T16:11:18+02:00",
+  "last_seen_at": "2026-10-15T16:11:18+02:00",
+  "lifecycle": "ACTIVE",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "free_game",
+  "personal_relevance": 0.3,
+  "promotion_integrity": null,
+  "published_at": "2026-10-15T14:02:50+02:00",
+  "requires_account": true,
+  "score_components": [
+   [
+    "valeur inconnue : gratuit non évalué",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "gamerpower",
+  "source_offer_id": "world-of-tanks-halloween-gift-packs",
+  "source_type": "aggregator",
+  "source_url": "https://www.gamerpower.com/world-of-tanks-halloween-gift-packs",
+  "tags": [],
+  "title": "World of Tanks: Halloween Gift Packs",
   "total_acquisition_cost": 0.0
  }
 }
