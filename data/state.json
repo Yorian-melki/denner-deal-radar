@@ -1,21 +1,21 @@
 {
  "audit": {
-  "checked": "2026-10-15T00:32:25+02:00",
+  "checked": "2026-10-15T21:02:45+02:00",
   "missing": [],
   "ok": true,
   "pages": {
    "/de/aktionen/aktionen-ab-donnerstag": {
     "missing": 0,
-    "offers_rendered": 30
+    "offers_rendered": 0
    },
    "/de/aktionen/aktuelle-aktionen": {
     "missing": 0,
-    "offers_rendered": 32
+    "offers_rendered": 30
    }
   },
   "unknown_sections": []
  },
- "audit_checked": "2026-10-15T00:32:25+02:00",
+ "audit_checked": "2026-10-15T21:02:45+02:00",
  "consecutive_failures": 0,
  "flag_failures": {
   "promo_current_week": 0,
@@ -24,9 +24,9 @@
   "weekend_highlight": 0,
   "weekend_highlight_next_week": 0
  },
- "last_attempt": "2026-10-15T16:54:31+02:00",
+ "last_attempt": "2026-10-15T21:02:45+02:00",
  "last_new_at": "2026-10-14T00:20:03+02:00",
- "last_success": "2026-10-15T16:54:31+02:00",
+ "last_success": "2026-10-15T21:02:45+02:00",
  "outbox": [],
  "recaps": {
   "thursday": "2026-10-15"
@@ -48,7 +48,7 @@
   "dn-1104466-week-20261008": "2026-10-14"
  },
  "robots": {
-  "checked": "2026-10-15T00:32:25+02:00",
+  "checked": "2026-10-15T21:02:45+02:00",
   "crawl_delay": null,
   "ok": true,
   "paths": {
@@ -59,7 +59,7 @@
    "/sitemap.store.xml": true
   }
  },
- "robots_checked": "2026-10-15T00:32:25+02:00",
+ "robots_checked": "2026-10-15T21:02:45+02:00",
  "sent_keys": {
   "expiry:2026-10-14:dn-1024378-week-20261008": "2026-10-14T12:05:30.840346+02:00",
   "recap:thursday:2026-10-15": "2026-10-15T09:43:46.741049+02:00",
@@ -69,10 +69,10 @@
  "sources": {
   "promo_current_week": {
    "anomalous": false,
-   "checked": "2026-10-15T16:54:31+02:00",
+   "checked": "2026-10-15T21:02:45+02:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-15T16:54:31+02:00",
+   "last_ok": "2026-10-15T21:02:45+02:00",
    "ok": true,
    "pages": 3,
    "received": 255,
@@ -81,10 +81,10 @@
   },
   "promo_next_week": {
    "anomalous": true,
-   "checked": "2026-10-15T16:54:31+02:00",
+   "checked": "2026-10-15T21:02:45+02:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-15T16:54:31+02:00",
+   "last_ok": "2026-10-15T21:02:45+02:00",
    "ok": true,
    "pages": 1,
    "received": 0,
@@ -93,10 +93,10 @@
   },
   "start_of_the_week_highlight": {
    "anomalous": false,
-   "checked": "2026-10-15T16:54:31+02:00",
+   "checked": "2026-10-15T21:02:45+02:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-15T16:54:31+02:00",
+   "last_ok": "2026-10-15T21:02:45+02:00",
    "ok": true,
    "pages": 1,
    "received": 0,
@@ -105,10 +105,10 @@
   },
   "weekend_highlight": {
    "anomalous": false,
-   "checked": "2026-10-15T16:54:31+02:00",
+   "checked": "2026-10-15T21:02:45+02:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-15T16:54:31+02:00",
+   "last_ok": "2026-10-15T21:02:45+02:00",
    "ok": true,
    "pages": 1,
    "received": 6,
@@ -117,10 +117,10 @@
   },
   "weekend_highlight_next_week": {
    "anomalous": false,
-   "checked": "2026-10-15T16:54:31+02:00",
+   "checked": "2026-10-15T21:02:45+02:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-15T16:54:31+02:00",
+   "last_ok": "2026-10-15T21:02:45+02:00",
    "ok": true,
    "pages": 1,
    "received": 0,
@@ -136,10 +136,10 @@
    225,
    225,
    225,
-   225,
    254,
    254,
    254,
+   255,
    255,
    255,
    255
@@ -162,7 +162,7 @@
    8,
    8,
    8,
-   8,
+   0,
    0,
    0,
    0,
@@ -176,7 +176,7 @@
    0,
    0,
    0,
-   0,
+   6,
    6,
    6,
    6,
@@ -190,7 +190,7 @@
    6,
    6,
    6,
-   6,
+   0,
    0,
    0,
    0,
