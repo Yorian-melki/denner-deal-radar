@@ -178,14 +178,15 @@
     "score": 9.1
    }
   },
-  "digest_day": "2026-10-15",
-  "digest_since": "2026-10-15T20:19:26+02:00",
+  "digest_day": "2026-10-16",
+  "digest_since": "2026-10-16T20:04:56+02:00",
   "outbox": [],
   "sent_keys": {
    "u:critical:digitec_daily:70273726:2026-10-14:499.0": "2026-10-16T10:15:01.195120+02:00",
    "u:critical:galaxus_daily:42604606:2026-10-14:179.0": "2026-10-16T10:15:01.195120+02:00",
    "u:digest:2026-10-14": "2026-10-14T20:56:39.321736+02:00",
    "u:digest:2026-10-15": "2026-10-15T20:19:26.578956+02:00",
+   "u:digest:2026-10-16": "2026-10-16T20:04:56.525303+02:00",
    "u:excellent:rappn:116c544e-8dc9-45a6-a3dd-86ee26c9154c:3.7": "2026-10-14T11:32:49.692549+02:00",
    "u:excellent:rappn:2f5ecc1c-248d-456f-b930-dec5285094be:3.7": "2026-10-14T08:11:22.593426+02:00",
    "u:excellent:rappn:2fbe5203-5440-4d67-8fde-c9dfafbe6914:3.7": "2026-10-14T08:11:22.593426+02:00",
@@ -264,15 +265,16 @@
     446,
     321,
     323,
+    323,
     323
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-16T10:15:01+02:00",
+   "last_attempt": "2026-10-16T20:04:56+02:00",
    "last_error": null,
    "last_items": 323,
-   "last_latency_s": 11.49,
+   "last_latency_s": 9.04,
    "last_state": "OK",
-   "last_success": "2026-10-16T10:15:01+02:00",
+   "last_success": "2026-10-16T20:04:56+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -312,6 +314,13 @@
     },
     {
      "at": "2026-10-16T10:15:01+02:00",
+     "items": 323,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-10-16T20:04:56+02:00",
      "items": 323,
      "rejected": 0,
      "state": "OK",
@@ -384,12 +393,12 @@
     7
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-16T15:58:50+02:00",
+   "last_attempt": "2026-10-16T20:04:56+02:00",
    "last_error": null,
    "last_items": 7,
-   "last_latency_s": 1.29,
+   "last_latency_s": 1.18,
    "last_state": "OK",
-   "last_success": "2026-10-16T15:58:50+02:00",
+   "last_success": "2026-10-16T20:04:56+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -503,6 +512,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-16T20:04:56+02:00",
+     "items": 7,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -526,12 +542,12 @@
     8
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-16T15:58:50+02:00",
+   "last_attempt": "2026-10-16T20:04:56+02:00",
    "last_error": null,
    "last_items": 8,
-   "last_latency_s": 4.48,
+   "last_latency_s": 3.03,
    "last_state": "OK",
-   "last_success": "2026-10-16T15:58:50+02:00",
+   "last_success": "2026-10-16T20:04:56+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -627,6 +643,13 @@
     },
     {
      "at": "2026-10-16T15:58:50+02:00",
+     "items": 8,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-10-16T20:04:56+02:00",
      "items": 8,
      "rejected": 0,
      "state": "OK",
@@ -850,7 +873,6 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "counts": [
-    5,
     6,
     6,
     6,
@@ -861,20 +883,21 @@
     7,
     7,
     7,
+    9,
     9
    ],
    "http_cache": {
     "https://www.ferienpiraten.ch/feed": {
-     "etag": "W/\"bc02a80b0ab6c8a0a84009b8b48bfaff\"",
-     "last_modified": "Fri, 16 Oct 2026 13:22:31 GMT"
+     "etag": "W/\"4b954b0f420bad69ef2d9971059d1a7d\"",
+     "last_modified": "Fri, 16 Oct 2026 17:22:30 GMT"
     }
    },
-   "last_attempt": "2026-10-16T15:58:50+02:00",
+   "last_attempt": "2026-10-16T20:04:56+02:00",
    "last_error": null,
    "last_items": 9,
-   "last_latency_s": 1.37,
+   "last_latency_s": 1.2,
    "last_state": "OK",
-   "last_success": "2026-10-16T15:58:50+02:00",
+   "last_success": "2026-10-16T20:04:56+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -974,6 +997,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-16T20:04:56+02:00",
+     "items": 9,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -988,7 +1018,7 @@
     23,
     23,
     23,
-    23,
+    20,
     20,
     20,
     20,
@@ -997,12 +1027,12 @@
     20
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-16T15:58:50+02:00",
+   "last_attempt": "2026-10-16T20:04:56+02:00",
    "last_error": null,
    "last_items": 20,
-   "last_latency_s": 3.04,
+   "last_latency_s": 5.86,
    "last_state": "OK",
-   "last_success": "2026-10-16T15:58:50+02:00",
+   "last_success": "2026-10-16T20:04:56+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -1098,6 +1128,13 @@
     },
     {
      "at": "2026-10-16T15:58:50+02:00",
+     "items": 20,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-10-16T20:04:56+02:00",
      "items": 20,
      "rejected": 0,
      "state": "OK",
@@ -1126,15 +1163,15 @@
    ],
    "http_cache": {
     "https://www.gamerpower.com/rss/giveaways": {
-     "last_modified": "Fri, 16 Oct 2026 13:43:39 GMT"
+     "last_modified": "Fri, 16 Oct 2026 17:59:47 GMT"
     }
    },
-   "last_attempt": "2026-10-16T15:58:50+02:00",
+   "last_attempt": "2026-10-16T20:04:56+02:00",
    "last_error": null,
    "last_items": 14,
-   "last_latency_s": 0.84,
+   "last_latency_s": 0.83,
    "last_state": "OK",
-   "last_success": "2026-10-16T15:58:50+02:00",
+   "last_success": "2026-10-16T20:04:56+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -1230,6 +1267,13 @@
     },
     {
      "at": "2026-10-16T15:58:50+02:00",
+     "items": 14,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-10-16T20:04:56+02:00",
      "items": 14,
      "rejected": 0,
      "state": "OK",
@@ -1689,7 +1733,6 @@
    "counts": [
     57,
     57,
-    57,
     59,
     59,
     59,
@@ -1698,24 +1741,25 @@
     59,
     59,
     59,
+    55,
     55
    ],
    "http_cache": {
     "https://www.preispirat.ch/cat/freebies/feed/": {
-     "etag": "W/\"fc0f30ace647ae54cf95599ebc4180f8\"",
-     "last_modified": "Fri, 16 Oct 2026 13:37:04 GMT"
+     "etag": "W/\"c973d9db834e61ce4f21e7c931ffc782\"",
+     "last_modified": "Fri, 16 Oct 2026 17:30:27 GMT"
     },
     "https://www.preispirat.ch/feed/": {
-     "etag": "W/\"fc0f30ace647ae54cf95599ebc4180f8\"",
-     "last_modified": "Fri, 16 Oct 2026 13:37:04 GMT"
+     "etag": "W/\"c973d9db834e61ce4f21e7c931ffc782\"",
+     "last_modified": "Fri, 16 Oct 2026 17:30:27 GMT"
     }
    },
-   "last_attempt": "2026-10-16T15:58:50+02:00",
+   "last_attempt": "2026-10-16T20:04:56+02:00",
    "last_error": null,
    "last_items": 55,
-   "last_latency_s": 3.96,
+   "last_latency_s": 2.82,
    "last_state": "OK",
-   "last_success": "2026-10-16T15:58:50+02:00",
+   "last_success": "2026-10-16T20:04:56+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -1829,6 +1873,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-16T20:04:56+02:00",
+     "items": 55,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -1840,7 +1891,6 @@
    "counts": [
     38,
     38,
-    38,
     37,
     38,
     37,
@@ -1849,7 +1899,8 @@
     36,
     36,
     36,
-    37
+    37,
+    43
    ],
    "details": {
     "87166": [
@@ -2273,6 +2324,23 @@
       "stock": "available"
      }
     ],
+    "95396": [
+     {
+      "price": 119.0,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 232.0,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 339.0,
+      "regular": null,
+      "stock": "available"
+     }
+    ],
     "96212": [
      {
       "price": 49.9,
@@ -2482,6 +2550,23 @@
       "stock": "sold_out"
      }
     ],
+    "97799": [
+     {
+      "price": 399.0,
+      "regular": 676.0,
+      "stock": "available"
+     },
+     {
+      "price": 29.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": null,
+      "stock": "available"
+     }
+    ],
     "97852": [
      {
       "price": 129.0,
@@ -2638,6 +2723,43 @@
      {
       "price": 329.0,
       "regular": 708.0,
+      "stock": "available"
+     }
+    ],
+    "97875": [
+     {
+      "price": 79.9,
+      "regular": 140.0,
+      "stock": "available"
+     },
+     {
+      "price": 59.9,
+      "regular": 140.0,
+      "stock": "available"
+     },
+     {
+      "price": 69.9,
+      "regular": 150.0,
+      "stock": "available"
+     },
+     {
+      "price": 109.0,
+      "regular": 190.0,
+      "stock": "available"
+     },
+     {
+      "price": 79.9,
+      "regular": 130.0,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 90.0,
+      "stock": "available"
+     },
+     {
+      "price": 39.9,
+      "regular": 60.0,
       "stock": "available"
      }
     ],
@@ -3173,6 +3295,608 @@
       "stock": "available"
      }
     ],
+    "98309": [
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 27.9,
+      "regular": null,
+      "stock": "available"
+     }
+    ],
     "98347": [
      {
       "price": 55.9,
@@ -3429,6 +4153,78 @@
       "stock": "available"
      }
     ],
+    "98402": [
+     {
+      "price": 49.9,
+      "regular": 64.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 64.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 64.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 64.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 64.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 64.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 64.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 64.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 64.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 64.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 64.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 64.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 64.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 64.9,
+      "stock": "available"
+     }
+    ],
     "98550": [
      {
       "price": 344.0,
@@ -3674,6 +4470,133 @@
      {
       "price": 74.9,
       "regular": 89.8,
+      "stock": "available"
+     }
+    ],
+    "98684": [
+     {
+      "price": 79.9,
+      "regular": 119.0,
+      "stock": "available"
+     },
+     {
+      "price": 79.9,
+      "regular": 119.0,
+      "stock": "available"
+     },
+     {
+      "price": 79.9,
+      "regular": 119.0,
+      "stock": "available"
+     },
+     {
+      "price": 79.9,
+      "regular": 119.0,
+      "stock": "available"
+     },
+     {
+      "price": 89.9,
+      "regular": 129.0,
+      "stock": "available"
+     },
+     {
+      "price": 89.9,
+      "regular": 129.0,
+      "stock": "available"
+     },
+     {
+      "price": 89.9,
+      "regular": 129.0,
+      "stock": "available"
+     },
+     {
+      "price": 89.9,
+      "regular": 129.0,
+      "stock": "available"
+     },
+     {
+      "price": 39.9,
+      "regular": 51.9,
+      "stock": "available"
+     },
+     {
+      "price": 39.9,
+      "regular": 51.9,
+      "stock": "available"
+     },
+     {
+      "price": 39.9,
+      "regular": 51.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 69.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 69.9,
+      "stock": "available"
+     },
+     {
+      "price": 49.9,
+      "regular": 69.9,
+      "stock": "available"
+     },
+     {
+      "price": 39.9,
+      "regular": 55.9,
+      "stock": "available"
+     },
+     {
+      "price": 39.9,
+      "regular": 55.9,
+      "stock": "available"
+     },
+     {
+      "price": 39.9,
+      "regular": 55.9,
+      "stock": "available"
+     },
+     {
+      "price": 59.9,
+      "regular": 89.0,
+      "stock": "available"
+     },
+     {
+      "price": 59.9,
+      "regular": 89.0,
+      "stock": "available"
+     },
+     {
+      "price": 59.9,
+      "regular": 89.0,
+      "stock": "available"
+     },
+     {
+      "price": 59.9,
+      "regular": 89.0,
+      "stock": "available"
+     },
+     {
+      "price": 69.9,
+      "regular": 109.0,
+      "stock": "available"
+     },
+     {
+      "price": 69.9,
+      "regular": 109.0,
+      "stock": "available"
+     },
+     {
+      "price": 69.9,
+      "regular": 109.0,
+      "stock": "available"
+     },
+     {
+      "price": 69.9,
+      "regular": 109.0,
       "stock": "available"
      }
     ],
@@ -5112,12 +6035,12 @@
     ]
    },
    "http_cache": {},
-   "last_attempt": "2026-10-16T15:58:50+02:00",
+   "last_attempt": "2026-10-16T20:04:56+02:00",
    "last_error": null,
-   "last_items": 37,
-   "last_latency_s": 14.18,
+   "last_items": 43,
+   "last_latency_s": 7.13,
    "last_state": "OK",
-   "last_success": "2026-10-16T15:58:50+02:00",
+   "last_success": "2026-10-16T20:04:56+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -5231,21 +6154,28 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-16T20:04:56+02:00",
+     "items": 43,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
-   "requests": 16
+   "requests": 8
   },
   "rappn": {
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "http_cache": {},
-   "last_attempt": "2026-10-16T15:58:50+02:00",
+   "last_attempt": "2026-10-16T20:04:56+02:00",
    "last_error": null,
    "last_items": 553,
-   "last_latency_s": 35.03,
+   "last_latency_s": 39.48,
    "last_state": "PARTIAL",
-   "last_success": "2026-10-16T15:58:50+02:00",
+   "last_success": "2026-10-16T20:04:56+02:00",
    "last_warnings": [
     "coop: 3 page(s) lue(s), suite non collectée (volume limité)",
     "aligro: 2 page(s) lue(s), suite non collectée (volume limité)",
@@ -5363,6 +6293,13 @@
      "rejected": 0,
      "state": "PARTIAL",
      "warn": 3
+    },
+    {
+     "at": "2026-10-16T20:04:56+02:00",
+     "items": 553,
+     "rejected": 0,
+     "state": "PARTIAL",
+     "warn": 3
     }
    ],
    "reliability": 0.75,
@@ -5382,15 +6319,16 @@
     617,
     612,
     614,
-    626
+    626,
+    638
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-16T15:58:50+02:00",
+   "last_attempt": "2026-10-16T20:04:56+02:00",
    "last_error": null,
-   "last_items": 626,
-   "last_latency_s": 33.94,
+   "last_items": 638,
+   "last_latency_s": 30.62,
    "last_state": "OK",
-   "last_success": "2026-10-16T15:58:50+02:00",
+   "last_success": "2026-10-16T20:04:56+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -5469,6 +6407,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-16T20:04:56+02:00",
+     "items": 638,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -5513,12 +6458,12 @@
     6
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-16T15:58:50+02:00",
+   "last_attempt": "2026-10-16T20:04:56+02:00",
    "last_error": null,
    "last_items": 6,
-   "last_latency_s": 5.22,
+   "last_latency_s": 5.2,
    "last_state": "OK",
-   "last_success": "2026-10-16T15:58:50+02:00",
+   "last_success": "2026-10-16T20:04:56+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -5618,6 +6563,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-16T20:04:56+02:00",
+     "items": 6,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -5644,12 +6596,12 @@
      "last_modified": "Fri, 16 Oct 2026 13:24:06 GMT"
     }
    },
-   "last_attempt": "2026-10-16T15:58:50+02:00",
+   "last_attempt": "2026-10-16T20:04:56+02:00",
    "last_error": null,
-   "last_items": 1,
-   "last_latency_s": 1.14,
-   "last_state": "OK",
-   "last_success": "2026-10-16T15:58:50+02:00",
+   "last_items": 0,
+   "last_latency_s": 0.9,
+   "last_state": "NOT_MODIFIED",
+   "last_success": "2026-10-16T20:04:56+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -5749,9 +6701,16 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-16T20:04:56+02:00",
+     "items": 0,
+     "rejected": 0,
+     "state": "NOT_MODIFIED",
+     "warn": 0
     }
    ],
-   "reliability": 0.88,
+   "reliability": 0.89,
    "requests": 2
   },
   "studentbeans": {
@@ -5895,15 +6854,16 @@
     25,
     25,
     25,
+    25,
     25
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-16T10:15:01+02:00",
+   "last_attempt": "2026-10-16T20:04:56+02:00",
    "last_error": null,
    "last_items": 25,
-   "last_latency_s": 1.83,
+   "last_latency_s": 0.99,
    "last_state": "OK",
-   "last_success": "2026-10-16T10:15:01+02:00",
+   "last_success": "2026-10-16T20:04:56+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -5943,6 +6903,13 @@
     },
     {
      "at": "2026-10-16T10:15:01+02:00",
+     "items": 25,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-10-16T20:04:56+02:00",
      "items": 25,
      "rejected": 0,
      "state": "OK",
