@@ -24,9 +24,9 @@
   "weekend_highlight": 0,
   "weekend_highlight_next_week": 0
  },
- "last_attempt": "2026-10-19T07:21:07+02:00",
- "last_new_at": "2026-10-19T07:21:07+02:00",
- "last_success": "2026-10-19T07:21:07+02:00",
+ "last_attempt": "2026-10-19T10:55:07+02:00",
+ "last_new_at": "2026-10-19T10:55:07+02:00",
+ "last_success": "2026-10-19T10:55:07+02:00",
  "outbox": [],
  "recaps": {
   "monday": "2026-10-19",
@@ -70,15 +70,16 @@
   "tech:anomaly:2026-10-17": "2026-10-17T00:10:41.778686+02:00",
   "tech:anomaly:2026-10-18": "2026-10-18T11:30:10.714116+02:00",
   "wave:2026-10-14T00:20:03+02:00": "2026-10-14T12:05:30.840346+02:00",
-  "wave:2026-10-19T07:21:07+02:00": "2026-10-19T07:21:07.509844+02:00"
+  "wave:2026-10-19T07:21:07+02:00": "2026-10-19T07:21:07.509844+02:00",
+  "wave:2026-10-19T10:55:07+02:00": "2026-10-19T10:55:07.097999+02:00"
  },
  "sources": {
   "promo_current_week": {
    "anomalous": false,
-   "checked": "2026-10-19T07:21:07+02:00",
+   "checked": "2026-10-19T10:55:07+02:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-19T07:21:07+02:00",
+   "last_ok": "2026-10-19T10:55:07+02:00",
    "ok": true,
    "pages": 3,
    "received": 247,
@@ -87,10 +88,10 @@
   },
   "promo_next_week": {
    "anomalous": false,
-   "checked": "2026-10-19T07:21:07+02:00",
+   "checked": "2026-10-19T10:55:07+02:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-19T07:21:07+02:00",
+   "last_ok": "2026-10-19T10:55:07+02:00",
    "ok": true,
    "pages": 3,
    "received": 280,
@@ -99,22 +100,22 @@
   },
   "start_of_the_week_highlight": {
    "anomalous": false,
-   "checked": "2026-10-19T07:21:07+02:00",
+   "checked": "2026-10-19T10:55:07+02:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-19T07:21:07+02:00",
+   "last_ok": "2026-10-19T10:55:07+02:00",
    "ok": true,
    "pages": 1,
-   "received": 0,
-   "total": 0,
+   "received": 8,
+   "total": 8,
    "warnings": []
   },
   "weekend_highlight": {
    "anomalous": false,
-   "checked": "2026-10-19T07:21:07+02:00",
+   "checked": "2026-10-19T10:55:07+02:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-19T07:21:07+02:00",
+   "last_ok": "2026-10-19T10:55:07+02:00",
    "ok": true,
    "pages": 1,
    "received": 0,
@@ -123,10 +124,10 @@
   },
   "weekend_highlight_next_week": {
    "anomalous": false,
-   "checked": "2026-10-19T07:21:07+02:00",
+   "checked": "2026-10-19T10:55:07+02:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-19T07:21:07+02:00",
+   "last_ok": "2026-10-19T10:55:07+02:00",
    "ok": true,
    "pages": 1,
    "received": 7,
@@ -147,7 +148,7 @@
    255,
    255,
    255,
-   255,
+   247,
    247
   ],
   "promo_next_week": [
@@ -161,6 +162,7 @@
    256,
    256,
    256,
+   280,
    280
   ],
   "start_of_the_week_highlight": [
@@ -175,7 +177,7 @@
    0,
    0,
    0,
-   0
+   8
   ],
   "weekend_highlight": [
    6,
@@ -188,7 +190,7 @@
    6,
    6,
    6,
-   6,
+   0,
    0
   ],
   "weekend_highlight_next_week": [
@@ -202,7 +204,7 @@
    0,
    0,
    0,
-   0,
+   7,
    7
   ]
  }
