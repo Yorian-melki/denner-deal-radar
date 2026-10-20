@@ -550,21 +550,14 @@
     7
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-20T10:37:20+02:00",
+   "last_attempt": "2026-10-20T11:27:26+02:00",
    "last_error": null,
    "last_items": 7,
-   "last_latency_s": 1.51,
+   "last_latency_s": 1.54,
    "last_state": "OK",
-   "last_success": "2026-10-20T10:37:20+02:00",
+   "last_success": "2026-10-20T11:27:26+02:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-16T03:25:03+02:00",
-     "items": 7,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-16T10:15:01+02:00",
      "items": 7,
@@ -763,6 +756,13 @@
     },
     {
      "at": "2026-10-20T10:37:20+02:00",
+     "items": 7,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-10-20T11:27:26+02:00",
      "items": 7,
      "rejected": 0,
      "state": "OK",
@@ -2951,8 +2951,8 @@
     60,
     60,
     60,
-    60,
     59,
+    58,
     58,
     58,
     58,
@@ -2960,29 +2960,22 @@
    ],
    "http_cache": {
     "https://www.preispirat.ch/cat/freebies/feed/": {
-     "etag": "W/\"34407c2ee06078f448edb02062450a2d\"",
-     "last_modified": "Tue, 20 Oct 2026 08:03:31 GMT"
+     "etag": "W/\"47e7de9bb2f192b3686d4caa30c8188b\"",
+     "last_modified": "Tue, 20 Oct 2026 09:10:28 GMT"
     },
     "https://www.preispirat.ch/feed/": {
-     "etag": "W/\"34407c2ee06078f448edb02062450a2d\"",
-     "last_modified": "Tue, 20 Oct 2026 08:03:31 GMT"
+     "etag": "W/\"47e7de9bb2f192b3686d4caa30c8188b\"",
+     "last_modified": "Tue, 20 Oct 2026 09:10:28 GMT"
     }
    },
-   "last_attempt": "2026-10-20T10:37:20+02:00",
+   "last_attempt": "2026-10-20T11:27:26+02:00",
    "last_error": null,
    "last_items": 58,
-   "last_latency_s": 3.12,
+   "last_latency_s": 3.31,
    "last_state": "OK",
-   "last_success": "2026-10-20T10:37:20+02:00",
+   "last_success": "2026-10-20T11:27:26+02:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-16T03:25:03+02:00",
-     "items": 59,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-16T10:15:01+02:00",
      "items": 59,
@@ -3185,6 +3178,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-20T11:27:26+02:00",
+     "items": 58,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -3195,7 +3195,6 @@
    "consecutive_failures": 0,
    "counts": [
     36,
-    36,
     23,
     23,
     23,
@@ -3205,6 +3204,7 @@
     25,
     25,
     25,
+    26,
     26
    ],
    "details": {
@@ -5781,21 +5781,14 @@
     ]
    },
    "http_cache": {},
-   "last_attempt": "2026-10-20T10:37:20+02:00",
+   "last_attempt": "2026-10-20T11:27:26+02:00",
    "last_error": null,
    "last_items": 26,
-   "last_latency_s": 2.04,
+   "last_latency_s": 1.15,
    "last_state": "OK",
-   "last_success": "2026-10-20T10:37:20+02:00",
+   "last_success": "2026-10-20T11:27:26+02:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-16T03:25:03+02:00",
-     "items": 36,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-16T10:15:01+02:00",
      "items": 36,
@@ -5998,34 +5991,34 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-20T11:27:26+02:00",
+     "items": 26,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
-   "requests": 3
+   "requests": 2
   },
   "rappn": {
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "http_cache": {},
-   "last_attempt": "2026-10-20T10:37:20+02:00",
+   "last_attempt": "2026-10-20T11:27:26+02:00",
    "last_error": null,
    "last_items": 552,
-   "last_latency_s": 37.62,
+   "last_latency_s": 38.53,
    "last_state": "PARTIAL",
-   "last_success": "2026-10-20T10:37:20+02:00",
+   "last_success": "2026-10-20T11:27:26+02:00",
    "last_warnings": [
     "coop: 3 page(s) lue(s), suite non collectée (volume limité)",
     "aligro: 2 page(s) lue(s), suite non collectée (volume limité)",
     "ottos: 2 page(s) lue(s), suite non collectée (volume limité)"
    ],
    "recent": [
-    {
-     "at": "2026-10-16T03:25:03+02:00",
-     "items": 553,
-     "rejected": 0,
-     "state": "PARTIAL",
-     "warn": 3
-    },
     {
      "at": "2026-10-16T10:15:01+02:00",
      "items": 553,
@@ -6224,6 +6217,13 @@
     },
     {
      "at": "2026-10-20T10:37:20+02:00",
+     "items": 552,
+     "rejected": 0,
+     "state": "PARTIAL",
+     "warn": 3
+    },
+    {
+     "at": "2026-10-20T11:27:26+02:00",
      "items": 552,
      "rejected": 0,
      "state": "PARTIAL",
@@ -6708,7 +6708,7 @@
   },
   "stadtsg_news": {
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
-   "consecutive_failures": 1,
+   "consecutive_failures": 0,
    "counts": [
     1,
     1,
@@ -6725,25 +6725,18 @@
    ],
    "http_cache": {
     "https://www.stadt.sg.ch/home/_jcr_content/NewsPar.RssFeed.qualident__item0.rdf": {
-     "etag": "\"478828961c60dd1:0\"",
-     "last_modified": "Mon, 19 Oct 2026 22:52:58 GMT"
+     "etag": "\"1789d74f7360dd1:0\"",
+     "last_modified": "Tue, 20 Oct 2026 09:13:46 GMT"
     }
    },
-   "last_attempt": "2026-10-20T10:37:20+02:00",
-   "last_error": "ConnectTimeout: HTTPSConnectionPool(host='www.stadt.sg.ch', port=443): Max retries exceeded with url: /robots.txt (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.stadt.sg.ch', port=443) at 0x7f657aceb170>, 'Connection to www.stadt.sg.ch timed out. (connect timeout=30)'))",
-   "last_items": 0,
-   "last_latency_s": 185.69,
-   "last_state": "SCRAPE_FAILURE",
-   "last_success": "2026-10-20T02:41:17+02:00",
+   "last_attempt": "2026-10-20T11:27:26+02:00",
+   "last_error": null,
+   "last_items": 1,
+   "last_latency_s": 1.66,
+   "last_state": "OK",
+   "last_success": "2026-10-20T11:27:26+02:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-14T16:41:15+02:00",
-     "items": 1,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-14T20:56:39+02:00",
      "items": 0,
@@ -6946,10 +6939,17 @@
      "rejected": 0,
      "state": "SCRAPE_FAILURE",
      "warn": 0
+    },
+    {
+     "at": "2026-10-20T11:27:26+02:00",
+     "items": 1,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 0.93,
-   "requests": 5
+   "requests": 2
   },
   "studentbeans": {
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
