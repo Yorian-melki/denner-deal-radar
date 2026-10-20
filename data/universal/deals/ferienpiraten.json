@@ -357,14 +357,15 @@
   "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1729762566/Impressions%20and%20Other%20Assets/75EA0B96-80AD-44A9-B774-85D82B7A7B22_nswqd6.jpg",
   "last_changed_at": "2026-10-18T15:19:40+02:00",
   "last_seen_at": "2026-10-20T02:41:17+02:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Ferienpiraten",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_type": "travel",
   "personal_relevance": 0.42,
   "promotion_integrity": "unknown",
   "published_at": "2026-10-18T11:00:00+02:00",
+  "removed_at": "2026-10-20T16:30:27+02:00",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -595,14 +596,15 @@
   "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1755089143/Impressions%20and%20Other%20Assets/ImageConverter-php-size-print-height-1200-hotel-ADEBAY573E-filename-ADEBAY573E-198038-689c3e48ad947_lnxk7n.jpg",
   "last_changed_at": "2026-10-18T10:52:17+02:00",
   "last_seen_at": "2026-10-20T02:41:17+02:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Ferienpiraten",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_type": "accommodation",
   "personal_relevance": 0.27,
   "promotion_integrity": "unknown",
   "published_at": "2026-10-18T10:00:00+02:00",
+  "removed_at": "2026-10-20T16:30:27+02:00",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -618,6 +620,56 @@
    "departure_unknown"
   ],
   "title": "All Inclusive-Kracher in Bayern!"
+ },
+ "ferienpiraten:firefly-luxury-suites-zermatt": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:ferienpiraten:luxus-suite-am-matterhorn",
+  "category": "hotels",
+  "cost_assumptions": [],
+  "currency": "CHF",
+  "current_price": 174.0,
+  "deal_id": "ferienpiraten:firefly-luxury-suites-zermatt",
+  "deal_score": null,
+  "description": "Hoi Piraten, wir schicken euch in die Premium-Kurzferien ins sagenhafte 4* Firefly Luxury Suites Hotel! Ihr nächtigt direkt am Fusse des Matterhorns und könnt euch auf modernes Designs und alpinem Luxus freuen. Das Beste: Ihr verbringt euren Kurztrip in der Junior Suite und seid in 3 Gehminuten direkt an der Seilbahn Klein Matterhorn. Eine Übernachtung inkl. Frühstück gibt es ab CHF 174,50 pro Per",
+  "effective_discount": null,
+  "extra_tags": [
+   "departure_unknown"
+  ],
+  "family": "travel",
+  "first_seen_at": "2026-10-20T16:30:27+02:00",
+  "geographic_scope": "TRAVEL_ACCESSIBLE",
+  "geographic_scope_resolved": "TRAVEL_ACCESSIBLE",
+  "group": "travel",
+  "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1792400218/Impressions%20and%20Other%20Assets/79356734_e3hlmq.jpg",
+  "last_changed_at": "2026-10-20T16:30:27+02:00",
+  "last_seen_at": "2026-10-20T16:30:27+02:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Ferienpiraten",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "accommodation",
+  "personal_relevance": 0.27,
+  "price_unit": "pro Person",
+  "promotion_integrity": "unknown",
+  "published_at": "2026-10-20T14:00:00+02:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "ferienpiraten",
+  "source_offer_id": "https://www.ferienpiraten.ch/hotels/firefly-luxury-suites-zermatt",
+  "source_type": "community",
+  "source_url": "https://www.ferienpiraten.ch/hotels/firefly-luxury-suites-zermatt",
+  "tags": [
+   "departure_unknown"
+  ],
+  "title": "Luxus-Suite am Matterhorn 🏔️",
+  "total_acquisition_cost": 174.0
  },
  "ferienpiraten:glashuette-mit-whirlpool-island-airbnb-ch": {
   "access": "PUBLIC",
@@ -1083,7 +1135,7 @@
   "last_seen_at": "2026-10-20T10:37:20+02:00",
   "lifecycle": "ACTIVE",
   "merchant": "Ferienpiraten",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "accommodation",
   "personal_relevance": 0.27,
