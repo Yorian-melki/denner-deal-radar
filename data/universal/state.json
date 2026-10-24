@@ -745,21 +745,14 @@
     7
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-24T10:11:40+02:00",
+   "last_attempt": "2026-10-24T10:53:58+02:00",
    "last_error": null,
    "last_items": 7,
-   "last_latency_s": 1.29,
+   "last_latency_s": 1.21,
    "last_state": "OK",
-   "last_success": "2026-10-24T10:11:40+02:00",
+   "last_success": "2026-10-24T10:53:58+02:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-19T18:59:32+02:00",
-     "items": 7,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-19T23:32:56+02:00",
      "items": 7,
@@ -958,6 +951,13 @@
     },
     {
      "at": "2026-10-24T10:11:40+02:00",
+     "items": 7,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-10-24T10:53:58+02:00",
      "items": 7,
      "rejected": 0,
      "state": "OK",
@@ -1224,24 +1224,17 @@
     84
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-24T10:11:40+02:00",
+   "last_attempt": "2026-10-24T10:53:58+02:00",
    "last_error": null,
    "last_items": 86,
-   "last_latency_s": 3.1,
+   "last_latency_s": 2.6,
    "last_state": "PARTIAL",
-   "last_success": "2026-10-24T10:11:40+02:00",
+   "last_success": "2026-10-24T10:53:58+02:00",
    "last_warnings": [
     "mobile : 50/52 offres (suite via POST non suivie)",
     "4 date(s) « Aktion bis » invalide(s) ignorée(s)"
    ],
    "recent": [
-    {
-     "at": "2026-10-15T16:11:18+02:00",
-     "items": 84,
-     "rejected": 0,
-     "state": "PARTIAL",
-     "warn": 2
-    },
     {
      "at": "2026-10-15T20:19:26+02:00",
      "items": 84,
@@ -1440,6 +1433,13 @@
     },
     {
      "at": "2026-10-24T10:11:40+02:00",
+     "items": 86,
+     "rejected": 0,
+     "state": "PARTIAL",
+     "warn": 2
+    },
+    {
+     "at": "2026-10-24T10:53:58+02:00",
      "items": 86,
      "rejected": 0,
      "state": "PARTIAL",
@@ -2436,12 +2436,12 @@
     7
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-23T23:43:22+02:00",
+   "last_attempt": "2026-10-24T10:53:58+02:00",
    "last_error": null,
    "last_items": 7,
-   "last_latency_s": 12.37,
+   "last_latency_s": 22.25,
    "last_state": "OK",
-   "last_success": "2026-10-23T23:43:22+02:00",
+   "last_success": "2026-10-24T10:53:58+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -2583,10 +2583,17 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-24T10:53:58+02:00",
+     "items": 7,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
-   "requests": 2
+   "requests": 3
   },
   "gutscheine_20min": {
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
@@ -2838,7 +2845,7 @@
     4,
     4,
     4,
-    4,
+    3,
     3,
     3,
     3,
@@ -2846,12 +2853,12 @@
     3
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-23T23:43:22+02:00",
+   "last_attempt": "2026-10-24T10:53:58+02:00",
    "last_error": null,
    "last_items": 3,
-   "last_latency_s": 4.65,
+   "last_latency_s": 1.87,
    "last_state": "OK",
-   "last_success": "2026-10-23T23:43:22+02:00",
+   "last_success": "2026-10-24T10:53:58+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -2989,6 +2996,13 @@
     },
     {
      "at": "2026-10-23T23:43:22+02:00",
+     "items": 3,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-10-24T10:53:58+02:00",
      "items": 3,
      "rejected": 0,
      "state": "OK",
@@ -3588,7 +3602,6 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "counts": [
-    60,
     59,
     59,
     59,
@@ -3599,33 +3612,27 @@
     59,
     59,
     59,
+    58,
     58
    ],
    "http_cache": {
     "https://www.preispirat.ch/cat/freebies/feed/": {
-     "etag": "W/\"24624b54ab5cd61a91625ae60e2a20af\"",
-     "last_modified": "Sat, 24 Oct 2026 08:01:04 GMT"
+     "etag": "W/\"6ab8f51f7a26d629e5bc0459fd024a92\"",
+     "last_modified": "Sat, 24 Oct 2026 08:39:32 GMT"
     },
     "https://www.preispirat.ch/feed/": {
-     "etag": "W/\"24624b54ab5cd61a91625ae60e2a20af\"",
-     "last_modified": "Sat, 24 Oct 2026 08:01:04 GMT"
+     "etag": "W/\"6ab8f51f7a26d629e5bc0459fd024a92\"",
+     "last_modified": "Sat, 24 Oct 2026 08:39:32 GMT"
     }
    },
-   "last_attempt": "2026-10-24T10:11:40+02:00",
+   "last_attempt": "2026-10-24T10:53:58+02:00",
    "last_error": null,
    "last_items": 58,
-   "last_latency_s": 3.19,
+   "last_latency_s": 3.09,
    "last_state": "OK",
-   "last_success": "2026-10-24T10:11:40+02:00",
+   "last_success": "2026-10-24T10:53:58+02:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-19T18:59:32+02:00",
-     "items": 59,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-19T23:32:56+02:00",
      "items": 58,
@@ -3828,6 +3835,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-24T10:53:58+02:00",
+     "items": 58,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -3837,7 +3851,6 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "counts": [
-    24,
     26,
     26,
     26,
@@ -3848,7 +3861,8 @@
     30,
     30,
     30,
-    30
+    30,
+    29
    ],
    "details": {
     "89741": [
@@ -5403,68 +5417,6 @@
      },
      {
       "price": 3990.0,
-      "regular": null,
-      "stock": "available"
-     }
-    ],
-    "98388": [
-     {
-      "price": 24.9,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 29.9,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 24.9,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 29.9,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 22.9,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 24.9,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 22.9,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 24.9,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 24.9,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 24.9,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 24.9,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 22.9,
       "regular": null,
       "stock": "available"
      }
@@ -7663,21 +7615,14 @@
     ]
    },
    "http_cache": {},
-   "last_attempt": "2026-10-24T10:11:40+02:00",
+   "last_attempt": "2026-10-24T10:53:58+02:00",
    "last_error": null,
-   "last_items": 30,
-   "last_latency_s": 1.19,
+   "last_items": 29,
+   "last_latency_s": 1.21,
    "last_state": "OK",
-   "last_success": "2026-10-24T10:11:40+02:00",
+   "last_success": "2026-10-24T10:53:58+02:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-19T18:59:32+02:00",
-     "items": 25,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-19T23:32:56+02:00",
      "items": 25,
@@ -7880,6 +7825,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-24T10:53:58+02:00",
+     "items": 29,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -7889,25 +7841,18 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "http_cache": {},
-   "last_attempt": "2026-10-24T10:11:40+02:00",
+   "last_attempt": "2026-10-24T10:53:58+02:00",
    "last_error": null,
    "last_items": 554,
-   "last_latency_s": 38.54,
+   "last_latency_s": 5.91,
    "last_state": "PARTIAL",
-   "last_success": "2026-10-24T10:11:40+02:00",
+   "last_success": "2026-10-24T10:53:58+02:00",
    "last_warnings": [
     "coop: 3 page(s) lue(s), suite non collectée (volume limité)",
     "aligro: 2 page(s) lue(s), suite non collectée (volume limité)",
     "ottos: 2 page(s) lue(s), suite non collectée (volume limité)"
    ],
    "recent": [
-    {
-     "at": "2026-10-19T18:59:32+02:00",
-     "items": 552,
-     "rejected": 0,
-     "state": "PARTIAL",
-     "warn": 3
-    },
     {
      "at": "2026-10-19T23:32:56+02:00",
      "items": 552,
@@ -8106,6 +8051,13 @@
     },
     {
      "at": "2026-10-24T10:11:40+02:00",
+     "items": 554,
+     "rejected": 0,
+     "state": "PARTIAL",
+     "warn": 3
+    },
+    {
+     "at": "2026-10-24T10:53:58+02:00",
      "items": 554,
      "rejected": 0,
      "state": "PARTIAL",
@@ -8865,7 +8817,6 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "counts": [
-    33,
     35,
     32,
     34,
@@ -8876,15 +8827,16 @@
     34,
     34,
     35,
+    34,
     34
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-23T23:43:22+02:00",
+   "last_attempt": "2026-10-24T10:53:58+02:00",
    "last_error": null,
    "last_items": 34,
-   "last_latency_s": 0.87,
+   "last_latency_s": 0.95,
    "last_state": "OK",
-   "last_success": "2026-10-23T23:43:22+02:00",
+   "last_success": "2026-10-24T10:53:58+02:00",
    "last_warnings": [],
    "recent": [
     {
@@ -9022,6 +8974,13 @@
     },
     {
      "at": "2026-10-23T23:43:22+02:00",
+     "items": 34,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-10-24T10:53:58+02:00",
      "items": 34,
      "rejected": 0,
      "state": "OK",
