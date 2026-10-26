@@ -19,7 +19,7 @@
   "geographic_scope_resolved": "LOCAL",
   "group": "local_news",
   "last_changed_at": "2026-10-21T16:41:36+02:00",
-  "last_seen_at": "2026-10-26T11:09:58+01:00",
+  "last_seen_at": "2026-10-26T17:48:20+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Stadt St. Gallen",
   "missing_scans": 0,
@@ -65,7 +65,7 @@
   "geographic_scope_resolved": "LOCAL",
   "group": "local_news",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-10-26T11:09:58+01:00",
+  "last_seen_at": "2026-10-26T17:48:20+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Stadt St. Gallen",
   "missing_scans": 0,
@@ -91,5 +91,51 @@
    "signal_opening"
   ],
   "title": "Das Winterbad Lerchenfeld startet in die zweite Saison"
+ },
+ "stadtsg_news:nachsammlung-kehricht-und-gruengut": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:stadt-st-gallen:nachsammlung-kehricht-und-grungut",
+  "city": "St. Gallen",
+  "deal_id": "stadtsg_news:nachsammlung-kehricht-und-gruengut",
+  "deal_score": null,
+  "description": "Aufgrund einer technischen Panne bei der Anlieferung zum Kehrichtheizkraftwerk wurde am Montag, 26. Oktober 2026 die Ausfahrt unserer Garage blockiert. Dadurch konnten am Nachmittag einige unserer Sammelfahrzeuge nicht auf Tour gehen, weshalb einzelne Kehricht- und Grüngutsammlungen nicht wie geplant abgeschlossen werden konnten. Betroffen sind einzelne Strassen in den Quartieren Lachen, Bruggen u",
+  "effective_discount": null,
+  "extra_tags": [
+   "signal_closing"
+  ],
+  "family": "local_news",
+  "first_seen_at": "2026-10-26T17:48:20+01:00",
+  "geographic_scope": "LOCAL",
+  "geographic_scope_resolved": "LOCAL",
+  "group": "local_news",
+  "last_changed_at": "2026-10-26T17:48:20+01:00",
+  "last_seen_at": "2026-10-26T17:48:20+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Stadt St. Gallen",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "local_signal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-10-26T16:10:00+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "signal_types": [
+   "closing"
+  ],
+  "source_id": "stadtsg_news",
+  "source_type": "official",
+  "source_url": "https://www.stadt.sg.ch/news/stsg_entsorgung/2026/10/nachsammlung-kehricht-und-gruengut.html",
+  "tags": [
+   "signal_closing"
+  ],
+  "title": "Nachsammlung Kehricht und Grüngut"
  }
 }
