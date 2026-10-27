@@ -8,14 +8,15 @@ import { OutLink } from "@/components/OutLink";
 import { rewriteUrl } from "@/lib/affiliate/rewrite";
 import { categoryBySlug } from "@/lib/categories";
 import { getDeals } from "@/lib/data";
+import { hasPage } from "@/lib/project";
 import { fmtDate, fmtPrice } from "@/lib/site";
 
-export const revalidate = 1800;
-// Les 300 meilleurs deals sont pré-générés ; les autres à la première visite (ISR).
-export const dynamicParams = true;
+// Export statique : une page par deal NOTÉ (les non-notés renvoient directement
+// au marchand depuis les cartes — pas de contenu mince, moins de fichiers).
+export const dynamicParams = false;
 export async function generateStaticParams() {
   const { deals } = await getDeals();
-  return deals.slice(0, 300).map((d) => ({ slug: d.slug }));
+  return deals.filter(hasPage).map((d) => ({ slug: d.slug }));
 }
 
 type P = { params: Promise<{ slug: string }> };
@@ -33,8 +34,6 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
     title: `${d.title}${price}`,
     description: `${d.title}${price}${d.discountPct ? ` (−${Math.round(d.discountPct)}%)` : ""} bei ${d.merchant ?? d.attribution}. Deal-Note ${d.score?.toFixed(1) ?? "–"}/10.`,
     alternates: { canonical: `/deal/${d.slug}` },
-    // Un deal non évalué est peu utile seul : pas d'indexation.
-    ...(d.score === undefined ? { robots: { index: false, follow: true } } : {}),
   };
 }
 

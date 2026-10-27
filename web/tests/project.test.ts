@@ -3,7 +3,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { CITIES } from "@/config/cities";
 import { CATEGORIES, categoryForFamily } from "@/lib/categories";
-import { dealSlug, inCity, projectDeal, projectFeed, slugify } from "@/lib/project";
+import { dealSlug, hasPage, inCity, markPages, projectDeal, projectFeed, slugify } from "@/lib/project";
 import type { Feed, RawDeal } from "@/lib/types";
 
 const FEED: Feed = { id: "ch-sg", country: "CH", currency: "CHF", url: "x", cities: ["st-gallen"] };
@@ -48,6 +48,15 @@ describe("projectDeal", () => {
     const online = projectDeal(base, FEED, NOW)!;
     expect(inCity(online, { slug: "zuerich", country: "CH" })).toBe(true);
     expect(inCity(online, { slug: "paris", country: "FR" })).toBe(false);
+  });
+});
+
+describe("markPages", () => {
+  it("note ≥ 5 seulement, plafonné, dans l'ordre du classement", () => {
+    const mk = (score?: number) => projectDeal({ ...base, deal_id: `q:${score}`, title: `T${score}`, deal_score: score }, FEED, NOW)!;
+    const ranked = [mk(9), mk(8), mk(6), mk(4.9), mk(undefined)];
+    expect(markPages(ranked).map(hasPage)).toEqual([true, true, true, false, false]);
+    expect(markPages(ranked, 2).map(hasPage)).toEqual([true, true, false, false, false]);
   });
 });
 

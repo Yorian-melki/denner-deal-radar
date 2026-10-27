@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { rewriteUrl } from "@/lib/affiliate/rewrite";
 import { fmtDate, fmtPrice } from "@/lib/site";
+import { hasPage } from "@/lib/project";
 import type { PublicDeal } from "@/lib/types";
 import { OutLink } from "@/components/OutLink";
 
@@ -16,7 +17,7 @@ export function DealCard({ deal }: { deal: PublicDeal }) {
     <article className="card">
       <ScoreBadge score={deal.score} />
       <div className="card-body">
-        <h3><Link href={`/deal/${deal.slug}`}>{deal.title}</Link></h3>
+        <h3>{hasPage(deal) ? <Link href={`/deal/${deal.slug}`}>{deal.title}</Link> : deal.title}</h3>
         <p className="meta">
           {deal.price !== undefined && <strong>{fmtPrice(deal.price, deal.currency)}</strong>}
           {deal.referencePrice !== undefined && deal.price !== undefined && deal.referencePrice > deal.price && (

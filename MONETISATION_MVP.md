@@ -59,17 +59,19 @@ GO explicite de Yorian pour ce canal.
 ```
             (inchangé, 0 CHF)                                (nouveau)
 GitHub Actions cron ─► python -m radar u-scan ─► data/ (git)
-                    └► u-export ─► GitHub Pages /data/universal.json ──fetch (ISR 30 min)──► Next.js web/ (Vercel)
+                    └► u-export ─► GitHub Pages /data/universal.json ──fetch au build (toutes les 2 h, web.yml)──► Next.js web/ → export statique → Cloudflare Pages
                                                                                          ├─ lib/project.ts   liste blanche publique + garde-fous
                                                                                          ├─ lib/affiliate/   réécriture des liens (pure, testée)
                                                                                          ├─ app/[city]/[category], app/deal/[slug]  pages SEO
                                                                                          ├─ AdSlot + Consent (pub seulement après accord)
-                                                                                         └─ Vercel Web Analytics (sans cookie) + track("outbound_click")
+                                                                                         ├─ Cloudflare Web Analytics (sans cookie)
+                                                                                         └─ functions/api/click.ts : compteur anonyme de clics (Analytics Engine)
 ```
 
 **Pourquoi ce découpage** : le scanner reste gratuit et inchangé ; le site ne
-fait que lire un JSON public. Un flux en panne → l'ISR garde la dernière page
-(jamais de page vide publiée). Aucune base de données.
+fait que lire un JSON public. Un flux en panne → le build échoue et Cloudflare
+garde le dernier déploiement (jamais de page vide publiée). Aucune base de données,
+aucun serveur : 0 CHF.
 
 ### Multi-villes / multi-pays (`web/config/cities.ts`)
 * `FEEDS` : un flux JSON par zone (même schéma que `universal.json`). Ajouter
@@ -94,19 +96,32 @@ fait que lire un JSON public. Un flux en panne → l'ISR garde la dernière page
   sur `/transparenz`.
 
 ### Mesure
-* Vercel Web Analytics : pages vues sans cookie (pas de bannière nécessaire).
-* `track("outbound_click", {deal, source, affiliate, programme})` : les
-  **événements personnalisés exigent le plan Pro**. En Hobby, les clics se lisent
-  dans les rapports des réseaux d'affiliation.
+* Cloudflare Web Analytics : pages vues sans cookie (pas de bannière nécessaire).
+* Clics sortants : `sendBeacon('/api/click')` → Pages Function → Workers
+  Analytics Engine (gratuit), sans IP ni cookie. Les ventes se lisent dans les
+  rapports des réseaux d'affiliation.
 
-### ⚠️ Hébergement : Vercel Hobby interdit l'usage commercial
-Les règles Vercel classent explicitement **pub (AdSense) et sites dont
-l'affiliation est le but principal** comme usage commercial → plan **Pro
-(~20 USD/mois)** obligatoire dès que pub ou affiliation sont activées en
-production. Alternatives gratuites autorisant le commercial : Cloudflare Pages
-(export statique + rebuild déclenché par le workflow après chaque scan) ou
-Netlify. **Décision à prendre par Yorian avant le lancement** (voir §6).
-La preview actuelle (aucun identifiant d'affiliation, aucune pub) n'est pas commerciale.
+### Hébergement : Cloudflare Pages (décidé le 28.10.2026)
+Vercel Hobby interdit l'usage commercial (pub, sites d'affiliation) → Pro à
+~20 USD/mois. Cloudflare Pages gratuit autorise le commercial : **0 CHF**.
+Contraintes du gratuit respectées : 20 000 fichiers max (garde-fou dans
+`web.yml` ; pages deal limitées aux deals ≥ 5/10, max 3 000), 25 Mo par fichier,
+déploiements par upload direct depuis GitHub Actions (pas de quota de builds).
+`web.yml` reconstruit toutes les 2 h (360 déploiements/mois).
+
+### Domaine
+* Marque retenue : **savradar.com** (save + radar). Libre au 28.10.2026, aucune
+  marque homonyme trouvée, prononçable en DE/FR/EN, sans ville ni pays dans le
+  nom (expansion mondiale), continuité avec « Deal Radar ».
+* Registrar : **Spaceship** (compte existant de Yorian ; .com le moins cher au
+  renouvellement, ~10 USD/an, souvent ~5–9 USD la 1ʳᵉ année). Cloudflare Registrar
+  (prix coûtant ~10.46 USD/an) est l'alternative si on veut tout chez Cloudflare.
+* `.ch` (savradar.ch) : optionnel, à prendre plus tard pour la confiance locale
+  (redirection 301 vers .com). Pas nécessaire au lancement.
+* Option 0 CHF en attendant : `savradar.pages.dev` (noindex, pour ne pas créer
+  de contenu dupliqué avant le vrai domaine).
+* E-mail de contact gratuit : `contact@savradar.com` via Cloudflare Email Routing
+  → redirigé vers sa boîte Gmail (pas d'adresse perso affichée).
 
 ## 4. Check-list légale
 
@@ -142,9 +157,9 @@ canal étudiant (B2B associations / app) plutôt que la pub.
 ## 6. Ce que Yorian doit faire lui-même (je ne crée aucun compte, ne paie rien, ne tape aucun mot de passe)
 
 Ordre recommandé :
-1. **Choisir l'hébergement de production** : Vercel Pro (~20 USD/mois, le plus simple) ou Cloudflare Pages (gratuit, je migre le build en statique). → réponse : « Pro » ou « Cloudflare ».
-2. **Choisir et acheter un nom de domaine** (~10–15 CHF/an, ex. un .ch court) — paiement par lui.
-3. **Fournir l'Impressum** : nom, adresse postale, e-mail de contact (ou adresse c/o).
+1. ~~Hébergement~~ : Cloudflare Pages (fait). Se connecter à Cloudflare (clic « Allow ») et créer le jeton API pour la CI.
+2. **Acheter savradar.com** chez Spaceship (~5–10 USD) — confirmation de l'achat par lui.
+3. **Fournir l'adresse postale de l'Impressum** (nom + adresse ; c/o accepté). Pourquoi : la loi suisse (art. 3 al. 1 let. s LCD) oblige tout site commercial (pub/affiliation) à afficher l'identité et une adresse de contact, et le RGPD exige l'identité du responsable dans la politique de confidentialité. Sans cela : site attaquable et refus probable d'AdSense/des réseaux.
 4. **Créer les comptes d'affiliation à son nom** puis me donner uniquement les identifiants publics :
    * Tradedoubler (éditeur) → postuler au programme Galaxus ; écrire à affiliate@galaxus.ch pour le programme suisse/Digitec.
    * Awin (éditeur, frais d'inscription remboursable possible) → chercher BRACK, Revendo, UNiDAYS, Student Beans, opérateurs mobiles.

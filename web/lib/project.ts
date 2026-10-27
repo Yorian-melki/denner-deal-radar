@@ -127,5 +127,22 @@ export function projectFeed(raw: RawDeal[], feed: Feed, now: Date): PublicDeal[]
   return rankDeals(out);
 }
 
+/** Pages deal : seulement les deals notés ≥ 5/10, plafonnés (Cloudflare Pages
+ * gratuit = 20 000 fichiers max, ~5 fichiers par page). Les autres cartes
+ * renvoient directement au marchand. */
+export const PAGE_MIN_SCORE = 5;
+export const MAX_DEAL_PAGES = 3000;
+
+export function markPages(ranked: PublicDeal[], max = MAX_DEAL_PAGES): PublicDeal[] {
+  let n = 0;
+  return ranked.map((d) => {
+    const page = d.score !== undefined && d.score >= PAGE_MIN_SCORE && n < max;
+    if (page) n++;
+    return page ? { ...d, page } : d;
+  });
+}
+
+export const hasPage = (d: PublicDeal) => d.page === true;
+
 export const inCity = (d: PublicDeal, city: { slug: string; country: string }) =>
   d.country === city.country && (d.cities.includes("*") || d.cities.includes(city.slug));

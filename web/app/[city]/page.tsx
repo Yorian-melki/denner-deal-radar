@@ -9,7 +9,6 @@ import { getDeals } from "@/lib/data";
 import { inCity } from "@/lib/project";
 import { fmtDate } from "@/lib/site";
 
-export const revalidate = 1800;
 export const dynamicParams = false;
 export const generateStaticParams = () => launchedCities().map((c) => ({ city: c.slug }));
 

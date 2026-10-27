@@ -40,6 +40,7 @@ export interface PublicDeal {
   attribution: string;   // « Quelle : Denner (denner.ch) »
   requiresStudent?: boolean;
   couponCode?: string;
+  page?: boolean;        // a sa propre page /deal/<slug>
 }
 
 export interface Feed {

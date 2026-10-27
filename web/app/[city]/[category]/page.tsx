@@ -8,7 +8,6 @@ import { CATEGORIES, categoryBySlug } from "@/lib/categories";
 import { getDeals } from "@/lib/data";
 import { inCity } from "@/lib/project";
 
-export const revalidate = 1800;
 export const dynamicParams = false;
 export const generateStaticParams = () =>
   launchedCities().flatMap((c) => CATEGORIES.map((cat) => ({ city: c.slug, category: cat.slug })));

@@ -1,19 +1,11 @@
 import type { NextConfig } from "next";
 
+// Export statique → Cloudflare Pages (gratuit, usage commercial autorisé).
+// Les en-têtes HTTP sont dans public/_headers (format Cloudflare).
 const config: NextConfig = {
+  output: "export",
+  images: { unoptimized: true },
   poweredByHeader: false,
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: [
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
-        ],
-      },
-    ];
-  },
 };
 
 export default config;

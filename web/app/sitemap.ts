@@ -2,10 +2,11 @@ import type { MetadataRoute } from "next";
 import { launchedCities } from "@/config/cities";
 import { CATEGORIES } from "@/lib/categories";
 import { getDeals } from "@/lib/data";
-import { inCity } from "@/lib/project";
+import { hasPage, inCity } from "@/lib/project";
 import { SITE_URL } from "@/lib/site";
 
-export const revalidate = 1800;
+
+export const dynamic = "force-static";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { deals, generatedAt } = await getDeals();
@@ -19,7 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
   for (const d of deals) {
-    if (d.score !== undefined) out.push({ url: `${SITE_URL}/deal/${d.slug}`, lastModified, changeFrequency: "daily", priority: 0.5 });
+    if (hasPage(d)) out.push({ url: `${SITE_URL}/deal/${d.slug}`, lastModified, changeFrequency: "daily", priority: 0.5 });
   }
   return out;
 }

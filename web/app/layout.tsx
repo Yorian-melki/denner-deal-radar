@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Analytics } from "@vercel/analytics/next";
 import { ConsentProvider } from "@/components/Consent";
 import { INDEXABLE, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -32,7 +31,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </nav>
           </footer>
         </ConsentProvider>
-        <Analytics />
+        {process.env.NEXT_PUBLIC_CF_BEACON_TOKEN && (
+          // Cloudflare Web Analytics : sans cookie, aucune donnée personnelle.
+          <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: process.env.NEXT_PUBLIC_CF_BEACON_TOKEN })} />
+        )}
       </body>
     </html>
   );

@@ -2,11 +2,11 @@ import "server-only";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { FEEDS } from "@/config/cities";
-import { projectFeed, rankDeals } from "@/lib/project";
+import { markPages, projectFeed, rankDeals } from "@/lib/project";
 import type { PublicDeal, RawDeal } from "@/lib/types";
 
-/** Le flux fait plusieurs Mo : au-delà de la limite du Data Cache de Next.
- * On garde donc une mémo en mémoire par instance (TTL = revalidate des pages). */
+/** Le flux fait plusieurs Mo (au-delà du Data Cache de Next) : mémo en mémoire
+ * par processus de build, pour ne le télécharger qu'une fois par worker. */
 const TTL_MS = 15 * 60 * 1000;
 let memo: { at: number; deals: PublicDeal[]; generatedAt: string } | null = null;
 
@@ -15,8 +15,7 @@ async function loadRaw(url: string): Promise<{ generated_at?: string; deals: Raw
     const p = path.join(process.cwd(), "fixtures", "universal.sample.json");
     return JSON.parse(await readFile(p, "utf8"));
   }
-  // revalidate (et non no-store) : sinon Next rend toutes les pages dynamiques.
-  const res = await fetch(url, { next: { revalidate: 1800 }, signal: AbortSignal.timeout(20_000) });
+  const res = await fetch(url, { cache: "force-cache", signal: AbortSignal.timeout(30_000) });
   if (!res.ok) throw new Error(`feed ${url}: HTTP ${res.status}`);
   return res.json();
 }
@@ -41,6 +40,6 @@ export async function getDeals(): Promise<{ deals: PublicDeal[]; generatedAt: st
     if (memo) return memo;
     throw new Error("aucun flux disponible");
   }
-  memo = { at: Date.now(), deals: rankDeals(deals), generatedAt };
+  memo = { at: Date.now(), deals: markPages(rankDeals(deals)), generatedAt };
   return memo;
 }

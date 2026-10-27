@@ -4,7 +4,6 @@ import { DealGrid } from "@/components/DealCard";
 import { getDeals } from "@/lib/data";
 import { inCity } from "@/lib/project";
 
-export const revalidate = 1800;
 
 export default async function Home() {
   const { deals } = await getDeals();

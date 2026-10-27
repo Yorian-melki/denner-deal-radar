@@ -1,8 +1,8 @@
 export const SITE_NAME = "Deal Radar";
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")).replace(/\/$/, "");
-/** Seule la production est indexable (les previews Vercel restent en noindex). */
-export const INDEXABLE = process.env.VERCEL_ENV === "production" && !!process.env.NEXT_PUBLIC_SITE_URL;
-export const REVALIDATE_SECONDS = 1800;
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+/** Indexation seulement quand le build vise le domaine définitif (SITE_INDEXABLE=1
+ * dans la CI) : jamais *.pages.dev ni les previews, pour éviter le contenu dupliqué. */
+export const INDEXABLE = process.env.SITE_INDEXABLE === "1" && !!process.env.NEXT_PUBLIC_SITE_URL;
 
 export const fmtPrice = (v: number | undefined, cur: string) =>
   v === undefined ? "" : new Intl.NumberFormat("de-CH", { style: "currency", currency: cur }).format(v);

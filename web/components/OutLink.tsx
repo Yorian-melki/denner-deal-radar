@@ -1,8 +1,7 @@
 "use client";
-import { track } from "@vercel/analytics";
 
-/** Lien sortant : la réécriture affiliée est faite côté serveur (props), ici on
- * ne fait que mesurer le clic (événement personnalisé Vercel Analytics, sans cookie). */
+/** Lien sortant : la réécriture affiliée est faite au build (props) ; ici on
+ * compte seulement le clic, anonymement, via /api/click (fonction Cloudflare). */
 export function OutLink(props: {
   href: string; rel: string; affiliate: boolean; dealId: string; source: string; programme?: string;
   children: React.ReactNode; className?: string;
@@ -16,7 +15,8 @@ export function OutLink(props: {
       className={className}
       onClick={() => {
         try {
-          track("outbound_click", { deal: dealId, source, affiliate, programme: programme ?? "none" });
+          const body = JSON.stringify({ deal: dealId, source, affiliate, programme: programme ?? "none", page: location.pathname });
+          navigator.sendBeacon?.("/api/click", new Blob([body], { type: "application/json" }));
         } catch {}
       }}
     >
