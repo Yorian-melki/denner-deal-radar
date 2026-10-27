@@ -1,0 +1,69 @@
+name: web
+# Site public (web/) : export statique Next.js → Cloudflare Pages.
+# Reconstruit toutes les 2 h à partir du flux publié par le scanner (GitHub Pages),
+# et à chaque modification de web/. Ne commite rien : aucun conflit avec radar-data.
+on:
+  schedule:
+    - cron: "20 */2 * * *"
+  push:
+    branches: [main]
+    paths: ["web/**", ".github/workflows/web.yml"]
+  workflow_dispatch:
+
+concurrency:
+  group: web-deploy
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: web
+    env:
+      NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}
+      SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE }}
+      NEXT_PUBLIC_CF_BEACON_TOKEN: ${{ vars.CF_BEACON_TOKEN }}
+      NEXT_PUBLIC_OPERATOR_NAME: ${{ vars.OPERATOR_NAME }}
+      NEXT_PUBLIC_OPERATOR_ADDRESS: ${{ vars.OPERATOR_ADDRESS }}
+      NEXT_PUBLIC_OPERATOR_EMAIL: ${{ vars.OPERATOR_EMAIL }}
+      NEXT_PUBLIC_ADSENSE_CLIENT: ${{ vars.ADSENSE_CLIENT }}
+      NEXT_PUBLIC_ADSENSE_SLOT: ${{ vars.ADSENSE_SLOT }}
+      AFF_TRADEDOUBLER_ID: ${{ vars.AFF_TRADEDOUBLER_ID }}
+      AFF_TRADEDOUBLER_GALAXUS_P: ${{ vars.AFF_TRADEDOUBLER_GALAXUS_P }}
+      AFF_TRADEDOUBLER_DIGITEC_P: ${{ vars.AFF_TRADEDOUBLER_DIGITEC_P }}
+      AFF_AWIN_ID: ${{ vars.AFF_AWIN_ID }}
+      AFF_AWIN_MIDS: ${{ vars.AFF_AWIN_MIDS }}
+      AFF_AMAZON_DE_TAG: ${{ vars.AFF_AMAZON_DE_TAG }}
+      AFF_ALIEXPRESS_TEMPLATE: ${{ vars.AFF_ALIEXPRESS_TEMPLATE }}
+      AFF_BOOKING_AID: ${{ vars.AFF_BOOKING_AID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npx tsc --noEmit
+      - run: npm run build
+      - name: Garde-fou taille (Cloudflare Pages gratuit = 20 000 fichiers)
+        run: |
+          n=$(find out -type f | wc -l)
+          echo "fichiers: $n"
+          test "$n" -lt 19000
+      - name: Déploiement Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::warning::Secrets Cloudflare absents — build vérifié, déploiement ignoré."
+            exit 0
+          fi
+          npx wrangler@4.154.0 pages deploy out --project-name savradar --branch main --commit-dirty=true

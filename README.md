@@ -13,6 +13,8 @@ Documentation : [ARCHITECTURE](docs/ARCHITECTURE.md) · [SCORING](docs/SCORING.m
 [COSTS](docs/COSTS.md) · [ADDING_A_SOURCE](docs/ADDING_A_SOURCE.md).
 Point de restauration de la V2 : tag `v2-denner-baseline`.
 
+**Site public (v0, preview)** : `web/` (Next.js) + plan [MONETISATION_MVP](MONETISATION_MVP.md).
+
 ### Commandes V3
 
 ```bash
