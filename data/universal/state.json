@@ -947,21 +947,14 @@
     7
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-27T01:51:30+01:00",
+   "last_attempt": "2026-10-27T03:07:03+01:00",
    "last_error": null,
    "last_items": 7,
-   "last_latency_s": 1.35,
+   "last_latency_s": 1.17,
    "last_state": "OK",
-   "last_success": "2026-10-27T01:51:30+01:00",
+   "last_success": "2026-10-27T03:07:03+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-22T16:41:52+02:00",
-     "items": 7,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-22T20:51:46+02:00",
      "items": 7,
@@ -1164,6 +1157,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-27T03:07:03+01:00",
+     "items": 7,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -1183,25 +1183,18 @@
     8,
     8,
     8,
-    8,
+    7,
     7
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-27T01:51:30+01:00",
+   "last_attempt": "2026-10-27T03:07:03+01:00",
    "last_error": null,
    "last_items": 7,
-   "last_latency_s": 5.63,
+   "last_latency_s": 4.53,
    "last_state": "OK",
-   "last_success": "2026-10-27T01:51:30+01:00",
+   "last_success": "2026-10-27T03:07:03+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-22T03:33:32+02:00",
-     "items": 9,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-22T10:41:06+02:00",
      "items": 9,
@@ -1400,6 +1393,13 @@
     },
     {
      "at": "2026-10-27T01:51:30+01:00",
+     "items": 7,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-10-27T03:07:03+01:00",
      "items": 7,
      "rejected": 0,
      "state": "OK",
@@ -1896,7 +1896,6 @@
    "consecutive_failures": 0,
    "counts": [
     4,
-    4,
     3,
     4,
     4,
@@ -1906,29 +1905,23 @@
     5,
     6,
     6,
+    6,
     6
    ],
    "http_cache": {
     "https://www.ferienpiraten.ch/feed": {
-     "etag": "W/\"a3b7ea204a188ae973ae567f3296c7a8\"",
-     "last_modified": "Tue, 27 Oct 2026 00:29:28 GMT"
+     "etag": "W/\"fb0104afdb71c9245902b15b4c9f0282\"",
+     "last_modified": "Tue, 27 Oct 2026 01:29:28 GMT"
     }
    },
-   "last_attempt": "2026-10-27T01:51:30+01:00",
+   "last_attempt": "2026-10-27T03:07:03+01:00",
    "last_error": null,
    "last_items": 6,
-   "last_latency_s": 2.01,
+   "last_latency_s": 1.61,
    "last_state": "OK",
-   "last_success": "2026-10-27T01:51:30+01:00",
+   "last_success": "2026-10-27T03:07:03+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-22T03:33:32+02:00",
-     "items": 7,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-22T10:41:06+02:00",
      "items": 7,
@@ -2131,6 +2124,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-27T03:07:03+01:00",
+     "items": 6,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -2150,25 +2150,18 @@
     9,
     9,
     9,
-    9,
+    11,
     11
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-27T01:51:30+01:00",
+   "last_attempt": "2026-10-27T03:07:03+01:00",
    "last_error": null,
    "last_items": 11,
-   "last_latency_s": 5.5,
+   "last_latency_s": 4.82,
    "last_state": "OK",
-   "last_success": "2026-10-27T01:51:30+01:00",
+   "last_success": "2026-10-27T03:07:03+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-22T03:33:32+02:00",
-     "items": 8,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-22T10:41:06+02:00",
      "items": 8,
@@ -2367,6 +2360,13 @@
     },
     {
      "at": "2026-10-27T01:51:30+01:00",
+     "items": 11,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-10-27T03:07:03+01:00",
      "items": 11,
      "rejected": 0,
      "state": "OK",
@@ -3896,7 +3896,6 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "counts": [
-    59,
     58,
     58,
     59,
@@ -3907,6 +3906,7 @@
     58,
     58,
     58,
+    57,
     57
    ],
    "http_cache": {
@@ -3919,21 +3919,14 @@
      "last_modified": "Mon, 26 Oct 2026 23:01:01 GMT"
     }
    },
-   "last_attempt": "2026-10-27T01:51:30+01:00",
+   "last_attempt": "2026-10-27T03:07:03+01:00",
    "last_error": null,
    "last_items": 57,
-   "last_latency_s": 3.1,
+   "last_latency_s": 2.48,
    "last_state": "OK",
-   "last_success": "2026-10-27T01:51:30+01:00",
+   "last_success": "2026-10-27T03:07:03+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-22T16:41:52+02:00",
-     "items": 60,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-22T20:51:46+02:00",
      "items": 59,
@@ -4136,6 +4129,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-27T03:07:03+01:00",
+     "items": 57,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -4145,7 +4145,6 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "counts": [
-    24,
     26,
     23,
     23,
@@ -4154,6 +4153,7 @@
     23,
     23,
     21,
+    27,
     27,
     27,
     27
@@ -7038,21 +7038,14 @@
     ]
    },
    "http_cache": {},
-   "last_attempt": "2026-10-27T01:51:30+01:00",
+   "last_attempt": "2026-10-27T03:07:03+01:00",
    "last_error": null,
    "last_items": 27,
-   "last_latency_s": 1.15,
+   "last_latency_s": 1.25,
    "last_state": "OK",
-   "last_success": "2026-10-27T01:51:30+01:00",
+   "last_success": "2026-10-27T03:07:03+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-22T16:41:52+02:00",
-     "items": 24,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-22T20:51:46+02:00",
      "items": 26,
@@ -7255,6 +7248,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-27T03:07:03+01:00",
+     "items": 27,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -7264,25 +7264,18 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "http_cache": {},
-   "last_attempt": "2026-10-27T01:51:30+01:00",
+   "last_attempt": "2026-10-27T03:07:03+01:00",
    "last_error": null,
    "last_items": 553,
-   "last_latency_s": 36.94,
+   "last_latency_s": 32.21,
    "last_state": "PARTIAL",
-   "last_success": "2026-10-27T01:51:30+01:00",
+   "last_success": "2026-10-27T03:07:03+01:00",
    "last_warnings": [
     "coop: 3 page(s) lue(s), suite non collectée (volume limité)",
     "aligro: 2 page(s) lue(s), suite non collectée (volume limité)",
     "ottos: 2 page(s) lue(s), suite non collectée (volume limité)"
    ],
    "recent": [
-    {
-     "at": "2026-10-22T16:41:52+02:00",
-     "items": 553,
-     "rejected": 0,
-     "state": "PARTIAL",
-     "warn": 3
-    },
     {
      "at": "2026-10-22T20:51:46+02:00",
      "items": 553,
@@ -7485,6 +7478,13 @@
      "rejected": 0,
      "state": "PARTIAL",
      "warn": 3
+    },
+    {
+     "at": "2026-10-27T03:07:03+01:00",
+     "items": 553,
+     "rejected": 0,
+     "state": "PARTIAL",
+     "warn": 3
     }
    ],
    "reliability": 0.75,
@@ -7494,7 +7494,6 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "counts": [
-    579,
     571,
     566,
     565,
@@ -7505,24 +7504,18 @@
     555,
     556,
     566,
-    574
+    574,
+    572
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-26T22:38:57+01:00",
+   "last_attempt": "2026-10-27T03:07:03+01:00",
    "last_error": null,
-   "last_items": 574,
-   "last_latency_s": 26.37,
+   "last_items": 572,
+   "last_latency_s": 29.18,
    "last_state": "OK",
-   "last_success": "2026-10-26T22:38:57+01:00",
+   "last_success": "2026-10-27T03:07:03+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-19T23:32:56+02:00",
-     "items": 603,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-20T03:51:53+02:00",
      "items": 603,
@@ -7722,6 +7715,13 @@
     {
      "at": "2026-10-26T22:38:57+01:00",
      "items": 574,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-10-27T03:07:03+01:00",
+     "items": 572,
      "rejected": 0,
      "state": "OK",
      "warn": 0
