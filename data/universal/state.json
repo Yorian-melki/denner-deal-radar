@@ -947,21 +947,14 @@
     7
    ],
    "http_cache": {},
-   "last_attempt": "2026-10-27T10:04:38+01:00",
+   "last_attempt": "2026-10-27T10:50:24+01:00",
    "last_error": null,
    "last_items": 7,
-   "last_latency_s": 1.28,
+   "last_latency_s": 1.4,
    "last_state": "OK",
-   "last_success": "2026-10-27T10:04:38+01:00",
+   "last_success": "2026-10-27T10:50:24+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-23T00:21:37+02:00",
-     "items": 7,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-23T03:33:39+02:00",
      "items": 7,
@@ -1160,6 +1153,13 @@
     },
     {
      "at": "2026-10-27T10:04:38+01:00",
+     "items": 7,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-10-27T10:50:24+01:00",
      "items": 7,
      "rejected": 0,
      "state": "OK",
@@ -3910,7 +3910,6 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "counts": [
-    58,
     59,
     59,
     59,
@@ -3921,33 +3920,27 @@
     58,
     57,
     57,
+    58,
     58
    ],
    "http_cache": {
     "https://www.preispirat.ch/cat/freebies/feed/": {
-     "etag": "W/\"6c7028b9d3c19244c26704891b06a6b4\"",
-     "last_modified": "Tue, 27 Oct 2026 09:00:51 GMT"
+     "etag": "W/\"ea243dc41fe8c85565d3c785eba8fa52\"",
+     "last_modified": "Tue, 27 Oct 2026 09:41:29 GMT"
     },
     "https://www.preispirat.ch/feed/": {
-     "etag": "W/\"6c7028b9d3c19244c26704891b06a6b4\"",
-     "last_modified": "Tue, 27 Oct 2026 09:00:51 GMT"
+     "etag": "W/\"ea243dc41fe8c85565d3c785eba8fa52\"",
+     "last_modified": "Tue, 27 Oct 2026 09:41:29 GMT"
     }
    },
-   "last_attempt": "2026-10-27T10:04:38+01:00",
+   "last_attempt": "2026-10-27T10:50:24+01:00",
    "last_error": null,
    "last_items": 58,
-   "last_latency_s": 2.79,
+   "last_latency_s": 3.29,
    "last_state": "OK",
-   "last_success": "2026-10-27T10:04:38+01:00",
+   "last_success": "2026-10-27T10:50:24+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-23T00:21:37+02:00",
-     "items": 59,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-23T03:33:39+02:00",
      "items": 59,
@@ -4150,6 +4143,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-27T10:50:24+01:00",
+     "items": 58,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -4164,13 +4164,13 @@
     23,
     23,
     23,
-    23,
     21,
     27,
     27,
     27,
     27,
-    28
+    28,
+    27
    ],
    "details": {
     "91286": [
@@ -6976,7 +6976,6 @@
       "stock": "available"
      }
     ],
-    "99347": [],
     "99373": [
      {
       "price": 295.0,
@@ -7069,21 +7068,14 @@
     ]
    },
    "http_cache": {},
-   "last_attempt": "2026-10-27T10:04:38+01:00",
+   "last_attempt": "2026-10-27T10:50:24+01:00",
    "last_error": null,
-   "last_items": 28,
-   "last_latency_s": 1.9,
+   "last_items": 27,
+   "last_latency_s": 1.19,
    "last_state": "OK",
-   "last_success": "2026-10-27T10:04:38+01:00",
+   "last_success": "2026-10-27T10:50:24+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-10-23T00:21:37+02:00",
-     "items": 26,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-10-23T03:33:39+02:00",
      "items": 26,
@@ -7286,34 +7278,34 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-10-27T10:50:24+01:00",
+     "items": 27,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
-   "requests": 3
+   "requests": 2
   },
   "rappn": {
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "http_cache": {},
-   "last_attempt": "2026-10-27T10:04:38+01:00",
+   "last_attempt": "2026-10-27T10:50:24+01:00",
    "last_error": null,
    "last_items": 553,
-   "last_latency_s": 34.62,
+   "last_latency_s": 5.93,
    "last_state": "PARTIAL",
-   "last_success": "2026-10-27T10:04:38+01:00",
+   "last_success": "2026-10-27T10:50:24+01:00",
    "last_warnings": [
     "coop: 3 page(s) lue(s), suite non collectée (volume limité)",
     "aligro: 2 page(s) lue(s), suite non collectée (volume limité)",
     "ottos: 2 page(s) lue(s), suite non collectée (volume limité)"
    ],
    "recent": [
-    {
-     "at": "2026-10-23T00:21:37+02:00",
-     "items": 553,
-     "rejected": 0,
-     "state": "PARTIAL",
-     "warn": 3
-    },
     {
      "at": "2026-10-23T03:33:39+02:00",
      "items": 553,
@@ -7512,6 +7504,13 @@
     },
     {
      "at": "2026-10-27T10:04:38+01:00",
+     "items": 553,
+     "rejected": 0,
+     "state": "PARTIAL",
+     "warn": 3
+    },
+    {
+     "at": "2026-10-27T10:50:24+01:00",
      "items": 553,
      "rejected": 0,
      "state": "PARTIAL",
