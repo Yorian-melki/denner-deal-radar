@@ -27,6 +27,8 @@ export const onRequest = async ({ request, env }: { request: Request; env: Env }
     "Content-Type": "text/plain; charset=utf-8",
     "Cache-Control": "public, max-age=86400",
     "X-Content-Type-Options": "nosniff",
+    "Strict-Transport-Security": "max-age=15552000; includeSubDomains",
+    "X-Robots-Tag": "noindex",
   };
   if (request.method !== "GET" && request.method !== "HEAD") {
     return new Response(null, { status: 405, headers: { ...headers, Allow: "GET, HEAD" } });

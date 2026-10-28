@@ -1,7 +1,16 @@
 # Redirections Cloudflare Pages. Chaque page existe sous /de, /fr et /en (mêmes slugs).
-# « / » mène à l'allemand (langue de la ville de lancement) — lien statique, sans
-# détection forcée : le sélecteur DE · FR · EN est sur chaque page.
-/                       /de                      302
+# « / » : functions/index.ts (langue du navigateur → /<l>/st-gallen, 302).
+# /de, /fr, /en : tant qu'une seule ville existe, 302 vers la ville (pas de doublon /de ≈ /de/st-gallen).
+/de                     /de/st-gallen            302
+/fr                     /fr/st-gallen            302
+/en                     /en/st-gallen            302
+# Raccourcis pratiques (round 2, item 43).
+/:lang/st-gallen/tech        /:lang/st-gallen/tech-deals             301
+/:lang/st-gallen/supermarkt  /:lang/st-gallen/supermarkt-aktionen    301
+/:lang/st-gallen/studis      /:lang/st-gallen/studenten-rabatte      301
+/:lang/st-gallen/:cat/1      /:lang/st-gallen/:cat                   301
+/:lang/saint-gall            /:lang/st-gallen                        301
+/:lang/saint-gall/*          /:lang/st-gallen/:splat                 301
 # Anciennes URL sans préfixe de langue (liens déjà partagés) → équivalent allemand.
 /st-gallen              /de/st-gallen            301
 /st-gallen/*            /de/st-gallen/:splat     301
