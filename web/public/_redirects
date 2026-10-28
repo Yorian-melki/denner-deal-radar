@@ -1,0 +1,13 @@
+# Redirections Cloudflare Pages. Chaque page existe sous /de, /fr et /en (mêmes slugs).
+# « / » mène à l'allemand (langue de la ville de lancement) — lien statique, sans
+# détection forcée : le sélecteur DE · FR · EN est sur chaque page.
+/                       /de                      302
+# Anciennes URL sans préfixe de langue (liens déjà partagés) → équivalent allemand.
+/st-gallen              /de/st-gallen            301
+/st-gallen/*            /de/st-gallen/:splat     301
+/deal/*                 /de/deal/:splat          301
+/transparenz            /de/transparenz          301
+/datenschutz            /de/datenschutz          301
+/impressum              /de/impressum            301
+/agb                    /de/agb                  301
+/quellen                /de/quellen              301

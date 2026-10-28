@@ -1,7 +1,8 @@
 /** /.well-known/security.txt (RFC 9116), généré à la volée pour que :
  * - Contact = mailto:<OPERATOR_EMAIL> si la variable existe dans Cloudflare Pages
  *   (Settings → Variables and Secrets, runtime ; NEXT_PUBLIC_OPERATOR_EMAIL accepté),
- *   sinon la page /impressum du domaine courant ;
+ *   sinon la page /de/impressum du domaine courant ;
+ * - pas de champ Policy tant qu'aucune politique de divulgation (/sicherheit) n'existe ;
  * - Expires reste toujours < 1 an (exigence RFC) sans maintenance manuelle ;
  * - Canonical = domaine réellement servi (pages.dev ou domaine définitif). */
 interface Env { OPERATOR_EMAIL?: string; NEXT_PUBLIC_OPERATOR_EMAIL?: string }
@@ -11,13 +12,12 @@ const EMAIL = /^[A-Za-z0-9._%+-]{1,64}@[A-Za-z0-9.-]{1,190}\.[A-Za-z]{2,24}$/;
 export function securityTxt(origin: string, email: string | undefined, now: Date): string {
   const expires = new Date(now.getTime() + 180 * 24 * 3600 * 1000);
   expires.setUTCHours(0, 0, 0, 0);
-  const contact = email && EMAIL.test(email) ? `mailto:${email}` : `${origin}/impressum`;
+  const contact = email && EMAIL.test(email) ? `mailto:${email}` : `${origin}/de/impressum`;
   return [
     `Contact: ${contact}`,
     `Expires: ${expires.toISOString()}`,
     `Preferred-Languages: de, fr, en`,
     `Canonical: ${origin}/.well-known/security.txt`,
-    `Policy: ${origin}/quellen`,
     "",
   ].join("\n");
 }

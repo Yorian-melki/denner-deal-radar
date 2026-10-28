@@ -26,13 +26,14 @@ jobs:
         working-directory: web
     env:
       NEXT_PUBLIC_SITE_NAME: ${{ vars.SITE_NAME }}
-      NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}
+      # URL publique absolue (canonical, og, sitemap, partage). Sans variable de dépôt :
+      # l'aperçu Pages. lib/site.ts fait échouer le build si elle est absente ou locale.
+      NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL || 'https://savradar.pages.dev' }}
       SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE }}
       NEXT_PUBLIC_CF_BEACON_TOKEN: ${{ vars.CF_BEACON_TOKEN }}
       NEXT_PUBLIC_OPERATOR_NAME: ${{ vars.OPERATOR_NAME }}
       NEXT_PUBLIC_OPERATOR_ADDRESS: ${{ vars.OPERATOR_ADDRESS }}
       NEXT_PUBLIC_OPERATOR_EMAIL: ${{ vars.OPERATOR_EMAIL }}
-      NEXT_PUBLIC_OPERATOR_PHONE: ${{ vars.OPERATOR_PHONE }}
       NEXT_PUBLIC_CMP_MODE: ${{ vars.CMP_MODE }}
       NEXT_PUBLIC_TELEGRAM_URL: ${{ vars.TELEGRAM_URL }}
       NEXT_PUBLIC_ADSENSE_CLIENT: ${{ vars.ADSENSE_CLIENT }}
@@ -56,11 +57,12 @@ jobs:
       - run: npm test
       - run: npx tsc --noEmit
       - run: npm run build
-      - name: Garde-fou taille (Cloudflare Pages gratuit = 20 000 fichiers)
+      - name: Garde-fous (taille Cloudflare, aucune URL locale)
         run: |
           n=$(find out -type f | wc -l)
           echo "fichiers: $n"
-          test "$n" -lt 19000
+          test "$n" -lt 18000
+          ! grep -rlE "https?://(localhost|127\.0\.0\.1)" out --include=*.html --include=*.xml --include=*.webmanifest
       - name: Déploiement Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
