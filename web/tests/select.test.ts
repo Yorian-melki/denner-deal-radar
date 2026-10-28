@@ -7,7 +7,7 @@ import { CATEGORY_TEXT, DICTS, dict } from "@/lib/i18n";
 import { projectDeal, projectFeed } from "@/lib/project";
 import {
   balancedSections, dedupeProducts, hasRealEnd, isLowestSeen, isVerifiedSaving, pickTop, productKey,
-  timeLeft, weeklySavings, whatsappUrl,
+  timeLeft, weeklySavings, whatsappUrl, scoreTier, confidenceTier, unitSaving, MIN_CONFIDENCE_TOP,
 } from "@/lib/select";
 import { telegramUrl } from "@/lib/site";
 import type { Feed, PublicDeal, RawDeal } from "@/lib/types";
@@ -234,5 +234,34 @@ describe("honnêteté des vitrines", () => {
       mk({ id: "b", title: "Vanish Oxi Action Fleckentferner Pulver White", price: 12.95, merchant: "Denner" }),
       mk({ id: "c", title: "Vanish Oxi Action Gel", price: 9.95, merchant: "Denner" })] as any);
     expect(out.map((d) => d.id)).toEqual(["a", "c"]);
+  });
+});
+
+describe("lecture en un coup d'œil", () => {
+  it("scoreTier suit les seuils de couleur (7 / 4)", () => {
+    expect(scoreTier(9)).toBe("top");
+    expect(scoreTier(7)).toBe("great");
+    expect(scoreTier(6.9)).toBe("good");
+    expect(scoreTier(4)).toBe("ok");
+    expect(scoreTier(3.9)).toBe("weak");
+  });
+  it("confidenceTier : « sûre » jamais sous le seuil des vitrines", () => {
+    expect(confidenceTier(undefined)).toBe("low");
+    expect(confidenceTier(MIN_CONFIDENCE_TOP - 0.01)).toBe("low");
+    expect(confidenceTier(MIN_CONFIDENCE_TOP)).toBe("mid");
+    expect(confidenceTier(0.9)).toBe("high");
+  });
+  it("unitSaving : jamais d'économie sans référence", () => {
+    expect(unitSaving(mk({ price: 10 }))).toBeUndefined();
+    expect(unitSaving(mk({ price: 10, referencePrice: 8 }))).toBeUndefined();
+    expect(unitSaving(mk({ price: 10, referencePrice: 13.5 }))).toBe(3.5);
+    expect(unitSaving(mk({ price: 10, referencePrice: 13.5, discountAbs: 3.4 }))).toBe(3.4);
+  });
+  it("chaque langue a tous les libellés de note et de fiabilité", () => {
+    for (const d of Object.values(DICTS)) {
+      for (const k of ["top", "great", "good", "ok", "weak"]) expect(d.scoreTiers[k]).toBeTruthy();
+      for (const k of ["high", "mid", "low"]) expect(d.confTier[k]).toBeTruthy();
+      expect(d.legendRows).toHaveLength(4);
+    }
   });
 });

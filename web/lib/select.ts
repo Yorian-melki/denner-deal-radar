@@ -212,6 +212,35 @@ export function timeLeft(endsAt: string, now: Date): { ms: number; days: number;
   };
 }
 
+/* ------------------------------------------- lecture en un coup d'œil */
+
+/** Libellé verbal d'une note (purement dérivé de la note, mêmes seuils de
+ * couleur que le badge : ≥ 7 vert, ≥ 4 ambre). */
+export function scoreTier(score: number): "top" | "great" | "good" | "ok" | "weak" {
+  if (score >= 8.5) return "top";
+  if (score >= 7) return "great";
+  if (score >= 5.5) return "good";
+  if (score >= 4) return "ok";
+  return "weak";
+}
+
+/** Fiabilité affichée : « sûre » seulement au-dessus du seuil des vitrines. */
+export function confidenceTier(c: number | undefined): "high" | "mid" | "low" {
+  if (c === undefined) return "low";
+  if (c >= 0.85) return "high";
+  if (c >= MIN_CONFIDENCE_TOP) return "mid";
+  return "low";
+}
+
+/** Économie unitaire affichable sur une carte : montant > 0 du scanner, sinon
+ * écart prix de référence − prix. Jamais d'économie sans prix de référence. */
+export function unitSaving(d: PublicDeal): number | undefined {
+  if (d.discountAbs !== undefined && d.discountAbs > 0) return d.discountAbs;
+  if (d.referencePrice !== undefined && d.price !== undefined && d.referencePrice > d.price)
+    return Math.round((d.referencePrice - d.price) * 100) / 100;
+  return undefined;
+}
+
 /* -------------------------------------------------------------- partage */
 
 export function whatsappUrl(text: string, url: string): string {
