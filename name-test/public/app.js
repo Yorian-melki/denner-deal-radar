@@ -136,8 +136,8 @@
   }
 
   const canSpeak = "speechSynthesis" in window;
-  const ACCENTS = { "en-GB": "🇬🇧 UK", "en-US": "🇺🇸 US" };
-  const DEFAULT_ACCENT = { fr: "en-GB", de: "en-GB", en: "en-GB", es: "en-GB", it: "en-GB" };
+  const ACCENTS = { "fr-FR": "🇫🇷 FR", "de-DE": "🇩🇪 DE", "en-GB": "🇬🇧 UK", "en-US": "🇺🇸 US", "es-ES": "🇪🇸 ES", "it-IT": "🇮🇹 IT" };
+  const DEFAULT_ACCENT = { fr: "fr-FR", de: "de-DE", en: "en-GB", es: "es-ES", it: "it-IT" };
   let accent = store.get("nb.accent") || DEFAULT_ACCENT[lang];
   if (!ACCENTS[accent]) accent = DEFAULT_ACCENT[lang];
   const QUALITY = /premium|enhanced|natural|neural|siri|google|online/i;
