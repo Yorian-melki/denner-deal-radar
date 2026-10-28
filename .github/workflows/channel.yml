@@ -1,0 +1,95 @@
+name: channel
+
+# Canal Telegram PUBLIC (Top 3 du jour + deals exceptionnels) — voir docs/DISTRIBUTION.md.
+#
+# DÉSACTIVÉ PAR DÉFAUT : rien n'est publié tant que la variable de dépôt
+# CHANNEL_ENABLED n'est pas égale à 'true' (Settings → Secrets and variables →
+# Actions → Variables). Sans le secret TELEGRAM_CHANNEL_ID, la commande se
+# contente d'un message dans le journal et sort avec le code 0.
+#
+# Horaires (cron GitHub = UTC) :
+#  * toutes les 30 min (:25/:55, après les collectes universal.yml de :17/:47)
+#    -> posts instantanés ; les heures calmes 22:00-07:30 (Zurich) sont
+#    appliquées par le code, pas par le cron.
+#  * 17:00 UTC = 18:00 à Zurich en hiver (CET), 19:00 en été (CEST). Le Top 3
+#    n'est pas lié à ce cron : il part au premier passage entre 18:00 et 22:00
+#    heure de Zurich (le passage de :25 UTC suffit en été), donc aucune
+#    modification n'est nécessaire au changement d'heure.
+on:
+  schedule:
+    - cron: "25,55 5-21 * * *"
+    - cron: "0 17 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [auto, daily, instant]
+        default: auto
+      dry_run:
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: radar-data
+  cancel-in-progress: false
+
+jobs:
+  post:
+    if: vars.CHANNEL_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Publication canal
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          SITE_NAME: ${{ vars.SITE_NAME }}
+          SITE_URL: ${{ vars.SITE_URL }}
+          MODE: ${{ inputs.mode || 'auto' }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python -m radar u-channel --dry-run --mode "$MODE"
+          else
+            python -m radar u-channel --send --mode "$MODE"
+          fi
+
+      - name: Kit de partage (artefact, non commité)
+        if: always()
+        env:
+          SITE_NAME: ${{ vars.SITE_NAME }}
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: python -m radar u-sharekit --out-dir sharekit
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sharekit-${{ github.run_id }}
+          path: sharekit/
+          retention-days: 7
+          if-no-files-found: ignore
+
+      - name: Sauvegarde de l'état du canal (git)
+        if: always() && inputs.dry_run != true
+        run: |
+          git config user.name "deal-radar-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          F=data/universal/channel_state.json
+          [ -f "$F" ] || { echo "pas d'état"; exit 0; }
+          git add "$F"
+          if git diff --cached --quiet; then echo "rien à commiter"; exit 0; fi
+          git commit -m "data(channel): état $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]" -- "$F"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push && exit 0
+            sleep $((i * 7))
+          done
+          exit 1

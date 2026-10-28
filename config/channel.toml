@@ -1,0 +1,50 @@
+# Distribution publique (canal Telegram + kit de partage).
+# Aucun secret ici : TELEGRAM_BOT_TOKEN et TELEGRAM_CHANNEL_ID viennent des
+# secrets GitHub. Nom de marque et URL du site : variables d'environnement
+# SITE_NAME / SITE_URL (GitHub → Settings → Variables), sinon valeurs ci-dessous.
+
+[channel]
+timezone = "Europe/Zurich"
+site_name_default = "Deal Radar"
+# Vide = pas encore de site public : les liens pointent vers l'offre source.
+site_url_default = ""
+
+# Top 3 quotidien : posté au premier passage entre daily_hour et daily_until_hour.
+daily_hour = 18
+daily_until_hour = 22
+daily_top_n = 3
+daily_min_score = 6.0
+# Diversité : au plus N deals d'une même source dans le Top.
+daily_max_per_source = 1
+
+# Posts instantanés pour les deals exceptionnels.
+instant_min_score = 8.5
+max_instant_per_day = 3
+min_minutes_between_instant = 60
+
+# Commun.
+min_confidence = 0.7
+quiet_start = "22:00"
+quiet_end = "07:30"
+# Un deal (ou la même entité canonique) n'est jamais reposté pendant N jours.
+repost_memory_days = 60
+# Seuil des pages deal du site (web/lib/project.ts PAGE_MIN_SCORE).
+page_min_score = 5.0
+
+# Une entrée par ville / canal. `local = true` : la ville reçoit aussi les deals
+# LOCAL/NEARBY/REGIONAL du flux du scanner ; sinon seulement national + en ligne
+# (même règle que web/lib/project.ts).
+[cities.st-gallen]
+name = "St. Gallen"
+country = "CH"
+lang = "de"
+local = true
+channel_env = "TELEGRAM_CHANNEL_ID"
+
+# Plus tard (un canal par ville) :
+# [cities.zuerich]
+# name = "Zürich"
+# country = "CH"
+# lang = "de"
+# local = false
+# channel_env = "TELEGRAM_CHANNEL_ID_ZUERICH"
