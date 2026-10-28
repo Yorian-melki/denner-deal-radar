@@ -18,18 +18,18 @@
   const L = store.get("nb.lang") || (navigator.language || "en").slice(0, 2);
   let lang = LANGS[L] ? L : "en";
   const DICT = {
-    fr: { title: "Aide-nous à choisir le nom de notre app 🔥", sub: "Une app qui trouve les meilleurs bons plans de ta ville. 60 secondes, anonyme, aucune inscription.", go: "C'est parti", mem: "Mémorise ces noms 👀", duel: "Lequel tu choisirais ?", tap: "Touche ton préféré", recall: "Lesquels as-tu vus au tout début ?", recallSub: "Touche tous ceux que tu reconnais", next: "Suivant", listen: "Écoute et écris le nom 🎧", replay: "Écouter", meaning: "Avec ce nom, ce site sert à…", mOpts: { deals: "Trouver des bons plans", games: "Jouer à des jeux", travel: "Réserver des voyages", bank: "Une banque / finance", food: "Commander à manger" }, done: "Merci ! 🙌", yourTop: "Ton top", more: "Encore des duels", share: "Partager le test", city: "Zürich", tag: "Die besten Deals deiner Stadt", app: "Bons plans · Étudiants", notif: "−58 % sur les AirPods, encore 2 h", skip: "Passer" },
+    fr: { title: "Aide-nous à choisir le nom de notre app 🔥", sub: "Une app qui trouve les meilleurs bons plans de ta ville. 60 secondes, anonyme, aucune inscription.", go: "C'est parti", mem: "Mémorise ces noms 👀", duel: "Lequel tu choisirais ?", tap: "Touche ton préféré", recall: "Lesquels as-tu vus au tout début ?", recallSub: "Touche tous ceux que tu reconnais", next: "Suivant", listen: "Écoute et écris le nom 🎧", replay: "Écouter", meaning: "Avec ce nom, ce site sert à…", mOpts: { deals: "Trouver des bons plans", games: "Jouer à des jeux", travel: "Réserver des voyages", bank: "Une banque / finance", food: "Commander à manger" }, done: "Merci ! 🙌", yourTop: "Ton top", more: "Encore des duels", share: "Partager le test", city: "Zürich", tag: "Les meilleurs bons plans de ta ville", app: "Bons plans · Étudiants", notif: "−58 % sur les AirPods, encore 2 h", skip: "Passer" },
     de: { title: "Hilf uns, den Namen unserer App zu wählen 🔥", sub: "Eine App, die die besten Deals deiner Stadt findet. 60 Sekunden, anonym, ohne Anmeldung.", go: "Los geht's", mem: "Merk dir diese Namen 👀", duel: "Welchen würdest du wählen?", tap: "Tippe auf deinen Favoriten", recall: "Welche hast du ganz am Anfang gesehen?", recallSub: "Tippe alle an, die du wiedererkennst", next: "Weiter", listen: "Hör zu und schreib den Namen 🎧", replay: "Anhören", meaning: "Mit diesem Namen ist die Seite für…", mOpts: { deals: "Schnäppchen finden", games: "Games spielen", travel: "Reisen buchen", bank: "Bank / Finanzen", food: "Essen bestellen" }, done: "Danke! 🙌", yourTop: "Deine Top", more: "Mehr Duelle", share: "Test teilen", city: "Zürich", tag: "Die besten Deals deiner Stadt", app: "Deals · Studis", notif: "−58 % auf AirPods, noch 2 Std.", skip: "Überspringen" },
     en: { title: "Help us pick our app's name 🔥", sub: "An app that finds the best deals in your city. 60 seconds, anonymous, no sign-up.", go: "Let's go", mem: "Remember these names 👀", duel: "Which one would you pick?", tap: "Tap your favourite", recall: "Which ones did you see at the very start?", recallSub: "Tap all you recognise", next: "Next", listen: "Listen and type the name 🎧", replay: "Listen", meaning: "With this name, the site is for…", mOpts: { deals: "Finding bargains", games: "Playing games", travel: "Booking travel", bank: "A bank / finance", food: "Ordering food" }, done: "Thanks! 🙌", yourTop: "Your top", more: "More duels", share: "Share the test", city: "Zürich", tag: "The best deals in your city", app: "Deals · Students", notif: "−58% on AirPods, 2 h left", skip: "Skip" },
     es: { title: "Ayúdanos a elegir el nombre de nuestra app 🔥", sub: "Una app que encuentra las mejores ofertas de tu ciudad. 60 segundos, anónimo, sin registro.", go: "Vamos", mem: "Memoriza estos nombres 👀", duel: "¿Cuál elegirías?", tap: "Toca tu favorito", recall: "¿Cuáles viste al principio?", recallSub: "Toca todos los que reconozcas", next: "Siguiente", listen: "Escucha y escribe el nombre 🎧", replay: "Escuchar", meaning: "Con este nombre, la web sirve para…", mOpts: { deals: "Encontrar chollos", games: "Jugar a juegos", travel: "Reservar viajes", bank: "Un banco / finanzas", food: "Pedir comida" }, done: "¡Gracias! 🙌", yourTop: "Tu top", more: "Más duelos", share: "Compartir el test", city: "Zürich", tag: "Las mejores ofertas de tu ciudad", app: "Ofertas · Estudiantes", notif: "−58 % en AirPods, quedan 2 h", skip: "Saltar" },
     it: { title: "Aiutaci a scegliere il nome della nostra app 🔥", sub: "Un'app che trova le migliori offerte della tua città. 60 secondi, anonimo, senza registrazione.", go: "Iniziamo", mem: "Memorizza questi nomi 👀", duel: "Quale sceglieresti?", tap: "Tocca il tuo preferito", recall: "Quali hai visto all'inizio?", recallSub: "Tocca tutti quelli che riconosci", next: "Avanti", listen: "Ascolta e scrivi il nome 🎧", replay: "Ascolta", meaning: "Con questo nome, il sito serve a…", mOpts: { deals: "Trovare offerte", games: "Giocare", travel: "Prenotare viaggi", bank: "Una banca / finanza", food: "Ordinare cibo" }, done: "Grazie! 🙌", yourTop: "Il tuo top", more: "Altri duelli", share: "Condividi il test", city: "Zürich", tag: "Le migliori offerte della tua città", app: "Offerte · Studenti", notif: "−58% sugli AirPods, ancora 2 h", skip: "Salta" },
   };
   const EXTRA = {
-    fr: { ready: "Ça va démarrer et aller vite.", readySub: "Prêt ?", yes: "Oui, je suis prêt", accent: "Accent de la voix", typed: "Tu as écrit" },
-    de: { ready: "Gleich geht's los, und zwar schnell.", readySub: "Bereit?", yes: "Ja, bereit", accent: "Akzent der Stimme", typed: "Du hast geschrieben" },
-    en: { ready: "It's about to start, and it goes fast.", readySub: "Ready?", yes: "Yes, I'm ready", accent: "Voice accent", typed: "You typed" },
-    es: { ready: "Va a empezar y va rápido.", readySub: "¿Listo?", yes: "Sí, estoy listo", accent: "Acento de la voz", typed: "Has escrito" },
-    it: { ready: "Sta per iniziare e va veloce.", readySub: "Pronto?", yes: "Sì, sono pronto", accent: "Accento della voce", typed: "Hai scritto" },
+    fr: { memIntro: "Mémorise les noms qui vont apparaître 👀", listen2: "Écoute et choisis la bonne orthographe 🎧", ready: "Ça va démarrer et aller vite.", readySub: "Prêt ?", yes: "Oui, je suis prêt", accent: "Accent de la voix", typed: "Tu as écrit" },
+    de: { memIntro: "Merk dir die Namen, die gleich erscheinen 👀", listen2: "Hör zu und wähle die richtige Schreibweise 🎧", ready: "Gleich geht's los, und zwar schnell.", readySub: "Bereit?", yes: "Ja, bereit", accent: "Akzent der Stimme", typed: "Du hast geschrieben" },
+    en: { memIntro: "Remember the names that are about to appear 👀", listen2: "Listen and pick the right spelling 🎧", ready: "It's about to start, and it goes fast.", readySub: "Ready?", yes: "Yes, I'm ready", accent: "Voice accent", typed: "You typed" },
+    es: { memIntro: "Memoriza los nombres que van a aparecer 👀", listen2: "Escucha y elige la escritura correcta 🎧", ready: "Va a empezar y va rápido.", readySub: "¿Listo?", yes: "Sí, estoy listo", accent: "Acento de la voz", typed: "Has escrito" },
+    it: { memIntro: "Memorizza i nomi che stanno per apparire 👀", listen2: "Ascolta e scegli la grafia giusta 🎧", ready: "Sta per iniziare e va veloce.", readySub: "Pronto?", yes: "Sì, sono pronto", accent: "Accento della voce", typed: "Hai scritto" },
   };
   let T = { ...DICT[lang], ...EXTRA[lang] };
   const setLang = (l) => { lang = l; T = { ...DICT[l], ...EXTRA[l] }; store.set("nb.lang", l); };
@@ -83,13 +83,14 @@
     screen(`<div style="flex:1"></div><h1 style="text-align:center">${T.ready}</h1><p class="muted" style="text-align:center;font-size:18px">${T.readySub}</p><button id="yes">${T.yes}</button><div style="flex:1"></div>`);
     document.getElementById("yes").onclick = () => {
       push("session", { start: Date.now(), ua: device });
+      screen(`<div style="flex:1"></div><h1 class="memintro">${T.memIntro}</h1><div style="flex:1"></div>`);
       let n = 3;
       const tick = () => {
         if (n === 0) return memory();
         screen(`<div style="flex:1"></div><div class="count">${n}</div><div style="flex:1"></div>`);
         n--; setTimeout(tick, 750);
       };
-      tick();
+      setTimeout(tick, 2200);
     };
   }
 
@@ -135,8 +136,8 @@
   }
 
   const canSpeak = "speechSynthesis" in window;
-  const ACCENTS = { "fr-FR": "🇫🇷 FR", "de-DE": "🇩🇪 DE", "en-GB": "🇬🇧 UK", "en-US": "🇺🇸 US", "es-ES": "🇪🇸 ES", "it-IT": "🇮🇹 IT" };
-  const DEFAULT_ACCENT = { fr: "fr-FR", de: "de-DE", en: "en-GB", es: "es-ES", it: "it-IT" };
+  const ACCENTS = { "en-GB": "🇬🇧 UK", "en-US": "🇺🇸 US" };
+  const DEFAULT_ACCENT = { fr: "en-GB", de: "en-GB", en: "en-GB", es: "en-GB", it: "en-GB" };
   let accent = store.get("nb.accent") || DEFAULT_ACCENT[lang];
   if (!ACCENTS[accent]) accent = DEFAULT_ACCENT[lang];
   const QUALITY = /premium|enhanced|natural|neural|siri|google|online/i;
@@ -148,6 +149,15 @@
     return close.sort((a, b) => (QUALITY.test(b.name) ? 1 : 0) - (QUALITY.test(a.name) ? 1 : 0))[0] || null;
   };
   if (canSpeak) { try { speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = () => {}; } catch {} }
+  const RULES = [["prix","pri"],["prix","pree"],["prix","priks"],["cent","sent"],["cent","sant"],["gratis","grati"],["gratis","grattis"],["loot","lute"],["loot","lout"],
+    ["gem","jem"],["x","ks"],["ee","i"],["y","ie"],["ck","k"],["ou","u"],["er","eur"],["ea","ee"],["oo","ou"],["ss","s"],["s","z"],["o","oh"],["a","ah"],["u","oo"],["i","ee"]];
+  const spellings = (name) => {
+    const low = name.toLowerCase(), cap = (w) => w[0].toUpperCase() + w.slice(1), lowNames = new Set(NAMES.map((n) => n.toLowerCase()));
+    const out = new Set();
+    for (const [a, b] of shuffle(RULES)) { if (low.includes(a)) { const v = low.replace(a, b); if (v !== low && !lowNames.has(v)) out.add(v); } if (out.size >= 6) break; }
+    for (const [a, b] of RULES) { const x = [...out][0]; if (out.size >= 3 || !x) break; if (x.includes(a)) out.add(x.replace(a, b)); }
+    return shuffle([low, ...shuffle([...out]).slice(0, 3)]).map(cap);
+  };
   function listen(k) {
     if (k >= 2) return meaning(0);
     const name = rnd(NAMES);
@@ -161,19 +171,18 @@
       voiceName = "piper:" + accent;
       audio.play().catch(() => tts());
     };
-    screen(`${progress(step, STEPS)}<h2>${T.listen}</h2>
+    screen(`${progress(step, STEPS)}<h2>${T.listen2}</h2>
       <p class="muted">${T.accent}</p><div class="accents">${Object.entries(ACCENTS).map(([k, v]) => `<button class="lang${k === accent ? " on" : ""}" data-a="${k}">${v}</button>`).join("")}</div>
       <button id="pl">🔊 ${T.replay}</button>
-      <input id="in" class="typein" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="…">
-      <p class="echo" id="echo"></p>
-      <button id="nx">${T.next}</button><button class="ghost" id="sk">${T.skip}</button>`);
+      <div class="list">${spellings(name).map((w) => `<button class="ghost" data-w="${esc(w)}">${esc(w)}</button>`).join("")}</div>
+      <input id="in" hidden><button id="nx" hidden></button><button class="ghost" id="sk">${T.skip}</button>`);
     app.querySelectorAll("[data-a]").forEach((b) => b.onclick = () => { accent = b.dataset.a; store.set("nb.accent", accent); app.querySelectorAll("[data-a]").forEach((x) => x.classList.toggle("on", x === b)); say(); });
     document.getElementById("pl").onclick = say;
     const inp = document.getElementById("in"), echo = document.getElementById("echo");
     inp.oninput = () => { echo.textContent = inp.value ? `${T.typed} : ${inp.value}` : ""; };
-    const go = (skipped) => { if (!skipped) push("spell", { name, typed: inp.value.slice(0, 40), accent, voice: voiceName.slice(0, 60) }); step++; listen(k + 1); };
-    document.getElementById("nx").onclick = () => go(false);
-    document.getElementById("sk").onclick = () => go(true);
+    const go = (choice) => { if (choice) push("spell", { name, typed: choice, mode: "mcq", accent, voice: voiceName.slice(0, 60) }); step++; listen(k + 1); };
+    app.querySelectorAll("[data-w]").forEach((b) => b.onclick = () => go(b.dataset.w));
+    document.getElementById("sk").onclick = () => go(null);
     document.getElementById("in").onkeydown = (e) => e.key === "Enter" && go(false);
   }
 
