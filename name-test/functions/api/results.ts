@@ -3,7 +3,7 @@
 interface Env { DB: D1Database }
 
 // Tout ce qui précède cette date = test de Yorian (fondateur) : affiché à part, jamais compté.
-const OWNER_BEFORE = 1793160657000;
+const OWNER_BEFORE = 1793163025463;
 
 export const onRequestGet = async ({ env }: { env: Env }) => {
   const { results: all } = await env.DB.prepare("SELECT rid, ts, type, data FROM events WHERE rid NOT LIKE 'test-%' ORDER BY id").all<{ rid: string; ts: number; type: string; data: string }>();

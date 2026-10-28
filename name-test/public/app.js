@@ -9,6 +9,7 @@
 
   // ---- identité anonyme de l'appareil (aucun login, aucune donnée perso) ----
   const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+  if (new URLSearchParams(location.search).has("test")) { store.set("nb.rid", "test-" + Math.random().toString(36).slice(2, 12)); history.replaceState(null, "", location.pathname); }
   let rid = store.get("nb.rid");
   if (!rid) { rid = (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2) + Date.now().toString(36)).toLowerCase(); store.set("nb.rid", rid); }
   const device = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? "mobile" : "desktop";
@@ -25,11 +26,11 @@
     it: { title: "Aiutaci a scegliere il nome della nostra app 🔥", sub: "Un'app che trova le migliori offerte della tua città. 60 secondi, anonimo, senza registrazione.", go: "Iniziamo", mem: "Memorizza questi nomi 👀", duel: "Quale sceglieresti?", tap: "Tocca il tuo preferito", recall: "Quali hai visto all'inizio?", recallSub: "Tocca tutti quelli che riconosci", next: "Avanti", listen: "Ascolta e scrivi il nome 🎧", replay: "Ascolta", meaning: "Con questo nome, il sito serve a…", mOpts: { deals: "Trovare offerte", games: "Giocare", travel: "Prenotare viaggi", bank: "Una banca / finanza", food: "Ordinare cibo" }, done: "Grazie! 🙌", yourTop: "Il tuo top", more: "Altri duelli", share: "Condividi il test", city: "Zürich", tag: "Le migliori offerte della tua città", app: "Offerte · Studenti", notif: "−58% sugli AirPods, ancora 2 h", skip: "Salta" },
   };
   const EXTRA = {
-    fr: { memIntro: "Mémorise les noms qui vont apparaître 👀", listen2: "Écoute et choisis la bonne orthographe 🎧", ready: "Ça va démarrer et aller vite.", readySub: "Prêt ?", yes: "Oui, je suis prêt", accent: "Accent de la voix", typed: "Tu as écrit" },
-    de: { memIntro: "Merk dir die Namen, die gleich erscheinen 👀", listen2: "Hör zu und wähle die richtige Schreibweise 🎧", ready: "Gleich geht's los, und zwar schnell.", readySub: "Bereit?", yes: "Ja, bereit", accent: "Akzent der Stimme", typed: "Du hast geschrieben" },
-    en: { memIntro: "Remember the names that are about to appear 👀", listen2: "Listen and pick the right spelling 🎧", ready: "It's about to start, and it goes fast.", readySub: "Ready?", yes: "Yes, I'm ready", accent: "Voice accent", typed: "You typed" },
-    es: { memIntro: "Memoriza los nombres que van a aparecer 👀", listen2: "Escucha y elige la escritura correcta 🎧", ready: "Va a empezar y va rápido.", readySub: "¿Listo?", yes: "Sí, estoy listo", accent: "Acento de la voz", typed: "Has escrito" },
-    it: { memIntro: "Memorizza i nomi che stanno per apparire 👀", listen2: "Ascolta e scegli la grafia giusta 🎧", ready: "Sta per iniziare e va veloce.", readySub: "Pronto?", yes: "Sì, sono pronto", accent: "Accento della voce", typed: "Hai scritto" },
+    fr: { toDuels: "Maintenant, choisis ton préféré à chaque duel ⚔️", toRecall: "Maintenant, retrouve les noms du tout début 🧠", toListen: "Maintenant, écoute et trouve la bonne orthographe 🎧", toMeaning: "Dernière étape : devine à quoi sert le site 🤔", okGo: "Go", memIntro: "Mémorise les noms qui vont apparaître 👀", listen2: "Écoute et choisis la bonne orthographe 🎧", ready: "Ça va démarrer et aller vite.", readySub: "Prêt ?", yes: "Oui, je suis prêt", accent: "Accent de la voix", typed: "Tu as écrit" },
+    de: { toDuels: "Jetzt: Wähle in jedem Duell deinen Favoriten ⚔️", toRecall: "Jetzt: Finde die Namen vom Anfang wieder 🧠", toListen: "Jetzt: Hör zu und finde die richtige Schreibweise 🎧", toMeaning: "Letzter Schritt: Rate, wofür die Seite ist 🤔", okGo: "Los", memIntro: "Merk dir die Namen, die gleich erscheinen 👀", listen2: "Hör zu und wähle die richtige Schreibweise 🎧", ready: "Gleich geht's los, und zwar schnell.", readySub: "Bereit?", yes: "Ja, bereit", accent: "Akzent der Stimme", typed: "Du hast geschrieben" },
+    en: { toDuels: "Now pick your favourite in each duel ⚔️", toRecall: "Now find the names from the very start 🧠", toListen: "Now listen and find the right spelling 🎧", toMeaning: "Last step: guess what the site is for 🤔", okGo: "Go", memIntro: "Remember the names that are about to appear 👀", listen2: "Listen and pick the right spelling 🎧", ready: "It's about to start, and it goes fast.", readySub: "Ready?", yes: "Yes, I'm ready", accent: "Voice accent", typed: "You typed" },
+    es: { toDuels: "Ahora elige tu favorito en cada duelo ⚔️", toRecall: "Ahora encuentra los nombres del principio 🧠", toListen: "Ahora escucha y encuentra la escritura correcta 🎧", toMeaning: "Último paso: adivina para qué sirve la web 🤔", okGo: "Vamos", memIntro: "Memoriza los nombres que van a aparecer 👀", listen2: "Escucha y elige la escritura correcta 🎧", ready: "Va a empezar y va rápido.", readySub: "¿Listo?", yes: "Sí, estoy listo", accent: "Acento de la voz", typed: "Has escrito" },
+    it: { toDuels: "Ora scegli il tuo preferito in ogni duello ⚔️", toRecall: "Ora ritrova i nomi dell'inizio 🧠", toListen: "Ora ascolta e trova la grafia giusta 🎧", toMeaning: "Ultimo passo: indovina a cosa serve il sito 🤔", okGo: "Vai", memIntro: "Memorizza i nomi che stanno per apparire 👀", listen2: "Ascolta e scegli la grafia giusta 🎧", ready: "Sta per iniziare e va veloce.", readySub: "Pronto?", yes: "Sì, sono pronto", accent: "Accento della voce", typed: "Hai scritto" },
   };
   let T = { ...DICT[lang], ...EXTRA[lang] };
   const setLang = (l) => { lang = l; T = { ...DICT[l], ...EXTRA[l] }; store.set("nb.lang", l); };
@@ -94,12 +95,17 @@
     };
   }
 
+  const interstitial = (text, next) => {
+    screen(`<div style="flex:1"></div><h1 class="memintro">${text}</h1><button id="okgo">${T.okGo}</button><div style="flex:1"></div>`);
+    document.getElementById("okgo").onclick = next;
+  };
+
   let memSet = [];
   function memory() {
     memSet = shuffle(NAMES).slice(0, 5);
     let i = 0;
     const show = () => {
-      if (i >= memSet.length) return duels(0);
+      if (i >= memSet.length) return interstitial(T.toDuels, () => duels(0));
       const c = rnd(COLORS);
       screen(`${progress(step, STEPS)}<h2>${T.mem}</h2><div class="flash" style="background:${c}">${esc(memSet[i])}</div><p class="muted" style="text-align:center">${i + 1} / ${memSet.length}</p>`);
       i++; setTimeout(show, 1400);
@@ -108,7 +114,7 @@
   }
 
   function duels(k, endless = false) {
-    if (!endless && k >= 12) return recall();
+    if (!endless && k >= 12) return interstitial(T.toRecall, recall);
     const [a, b] = pickPair();
     const scene = rnd(Object.keys(SCENES)), c = rnd(COLORS), t0 = performance.now();
     screen(`${endless ? "" : progress(step, STEPS)}<h2>${T.duel}</h2><p class="muted">${T.tap}</p>
@@ -132,7 +138,7 @@
     const picked = new Set();
     screen(`${progress(step, STEPS)}<h2>${T.recall}</h2><p class="muted">${T.recallSub}</p><div class="grid">${all.map((n) => `<div class="chip" data-n="${esc(n)}">${esc(n)}</div>`).join("")}</div><button id="nx">${T.next}</button>`);
     app.querySelectorAll(".chip").forEach((el) => el.onclick = () => { const n = el.dataset.n; picked.has(n) ? picked.delete(n) : picked.add(n); el.classList.toggle("on"); });
-    document.getElementById("nx").onclick = () => { push("recall", { seen: memSet, decoys, picked: [...picked] }); step++; listen(0); };
+    document.getElementById("nx").onclick = () => { push("recall", { seen: memSet, decoys, picked: [...picked] }); step++; interstitial(T.toListen, () => listen(0)); };
   }
 
   const canSpeak = "speechSynthesis" in window;
@@ -159,7 +165,7 @@
     return shuffle([low, ...shuffle([...out]).slice(0, 3)]).map(cap);
   };
   function listen(k) {
-    if (k >= 2) return meaning(0);
+    if (k >= 2) return interstitial(T.toMeaning, () => meaning(0));
     const name = rnd(NAMES);
     let voiceName = "";
     // Enregistrements neuronaux (Piper, pré-générés) ; voix du navigateur seulement en secours.
