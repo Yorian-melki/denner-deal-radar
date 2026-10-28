@@ -32,3 +32,10 @@ Introuvables sur CJ : Udemy, Hostelworld, Airalo, Trip.com, Trainline, Logitech,
 
 ## Après acceptation
 Remplir `AFF_AWIN_MIDS` (domaine=mid) et `AFF_TRADEDOUBLER_*_P` dans les variables GitHub → les liens se réécrivent au build suivant.
+
+## Réponses au 28.10 (soir)
+- ✅ Awin **Lyca Mobile CH** (mid 121580) → `AFF_AWIN_MIDS=lycamobile.ch=121580` posé.
+- ✅ CJ **Surfshark** approuvé.
+- ❌ Awin Fielmann CH : « URL is irrelevant to advertiser brand ».
+- ❌ **Tradedoubler : site refusé** (« Too low quality », 28.10 11:16, AVANT la passe masterclass ; site sur *.pages.dev, en noindex, sans trafic ni domaine propre). Le support DACH ne traite plus la question NIF tant que le site est refusé.
+  → Re-soumettre via « Ajouter un site » après : domaine propre + indexation + quelques semaines de contenu/trafic (phase 1). Galaxus/Digitec restent la priorité n°1 à ce moment-là.
