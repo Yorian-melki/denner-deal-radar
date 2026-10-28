@@ -324,3 +324,90 @@ Source : 194 constats de 10 personas (apple-design, brand-type, ux-research, hsg
 ### Ce qui attend Yorian (bloque P0-9)
 - Choisir entre renseigner les données exploitant (nom, adresse c/o, e-mail) et protéger le site derrière Cloudflare Access en attendant.
 - Définir les variables GitHub et Pages `SITE_URL` (accès au compte requis).
+
+---
+
+## Vérification (vérificateur indépendant, 28.10.2026 ~20:45, live https://savradar.pages.dev, CI run 40755489656 vert, `npx vitest run` 106/106 relancé)
+
+Méthode : curl de ~45 routes (DE/FR/EN, profondes, 404, redirections, fichiers techniques), 40 URL tirées au hasard du sitemap (40/40 en 200), en-têtes `curl -I`, abus de `/api/click`, lecture du flux `universal.json` (8 906 deals) pour expliquer les cartes, lecture du code, captures `round1-after-*`.
+
+### Verdict par item
+
+| Item | Verdict | Preuve |
+|---|---|---|
+| P0-1 | **fait** | 0 `localhost` dans `/de`, `/de/st-gallen`, sitemap (2 640 loc). canonical/og:url en `https://savradar.pages.dev/…`. `lib/site.ts:11-19` lève une erreur en build strict. |
+| P0-2 | **fait** (2 réserves) | `/`→302 `/de` ; `/de/`→308 ; anciens chemins 301 ; `<html lang>` de-CH/fr-CH/en ; hreflang+x-default ; switcher statique correct sur deal, catégorie, page 2. Réserves : (a) sur une 404, le href statique pointe vers `/fr` (accueil) et seul le `onClick` JS garde le chemin (`LangSwitch.tsx:10,30-33`) → sans JS on atterrit à l'accueil ; (b) zone cliquable `.lang a` = 36×40 px (`globals.css:106`) < 44 px exigés. |
+| P0-3 | **partiel — régression grave** | Voir constat V-1 : 594 deals Denner perdent leur prix barré et sont plafonnés à 6.9 avec un motif faux (« Datenlage ist dünn ») alors que la page affiche « Datenqualität: gut ». Tefal correctement plafonné (6.9, « Preisangabe des Anbieters »). |
+| P0-4 | **partiel** | Agrégat supprimé, H1 factuel. Première carte à ~310 px CSS sur mobile (`round1-after-home-mobile-light.jpg`, y≈620/2) > 200 px. Sous-titre « Nur belegte Vergleichspreise » faux (V-2). |
+| P0-5 | **fait** | Carte en 4 lignes, 1 lien par carte, badge neutre. Catégorie 85 Ko. Mais V-4 (deux comportements de carte). |
+| P0-6 | **fait** | Inter auto-hébergé préchargé, jetons, accent unique (captures). |
+| P0-7 | **partiel** | « /Monat », durée, total 24 mois OK. Mais badges « 0.0 » affichés sur Lidl Swiss Abo 12 GB et Post Mobile Start (`/de/st-gallen/handy-abos`) — note 0 visible = page qui a l'air cassée. |
+| P0-8 | **fait** | « Bei rappn.ch ansehen », « gefunden über rappn.ch », JSON-LD sans brand/availability. Reste : `offers.url` absent du JSON-LD Product. |
+| P0-9 | **partiel (décision Yorian)** | Impressum « Vorschau-Version » ; `security.txt` `Contact:` pointe vers cet Impressum sans contact (RFC 9116 : contact non joignable) ; `/transparenz` dit « Fehler gefunden? Kontakt im Impressum » → lien vers une page sans contact. |
+| P1-1 | **partiel** | Top : « +2 Sorten » OK. Mais « Mehr aus Supermarkt » sur la page Mövenpick Crema affiche Il Divino (même promo) ; « Mehr aus Shopping » sur Energizer AA affiche Energizer AAA alors que la carte AA dit « +1 Sorte ». Le correctif demandait « Les Mehr excluent la même clé ». |
+| P1-2 | **partiel** | Denner (family `retail`, category `Sonstiges`, 233 deals) tombe en « Shopping » : Energizer, Felix Leckerlis (`/de/deal/energizer-max-batterien-aa-nhq092`, breadcrumb « Shopping »). Le backlog : « Les enseignes de supermarché vont dans Supermarkt ». |
+| P1-3 | **partiel** | `/de` respecte ≥ 5.5. Le tableau de bord ville `/de/st-gallen` montre CRIVIT 4.8, LUPILU 4.8, Dolce Gusto 5.0, ibis 5.3, SILVERCREST 5.4. Titres non nettoyés : « ERHÖHT 35% Rabatt », « zum neuen Tiefstpreis », « 100% Bruno Wickart Gutschein » alors que la remise est de 10 %. |
+| P1-4 | **partiel** | Pagination OK (supermarkt jusqu'à /51). Pas de recherche. |
+| P1-5 | **partiel** | Barre unique ≈52 px OK. « St. Gallen » est un texte simple, pas de popover. Le chip actif est hors écran au chargement (`round1-after-category-mobile-dark.jpg` : « Tech » coupé à droite). |
+| P1-6 | **partiel** | Note affichée deux fois (« 8.2 » + « sehr gut · 8.2 von 10 », capture deal desktop). Liste `<ul class="conds">` à un seul `<li>` (Grundpreis). Partage en bouton texte, pas en icône. Colonne gauche vide sous le prix sur desktop. |
+| P1-7 | **partiel** | Pas de `.ends-soon` sur les cartes ; `expired.js` externe. Pas de tombstone. Compte à rebours « noch 3 Std. 26 Min. » sur une promo Coop hebdomadaire (pas une vente flash). |
+| P1-8 | **non vérifiable en live** (0 programme actif) | Code présent. |
+| P1-9 | **fait** | `/de/transparenz` cite 12, 2/shop, 1/marque, 1/3 catégorie, 5.5, 24/page, 5.0. |
+| P1-10 | **non fait** | JS br chargé par `/de/st-gallen` = 178 Ko (cible 90). 79,6 Ko sur 121,9 Ko de HTML sont du flight RSC inline (65 %, footer sérialisé en double). HTML de la page ville 122 Ko > 120 Ko. |
+| P1-11 | **partiel** | DE : « 1–24 von 1’225 Angebote » (faute : datif « Angeboten »), vient de `shownOf(…, resultsCount(…))` (`CategoryListing.tsx:96`, `i18n.ts:45`). FR : note « 8,2 » à côté de « 13.15 CHF » dans la même ligne. |
+| P1-12 | **partiel** | Les CGU FR sont au « vous » (« entre vous et le marchand »), le footer FR est au « toi ». |
+| P1-13 | **fait** | apple-touch-icon, favicon.ico, manifest en 200. Mais l'og:image d'une page deal est l'image générique de la ville. |
+| P1-14 | **non fait** | `script-src 'unsafe-inline'` en live. `POST /api/click` avec `Sec-Fetch-Site: same-origin` (ou `Origin` usurpé) et `deal:"FAKE-deal-123"` donne **204** (écrit). `access-control-allow-origin: *` sur le HTML. |
+| P1-15 | **fait** (selon axe de l'implémenteur) | Chips 44 px au tactile ; `forced-colors` et `reduced-motion` présents. Réserve : `.lang a` à 40 px. |
+| P2-7 | **non fait — énoncé faux** | `/de/datenschutz` §2 : « Wir zählen Seitenaufrufe mit Cloudflare Web Analytics », or 0 `cloudflareinsights` dans le HTML servi. |
+| P2-10 | **partiel** | Sur `/fr/st-gallen` : 9 h3 sur 37 portent `lang`. Les titres allemands de Coop/Denner (« Mövenpick Bohnenkaffee… », « Haselnüsse gemahlen ») n'en ont pas, et le H1 de `/fr/deal/movenpick…` non plus. |
+
+### Constats nouveaux (à traiter en round 2)
+
+**V-1 (P0). Denner pénalisé en masse, avec une explication fausse.**
+- Preuve : dans le flux, 594 deals `source_id=denner` ont `reference_price_type=merchant_previous`, `score_confidence=0.85` et `promotion_integrity=null`.
+- Cause : `lib/project.ts:160-165` exige `integrity === "ok"` pour `verifiedRef`, puis plafonne avec `scoreCap="confidence"`.
+- Effet sur Energizer AA (17.80 au lieu de 35.80) :
+  - pas de « statt » sur la carte ;
+  - note 7.3 ramenée à 6.9 ;
+  - la page indique à la fois « Begrenzt … Die Datenlage ist dünn » et « Datenqualität: gut ».
+- Correctif :
+  1. Ajouter un motif `scoreCap="integrity"` avec son propre texte (« Plausibilität des Vergleichspreises nicht geprüft »).
+  2. Faire calculer `promotion_integrity` par le scanner pour la source Denner (seule vraie solution).
+  3. Ajouter un test : aucun deal avec `scoreCap="confidence"` et `confidenceTier="high"`.
+
+**V-2 (P0). « Am besten bewertet · Nur belegte Vergleichspreise » est faux.**
+- Preuve : la liste de `/de` et `/de/st-gallen` contient :
+  - Tefal et Katzenstreu, avec une référence « Preisangabe des Anbieters » ;
+  - Energizer et Felix, sans référence affichée ;
+  - ibis, avec un prix du vendeur.
+- Correctif : la Bestenliste n'admet que `verifiedRef === true`. Sinon, renommer le sous-titre. Dans tous les cas, un test doit lier le texte à la règle.
+
+**V-3 (P1). Une note plafonnée et invérifiable passe devant une note vérifiée.**
+- Preuve : la page Tech affiche en premier « Big Brain Academy … zum neuen Tiefstpreis » 6.9 (sans référence), puis HP LaserJet 6.7 (référence vérifiée, −140) (`round1-after-category-mobile-dark.jpg`).
+- Correctif : trier sur la clé `(verifiedRef desc, score desc)`, ou plafonner les notes non vérifiées à 5.4. Mettre `/transparenz` à jour en conséquence.
+
+**V-4 (P1). Deux comportements pour une même carte.**
+- Preuve :
+  - Les cartes notées ≥ 5.0 ouvrent `/de/deal/…`.
+  - Les autres, ainsi que Studis, Gratis et Gutscheine, ouvrent le site tiers dans un nouvel onglet. C'est le cas de CRIVIT 4.8 → lidl.ch (`target=_blank`).
+  - Les deux cartes ont exactement la même apparence.
+- Correctif :
+  - Option A : une page deal pour chaque carte affichée.
+  - Option B : ne garder sur les cartes externes que l'icône ↗ et le texte « öffnet lidl.ch » visibles, ce qui est déjà en partie fait, et ne plus afficher de badge de note sur une carte sans page « So kommt die Bewertung zustande ».
+
+**V-5 (P1). Typographie.**
+- « St. Gallen » se coupe en fin de ligne dans le H1 mobile (« Tech & Elektronik in St. / Gallen »). Correctif : `St. Gallen` dans `config/cities.ts:21`.
+- La ligne méta qui passe à la ligne commence par « · » (« · bis Mi 28.10. », sur toutes les captures de cartes). Correctif : séparateur en `::before` avec `white-space:nowrap` sur chaque élément, ou `gap` sans point en début de ligne.
+
+**V-6 (P1). Doublon `/de` et `/de/st-gallen`.**
+- Les deux pages ont le même H1 « Aktionen in St. Gallen » et des contenus presque identiques (top 6 contre top 12), ce qui crée deux URL pour une seule intention.
+- Correctif : `/de` devient un sélecteur de ville minimal (ou une redirection 302 vers `/de/st-gallen` tant qu'il n'y a qu'une seule ville), ou `/de/st-gallen` porte un canonical vers `/de`.
+
+**V-7 (P2). Données de titres.** « 100% Bruno Wickart Gutschein » affiche « −10% laut Anbieter » sur la même carte. Le flux contient `discount_percentage=10`, alors que le titre dit 100 %. Correctif : quand le % du titre diffère du % structuré, retirer le préfixe % du titre.
+
+### Synthèse
+- **Effectivement faits :** P0-1, P0-2 (2 réserves), P0-5, P0-6, P0-8, P1-9, P1-13.
+- **Partiels :** P0-3 (régression V-1), P0-4, P0-7, P0-9, P1-1, P1-2, P1-3, P1-4, P1-5, P1-6, P1-7, P1-11, P1-12.
+- **Non faits :** P1-10 et P1-14. L'implémenteur les déclarait « partiels », mais aucun critère d'acceptation n'est atteint.
+- **Priorité du round 2 :** V-1, V-2 et V-3, car ce sont des problèmes d'honnêteté du classement. Viennent ensuite P1-14 (`/api/click` accepte des deals inventés) et P2-7 (énoncé faux dans la politique de confidentialité).
