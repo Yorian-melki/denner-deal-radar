@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>Name Battle · résultats</title><link rel="stylesheet" href="style.css">
+<style>main{max-width:980px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:right}th:nth-child(2),td:nth-child(2){text-align:left}th{cursor:pointer;color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--bg)}tr.fav td:nth-child(2)::after{content:" ★";color:#facc15}.wrap{overflow-x:auto}</style></head>
+<body><main>
+<h1>Résultats en direct</h1>
+<p class="muted" id="meta">Chargement…</p>
+<p class="muted">Elo = classement des duels (1500 = moyenne). Mémoire = % reconnu après 5 noms flashés (fausses alarmes = % reconnu sans l'avoir vu ; un bon nom a mémoire haute ET fausses alarmes basses). Orthographe = % écrit juste à l'écoute. Sens = % « bons plans ». ★ = favoris de Yorian. Fiable à partir d'environ 30 duels par nom.</p>
+<div class="wrap"><table><thead><tr><th>#</th><th data-k="name">Nom</th><th data-k="elo">Elo</th><th data-k="winRate">% victoires</th><th data-k="duels">Duels</th><th data-k="recall">Mémoire %</th><th data-k="falseAlarm">Fausses alarmes %</th><th data-k="spelling">Orthographe %</th><th data-k="meaning">Sens %</th></tr></thead><tbody id="tb"></tbody></table></div>
+</main>
+<script src="names.js"></script>
+<script>
+let rows=[],key="elo",dir=-1;
+const fmt=(v,n)=>v==null?"–":v+(n!=null?` <span class="muted">(${n})</span>`:"");
+function draw(){const fav=new Set(window.FAV);const r=rows.slice().sort((a,b)=>((a[key]??-1)>(b[key]??-1)?1:(a[key]??-1)<(b[key]??-1)?-1:0)*dir);
+document.getElementById("tb").innerHTML=r.map((x,i)=>`<tr class="${fav.has(x.name)?"fav":""}"><td>${i+1}</td><td>${x.name}</td><td>${x.elo}</td><td>${fmt(x.winRate)}</td><td>${x.duels}</td><td>${fmt(x.recall,x.recallN)}</td><td>${fmt(x.falseAlarm)}</td><td>${fmt(x.spelling,x.spellN)}</td><td>${fmt(x.meaning,x.meaningN)}</td></tr>`).join("");}
+document.querySelectorAll("th[data-k]").forEach(th=>th.onclick=()=>{const k=th.dataset.k;dir=key===k?-dir:-1;key=k;draw();});
+async function load(){const d=await fetch("/api/results").then(r=>r.json());const known=new Set(d.rows.map(x=>x.name));
+for(const n of window.NAMES) if(!known.has(n)) d.rows.push({name:n,elo:1500,duels:0});
+rows=d.rows;document.getElementById("meta").textContent=`${d.respondents} répondants anonymes · ${d.duels} duels · mis à jour ${new Date().toLocaleTimeString("fr-CH")}`;draw();}
+load();setInterval(load,30000);
+</script></body></html>
