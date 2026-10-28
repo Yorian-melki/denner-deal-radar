@@ -1,20 +1,17 @@
 "use client";
-import { dict, type Locale } from "@/lib/i18n";
 import { whatsappUrl } from "@/lib/select";
 
 /** Partage : feuille de partage native (mobile) ; sinon lien WhatsApp.
- * Sans JavaScript, c'est déjà un lien WhatsApp valide (amélioration progressive). */
-/** `compact` : icône seule (cartes) — le nom accessible reste « Teilen: <titre> ». */
-export function ShareButton({ text, url, title, locale, compact = false }: { text: string; url: string; title: string; locale: Locale; compact?: boolean }) {
-  const t = dict(locale);
-  const wa = whatsappUrl(text, url);
+ * Sans JavaScript, c'est déjà un lien WhatsApp valide (amélioration progressive).
+ * Icône seule ; le nom accessible reste « Teilen: <titre> ». */
+export function ShareButton({ text, url, title, label }: { text: string; url: string; title: string; label: string }) {
   return (
     <a
-      href={wa}
+      href={whatsappUrl(text, url)}
       target="_blank"
       rel="noopener noreferrer"
-      className={compact ? "btn btn-ghost share share-compact" : "btn btn-ghost share"}
-      aria-label={`${t.share}: ${title}`}
+      className="btn btn-icon"
+      aria-label={`${label}: ${title}`}
       onClick={async (e) => {
         if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
           e.preventDefault();
@@ -26,10 +23,10 @@ export function ShareButton({ text, url, title, locale, compact = false }: { tex
         }
       }}
     >
-      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7" /><path d="M16 6l-4-4-4 4" /><path d="M12 2v13" />
+      <svg className="icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M10 3v10M6.5 6.5 10 3l3.5 3.5M4.5 10.5v5a1.5 1.5 0 0 0 1.5 1.5h8a1.5 1.5 0 0 0 1.5-1.5v-5" />
       </svg>
-      <span className={compact ? "sr-only" : undefined}>{t.share}</span>
+      <span className="btn-icon-label">{label}</span>
     </a>
   );
 }

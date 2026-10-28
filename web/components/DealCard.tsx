@@ -1,198 +1,164 @@
-import Link from "next/link";
+/** Carte deal : 4 lignes, un seul lien (la carte entière), aucun bouton.
+ *  1. titre · note (badge neutre ; teinte seulement pour « Top »)
+ *  2. prix (+ « statt » seulement avec une référence vérifiée)
+ *  3. méta : marchand · économie ou mention neutre · date de fin publiée
+ *  4. au plus 2 mentions qui changent le prix réel (Lidl Plus, ab 3 Stück…)
+ * Composant serveur : zéro JavaScript par carte. */
+import { CARD_CONDITIONS, conditionLines } from "@/lib/conditions";
+import { fmtDay, fmtPct, fmtPrice, fmtScore } from "@/lib/format";
+import { dict, type Locale } from "@/lib/i18n";
 import { rewriteUrl } from "@/lib/affiliate/rewrite";
-import { categoryBySlug } from "@/lib/categories";
-import { categoryText, dict, intlLocale, type Locale } from "@/lib/i18n";
+import { hostOf } from "@/lib/outbound";
 import { hasPage } from "@/lib/project";
-import { confidenceTier, hasRealEnd, isLowestSeen, scoreTier, unitSaving } from "@/lib/select";
-import { SITE_URL, fmtDate, fmtPrice } from "@/lib/site";
+import { hasRealEnd, isLowestSeen, savingPct, scoreTier, unitSaving } from "@/lib/select";
+import { paths } from "@/lib/site";
 import type { PublicDeal } from "@/lib/types";
-import { EndsIn } from "@/components/EndsIn";
+import { Icon } from "@/components/Icon";
 import { OutLink } from "@/components/OutLink";
-import { ShareButton } from "@/components/ShareButton";
 
-const tier = (s: number) => (s >= 7 ? "hi" : s >= 4 ? "mid" : "lo");
-export const fmtScore = (s: number, locale: Locale) =>
-  s.toLocaleString(intlLocale(locale), { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-
-export function ScoreBadge({ score, locale = "de", size = "md" }: { score?: number; locale?: Locale; size?: "md" | "lg" }) {
+export function ScoreBadge({ score, locale, size = "md" }: { score?: number; locale: Locale; size?: "md" | "lg" }) {
   const t = dict(locale);
-  if (score === undefined)
-    return (
-      <span className={`score score-na score-${size}`} title={t.scoreNaWhy}>
-        <span aria-hidden="true">–</span>
-        <span className="sr-only">{t.scoreNa}</span>
-      </span>
-    );
+  if (score === undefined) return null;
   const s = fmtScore(score, locale);
+  const tier = scoreTier(score);
   return (
-    <span className={`score score-${tier(score)} score-${size}`}>
-      <span aria-hidden="true">{s}</span>
-      <span className="sr-only">{t.scoreOf(s)}</span>
+    <span className={`badge badge-${size}${tier === "top" ? " badge-top" : ""}`} role="img" aria-label={t.scoreAria(s, t.scoreTiers[tier])}>
+      {s}
     </span>
   );
 }
 
-/** Explication de la note, uniquement avec des faits présents dans les données. */
-export function ScoreFacts({ deal, locale }: { deal: PublicDeal; locale: Locale }) {
+/** Prix, avec unité (/Monat, /kg) et « statt » seulement si la référence est vérifiée. */
+export function PriceLine({ deal, locale, className = "card-price" }: { deal: PublicDeal; locale: Locale; className?: string }) {
   const t = dict(locale);
-  if (deal.score === undefined) return <p className="why-text">{t.scoreNaWhy}</p>;
-  const cur = deal.currency;
-  const rows: [string, string][] = [];
-  if (deal.referenceType) rows.push([t.refType, t.refTypes[deal.referenceType] ?? deal.referenceType]);
-  if (deal.referencePrice !== undefined) rows.push([t.refPrice, fmtPrice(deal.referencePrice, cur, locale)]);
-  if (deal.discountAbs !== undefined && deal.discountAbs > 0)
-    rows.push([t.youSave, `${fmtPrice(deal.discountAbs, cur, locale)}${deal.discountPct !== undefined ? ` (−${Math.round(deal.discountPct)} %)` : ""}`]);
-  else if (deal.discountPct !== undefined && deal.discountPct > 0) rows.push([t.youSave, `−${Math.round(deal.discountPct)} %`]);
-  if (deal.historyN !== undefined && deal.historyN > 0) {
-    if (deal.historicalLow !== undefined) rows.push([t.histLow, fmtPrice(deal.historicalLow, cur, locale)]);
-    if (deal.historicalMedian !== undefined) rows.push([t.histMedian, fmtPrice(deal.historicalMedian, cur, locale)]);
-    rows.push(["", t.histN(deal.historyN)]);
-  }
-  rows.push([t.confidence, deal.confidence !== undefined ? `${Math.round(deal.confidence * 100)} %` : t.unknown]);
-  return (
-    <dl className="why-facts">
-      {rows.map(([k, v], i) => (
-        <div key={i}>
-          {k && <dt>{k}</dt>}
-          <dd>{v}</dd>
-        </div>
-      ))}
-    </dl>
-  );
-}
-
-/** Fiabilité en 3 barres + mot : lisible sans ouvrir l'explication. */
-export function ConfidenceMeter({ confidence, locale }: { confidence?: number; locale: Locale }) {
-  const t = dict(locale);
-  const tierName = confidenceTier(confidence);
-  const bars = tierName === "high" ? 3 : tierName === "mid" ? 2 : 1;
-  const pct = confidence !== undefined ? Math.round(confidence * 100) : undefined;
-  return (
-    <span className={`conf conf-${tierName}`} title={pct !== undefined ? t.confTitle(pct) : undefined}>
-      <span className="conf-bars" aria-hidden="true">
-        {[1, 2, 3].map((i) => <i key={i} className={i <= bars ? "on" : undefined} />)}
-      </span>
-      {t.confTier[tierName]}
-    </span>
-  );
-}
-
-/** Note + verdict + fiabilité, et l'explication complète en un tap
- * (<details> natif : sans JS, accessible au clavier). */
-export function ScoreWhy({ deal, locale, open = false }: { deal: PublicDeal; locale: Locale; open?: boolean }) {
-  const t = dict(locale);
-  return (
-    <details className="why" open={open}>
-      <summary>
-        <ScoreBadge score={deal.score} locale={locale} />
-        <span className="verdict">
-          <strong className="verdict-label">
-            {deal.score !== undefined ? t.scoreTiers[scoreTier(deal.score)] : t.scoreNa}
-            <span className="why-hint">{t.whyShort}</span>
-          </strong>
-          {deal.score !== undefined ? <ConfidenceMeter confidence={deal.confidence} locale={locale} /> : <span className="conf">{t.noRefShort}</span>}
-        </span>
-      </summary>
-      <div className="why-body">
-        <ScoreFacts deal={deal} locale={locale} />
-        <Link href="/transparenz" className="why-link" prefetch={false}>{t.howScored}</Link>
-      </div>
-    </details>
-  );
-}
-
-/** « Tu économises CHF X · vs. <référence> » — seulement avec un prix de référence. */
-export function SaveLine({ deal, locale }: { deal: PublicDeal; locale: Locale }) {
-  const t = dict(locale);
-  const amount = unitSaving(deal);
-  const ref = deal.referenceType && deal.referenceType !== "none" ? t.refShort[deal.referenceType] : undefined;
-  if (amount === undefined) return ref ? <p className="save save-weak">{ref}</p> : null;
-  return (
-    <p className="save">
-      <strong>{t.youSaveShort(fmtPrice(amount, deal.currency, locale))}</strong>
-      {ref && <span className="save-ref"> · {t.vsRef(ref)}</span>}
-    </p>
-  );
-}
-
-export function shareInfo(deal: PublicDeal, locale: Locale) {
-  const t = dict(locale);
-  // Page du deal si elle existe ; sinon le lien d'origine (jamais le lien affilié).
-  const url = hasPage(deal) ? `${SITE_URL}/deal/${deal.slug}` : deal.url;
-  const price = deal.price !== undefined ? fmtPrice(deal.price, deal.currency, locale) : "";
-  const score = deal.score !== undefined ? fmtScore(deal.score, locale) : "";
-  return { url, text: t.shareText(deal.title, price, score) };
-}
-
-/** Lien sortant principal (réécriture affiliée au build, astérisque si rémunéré). */
-export function OfferButton({ deal, locale, className = "btn btn-primary", short = false }: { deal: PublicDeal; locale: Locale; className?: string; short?: boolean }) {
-  const t = dict(locale);
-  const out = rewriteUrl(deal.url);
-  const seller = deal.merchant ?? deal.attribution;
-  return (
-    <OutLink className={className} href={out.href} rel={out.rel} affiliate={out.affiliate} programme={out.programme} dealId={deal.id} source={deal.source} affTitle={t.affTitle}>
-      {short ? <>{t.toOfferShort}<span className="sr-only">{t.atMerchant(seller)}</span></> : t.toOffer(seller)}{"\u00a0"}<span aria-hidden="true">↗</span>
-    </OutLink>
-  );
-}
-
-export function TimeInfo({ deal, locale }: { deal: PublicDeal; locale: Locale }) {
-  const t = dict(locale);
-  if (hasRealEnd(deal)) return <EndsIn endsAt={deal.endsAt!} locale={locale} label={t.until(fmtDate(deal.endsAt, locale))} />;
-  if (deal.lifecycle === "UPCOMING" && deal.startsAt) return <span className="starts">{t.from(fmtDate(deal.startsAt, locale))}</span>;
-  return null;
-}
-
-export function PriceRow({ deal, locale, className = "price-row" }: { deal: PublicDeal; locale: Locale; className?: string }) {
-  const hasRef = deal.referencePrice !== undefined && deal.price !== undefined && deal.referencePrice > deal.price;
+  if (deal.price === undefined) return null;
+  const pct = savingPct(deal);
+  const showRef = deal.verifiedRef && deal.referencePrice !== undefined && pct !== undefined;
+  const unit = deal.unit === "month" ? t.units.month : "";
   return (
     <p className={className}>
-      {deal.price !== undefined && <strong className="price">{fmtPrice(deal.price, deal.currency, locale)}</strong>}
-      {hasRef && <s className="was">{fmtPrice(deal.referencePrice, deal.currency, locale)}</s>}
-      {deal.discountPct !== undefined && deal.discountPct > 0 && <span className="pct">−{Math.round(deal.discountPct)}%</span>}
+      <span className="sr-only">{t.now} </span>
+      <span className="price">{fmtPrice(deal.price, deal.currency, locale)}</span>
+      {unit && <span className="price-unit">{unit}</span>}
+      {showRef && (
+        <span className="was">
+          {t.insteadOf(fmtPrice(deal.referencePrice, deal.currency, locale))}
+          <span className="sr-only">, {t.cheaperBy(fmtPct(pct!, locale))}</span>
+        </span>
+      )}
     </p>
   );
 }
 
-export function DealCard({ deal, locale = "de", showCategory = false }: { deal: PublicDeal; locale?: Locale; showCategory?: boolean }) {
+/** Ce que vaut la réduction, en une phrase factuelle et neutre. */
+export function valueText(deal: PublicDeal, locale: Locale): string | undefined {
   const t = dict(locale);
-  const share = shareInfo(deal, locale);
-  const lowest = isLowestSeen(deal);
-  const cat = showCategory ? categoryBySlug(deal.category) : undefined;
+  const saving = unitSaving(deal);
+  if (saving !== undefined && deal.referenceType) {
+    return t.savingVs(fmtPrice(saving, deal.currency, locale), t.refShort[deal.referenceType] ?? t.refTypes[deal.referenceType]);
+  }
+  if (deal.integrity === "above_usual_price") return t.aboveUsual;
+  if (deal.refKind === "vendor" && deal.referencePrice !== undefined) return t.vendorPrice(fmtPrice(deal.referencePrice, deal.currency, locale));
+  if (deal.refKind === "vendor_pct" && deal.discountPct !== undefined && deal.discountPct >= 1) return t.vendorPct(fmtPct(deal.discountPct, locale));
+  return undefined;
+}
+
+/** « bis Mi 29.10. » (date de fin publiée) ou « ab Mo 03.11. » (pas encore commencé). */
+export function dateText(deal: PublicDeal, locale: Locale, now = new Date()): string | undefined {
+  const t = dict(locale);
+  if (deal.startsAt && new Date(deal.startsAt).getTime() > now.getTime()) return t.from(fmtDay(deal.startsAt, locale, now));
+  if (hasRealEnd(deal)) return t.until(fmtDay(deal.endsAt, locale, now));
+  return undefined;
+}
+
+/** Ligne obligatoire des abonnements : durée, prix ensuite, frais, total 24 mois. */
+export function subscriptionText(deal: PublicDeal, locale: Locale): string | undefined {
+  const t = dict(locale);
+  const s = deal.sub;
+  if (!s) return undefined;
+  const money = (v: number) => fmtPrice(v, deal.currency, locale);
+  const parts: string[] = [];
+  if (s.months !== undefined) parts.push(t.subCommit(s.months));
+  if (s.after !== undefined && s.promoMonths !== undefined) parts.push(t.subAfter(money(s.after), s.promoMonths));
+  if (s.fee !== undefined && s.fee > 0) parts.push(t.subFee(money(s.fee)));
+  if (s.total24 !== undefined) parts.push(t.subTotal(money(s.total24)));
+  return parts.join(" · ") || undefined;
+}
+
+/** Mentions de la carte : conditions qui changent le prix réel + faits utiles. */
+export function cardNotes(deal: PublicDeal, locale: Locale, max = 2): string[] {
+  const t = dict(locale);
+  const out: string[] = [];
+  const money = (v: number) => fmtPrice(v, deal.currency, locale);
+  out.push(...conditionLines(deal.conds.filter((c) => CARD_CONDITIONS.has(c.code)), t, locale, money).filter((s) => s !== t.condOther));
+  if (deal.requiresStudent && deal.category !== "studenten-rabatte") out.push(t.studentsOnly);
+  if (deal.trial) out.push(t.trial);
+  if (isLowestSeen(deal)) out.push(t.lowestSeen);
+  if (deal.variants) out.push(t.variants(deal.variants));
+  else if (deal.alsoAt?.length) out.push(t.alsoAt(deal.alsoAt.length));
+  return out.slice(0, max);
+}
+
+export const dealHref = (deal: PublicDeal, locale: Locale) => (hasPage(deal) ? paths.deal(locale, deal.slug) : undefined);
+
+/** Lien sortant du deal (réécriture affiliée au build, jamais pour un lien tiers désemballé). */
+export function outbound(deal: PublicDeal) {
+  return deal.noAff ? { href: deal.url, rel: "noopener noreferrer", affiliate: false as const, programme: undefined } : rewriteUrl(deal.url);
+}
+
+export function DealCard({ deal, locale, headingLevel = 3 }: { deal: PublicDeal; locale: Locale; headingLevel?: 2 | 3 }) {
+  const t = dict(locale);
+  const href = dealHref(deal, locale);
+  const value = valueText(deal, locale);
+  const date = dateText(deal, locale);
+  const sub = subscriptionText(deal, locale);
+  const notes = cardNotes(deal, locale);
+  const titleId = `t-${deal.slug}`;
+  const H = headingLevel === 2 ? "h2" : "h3";
+  let link: React.ReactNode;
+  let adNote: string | undefined;
+  if (href) {
+    link = <a className="card-link" href={href}>{deal.title}</a>;
+  } else {
+    const out = outbound(deal);
+    adNote = out.affiliate ? t.adLink : undefined;
+    const host = hostOf(out.href) ?? "";
+    link = (
+      <OutLink className="card-link" href={out.href} rel={out.rel} affiliate={out.affiliate} programme={out.programme} dealId={deal.id} source={deal.source} srNote={t.opensSite(deal.via ?? host)}>
+        {deal.title}<Icon name="external" size={16} className="card-ext" />
+      </OutLink>
+    );
+  }
+  const seller = deal.merchant ?? deal.attribution;
   return (
-    <article className={`card${deal.score === undefined ? " card-na" : ""}`}>
-      <div className="card-top">
-        <ScoreWhy deal={deal} locale={locale} />
-        <div className="tags">
-          {cat && <span className="tag tag-cat">{categoryText(locale, cat.slug, cat).label}</span>}
-          {lowest && <span className="tag tag-low" title={t.lowestSeenTitle(deal.historyN!)}>↓ {t.lowestSeen}</span>}
-          {deal.requiresStudent && <span className="tag tag-student">{t.studentsOnly}</span>}
-        </div>
+    <article className="card" aria-labelledby={titleId} data-ends={hasRealEnd(deal) ? deal.endsAt : undefined}>
+      <div className="card-head">
+        <H className="card-title" id={titleId}>{link}</H>
+        <ScoreBadge score={deal.score} locale={locale} />
       </div>
-      <h3 className="card-title">
-        {/* prefetch désactivé : ~50 cartes par page = ~50 requêtes inutiles sur mobile. */}
-        {hasPage(deal) ? <Link href={`/deal/${deal.slug}`} prefetch={false}>{deal.title}</Link> : deal.title}
-      </h3>
-      <PriceRow deal={deal} locale={locale} />
-      <SaveLine deal={deal} locale={locale} />
+      <PriceLine deal={deal} locale={locale} />
       <p className="card-meta">
-        <span className="seller">{deal.merchant ?? deal.attribution}</span>
-        {deal.alsoAt?.length ? <span className="also" title={deal.alsoAt.join(", ")}>{t.alsoAt(deal.alsoAt.length)}</span> : null}
-        <TimeInfo deal={deal} locale={locale} />
+        <span className="seller">{seller}</span>
+        {!href && deal.via && <span>{t.via(deal.via)}</span>}
+        {value && <span>{value}</span>}
+        {date && <span>{date}</span>}
       </p>
-      <div className="card-actions">
-        <OfferButton deal={deal} locale={locale} short />
-        <ShareButton text={share.text} url={share.url} title={deal.title} locale={locale} compact />
-      </div>
+      {sub && <p className="card-sub">{sub}</p>}
+      {(notes.length > 0 || adNote) && (
+        <p className="card-notes">
+          {notes.map((n) => <span key={n} className="note">{n}</span>)}
+          {adNote && <span className="note note-ad">{adNote}</span>}
+        </p>
+      )}
     </article>
   );
 }
 
-export function DealGrid({ deals, locale = "de", showCategory = false }: { deals: PublicDeal[]; locale?: Locale; showCategory?: boolean }) {
+export function DealGrid({ deals, locale }: { deals: PublicDeal[]; locale: Locale }) {
   if (!deals.length) return <p className="empty">{dict(locale).empty}</p>;
   return (
     <div className="grid">
-      {deals.map((d) => <DealCard key={d.slug} deal={d} locale={locale} showCategory={showCategory} />)}
+      {deals.map((d) => <DealCard key={d.slug} deal={d} locale={locale} />)}
     </div>
   );
 }

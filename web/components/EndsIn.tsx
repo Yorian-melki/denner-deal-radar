@@ -1,32 +1,24 @@
 "use client";
 import { useEffect, useState } from "react";
-import { dict, type Locale } from "@/lib/i18n";
-import { timeLeft } from "@/lib/select";
+import { COUNTDOWN_MAX_MS, timeLeft } from "@/lib/select";
 
-/** Compte à rebours RÉEL : n'est rendu que pour une date de fin publiée par la
- * source (voir hasRealEnd). HTML statique = la date ; le navigateur affiche
- * ensuite le temps restant, recalculé chaque minute, et « terminé » à la fin —
- * jamais de minuterie qui redémarre. */
-export function EndsIn({ endsAt, locale, label }: { endsAt: string; locale: Locale; label: string }) {
-  const t = dict(locale);
+/** Date de fin RÉELLE (publiée par la source, voir hasRealEnd), page deal seulement.
+ * HTML statique = la date (« bis Mi 29.10. ») ; le navigateur n'affiche un temps
+ * restant que sous 6 h, recalculé chaque minute, puis « abgelaufen » — jamais de
+ * minuterie qui redémarre, jamais de mise en forme alarmante. Textes en props
+ * (« {h} », « {m} » remplacés), aucun dictionnaire côté client. */
+export function EndsIn({ endsAt, label, hm, m, ended }: { endsAt: string; label: string; hm: string; m: string; ended: string }) {
   const [text, setText] = useState(label);
-  const [soon, setSoon] = useState(false);
   useEffect(() => {
     const tick = () => {
       const left = timeLeft(endsAt, new Date());
-      if (left.ms <= 0) { setText(t.ended); setSoon(false); return; }
-      // Au-delà de 7 jours, la date suffit.
-      if (left.days >= 7) { setText(label); setSoon(false); return; }
-      setText(left.days === 0 && left.hours === 0 ? t.endsInMin(Math.max(1, left.minutes)) : t.endsIn(left.days, left.hours));
-      setSoon(left.ms < 24 * 3_600_000);
+      if (left.ms <= 0) return setText(ended);
+      if (left.ms >= COUNTDOWN_MAX_MS) return setText(label);
+      setText(left.hours > 0 ? hm.replace("{h}", String(left.hours)).replace("{m}", String(left.minutes)) : m.replace("{m}", String(Math.max(1, left.minutes))));
     };
     tick();
     const id = setInterval(tick, 60_000);
     return () => clearInterval(id);
-  }, [endsAt, label, t]);
-  return (
-    <time dateTime={endsAt} className={soon ? "ends ends-soon" : "ends"}>
-      {text}
-    </time>
-  );
+  }, [endsAt, label, hm, m, ended]);
+  return <time dateTime={endsAt}>{text}</time>;
 }

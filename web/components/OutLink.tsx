@@ -1,15 +1,14 @@
 "use client";
 
 /** Lien sortant : la réécriture affiliée est faite au build (props) ; ici on
- * compte seulement le clic, anonymement, via /api/click (fonction Cloudflare). */
+ * compte seulement le clic, anonymement, via /api/click (fonction Cloudflare).
+ * La mention « Werbelink » est VISIBLE à côté du lien (voir OfferButton), jamais
+ * cachée dans un title ; ici seulement un complément pour les lecteurs d'écran. */
 export function OutLink(props: {
   href: string; rel: string; affiliate: boolean; dealId: string; source: string; programme?: string;
-  children: React.ReactNode; className?: string;
-  /** Explication localisée de l'astérisque (lien rémunéré). */
-  affTitle?: string;
+  children: React.ReactNode; className?: string; srNote?: string;
 }) {
-  const { href, rel, affiliate, dealId, source, programme, children, className } = props;
-  const affTitle = props.affTitle ?? "Werbelink: Wir erhalten ggf. eine Provision. Der Preis ändert sich für dich nicht.";
+  const { href, rel, affiliate, dealId, source, programme, children, className, srNote } = props;
   return (
     <a
       href={href}
@@ -24,7 +23,7 @@ export function OutLink(props: {
       }}
     >
       {children}
-      {affiliate && <><span className="aff-mark" title={affTitle} aria-hidden="true">*</span><span className="sr-only"> ({affTitle})</span></>}
+      {srNote && <span className="sr-only"> ({srNote})</span>}
     </a>
   );
 }
