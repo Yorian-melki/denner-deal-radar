@@ -131,7 +131,7 @@ export function OfferButton({ deal, locale, className = "btn btn-primary", short
   const seller = deal.merchant ?? deal.attribution;
   return (
     <OutLink className={className} href={out.href} rel={out.rel} affiliate={out.affiliate} programme={out.programme} dealId={deal.id} source={deal.source} affTitle={t.affTitle}>
-      {short ? <>{t.toOfferShort}<span className="sr-only">{t.atMerchant(seller)}</span></> : t.toOffer(seller)} <span aria-hidden="true">↗</span>
+      {short ? <>{t.toOfferShort}<span className="sr-only">{t.atMerchant(seller)}</span></> : t.toOffer(seller)}{"\u00a0"}<span aria-hidden="true">↗</span>
     </OutLink>
   );
 }
