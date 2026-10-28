@@ -2,9 +2,9 @@ import { LegalHead, legalMetadata, type Tri } from "@/components/Legal";
 import { activeProgrammes } from "@/lib/affiliate/rewrite";
 import { fmtPct, fmtScore } from "@/lib/format";
 import { dict, type Locale } from "@/lib/i18n";
-import { PAGE_MIN_SCORE, SCORE_CAP, VERIFY_MIN_CONFIDENCE } from "@/lib/project";
-import { HOME_MIN_SCORE, HOME_MIN_SECTION, HOME_TOP_N, HISTORY_MIN_OBSERVATIONS, MIN_CONFIDENCE_TOP, PER_BRAND, PER_MERCHANT, TOP_N } from "@/lib/select";
-import { PAGE_SIZE } from "@/components/CategoryListing";
+import { BADGE_MIN_SCORE, OBSERVED_MAX_GAP, OBSERVED_MIN_N, SCORE_CAP, STORE_CLOSING_HOUR, VERIFY_MIN_CONFIDENCE } from "@/lib/project";
+import { HOME_MIN_SCORE, HOME_MIN_SECTION, HISTORY_MIN_OBSERVATIONS, MIN_CONFIDENCE_TOP, PER_BRAND, PER_MERCHANT, SECTION_N, TOP_MIN_SCORE, TOP_MIN_SHOWN, TOP_N } from "@/lib/select";
+import { MAX_SHARE_PER_MERCHANT, PAGE_SIZE } from "@/components/CategoryListing";
 import { paths } from "@/lib/site";
 
 const TITLE: Tri = { de: "Methode & Transparenz", fr: "Méthode et transparence", en: "Method & transparency" };
@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     index: true,
     description: {
       de: "Wie die Bewertung entsteht, wie sortiert wird und wie wir Geld verdienen – mit allen Regeln und Zahlen.",
-      fr: "Comment la note est calculée, comment le classement est établi et comment nous gagnons de l’argent – toutes les règles et tous les chiffres.",
+      fr: "Comment la note est calculée, comment se fait le classement et comment nous gagnons de l’argent – toutes les règles et tous les chiffres.",
       en: "How the score is built, how ranking works and how we make money – every rule and number.",
     },
   });
@@ -42,11 +42,12 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
   const c = {
     de: {
       h1: "Wie die Bewertung entsteht",
-      p1: <>Jede Aktion erhält eine Bewertung von 0 bis 10. Sie misst die <strong>belegte Ersparnis</strong> gegenüber einem Vergleichspreis und stammt aus unserem Scanner; die folgenden Regeln kommen danach, und sie können eine Bewertung nur senken, nie erhöhen.</>,
+      p1: <>Jede Aktion erhält eine Bewertung von 0 bis 10. Sie misst die Ersparnis gegenüber einem Vergleichspreis und stammt aus unserem Scanner; die folgenden Regeln kommen danach, und sie können eine Bewertung nur senken, nie erhöhen.</>,
       rules: [
-        <>Ein Preis wird nur dann «statt» einem anderen angezeigt, mit Ersparnis in Franken und Prozent, wenn der Vergleichspreis ein <strong>tatsächlich verlangter Preis</strong> ist (früherer Preis beim selben Shop, Preis bei einem anderen Händler, beobachteter Marktpreis), die Aktion unsere Plausibilitätsprüfung besteht und die Datenqualität mindestens {pct(VERIFY_MIN_CONFIDENCE)} beträgt.</>,
+        <>Ein Preis wird nur dann «statt» einem anderen angezeigt, mit Ersparnis in Franken und Prozent, wenn der Händler einen <strong>früher verlangten Preis</strong> (oder einen Konkurrenzpreis) angibt, nichts in unseren Daten dagegen spricht und die Datenqualität mindestens {pct(VERIFY_MIN_CONFIDENCE)} beträgt. Dieser «Statt-Preis» ist die <strong>Angabe des Händlers</strong>, nicht unsere Prüfung: Wir schreiben «laut Händler». «Von uns beobachtet» steht nur, wenn mindestens {OBSERVED_MIN_N} eigene Preisbeobachtungen höchstens {pct(OBSERVED_MAX_GAP)} vom Statt-Preis abweichen.</>,
+        <>Vergleicht der Händler mit einem Konkurrenzpreis, den wir noch nicht selbst beobachtet haben, ist die Bewertung auf {sc(SCORE_CAP)} begrenzt («Vergleichspreis noch nicht auf Plausibilität geprüft»).</>,
         <>Ist der Vergleichspreis eine Angabe des Anbieters (UVP, Katalogpreis, angegebener Warenwert), zeigen wir ihn neutral als «Preisangabe des Anbieters» und begrenzen die Bewertung auf {sc(SCORE_CAP)} (höchstens «gut»).</>,
-        <>Ohne belegten Vergleichspreis bleibt die Bewertung ebenfalls bei höchstens {sc(SCORE_CAP)}. Nennt der Anbieter nur einen Prozentsatz, gibt es <strong>keine Bewertung</strong> («Rabatt laut Anbieter»).</>,
+        <>Bei zu wenig verlässlichen Daten (unter {pct(VERIFY_MIN_CONFIDENCE)}) bleibt die Bewertung ebenfalls bei höchstens {sc(SCORE_CAP)}. Nennt der Anbieter nur einen Prozentsatz, gibt es <strong>keine Bewertung</strong> («Rabatt laut Anbieter»). Eine Bewertung von 0 zeigen wir nie; unter {sc(BADGE_MIN_SCORE)} zeigen wir keine Zahl, nur Preis und Händler.</>,
         <>Keine Bewertung auch bei unplausiblen Rabatten (meist Datenfehler) und wenn der Preis nicht zur Menge im Titel passt (mehr als 5 % Abweichung vom Grundpreis).</>,
         <>Ist eine «Aktion» teurer als der übliche Preis, steht das auf der Karte («teurer als üblich»).</>,
         <>Einen Preisverlauf zeigen wir erst ab {HISTORY_MIN_OBSERVATIONS} Beobachtungen.</>,
@@ -54,13 +55,13 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
       tiersTitle: "Stufen",
       h2: "Wie die Reihenfolge entsteht",
       order: [
-        <>Sortiert wird nach Bewertung, dann nach belegtem Rabatt. Nicht bewertete Angebote stehen am Ende.</>,
-        <>Bestenliste: höchstens {TOP_N} Karten, nur Bewertungen über 0 mit Datenqualität ab {pct(MIN_CONFIDENCE_TOP)}, höchstens {PER_MERCHANT} pro Shop und {PER_BRAND} pro Marke, höchstens ein Drittel aus derselben Kategorie (nur gelockert, wenn sonst Plätze leer blieben). Dienstleistungen sind ausgeschlossen.</>,
-        <>Startseite: höchstens {HOME_TOP_N} Karten in der Bestenliste, nur Bewertungen ab {sc(HOME_MIN_SCORE)}; eine Kategorie erscheint erst ab {HOME_MIN_SECTION} Karten.</>,
+        <>Angebote mit Statt-Preis des Händlers stehen <strong>immer zuerst</strong>, dann nach Bewertung, dann nach Ersparnis in Franken. Nicht bewertete Angebote und Aktionen, die erst später beginnen, stehen am Ende.</>,
+        <>«Am besten bewertet»: höchstens {TOP_N} Karten, ohne Auffüllen — nur mit Statt-Preis des Händlers, Bewertung ab {sc(TOP_MIN_SCORE)}, Datenqualität ab {pct(MIN_CONFIDENCE_TOP)}, höchstens {PER_MERCHANT} pro Shop und {PER_BRAND} pro Marke, höchstens ein Drittel aus derselben Kategorie. Sind es weniger als {TOP_MIN_SHOWN}, entfällt die Liste. Nicht dabei: Aktionen, die erst morgen beginnen, und Ladenaktionen am letzten Tag nach {STORE_CLOSING_HOUR}:00 Uhr. Dienstleistungen sind ausgeschlossen.</>,
+        <>Stadtseite: danach Studis, Gratis und Supermarkt mit je {SECTION_N} Karten (Bewertung ab {sc(HOME_MIN_SCORE)}; eine Rubrik erscheint erst ab {HOME_MIN_SECTION} Karten). Alle anderen Kategorien über die Leiste oben. In «Supermarkt» stammt pro Seite höchstens {pct(MAX_SHARE_PER_MERCHANT)} der Angebote aus demselben Laden.</>,
         <>Studentenrabatte, Gratis-Angebote und Gutscheine haben keine Bewertung (die Prozente stammen von den Anbietern): Sie stehen <strong>neueste zuerst</strong>, höchstens {PER_MERCHANT} pro Shop.</>,
         <>Handy- und Internet-Abos sind nach <strong>Gesamtkosten über 24 Monate</strong> sortiert (Aktionspreis, Folgepreis, Aufschaltgebühr).</>,
         <>Dieselbe Aktion in mehreren Sorten zählt einmal («+2 Sorten»); dasselbe Produkt in mehreren Shops ebenfalls («auch bei 2 weiteren Shops»).</>,
-        <>Kategorien zeigen {PAGE_SIZE} Angebote pro Seite. Eigene Detailseiten gibt es ab Bewertung {sc(PAGE_MIN_SCORE)}.</>,
+        <>Kategorien zeigen {PAGE_SIZE} Angebote pro Seite. Jede Karte führt auf eine eigene Detailseite; erst dort führt ein Knopf (in neuem Tab) zum Anbieter.</>,
         <><strong>Platzierungen sind nicht käuflich.</strong> Ob ein Link eine Provision bringt, fliesst nicht in Bewertung oder Reihenfolge ein; ein automatischer Test prüft, dass die Reihenfolge mit und ohne Partnerprogramme identisch ist.</>,
       ],
       h3: "Wie wir Geld verdienen",
@@ -71,30 +72,39 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
       ],
       active: (n: string) => `Aktive Partnerprogramme: ${n}`,
       none: "keine",
+      hidden: "Was wir nicht zeigen",
+      hiddenList: [
+        <>Angebote, die die Nutzungsbedingungen eines Dienstes umgehen (z. B. Abos «über Bulgarien», VPN-Tricks).</>,
+        <>Begleit- und Erotikangebote erscheinen nie auf der Stadtseite oder in einer Bestenliste.</>,
+        <>Werbewörter aus Titeln («ERHÖHT», «zum neuen Tiefstpreis», «nur heute», Emojis); «Tiefstpreis» nur, wenn unsere eigenen Daten es zeigen.</>,
+        <>Ladenaktionen von Ketten ohne Filiale in der Nähe (St. Gallen: Aligro).</>,
+        <>Die Liste ist überwiegend schweizweit: Supermarkt-Aktionen gelten meist in allen Filialen, Online-Angebote überall.</>,
+      ],
       h4: "Quellen und Fehler",
       sources: <>Wir lesen nur öffentlich zugängliche Seiten und Feeds und verlinken immer auf die Quelle; massgebend ist die Seite des Anbieters. Führt ein Link zu einer Sammelseite statt zum Händler, steht das auf der Karte («gefunden über …»). Liste und Entfernungsanfragen: <a href={L("quellen")}>Quellen</a>. Fehler gefunden? Kontakt im <a href={L("impressum")}>Impressum</a>.</>,
     },
     fr: {
       h1: "Comment la note est calculée",
-      p1: <>Chaque action reçoit une note de 0 à 10. Elle mesure l’<strong>économie établie</strong> par rapport à un prix de comparaison et vient de notre scanner ; les règles ci-dessous s’appliquent ensuite et ne peuvent que baisser une note, jamais l’augmenter.</>,
+      p1: <>Chaque action reçoit une note de 0 à 10. Elle mesure l’économie par rapport à un prix de comparaison et vient de notre scanner ; les règles ci-dessous s’appliquent ensuite et ne peuvent que baisser une note, jamais l’augmenter.</>,
       rules: [
-        <>Un prix n’est affiché « au lieu de » un autre, avec l’économie en francs et en pourcentage, que si le prix de comparaison est un <strong>prix réellement pratiqué</strong> (ancien prix du même magasin, prix chez un autre commerçant, prix de marché observé), que l’action passe notre contrôle de cohérence et que la qualité des données atteint au moins {pct(VERIFY_MIN_CONFIDENCE)}.</>,
+        <>Un prix n’est affiché « au lieu de » un autre, avec l’économie en francs et en pourcentage, que si le commerçant indique un <strong>prix pratiqué auparavant</strong> (ou un prix concurrent), que rien dans nos données ne le contredit et que la qualité des données atteint au moins {pct(VERIFY_MIN_CONFIDENCE)}. Ce prix barré est <strong>l’indication du commerçant</strong>, pas notre vérification : nous écrivons « selon le commerçant ». « Observé par nous » n’apparaît que si au moins {OBSERVED_MIN_N} de nos relevés s’écartent de {pct(OBSERVED_MAX_GAP)} au plus du prix barré.</>,
+        <>Si le commerçant compare à un prix concurrent que nous n’avons pas encore observé nous-mêmes, la note est limitée à {sc(SCORE_CAP)} (« plausibilité du prix de comparaison pas encore vérifiée »).</>,
         <>Si le prix de comparaison est une indication du vendeur (prix conseillé, catalogue, valeur déclarée), nous l’affichons sobrement (« prix indiqué par le vendeur ») et limitons la note à {sc(SCORE_CAP)} (« bien » au maximum).</>,
-        <>Sans prix de comparaison établi, la note reste aussi à {sc(SCORE_CAP)} au maximum. Si le vendeur n’annonce qu’un pourcentage, il n’y a <strong>pas de note</strong> (« selon le vendeur »).</>,
+        <>Avec des données insuffisantes (moins de {pct(VERIFY_MIN_CONFIDENCE)}), la note reste aussi à {sc(SCORE_CAP)} au maximum. Si le vendeur n’annonce qu’un pourcentage, il n’y a <strong>pas de note</strong> (« selon le vendeur »). Une note de 0 n’est jamais affichée ; sous {sc(BADGE_MIN_SCORE)}, aucun chiffre, seulement le prix et le commerçant.</>,
         <>Pas de note non plus pour une remise invraisemblable (souvent une erreur de données) ou un prix qui ne correspond pas à la quantité du titre (écart de plus de 5 % avec le prix unitaire).</>,
         <>Si une « action » est plus chère que le prix habituel, la carte le dit (« plus cher que d’habitude »).</>,
         <>L’historique des prix n’est affiché qu’à partir de {HISTORY_MIN_OBSERVATIONS} relevés.</>,
       ],
       tiersTitle: "Paliers",
-      h2: "Comment le classement est établi",
+      h2: "Comment se fait le classement",
       order: [
-        <>Tri par note, puis par remise établie. Les offres sans note sont en fin de liste.</>,
-        <>Meilleures notes : au plus {TOP_N} cartes, seulement des notes supérieures à 0 avec une qualité de données d’au moins {pct(MIN_CONFIDENCE_TOP)}, au plus {PER_MERCHANT} par magasin et {PER_BRAND} par marque, au plus un tiers d’une même catégorie (assoupli seulement s’il resterait des places vides). Les prestations de service sont exclues.</>,
-        <>Accueil : au plus {HOME_TOP_N} cartes en tête, seulement des notes d’au moins {sc(HOME_MIN_SCORE)} ; une catégorie n’apparaît qu’à partir de {HOME_MIN_SECTION} cartes.</>,
+        <>Les offres avec prix barré du commerçant passent <strong>toujours en premier</strong>, puis par note, puis par économie en francs. Les offres sans note et celles qui commencent plus tard sont en fin de liste.</>,
+        <>« Les mieux notées » : au plus {TOP_N} cartes, sans remplissage — seulement avec prix barré du commerçant, note dès {sc(TOP_MIN_SCORE)}, qualité des données dès {pct(MIN_CONFIDENCE_TOP)}, au plus {PER_MERCHANT} par magasin et {PER_BRAND} par marque, au plus un tiers d’une même catégorie. Sous {TOP_MIN_SHOWN} cartes, la liste disparaît. Exclues : les actions qui ne commencent que demain et les actions en magasin le dernier jour après {STORE_CLOSING_HOUR} h. Les prestations de service sont exclues.</>,
+        <>Page de la ville : ensuite Étudiants, Gratuit et Supermarché, {SECTION_N} cartes chacune (note dès {sc(HOME_MIN_SCORE)} ; une rubrique n’apparaît qu’à partir de {HOME_MIN_SECTION} cartes). Les autres catégories via la barre du haut. Dans « Supermarché », un même magasin fournit au plus {pct(MAX_SHARE_PER_MERCHANT)} des offres d’une page.</>,
         <>Réductions étudiantes, offres gratuites et codes promo n’ont pas de note (les pourcentages viennent des vendeurs) : elles sont classées <strong>de la plus récente à la plus ancienne</strong>, au plus {PER_MERCHANT} par magasin.</>,
         <>Les abonnements mobile et internet sont triés par <strong>coût total sur 24 mois</strong> (prix promo, prix ensuite, frais de mise en service).</>,
         <>Une même action en plusieurs variétés compte une fois (« +2 variétés ») ; un même produit dans plusieurs magasins aussi (« aussi dans 2 autres magasins »).</>,
-        <>Les catégories affichent {PAGE_SIZE} offres par page. Une page détaillée existe à partir d’une note de {sc(PAGE_MIN_SCORE)}.</>,
+        <>Les catégories affichent {PAGE_SIZE} offres par page. Chaque carte mène à sa propre page ; c’est seulement là qu’un bouton (nouvel onglet) mène au vendeur.</>,
         <><strong>Aucune place n’est payante.</strong> Qu’un lien rapporte une commission n’entre ni dans la note ni dans l’ordre ; un test automatique vérifie que l’ordre est identique avec et sans programmes partenaires.</>,
       ],
       h3: "Comment nous gagnons de l’argent",
@@ -105,16 +115,25 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
       ],
       active: (n: string) => `Programmes partenaires actifs : ${n}`,
       none: "aucun",
+      hidden: "Ce que nous ne montrons pas",
+      hiddenList: [
+        <>Les offres qui contournent les conditions d’un service (p. ex. abonnements « via la Bulgarie », astuces VPN).</>,
+        <>Les offres d’escorte ou érotiques n’apparaissent jamais sur la page de la ville ni dans un classement.</>,
+        <>Les mots publicitaires des titres (« ERHÖHT », « nouveau prix le plus bas », « aujourd’hui seulement », émojis) ; « prix le plus bas » seulement si nos propres données le montrent.</>,
+        <>Les actions en magasin d’enseignes sans magasin à proximité (Saint-Gall : Aligro).</>,
+        <>La liste est surtout nationale : les actions de supermarché valent en général dans tous les magasins, les offres en ligne partout.</>,
+      ],
       h4: "Sources et erreurs",
       sources: <>Nous ne lisons que des pages et flux publics et renvoyons toujours vers la source ; seule la page du vendeur fait foi. Si un lien mène à un agrégateur plutôt qu’au commerçant, la carte l’indique (« trouvé via … »). Liste et demandes de retrait : <a href={L("quellen")}>sources</a>. Une erreur ? Contact dans les <a href={L("impressum")}>mentions légales</a>.</>,
     },
     en: {
       h1: "How the score is built",
-      p1: <>Every deal gets a score from 0 to 10. It measures the <strong>documented saving</strong> against a comparison price and comes from our scanner; the rules below are applied afterwards and can only lower a score, never raise it.</>,
+      p1: <>Every deal gets a score from 0 to 10. It measures the saving against a comparison price and comes from our scanner; the rules below are applied afterwards and can only lower a score, never raise it.</>,
       rules: [
-        <>A price is shown “instead of” another, with the saving in francs and percent, only if the comparison price is a <strong>price actually charged</strong> (previous price at the same shop, price at another retailer, observed market price), the deal passes our consistency check and data quality is at least {pct(VERIFY_MIN_CONFIDENCE)}.</>,
+        <>A price is shown “instead of” another, with the saving in francs and percent, only if the retailer states a <strong>price it charged before</strong> (or a competitor’s price), nothing in our data contradicts it and data quality is at least {pct(VERIFY_MIN_CONFIDENCE)}. This “instead of” price is <strong>the retailer’s statement</strong>, not our check: we write “according to the retailer”. “Observed by us” appears only when at least {OBSERVED_MIN_N} of our own price observations are within {pct(OBSERVED_MAX_GAP)} of it.</>,
+        <>If the retailer compares with a competitor’s price we have not observed ourselves yet, the score is capped at {sc(SCORE_CAP)} (“reference price not yet plausibility-checked”).</>,
         <>If the comparison price is the seller’s own figure (RRP, catalogue price, stated value), we show it neutrally (“seller’s stated price”) and cap the score at {sc(SCORE_CAP)} (“good” at most).</>,
-        <>Without a documented comparison price the score is also capped at {sc(SCORE_CAP)}. If the seller only states a percentage, there is <strong>no score</strong> (“according to the seller”).</>,
+        <>With too little reliable data (below {pct(VERIFY_MIN_CONFIDENCE)}) the score is also capped at {sc(SCORE_CAP)}. If the seller only states a percentage, there is <strong>no score</strong> (“according to the seller”). A score of 0 is never shown; below {sc(BADGE_MIN_SCORE)} we show no number, only price and retailer.</>,
         <>No score either for implausible discounts (usually a data error) or when the price does not match the quantity in the title (more than 5% off the unit price).</>,
         <>If a “deal” costs more than the usual price, the card says so (“pricier than usual”).</>,
         <>Price history is shown only from {HISTORY_MIN_OBSERVATIONS} observations.</>,
@@ -122,13 +141,13 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
       tiersTitle: "Tiers",
       h2: "How ranking works",
       order: [
-        <>Sorted by score, then by documented discount. Unrated offers come last.</>,
-        <>Top list: at most {TOP_N} cards, only scores above 0 with data quality of at least {pct(MIN_CONFIDENCE_TOP)}, at most {PER_MERCHANT} per shop and {PER_BRAND} per brand, at most a third from one category (relaxed only if places would otherwise stay empty). Services are excluded.</>,
-        <>Home page: at most {HOME_TOP_N} cards in the top list, only scores of at least {sc(HOME_MIN_SCORE)}; a category appears only with {HOME_MIN_SECTION} or more cards.</>,
+        <>Offers with the retailer’s “instead of” price <strong>always come first</strong>, then by score, then by saving in francs. Unrated offers and deals that start later come last.</>,
+        <>“Top rated”: at most {TOP_N} cards, never padded — only with the retailer’s “instead of” price, score from {sc(TOP_MIN_SCORE)}, data quality from {pct(MIN_CONFIDENCE_TOP)}, at most {PER_MERCHANT} per shop and {PER_BRAND} per brand, at most a third from one category. With fewer than {TOP_MIN_SHOWN}, the list is not shown. Excluded: deals that only start tomorrow and in-store deals on their last day after {STORE_CLOSING_HOUR}:00. Services are excluded.</>,
+        <>City page: then Students, Free and Groceries with {SECTION_N} cards each (score from {sc(HOME_MIN_SCORE)}; a section appears only with {HOME_MIN_SECTION} or more cards). All other categories via the bar at the top. In “Groceries”, one shop supplies at most {pct(MAX_SHARE_PER_MERCHANT)} of a page.</>,
         <>Student discounts, freebies and coupons have no score (the percentages come from the sellers): they are listed <strong>newest first</strong>, at most {PER_MERCHANT} per shop.</>,
         <>Mobile and internet plans are sorted by <strong>total cost over 24 months</strong> (promo price, follow-up price, activation fee).</>,
         <>The same deal in several varieties counts once (“+2 varieties”); the same product at several shops too (“also at 2 other shops”).</>,
-        <>Categories show {PAGE_SIZE} offers per page. Detail pages exist from a score of {sc(PAGE_MIN_SCORE)}.</>,
+        <>Categories show {PAGE_SIZE} offers per page. Every card opens its own detail page; only there does a button (new tab) lead to the seller.</>,
         <><strong>Placement cannot be bought.</strong> Whether a link earns a commission never enters the score or the order; an automated test checks that the order is identical with and without partner programmes.</>,
       ],
       h3: "How we make money",
@@ -139,6 +158,14 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
       ],
       active: (n: string) => `Active partner programmes: ${n}`,
       none: "none",
+      hidden: "What we do not show",
+      hiddenList: [
+        <>Offers that circumvent a service’s terms (e.g. subscriptions “via Bulgaria”, VPN tricks).</>,
+        <>Escort or adult offers never appear on the city page or in a top list.</>,
+        <>Marketing words in titles (“ERHÖHT”, “new lowest price”, “today only”, emojis); “lowest price” only when our own data shows it.</>,
+        <>In-store deals of chains with no shop nearby (St. Gallen: Aligro).</>,
+        <>The list is mostly nationwide: supermarket deals usually apply in every branch, online offers everywhere.</>,
+      ],
       h4: "Sources and errors",
       sources: <>We only read public pages and feeds and always link to the source; the seller’s page is authoritative. If a link leads to an aggregator rather than the retailer, the card says so (“found via …”). List and removal requests: <a href={L("quellen")}>sources</a>. Found an error? Contact details in the <a href={L("impressum")}>imprint</a>.</>,
     },
@@ -158,6 +185,8 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
       <h2 id="provision">{c.h3}</h2>
       <ul>{c.money.map((r, i) => <li key={i}>{r}</li>)}</ul>
       <p className="muted">{c.active(active.length ? active.join(", ") : c.none)}</p>
+      <h2 id="nicht-gezeigt">{c.hidden}</h2>
+      <ul>{c.hiddenList.map((r, i) => <li key={i}>{r}</li>)}</ul>
       <h2 id="quellen">{c.h4}</h2>
       <p>{c.sources}</p>
     </article>

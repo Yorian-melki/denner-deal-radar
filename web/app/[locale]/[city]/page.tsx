@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
   const t = dict(p.locale);
   const name = city.name[p.locale];
   return {
-    title: t.cityTitle(name),
+    title: t.dealsIn(name),
     description: t.cityDescription(name),
     alternates: alternates(`/${city.slug}`, p.locale),
     openGraph: {
@@ -33,6 +33,6 @@ export default async function CityPage({ params }: P) {
   const p = await params;
   const city = cityBySlug(p.city);
   if (!city) notFound();
-  const { deals, generatedAt } = await getDeals();
-  return <CityDashboard city={city} locale={p.locale as Locale} deals={deals.filter((d) => inCity(d, city))} generatedAt={generatedAt} variant="city" />;
+  const { deals, generatedAt, now } = await getDeals();
+  return <CityDashboard city={city} locale={p.locale as Locale} deals={deals.filter((d) => inCity(d, city))} generatedAt={generatedAt} now={now} />;
 }

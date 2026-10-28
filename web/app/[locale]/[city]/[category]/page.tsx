@@ -26,6 +26,6 @@ export default async function CategoryPage({ params }: P) {
   const p = await params;
   const city = cityBySlug(p.city), cat = categoryBySlug(p.category);
   if (!city || !cat) notFound();
-  const { deals } = await getDeals();
-  return <CategoryListing city={city} locale={p.locale as Locale} slug={cat.slug} page={1} here={deals.filter((d) => inCity(d, city))} />;
+  const { deals, now } = await getDeals();
+  return <CategoryListing city={city} locale={p.locale as Locale} slug={cat.slug} page={1} here={deals.filter((d) => inCity(d, city))} now={now} />;
 }

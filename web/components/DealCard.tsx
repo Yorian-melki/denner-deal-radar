@@ -1,77 +1,101 @@
-/** Carte deal : 4 lignes, un seul lien (la carte entière), aucun bouton.
- *  1. titre · note (badge neutre ; teinte seulement pour « Top »)
- *  2. prix (+ « statt » seulement avec une référence vérifiée)
- *  3. méta : marchand · économie ou mention neutre · date de fin publiée
- *  4. au plus 2 mentions qui changent le prix réel (Lidl Plus, ab 3 Stück…)
- * Composant serveur : zéro JavaScript par carte. */
-import { CARD_CONDITIONS, conditionLines, guessLang } from "@/lib/conditions";
-import { fmtDay, fmtPct, fmtPrice, fmtScore } from "@/lib/format";
+/** Carte deal — grammaire fixe (round 2, item 26), un seul lien (la carte entière),
+ * qui mène TOUJOURS à la page interne du deal (arbitrage 4 : la seule sortie vers un
+ * site tiers est le bouton de la page deal). Composant serveur : zéro JavaScript.
+ *  1. titre · note (badge seulement à partir de 5/10)
+ *  2. « CHF 13.15  statt 35.85 » (statt = prix du marchand, seulement s'il est affichable)
+ *  3. accent « CHF 22.70 günstiger als zuvor » (seulement avec un prix « statt »)
+ *  4. méta : marchand · date (« bis heute », « ab morgen », « bis Mi 28.10. »)
+ *  5. au plus 2 mentions qui changent le prix réel (Lidl Plus, ab 3 Stück…) */
+import { CARD_CONDITIONS, conditionLines } from "@/lib/conditions";
+import { dayDiff, fmtAmount, fmtDay, fmtPct, fmtPrice, fmtScore } from "@/lib/format";
 import { HTML_LANG, dict, type Locale } from "@/lib/i18n";
 import { rewriteUrl } from "@/lib/affiliate/rewrite";
-import { hostOf } from "@/lib/outbound";
-import { hasPage } from "@/lib/project";
+import { BADGE_MIN_SCORE, hasPage } from "@/lib/project";
 import { hasRealEnd, isLowestSeen, savingPct, scoreTier, unitSaving } from "@/lib/select";
 import { paths } from "@/lib/site";
+import { titleLang } from "@/lib/titleLang";
 import type { PublicDeal } from "@/lib/types";
-import { Icon } from "@/components/Icon";
-import { OutLink } from "@/components/OutLink";
 
-export function ScoreBadge({ score, locale, size = "md" }: { score?: number; locale: Locale; size?: "md" | "lg" }) {
+/** Note affichable : jamais de badge sous 5/10 (en dessous : prix et marchand seulement). */
+export const shownScore = (d: Pick<PublicDeal, "score">) => (d.score !== undefined && d.score >= BADGE_MIN_SCORE ? d.score : undefined);
+
+export function ScoreBadge({ score, locale, size = "md", hidden = false }: { score?: number; locale: Locale; size?: "md" | "lg"; hidden?: boolean }) {
   const t = dict(locale);
-  if (score === undefined) return null;
+  if (score === undefined || score < BADGE_MIN_SCORE) return null;
   const s = fmtScore(score, locale);
   const tier = scoreTier(score);
-  return (
-    <span className={`badge badge-${size}${tier === "top" ? " badge-top" : ""}`} role="img" aria-label={t.scoreAria(s, t.scoreTiers[tier])}>
-      {s}
-    </span>
-  );
+  const cls = `badge badge-${size}${tier === "top" ? " badge-top" : ""}`;
+  if (hidden) return <span className={cls} aria-hidden="true">{s}</span>;
+  return <span className={cls} role="img" aria-label={t.scoreAria(s, t.scoreTiers[tier])}>{s}</span>;
 }
 
-/** Prix, avec unité (/Monat, /kg) et « statt » seulement si la référence est vérifiée. */
-export function PriceLine({ deal, locale, className = "card-price" }: { deal: PublicDeal; locale: Locale; className?: string }) {
+/** Le prix « statt » du marchand est-il affiché ? (même règle pour la carte, le héros et le panneau). */
+export const showsRef = (d: PublicDeal) => d.verifiedRef && d.referencePrice !== undefined && savingPct(d) !== undefined;
+
+/** Titre dans sa langue d'origine (lang seulement sur le texte, pas sur les notes sr). */
+export function DealTitle({ deal, locale }: { deal: PublicDeal; locale: Locale }) {
+  const tl = titleLang(deal.source, deal.title);
+  return tl !== "?" && tl !== locale ? <span lang={HTML_LANG[tl]}>{deal.title}</span> : <>{deal.title}</>;
+}
+
+/** Prix, avec unité (/Monat) et « statt » seulement si le prix du marchand est affichable.
+ * Préfixe sr : « jetzt » si achetable maintenant, sinon la date de début (« ab Do 29.10. »). */
+export function PriceLine({ deal, locale, className = "card-price", now }: { deal: PublicDeal; locale: Locale; className?: string; now?: Date }) {
   const t = dict(locale);
   if (deal.price === undefined) return null;
   const pct = savingPct(deal);
-  const showRef = deal.verifiedRef && deal.referencePrice !== undefined && pct !== undefined;
   const unit = deal.unit === "month" ? t.units.month : "";
+  const prefix = deal.upcoming ? dateText(deal, locale, now) ?? "" : t.now;
   return (
     <p className={className}>
-      <span className="sr-only">{t.now} </span>
+      <span className="sr-only">{prefix} </span>
       <span className="price">{deal.price === 0 ? t.free : fmtPrice(deal.price, deal.currency, locale)}</span>
       {unit && deal.price !== 0 && <span className="price-unit">{unit}</span>}
-      {showRef && (
+      {showsRef(deal) && (
         <span className="was">
-          {t.insteadOf(fmtPrice(deal.referencePrice, deal.currency, locale))}
-          <span className="sr-only">, {t.cheaperBy(fmtPct(pct!, locale))}</span>
+          {t.insteadOf(fmtAmount(deal.referencePrice!))}
+          <span className="sr-only"> {deal.currency}, {t.cheaperBy(fmtPct(pct!, locale))}</span>
         </span>
       )}
     </p>
   );
 }
 
-/** Ce que vaut la réduction, en une phrase factuelle et neutre. */
+/** Accent de la carte : l'économie en CHF, une seule fois, seulement avec un prix « statt ». */
+export function savingText(deal: PublicDeal, locale: Locale): string | undefined {
+  const saving = unitSaving(deal);
+  if (saving === undefined || !showsRef(deal)) return undefined;
+  return dict(locale).savingLine(fmtPrice(saving, deal.currency, locale), deal.referenceType ?? "merchant_previous");
+}
+
+/** Sans prix « statt » : ce que dit la source, en une phrase neutre (jamais d'économie chiffrée). */
 export function valueText(deal: PublicDeal, locale: Locale): string | undefined {
   const t = dict(locale);
-  const saving = unitSaving(deal);
-  if (saving !== undefined && deal.referenceType) {
-    return t.savingVs(fmtPrice(saving, deal.currency, locale), t.refShort[deal.referenceType] ?? t.refTypes[deal.referenceType]);
-  }
+  if (showsRef(deal)) return undefined;
   if (deal.integrity === "above_usual_price") return t.aboveUsual;
   if (deal.refKind === "vendor" && deal.referencePrice !== undefined) return t.vendorPrice(fmtPrice(deal.referencePrice, deal.currency, locale));
   if (deal.refKind === "vendor_pct" && deal.discountPct !== undefined && deal.discountPct >= 1) return t.vendorPct(fmtPct(deal.discountPct, locale));
   return undefined;
 }
 
-/** « bis Mi 29.10. » (date de fin publiée) ou « ab Mo 03.11. » (pas encore commencé). */
-export function dateText(deal: PublicDeal, locale: Locale, now = new Date()): string | undefined {
+/** « bis heute », « bis morgen », « bis Mi 29.10. » (date de fin publiée) ; « ab morgen »,
+ * « ab Mo 03.11. » (pas encore commencé). Jamais d'heures ni de minutes. */
+export function dateText(deal: Pick<PublicDeal, "startsAt" | "endsAt" | "endsInferred" | "upcoming">, locale: Locale, now = new Date()): string | undefined {
   const t = dict(locale);
-  if (deal.startsAt && new Date(deal.startsAt).getTime() > now.getTime()) return t.from(fmtDay(deal.startsAt, locale, now));
-  if (hasRealEnd(deal)) return t.until(fmtDay(deal.endsAt, locale, now));
+  if (deal.startsAt && (deal.upcoming || new Date(deal.startsAt).getTime() > now.getTime())) {
+    return dayDiff(deal.startsAt, now) === 1 ? t.fromTomorrow : t.from(fmtDay(deal.startsAt, locale, now));
+  }
+  if (hasRealEnd(deal)) {
+    const dd = dayDiff(deal.endsAt!, now);
+    if (dd <= 0) return t.untilToday;
+    if (dd === 1) return t.untilTomorrow;
+    return t.until(fmtDay(deal.endsAt, locale, now));
+  }
   return undefined;
 }
 
-/** Ligne obligatoire des abonnements : durée, prix ensuite, frais, total 24 mois. */
+/** Ligne obligatoire des abonnements : durée, prix ensuite, frais, total 24 mois
+ * (total seulement si frais et prix ensuite sont connus, voir lib/project.ts). */
 export function subscriptionText(deal: PublicDeal, locale: Locale): string | undefined {
   const t = dict(locale);
   const s = deal.sub;
@@ -82,6 +106,7 @@ export function subscriptionText(deal: PublicDeal, locale: Locale): string | und
   if (s.after !== undefined && s.promoMonths !== undefined) parts.push(t.subAfter(money(s.after), s.promoMonths));
   if (s.fee !== undefined && s.fee > 0) parts.push(t.subFee(money(s.fee)));
   if (s.total24 !== undefined) parts.push(t.subTotal(money(s.total24)));
+  else if (s.fee === undefined) parts.push(t.subFeeUnknown);
   return parts.join(" · ") || undefined;
 }
 
@@ -106,62 +131,48 @@ export function outbound(deal: PublicDeal) {
   return deal.noAff ? { href: deal.url, rel: "noopener noreferrer", affiliate: false as const, programme: undefined } : rewriteUrl(deal.url);
 }
 
-export function DealCard({ deal, locale, headingLevel = 3 }: { deal: PublicDeal; locale: Locale; headingLevel?: 2 | 3 }) {
-  const t = dict(locale);
+export function DealCard({ deal, locale, headingLevel = 3, showcase = false, now }: { deal: PublicDeal; locale: Locale; headingLevel?: 2 | 3; showcase?: boolean; now?: Date }) {
   const href = dealHref(deal, locale);
+  const saving = savingText(deal, locale);
   const value = valueText(deal, locale);
-  const date = dateText(deal, locale);
+  const date = dateText(deal, locale, now);
   const sub = subscriptionText(deal, locale);
   const notes = cardNotes(deal, locale);
   const titleId = `t-${deal.slug}`;
-  // Titre du marchand dans une autre langue que la page : lu avec la bonne phonétique.
-  const tl = guessLang(deal.title);
-  const titleLang = tl !== "?" && tl !== locale ? HTML_LANG[tl] : undefined;
   const H = headingLevel === 2 ? "h2" : "h3";
-  let link: React.ReactNode;
-  let adNote: string | undefined;
-  if (href) {
-    link = <a className="card-link" href={href}>{deal.title}</a>;
-  } else {
-    const out = outbound(deal);
-    adNote = out.affiliate ? t.adLink : undefined;
-    const host = hostOf(out.href) ?? "";
-    link = (
-      <OutLink className="card-link" href={out.href} rel={out.rel} affiliate={out.affiliate} programme={out.programme} dealId={deal.id} source={deal.source} srNote={t.opensSite(deal.via ?? host)}>
-        {deal.title}<Icon name="external" size={16} className="card-ext" />
-      </OutLink>
-    );
-  }
   const seller = deal.merchant ?? deal.attribution;
   return (
-    <article className="card" aria-labelledby={titleId} data-ends={hasRealEnd(deal) ? deal.endsAt : undefined}>
+    <li className="card" aria-labelledby={titleId}
+      data-ends={hasRealEnd(deal) ? deal.endsAt : undefined}
+      data-store-end={showcase && deal.inStore && hasRealEnd(deal) ? deal.endsAt : undefined}>
       <div className="card-head">
-        <H className="card-title" id={titleId} lang={titleLang}>{link}</H>
-        <ScoreBadge score={deal.score} locale={locale} />
+        <H className="card-title" id={titleId}>
+          {href ? <a className="card-link" href={href}><DealTitle deal={deal} locale={locale} /></a> : <DealTitle deal={deal} locale={locale} />}
+        </H>
+        <ScoreBadge score={shownScore(deal)} locale={locale} />
       </div>
-      <PriceLine deal={deal} locale={locale} />
+      <PriceLine deal={deal} locale={locale} now={now} />
+      {saving && <p className="card-save">{saving}</p>}
       <p className="card-meta">
         <span className="seller">{seller}</span>
-        {!href && deal.via && <span>{t.via(deal.via)}</span>}
         {value && <span>{value}</span>}
         {date && <span>{date}</span>}
       </p>
       {sub && <p className="card-sub">{sub}</p>}
-      {(notes.length > 0 || adNote) && (
+      {notes.length > 0 && (
         <p className="card-notes">
           {notes.map((n) => <span key={n} className="note">{n}</span>)}
-          {adNote && <span className="note note-ad">{adNote}</span>}
         </p>
       )}
-    </article>
+    </li>
   );
 }
 
-export function DealGrid({ deals, locale }: { deals: PublicDeal[]; locale: Locale }) {
+export function DealGrid({ deals, locale, showcase = false, now, labelledBy }: { deals: PublicDeal[]; locale: Locale; showcase?: boolean; now?: Date; labelledBy?: string }) {
   if (!deals.length) return <p className="empty">{dict(locale).empty}</p>;
   return (
-    <div className="grid">
-      {deals.map((d) => <DealCard key={d.slug} deal={d} locale={locale} />)}
-    </div>
+    <ul className="grid" role="list" aria-labelledby={labelledBy} data-showcase={showcase || undefined}>
+      {deals.map((d) => <DealCard key={d.slug} deal={d} locale={locale} showcase={showcase} now={now} />)}
+    </ul>
   );
 }

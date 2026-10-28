@@ -4,24 +4,21 @@ import { CITIES, mainCity } from "@/config/cities";
 import { AdSlot } from "@/components/AdSlot";
 import { adClient } from "@/lib/operator";
 import { TelegramCta } from "@/components/CityDashboard";
-import { DealGrid, PriceLine, ScoreBadge, dateText, outbound, subscriptionText } from "@/components/DealCard";
-import { EndsIn } from "@/components/EndsIn";
+import { DealGrid, DealTitle, PriceLine, dateText, outbound, savingText, showsRef, subscriptionText, valueText } from "@/components/DealCard";
 import { Icon } from "@/components/Icon";
 import { JsonLd, breadcrumbLd } from "@/components/JsonLd";
-import { OutLink } from "@/components/OutLink";
-import { ShareButton } from "@/components/ShareButton";
 import { conditionLines } from "@/lib/conditions";
 import { getDeals } from "@/lib/data";
-import { fmtPct, fmtPrice, fmtScore } from "@/lib/format";
-import { OG_LOCALE, categoryText, dict, isLocale, type Locale } from "@/lib/i18n";
+import { colon, fmtAmount, fmtDay, fmtPrice, fmtScore, fmtUpdated } from "@/lib/format";
+import { HTML_LANG, OG_LOCALE, categoryText, dict, isLocale, type Locale } from "@/lib/i18n";
 import { hostOf } from "@/lib/outbound";
 import { hasPage, inCity } from "@/lib/project";
-import { HISTORY_MIN_OBSERVATIONS, canonical, confidenceTier, hasRealEnd, isLowestSeen, pickTop, savingPct, scoreTier, unitSaving } from "@/lib/select";
+import { HISTORY_MIN_OBSERVATIONS, brandKey, canonical, confidenceTier, hasRealEnd, isLowestSeen, pickTop, promoKey, scoreTier } from "@/lib/select";
 import { SITE_NAME, SITE_URL, alternates, ogImage, paths } from "@/lib/site";
+import { titleLang } from "@/lib/titleLang";
 import type { PublicDeal } from "@/lib/types";
 
-// Export statique : une page par deal NOTÉ ≥ 5 (les autres cartes renvoient
-// directement au marchand — pas de contenu mince, moins de fichiers).
+// Export statique : une page par carte publiée (round 2, arbitrage 4).
 export const dynamicParams = false;
 export async function generateStaticParams() {
   const { deals } = await getDeals();
@@ -31,8 +28,8 @@ export async function generateStaticParams() {
 type P = { params: Promise<{ locale: string; slug: string }> };
 
 async function find(slug: string) {
-  const { deals } = await getDeals();
-  return deals.find((d) => d.slug === slug);
+  const { deals, now } = await getDeals();
+  return { d: deals.find((x) => x.slug === slug), now };
 }
 
 /** Ville d'un deal : sa ville de flux, sinon la ville principale. */
@@ -40,44 +37,51 @@ const cityOf = (d: PublicDeal) => (d.cities.includes("*") ? mainCity() : CITIES.
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
   const p = await params;
-  const d = await find(p.slug);
+  const { d, now } = await find(p.slug);
   if (!d || !isLocale(p.locale)) return { robots: { index: false } };
   const locale = p.locale;
   const t = dict(locale);
-  const price = d.price !== undefined ? fmtPrice(d.price, d.currency, locale) : "";
-  const score = d.score !== undefined ? fmtScore(d.score, locale) : "";
-  const summary = t.shareText(d.title, price, score);
+  const seller = d.merchant ?? d.attribution;
+  const price = d.price !== undefined ? (d.price === 0 ? t.free : fmtPrice(d.price, d.currency, locale)) : "";
+  const was = showsRef(d) ? fmtAmount(d.referencePrice!) : "";
+  const ogTitle = price ? t.ogTitle(d.title, price, was, seller) : d.title;
+  const ogDesc = t.ogDescription(dateText(d, locale, now) ?? "", d.attribution);
   return {
     title: price ? `${d.title} · ${price}` : d.title,
-    description: `${summary} · ${d.merchant ?? d.attribution}`,
+    description: ogDesc,
     alternates: alternates(`/deal/${d.slug}`, locale),
     openGraph: {
-      type: "article", siteName: SITE_NAME, title: summary, description: `${d.merchant ?? d.attribution}`,
+      type: "article", siteName: SITE_NAME, title: ogTitle, description: ogDesc,
       url: paths.deal(locale, d.slug), locale: OG_LOCALE[locale], images: [ogImage(locale, cityOf(d).slug)],
     },
+    twitter: { card: "summary_large_image", title: ogTitle, description: ogDesc },
   };
 }
 
-function Facts({ d, locale }: { d: PublicDeal; locale: Locale }) {
+/** Panneau « So kommt die Bewertung zustande » : chaque fait UNE fois (l'économie est dans le héros). */
+function Facts({ d, locale, generatedAt, now }: { d: PublicDeal; locale: Locale; generatedAt: string; now: Date }) {
   const t = dict(locale);
   const money = (v: number) => fmtPrice(v, d.currency, locale);
+  const seller = d.merchant ?? d.source;
   const rows: [string, React.ReactNode][] = [];
   if (d.referenceType && d.referenceType !== "none") rows.push([t.refType, t.refTypes[d.referenceType] ?? d.referenceType]);
-  if (d.referencePrice !== undefined && (d.refKind === "comparable" || d.refKind === "vendor")) rows.push([t.refPrice, money(d.referencePrice)]);
-  const saving = unitSaving(d), pct = savingPct(d);
-  if (saving !== undefined) rows.push([t.youSave, `${money(saving)}${pct !== undefined ? ` (−${fmtPct(pct, locale)})` : ""}`]);
+  // Cohérence héros ↔ panneau : un prix de référence n'apparaît ici que si le héros l'affiche barré.
+  if (showsRef(d)) rows.push([t.refPrice, <>{money(d.referencePrice!)}<span className="dd-note">{d.refObserved ? t.refObserved(d.historyN ?? 0) : t.refByMerchant(seller)}</span></>]);
   if (d.historyN !== undefined && d.historyN >= HISTORY_MIN_OBSERVATIONS) {
     if (d.historicalLow !== undefined) rows.push([t.histLow, money(d.historicalLow)]);
     if (d.historicalMedian !== undefined) rows.push([t.histMedian, `${money(d.historicalMedian)} · ${t.histN(d.historyN)}`]);
   } else {
-    rows.push(["", t.histTooFew]);
+    rows.push([t.histLabel, t.histTooFew]);
   }
   rows.push([t.dataQuality, t.dq[confidenceTier(d.confidence)]]);
+  if (d.firstSeenAt) rows.push([t.seenSince, fmtDay(d.firstSeenAt, locale, now)]);
+  const checked = d.lastSeenAt ?? generatedAt;
+  if (checked) rows.push([t.lastChecked, fmtUpdated(checked, locale)]);
   return (
     <dl className="facts">
-      {rows.map(([k, v], i) => (
-        <div key={i} className={k ? undefined : "facts-wide"}>
-          {k && <dt>{k}</dt>}
+      {rows.map(([k, v]) => (
+        <div key={k}>
+          <dt>{k}</dt>
           <dd>{v}</dd>
         </div>
       ))}
@@ -85,9 +89,24 @@ function Facts({ d, locale }: { d: PublicDeal; locale: Locale }) {
   );
 }
 
+/** Partage : bouton natif (si disponible), copie du lien, sinon WhatsApp (nouvel onglet).
+ * Sans JavaScript, seul le lien WhatsApp est visible (site.js révèle les boutons). */
+function Share({ d, locale, url, text }: { d: PublicDeal; locale: Locale; url: string; text: string }) {
+  const t = dict(locale);
+  return (
+    <div className="share" data-share-url={url} data-share-title={d.title} data-share-text={text} data-copied={t.copied}>
+      <button type="button" className="icon-btn" data-share="native" hidden aria-label={`${t.share}: ${d.title}`}><Icon name="share" /></button>
+      <button type="button" className="icon-btn" data-share="copy" hidden aria-label={t.copyLink}><Icon name="link" /></button>
+      <a className="icon-btn" data-share="whatsapp" href={`https://wa.me/?text=${encodeURIComponent(`${text}\n${url}`)}`} target="_blank" rel="noopener noreferrer"
+        aria-label={`${t.shareWhatsApp} (${t.newTab})`}><Icon name="share" /></a>
+      <span className="share-status" role="status" aria-live="polite" />
+    </div>
+  );
+}
+
 export default async function DealPage({ params }: P) {
   const p = await params;
-  const { deals } = await getDeals();
+  const { deals, generatedAt, now } = await getDeals();
   const d = deals.find((x) => x.slug === p.slug);
   if (!d) notFound();
   const locale = p.locale as Locale;
@@ -101,22 +120,31 @@ export default async function DealPage({ params }: P) {
   const out = outbound(d);
   const linkHost = hostOf(out.href) ?? "";
   const seller = d.merchant ?? d.attribution;
-  const ctaLabel = d.via ? t.viewAt(d.via) : t.toOffer(seller);
-  const saving = unitSaving(d), pct = savingPct(d);
-  const date = dateText(d, locale);
+  const saving = savingText(d, locale);
+  const value = valueText(d, locale);
+  const date = dateText(d, locale, now);
   const sub = subscriptionText(d, locale);
   const conds = conditionLines(d.conds, t, locale, money);
-  if (d.unitPrice !== undefined && d.unit && d.unit !== "month") conds.unshift(`${t.unitPrice}: ${money(d.unitPrice)}${t.units[d.unit]}`);
+  if (d.unitPrice !== undefined && d.unit && d.unit !== "month") conds.unshift(`${colon(t.unitPrice, locale)} ${money(d.unitPrice)}${t.units[d.unit]}`);
   if (d.requiresStudent) conds.unshift(t.studentsOnly);
   if (d.trial) conds.unshift(t.trial);
-  // Maillage interne : meilleurs deals de la même catégorie (mêmes règles que les vitrines).
-  const related = pickTop(canonical(deals.filter((x) => x.category === d.category && x.id !== d.id && inCity(x, city))), { n: 3, perCategory: 3, exclude: new Set([d.id]) });
-  // Données structurées : pas de marque inventée, pas de disponibilité supposée ;
-  // l'URL de l'offre seulement si elle mène chez le marchand (pas chez un agrégateur).
+  if (isLowestSeen(d)) conds.push(t.lowestSeen);
+  // Action en magasin trouvée sur un agrégateur (rappn, preispirat) : le vrai « où »
+  // est le magasin ; l'agrégateur n'est que la source (round 2, item 25).
+  const storeVia = d.inStore && d.via;
+  const ctaLabel = d.via ? t.viewAt(d.via) : t.toOffer(seller);
+  // Maillage interne : même catégorie, jamais la même action ni la même marque, pages internes seulement.
+  const pk = promoKey(d), bk = brandKey(d);
+  const related = pickTop(
+    canonical(deals.filter((x) => x.category === d.category && x.id !== d.id && hasPage(x) && inCity(x, city) && promoKey(x) !== pk && brandKey(x) !== bk)),
+    { n: 3, perCategory: 3, exclude: new Set([d.id]), now },
+  ).map((x) => ({ ...x, variants: undefined, alsoAt: undefined }));
+  const tl = titleLang(d.source, d.title);
   const jsonLd = d.price !== undefined ? {
     "@context": "https://schema.org",
     "@type": "Product",
     name: d.title,
+    ...(tl !== "?" ? { inLanguage: HTML_LANG[tl] } : {}),
     offers: {
       "@type": "Offer",
       price: d.price.toFixed(2),
@@ -131,70 +159,72 @@ export default async function DealPage({ params }: P) {
     { name: cat.title, path: catHref },
     { name: d.title, path: paths.deal(locale, d.slug) },
   ]);
+  const shown = d.score;
   return (
     <>
-      <nav className="crumbs" aria-label={t.home}>
-        <a href={catHref}><Icon name="back" size={16} />{cat.label}</a>
+      <nav className="crumbs" aria-label={t.breadcrumb}>
+        <a href={catHref}><Icon name="back" size={16} /><span className="sr-only">{t.backTo(cat.label)}: </span><span aria-hidden="true">{cat.label}</span></a>
       </nav>
       <article className="deal">
         <header className="deal-head">
-          <p className="deal-seller">{d.via ? `${seller} · ${t.via(d.via)}` : seller}</p>
-          <h1>{d.title}</h1>
+          <div className="deal-head-text">
+            <p className="deal-seller">{seller}</p>
+            <h1><DealTitle deal={d} locale={locale} /></h1>
+          </div>
+          <Share d={d} locale={locale} url={shareUrl} text={share} />
         </header>
 
-        <div className="deal-layout">
-          <section className="panel deal-buy" aria-label={t.facts}>
-            <PriceLine deal={d} locale={locale} className="deal-price" />
-            {saving !== undefined && d.referenceType && (
-              <p className="deal-saving">{t.youSave} {money(saving)}{pct !== undefined ? ` (−${fmtPct(pct, locale)})` : ""} · {t.refTypes[d.referenceType]}</p>
-            )}
-            {saving === undefined && d.refKind === "vendor" && d.referencePrice !== undefined && <p className="deal-note">{t.vendorPrice(money(d.referencePrice))}</p>}
-            {saving === undefined && d.refKind === "vendor_pct" && d.discountPct !== undefined && d.discountPct >= 1 && <p className="deal-note">{t.vendorPct(fmtPct(d.discountPct, locale))}</p>}
-            {d.integrity === "above_usual_price" && <p className="deal-note">{t.aboveUsual}</p>}
-            {sub && <p className="deal-note">{sub}</p>}
-            {date && (
-              <p className="deal-date">
-                {hasRealEnd(d) && !(d.startsAt && new Date(d.startsAt).getTime() > Date.now())
-                  ? <EndsIn endsAt={d.endsAt!} label={date} hm={t.endsInHM} m={t.endsInM} ended={t.ended} />
-                  : date}
-              </p>
-            )}
-            {isLowestSeen(d) && <p className="deal-note">{t.lowestSeen}</p>}
-            {conds.length > 0 && (
-              <ul className="conds" aria-label={t.conditions}>
-                {conds.map((c) => <li key={c}>{c}</li>)}
-              </ul>
-            )}
-            {d.couponCode && <p className="deal-note">{t.code}: <code>{d.couponCode}</code></p>}
+        <section className="panel deal-buy" aria-label={t.facts}>
+          <PriceLine deal={d} locale={locale} className="deal-price" now={now} />
+          {saving && <p className="deal-saving">{saving}</p>}
+          {value && <p className="deal-note">{value}</p>}
+          {sub && <p className="deal-note">{sub}</p>}
+          {date && <p className="deal-date">{hasRealEnd(d) ? <time dateTime={d.endsAt}>{date}</time> : date}</p>}
+          {conds.length === 1 && <p className="deal-note">{conds[0]}</p>}
+          {conds.length > 1 && (
+            <ul className="conds" aria-label={t.conditions}>
+              {conds.map((c) => <li key={c}>{c}</li>)}
+            </ul>
+          )}
+          {d.couponCode && <p className="deal-note">{colon(t.code, locale)} <code>{d.couponCode}</code></p>}
+          {storeVia ? (
             <div className="deal-actions">
-              <OutLink className="btn btn-primary btn-lg" href={out.href} rel={out.rel} affiliate={out.affiliate} programme={out.programme} dealId={d.id} source={d.source}
-                srNote={out.affiliate ? `${t.adLink}, ${t.opensSite(linkHost)}` : t.opensSite(linkHost)}>
-                {ctaLabel}<Icon name="external" size={18} />
-              </OutLink>
-              <ShareButton text={share} url={shareUrl} title={d.title} label={t.share} />
+              <p className="store-cta">{t.inStoreAt(seller)}{date ? ` · ${date}` : ""}</p>
+              <a className="text-link" href={out.href} target="_blank" rel={out.rel} data-deal={d.id} aria-describedby="cta-note">
+                {t.sourceLink(linkHost)}<Icon name="external" size={16} />
+              </a>
+              <span id="cta-note" className="sr-only">{t.opensSite(linkHost)}</span>
             </div>
-            {out.affiliate && (
-              <p className="ad-note">{t.adLink} · <a href={`${paths.page(locale, "transparenz")}#provision`}>{t.adWhy}</a></p>
-            )}
-          </section>
+          ) : (
+            <div className="deal-actions">
+              <a className="btn btn-primary btn-lg" href={out.href} target="_blank" rel={out.rel} data-deal={d.id} aria-describedby="cta-note">
+                <span>{ctaLabel}{out.affiliate ? ` · ${t.adLinkName}` : ""}</span>
+                <span className="btn-hint"><Icon name="external" size={18} />{t.newTab}</span>
+              </a>
+              <span id="cta-note" className="sr-only">{t.opensSite(linkHost)}</span>
+            </div>
+          )}
+          {out.affiliate && (
+            <p className="ad-note">{t.adLink} · <a href={`${paths.page(locale, "transparenz")}#provision`}>{t.adWhy}</a></p>
+          )}
+        </section>
 
-          <section className="panel deal-score" aria-labelledby="why-title">
-            <h2 id="why-title">{t.whyScore}</h2>
-            <div className="deal-verdict">
-              <ScoreBadge score={d.score} locale={locale} size="lg" />
-              <p>
-                {d.score !== undefined
-                  ? <><strong>{t.scoreTiers[scoreTier(d.score)]}</strong> · {fmtScore(d.score, locale)} {t.outOf10}</>
-                  : <strong>{t.scoreNa}</strong>}
-              </p>
-            </div>
-            {d.score === undefined && <p className="deal-note">{t.scoreNaWhy}</p>}
-            {d.scoreCap && <p className="deal-note">{t.scoreCap[d.scoreCap]}</p>}
-            <Facts d={d} locale={locale} />
-            <p className="source">{t.source(d.attribution)}</p>
-            <a className="text-link" href={paths.page(locale, "transparenz")}>{t.howScored}<Icon name="arrow" size={16} /></a>
-          </section>
-        </div>
+        <section className="panel deal-score" aria-labelledby="why-title">
+          <h2 id="why-title">{t.whyScore}</h2>
+          {shown !== undefined ? (
+            <p className="verdict">
+              <span aria-hidden="true"><span className="verdict-num">{fmtScore(shown, locale)}</span><span className="verdict-of">/10</span> <strong>{t.scoreTiers[scoreTier(shown)]}</strong></span>
+              <span className="sr-only">{t.scoreAria(fmtScore(shown, locale), t.scoreTiers[scoreTier(shown)])}</span>
+            </p>
+          ) : (
+            <p className="verdict"><strong>{t.scoreNa}</strong></p>
+          )}
+          {shown === undefined && <p className="deal-note">{t.scoreNaWhy}</p>}
+          {d.scoreCap && <p className="deal-note">{t.scoreCap[d.scoreCap]}</p>}
+          <Facts d={d} locale={locale} generatedAt={generatedAt} now={now} />
+          <p className="source">{t.source(d.attribution)}</p>
+          <a className="text-link" href={paths.page(locale, "transparenz")}>{t.howScored}<Icon name="arrow" size={16} /></a>
+        </section>
       </article>
 
       {related.length > 0 && (
@@ -202,7 +232,7 @@ export default async function DealPage({ params }: P) {
           <div className="section-head">
             <h2 id="related">{t.moreIn(cat.label)}</h2>
           </div>
-          <DealGrid deals={related} locale={locale} />
+          <DealGrid deals={related} locale={locale} now={now} labelledBy="related" />
         </section>
       )}
       <AdSlot label={t.adLabel} client={adClient()} />

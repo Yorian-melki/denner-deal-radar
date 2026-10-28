@@ -27,11 +27,11 @@ type P = { params: Promise<{ locale: string; city: string; category: string; pag
 async function resolve(p: Awaited<P["params"]>) {
   const city = cityBySlug(p.city), cat = categoryBySlug(p.category), page = Number(p.page);
   if (!city || !cat || !Number.isInteger(page) || page < 2) return null;
-  const { deals } = await getDeals();
+  const { deals, now } = await getDeals();
   const here = deals.filter((d) => inCity(d, city));
   const n = categoryList(here, cat.slug).length;
   if (page > pageCount(n)) return null;
-  return { city, cat, page, here, n };
+  return { city, cat, page, here, n, now };
 }
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
@@ -45,5 +45,5 @@ export default async function CategoryPageN({ params }: P) {
   const p = await params;
   const r = await resolve(p);
   if (!r) notFound();
-  return <CategoryListing city={r.city} locale={p.locale as Locale} slug={r.cat.slug} page={r.page} here={r.here} />;
+  return <CategoryListing city={r.city} locale={p.locale as Locale} slug={r.cat.slug} page={r.page} here={r.here} now={r.now} />;
 }

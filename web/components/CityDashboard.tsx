@@ -4,23 +4,25 @@ import { adClient } from "@/lib/operator";
 import { DealGrid } from "@/components/DealCard";
 import { Icon } from "@/components/Icon";
 import { CATEGORIES } from "@/lib/categories";
-import { fmtInt, fmtUpdated } from "@/lib/format";
+import { fmtInt, fmtScore, fmtUpdated } from "@/lib/format";
 import { categoryText, dict, type Locale } from "@/lib/i18n";
-import { HOME_MIN_SCORE, HOME_MIN_SECTION, HOME_TOP_N, TOP_N, balancedSections, canonical, categoryCounts, pickTop, verifiedCount } from "@/lib/select";
+import { HOME_MIN_SCORE, HOME_MIN_SECTION, PER_BRAND, SECTION_N, TOP_MIN_SCORE, balancedSections, canonical, categoryCounts, pickShowcase } from "@/lib/select";
 import { paths, telegramUrl } from "@/lib/site";
 import type { PublicDeal } from "@/lib/types";
 
-/** En-tête factuel : un titre, une ligne de faits, puis directement les deals.
- * Aucun montant agrégé, aucun superlatif. */
+/** Sections de la page ville après la vitrine (round 2, item 37) : le reste n'est
+ * accessible que par les puces (Haushalt, Gutscheine, Shopping…). */
+export const CITY_SECTIONS = ["studenten-rabatte", "gratis", "supermarkt-aktionen"];
+
+/** En-tête factuel : un titre, UNE ligne de faits, puis directement les deals.
+ * Aucun montant agrégé, aucun superlatif. Séparateurs « · » en CSS (non lus). */
 export function Intro({ city, locale, deals, generatedAt }: { city: City; locale: Locale; deals: PublicDeal[]; generatedAt: string }) {
   const t = dict(locale);
   return (
     <header className="intro">
       <h1>{t.dealsIn(city.name[locale])}</h1>
       <p className="intro-facts">
-        <span>{t.factsVerified(fmtInt(verifiedCount(deals), locale))}</span>
-        {/* Honnêteté « ville par ville » : le flux est surtout national ; on le dit. */}
-        <span>{t.inclNational}</span>
+        <span>{t.factsCount(fmtInt(deals.length, locale))}</span>
         {generatedAt && <span>{t.updated(fmtUpdated(generatedAt, locale))}</span>}
         <a href={paths.page(locale, "transparenz")}>{t.method}</a>
       </p>
@@ -28,14 +30,15 @@ export function Intro({ city, locale, deals, generatedAt }: { city: City; locale
   );
 }
 
-/** Puces de catégorie (sans compteur) : « Alle » + catégories non vides, dans l'ordre fixe. */
+/** Puces de catégorie (sans compteur) : « Alle » + catégories non vides, dans l'ordre fixe.
+ * La puce active est ramenée au centre au chargement (site.js, data-chips). */
 export function CategoryChips({ city, locale, deals, active }: { city: City; locale: Locale; deals: PublicDeal[]; active?: string }) {
   const t = dict(locale);
   const counts = categoryCounts(deals);
   const cats = CATEGORIES.filter((c) => counts.get(c.slug));
   if (!cats.length) return null;
   return (
-    <nav className="chips" aria-label={t.categories}>
+    <nav className="chips" aria-label={t.categories} data-chips="">
       <a href={paths.city(locale, city.slug)} className="chip" aria-current={active === "all" ? "page" : undefined}>{t.allChip}</a>
       {cats.map((c) => (
         <a key={c.slug} href={paths.category(locale, city.slug, c.slug)} className="chip" aria-current={active === c.slug ? "page" : undefined}>
@@ -79,60 +82,56 @@ export function TelegramCta({ locale }: { locale: Locale }) {
   );
 }
 
-function SectionHead({ id, title, href, more }: { id: string; title: string; href?: string; more?: string }) {
+/** Titre de section + UN lien « Alle N » (contexte complet pour les lecteurs d'écran). */
+function SectionHead({ id, title, href, more, moreSr, srOnlyMobile }: { id: string; title: string; href?: string; more?: string; moreSr?: string; srOnlyMobile?: boolean }) {
   return (
     <div className="section-head">
-      <h2 id={id}>{href ? <a href={href}>{title}</a> : title}</h2>
-      {href && more && <a className="section-more" href={href}>{more}<Icon name="arrow" size={16} /></a>}
+      <h2 id={id} className={srOnlyMobile ? "sr-mobile" : undefined}>{title}</h2>
+      {href && more && (
+        <a className="section-more" href={href}>
+          <span aria-hidden="true">{more}</span>
+          <span className="sr-only">{moreSr ?? more}</span>
+          <Icon name="arrow" size={16} />
+        </a>
+      )}
     </div>
   );
 }
 
-/** Page ville / accueil : titre factuel, puces, vitrine diversifiée, puis une
- * section par catégorie (même taille pour toutes ; Studis et Gratis d'abord). */
-export function CityDashboard({
-  city, locale, deals, generatedAt, variant,
-}: { city: City; locale: Locale; deals: PublicDeal[]; generatedAt: string; variant: "home" | "city" }) {
+/** Page ville : titre factuel, puces, vitrine stricte (prix « statt », note ≥ 7, ≤ 6),
+ * puis Studis, Gratis et Supermarkt (3 cartes chacune). */
+export function CityDashboard({ city, locale, deals, generatedAt, now }: { city: City; locale: Locale; deals: PublicDeal[]; generatedAt: string; now: Date }) {
   const t = dict(locale);
   const all = canonical(deals);
-  const home = variant === "home";
-  const top = pickTop(all, { n: home ? HOME_TOP_N : TOP_N, minScore: home ? HOME_MIN_SCORE : undefined });
+  const top = pickShowcase(all, now);
   const shown = new Set(top.map((d) => d.id));
-  const sections = balancedSections(all, CATEGORIES.map((c) => c.slug), {
-    perSection: home ? 3 : 4,
-    minScore: home ? HOME_MIN_SCORE : undefined,
-    minItems: home ? HOME_MIN_SECTION : 1,
-    exclude: shown,
-  });
+  const sections = balancedSections(all, CITY_SECTIONS, { perSection: SECTION_N, minScore: HOME_MIN_SCORE, minItems: HOME_MIN_SECTION, exclude: shown, now });
   const counts = categoryCounts(all);
   return (
     <>
       <Intro city={city} locale={locale} deals={all} generatedAt={generatedAt} />
-      <CategoryChips city={city} locale={locale} deals={all} active={variant === "city" ? "all" : undefined} />
+      <CategoryChips city={city} locale={locale} deals={all} active="all" />
       {top.length > 0 && (
-        <section aria-labelledby="top" className="section">
-          <SectionHead id="top" title={t.topToday} />
-          <p className="section-note">{t.topTodayNote}</p>
-          <DealGrid deals={top} locale={locale} />
+        <section aria-labelledby="top" className="section section-first">
+          <SectionHead id="top" title={t.topToday} srOnlyMobile />
+          <DealGrid deals={top} locale={locale} showcase now={now} labelledBy="top" />
+          <p className="section-foot">{t.topRule(fmtScore(TOP_MIN_SCORE, locale), PER_BRAND)} · <a href={`${paths.page(locale, "transparenz")}#reihenfolge`}>{t.method}</a></p>
         </section>
       )}
-      {sections.map((s, i) => {
+      {sections.map((s) => {
         const href = paths.category(locale, city.slug, s.slug);
+        const label = categoryText(locale, s.slug).label;
+        const n = fmtInt(counts.get(s.slug) ?? s.total, locale);
         return (
-          <div key={s.slug}>
-            <section className="section" aria-labelledby={`sec-${s.slug}`}>
-              <SectionHead id={`sec-${s.slug}`} title={categoryText(locale, s.slug).label} href={href} more={t.seeAll(fmtInt(counts.get(s.slug) ?? s.total, locale))} />
-              <DealGrid deals={s.items} locale={locale} />
-            </section>
-            {/* Publicité : jamais dans une liste classée ; après la 2e section seulement. */}
-            {i === 1 && <AdSlot label={t.adLabel} client={adClient()} />}
-          </div>
+          <section key={s.slug} className="section" aria-labelledby={`sec-${s.slug}`}>
+            <SectionHead id={`sec-${s.slug}`} title={label} href={href} more={t.seeAll(n)} moreSr={`${t.seeAll(n)}: ${label}`} />
+            <DealGrid deals={s.items} locale={locale} now={now} labelledBy={`sec-${s.slug}`} />
+          </section>
         );
       })}
+      {/* Publicité : jamais dans une liste classée ; après la dernière section, hauteur réservée. */}
+      <AdSlot label={t.adLabel} client={adClient()} />
       <TelegramCta locale={locale} />
-      {home && (
-        <p className="all-link"><a href={paths.city(locale, city.slug)} className="btn btn-secondary">{t.allIn(city.name[locale])}</a></p>
-      )}
     </>
   );
 }

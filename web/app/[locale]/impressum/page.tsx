@@ -7,9 +7,8 @@ import { HOST, LEGAL_REVISION, isOperatorComplete, operator } from "@/lib/operat
 // LAWYER-CHECK (CH) : art. 3 al. 1 let. s LCD/UWG — nom, adresse postale, e-mail suffisent
 // pour une personne physique ; pas d'inscription au registre du commerce tant que le
 // chiffre d'affaires < 100 000 CHF/an (art. 931 CO, ORC art. 36). À reconfirmer.
-// LAWYER-CHECK (FR) : art. 6 III LCEN — personne physique éditant à titre professionnel :
-// nom, prénom, domicile, téléphone, directeur de la publication, hébergeur. Si une
-// micro-entreprise est créée : ajouter SIREN/SIRET (et n° TVA le cas échéant).
+// Le droit français (LCEN) n'est plus cité : l'éditeur est en Suisse (round 2, item 14).
+// LAWYER-CHECK : confirmer qu'aucune obligation LCEN ne s'applique à un éditeur suisse visant aussi la France.
 const TITLE = { de: "Impressum", fr: "Mentions légales", en: "Imprint" };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -33,14 +32,14 @@ export default async function Impressum({ params }: { params: Promise<{ locale: 
   );
   return (
     <article className="legal">
-      <LegalHead locale={locale} title={TITLE} />
+      <LegalHead locale={locale} title={TITLE} bodyLang={locale === "fr" ? "fr" : "de"} />
 
       {locale !== "fr" && (
-      <section id="de" lang="de">
+      <section id="de" lang="de-CH">
         <h2>Betreiber und Verantwortlicher</h2>
         <p>{SITE_NAME} ist ein privat betriebenes Informationsangebot einer natürlichen Person (kein Unternehmen, kein Handelsregistereintrag).</p>
         {identity}
-        <p className="muted">Angaben gemäss Art. 3 Abs. 1 lit. s UWG (Schweiz) und Art. 6 III LCEN (Frankreich). Verantwortlich für den Inhalt: der oben genannte Betreiber.</p>
+        <p className="muted">Angaben gemäss Art. 3 Abs. 1 lit. s UWG (Schweiz).{complete ? ` Verantwortlich für den Inhalt: ${o.name}.` : ""}</p>
         <h2>Hosting</h2>
         <p>{HOST.name}, {HOST.address}, Tel. {HOST.phone}, <a href={HOST.web} rel="noopener noreferrer">{HOST.web}</a></p>
         <h2>Was dieser Dienst ist</h2>
@@ -53,11 +52,11 @@ export default async function Impressum({ params }: { params: Promise<{ locale: 
       )}
 
       {locale === "fr" && (
-      <section id="fr" lang="fr">
+      <section id="fr" lang="fr-CH">
         <h2>Éditeur et responsable</h2>
         <p>{SITE_NAME} est un service d’information édité par une personne physique (pas de société, pas d’inscription au registre du commerce).</p>
         {identity}
-        <p className="muted">Informations fournies au titre de l’art. 6 III de la loi n° 2004-575 du 21 juin 2004 (LCEN) et de l’art. 3 al. 1 let. s LCD (Suisse). Directeur de la publication : l’éditeur nommé ci-dessus.</p>
+        <p className="muted">Informations fournies au titre de l’art. 3 al. 1 let. s LCD (Suisse).{complete ? ` Responsable du contenu : ${o.name}.` : ""}</p>
         <h2>Hébergeur</h2>
         <p>{HOST.name}, {HOST.address}, tél. {HOST.phone}, <a href={HOST.web} rel="noopener noreferrer">{HOST.web}</a></p>
         <h2>Nature du service</h2>

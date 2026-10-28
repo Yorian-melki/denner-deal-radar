@@ -10,24 +10,49 @@ import { categoryBySlug } from "@/lib/categories";
 import { fmtInt } from "@/lib/format";
 import { OG_LOCALE, categoryText, dict, type Locale } from "@/lib/i18n";
 import { hasPage, rankDeals } from "@/lib/project";
-import { canonical, neutralOrder } from "@/lib/select";
+import { canonical, merchantKey, neutralOrder } from "@/lib/select";
 import { SITE_NAME, SITE_URL, alternates, ogImage, paths } from "@/lib/site";
 import type { PublicDeal } from "@/lib/types";
 
 /** 24 offres par page : pagination statique (/…/kategorie, /…/kategorie/2, …). */
 export const PAGE_SIZE = 24;
 
-/** Ordre d'une catégorie — exactement ce que dit l'en-tête de la liste :
+/** Supermarkt : sur une page de 24, au plus un tiers du même magasin (sinon la page 1
+ * est 22/24 Coop, simplement parce que Coop publie le plus). Ordre relatif conservé. */
+export const MAX_SHARE_PER_MERCHANT = 1 / 3;
+export function interleave(list: PublicDeal[], pageSize = PAGE_SIZE, share = MAX_SHARE_PER_MERCHANT): PublicDeal[] {
+  const cap = Math.max(1, Math.floor(pageSize * share));
+  const out: PublicDeal[] = [];
+  let rest = list;
+  while (rest.length) {
+    const counts = new Map<string, number>();
+    const page: PublicDeal[] = [], later: PublicDeal[] = [];
+    for (const d of rest) {
+      const m = merchantKey(d);
+      if (page.length < pageSize && (counts.get(m) ?? 0) < cap) { page.push(d); counts.set(m, (counts.get(m) ?? 0) + 1); }
+      else later.push(d);
+    }
+    // Plus assez d'autres magasins pour remplir : on complète dans l'ordre.
+    while (page.length < pageSize && later.length) page.push(later.shift()!);
+    out.push(...page);
+    rest = later;
+  }
+  return out;
+}
+
+/** Ordre d'une catégorie — exactement ce que dit la note sous la liste :
  * - abonnements : coût total sur 24 mois croissant (la seule comparaison honnête) ;
  * - catégories sans note : ordre neutre (plus récent d'abord) ;
- * - sinon : le classement (note, puis réduction vérifiée), sans réordonnancement. */
+ * - sinon : prix « statt » d'abord, puis note (lib/project.ts compareDeals) ;
+ *   Supermarkt : au plus un tiers d'un même magasin par page. */
 export function orderCategory(list: PublicDeal[], slug: string): PublicDeal[] {
   if (slug === "handy-abos") {
     const cost = (d: PublicDeal) => d.sub?.total24 ?? Infinity;
     return [...list].sort((a, b) => cost(a) - cost(b) || a.title.localeCompare(b.title));
   }
   if (categoryBySlug(slug)?.unrated) return neutralOrder(list);
-  return rankDeals(list);
+  const ranked = rankDeals(list);
+  return slug === "supermarkt-aktionen" ? interleave(ranked) : ranked;
 }
 
 export function categoryList(deals: PublicDeal[], slug: string) {
@@ -56,7 +81,7 @@ export function categoryMetadata(city: City, locale: Locale, slug: string, page:
   };
 }
 
-export function CategoryListing({ city, locale, slug, page, here }: { city: City; locale: Locale; slug: string; page: number; here: PublicDeal[] }) {
+export function CategoryListing({ city, locale, slug, page, here, now }: { city: City; locale: Locale; slug: string; page: number; here: PublicDeal[]; now: Date }) {
   const t = dict(locale);
   const txt = categoryText(locale, slug);
   const ordered = categoryList(here, slug);
@@ -76,10 +101,11 @@ export function CategoryListing({ city, locale, slug, page, here }: { city: City
   };
   const first = (page - 1) * PAGE_SIZE + 1;
   const last = Math.min(page * PAGE_SIZE, ordered.length);
+  const sortNote = slug === "handy-abos" ? t.sortedByTotal : categoryBySlug(slug)?.unrated ? t.sortedByNewest : t.sortedByScore;
   return (
     <>
-      <nav className="crumbs" aria-label={t.home}>
-        <a href={paths.city(locale, city.slug)}><Icon name="back" size={16} />{city.name[locale]}</a>
+      <nav className="crumbs" aria-label={t.breadcrumb}>
+        <a href={paths.city(locale, city.slug)}><Icon name="back" size={16} /><span className="sr-only">{t.backTo(city.name[locale])}: </span><span aria-hidden="true">{city.name[locale]}</span></a>
       </nav>
       <header className="intro">
         <h1>{t.catIn(txt.title, city.name[locale])}</h1>
@@ -89,16 +115,13 @@ export function CategoryListing({ city, locale, slug, page, here }: { city: City
       {ordered.length === 0 ? (
         <EmptyState city={city} locale={locale} deals={here} exclude={slug} />
       ) : (
-        <section aria-labelledby="results" className="section">
-          <div className="results-head">
-            <h2 id="results">
-              {pages > 1
-                ? t.shownOf(`${fmtInt(first, locale)}–${fmtInt(last, locale)}`, t.resultsCount(ordered.length, fmtInt(ordered.length, locale)))
-                : t.resultsCount(ordered.length, fmtInt(ordered.length, locale))}
-            </h2>
-            <p className="section-note">{slug === "handy-abos" ? t.sortedByTotal : categoryBySlug(slug)?.unrated ? t.sortedByNewest : t.sortedByScore}</p>
-          </div>
-          <DealGrid deals={slice} locale={locale} />
+        <section aria-labelledby="results" className="section section-first">
+          <h2 id="results" className="sr-only">{t.catIn(txt.title, city.name[locale])}</h2>
+          <DealGrid deals={slice} locale={locale} labelledBy="results" now={now} />
+          <p className="section-foot">
+            {pages > 1 ? t.shownRange(fmtInt(first, locale), fmtInt(last, locale), fmtInt(ordered.length, locale)) : t.resultsCount(ordered.length, fmtInt(ordered.length, locale))}
+            {" · "}{sortNote}
+          </p>
           {pages > 1 && (
             <nav className="pager" aria-label={t.pagination}>
               {page > 1 ? <a className="btn btn-secondary" href={pageHref(page - 1)} rel="prev">{t.prevPage}</a> : <span />}

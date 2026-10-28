@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { mainCity } from "@/config/cities";
-import { inter } from "@/lib/font";
 import { DICTS, HTML_LANG, LOCALES } from "@/lib/i18n";
 import { SITE_NAME, paths } from "@/lib/site";
 import "./globals.css";
@@ -12,7 +11,7 @@ export const metadata: Metadata = { title: `404 – ${SITE_NAME}`, robots: { ind
 export default function GlobalNotFound() {
   const city = mainCity();
   return (
-    <html lang="de-CH" className={inter.variable}>
+    <html lang="de-CH">
       <body>
         <main id="main" className="nf nf-global">
           <p className="wordmark">{SITE_NAME}</p>

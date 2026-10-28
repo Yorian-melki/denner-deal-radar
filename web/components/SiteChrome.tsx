@@ -1,32 +1,47 @@
 import { CITIES, launchedCities, mainCity } from "@/config/cities";
 import { ConsentLink } from "@/components/Consent";
+import { Icon } from "@/components/Icon";
 import { LangSwitch } from "@/components/LangSwitch";
 import { activeProgrammes } from "@/lib/affiliate/rewrite";
+import { colon } from "@/lib/format";
 import { DICTS, HTML_LANG, LOCALES, dict, type Locale } from "@/lib/i18n";
 import { paths } from "@/lib/site";
 
-/** Mot-symbole : le nom seul (SITE_NAME), même rendu partout. Renommer = changer une variable. */
-export function BrandMark({ name }: { name: string }) {
-  return <span className="wordmark">{name}</span>;
+/** Logotype : tuile monogramme (initiale de SITE_NAME) + mot. Renommer = changer une variable. */
+export function BrandMark({ name, tile = true }: { name: string; tile?: boolean }) {
+  return (
+    <>
+      {tile && <span className="logo-tile" aria-hidden="true">{name.trim().charAt(0).toUpperCase()}</span>}
+      <span className="wordmark">{name}</span>
+    </>
+  );
 }
 
-/** En-tête unique, identique sur toutes les routes : marque · ville · langue. Une seule barre collante. */
+/** En-tête unique, identique sur toutes les routes : marque · ville · langue.
+ * La ville est un vrai menu (details/summary, sans JS) : la ville active + les prochaines. */
 export function SiteHeader({ siteName, locale }: { siteName: string; locale: Locale }) {
   const t = dict(locale);
   const cities = launchedCities();
   const city = mainCity();
+  const upcoming = CITIES.filter((c) => !c.launched);
   return (
     <header className="top">
       <a href="#main" className="skip">{t.skip}</a>
       <div className="top-inner">
-        <a href={paths.home(locale)} className="brand"><BrandMark name={siteName} /></a>
-        <nav aria-label={t.nav} className="top-nav">
-          {cities.length === 1 ? (
-            <a href={paths.city(locale, city.slug)} className="top-city">{city.name[locale]}</a>
-          ) : (
-            cities.map((c) => <a key={c.slug} href={paths.city(locale, c.slug)} className="top-city">{c.name[locale]}</a>)
-          )}
-        </nav>
+        <a href={paths.city(locale, city.slug)} className="brand"><BrandMark name={siteName} /></a>
+        <details className="city-menu">
+          <summary aria-label={`${t.cityMenu}: ${city.name[locale]}`}>
+            <span aria-hidden="true">{city.name[locale]}</span><Icon name="chevron" size={16} />
+          </summary>
+          <div className="city-pop">
+            <nav aria-label={t.nav}>
+              <ul role="list">
+                {cities.map((c) => <li key={c.slug}><a href={paths.city(locale, c.slug)} aria-current={c.slug === city.slug ? "true" : undefined}>{c.name[locale]}</a></li>)}
+              </ul>
+            </nav>
+            {upcoming.length > 0 && <p className="city-soon">{colon(t.soon, locale)} {upcoming.map((c) => c.name[locale]).join(", ")}</p>}
+          </div>
+        </details>
         <LangSwitch current={locale} label={t.language} langs={LOCALES.map((l) => ({ code: l, name: DICTS[l].langName, hreflang: HTML_LANG[l] }))} />
       </div>
     </header>
@@ -47,10 +62,10 @@ export function SiteFooter({ siteName, locale }: { siteName: string; locale: Loc
     <footer className="foot">
       <div className="foot-inner">
         <div className="foot-about">
-          <p className="foot-brand"><BrandMark name={siteName} /></p>
+          <p className="foot-brand"><BrandMark name={siteName} tile={false} /></p>
           <p>{t.footerDisclosure}</p>
           <p>{t.footerFacts(activeProgrammes().length)}</p>
-          {upcoming.length > 0 && <p>{t.soon}: {upcoming.map((c) => c.name[locale]).join(" · ")}</p>}
+          {upcoming.length > 0 && <p>{colon(t.soon, locale)} {upcoming.map((c) => c.name[locale]).join(" · ")}</p>}
         </div>
         <nav className="foot-nav" aria-label={t.transparency}>
           {links.map(([p, label]) => <a key={p} href={paths.page(locale, p)}>{label}</a>)}

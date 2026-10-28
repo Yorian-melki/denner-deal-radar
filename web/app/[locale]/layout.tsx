@@ -1,12 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { mainCity } from "@/config/cities";
-import { ConsentProvider } from "@/components/Consent";
+import { ConsentBanner } from "@/components/Consent";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
-import { inter } from "@/lib/font";
 import { adClient, warnIfMonetisationBlocked } from "@/lib/operator";
 import { HTML_LANG, LOCALES, OG_LOCALE, dict, isLocale } from "@/lib/i18n";
-import { INDEXABLE, SITE_NAME, SITE_URL, alternates, ogImage, paths } from "@/lib/site";
+import { ANALYTICS_TOKEN, INDEXABLE, SITE_NAME, SITE_URL, alternates, ogImage, paths } from "@/lib/site";
 import "../globals.css";
 
 /** Racine par langue : <html lang="de-CH|fr-CH|en">. Toutes les routes existent
@@ -33,6 +32,7 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
     openGraph: { type: "website", siteName: SITE_NAME, locale: OG_LOCALE[locale], title: SITE_NAME, description: t.metaDescription, url: paths.home(locale), images: [og] },
     twitter: { card: "summary_large_image", title: SITE_NAME, description: t.metaDescription, images: [og.url] },
     icons: { icon: [{ url: "/favicon.ico", sizes: "32x32" }, { url: "/icon.svg", type: "image/svg+xml" }], apple: "/apple-touch-icon.png" },
+    formatDetection: { telephone: false, address: false, email: false },
     manifest: "/manifest.webmanifest",
   };
 }
@@ -51,21 +51,24 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   if (!isLocale(locale)) notFound();
   const t = dict(locale);
   return (
-    <html lang={HTML_LANG[locale]} className={inter.variable}>
+    <html lang={HTML_LANG[locale]}>
+      <head>
+        {/* Un seul script, externe (CSP script-src 'self') : cartes expirées, puces, partage,
+            compteur de clics, consentement. Le postbuild le versionne (/s/site.<hash>.js). */}
+        <script src="/site.js" defer />
+      </head>
       <body>
-        <ConsentProvider adsEnabled={!!adClient()} labels={{ text: t.consentText, accept: t.consentAccept, decline: t.consentDecline, privacy: t.privacy, privacyHref: `${paths.page(locale, "datenschutz")}#cookies` }}>
-          <div className="shell">
-            <SiteHeader siteName={SITE_NAME} locale={locale} />
-            <main id="main" tabIndex={-1}>{children}</main>
-            <SiteFooter siteName={SITE_NAME} locale={locale} />
-          </div>
-        </ConsentProvider>
-        {/* Masque les cartes dont la date de fin publiée est passée (page servie avant la prochaine reconstruction). */}
-        <script src="/expired.js" defer />
-        {process.env.NEXT_PUBLIC_CF_BEACON_TOKEN && (
-          // Cloudflare Web Analytics : sans cookie, aucune donnée personnelle.
+        <ConsentBanner adsEnabled={!!adClient()} labels={{ text: t.consentText, accept: t.consentAccept, decline: t.consentDecline, privacy: t.privacy, privacyHref: `${paths.page(locale, "datenschutz")}#cookies` }} />
+        <div className="shell">
+          <SiteHeader siteName={SITE_NAME} locale={locale} />
+          <main id="main" tabIndex={-1}>{children}</main>
+          <SiteFooter siteName={SITE_NAME} locale={locale} />
+        </div>
+        {ANALYTICS_TOKEN && (
+          // Cloudflare Web Analytics : sans cookie, aucune donnée personnelle (mentionné dans
+          // /datenschutz seulement si ce jeton existe : lib/site.ts ANALYTICS_TOKEN).
           <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon={JSON.stringify({ token: process.env.NEXT_PUBLIC_CF_BEACON_TOKEN })} />
+            data-cf-beacon={JSON.stringify({ token: ANALYTICS_TOKEN })} />
         )}
       </body>
     </html>
