@@ -2,8 +2,15 @@
  * reconnaissance mémoire, orthographe à l'écoute, compréhension. */
 interface Env { DB: D1Database }
 
+// Tout ce qui précède cette date = test de Yorian (fondateur) : affiché à part, jamais compté.
+const OWNER_BEFORE = 1793160657000;
+
 export const onRequestGet = async ({ env }: { env: Env }) => {
-  const { results } = await env.DB.prepare("SELECT rid, type, data FROM events WHERE rid NOT LIKE 'test-%' ORDER BY id").all<{ rid: string; type: string; data: string }>();
+  const { results: all } = await env.DB.prepare("SELECT rid, ts, type, data FROM events WHERE rid NOT LIKE 'test-%' ORDER BY id").all<{ rid: string; ts: number; type: string; data: string }>();
+  const owner = (all ?? []).filter((r) => r.ts < OWNER_BEFORE);
+  const results = (all ?? []).filter((r) => r.ts >= OWNER_BEFORE);
+  const ownerPicks: Record<string, number> = {};
+  for (const r of owner) { if (r.type !== "duel") continue; try { const d = JSON.parse(r.data); if (d.win) ownerPicks[d.win] = (ownerPicks[d.win] || 0) + 1; } catch {} }
   const S: Record<string, any> = {};
   const st = (n: string) => (S[n] ??= { name: n, elo: 1500, wins: 0, shown: 0, recallHit: 0, recallShown: 0, falseAlarm: 0, decoy: 0, spellOk: 0, spellN: 0, meaningOk: 0, meaningN: 0 });
   const rids = new Set<string>(); let duels = 0;
@@ -34,5 +41,5 @@ export const onRequestGet = async ({ env }: { env: Env }) => {
     recall: pct(s.recallHit, s.recallShown), recallN: s.recallShown, falseAlarm: pct(s.falseAlarm, s.decoy),
     spelling: pct(s.spellOk, s.spellN), spellN: s.spellN, meaning: pct(s.meaningOk, s.meaningN), meaningN: s.meaningN,
   })).sort((a, b) => b.elo - a.elo);
-  return Response.json({ respondents: rids.size, duels, rows }, { headers: { "cache-control": "no-store" } });
+  return Response.json({ respondents: rids.size, duels, rows, owner: { duels: owner.filter((r) => r.type === "duel").length, picks: ownerPicks } }, { headers: { "cache-control": "no-store" } });
 };
