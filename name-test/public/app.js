@@ -135,9 +135,10 @@
   }
 
   const canSpeak = "speechSynthesis" in window;
-  const ACCENTS = { "fr-FR": "🇫🇷 FR", "de-DE": "🇩🇪 DE", "de-CH": "🇨🇭 CH", "en-GB": "🇬🇧 UK", "en-US": "🇺🇸 US", "es-ES": "🇪🇸 ES", "it-IT": "🇮🇹 IT" };
+  const ACCENTS = { "fr-FR": "🇫🇷 FR", "de-DE": "🇩🇪 DE", "en-GB": "🇬🇧 UK", "en-US": "🇺🇸 US", "es-ES": "🇪🇸 ES", "it-IT": "🇮🇹 IT" };
   const DEFAULT_ACCENT = { fr: "fr-FR", de: "de-DE", en: "en-GB", es: "es-ES", it: "it-IT" };
   let accent = store.get("nb.accent") || DEFAULT_ACCENT[lang];
+  if (!ACCENTS[accent]) accent = DEFAULT_ACCENT[lang];
   const QUALITY = /premium|enhanced|natural|neural|siri|google|online/i;
   const pickVoice = (loc) => {
     const vs = (canSpeak && speechSynthesis.getVoices()) || [];
@@ -148,10 +149,18 @@
   };
   if (canSpeak) { try { speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = () => {}; } catch {} }
   function listen(k) {
-    if (!canSpeak || k >= 2) return meaning(0);
+    if (k >= 2) return meaning(0);
     const name = rnd(NAMES);
     let voiceName = "";
-    const say = () => { try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(name); const v = pickVoice(accent); if (v) { u.voice = v; voiceName = v.name; } u.lang = accent; u.rate = 0.85; speechSynthesis.speak(u); } catch {} };
+    // Enregistrements neuronaux (Piper, pré-générés) ; voix du navigateur seulement en secours.
+    const tts = () => { try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(name); const v = pickVoice(accent); if (v) { u.voice = v; voiceName = "browser:" + v.name; } u.lang = accent; u.rate = 0.85; speechSynthesis.speak(u); } catch {} };
+    let audio = null;
+    const say = () => {
+      if (audio) { audio.pause(); }
+      audio = new Audio(`/audio/${accent}/${name.toLowerCase()}.m4a`);
+      voiceName = "piper:" + accent;
+      audio.play().catch(() => tts());
+    };
     screen(`${progress(step, STEPS)}<h2>${T.listen}</h2>
       <p class="muted">${T.accent}</p><div class="accents">${Object.entries(ACCENTS).map(([k, v]) => `<button class="lang${k === accent ? " on" : ""}" data-a="${k}">${v}</button>`).join("")}</div>
       <button id="pl">🔊 ${T.replay}</button>
