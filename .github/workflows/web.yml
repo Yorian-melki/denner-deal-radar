@@ -25,6 +25,7 @@ jobs:
       run:
         working-directory: web
     env:
+      NEXT_PUBLIC_SITE_NAME: ${{ vars.SITE_NAME }}
       NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}
       SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE }}
       NEXT_PUBLIC_CF_BEACON_TOKEN: ${{ vars.CF_BEACON_TOKEN }}

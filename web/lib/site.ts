@@ -1,4 +1,5 @@
-export const SITE_NAME = "Deal Radar";
+/** Nom de marque : une variable (GitHub → Variables → SITE_NAME), aucun code à changer. */
+export const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || "Deal Radar";
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
 /** Indexation seulement quand le build vise le domaine définitif (SITE_INDEXABLE=1
  * dans la CI) : jamais *.pages.dev ni les previews, pour éviter le contenu dupliqué. */
