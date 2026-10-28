@@ -4,9 +4,9 @@
  *  3. méta : marchand · économie ou mention neutre · date de fin publiée
  *  4. au plus 2 mentions qui changent le prix réel (Lidl Plus, ab 3 Stück…)
  * Composant serveur : zéro JavaScript par carte. */
-import { CARD_CONDITIONS, conditionLines } from "@/lib/conditions";
+import { CARD_CONDITIONS, conditionLines, guessLang } from "@/lib/conditions";
 import { fmtDay, fmtPct, fmtPrice, fmtScore } from "@/lib/format";
-import { dict, type Locale } from "@/lib/i18n";
+import { HTML_LANG, dict, type Locale } from "@/lib/i18n";
 import { rewriteUrl } from "@/lib/affiliate/rewrite";
 import { hostOf } from "@/lib/outbound";
 import { hasPage } from "@/lib/project";
@@ -114,6 +114,9 @@ export function DealCard({ deal, locale, headingLevel = 3 }: { deal: PublicDeal;
   const sub = subscriptionText(deal, locale);
   const notes = cardNotes(deal, locale);
   const titleId = `t-${deal.slug}`;
+  // Titre du marchand dans une autre langue que la page : lu avec la bonne phonétique.
+  const tl = guessLang(deal.title);
+  const titleLang = tl !== "?" && tl !== locale ? HTML_LANG[tl] : undefined;
   const H = headingLevel === 2 ? "h2" : "h3";
   let link: React.ReactNode;
   let adNote: string | undefined;
@@ -133,7 +136,7 @@ export function DealCard({ deal, locale, headingLevel = 3 }: { deal: PublicDeal;
   return (
     <article className="card" aria-labelledby={titleId} data-ends={hasRealEnd(deal) ? deal.endsAt : undefined}>
       <div className="card-head">
-        <H className="card-title" id={titleId}>{link}</H>
+        <H className="card-title" id={titleId} lang={titleLang}>{link}</H>
         <ScoreBadge score={deal.score} locale={locale} />
       </div>
       <PriceLine deal={deal} locale={locale} />

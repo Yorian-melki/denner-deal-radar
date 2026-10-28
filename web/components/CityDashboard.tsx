@@ -18,6 +18,8 @@ export function Intro({ city, locale, deals, generatedAt }: { city: City; locale
       <h1>{t.dealsIn(city.name[locale])}</h1>
       <p className="intro-facts">
         <span>{t.factsVerified(fmtInt(verifiedCount(deals), locale))}</span>
+        {/* Honnêteté « ville par ville » : le flux est surtout national ; on le dit. */}
+        <span>{t.inclNational}</span>
         {generatedAt && <span>{t.updated(fmtUpdated(generatedAt, locale))}</span>}
         <a href={paths.page(locale, "transparenz")}>{t.method}</a>
       </p>

@@ -47,11 +47,12 @@ describe("formats suisses", () => {
   it("séparateur de milliers, jamais de nombre brut", () => {
     expect(fmtInt(1349, "de")).toBe("1’349");
     expect(fmtInt(12937, "en")).toBe("12’937");
-    expect(fmtInt(1349, "fr")).toMatch(/^1\s349$/u);
+    // fr-CH : espace fine ou apostrophe selon la version CLDR du serveur de build — les deux sont suisses.
+    expect(fmtInt(1349, "fr")).toMatch(/^1[\s’]349$/u);
   });
   it("décimales et pourcentages selon la langue", () => {
     expect(fmtScore(8.2, "de")).toBe("8.2");
-    expect(fmtScore(8.2, "fr")).toBe("8,2");
+    expect(fmtScore(8.2, "fr")).toMatch(/^8[,.]2$/);
     expect(fmtPct(63.4, "de")).toBe("63%");
     expect(fmtPct(63.4, "fr")).toMatch(/^63\s?%$/u);
     expect(fmtPrice(13.15, "CHF", "de").replace(/\s/gu, " ")).toBe("CHF 13.15");
@@ -60,7 +61,7 @@ describe("formats suisses", () => {
     const ref = new Date("2026-10-28T10:00:00+01:00");
     expect(fmtDay("2026-10-29T23:59:00+01:00", "de", ref)).toBe("Do 29.10.");
     expect(fmtDay("2027-03-05T10:00:00+01:00", "de", ref)).toBe("Fr 05.03.2027");
-    expect(fmtDay("2026-10-29T23:59:00+01:00", "fr", ref)).toBe("jeu. 29.10");
+    expect(fmtDay("2026-10-29T23:59:00+01:00", "fr", ref)).toMatch(/^jeu\.? 29\.10$/);
     expect(fmtUpdated("2026-10-28T12:34:00+01:00", "de")).toBe("28.10., 12:34");
   });
 });

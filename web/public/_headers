@@ -35,6 +35,15 @@
   Cross-Origin-Resource-Policy: same-origin
   X-Permitted-Cross-Domain-Policies: none
 
+# Pages HTML (toutes sous /de, /fr, /en) : 60 s frais puis revalidation en arrière-plan
+# (reconstruction toutes les 2 h ; une visite répétée ne bloque jamais sur le réseau).
+/de/*
+  Cache-Control: public, max-age=60, stale-while-revalidate=600
+/fr/*
+  Cache-Control: public, max-age=60, stale-while-revalidate=600
+/en/*
+  Cache-Control: public, max-age=60, stale-while-revalidate=600
+
 # Ressources versionnées par hash : cache 1 an.
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable

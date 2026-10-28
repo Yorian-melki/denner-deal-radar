@@ -5,6 +5,10 @@ name: web
 on:
   schedule:
     - cron: "20 */2 * * *"
+    # Juste après minuit et à 6 h (heure suisse, hiver UTC+1) : les actions terminées
+    # disparaissent sans attendre le prochain créneau de 2 h.
+    - cron: "5 23 * * *"
+    - cron: "5 5 * * *"
   push:
     branches: [main]
     paths: ["web/**", ".github/workflows/web.yml"]
