@@ -3,10 +3,11 @@
 interface Env { DB: D1Database }
 
 // Tout ce qui précède cette date = test de Yorian (fondateur) : affiché à part, jamais compté.
-const OWNER_BEFORE = 1793163427076;
+const OWNER_BEFORE = 1793164023938;
 
 export const onRequestGet = async ({ env }: { env: Env }) => {
-  const { results: all } = await env.DB.prepare("SELECT rid, ts, type, data FROM events WHERE rid NOT LIKE 'test-%' ORDER BY id").all<{ rid: string; ts: number; type: string; data: string }>();
+  await env.DB.prepare("CREATE TABLE IF NOT EXISTS excluded (rid TEXT PRIMARY KEY, ts INTEGER)").run();
+  const { results: all } = await env.DB.prepare("SELECT rid, ts, type, data FROM events WHERE rid NOT LIKE 'test-%' AND rid NOT IN (SELECT rid FROM excluded) ORDER BY id").all<{ rid: string; ts: number; type: string; data: string }>();
   const owner = (all ?? []).filter((r) => r.ts < OWNER_BEFORE);
   const results = (all ?? []).filter((r) => r.ts >= OWNER_BEFORE);
   const ownerPicks: Record<string, number> = {};

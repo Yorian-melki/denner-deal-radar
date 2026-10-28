@@ -8,3 +8,4 @@ CREATE TABLE IF NOT EXISTS events (
 );
 CREATE INDEX IF NOT EXISTS idx_type ON events(type);
 CREATE INDEX IF NOT EXISTS idx_rid ON events(rid);
+CREATE TABLE IF NOT EXISTS excluded (rid TEXT PRIMARY KEY, ts INTEGER);
