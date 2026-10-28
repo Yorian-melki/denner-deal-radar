@@ -15,12 +15,16 @@
   const device = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? "mobile" : "desktop";
   const qs = new URLSearchParams(location.search);
   if (qs.get("r") && !store.get("nb.ref")) store.set("nb.ref", qs.get("r").replace(/[^a-z0-9]/gi, "").slice(0, 12));
-  if (qs.get("t") && !store.get("nb.ftop")) store.set("nb.ftop", qs.get("t").replace(/[^0-9-]/g, "").slice(0, 20));
+  const ss = { get(k) { try { return sessionStorage.getItem(k); } catch { return null; } }, set(k, v) { try { sessionStorage.setItem(k, v); } catch {} } };
+  store.set("nb.ftop", "");
+  if (qs.get("t")) ss.set("nb.ftop", qs.get("t").replace(/[^0-9-]/g, "").slice(0, 20));
+  if (qs.get("r")) ss.set("nb.fref", qs.get("r").replace(/[^a-z0-9]/gi, "").slice(0, 12));
   if (qs.has("r") || qs.has("t")) history.replaceState(null, "", location.pathname);
-  const friendTop = (store.get("nb.ftop") || "").split("-").map(Number).filter((i) => window.NAMES[i]).map((i) => window.NAMES[i]);
+
   const ref = store.get("nb.ref") || "";
   const myCode = rid.replace(/[^a-z0-9]/g, "").slice(-7);
   let shareUrl = `${location.origin}/?r=${myCode}`;
+  const friendTop = ss.get("nb.fref") === myCode ? [] : (ss.get("nb.ftop") || "").split("-").filter(Boolean).map(Number).filter((i) => window.NAMES[i]).map((i) => window.NAMES[i]);
 
   // ---- langue ----
   const LANGS = { fr: "🇫🇷 FR", de: "🇩🇪 DE", en: "🇬🇧 EN", es: "🇪🇸 ES", it: "🇮🇹 IT" };
@@ -34,11 +38,11 @@
     it: { title: "Aiutaci a scegliere il nome della nostra app 🔥", sub: "Un'app che trova le migliori offerte della tua città. 60 secondi, anonimo, senza registrazione.", go: "Iniziamo", mem: "Memorizza questi nomi 👀", duel: "Quale sceglieresti?", tap: "Tocca il tuo preferito", recall: "Quali hai visto all'inizio?", recallSub: "Tocca tutti quelli che riconosci", next: "Avanti", listen: "Ascolta e scrivi il nome 🎧", replay: "Ascolta", meaning: "Con questo nome, il sito serve a…", mOpts: { deals: "Trovare offerte", games: "Giocare", travel: "Prenotare viaggi", bank: "Una banca / finanza", food: "Ordinare cibo" }, done: "Grazie! 🙌", yourTop: "Il tuo top", more: "Altri duelli", share: "Condividi il test", city: "Zürich", tag: "Le migliori offerte della tua città", app: "Offerte · Studenti", notif: "−58% sugli AirPods, ancora 2 h", skip: "Salta" },
   };
   const EXTRA = {
-    fr: { played: "personnes ont déjà joué", challenge: "Défie tes potes 🔥", challengeSub: "Ils verront s'ils ont le même goût que toi", viaYou: "personnes ont joué grâce à toi", shareMsg: "Un pote lance une app de bons plans pour étudiants et hésite entre 52 noms. J'ai joué (60 s, anonyme) : mon top c'est {top} 😄 Tu votes quoi ? 👉", challenged: "⚔️ Un ami t'a défié : à la fin, tu verras si vous avez les mêmes goûts.", friendTopT: "Le top de ton ami", common: "de ses favoris, tu les as aussi choisis en duel", toDuels: "Maintenant, choisis ton préféré à chaque duel ⚔️", toRecall: "Maintenant, retrouve les noms du tout début 🧠", toListen: "Maintenant, écoute et trouve la bonne orthographe 🎧", toMeaning: "Dernière étape : devine à quoi sert le site 🤔", okGo: "Go", memIntro: "Mémorise les noms qui vont apparaître 👀", listen2: "Écoute et choisis la bonne orthographe 🎧", ready: "Ça va démarrer et aller vite.", readySub: "Prêt ?", yes: "Oui, je suis prêt", accent: "Accent de la voix", typed: "Tu as écrit" },
-    de: { played: "Leute haben schon gespielt", challenge: "Fordere deine Freunde heraus 🔥", challengeSub: "Sie sehen, ob sie denselben Geschmack haben", viaYou: "Leute haben dank dir gespielt", shareMsg: "Ein Freund startet eine Deal-App für Studis und schwankt zwischen 52 Namen. Ich hab gespielt (60 Sek., anonym): mein Top ist {top} 😄 Was wählst du? 👉", challenged: "⚔️ Ein Freund hat dich herausgefordert: Am Ende siehst du, ob ihr denselben Geschmack habt.", friendTopT: "Top deines Freundes", common: "seiner Favoriten hast du im Duell auch gewählt", toDuels: "Jetzt: Wähle in jedem Duell deinen Favoriten ⚔️", toRecall: "Jetzt: Finde die Namen vom Anfang wieder 🧠", toListen: "Jetzt: Hör zu und finde die richtige Schreibweise 🎧", toMeaning: "Letzter Schritt: Rate, wofür die Seite ist 🤔", okGo: "Los", memIntro: "Merk dir die Namen, die gleich erscheinen 👀", listen2: "Hör zu und wähle die richtige Schreibweise 🎧", ready: "Gleich geht's los, und zwar schnell.", readySub: "Bereit?", yes: "Ja, bereit", accent: "Akzent der Stimme", typed: "Du hast geschrieben" },
-    en: { played: "people have already played", challenge: "Challenge your friends 🔥", challengeSub: "They'll see if they share your taste", viaYou: "people played thanks to you", shareMsg: "A friend is launching a student deals app and can't pick between 52 names. I played (60 s, anonymous): my top is {top} 😄 What's yours? 👉", challenged: "⚔️ A friend challenged you: at the end you'll see if you share the same taste.", friendTopT: "Your friend's top", common: "of their favourites you also picked in a duel", toDuels: "Now pick your favourite in each duel ⚔️", toRecall: "Now find the names from the very start 🧠", toListen: "Now listen and find the right spelling 🎧", toMeaning: "Last step: guess what the site is for 🤔", okGo: "Go", memIntro: "Remember the names that are about to appear 👀", listen2: "Listen and pick the right spelling 🎧", ready: "It's about to start, and it goes fast.", readySub: "Ready?", yes: "Yes, I'm ready", accent: "Voice accent", typed: "You typed" },
-    es: { played: "personas ya han jugado", challenge: "Reta a tus amigos 🔥", challengeSub: "Verán si tienen el mismo gusto que tú", viaYou: "personas jugaron gracias a ti", shareMsg: "Un amigo lanza una app de ofertas para estudiantes y duda entre 52 nombres. He jugado (60 s, anónimo): mi top es {top} 😄 ¿Tú cuál votas? 👉", challenged: "⚔️ Un amigo te ha retado: al final verás si tenéis los mismos gustos.", friendTopT: "El top de tu amigo", common: "de sus favoritos también los elegiste en un duelo", toDuels: "Ahora elige tu favorito en cada duelo ⚔️", toRecall: "Ahora encuentra los nombres del principio 🧠", toListen: "Ahora escucha y encuentra la escritura correcta 🎧", toMeaning: "Último paso: adivina para qué sirve la web 🤔", okGo: "Vamos", memIntro: "Memoriza los nombres que van a aparecer 👀", listen2: "Escucha y elige la escritura correcta 🎧", ready: "Va a empezar y va rápido.", readySub: "¿Listo?", yes: "Sí, estoy listo", accent: "Acento de la voz", typed: "Has escrito" },
-    it: { played: "persone hanno già giocato", challenge: "Sfida i tuoi amici 🔥", challengeSub: "Vedranno se hanno i tuoi stessi gusti", viaYou: "persone hanno giocato grazie a te", shareMsg: "Un amico lancia un'app di offerte per studenti e non sa scegliere tra 52 nomi. Ho giocato (60 s, anonimo): il mio top è {top} 😄 Tu cosa voti? 👉", challenged: "⚔️ Un amico ti ha sfidato: alla fine vedrai se avete gli stessi gusti.", friendTopT: "Il top del tuo amico", common: "dei suoi preferiti li hai scelti anche tu in un duello", toDuels: "Ora scegli il tuo preferito in ogni duello ⚔️", toRecall: "Ora ritrova i nomi dell'inizio 🧠", toListen: "Ora ascolta e trova la grafia giusta 🎧", toMeaning: "Ultimo passo: indovina a cosa serve il sito 🤔", okGo: "Vai", memIntro: "Memorizza i nomi che stanno per apparire 👀", listen2: "Ascolta e scegli la grafia giusta 🎧", ready: "Sta per iniziare e va veloce.", readySub: "Pronto?", yes: "Sì, sono pronto", accent: "Accento della voce", typed: "Hai scritto" },
+    fr: { badges: [["🎯 Œil de lynx","tu as exactement le goût de la foule"],["⚖️ Équilibré","ni mouton, ni rebelle"],["🦄 Visionnaire","tu sens les tendances avant tout le monde"],["🚀 Pionnier","tu fais partie des tout premiers à voter"]], profile: "Ton profil", liveRank: "Classement en direct", iGot: "J'ai eu", played: "personnes ont déjà joué", challenge: "Défie tes potes 🔥", challengeSub: "Ils verront s'ils ont le même goût que toi", viaYou: "personnes ont joué grâce à toi", shareMsg: "Un pote lance une app de bons plans pour étudiants et hésite entre 52 noms. J'ai joué (60 s, anonyme) : mon top c'est {top} 😄 Tu votes quoi ? 👉", challenged: "⚔️ Un ami t'a défié : à la fin, tu verras si vous avez les mêmes goûts.", friendTopT: "Le top de ton ami", common: "de ses favoris, tu les as aussi choisis en duel", toDuels: "Maintenant, choisis ton préféré à chaque duel ⚔️", toRecall: "Maintenant, retrouve les noms du tout début 🧠", toListen: "Maintenant, écoute et trouve la bonne orthographe 🎧", toMeaning: "Dernière étape : devine à quoi sert le site 🤔", okGo: "Go", memIntro: "Mémorise les noms qui vont apparaître 👀", listen2: "Écoute et choisis la bonne orthographe 🎧", ready: "Ça va démarrer et aller vite.", readySub: "Prêt ?", yes: "Oui, je suis prêt", accent: "Accent de la voix", typed: "Tu as écrit" },
+    de: { badges: [["🎯 Adlerauge","du hast genau den Geschmack der Masse"],["⚖️ Ausgeglichen","weder Mitläufer noch Rebell"],["🦄 Visionär","du spürst Trends vor allen anderen"],["🚀 Pionier","du gehörst zu den Allerersten"]], profile: "Dein Profil", liveRank: "Live-Ranking", iGot: "Ich bin", played: "Leute haben schon gespielt", challenge: "Fordere deine Freunde heraus 🔥", challengeSub: "Sie sehen, ob sie denselben Geschmack haben", viaYou: "Leute haben dank dir gespielt", shareMsg: "Ein Freund startet eine Deal-App für Studis und schwankt zwischen 52 Namen. Ich hab gespielt (60 Sek., anonym): mein Top ist {top} 😄 Was wählst du? 👉", challenged: "⚔️ Ein Freund hat dich herausgefordert: Am Ende siehst du, ob ihr denselben Geschmack habt.", friendTopT: "Top deines Freundes", common: "seiner Favoriten hast du im Duell auch gewählt", toDuels: "Jetzt: Wähle in jedem Duell deinen Favoriten ⚔️", toRecall: "Jetzt: Finde die Namen vom Anfang wieder 🧠", toListen: "Jetzt: Hör zu und finde die richtige Schreibweise 🎧", toMeaning: "Letzter Schritt: Rate, wofür die Seite ist 🤔", okGo: "Los", memIntro: "Merk dir die Namen, die gleich erscheinen 👀", listen2: "Hör zu und wähle die richtige Schreibweise 🎧", ready: "Gleich geht's los, und zwar schnell.", readySub: "Bereit?", yes: "Ja, bereit", accent: "Akzent der Stimme", typed: "Du hast geschrieben" },
+    en: { badges: [["🎯 Eagle eye","you have exactly the crowd's taste"],["⚖️ Balanced","neither sheep nor rebel"],["🦄 Visionary","you sense trends before everyone else"],["🚀 Pioneer","you're one of the very first voters"]], profile: "Your profile", liveRank: "Live ranking", iGot: "I got", played: "people have already played", challenge: "Challenge your friends 🔥", challengeSub: "They'll see if they share your taste", viaYou: "people played thanks to you", shareMsg: "A friend is launching a student deals app and can't pick between 52 names. I played (60 s, anonymous): my top is {top} 😄 What's yours? 👉", challenged: "⚔️ A friend challenged you: at the end you'll see if you share the same taste.", friendTopT: "Your friend's top", common: "of their favourites you also picked in a duel", toDuels: "Now pick your favourite in each duel ⚔️", toRecall: "Now find the names from the very start 🧠", toListen: "Now listen and find the right spelling 🎧", toMeaning: "Last step: guess what the site is for 🤔", okGo: "Go", memIntro: "Remember the names that are about to appear 👀", listen2: "Listen and pick the right spelling 🎧", ready: "It's about to start, and it goes fast.", readySub: "Ready?", yes: "Yes, I'm ready", accent: "Voice accent", typed: "You typed" },
+    es: { badges: [["🎯 Ojo de lince","tienes justo el gusto de la mayoría"],["⚖️ Equilibrado","ni oveja ni rebelde"],["🦄 Visionario","sientes las tendencias antes que nadie"],["🚀 Pionero","eres de los primeros en votar"]], profile: "Tu perfil", liveRank: "Ranking en directo", iGot: "Me salió", played: "personas ya han jugado", challenge: "Reta a tus amigos 🔥", challengeSub: "Verán si tienen el mismo gusto que tú", viaYou: "personas jugaron gracias a ti", shareMsg: "Un amigo lanza una app de ofertas para estudiantes y duda entre 52 nombres. He jugado (60 s, anónimo): mi top es {top} 😄 ¿Tú cuál votas? 👉", challenged: "⚔️ Un amigo te ha retado: al final verás si tenéis los mismos gustos.", friendTopT: "El top de tu amigo", common: "de sus favoritos también los elegiste en un duelo", toDuels: "Ahora elige tu favorito en cada duelo ⚔️", toRecall: "Ahora encuentra los nombres del principio 🧠", toListen: "Ahora escucha y encuentra la escritura correcta 🎧", toMeaning: "Último paso: adivina para qué sirve la web 🤔", okGo: "Vamos", memIntro: "Memoriza los nombres que van a aparecer 👀", listen2: "Escucha y elige la escritura correcta 🎧", ready: "Va a empezar y va rápido.", readySub: "¿Listo?", yes: "Sí, estoy listo", accent: "Acento de la voz", typed: "Has escrito" },
+    it: { badges: [["🎯 Occhio di lince","hai esattamente il gusto della massa"],["⚖️ Equilibrato","né pecora né ribelle"],["🦄 Visionario","senti le tendenze prima di tutti"],["🚀 Pioniere","sei tra i primissimi a votare"]], profile: "Il tuo profilo", liveRank: "Classifica live", iGot: "Mi è uscito", played: "persone hanno già giocato", challenge: "Sfida i tuoi amici 🔥", challengeSub: "Vedranno se hanno i tuoi stessi gusti", viaYou: "persone hanno giocato grazie a te", shareMsg: "Un amico lancia un'app di offerte per studenti e non sa scegliere tra 52 nomi. Ho giocato (60 s, anonimo): il mio top è {top} 😄 Tu cosa voti? 👉", challenged: "⚔️ Un amico ti ha sfidato: alla fine vedrai se avete gli stessi gusti.", friendTopT: "Il top del tuo amico", common: "dei suoi preferiti li hai scelti anche tu in un duello", toDuels: "Ora scegli il tuo preferito in ogni duello ⚔️", toRecall: "Ora ritrova i nomi dell'inizio 🧠", toListen: "Ora ascolta e trova la grafia giusta 🎧", toMeaning: "Ultimo passo: indovina a cosa serve il sito 🤔", okGo: "Vai", memIntro: "Memorizza i nomi che stanno per apparire 👀", listen2: "Ascolta e scegli la grafia giusta 🎧", ready: "Sta per iniziare e va veloce.", readySub: "Pronto?", yes: "Sì, sono pronto", accent: "Accento della voce", typed: "Hai scritto" },
   };
   let T = { ...DICT[lang], ...EXTRA[lang] };
   const setLang = (l) => { lang = l; T = { ...DICT[l], ...EXTRA[l] }; store.set("nb.lang", l); };
@@ -75,6 +79,14 @@
     const b = by.slice(1).find((x) => !pairsDone.has([a, x].sort().join("|"))) || by[1];
     return Math.random() < 0.5 ? [a, b] : [b, a];
   };
+
+  // ---- goût de la foule (classement en direct) ----
+  let crowd = {}, crowdTop = [], crowdN = 0, agree = 0, agreeN = 0;
+  fetch("/api/results").then((r) => r.json()).then((d) => {
+    crowdN = d.respondents || 0;
+    for (const x of d.rows || []) if (x.duels >= 3) crowd[x.name] = x.elo;
+    crowdTop = (d.rows || []).filter((x) => x.duels >= 3).slice(0, 5).map((x) => x.name);
+  }).catch(() => {});
 
   // ---- écrans ----
   const screen = (html) => { app.innerHTML = ""; const el = $(`<section style="display:contents">${html}</section>`); app.append(...el.childNodes); window.scrollTo(0, 0); };
@@ -126,13 +138,15 @@
     if (!endless && k >= 12) return interstitial(T.toRecall, recall);
     const [a, b] = pickPair();
     const scene = rnd(Object.keys(SCENES)), c = rnd(COLORS), t0 = performance.now();
-    screen(`${endless ? "" : progress(step, STEPS)}<h2>${T.duel}</h2><p class="muted">${T.tap}</p>
+    screen(`${endless ? "" : progress(step, STEPS)}<h2>${T.duel}${endless ? "" : ` <span class="pill">${k + 1}/12</span>`}</h2><p class="muted">${T.tap}</p>
       <div class="duel"><div class="opt" data-n="${esc(a)}">${SCENES[scene](a, c)}</div><div class="vs">VS</div><div class="opt" data-n="${esc(b)}">${SCENES[scene](b, c)}</div></div>
       ${endless ? `<button class="ghost" id="stop">${T.done}</button>` : ""}`);
     app.querySelectorAll(".opt").forEach((el) => el.onclick = () => {
       const win = el.dataset.n;
       app.querySelectorAll(".opt").forEach((o) => o.classList.add(o === el ? "win" : "lose"));
       push("duel", { a, b, win, scene, ms: Math.round(performance.now() - t0) });
+      const other = win === a ? b : a;
+      if (crowd[a] != null && crowd[b] != null) { agreeN++; if (crowd[win] >= crowd[other]) agree++; }
       seen[a] = (seen[a] || 0) + 1; seen[b] = (seen[b] || 0) + 1; wins[win] = (wins[win] || 0) + 1;
       pairsDone.add([a, b].sort().join("|")); save();
       if (!endless) step++;
@@ -208,18 +222,30 @@
     app.querySelectorAll("[data-o]").forEach((el) => el.onclick = () => { push("meaning", { name, answer: el.dataset.o }); step++; meaning(k + 1); });
   }
 
+  function confetti() {
+    const c = document.createElement("canvas"); c.className = "confetti"; document.body.appendChild(c);
+    const x = c.getContext("2d"); c.width = innerWidth; c.height = innerHeight;
+    const P = Array.from({ length: 140 }, () => ({ x: Math.random() * c.width, y: -20 - Math.random() * c.height * 0.5, r: 4 + Math.random() * 6, v: 2 + Math.random() * 4, d: Math.random() * 2 - 1, col: rnd(["#ff3d71", "#ffb800", "#7c3aed", "#00c2ff", "#22c55e"]) }));
+    let t = 0; const tick = () => { x.clearRect(0, 0, c.width, c.height); for (const p of P) { p.y += p.v; p.x += p.d; x.fillStyle = p.col; x.fillRect(p.x, p.y, p.r, p.r * 0.6); } if (++t < 170) requestAnimationFrame(tick); else c.remove(); }; tick();
+  }
+
   function end() {
     const top = Object.entries(wins).sort((a, b) => b[1] - a[1]).slice(0, 3);
-    screen(`<h1>${T.done}</h1><h2>${T.yourTop}</h2><div class="list">${top.map(([n, w], i) => `<div class="row"><b>${["🥇", "🥈", "🥉"][i]} ${esc(n)}</b><span class="muted">${w}</span></div>`).join("")}</div>
-      <h2 style="margin-top:8px">${T.challenge}</h2><p class="muted">${T.challengeSub}</p>
+    const pct = agreeN >= 4 ? Math.round((100 * agree) / agreeN) : null;
+    const badge = pct == null ? T.badges[3] : pct >= 70 ? T.badges[0] : pct >= 40 ? T.badges[1] : T.badges[2];
+    screen(`<div class="badge"><div class="bt">${T.profile}</div><div class="bn">${badge[0]}</div><div class="bs">${badge[1]}${pct != null ? ` · ${pct}%` : ""}</div></div>
+      <h2>${T.yourTop}</h2><div class="list">${top.map(([n, w], i) => `<div class="row"><b>${["🥇", "🥈", "🥉"][i]} ${esc(n)}</b><span class="muted">${w}</span></div>`).join("")}</div>
+      <div class="cta"><h2>${T.challenge}</h2><p class="muted">${T.challengeSub}</p>
       <a id="wa" class="wa" href="#">WhatsApp</a><button class="ghost" id="sh">${T.share}</button>
-      <p class="muted" id="via" style="text-align:center"></p>
+      <p class="muted" id="via" style="text-align:center"></p></div>
+      ${crowdN >= 20 && crowdTop.length ? `<h2>${T.liveRank}</h2><div class="list">${crowdTop.map((n, i) => `<div class="row"><b>${i + 1}. ${esc(n)}</b>${top.some(([m]) => m === n) ? "<span>⭐</span>" : ""}</div>`).join("")}</div>` : ""}
       <button class="ghost" id="more">${T.more}</button>`);
+    confetti();
     shareUrl = `${location.origin}/?r=${myCode}&t=${top.map(([n]) => window.NAMES.indexOf(n)).join("-")}`;
-    const msg = `${T.shareMsg.replace("{top}", top.map(([n]) => n).join(", "))} ${shareUrl}`;
+    const msg = `${T.iGot} « ${badge[0]} » 😄 ${T.shareMsg.replace("{top}", top.map(([n]) => n).join(", "))} ${shareUrl}`;
     if (friendTop.length) {
       const common = friendTop.filter((n) => wins[n]).length;
-      document.getElementById("via").insertAdjacentHTML("beforebegin", `<div class="row"><b>${T.friendTopT}</b><span class="muted">${friendTop.map(esc).join(", ")}</span></div><p style="text-align:center;font-weight:800">🤝 ${common}/${friendTop.length} ${T.common}</p>`);
+      document.querySelector(".cta").insertAdjacentHTML("beforebegin", `<div class="row"><b>${T.friendTopT}</b><span class="muted">${friendTop.map(esc).join(", ")}</span></div><p style="text-align:center;font-weight:800">🤝 ${common}/${friendTop.length} ${T.common}</p>`);
       push("session", { friendCommon: common });
     }
     document.getElementById("wa").href = `https://wa.me/?text=${encodeURIComponent(msg)}`;
