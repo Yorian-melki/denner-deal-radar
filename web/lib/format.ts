@@ -3,12 +3,14 @@
 import { intlLocale, type Locale } from "@/lib/i18n";
 
 const TZ = "Europe/Zurich";
+/** Apostrophe typographique suisse, quelle que soit la version ICU du serveur de build. */
+const typo = (s: string) => s.replace(/'/g, "’");
 
 export const fmtPrice = (v: number | undefined, cur: string, locale: Locale) =>
-  v === undefined ? "" : new Intl.NumberFormat(intlLocale(locale), { style: "currency", currency: cur }).format(v);
+  v === undefined ? "" : typo(new Intl.NumberFormat(intlLocale(locale), { style: "currency", currency: cur }).format(v));
 
 /** Entier avec séparateur de milliers (« 1’349 », « 1 349 »). */
-export const fmtInt = (n: number, locale: Locale) => new Intl.NumberFormat(intlLocale(locale), { maximumFractionDigits: 0 }).format(n);
+export const fmtInt = (n: number, locale: Locale) => typo(new Intl.NumberFormat(intlLocale(locale), { maximumFractionDigits: 0 }).format(n));
 
 /** Pourcentage entier, sans signe (« 63 % » en FR, « 63% » en DE/EN, selon la norme Intl). */
 export const fmtPct = (pct: number, locale: Locale) =>

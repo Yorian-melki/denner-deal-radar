@@ -272,3 +272,6 @@ button { font: inherit; }
   .chip[aria-current="page"], .lang a[aria-current="true"] { forced-color-adjust: none; background: Highlight; color: HighlightText; }
   .card:has(.card-link:focus-visible) { outline-color: Highlight; }
 }
+
+/* Liens dans un texte courant : soulignés (pas seulement la couleur — WCAG 1.4.1). */
+.legal p a, .legal li a, .lead a, .note-box a, .source a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
