@@ -144,7 +144,7 @@
     app.querySelectorAll(".opt").forEach((el) => el.onclick = () => {
       const win = el.dataset.n;
       app.querySelectorAll(".opt").forEach((o) => o.classList.add(o === el ? "win" : "lose"));
-      push("duel", { a, b, win, scene, ms: Math.round(performance.now() - t0) });
+      push("duel", { a, b, win, scene, color: c, pos: win === a ? "top" : "bottom", ms: Math.round(performance.now() - t0) });
       const other = win === a ? b : a;
       if (crowd[a] != null && crowd[b] != null) { agreeN++; if (crowd[win] >= crowd[other]) agree++; }
       seen[a] = (seen[a] || 0) + 1; seen[b] = (seen[b] || 0) + 1; wins[win] = (wins[win] || 0) + 1;

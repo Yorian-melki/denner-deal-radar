@@ -1,23 +1,27 @@
 <!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
 <title>Name Battle · résultats</title><link rel="stylesheet" href="style.css">
-<style>main{max-width:980px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:right}th:nth-child(2),td:nth-child(2){text-align:left}th{cursor:pointer;color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--bg)}tr.fav td:nth-child(2)::after{content:" ★";color:#facc15}.wrap{overflow-x:auto}</style></head>
+<style>main{max-width:980px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:right}th:nth-child(2),td:nth-child(2){text-align:left}th{cursor:pointer;color:var(--muted);font-weight:600;position:sticky;top:0;background:#f3eaff}tr.tie td:nth-child(3){color:#7c3aed;font-weight:800}tbody tr:first-child td{font-weight:800}tr.fav td:nth-child(2)::after{content:" ★";color:#facc15}.wrap{overflow-x:auto}</style></head>
 <body><main>
 <h1>Résultats en direct</h1>
 <p class="muted" id="meta">Chargement…</p>
-<p class="muted">Elo = classement des duels (1500 = moyenne). Mémoire = % reconnu après 5 noms flashés (fausses alarmes = % reconnu sans l'avoir vu ; un bon nom a mémoire haute ET fausses alarmes basses). Orthographe = % écrit juste à l'écoute. Sens = % « bons plans ». ★ = favoris de Yorian. Fiable à partir d'environ 30 duels par nom.</p>
-<p id="viral" style="font-weight:700"></p><p class="muted" id="owner"></p><button class="ghost" id="me" style="margin:6px 0">📵 Ne plus jamais compter ce téléphone (mes tests)</button><p class="muted" id="meok"></p><div class="wrap"><table><thead><tr><th>#</th><th data-k="name">Nom</th><th data-k="elo">Elo</th><th data-k="winRate">% victoires</th><th data-k="duels">Duels</th><th data-k="recall">Mémoire %</th><th data-k="falseAlarm">Fausses alarmes %</th><th data-k="spelling">Orthographe %</th><th data-k="meaning">Sens %</th></tr></thead><tbody id="tb"></tbody></table></div>
+<details class="muted"><summary><b>Comment lire ce tableau</b></summary>
+<p><b>Score</b> = note globale (0 = moyenne) : préférence 60 %, mémoire 25 %, orthographe 10 %, compréhension 5 %.</p>
+<p><b>Préférence</b> = modèle Bradley-Terry sur tous les duels à la fois (l'ordre des votes ne compte pas), avantage de la carte du haut retiré. Affichée sur l'échelle Elo (1500 = moyenne) avec l'intervalle à 95 %. <b>≈1er</b> = statistiquement à égalité avec le meilleur : il faut plus de votes pour les départager.</p>
+<p><b>Mémoire d'</b> = capacité à être reconnu sans fausse reconnaissance, corrigée selon la mémoire de chaque répondant (0 = hasard, plus c'est haut mieux c'est).</p>
+<p>Répondants trop rapides (&lt; 0,45 s par duel) ou qui cliquent toujours au même endroit : écartés automatiquement. ★ = favoris de Yorian.</p></details>
+<p id="viral" style="font-weight:700"></p><p class="muted" id="owner"></p><button class="ghost" id="me" style="margin:6px 0">📵 Ne plus jamais compter ce téléphone (mes tests)</button><p class="muted" id="meok"></p><div class="wrap"><table><thead><tr><th>#</th><th data-k="name">Nom</th><th data-k="score">Score</th><th data-k="elo">Préférence (Elo, IC 95 %)</th><th data-k="tiedWithTop">≈1er</th><th data-k="winRate">% victoires</th><th data-k="duels">Duels</th><th data-k="dprime">Mémoire d'</th><th data-k="recall">Reconnu %</th><th data-k="falseAlarm">Fausses alarmes %</th><th data-k="spelling">Orthographe %</th><th data-k="meaning">Sens %</th></tr></thead><tbody id="tb"></tbody></table></div>
 </main>
 <script src="names.js"></script>
 <script>
-let rows=[],key="elo",dir=-1;
+let rows=[],key="score",dir=-1;
 const fmt=(v,n)=>v==null?"–":v+(n!=null?` <span class="muted">(${n})</span>`:"");
 function draw(){const fav=new Set(window.FAV);const r=rows.slice().sort((a,b)=>((a[key]??-1)>(b[key]??-1)?1:(a[key]??-1)<(b[key]??-1)?-1:0)*dir);
-document.getElementById("tb").innerHTML=r.map((x,i)=>`<tr class="${fav.has(x.name)?"fav":""}"><td>${i+1}</td><td>${x.name}</td><td>${x.elo}</td><td>${fmt(x.winRate)}</td><td>${x.duels}</td><td>${fmt(x.recall,x.recallN)}</td><td>${fmt(x.falseAlarm)}</td><td>${fmt(x.spelling,x.spellN)}</td><td>${fmt(x.meaning,x.meaningN)}</td></tr>`).join("");}
+document.getElementById("tb").innerHTML=r.map((x,i)=>`<tr class="${fav.has(x.name)?"fav":""} ${x.tiedWithTop?"tie":""}"><td>${i+1}</td><td>${x.name}</td><td>${x.score??"–"}</td><td>${x.elo==null?"–":`${x.elo} <span class="muted">[${x.eloLo}–${x.eloHi}]</span>`}</td><td>${x.tiedWithTop?"≈":""}</td><td>${fmt(x.winRate)}</td><td>${x.duels}</td><td>${fmt(x.dprime)}</td><td>${fmt(x.recall,x.recallN)}</td><td>${fmt(x.falseAlarm)}</td><td>${fmt(x.spelling,x.spellN)}</td><td>${fmt(x.meaning,x.meaningN)}</td></tr>`).join("");}
 document.querySelectorAll("th[data-k]").forEach(th=>th.onclick=()=>{const k=th.dataset.k;dir=key===k?-dir:-1;key=k;draw();});
 async function load(){const d=await fetch("/api/results").then(r=>r.json());const known=new Set(d.rows.map(x=>x.name));
-for(const n of window.NAMES) if(!known.has(n)) d.rows.push({name:n,elo:1500,duels:0});
-rows=d.rows;document.getElementById("meta").textContent=`${d.respondents} répondants anonymes · ${d.duels} duels · mis à jour ${new Date().toLocaleTimeString("fr-CH")}`;draw();
+for(const n of window.NAMES) if(!known.has(n)) d.rows.push({name:n,score:null,elo:null,duels:0});
+rows=d.rows;document.getElementById("meta").textContent=`${d.respondents} répondants anonymes (${d.excludedLowQuality||0} écartés pour réponses au hasard) · ${d.duels} duels valides · biais carte du haut : ${d.positionBias??"–"} % (corrigé) · mémoire moyenne : ${d.memoryBaseline?.hit??"–"} % reconnus, ${d.memoryBaseline?.falseAlarm??"–"} % fausses alarmes · mis à jour ${new Date().toLocaleTimeString("fr-CH")}`;draw();
 const v=d.viral||{};document.getElementById("viral").textContent=`Diffusion : ${v.started||0} ont commencé · ${v.referred||0} venus par un partage · ${v.shares||0} partages · coefficient viral k = ${v.k||0} (k > 1 = ça se propage tout seul)`;
 const o=d.owner||{};const op=Object.entries(o.picks||{}).sort((a,b)=>b[1]-a[1]).map(([n,w])=>`${n} (${w})`).join(", ");document.getElementById("owner").textContent=o.duels?`Test de Yorian (exclu du classement) : ${o.duels} duels — choisis : ${op}`:"";}
 document.getElementById("me").onclick=async()=>{let old=null;try{old=localStorage.getItem("nb.rid")}catch{}const rids=old?[old]:[];const nw="test-"+Math.random().toString(36).slice(2,12);try{localStorage.setItem("nb.rid",nw)}catch{}if(rids.length)await fetch("/api/exclude",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({rids})});document.getElementById("meok").textContent="✅ Ce téléphone ne sera plus jamais compté (anciennes et futures réponses).";load();};
