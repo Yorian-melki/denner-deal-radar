@@ -1,8 +1,47 @@
+# En-têtes HTTP Cloudflare Pages (format _headers). Raisons et procédure :
+# docs/SECURITY_LEGAL.md. ATTENTION : ce fichier NE s'applique PAS aux réponses
+# des Pages Functions (functions/**) : elles posent leurs propres en-têtes.
+# Si plusieurs règles matchent, Cloudflare CONCATÈNE les valeurs d'un même
+# en-tête → ne jamais poser le même en-tête dans /* et dans une règle plus fine.
+#
+# CSP : Next.js (export statique) insère des <script> inline (self.__next_f.push,
+# bootstrap) dont le contenu change à chaque page et à chaque build → pas de
+# nonce possible en statique, hashes impraticables → 'unsafe-inline' pour
+# script-src. Défense principale contre le XSS : React échappe tout texte,
+# aucun dangerouslySetInnerHTML hors JSON-LD échappé (</ → <), URLs
+# sortantes filtrées http/https (lib/affiliate/rewrite.ts). Tout script EXTERNE
+# non listé reste bloqué. Compatibilité vérifiée sur le build fixture.
+#
+# Pour activer AdSense (seulement après la CMP TCF, voir components/Consent.tsx),
+# remplacer la ligne Content-Security-Policy de /* par celle-ci :
+#  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://fundingchoicesmessages.google.com https://*.google.com https://*.gstatic.com https://*.adtrafficquality.google; connect-src 'self' https://cloudflareinsights.com https://*.googlesyndication.com https://*.doubleclick.net https://fundingchoicesmessages.google.com https://*.google.com https://*.adtrafficquality.google; img-src 'self' data: https:; frame-src https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://fundingchoicesmessages.google.com https://*.adtrafficquality.google; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+# (et vérifier la console du navigateur : Google ajoute parfois des hôtes.)
+#
+# HSTS : 6 mois, sans « preload ». N'ajouter « ; preload » (puis soumettre sur
+# hstspreload.org) QUE sur le domaine définitif, quand tous ses sous-domaines
+# sont en HTTPS : sortir de la liste preload prend des mois.
+#
+# Cache HTML : défaut Cloudflare Pages (public, max-age=0, must-revalidate) :
+# le site est reconstruit toutes les 2 h, les prix doivent être frais.
+
 /*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; connect-src 'self' https://cloudflareinsights.com; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; frame-ancestors 'none'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=15552000; includeSubDomains
+  X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
-  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: accelerometer=(), autoplay=(), browsing-topics=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  X-Permitted-Cross-Domain-Policies: none
 
+# Ressources versionnées par hash : cache 1 an.
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Les URLs *.pages.dev (production et previews) ne doivent jamais être indexées
+# (contenu dupliqué avec le domaine définitif).
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex, nofollow
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex, nofollow

@@ -25,6 +25,12 @@ export interface PublicDeal {
   price?: number;
   referencePrice?: number;
   discountPct?: number;
+  discountAbs?: number;  // économie absolue par unité (référence − prix), du scanner
+  referenceType?: string; // nature du prix de référence (radar/core/deal.py REFERENCE_TYPES)
+  historicalLow?: number;
+  historicalMedian?: number;
+  historyN?: number;     // nombre d'observations de prix derrière low/median
+  entityId?: string;     // canonical_entity_id (gtin:, mpn:, sku:, t:, game:…)
   currency: string;
   unitPrice?: number;
   unit?: string;
@@ -34,6 +40,7 @@ export interface PublicDeal {
   lifecycle?: string;
   startsAt?: string;
   endsAt?: string;
+  endsInferred?: boolean; // date de fin déduite, pas publiée → jamais de compte à rebours
   firstSeenAt?: string;
   conditions: string[];
   url: string;           // URL d'origine (jamais modifiée ici)
@@ -41,6 +48,7 @@ export interface PublicDeal {
   requiresStudent?: boolean;
   couponCode?: string;
   page?: boolean;        // a sa propre page /deal/<slug>
+  alsoAt?: string[];     // autres marchands du même produit (lib/select.ts dedupeProducts)
 }
 
 export interface Feed {

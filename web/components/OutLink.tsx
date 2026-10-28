@@ -5,8 +5,11 @@
 export function OutLink(props: {
   href: string; rel: string; affiliate: boolean; dealId: string; source: string; programme?: string;
   children: React.ReactNode; className?: string;
+  /** Explication localisée de l'astérisque (lien rémunéré). */
+  affTitle?: string;
 }) {
   const { href, rel, affiliate, dealId, source, programme, children, className } = props;
+  const affTitle = props.affTitle ?? "Werbelink: Wir erhalten ggf. eine Provision. Der Preis ändert sich für dich nicht.";
   return (
     <a
       href={href}
@@ -21,7 +24,7 @@ export function OutLink(props: {
       }}
     >
       {children}
-      {affiliate && <span className="aff-mark" title="Werbelink: Wir erhalten ggf. eine Provision. Der Preis ändert sich für dich nicht.">*</span>}
+      {affiliate && <><span className="aff-mark" title={affTitle} aria-hidden="true">*</span><span className="sr-only"> ({affTitle})</span></>}
     </a>
   );
 }

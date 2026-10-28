@@ -22,7 +22,6 @@ async function loadRaw(url: string): Promise<{ generated_at?: string; deals: Raw
 
 export async function getDeals(): Promise<{ deals: PublicDeal[]; generatedAt: string }> {
   if (memo && Date.now() - memo.at < TTL_MS) return memo;
-  const now = new Date();
   const results = await Promise.allSettled(FEEDS.map(async (f) => ({ f, raw: await loadRaw(f.url) })));
   const deals: PublicDeal[] = [];
   let generatedAt = "";
@@ -31,7 +30,10 @@ export async function getDeals(): Promise<{ deals: PublicDeal[]; generatedAt: st
       console.error(JSON.stringify({ level: "error", msg: "feed_failed", error: String(r.reason) }));
       continue;
     }
-    deals.push(...projectFeed(r.value.raw.deals ?? [], r.value.f, now));
+    // Fixture hors ligne : « maintenant » = date de l'échantillon, pour un build
+    // reproductible (sinon tous les deals de l'échantillon finissent expirés).
+    const fixtureNow = process.env.DATA_FIXTURE === "1" && r.value.raw.generated_at ? new Date(r.value.raw.generated_at) : null;
+    deals.push(...projectFeed(r.value.raw.deals ?? [], r.value.f, fixtureNow ?? new Date()));
     generatedAt = r.value.raw.generated_at ?? generatedAt;
   }
   // Un flux en panne ne vide jamais le site : dernière version connue, sinon

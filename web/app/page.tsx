@@ -1,27 +1,25 @@
 import Link from "next/link";
 import { launchedCities } from "@/config/cities";
-import { DealGrid } from "@/components/DealCard";
+import { CityDashboard } from "@/components/CityDashboard";
 import { getDeals } from "@/lib/data";
+import { dict } from "@/lib/i18n";
 import { inCity } from "@/lib/project";
 
-
+/** Accueil : la ville de lancement en vedette (même règles d'affichage que la
+ * page ville, sections plus courtes) + accès aux autres villes lancées. */
 export default async function Home() {
-  const { deals } = await getDeals();
+  const { deals, generatedAt } = await getDeals();
   const cities = launchedCities();
+  const main = cities[0];
+  if (!main) return <p>{dict("de").empty}</p>;
   return (
     <>
-      <section className="hero">
-        <h1>Die besten Deals deiner Stadt — ehrlich bewertet</h1>
-        <p>Supermarkt-Aktionen, Tech-Tagesangebote, Gratis-Sachen und Studentenrabatte. Jede Aktion bekommt eine absolute Note von 0 bis 10 — gemessen an der echten Ersparnis, nicht am Werbe-Prozentsatz.</p>
-        <p className="cities">{cities.map((c) => <Link key={c.slug} href={`/${c.slug}`} className="pill">{c.name}</Link>)}</p>
-      </section>
-      {cities.map((c) => (
-        <section key={c.slug}>
-          <h2>Top-Deals in {c.name}</h2>
-          <DealGrid deals={deals.filter((d) => inCity(d, c)).slice(0, 12)} />
-          <p><Link href={`/${c.slug}`}>Alle Deals in {c.name} →</Link></p>
-        </section>
-      ))}
+      {cities.length > 1 && (
+        <nav className="city-pills" aria-label={dict(main.locale).nav}>
+          {cities.map((c) => <Link key={c.slug} href={`/${c.slug}`} className="chip">{c.name}</Link>)}
+        </nav>
+      )}
+      <CityDashboard city={main} deals={deals.filter((d) => inCity(d, main))} generatedAt={generatedAt} variant="home" />
     </>
   );
 }
