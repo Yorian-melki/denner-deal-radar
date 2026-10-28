@@ -4,14 +4,14 @@ import { mainCity } from "@/config/cities";
 import { ConsentProvider } from "@/components/Consent";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { inter } from "@/lib/font";
-import { assertPublishable } from "@/lib/operator";
+import { adClient, warnIfMonetisationBlocked } from "@/lib/operator";
 import { HTML_LANG, LOCALES, OG_LOCALE, dict, isLocale } from "@/lib/i18n";
 import { INDEXABLE, SITE_NAME, SITE_URL, alternates, ogImage, paths } from "@/lib/site";
 import "../globals.css";
 
 /** Racine par langue : <html lang="de-CH|fr-CH|en">. Toutes les routes existent
  * dans les trois langues avec les mêmes slugs (generateStaticParams). */
-assertPublishable();
+warnIfMonetisationBlocked();
 
 export const dynamicParams = false;
 export const generateStaticParams = () => LOCALES.map((locale) => ({ locale }));
@@ -53,7 +53,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   return (
     <html lang={HTML_LANG[locale]} className={inter.variable}>
       <body>
-        <ConsentProvider labels={{ text: t.consentText, accept: t.consentAccept, decline: t.consentDecline, privacy: t.privacy, privacyHref: `${paths.page(locale, "datenschutz")}#cookies` }}>
+        <ConsentProvider adsEnabled={!!adClient()} labels={{ text: t.consentText, accept: t.consentAccept, decline: t.consentDecline, privacy: t.privacy, privacyHref: `${paths.page(locale, "datenschutz")}#cookies` }}>
           <div className="shell">
             <SiteHeader siteName={SITE_NAME} locale={locale} />
             <main id="main" tabIndex={-1}>{children}</main>

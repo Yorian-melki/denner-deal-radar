@@ -1,5 +1,6 @@
 import type { City } from "@/config/cities";
 import { AdSlot } from "@/components/AdSlot";
+import { adClient } from "@/lib/operator";
 import { DealGrid } from "@/components/DealCard";
 import { Icon } from "@/components/Icon";
 import { CATEGORIES } from "@/lib/categories";
@@ -124,7 +125,7 @@ export function CityDashboard({
               <DealGrid deals={s.items} locale={locale} />
             </section>
             {/* Publicité : jamais dans une liste classée ; après la 2e section seulement. */}
-            {i === 1 && <AdSlot label={t.adLabel} />}
+            {i === 1 && <AdSlot label={t.adLabel} client={adClient()} />}
           </div>
         );
       })}

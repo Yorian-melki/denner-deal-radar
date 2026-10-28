@@ -17,8 +17,7 @@ const SLOT_RE = /^\d{1,20}$/;
  * Placement : jamais dans une liste classée ni entre un prix et son bouton ;
  * hauteur réservée fixe (pas de saut de mise en page). Libellé localisé (prop).
  * Les identifiants sont validés (regex) avant d'entrer dans une URL de script. */
-export function AdSlot({ slot, label }: { slot?: string; label: string }) {
-  const rawClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "";
+export function AdSlot({ slot, label, client: rawClient }: { slot?: string; label: string; /** client AdSense effectif, décidé au build (lib/operator.ts adClient) */ client: string }) {
   const rawSlot = slot ?? process.env.NEXT_PUBLIC_ADSENSE_SLOT ?? "";
   const client = CLIENT_RE.test(rawClient) ? rawClient : "";
   const s = SLOT_RE.test(rawSlot) ? rawSlot : "";

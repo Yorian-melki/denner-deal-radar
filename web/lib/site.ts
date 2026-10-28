@@ -1,4 +1,5 @@
 import { HTML_LANG, LOCALES, type Locale } from "@/lib/i18n";
+import { isOperatorComplete } from "@/lib/operator";
 
 /** Nom de marque : une variable (GitHub → Variables → SITE_NAME), aucun code à changer.
  * Aucun nom de marque n'est écrit en dur ailleurs : tout passe par SITE_NAME. */
@@ -20,8 +21,8 @@ const STRICT = !!(process.env.CI || process.env.CF_PAGES) || process.env.NODE_EN
 export const SITE_URL = resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL, STRICT);
 
 /** Indexation seulement quand le build vise le domaine définitif (SITE_INDEXABLE=1
- * dans la CI) : jamais *.pages.dev ni les previews, pour éviter le contenu dupliqué. */
-export const INDEXABLE = process.env.SITE_INDEXABLE === "1" && !!process.env.NEXT_PUBLIC_SITE_URL;
+ * dans la CI) : jamais *.pages.dev ni les previews (contenu dupliqué), jamais sans Impressum complet. */
+export const INDEXABLE = process.env.SITE_INDEXABLE === "1" && !!process.env.NEXT_PUBLIC_SITE_URL && isOperatorComplete();
 
 /** Canal Telegram public (https://t.me/…) ; absent ou invalide → aucun bouton. */
 export function telegramUrl(raw: string | undefined = process.env.NEXT_PUBLIC_TELEGRAM_URL): string | undefined {

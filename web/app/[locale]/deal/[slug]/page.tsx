@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CITIES, mainCity } from "@/config/cities";
 import { AdSlot } from "@/components/AdSlot";
+import { adClient } from "@/lib/operator";
 import { TelegramCta } from "@/components/CityDashboard";
 import { DealGrid, PriceLine, ScoreBadge, dateText, outbound, subscriptionText } from "@/components/DealCard";
 import { EndsIn } from "@/components/EndsIn";
@@ -204,7 +205,7 @@ export default async function DealPage({ params }: P) {
           <DealGrid deals={related} locale={locale} />
         </section>
       )}
-      <AdSlot label={t.adLabel} />
+      <AdSlot label={t.adLabel} client={adClient()} />
       <TelegramCta locale={locale} />
       {jsonLd && <JsonLd data={jsonLd} />}
       <JsonLd data={crumbs} />

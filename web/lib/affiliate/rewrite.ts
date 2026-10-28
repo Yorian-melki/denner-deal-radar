@@ -1,4 +1,5 @@
 import { PROGRAMMES, parseMidMap, type Env } from "@/lib/affiliate/programmes";
+import { monetisationEnv } from "@/lib/operator";
 
 export interface OutLink {
   href: string;
@@ -29,7 +30,7 @@ export function isForeignAffiliate(u: URL): boolean {
 
 /** Réécrit une URL marchande en lien affilié si (et seulement si) un programme
  * actif couvre l'hôte. Fonction pure : `env` est injecté pour les tests. */
-export function rewriteUrl(raw: string, env: Env = process.env): OutLink {
+export function rewriteUrl(raw: string, env: Env = monetisationEnv()): OutLink {
   let u: URL;
   try {
     u = new URL(raw);
@@ -50,7 +51,7 @@ export function rewriteUrl(raw: string, env: Env = process.env): OutLink {
 }
 
 /** Programmes actifs (pour la page de transparence). */
-export function activeProgrammes(env: Env = process.env): string[] {
+export function activeProgrammes(env: Env = monetisationEnv()): string[] {
   const probe: Record<string, string> = {
     galaxus: "https://www.galaxus.ch/x",
     digitec: "https://www.digitec.ch/x",

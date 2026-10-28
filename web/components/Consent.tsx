@@ -45,11 +45,11 @@ function readStored(): Choice {
 
 export interface ConsentLabels { text: string; accept: string; decline: string; privacy: string; privacyHref: string }
 
-const Ctx = createContext<{ choice: Choice; set: (c: Exclude<Choice, null>) => void; reopen: () => void }>({
-  choice: null, set: () => {}, reopen: () => {},
+const Ctx = createContext<{ choice: Choice; set: (c: Exclude<Choice, null>) => void; reopen: () => void; adsEnabled: boolean }>({
+  choice: null, set: () => {}, reopen: () => {}, adsEnabled: false,
 });
 
-export function ConsentProvider({ children, labels }: { children: React.ReactNode; labels: ConsentLabels }) {
+export function ConsentProvider({ children, labels, adsEnabled }: { children: React.ReactNode; labels: ConsentLabels; /** publicité configurée ET autorisée (Impressum complet), décidé au build */ adsEnabled: boolean }) {
   const [choice, setChoice] = useState<Choice>(null);
   const [ready, setReady] = useState(false);
   useEffect(() => {
@@ -66,9 +66,9 @@ export function ConsentProvider({ children, labels }: { children: React.ReactNod
     if (wasGranted) location.reload(); // décharge les scripts publicitaires déjà chargés
     else setChoice(null);
   };
-  const showBanner = ready && choice === null && CMP_MODE === "builtin" && !!process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+  const showBanner = ready && choice === null && CMP_MODE === "builtin" && adsEnabled;
   return (
-    <Ctx.Provider value={{ choice, set, reopen }}>
+    <Ctx.Provider value={{ choice, set, reopen, adsEnabled }}>
       {children}
       {showBanner && (
         <div className="consent" role="dialog" aria-labelledby="consent-text">
@@ -90,7 +90,7 @@ export const useConsent = () => useContext(Ctx);
 
 /** Ouvre les réglages : bannière maison, ou message de révocation de la CMP Google (TCF). */
 function useOpenSettings(privacyHref: string) {
-  const { reopen } = useConsent();
+  const { reopen, adsEnabled } = useConsent();
   return () => {
     if (CMP_MODE === "google-tcf") {
       const fc = (window.googlefc = window.googlefc || {});
@@ -98,7 +98,7 @@ function useOpenSettings(privacyHref: string) {
       return;
     }
     // Pas de publicité configurée : rien à consentir → on montre l'explication.
-    if (!process.env.NEXT_PUBLIC_ADSENSE_CLIENT) { location.assign(privacyHref); return; }
+    if (!adsEnabled) { location.assign(privacyHref); return; }
     reopen();
   };
 }

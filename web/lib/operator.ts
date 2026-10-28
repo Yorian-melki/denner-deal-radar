@@ -39,8 +39,25 @@ export function monetisationBlockers(env: Record<string, string | undefined>, co
   return on;
 }
 
-/** Appelé au build (layout racine) : échoue si la monétisation est activée sans exploitant. */
-export function assertPublishable(env: Record<string, string | undefined> = process.env) {
+/** La monétisation (liens affiliés, publicité, indexation) n'est active que si l'exploitant est identifiable. */
+export const MONETISATION_ALLOWED = isOperatorComplete();
+
+/** Environnement effectif pour la réécriture affiliée : sans Impressum complet, les
+ * variables AFF_* sont ignorées (liens publiés sans commission) — le site reste
+ * déployable, mais aucun lien rémunéré n'est jamais publié sans exploitant identifié. */
+export function monetisationEnv(env: Record<string, string | undefined> = process.env, allowed = MONETISATION_ALLOWED) {
+  if (allowed) return env;
+  return Object.fromEntries(Object.entries(env).filter(([k]) => !k.startsWith("AFF_")));
+}
+
+/** Client AdSense effectif (vide sans Impressum complet). */
+export const adClient = () => (MONETISATION_ALLOWED ? process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "" : "");
+
+/** Appelé au build (layout racine) : avertit (annotation GitHub) si des variables de
+ * monétisation sont définies alors que l'Impressum est incomplet ; elles sont neutralisées. */
+export function warnIfMonetisationBlocked(env: Record<string, string | undefined> = process.env) {
   const on = monetisationBlockers(env, isOperatorComplete());
-  if (on.length) throw new Error(`Impressum incomplet (NEXT_PUBLIC_OPERATOR_NAME/ADDRESS/EMAIL) : impossible d'activer ${on.join(", ")}.`);
+  if (!on.length) return;
+  const msg = `Impressum incomplet (NEXT_PUBLIC_OPERATOR_NAME/ADDRESS/EMAIL) : ${on.join(", ")} ignoré(s) — aucun lien rémunéré, aucune publicité, pas d'indexation.`;
+  console.warn(env.GITHUB_ACTIONS ? `::warning::${msg}` : msg);
 }

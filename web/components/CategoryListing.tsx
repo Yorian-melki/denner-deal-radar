@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { City } from "@/config/cities";
 import { AdSlot } from "@/components/AdSlot";
+import { adClient } from "@/lib/operator";
 import { CategoryChips, EmptyState, TelegramCta } from "@/components/CityDashboard";
 import { DealGrid } from "@/components/DealCard";
 import { Icon } from "@/components/Icon";
@@ -109,7 +110,7 @@ export function CategoryListing({ city, locale, slug, page, here }: { city: City
             </nav>
           )}
           {/* Publicité : après les résultats, jamais dans la liste classée. */}
-          <AdSlot label={t.adLabel} />
+          <AdSlot label={t.adLabel} client={adClient()} />
         </section>
       )}
       <TelegramCta locale={locale} />

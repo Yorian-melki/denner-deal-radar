@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { switchPath } from "@/components/LangSwitch";
 import { fmtDay, fmtInt, fmtPct, fmtPrice, fmtScore, fmtUpdated } from "@/lib/format";
 import { LOCALES } from "@/lib/i18n";
-import { monetisationBlockers } from "@/lib/operator";
+import { monetisationBlockers, monetisationEnv } from "@/lib/operator";
+import { rewriteUrl } from "@/lib/affiliate/rewrite";
 import { alternates, resolveSiteUrl } from "@/lib/site";
 
 describe("changement de langue : toujours la page équivalente", () => {
@@ -40,6 +41,12 @@ describe("garde-fou exploitant", () => {
       .toEqual(["SITE_INDEXABLE", "NEXT_PUBLIC_ADSENSE_CLIENT", "AFF_AWIN_ID"]);
     expect(monetisationBlockers({ SITE_INDEXABLE: "1" }, true)).toEqual([]);
     expect(monetisationBlockers({}, false)).toEqual([]);
+  });
+  it("sans Impressum complet, les variables AFF_* sont neutralisées : aucun lien rémunéré", () => {
+    const env = { AFF_TRADEDOUBLER_ID: "1", AFF_TRADEDOUBLER_GALAXUS_P: "2", OTHER: "x" };
+    expect(monetisationEnv(env, false)).toEqual({ OTHER: "x" });
+    expect(rewriteUrl("https://www.galaxus.ch/x", monetisationEnv(env, false)).affiliate).toBe(false);
+    expect(rewriteUrl("https://www.galaxus.ch/x", monetisationEnv(env, true)).affiliate).toBe(true);
   });
 });
 

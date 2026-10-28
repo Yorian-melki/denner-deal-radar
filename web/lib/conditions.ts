@@ -69,6 +69,8 @@ export function mergeConditions(list: (Cond | null)[]): Cond[] {
     if (!c) continue;
     if (c.code === "min_qty" && out.some((x) => x.code === "min_qty")) continue;
     if (c.code === "lidl_plus_lower" && out.some((x) => x.code === "lidl_plus")) continue;
+    // « nur mit Lidl Plus » dit déjà qu'une adhésion est nécessaire.
+    if (c.code === "membership" && list.some((x) => x?.code === "lidl_plus")) continue;
     const k = key(c);
     if (seen.has(k)) continue;
     seen.add(k);

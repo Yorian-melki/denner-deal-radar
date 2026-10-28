@@ -2,7 +2,7 @@ import { ConsentReset } from "@/components/Consent";
 import { SITE_NAME, paths } from "@/lib/site";
 import { LegalHead, legalMetadata } from "@/components/Legal";
 import type { Locale } from "@/lib/i18n";
-import { LEGAL_REVISION, isOperatorComplete, operator } from "@/lib/operator";
+import { LEGAL_REVISION, isOperatorComplete, operator, adClient } from "@/lib/operator";
 
 
 // LAWYER-CHECK : (1) le responsable vit en Suisse et vise aussi l'UE → art. 3(2) RGPD
@@ -26,7 +26,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
   ) : (
     <p className="note-box">{locale === "fr" ? "Prévisualisation : l’identité du responsable sera ajoutée avant le lancement." : "Vorschau: Angaben zum Verantwortlichen folgen vor dem Start."}</p>
   );
-  const ads = !!process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+  const ads = !!adClient();
   return (
     <article className="legal">
       <LegalHead locale={locale} title={TITLE} />
