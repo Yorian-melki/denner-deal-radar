@@ -116,9 +116,13 @@ describe("honnêteté des références de prix", () => {
     expect(p.verifiedRef).toBe(false);
   });
 
-  it("prix « au-dessus de l'habituel » (note 0) : jamais barré, et pas de note « 0.0 »", () => {
-    const p = projectDeal({ ...base, promotion_integrity: "above_usual_price", deal_score: 0 }, FEED, NOW)!;
-    expect(p.score).toBeUndefined();
+  it("prix « au-dessus de l'habituel » : pas une affaire, jamais publié", () => {
+    expect(projectDeal({ ...base, promotion_integrity: "above_usual_price", deal_score: 0 }, FEED, NOW)).toBeNull();
+    expect(projectDeal({ ...base, promotion_integrity: "above_usual_price", deal_score: 8 }, FEED, NOW)).toBeNull();
+  });
+
+  it("référence gonflée : publié mais jamais barré, note plafonnée", () => {
+    const p = projectDeal({ ...base, promotion_integrity: "inflated_reference" }, FEED, NOW)!;
     expect(p.verifiedRef).toBe(false);
   });
 

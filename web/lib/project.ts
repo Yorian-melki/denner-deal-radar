@@ -173,6 +173,9 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date): PublicDeal | nul
   if (!clean) return null; // affiliation tiers impossible à désemballer : jamais publiée
   const rawTitle = String(d.title);
   if (GEO_CIRCUMVENTION.test(rawTitle)) return null;
+  // Décision du propriétaire (round 2) : une « promo » à un prix égal ou supérieur
+  // au prix habituel que nous avons observé n'est pas une affaire → non publiée.
+  if (str(d.promotion_integrity) === "above_usual_price") return null;
   const pricePre = num(d.current_price), lowPre = num(d.historical_low), nPre = num(d.history_n);
   const provenLowest = pricePre !== undefined && lowPre !== undefined && (nPre ?? 0) >= 3 && pricePre <= lowPre + 0.005;
   const title = cleanTitle(rawTitle, { discountPct: num(d.effective_discount) ?? num(d.discount_percentage), keepLowest: provenLowest }).slice(0, 160);
@@ -332,9 +335,10 @@ export const PAGE_MIN_SCORE = 5;
 export const BADGE_MIN_SCORE = PAGE_MIN_SCORE;
 /** Pages deal : TOUTE carte publiée a sa page interne (round 2, arbitrage 4) ; la
  * seule sortie vers un tiers est le bouton de la page deal. Plafond = budget de
- * fichiers Cloudflare Pages (20 000 ; 3 fichiers HTML par deal). Au-delà, le deal
- * n'est pas publié du tout (jamais de carte qui sort du site). */
-export const MAX_DEAL_PAGES = 5000;
+ * fichiers Cloudflare Pages (20 000 ; 3 fichiers HTML par deal) et cible du
+ * propriétaire : ≤ ~10 000 fichiers HTML au total (3 000 × 3 langues + listes).
+ * Au-delà, le deal n'est pas publié du tout (jamais de carte qui sort du site). */
+export const MAX_DEAL_PAGES = 3000;
 
 export function markPages(ranked: PublicDeal[], max = MAX_DEAL_PAGES): PublicDeal[] {
   return ranked.slice(0, max).map((d) => ({ ...d, page: true }));
