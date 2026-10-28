@@ -26,7 +26,7 @@
   "last_seen_at": "2026-10-28T17:50:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Epic Games",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "free_game",
   "personal_relevance": 0.3,
@@ -353,7 +353,7 @@
   "last_seen_at": "2026-10-28T17:50:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Steam",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "loot",
   "personal_relevance": 0.3,
@@ -401,6 +401,57 @@
   "source_type": "aggregator",
   "source_url": "https://www.gamerpower.com/fireside-feelings-steam-giveaway",
   "title": "Fireside Feelings (Steam)"
+ },
+ "gamerpower:free-itch-io-games-bundle": {
+  "access": "PUBLIC",
+  "accessibility": 0.9,
+  "accessibility_notes": [
+   "compte requis"
+  ],
+  "canonical_entity_id": "game:itch-io-bundle",
+  "condition": "new",
+  "cost_assumptions": [
+   "frais de livraison inconnus (non inclus)"
+  ],
+  "current_price": 0.0,
+  "deal_id": "gamerpower:free-itch-io-games-bundle",
+  "deal_score": null,
+  "delivery_scope": "DIGITAL",
+  "description": "Claim this bundle (worth $384) and download 116 games for free on itch.io! No strings attached!",
+  "effective_discount": null,
+  "family": "digital_free",
+  "first_seen_at": "2026-10-28T22:39:55+01:00",
+  "geographic_scope": "ONLINE",
+  "geographic_scope_resolved": "ONLINE",
+  "group": "digital_free",
+  "image_url": "https://www.gamerpower.com/offers/1b/6ae264e50edb5.jpg",
+  "last_changed_at": "2026-10-28T22:39:55+01:00",
+  "last_seen_at": "2026-10-28T22:39:55+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "itch.io",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "loot",
+  "personal_relevance": 0.3,
+  "promotion_integrity": null,
+  "published_at": "2026-10-28T22:11:01+01:00",
+  "requires_account": true,
+  "score_components": [
+   [
+    "valeur inconnue : gratuit non évalué",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "gamerpower",
+  "source_offer_id": "free-itch-io-games-bundle",
+  "source_type": "aggregator",
+  "source_url": "https://www.gamerpower.com/free-itch-io-games-bundle",
+  "stated_worth": 384.0,
+  "stated_worth_currency": "USD",
+  "tags": [],
+  "title": "Free itch.io Games Bundle",
+  "total_acquisition_cost": 0.0
  },
  "gamerpower:gear-club-unlimited-3-gear-club-signature-pack-steam-giveaway": {
   "access": "PUBLIC",
@@ -500,6 +551,55 @@
   "source_url": "https://www.gamerpower.com/gethigh-exe-epic-games-giveaway",
   "tags": [],
   "title": "GetHigh.EXE (Epic Games)",
+  "total_acquisition_cost": 0.0
+ },
+ "gamerpower:heirloom-itch-io-giveaway": {
+  "access": "PUBLIC",
+  "accessibility": 0.9,
+  "accessibility_notes": [
+   "compte requis"
+  ],
+  "canonical_entity_id": "game:heirloom",
+  "condition": "new",
+  "cost_assumptions": [
+   "frais de livraison inconnus (non inclus)"
+  ],
+  "current_price": 0.0,
+  "deal_id": "gamerpower:heirloom-itch-io-giveaway",
+  "deal_score": null,
+  "delivery_scope": "DIGITAL",
+  "description": "Download Heirloom for free via itch.io! Heirloom is a small 2D platformer with retro pixel graphics.",
+  "effective_discount": null,
+  "family": "digital_free",
+  "first_seen_at": "2026-10-28T22:39:55+01:00",
+  "geographic_scope": "ONLINE",
+  "geographic_scope_resolved": "ONLINE",
+  "group": "digital_free",
+  "image_url": "https://www.gamerpower.com/offers/1b/6ae257b2d5ad9.jpg",
+  "last_changed_at": "2026-10-28T22:39:55+01:00",
+  "last_seen_at": "2026-10-28T22:39:55+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "itch.io",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "free_game",
+  "personal_relevance": 0.3,
+  "promotion_integrity": null,
+  "published_at": "2026-10-28T21:14:42+01:00",
+  "requires_account": true,
+  "score_components": [
+   [
+    "valeur inconnue : gratuit non évalué",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "gamerpower",
+  "source_offer_id": "heirloom-itch-io-giveaway",
+  "source_type": "aggregator",
+  "source_url": "https://www.gamerpower.com/heirloom-itch-io-giveaway",
+  "tags": [],
+  "title": "Heirloom (itch.io)",
   "total_acquisition_cost": 0.0
  },
  "gamerpower:hellcard-steam-key-giveaway": {
@@ -745,6 +845,104 @@
   "source_url": "https://www.gamerpower.com/meltdown-playtest-steam-key-giveaway",
   "tags": [],
   "title": "Meltdown Playtest Steam Key",
+  "total_acquisition_cost": 0.0
+ },
+ "gamerpower:molokaust-itch-io-giveaway": {
+  "access": "PUBLIC",
+  "accessibility": 0.9,
+  "accessibility_notes": [
+   "compte requis"
+  ],
+  "canonical_entity_id": "game:molokaust",
+  "condition": "new",
+  "cost_assumptions": [
+   "frais de livraison inconnus (non inclus)"
+  ],
+  "current_price": 0.0,
+  "deal_id": "gamerpower:molokaust-itch-io-giveaway",
+  "deal_score": null,
+  "delivery_scope": "DIGITAL",
+  "description": "Download MOLOKAUST for free via itch.io! MOLOKAUST is a 3d first-person survival game with realistic graphics and unforgiving gameplay.",
+  "effective_discount": null,
+  "family": "digital_free",
+  "first_seen_at": "2026-10-28T22:39:55+01:00",
+  "geographic_scope": "ONLINE",
+  "geographic_scope_resolved": "ONLINE",
+  "group": "digital_free",
+  "image_url": "https://www.gamerpower.com/offers/1b/6ae25ef1a9917.jpg",
+  "last_changed_at": "2026-10-28T22:39:55+01:00",
+  "last_seen_at": "2026-10-28T22:39:55+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "itch.io",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "free_game",
+  "personal_relevance": 0.3,
+  "promotion_integrity": null,
+  "published_at": "2026-10-28T21:45:37+01:00",
+  "requires_account": true,
+  "score_components": [
+   [
+    "valeur inconnue : gratuit non évalué",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "gamerpower",
+  "source_offer_id": "molokaust-itch-io-giveaway",
+  "source_type": "aggregator",
+  "source_url": "https://www.gamerpower.com/molokaust-itch-io-giveaway",
+  "tags": [],
+  "title": "MOLOKAUST (itch.io)",
+  "total_acquisition_cost": 0.0
+ },
+ "gamerpower:octane100-itch-io-giveaway": {
+  "access": "PUBLIC",
+  "accessibility": 0.9,
+  "accessibility_notes": [
+   "compte requis"
+  ],
+  "canonical_entity_id": "game:octane100",
+  "condition": "new",
+  "cost_assumptions": [
+   "frais de livraison inconnus (non inclus)"
+  ],
+  "current_price": 0.0,
+  "deal_id": "gamerpower:octane100-itch-io-giveaway",
+  "deal_score": null,
+  "delivery_scope": "DIGITAL",
+  "description": "Join the war against the oil corporation! Grab Octane100 for free via itch.io! Octane100 is a cool 2d turn-based action game with roguelike elements.",
+  "effective_discount": null,
+  "family": "digital_free",
+  "first_seen_at": "2026-10-28T22:39:55+01:00",
+  "geographic_scope": "ONLINE",
+  "geographic_scope_resolved": "ONLINE",
+  "group": "digital_free",
+  "image_url": "https://www.gamerpower.com/offers/1b/6ae25d5c6c327.jpg",
+  "last_changed_at": "2026-10-28T22:39:55+01:00",
+  "last_seen_at": "2026-10-28T22:39:55+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "itch.io",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "free_game",
+  "personal_relevance": 0.3,
+  "promotion_integrity": null,
+  "published_at": "2026-10-28T21:38:52+01:00",
+  "requires_account": true,
+  "score_components": [
+   [
+    "valeur inconnue : gratuit non évalué",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "gamerpower",
+  "source_offer_id": "octane100-itch-io-giveaway",
+  "source_type": "aggregator",
+  "source_url": "https://www.gamerpower.com/octane100-itch-io-giveaway",
+  "tags": [],
+  "title": "Octane100 (itch.io)",
   "total_acquisition_cost": 0.0
  },
  "gamerpower:out-of-sight-epic-games-giveaway": {
@@ -1080,7 +1278,7 @@
   "last_seen_at": "2026-10-28T17:50:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Steam",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "loot",
   "personal_relevance": 0.3,
