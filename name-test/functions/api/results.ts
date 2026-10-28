@@ -3,7 +3,7 @@
 interface Env { DB: D1Database }
 
 export const onRequestGet = async ({ env }: { env: Env }) => {
-  const { results } = await env.DB.prepare("SELECT rid, type, data FROM events ORDER BY id").all<{ rid: string; type: string; data: string }>();
+  const { results } = await env.DB.prepare("SELECT rid, type, data FROM events WHERE rid NOT LIKE 'test-%' ORDER BY id").all<{ rid: string; type: string; data: string }>();
   const S: Record<string, any> = {};
   const st = (n: string) => (S[n] ??= { name: n, elo: 1500, wins: 0, shown: 0, recallHit: 0, recallShown: 0, falseAlarm: 0, decoy: 0, spellOk: 0, spellN: 0, meaningOk: 0, meaningN: 0 });
   const rids = new Set<string>(); let duels = 0;
