@@ -12,6 +12,8 @@ import { createContext, useContext, useEffect, useState } from "react";
  * - retrait à tout moment : <ConsentLink /> (pied de page) ou <ConsentReset />
  *   (/datenschutz) ; un retrait après acceptation recharge la page pour
  *   décharger les scripts Google.
+ * Textes : passés en props depuis le dictionnaire de la langue de la page
+ * (aucun texte codé en dur ici, aucun dictionnaire envoyé au navigateur).
  * Cloudflare Web Analytics est sans cookie et ne dépend pas de ce choix.
  *
  * TODO (activation AdSense en CH/EEE/UK) : Google EXIGE une CMP certifiée IAB TCF.
@@ -41,11 +43,13 @@ function readStored(): Choice {
   return null;
 }
 
+export interface ConsentLabels { text: string; accept: string; decline: string; privacy: string; privacyHref: string }
+
 const Ctx = createContext<{ choice: Choice; set: (c: Exclude<Choice, null>) => void; reopen: () => void }>({
   choice: null, set: () => {}, reopen: () => {},
 });
 
-export function ConsentProvider({ children }: { children: React.ReactNode }) {
+export function ConsentProvider({ children, labels }: { children: React.ReactNode; labels: ConsentLabels }) {
   const [choice, setChoice] = useState<Choice>(null);
   const [ready, setReady] = useState(false);
   useEffect(() => {
@@ -69,15 +73,12 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
       {showBanner && (
         <div className="consent" role="dialog" aria-labelledby="consent-text">
           <p id="consent-text">
-            Wir möchten Werbung (Google AdSense) anzeigen, um diesen Dienst gratis zu halten. Dabei kann Google Cookies setzen
-            und Daten in die USA übermitteln. Ohne Zustimmung wird keine Werbung geladen.{" "}
-            <span lang="fr">Publicité Google seulement avec votre accord ; sans accord, rien n’est chargé.</span>{" "}
-            <a href="/datenschutz#cookies">Datenschutz</a>
+            {labels.text} <a href={labels.privacyHref}>{labels.privacy}</a>
           </p>
-          <div>
+          <div className="consent-actions">
             {/* Même style, même poids : refuser est aussi simple qu'accepter. */}
-            <button type="button" onClick={() => set("denied")}>Ablehnen · Refuser</button>{" "}
-            <button type="button" onClick={() => set("granted")}>Akzeptieren · Accepter</button>
+            <button type="button" className="btn btn-secondary" onClick={() => set("denied")}>{labels.decline}</button>
+            <button type="button" className="btn btn-secondary" onClick={() => set("granted")}>{labels.accept}</button>
           </div>
         </div>
       )}
@@ -88,7 +89,7 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
 export const useConsent = () => useContext(Ctx);
 
 /** Ouvre les réglages : bannière maison, ou message de révocation de la CMP Google (TCF). */
-function useOpenSettings() {
+function useOpenSettings(privacyHref: string) {
   const { reopen } = useConsent();
   return () => {
     if (CMP_MODE === "google-tcf") {
@@ -97,27 +98,23 @@ function useOpenSettings() {
       return;
     }
     // Pas de publicité configurée : rien à consentir → on montre l'explication.
-    if (!process.env.NEXT_PUBLIC_ADSENSE_CLIENT) { location.assign("/datenschutz#cookies"); return; }
+    if (!process.env.NEXT_PUBLIC_ADSENSE_CLIENT) { location.assign(privacyHref); return; }
     reopen();
   };
 }
 
 /** Bouton de retrait / modification, pour /datenschutz. */
-export function ConsentReset() {
-  const open = useOpenSettings();
-  return (
-    <button type="button" onClick={open}>
-      Cookie-Einstellungen ändern · Modifier le choix
-    </button>
-  );
+export function ConsentReset({ label, privacyHref }: { label: string; privacyHref: string }) {
+  const open = useOpenSettings(privacyHref);
+  return <button type="button" className="btn btn-secondary" onClick={open}>{label}</button>;
 }
 
-/** Lien pour le pied de page (app/layout.tsx). Sans JS : mène à /datenschutz#cookies. */
-export function ConsentLink() {
-  const open = useOpenSettings();
+/** Lien pour le pied de page. Sans JS : mène à la section cookies de /datenschutz. */
+export function ConsentLink({ label, privacyHref }: { label: string; privacyHref: string }) {
+  const open = useOpenSettings(privacyHref);
   return (
-    <a href="/datenschutz#cookies" onClick={(e) => { e.preventDefault(); open(); }}>
-      Cookie-Einstellungen
+    <a href={privacyHref} onClick={(e) => { e.preventDefault(); open(); }}>
+      {label}
     </a>
   );
 }

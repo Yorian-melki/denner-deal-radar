@@ -1,12 +1,9 @@
-import Link from "next/link";
-import { SITE_NAME } from "@/lib/site";
-import { LEGAL_REVISION, operator } from "../impressum/operator";
-import { loadSources } from "./sources";
+import { SITE_NAME, paths } from "@/lib/site";
+import { LegalHead, legalMetadata } from "@/components/Legal";
+import type { Locale } from "@/lib/i18n";
+import { LEGAL_REVISION, operator } from "@/lib/operator";
+import { loadSources } from "@/lib/sources";
 
-export const metadata = {
-  title: "Quellen & Entfernung · Sources et retrait",
-  description: "Welche öffentlichen Quellen wir lesen, wie, und wie Rechteinhaber eine Entfernung verlangen.",
-};
 
 // LAWYER-CHECK : réutilisation de données publiques — CH : art. 5 let. c LCD (reprise
 // d'un résultat de travail par procédé technique) ; UE : droit sui generis des bases de
@@ -23,7 +20,15 @@ const BODY = [
   "",
 ].join("\n");
 
-export default function Quellen() {
+const TITLE = { de: "Quellen & Entfernung", fr: "Sources et retrait", en: "Sources & removal" };
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  return legalMetadata((await params).locale, "quellen", TITLE, { index: true, description: { de: "Welche öffentlichen Quellen wir lesen, wie, und wie Rechteinhaber eine Entfernung verlangen.", fr: "Quelles sources publiques nous lisons, comment, et comment demander un retrait.", en: "Which public sources we read, how, and how rights holders can request removal." } });
+}
+
+export default async function Quellen({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
+  const L = (p: string, h = "") => `${paths.page(locale, p)}${h}`;
   const sources = loadSources();
   const { email } = operator();
   const mailto = email
@@ -31,16 +36,16 @@ export default function Quellen() {
     : null;
   const takedown = (label: string) =>
     mailto ? (
-      <p><a className="cta" href={mailto}>{label}</a></p>
+      <p><a className="btn btn-secondary" href={mailto}>{label}</a></p>
     ) : (
-      <p className="warn">Kontakt-E-Mail folgt vor dem Start (<Link href="/impressum">Impressum</Link>). / L’adresse de contact sera publiée avant le lancement.</p>
+      <p className="note-box">{locale === "fr" ? <>L’adresse de contact sera publiée avant le lancement (<a href={L("impressum")}>mentions légales</a>).</> : <>Kontakt-E-Mail folgt vor dem Start (<a href={L("impressum")}>Impressum</a>).</>}</p>
     );
 
   return (
     <article className="legal">
-      <h1>Quellen &amp; Entfernung · Sources et retrait</h1>
-      <p className="muted"><a href="#de">Deutsch</a> · <a href="#fr">Français</a> · <a href="#liste">Liste</a> · Stand / version : {LEGAL_REVISION}</p>
+      <LegalHead locale={locale} title={TITLE} />
 
+      {locale !== "fr" && (
       <section id="de" lang="de">
         <h2>Wie wir Quellen nutzen</h2>
         <ul>
@@ -53,7 +58,9 @@ export default function Quellen() {
         <p>Sie sind Rechteinhaber oder Betreiber einer Quelle und möchten nicht (oder nur teilweise) auf {SITE_NAME} erscheinen? Ein Klick genügt — keine Begründung nötig. Wir <strong>antworten innerhalb von 7 Tagen</strong> und entfernen die Inhalte mit dem nächsten Neuaufbau der Website (dieser erfolgt alle 2 Stunden).</p>
         {takedown("Entfernung per E-Mail anfragen")}
       </section>
+      )}
 
+      {locale === "fr" && (
       <section id="fr" lang="fr">
         <h2>Comment nous utilisons les sources</h2>
         <ul>
@@ -66,9 +73,10 @@ export default function Quellen() {
         <p>Vous êtes titulaire de droits ou éditeur d’une source et ne souhaitez pas (ou plus) figurer sur {SITE_NAME} ? Un clic suffit, sans justification. <strong>Réponse sous 7 jours</strong> ; le retrait s’applique dès la reconstruction suivante du site (toutes les 2 heures).</p>
         {takedown("Demander un retrait par e-mail")}
       </section>
+      )}
 
       <section id="liste">
-        <h2>Aktuelle Quellen · Sources actuelles ({sources.length})</h2>
+        <h2>{locale === "fr" ? "Sources actuelles" : locale === "en" ? "Current sources" : "Aktuelle Quellen"} ({sources.length})</h2>
         {sources.length ? (
           <ul>
             {sources.map((s) => (
@@ -76,9 +84,9 @@ export default function Quellen() {
             ))}
           </ul>
         ) : (
-          <p className="muted">Liste derzeit nicht verfügbar. / Liste momentanément indisponible.</p>
+          <p className="muted">{locale === "fr" ? "Liste momentanément indisponible." : "Liste derzeit nicht verfügbar."}</p>
         )}
-        <p className="muted">Manche Quellen sind selbst Sammelseiten (z. B. Preisvergleiche); dort verlinken wir zusätzlich den Händler. / Certaines sources sont elles-mêmes des agrégateurs ; le marchand est alors aussi lié.</p>
+        <p className="muted">{locale === "fr" ? "Certaines sources sont elles-mêmes des agrégateurs ; la carte l’indique alors (« trouvé via … »)." : "Manche Quellen sind selbst Sammelseiten (z. B. Preisvergleiche); die Karte sagt das dann («gefunden über …»)."}</p>
       </section>
     </article>
   );

@@ -1,16 +1,8 @@
-"use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { localeForPath } from "@/config/cities";
-import { dict } from "@/lib/i18n";
+import { NotFoundBody } from "@/components/NotFoundBody";
 
+/** Repli de notFound() au build (paramètre invalide). En production, les 404 sont
+ * servies par Cloudflare depuis /<langue>/404.html (voir app/[locale]/missing et
+ * scripts/postbuild.mjs), donc toujours dans la langue de l'URL demandée. */
 export default function NotFound() {
-  const t = dict(localeForPath(usePathname()));
-  return (
-    <section className="nf">
-      <h1>{t.notFoundTitle}</h1>
-      <p>{t.notFoundText}</p>
-      <p><Link href="/" className="btn btn-primary">{t.notFoundCta}</Link></p>
-    </section>
-  );
+  return <NotFoundBody locale="de" />;
 }

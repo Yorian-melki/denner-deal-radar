@@ -1,30 +1,29 @@
-import Link from "next/link";
-import { launchedCities } from "@/config/cities";
+import type { Metadata } from "next";
+import { mainCity } from "@/config/cities";
 import { CityDashboard } from "@/components/CityDashboard";
-import { getDeals } from "@/lib/data";
-import { dict } from "@/lib/i18n";
-import { inCity } from "@/lib/project";
 import { JsonLd } from "@/components/JsonLd";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { getDeals } from "@/lib/data";
+import { HTML_LANG, dict, isLocale, type Locale } from "@/lib/i18n";
+import { inCity } from "@/lib/project";
+import { SITE_NAME, SITE_URL, alternates, paths } from "@/lib/site";
 
-export const metadata = { alternates: { canonical: "/" } };
+type P = { params: Promise<{ locale: string }> };
 
-/** Accueil : la ville de lancement en vedette (même règles d'affichage que la
- * page ville, sections plus courtes) + accès aux autres villes lancées. */
-export default async function Home() {
+export async function generateMetadata({ params }: P): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  return { title: { absolute: `${SITE_NAME} – ${dict(locale).tagline}` }, alternates: alternates("", locale) };
+}
+
+/** Accueil : la ville de lancement (vitrines plus courtes, note ≥ 5.5). */
+export default async function Home({ params }: P) {
+  const locale = (await params).locale as Locale;
   const { deals, generatedAt } = await getDeals();
-  const cities = launchedCities();
-  const main = cities[0];
-  if (!main) return <p>{dict("de").empty}</p>;
+  const city = mainCity();
   return (
     <>
-      {cities.length > 1 && (
-        <nav className="city-pills" aria-label={dict(main.locale).nav}>
-          {cities.map((c) => <Link key={c.slug} href={`/${c.slug}`} className="chip">{c.name}</Link>)}
-        </nav>
-      )}
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "WebSite", name: SITE_NAME, url: `${SITE_URL}/`, inLanguage: main.locale }} />
-      <CityDashboard city={main} deals={deals.filter((d) => inCity(d, main))} generatedAt={generatedAt} variant="home" />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "WebSite", name: SITE_NAME, url: `${SITE_URL}${paths.home(locale)}`, inLanguage: HTML_LANG[locale] }} />
+      <CityDashboard city={city} locale={locale} deals={deals.filter((d) => inCity(d, city))} generatedAt={generatedAt} variant="home" />
     </>
   );
 }

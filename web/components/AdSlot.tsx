@@ -14,8 +14,10 @@ const SLOT_RE = /^\d{1,20}$/;
  *  - mode "google-tcf" (NEXT_PUBLIC_CMP_MODE) : la balise AdSense est chargée et
  *    c'est la CMP Google certifiée TCF qui recueille le consentement avant toute
  *    publicité personnalisée / cookie (exigence Google en CH/EEE/UK).
+ * Placement : jamais dans une liste classée ni entre un prix et son bouton ;
+ * hauteur réservée fixe (pas de saut de mise en page). Libellé localisé (prop).
  * Les identifiants sont validés (regex) avant d'entrer dans une URL de script. */
-export function AdSlot({ slot }: { slot?: string }) {
+export function AdSlot({ slot, label }: { slot?: string; label: string }) {
   const rawClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "";
   const rawSlot = slot ?? process.env.NEXT_PUBLIC_ADSENSE_SLOT ?? "";
   const client = CLIENT_RE.test(rawClient) ? rawClient : "";
@@ -41,9 +43,9 @@ export function AdSlot({ slot }: { slot?: string }) {
 
   if (!enabled) return null;
   return (
-    <aside className="ad" aria-label="Anzeige">
-      <span className="ad-label">Anzeige · Publicité</span>
-      <ins className="adsbygoogle" style={{ display: "block" }} data-ad-client={client} data-ad-slot={s} data-ad-format="auto" data-full-width-responsive="true" />
+    <aside className="ad" aria-label={label}>
+      <span className="ad-label">{label}</span>
+      <ins className="adsbygoogle" style={{ display: "block", minHeight: 250 }} data-ad-client={client} data-ad-slot={s} data-ad-format="rectangle" />
     </aside>
   );
 }
