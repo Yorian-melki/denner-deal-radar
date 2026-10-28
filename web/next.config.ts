@@ -8,7 +8,9 @@ const config: NextConfig = {
   images: { unoptimized: true },
   poweredByHeader: false,
   // Racine par langue (app/[locale]/layout.tsx) : la 404 hors préfixe est app/global-not-found.tsx.
-  experimental: { globalNotFound: true },
+  // NEXT_BUILD_CPUS (optionnel) : moins de workers de rendu sur une machine à 8 Go
+  // (chaque worker parse le flux de ~16 Mo ; 7 workers → swap disque).
+  experimental: { globalNotFound: true, ...(Number(process.env.NEXT_BUILD_CPUS) > 0 ? { cpus: Number(process.env.NEXT_BUILD_CPUS) } : {}) },
 };
 
 export default config;
