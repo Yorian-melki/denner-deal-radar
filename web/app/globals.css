@@ -149,6 +149,7 @@ button { font: inherit; }
 .chip { flex: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: var(--r-full); background: transparent; border: 1px solid var(--control); color: var(--fg); font-size: var(--t-footnote); font-weight: var(--w-semi); white-space: nowrap; transition: background-color 0.15s ease; }
 .chip:hover { background: var(--fill); text-decoration: none; }
 .chip[aria-current="page"] { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+@media (pointer: fine) { .chip { min-height: 36px; padding: 0 14px; } }
 @media (min-width: 900px) { .chips { flex-wrap: wrap; overflow: visible; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; -webkit-mask-image: none; mask-image: none; } }
 
 /* ---------- Sections ---------- */

@@ -38,8 +38,8 @@ export function PriceLine({ deal, locale, className = "card-price" }: { deal: Pu
   return (
     <p className={className}>
       <span className="sr-only">{t.now} </span>
-      <span className="price">{fmtPrice(deal.price, deal.currency, locale)}</span>
-      {unit && <span className="price-unit">{unit}</span>}
+      <span className="price">{deal.price === 0 ? t.free : fmtPrice(deal.price, deal.currency, locale)}</span>
+      {unit && deal.price !== 0 && <span className="price-unit">{unit}</span>}
       {showRef && (
         <span className="was">
           {t.insteadOf(fmtPrice(deal.referencePrice, deal.currency, locale))}

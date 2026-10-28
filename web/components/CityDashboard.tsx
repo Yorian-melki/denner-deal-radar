@@ -6,7 +6,7 @@ import { Icon } from "@/components/Icon";
 import { CATEGORIES } from "@/lib/categories";
 import { fmtInt, fmtUpdated } from "@/lib/format";
 import { categoryText, dict, type Locale } from "@/lib/i18n";
-import { HOME_MIN_SCORE, HOME_MIN_SECTION, balancedSections, canonical, categoryCounts, pickTop, verifiedCount } from "@/lib/select";
+import { HOME_MIN_SCORE, HOME_MIN_SECTION, HOME_TOP_N, TOP_N, balancedSections, canonical, categoryCounts, pickTop, verifiedCount } from "@/lib/select";
 import { paths, telegramUrl } from "@/lib/site";
 import type { PublicDeal } from "@/lib/types";
 
@@ -96,7 +96,7 @@ export function CityDashboard({
   const t = dict(locale);
   const all = canonical(deals);
   const home = variant === "home";
-  const top = pickTop(all, { minScore: home ? HOME_MIN_SCORE : undefined });
+  const top = pickTop(all, { n: home ? HOME_TOP_N : TOP_N, minScore: home ? HOME_MIN_SCORE : undefined });
   const shown = new Set(top.map((d) => d.id));
   const sections = balancedSections(all, CATEGORIES.map((c) => c.slug), {
     perSection: home ? 3 : 4,

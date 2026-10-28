@@ -90,6 +90,8 @@ export interface TopOptions {
 }
 
 export const TOP_N = 12;
+/** Vitrine de l'accueil : deux rangées sur grand écran. */
+export const HOME_TOP_N = 6;
 /** Fiabilité minimale pour être MIS EN AVANT (même seuil que le canal Telegram) :
  * une réduction seulement déclarée par le vendeur reste visible dans sa catégorie, jamais en vitrine. */
 export const MIN_CONFIDENCE_TOP = 0.7;

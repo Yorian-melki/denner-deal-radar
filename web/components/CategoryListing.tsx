@@ -9,28 +9,25 @@ import { JsonLd, breadcrumbLd } from "@/components/JsonLd";
 import { categoryBySlug } from "@/lib/categories";
 import { fmtInt } from "@/lib/format";
 import { OG_LOCALE, categoryText, dict, type Locale } from "@/lib/i18n";
-import { hasPage } from "@/lib/project";
-import { canonical, neutralOrder, pickTop } from "@/lib/select";
+import { hasPage, rankDeals } from "@/lib/project";
+import { canonical, neutralOrder } from "@/lib/select";
 import { SITE_NAME, SITE_URL, alternates, ogImage, paths } from "@/lib/site";
 import type { PublicDeal } from "@/lib/types";
 
 /** 24 offres par page : pagination statique (/…/kategorie, /…/kategorie/2, …). */
 export const PAGE_SIZE = 24;
-const TOP = 12;
 
-/** Ordre d'une catégorie :
+/** Ordre d'une catégorie — exactement ce que dit l'en-tête de la liste :
  * - abonnements : coût total sur 24 mois croissant (la seule comparaison honnête) ;
  * - catégories sans note : ordre neutre (plus récent d'abord) ;
- * - sinon : vitrine diversifiée (≤ 2 par marchand, 1 par marque), puis le reste du classement. */
+ * - sinon : le classement (note, puis réduction vérifiée), sans réordonnancement. */
 export function orderCategory(list: PublicDeal[], slug: string): PublicDeal[] {
   if (slug === "handy-abos") {
     const cost = (d: PublicDeal) => d.sub?.total24 ?? Infinity;
     return [...list].sort((a, b) => cost(a) - cost(b) || a.title.localeCompare(b.title));
   }
   if (categoryBySlug(slug)?.unrated) return neutralOrder(list);
-  const top = pickTop(list, { n: TOP, perCategory: TOP });
-  const ids = new Set(top.map((d) => d.id));
-  return [...top, ...list.filter((d) => !ids.has(d.id))];
+  return rankDeals(list);
 }
 
 export function categoryList(deals: PublicDeal[], slug: string) {

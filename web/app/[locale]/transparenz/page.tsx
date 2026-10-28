@@ -3,7 +3,7 @@ import { activeProgrammes } from "@/lib/affiliate/rewrite";
 import { fmtPct, fmtScore } from "@/lib/format";
 import { dict, type Locale } from "@/lib/i18n";
 import { PAGE_MIN_SCORE, SCORE_CAP, VERIFY_MIN_CONFIDENCE } from "@/lib/project";
-import { HOME_MIN_SCORE, HOME_MIN_SECTION, HISTORY_MIN_OBSERVATIONS, MIN_CONFIDENCE_TOP, PER_BRAND, PER_MERCHANT, TOP_N } from "@/lib/select";
+import { HOME_MIN_SCORE, HOME_MIN_SECTION, HOME_TOP_N, HISTORY_MIN_OBSERVATIONS, MIN_CONFIDENCE_TOP, PER_BRAND, PER_MERCHANT, TOP_N } from "@/lib/select";
 import { PAGE_SIZE } from "@/components/CategoryListing";
 import { paths } from "@/lib/site";
 
@@ -56,7 +56,7 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
       order: [
         <>Sortiert wird nach Bewertung, dann nach belegtem Rabatt. Nicht bewertete Angebote stehen am Ende.</>,
         <>Bestenliste: höchstens {TOP_N} Karten, nur Bewertungen über 0 mit Datenqualität ab {pct(MIN_CONFIDENCE_TOP)}, höchstens {PER_MERCHANT} pro Shop und {PER_BRAND} pro Marke, höchstens ein Drittel aus derselben Kategorie (nur gelockert, wenn sonst Plätze leer blieben). Dienstleistungen sind ausgeschlossen.</>,
-        <>Startseite: nur Bewertungen ab {sc(HOME_MIN_SCORE)}; eine Kategorie erscheint erst ab {HOME_MIN_SECTION} Karten.</>,
+        <>Startseite: höchstens {HOME_TOP_N} Karten in der Bestenliste, nur Bewertungen ab {sc(HOME_MIN_SCORE)}; eine Kategorie erscheint erst ab {HOME_MIN_SECTION} Karten.</>,
         <>Studentenrabatte, Gratis-Angebote und Gutscheine haben keine Bewertung (die Prozente stammen von den Anbietern): Sie stehen <strong>neueste zuerst</strong>, höchstens {PER_MERCHANT} pro Shop.</>,
         <>Handy- und Internet-Abos sind nach <strong>Gesamtkosten über 24 Monate</strong> sortiert (Aktionspreis, Folgepreis, Aufschaltgebühr).</>,
         <>Dieselbe Aktion in mehreren Sorten zählt einmal («+2 Sorten»); dasselbe Produkt in mehreren Shops ebenfalls («auch bei 2 weiteren Shops»).</>,
@@ -90,7 +90,7 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
       order: [
         <>Tri par note, puis par remise établie. Les offres sans note sont en fin de liste.</>,
         <>Meilleures notes : au plus {TOP_N} cartes, seulement des notes supérieures à 0 avec une qualité de données d’au moins {pct(MIN_CONFIDENCE_TOP)}, au plus {PER_MERCHANT} par magasin et {PER_BRAND} par marque, au plus un tiers d’une même catégorie (assoupli seulement s’il resterait des places vides). Les prestations de service sont exclues.</>,
-        <>Accueil : seulement des notes d’au moins {sc(HOME_MIN_SCORE)} ; une catégorie n’apparaît qu’à partir de {HOME_MIN_SECTION} cartes.</>,
+        <>Accueil : au plus {HOME_TOP_N} cartes en tête, seulement des notes d’au moins {sc(HOME_MIN_SCORE)} ; une catégorie n’apparaît qu’à partir de {HOME_MIN_SECTION} cartes.</>,
         <>Réductions étudiantes, offres gratuites et codes promo n’ont pas de note (les pourcentages viennent des vendeurs) : elles sont classées <strong>de la plus récente à la plus ancienne</strong>, au plus {PER_MERCHANT} par magasin.</>,
         <>Les abonnements mobile et internet sont triés par <strong>coût total sur 24 mois</strong> (prix promo, prix ensuite, frais de mise en service).</>,
         <>Une même action en plusieurs variétés compte une fois (« +2 variétés ») ; un même produit dans plusieurs magasins aussi (« aussi dans 2 autres magasins »).</>,
@@ -124,7 +124,7 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
       order: [
         <>Sorted by score, then by documented discount. Unrated offers come last.</>,
         <>Top list: at most {TOP_N} cards, only scores above 0 with data quality of at least {pct(MIN_CONFIDENCE_TOP)}, at most {PER_MERCHANT} per shop and {PER_BRAND} per brand, at most a third from one category (relaxed only if places would otherwise stay empty). Services are excluded.</>,
-        <>Home page: only scores of at least {sc(HOME_MIN_SCORE)}; a category appears only with {HOME_MIN_SECTION} or more cards.</>,
+        <>Home page: at most {HOME_TOP_N} cards in the top list, only scores of at least {sc(HOME_MIN_SCORE)}; a category appears only with {HOME_MIN_SECTION} or more cards.</>,
         <>Student discounts, freebies and coupons have no score (the percentages come from the sellers): they are listed <strong>newest first</strong>, at most {PER_MERCHANT} per shop.</>,
         <>Mobile and internet plans are sorted by <strong>total cost over 24 months</strong> (promo price, follow-up price, activation fee).</>,
         <>The same deal in several varieties counts once (“+2 varieties”); the same product at several shops too (“also at 2 other shops”).</>,
