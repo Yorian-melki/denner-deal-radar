@@ -103,8 +103,12 @@ if (existsSync(headersFile)) {
   const cfc = ANALYTICS ? " https://cloudflareinsights.com" : "";
   const csp = `default-src 'self'; script-src 'self'${cf}; connect-src 'self'${cfc}; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; frame-ancestors 'none'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests`;
   const h = readFileSync(headersFile, "utf8");
-  if (!h.includes("__CSP__")) errors.push("_headers : marqueur __CSP__ absent");
-  writeFileSync(headersFile, h.replace("__CSP__", csp));
+  // Seule la valeur de l'en-tête est remplacée (le marqueur figure aussi dans un commentaire).
+  const out = h.replace(/^([ \t]*Content-Security-Policy:[ \t]*)__CSP__[ \t]*$/m, `$1${csp}`);
+  if (out === h) errors.push("_headers : ligne « Content-Security-Policy: __CSP__ » absente");
+  const cspLine = out.match(/^[ \t]*Content-Security-Policy:(.*)$/m)?.[1] ?? "";
+  if (cspLine.includes("__CSP__") || /script-src[^;]*'unsafe-inline'/.test(cspLine)) errors.push("_headers : CSP non générée ou script-src 'unsafe-inline'");
+  writeFileSync(headersFile, out);
 }
 
 // 5. Les Functions ne tournent que là où elles servent.
