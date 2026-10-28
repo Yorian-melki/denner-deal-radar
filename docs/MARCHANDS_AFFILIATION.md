@@ -25,8 +25,10 @@ Otto's, Nettoshop, Manor, Fust, Coop, Lidl (épicerie), Booking.
 ## Tradedoubler — à postuler dès validation du site
 Galaxus, Digitec, Microspot, Interdiscount, Zalando CH, Booking (si dispo), Nettoshop, Brack (vérifier).
 
-## CJ — après activation
-Booking.com, AliExpress, Lenovo, HP, Expedia, Hotels.com, Udemy, NordVPN.
+## CJ — compte ACTIF (28.10), candidatures envoyées
+Booking.com DACH, AliExpress Global, Expedia + Hotels.com (DACH et, par erreur de filtre, plusieurs autres pays), Vrbo,
+GetYourGuide INT, Samsung Global, Kiwi.com, Omio (FR/NL/DE), Agoda EU, Surfshark, Lenovo (UK).
+Introuvables sur CJ : Udemy, Hostelworld, Airalo, Trip.com, Trainline, Logitech, Microsoft, Swarovski, Farfetch, Europcar, Lufthansa/SWISS.
 
 ## Après acceptation
 Remplir `AFF_AWIN_MIDS` (domaine=mid) et `AFF_TRADEDOUBLER_*_P` dans les variables GitHub → les liens se réécrivent au build suivant.
