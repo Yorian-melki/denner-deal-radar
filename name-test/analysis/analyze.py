@@ -65,14 +65,18 @@ def all_names() -> tuple[list[str], set[str]]:
 
 def tables(ev: list[dict]):
     duels, recalls, spells, means, sessions = [], [], [], [], defaultdict(dict)
+    views = {}
     meta = {}
     k = defaultdict(int)
     for e in ev:
         r, d = e["rid"], e["d"]
         meta.setdefault(r, {"lang": e["lang"], "device": e["device"]})
-        if e["type"] == "duel" and d.get("a") and d.get("b") and d.get("win") in (d.get("a"), d.get("b")):
+        if d.get("country"): meta[r]["country"] = d["country"]
+        if e["type"] == "view":
+            views[r] = {"inApp": d.get("inApp", "?"), "ref": d.get("ref", ""), "country": d.get("country", "?")}
+        elif e["type"] == "duel" and d.get("a") and d.get("b") and d.get("win") in (d.get("a"), d.get("b")):
             duels.append({"rid": r, "a": d["a"], "b": d["b"], "top_won": int(d["win"] == d["a"]), "ms": d.get("ms"),
-                          "scene": d.get("scene"), "idx": k[r]}); k[r] += 1
+                          "scene": d.get("scene"), "idx": k[r], "endless": bool(d.get("endless"))}); k[r] += 1
         elif e["type"] == "recall" and isinstance(d.get("seen"), list) and isinstance(d.get("decoys"), list) and isinstance(d.get("picked"), list):
             recalls.append({"rid": r, **{x: d[x] for x in ("seen", "decoys", "picked")}})
         elif e["type"] == "spell" and d.get("name"):
@@ -82,6 +86,10 @@ def tables(ev: list[dict]):
         elif e["type"] == "session":
             for x in ("ref", "shared", "start", "friendCommon"):
                 if d.get(x) not in (None, ""): sessions[r][x] = d[x]
+    seen_by = {x["rid"]: set(x["seen"]) for x in recalls}
+    for d in duels:
+        sb = seen_by.get(d["rid"], set()); d["fam"] = int(d["a"] in sb) - int(d["b"] in sb)
+    tables.views = views
     return duels, recalls, spells, means, sessions, meta
 
 # --------------------------------------------------------------------------- qualité
@@ -110,21 +118,22 @@ def fit_bt(duels, names, idx, weights=None, sigma=1.0):
     if not duels: return np.zeros(len(names)), 0.0, np.full(len(names), np.nan)
     I = np.array([idx[d["a"]] for d in duels]); J = np.array([idx[d["b"]] for d in duels])
     Y = np.array([d["top_won"] for d in duels], float)
+    Fm = np.array([d.get("fam", 0) for d in duels], float)
     W = np.ones(len(duels)) if weights is None else np.asarray(weights, float)
     n = len(names)
 
     def f(x):
-        s, b = x[:n], x[n]
-        z = s[I] - s[J] + b
+        s, b, gm = x[:n], x[n], x[n + 1]
+        z = s[I] - s[J] + b + gm * Fm
         p = 1 / (1 + np.exp(-z))
         ll = np.sum(W * (Y * np.log(p + 1e-12) + (1 - Y) * np.log(1 - p + 1e-12)))
         g = W * (Y - p)
         gs = np.bincount(I, g, n) - np.bincount(J, g, n)
-        return -(ll - np.sum(s ** 2) / (2 * sigma ** 2)), -np.append(gs - s / sigma ** 2, g.sum())
+        return -(ll - np.sum(s ** 2) / (2 * sigma ** 2)), -np.concatenate([gs - s / sigma ** 2, [g.sum(), np.sum(g * Fm)]])
 
-    res = minimize(f, np.zeros(n + 1), jac=True, method="L-BFGS-B")
-    s, b = res.x[:n], res.x[n]
-    p = 1 / (1 + np.exp(-(s[I] - s[J] + b))); w = W * p * (1 - p)
+    res = minimize(f, np.zeros(n + 2), jac=True, method="L-BFGS-B")
+    s, b = res.x[:n], res.x[n]; fit_bt.familiarity = res.x[n + 1]
+    p = 1 / (1 + np.exp(-(s[I] - s[J] + b + res.x[n + 1] * Fm))); w = W * p * (1 - p)
     info = np.bincount(I, w, n) + np.bincount(J, w, n) + 1 / sigma ** 2
     return s - s.mean(), b, 1 / np.sqrt(info)
 
@@ -281,9 +290,22 @@ def main():
     L.append("\n## Qualité des données\n")
     L.append(f"- Répondants écartés : **{len(flags)}** ({', '.join(sorted({x for v in flags.values() for x in v})) or 'aucun'}) ; écartés de la mémoire seulement (tout coché) : {len(mem_bad)}.")
     L.append(f"- Biais de la carte du haut : **{100/(1+math.exp(-beta)):.0f} %** de victoires toutes choses égales (50 % = aucun biais) — corrigé dans le modèle.")
+    fam = getattr(fit_bt, "familiarity", 0.0)
+    L.append(f"- Effet de familiarité (nom vu à l'étape mémoire puis en duel) : **{100/(1+math.exp(-fam)) - 50:+.1f} pts** de victoire — corrigé dans le modèle.")
     L.append(f"- Mémoire moyenne : {100*base.get('hit', float('nan')):.0f} % reconnus, {100*base.get('fa', float('nan')):.0f} % fausses alarmes ; effet de position dans la séquence : " + ", ".join(f"{k+1}e {100*v:+.0f} pts" for k, v in sorted(base.get('position_effect', {}).items())) + " (corrigé).")
     L.append(f"- Exposition par nom : min {exposure.min()}, médiane {int(np.median(exposure))}, max {exposure.max()} duels.")
     L.append(f"- Fatigue / habituation (part haut %, temps médian ms) : " + " · ".join(f"{a} : {b} %, {c} ms" for a, b, c in fatigue))
+    V = getattr(tables, "views", {})
+    started = {r for r, x in sessions.items() if x.get("start")}
+    finished = {x["rid"] for x in means}
+    L.append("\n## Entonnoir et canaux\n")
+    L.append(f"- Ouvertures : {len(V)} · ont commencé : {len(started)} · ont fini : {len(finished)} · duels bonus joués : {sum(d['endless'] for d in duels)}.")
+    ch = defaultdict(lambda: [0, 0, 0])
+    for r, x in V.items(): c = ch[x["inApp"]]; c[0] += 1; c[1] += r in started; c[2] += r in finished
+    if ch: L.append("- Par canal (ouvert → commencé → fini) : " + " · ".join(f"{k} {a}→{b}→{c}" for k, (a, b, c) in sorted(ch.items(), key=lambda t: -t[1][0])))
+    co = defaultdict(int)
+    for r in resp: co[meta.get(r, {}).get("country", "?")] += 1
+    if co: L.append("- Par pays (répondants) : " + ", ".join(f"{k} {v}" for k, v in sorted(co.items(), key=lambda t: -t[1])))
     L.append("\n## Robustesse\n")
     L.append(f"- Fiabilité (split-half, Spearman-Brown) : **{reliab:.2f}** (≥ 0,8 = classement stable ; plus de répondants l'augmente).")
     L.append(f"- Variante pondérée par la décision (choix rapides = préférence plus nette) : corrélation de rang avec le modèle principal {rho_dec:.2f}.")

@@ -13,6 +13,8 @@
   let rid = store.get("nb.rid");
   if (!rid) { rid = (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2) + Date.now().toString(36)).toLowerCase(); store.set("nb.rid", rid); }
   const device = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? "mobile" : "desktop";
+  const UA = navigator.userAgent;
+  const inApp = /WhatsApp/i.test(UA) ? "whatsapp" : /Instagram/i.test(UA) ? "instagram" : /FBAN|FBAV/i.test(UA) ? "facebook" : /Telegram/i.test(UA) ? "telegram" : /LinkedInApp/i.test(UA) ? "linkedin" : /Snapchat/i.test(UA) ? "snapchat" : /TikTok|musical_ly/i.test(UA) ? "tiktok" : "browser";
   const qs = new URLSearchParams(location.search);
   if (qs.get("r") && !store.get("nb.ref")) store.set("nb.ref", qs.get("r").replace(/[^a-z0-9]/gi, "").slice(0, 12));
   const ss = { get(k) { try { return sessionStorage.getItem(k); } catch { return null; } }, set(k, v) { try { sessionStorage.setItem(k, v); } catch {} } };
@@ -144,7 +146,7 @@
     app.querySelectorAll(".opt").forEach((el) => el.onclick = () => {
       const win = el.dataset.n;
       app.querySelectorAll(".opt").forEach((o) => o.classList.add(o === el ? "win" : "lose"));
-      push("duel", { a, b, win, scene, color: c, pos: win === a ? "top" : "bottom", ms: Math.round(performance.now() - t0) });
+      push("duel", { a, b, win, scene, color: c, pos: win === a ? "top" : "bottom", ms: Math.round(performance.now() - t0), endless: endless || undefined, k });
       const other = win === a ? b : a;
       if (crowd[a] != null && crowd[b] != null) { agreeN++; if (crowd[win] >= crowd[other]) agree++; }
       seen[a] = (seen[a] || 0) + 1; seen[b] = (seen[b] || 0) + 1; wins[win] = (wins[win] || 0) + 1;
@@ -200,16 +202,17 @@
       voiceName = "piper:" + accent;
       audio.play().catch(() => tts());
     };
+    const opts = spellings(name);
     screen(`${progress(step, STEPS)}<h2>${T.listen2}</h2>
       <p class="muted">${T.accent}</p><div class="accents">${Object.entries(ACCENTS).map(([k, v]) => `<button class="lang${k === accent ? " on" : ""}" data-a="${k}">${v}</button>`).join("")}</div>
       <button id="pl">🔊 ${T.replay}</button>
-      <div class="list">${spellings(name).map((w) => `<button class="ghost" data-w="${esc(w)}">${esc(w)}</button>`).join("")}</div>
+      <div class="list">${opts.map((w) => `<button class="ghost" data-w="${esc(w)}">${esc(w)}</button>`).join("")}</div>
       <input id="in" hidden><button id="nx" hidden></button><button class="ghost" id="sk">${T.skip}</button>`);
     app.querySelectorAll("[data-a]").forEach((b) => b.onclick = () => { accent = b.dataset.a; store.set("nb.accent", accent); app.querySelectorAll("[data-a]").forEach((x) => x.classList.toggle("on", x === b)); say(); });
     document.getElementById("pl").onclick = say;
     const inp = document.getElementById("in"), echo = document.getElementById("echo");
     inp.oninput = () => { echo.textContent = inp.value ? `${T.typed} : ${inp.value}` : ""; };
-    const go = (choice) => { if (choice) push("spell", { name, typed: choice, mode: "mcq", accent, voice: voiceName.slice(0, 60) }); step++; listen(k + 1); };
+    const go = (choice) => { if (choice) push("spell", { name, typed: choice, options: opts, mode: "mcq", accent, voice: voiceName.slice(0, 60) }); step++; listen(k + 1); };
     app.querySelectorAll("[data-w]").forEach((b) => b.onclick = () => go(b.dataset.w));
     document.getElementById("sk").onclick = () => go(null);
     document.getElementById("in").onkeydown = (e) => e.key === "Enter" && go(false);
@@ -255,5 +258,7 @@
     document.getElementById("sh").onclick = async () => { push("session", { shared: "native" }); try { await navigator.share({ title: "Name Battle", text: msg, url: shareUrl }); } catch { try { await navigator.clipboard.writeText(`${msg}`); } catch {} } };
   }
 
+  push("view", { inApp, ref: ss.get("nb.fref") || "", challenged: !!(ss.get("nb.ftop")), tz: (Intl.DateTimeFormat().resolvedOptions().timeZone || "").slice(0, 40) });
+  flush();
   intro();
 })();

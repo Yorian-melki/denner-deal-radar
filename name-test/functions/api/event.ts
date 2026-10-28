@@ -1,9 +1,10 @@
 /** Enregistre une réponse anonyme. Pas d'IP, pas de cookie : seulement un
  * identifiant aléatoire généré sur l'appareil (localStorage). */
 interface Env { DB: D1Database }
-const TYPES = new Set(["duel", "recall", "spell", "meaning", "session"]);
+const TYPES = new Set(["duel", "recall", "spell", "meaning", "session", "view"]);
 
 export const onRequestPost = async ({ request, env }: { request: Request; env: Env }) => {
+  const country = String((request as any).cf?.country || "").slice(0, 2); // pays seulement (Cloudflare), rien de personnel
   let b: any;
   try { b = await request.json(); } catch { return new Response("bad json", { status: 400 }); }
   const rid = typeof b.rid === "string" && /^[a-z0-9-]{8,40}$/.test(b.rid) ? b.rid : null;
@@ -13,7 +14,7 @@ export const onRequestPost = async ({ request, env }: { request: Request; env: E
   const stmts = events
     .filter((e: any) => e && TYPES.has(e.type))
     .map((e: any) => env.DB.prepare("INSERT INTO events (rid, ts, type, data, lang, device) VALUES (?,?,?,?,?,?)")
-      .bind(rid, Date.now(), e.type, JSON.stringify(e.data ?? {}).slice(0, 2000), lang, device));
+      .bind(rid, Date.now(), e.type, JSON.stringify({ ...(e.data ?? {}), country }).slice(0, 2000), lang, device));
   if (stmts.length) await env.DB.batch(stmts);
   return new Response(null, { status: 204 });
 };
