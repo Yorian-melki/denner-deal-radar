@@ -17,9 +17,9 @@
   const L = (navigator.language || "en").slice(0, 2);
   const lang = ["fr", "de"].includes(L) ? L : "en";
   const T = {
-    fr: { title: "Aide-nous à choisir le nom de notre app 🔥", sub: "Une app qui trouve les meilleurs bons plans de ta ville. 60 secondes, anonyme, aucune inscription.", go: "C'est parti", mem: "Mémorise ces noms 👀", duel: "Lequel tu choisirais ?", tap: "Touche ton préféré", recall: "Lesquels as-tu vus au tout début ?", recallSub: "Touche tous ceux que tu reconnais", next: "Suivant", listen: "Écoute et écris le nom 🎧", replay: "Réécouter", meaning: "Avec ce nom, ce site sert à…", mOpts: { deals: "Trouver des bons plans", games: "Jouer à des jeux", travel: "Réserver des voyages", bank: "Une banque / finance", food: "Commander à manger" }, done: "Merci ! 🙌", yourTop: "Ton top", more: "Encore des duels", share: "Partager le test", city: "Zürich", tag: "Die besten Deals deiner Stadt", app: "Bons plans · Étudiants", notif: "−58 % sur les AirPods, encore 2 h", skip: "Passer" },
-    de: { title: "Hilf uns, den Namen unserer App zu wählen 🔥", sub: "Eine App, die die besten Deals deiner Stadt findet. 60 Sekunden, anonym, ohne Anmeldung.", go: "Los geht's", mem: "Merk dir diese Namen 👀", duel: "Welchen würdest du wählen?", tap: "Tippe auf deinen Favoriten", recall: "Welche hast du ganz am Anfang gesehen?", recallSub: "Tippe alle an, die du wiedererkennst", next: "Weiter", listen: "Hör zu und schreib den Namen 🎧", replay: "Nochmal hören", meaning: "Mit diesem Namen ist die Seite für…", mOpts: { deals: "Schnäppchen finden", games: "Games spielen", travel: "Reisen buchen", bank: "Bank / Finanzen", food: "Essen bestellen" }, done: "Danke! 🙌", yourTop: "Deine Top", more: "Mehr Duelle", share: "Test teilen", city: "Zürich", tag: "Die besten Deals deiner Stadt", app: "Deals · Studis", notif: "−58 % auf AirPods, noch 2 Std.", skip: "Überspringen" },
-    en: { title: "Help us pick our app's name 🔥", sub: "An app that finds the best deals in your city. 60 seconds, anonymous, no sign-up.", go: "Let's go", mem: "Remember these names 👀", duel: "Which one would you pick?", tap: "Tap your favourite", recall: "Which ones did you see at the very start?", recallSub: "Tap all you recognise", next: "Next", listen: "Listen and type the name 🎧", replay: "Replay", meaning: "With this name, the site is for…", mOpts: { deals: "Finding bargains", games: "Playing games", travel: "Booking travel", bank: "A bank / finance", food: "Ordering food" }, done: "Thanks! 🙌", yourTop: "Your top", more: "More duels", share: "Share the test", city: "Zürich", tag: "The best deals in your city", app: "Deals · Students", notif: "−58% on AirPods, 2 h left", skip: "Skip" },
+    fr: { title: "Aide-nous à choisir le nom de notre app 🔥", sub: "Une app qui trouve les meilleurs bons plans de ta ville. 60 secondes, anonyme, aucune inscription.", go: "C'est parti", mem: "Mémorise ces noms 👀", duel: "Lequel tu choisirais ?", tap: "Touche ton préféré", recall: "Lesquels as-tu vus au tout début ?", recallSub: "Touche tous ceux que tu reconnais", next: "Suivant", listen: "Écoute et écris le nom 🎧", replay: "Écouter", meaning: "Avec ce nom, ce site sert à…", mOpts: { deals: "Trouver des bons plans", games: "Jouer à des jeux", travel: "Réserver des voyages", bank: "Une banque / finance", food: "Commander à manger" }, done: "Merci ! 🙌", yourTop: "Ton top", more: "Encore des duels", share: "Partager le test", city: "Zürich", tag: "Die besten Deals deiner Stadt", app: "Bons plans · Étudiants", notif: "−58 % sur les AirPods, encore 2 h", skip: "Passer" },
+    de: { title: "Hilf uns, den Namen unserer App zu wählen 🔥", sub: "Eine App, die die besten Deals deiner Stadt findet. 60 Sekunden, anonym, ohne Anmeldung.", go: "Los geht's", mem: "Merk dir diese Namen 👀", duel: "Welchen würdest du wählen?", tap: "Tippe auf deinen Favoriten", recall: "Welche hast du ganz am Anfang gesehen?", recallSub: "Tippe alle an, die du wiedererkennst", next: "Weiter", listen: "Hör zu und schreib den Namen 🎧", replay: "Anhören", meaning: "Mit diesem Namen ist die Seite für…", mOpts: { deals: "Schnäppchen finden", games: "Games spielen", travel: "Reisen buchen", bank: "Bank / Finanzen", food: "Essen bestellen" }, done: "Danke! 🙌", yourTop: "Deine Top", more: "Mehr Duelle", share: "Test teilen", city: "Zürich", tag: "Die besten Deals deiner Stadt", app: "Deals · Studis", notif: "−58 % auf AirPods, noch 2 Std.", skip: "Überspringen" },
+    en: { title: "Help us pick our app's name 🔥", sub: "An app that finds the best deals in your city. 60 seconds, anonymous, no sign-up.", go: "Let's go", mem: "Remember these names 👀", duel: "Which one would you pick?", tap: "Tap your favourite", recall: "Which ones did you see at the very start?", recallSub: "Tap all you recognise", next: "Next", listen: "Listen and type the name 🎧", replay: "Listen", meaning: "With this name, the site is for…", mOpts: { deals: "Finding bargains", games: "Playing games", travel: "Booking travel", bank: "A bank / finance", food: "Ordering food" }, done: "Thanks! 🙌", yourTop: "Your top", more: "More duels", share: "Share the test", city: "Zürich", tag: "The best deals in your city", app: "Deals · Students", notif: "−58% on AirPods, 2 h left", skip: "Skip" },
   }[lang];
 
   // ---- envoi des réponses (par lots, survit à la fermeture de l'onglet) ----
@@ -35,7 +35,7 @@
   document.addEventListener("visibilitychange", () => document.visibilityState === "hidden" && flush());
 
   // ---- mises en scène (même style pour les deux côtés d'un duel = équitable) ----
-  const COLORS = ["#ef4444", "#f97316", "#8b5cf6", "#0ea5e9", "#10b981", "#ec4899", "#111827", "#2563eb"];
+  const COLORS = ["#ef4444", "#f97316", "#8b5cf6", "#0ea5e9", "#10b981", "#ec4899", "#2563eb", "#d946ef"];
   const SCENES = {
     web: (n, c) => `<div class="web"><div class="top" style="background:${c}"><span class="logo">${esc(n)}</span><span class="nav">${T.city} ▾</span></div><div class="hero"><b>${esc(n)} ${T.city}</b><span>${T.tag}</span></div></div>`,
     app: (n, c) => `<div class="app"><div class="icon" style="background:${c}">${esc(n[0])}</div><div><div class="t">${esc(n)}</div><div class="s">${T.app} · ★ 4.8</div></div></div>`,
@@ -62,7 +62,7 @@
   let step = 0;
 
   function intro() {
-    screen(`<div style="flex:1"></div><h1>${T.title}</h1><p class="muted">${T.sub}</p><div class="big">⚡️🦊🏷️</div><button id="go">${T.go}</button><div style="flex:1"></div>`);
+    screen(`<div style="flex:1"></div><h1>${T.title}</h1><p class="muted">${T.sub}</p><div class="big">⚡️🏷️🔥</div><button id="go">${T.go}</button><div style="flex:1"></div>`);
     document.getElementById("go").onclick = () => { push("session", { start: Date.now(), ua: device }); memory(); };
   }
 
@@ -113,7 +113,6 @@
     const name = rnd(NAMES);
     const say = () => { try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(name); u.lang = { fr: "fr-FR", de: "de-DE", en: "en-US" }[lang]; u.rate = 0.9; speechSynthesis.speak(u); } catch {} };
     screen(`${progress(step, STEPS)}<h2>${T.listen}</h2><button class="ghost" id="pl">🔊 ${T.replay}</button><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"><button id="nx">${T.next}</button><button class="ghost" id="sk">${T.skip}</button>`);
-    setTimeout(say, 250);
     document.getElementById("pl").onclick = say;
     const go = (skipped) => { if (!skipped) push("spell", { name, typed: document.getElementById("in").value.slice(0, 40) }); step++; listen(k + 1); };
     document.getElementById("nx").onclick = () => go(false);
