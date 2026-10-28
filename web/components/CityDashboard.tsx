@@ -8,6 +8,25 @@ import { balancedSections, categoryCounts, pickTop, weeklySavings } from "@/lib/
 import { fmtDateTime, fmtMoneyRound, telegramUrl } from "@/lib/site";
 import type { PublicDeal } from "@/lib/types";
 
+export function ScoreLegend({ locale }: { locale: Locale }) {
+  const t = dict(locale);
+  const cls = ["score-hi", "score-mid", "score-lo", "score-na"];
+  return (
+    <div className="legend">
+      <p className="legend-title">{t.legendTitle}</p>
+      <ul>
+        {t.legendRows.map(([range, text], i) => (
+          <li key={range}>
+            <span className={`legend-chip ${cls[i]}`}>{range}</span>
+            <span>{text}</span>
+          </li>
+        ))}
+      </ul>
+      <Link href="/transparenz" className="legend-link">{t.howScored}</Link>
+    </div>
+  );
+}
+
 export function Hero({ city, deals, generatedAt, headingLevel = 1 }: { city: City; deals: PublicDeal[]; generatedAt: string; headingLevel?: 1 | 2 }) {
   const t = dict(city.locale);
   const asOf = generatedAt ? new Date(generatedAt) : new Date();
@@ -16,47 +35,85 @@ export function Hero({ city, deals, generatedAt, headingLevel = 1 }: { city: Cit
   const H = headingLevel === 1 ? "h1" : "h2";
   return (
     <section className="hero" aria-labelledby={`hero-${city.slug}`}>
-      <p className="hero-kicker">
-        <span className="dot" aria-hidden="true" />
-        {t.heroKicker(city.name)}
-      </p>
-      {total >= 1 ? (
-        <H id={`hero-${city.slug}`} className="hero-title">
-          <span className="hero-amount">{fmtMoneyRound(total, currency, city.locale)}</span>{" "}
-          <span className="hero-label">{t.heroSavings}</span>
-        </H>
-      ) : (
-        <H id={`hero-${city.slug}`} className="hero-title">{t.heroFallback(city.name)}</H>
-      )}
-      {total >= 1 && (
-        <details className="hero-note">
-          <summary>{t.heroHow}</summary>
-          <p>{t.heroSavingsNote(count)}</p>
-        </details>
-      )}
-      <p className="hero-lead">{t.heroLead}</p>
-      <p className="hero-meta">
-        {t.activeOffers(deals.length)}
-        {generatedAt && <> · {t.updated(fmtDateTime(generatedAt, city.locale))}</>}
-      </p>
+      <div className="hero-main">
+        <p className="hero-kicker">
+          <span className="dot" aria-hidden="true" />
+          {t.heroKicker(city.name)}
+        </p>
+        {total >= 1 ? (
+          <H id={`hero-${city.slug}`} className="hero-title">
+            <span className="hero-amount">{fmtMoneyRound(total, currency, city.locale)}</span>{" "}
+            <span className="hero-label">{t.heroSavings}</span>
+          </H>
+        ) : (
+          <H id={`hero-${city.slug}`} className="hero-title">{t.heroFallback(city.name)}</H>
+        )}
+        <p className="hero-lead">{t.heroLead}</p>
+        <p className="hero-meta">
+          {t.activeOffers(deals.length)}
+          {generatedAt && <> · {t.updated(fmtDateTime(generatedAt, city.locale))}</>}
+        </p>
+        {total >= 1 && (
+          <details className="hero-note">
+            <summary>{t.heroHow}</summary>
+            <p>{t.heroSavingsNote(count)}</p>
+          </details>
+        )}
+      </div>
+      <ScoreLegend locale={city.locale} />
     </section>
   );
 }
 
-export function CategoryChips({ city, deals }: { city: City; deals: PublicDeal[] }) {
+/** Puces de catégorie, collantes sous l'en-tête : « Toutes » + catégories non vides.
+ * `active` : slug de la catégorie courante, ou "all" sur la page ville. */
+export function CategoryChips({ city, deals, active }: { city: City; deals: PublicDeal[]; active?: string }) {
   const t = dict(city.locale);
   const counts = categoryCounts(deals);
   const cats = CATEGORIES.filter((c) => counts.get(c.slug));
   if (!cats.length) return null;
   return (
-    <nav className="chips" aria-label={t.categories}>
-      {cats.map((c) => (
-        <Link key={c.slug} href={`/${city.slug}/${c.slug}`} className="chip">
-          {categoryText(city.locale, c.slug, c).label}
-          <span className="chip-n">{counts.get(c.slug)}</span>
+    <nav className="chips-bar" aria-label={t.categories}>
+      <div className="chips">
+        <Link href={`/${city.slug}`} className="chip" aria-current={active === "all" ? "page" : undefined}>
+          {t.allChip}
         </Link>
-      ))}
+        {cats.map((c) => (
+          <Link key={c.slug} href={`/${city.slug}/${c.slug}`} className="chip" aria-current={active === c.slug ? "page" : undefined}>
+            {categoryText(city.locale, c.slug, c).label}
+            <span className="chip-n">{counts.get(c.slug)}</span>
+          </Link>
+        ))}
+      </div>
     </nav>
+  );
+}
+
+/** État vide utile : pourquoi c'est vide + où aller (catégories non vides). */
+export function EmptyState({ city, deals, exclude }: { city: City; deals: PublicDeal[]; exclude?: string }) {
+  const t = dict(city.locale);
+  const counts = categoryCounts(deals);
+  const cats = CATEGORIES.filter((c) => c.slug !== exclude && counts.get(c.slug)).slice(0, 6);
+  return (
+    <div className="empty-state">
+      <svg aria-hidden="true" width="40" height="40" viewBox="0 0 32 32" className="empty-icon">
+        <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" strokeWidth="2" opacity=".35" />
+        <circle cx="16" cy="16" r="7" fill="none" stroke="currentColor" strokeWidth="2" opacity=".6" />
+        <path d="M16 16 L26 10" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+      </svg>
+      <h2>{t.emptyTitle}</h2>
+      <p>{t.emptyHint}</p>
+      {cats.length > 0 && (
+        <p className="empty-links">
+          {cats.map((c) => (
+            <Link key={c.slug} href={`/${city.slug}/${c.slug}`} className="chip">
+              {categoryText(city.locale, c.slug, c).label}
+              <span className="chip-n">{counts.get(c.slug)}</span>
+            </Link>
+          ))}
+        </p>
+      )}
+    </div>
   );
 }
 
@@ -96,7 +153,7 @@ export function CityDashboard({
   return (
     <>
       <Hero city={city} deals={deals} generatedAt={generatedAt} />
-      <CategoryChips city={city} deals={deals} />
+      <CategoryChips city={city} deals={deals} active={variant === "city" ? "all" : undefined} />
       <section aria-labelledby={`top-${city.slug}`} className="block">
         <div className="block-head">
           <h2 id={`top-${city.slug}`}>{t.topToday}</h2>

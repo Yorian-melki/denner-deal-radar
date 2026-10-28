@@ -3,7 +3,7 @@ import { rewriteUrl } from "@/lib/affiliate/rewrite";
 import { categoryBySlug } from "@/lib/categories";
 import { categoryText, dict, intlLocale, type Locale } from "@/lib/i18n";
 import { hasPage } from "@/lib/project";
-import { hasRealEnd, isLowestSeen } from "@/lib/select";
+import { confidenceTier, hasRealEnd, isLowestSeen, scoreTier, unitSaving } from "@/lib/select";
 import { SITE_URL, fmtDate, fmtPrice } from "@/lib/site";
 import type { PublicDeal } from "@/lib/types";
 import { EndsIn } from "@/components/EndsIn";
@@ -61,20 +61,57 @@ export function ScoreFacts({ deal, locale }: { deal: PublicDeal; locale: Locale 
   );
 }
 
-/** Note + explication en un tap (<details> natif : sans JS, accessible au clavier). */
+/** Fiabilité en 3 barres + mot : lisible sans ouvrir l'explication. */
+export function ConfidenceMeter({ confidence, locale }: { confidence?: number; locale: Locale }) {
+  const t = dict(locale);
+  const tierName = confidenceTier(confidence);
+  const bars = tierName === "high" ? 3 : tierName === "mid" ? 2 : 1;
+  const pct = confidence !== undefined ? Math.round(confidence * 100) : undefined;
+  return (
+    <span className={`conf conf-${tierName}`} title={pct !== undefined ? t.confTitle(pct) : undefined}>
+      <span className="conf-bars" aria-hidden="true">
+        {[1, 2, 3].map((i) => <i key={i} className={i <= bars ? "on" : undefined} />)}
+      </span>
+      {t.confTier[tierName]}
+    </span>
+  );
+}
+
+/** Note + verdict + fiabilité, et l'explication complète en un tap
+ * (<details> natif : sans JS, accessible au clavier). */
 export function ScoreWhy({ deal, locale, open = false }: { deal: PublicDeal; locale: Locale; open?: boolean }) {
   const t = dict(locale);
   return (
     <details className="why" open={open}>
       <summary>
         <ScoreBadge score={deal.score} locale={locale} />
-        <span className="why-hint">{t.whyScore}</span>
+        <span className="verdict">
+          <strong className="verdict-label">
+            {deal.score !== undefined ? t.scoreTiers[scoreTier(deal.score)] : t.scoreNa}
+            <span className="why-hint">{t.whyShort}</span>
+          </strong>
+          {deal.score !== undefined ? <ConfidenceMeter confidence={deal.confidence} locale={locale} /> : <span className="conf">{t.noRefShort}</span>}
+        </span>
       </summary>
       <div className="why-body">
         <ScoreFacts deal={deal} locale={locale} />
-        <Link href="/transparenz" className="why-link">{t.howScored}</Link>
+        <Link href="/transparenz" className="why-link" prefetch={false}>{t.howScored}</Link>
       </div>
     </details>
+  );
+}
+
+/** « Tu économises CHF X · vs. <référence> » — seulement avec un prix de référence. */
+export function SaveLine({ deal, locale }: { deal: PublicDeal; locale: Locale }) {
+  const t = dict(locale);
+  const amount = unitSaving(deal);
+  const ref = deal.referenceType && deal.referenceType !== "none" ? t.refShort[deal.referenceType] : undefined;
+  if (amount === undefined) return ref ? <p className="save save-weak">{ref}</p> : null;
+  return (
+    <p className="save">
+      <strong>{t.youSaveShort(fmtPrice(amount, deal.currency, locale))}</strong>
+      {ref && <span className="save-ref"> · {t.vsRef(ref)}</span>}
+    </p>
   );
 }
 
@@ -106,14 +143,24 @@ export function TimeInfo({ deal, locale }: { deal: PublicDeal; locale: Locale })
   return null;
 }
 
+export function PriceRow({ deal, locale, className = "price-row" }: { deal: PublicDeal; locale: Locale; className?: string }) {
+  const hasRef = deal.referencePrice !== undefined && deal.price !== undefined && deal.referencePrice > deal.price;
+  return (
+    <p className={className}>
+      {deal.price !== undefined && <strong className="price">{fmtPrice(deal.price, deal.currency, locale)}</strong>}
+      {hasRef && <s className="was">{fmtPrice(deal.referencePrice, deal.currency, locale)}</s>}
+      {deal.discountPct !== undefined && deal.discountPct > 0 && <span className="pct">−{Math.round(deal.discountPct)}%</span>}
+    </p>
+  );
+}
+
 export function DealCard({ deal, locale = "de", showCategory = false }: { deal: PublicDeal; locale?: Locale; showCategory?: boolean }) {
   const t = dict(locale);
   const share = shareInfo(deal, locale);
   const lowest = isLowestSeen(deal);
   const cat = showCategory ? categoryBySlug(deal.category) : undefined;
-  const hasRef = deal.referencePrice !== undefined && deal.price !== undefined && deal.referencePrice > deal.price;
   return (
-    <article className="card">
+    <article className={`card${deal.score === undefined ? " card-na" : ""}`}>
       <div className="card-top">
         <ScoreWhy deal={deal} locale={locale} />
         <div className="tags">
@@ -123,13 +170,11 @@ export function DealCard({ deal, locale = "de", showCategory = false }: { deal: 
         </div>
       </div>
       <h3 className="card-title">
-        {hasPage(deal) ? <Link href={`/deal/${deal.slug}`}>{deal.title}</Link> : deal.title}
+        {/* prefetch désactivé : ~50 cartes par page = ~50 requêtes inutiles sur mobile. */}
+        {hasPage(deal) ? <Link href={`/deal/${deal.slug}`} prefetch={false}>{deal.title}</Link> : deal.title}
       </h3>
-      <p className="price-row">
-        {deal.price !== undefined && <strong className="price">{fmtPrice(deal.price, deal.currency, locale)}</strong>}
-        {hasRef && <s className="was">{fmtPrice(deal.referencePrice, deal.currency, locale)}</s>}
-        {deal.discountPct !== undefined && deal.discountPct > 0 && <span className="pct">−{Math.round(deal.discountPct)}%</span>}
-      </p>
+      <PriceRow deal={deal} locale={locale} />
+      <SaveLine deal={deal} locale={locale} />
       <p className="card-meta">
         <span className="seller">{deal.merchant ?? deal.attribution}</span>
         {deal.alsoAt?.length ? <span className="also" title={deal.alsoAt.join(", ")}>{t.alsoAt(deal.alsoAt.length)}</span> : null}
@@ -137,7 +182,7 @@ export function DealCard({ deal, locale = "de", showCategory = false }: { deal: 
       </p>
       <div className="card-actions">
         <OfferButton deal={deal} locale={locale} short />
-        <ShareButton text={share.text} url={share.url} title={deal.title} locale={locale} />
+        <ShareButton text={share.text} url={share.url} title={deal.title} locale={locale} compact />
       </div>
     </article>
   );
