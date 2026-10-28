@@ -13,12 +13,16 @@ export interface City {
   country: string;
   feed?: string;
   launched: boolean;
+  /** Enseignes sans filiale à moins de 15 km (vente en magasin seulement) : leurs
+   * actions ne sont pas montrées dans cette ville (round 2, item 18). */
+  absentChains?: string[];
 }
 
 const same = (n: string): Record<Locale, string> => ({ de: n, fr: n, en: n });
 
 export const CITIES: City[] = [
-  { slug: "st-gallen", name: { de: "St. Gallen", fr: "Saint-Gall", en: "St. Gallen" }, country: "CH", feed: "ch-sg", launched: true },
+  // Espaces et traits d'union insécables : « St. Gallen » ne se coupe jamais après « St. ».
+  { slug: "st-gallen", name: { de: "St.\u00a0Gallen", fr: "Saint\u2011Gall", en: "St.\u00a0Gallen" }, country: "CH", feed: "ch-sg", launched: true, absentChains: ["aligro"] },
   // Prêtes ; `launched: true` seulement avec un vrai flux local.
   { slug: "zuerich", name: { de: "Zürich", fr: "Zurich", en: "Zurich" }, country: "CH", launched: false },
   { slug: "bern", name: { de: "Bern", fr: "Berne", en: "Bern" }, country: "CH", launched: false },

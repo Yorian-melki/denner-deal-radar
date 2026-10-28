@@ -20,6 +20,13 @@ export interface RawDeal {
  * - none : aucun. */
 export type RefKind = "comparable" | "vendor" | "vendor_pct" | "none";
 
+/** Motif de plafonnement de la note (à 6.9, « gut » au plus) :
+ * - vendor : référence = chiffre du vendeur (UVP, catalogue) ;
+ * - confidence : fiabilité des données < 0.7 ;
+ * - unchecked : référence pas encore contrôlée par nos relevés (comparaison avec un concurrent) ;
+ * - integrity : référence plus haute que ce que nous avons déjà observé. */
+export type ScoreCap = "vendor" | "confidence" | "unchecked" | "integrity";
+
 export interface Subscription {
   months?: number;       // durée minimale d'engagement
   promoMonths?: number;  // durée du prix promotionnel
@@ -47,10 +54,15 @@ export interface PublicDeal {
   referenceType?: string; // nature du prix de référence (radar/core/deal.py REFERENCE_TYPES)
   refKind: RefKind;
   integrity?: string;    // promotion_integrity du scanner (ok, above_usual_price, inflated_reference…)
-  /** Prix barré, « −x % » et économie autorisés (référence comparable, intègre, fiable). */
+  /** Prix « statt » du marchand affichable : référence comparable (prix pratiqué
+   * déclaré par le marchand), sans signal d'incohérence, fiabilité ≥ 0.7. Ce n'est
+   * PAS une vérification de notre part : libellé « laut <Händler> ». */
   verifiedRef: boolean;
+  /** La référence correspond à ce que nous avons observé nous-mêmes (≥ 3 relevés,
+   * médiane à ±5 %) : seul cas où le site dit « von uns beobachtet ». */
+  refObserved?: boolean;
   /** Pourquoi la note a été plafonnée (affiché sur la page deal). */
-  scoreCap?: "vendor" | "confidence";
+  scoreCap?: ScoreCap;
   historicalLow?: number;
   historicalMedian?: number;
   historyN?: number;     // nombre d'observations de prix derrière low/median
@@ -68,6 +80,7 @@ export interface PublicDeal {
   endsAt?: string;
   endsInferred?: boolean; // date de fin déduite, pas publiée → jamais de compte à rebours
   firstSeenAt?: string;
+  lastSeenAt?: string;   // dernier relevé du scanner (preuve de fraîcheur)
   conds: Cond[];
   url: string;           // URL marchande (désemballée d'un lien d'affiliation tiers)
   /** Hôte du lien quand ce n'est pas le site du marchand (agrégateur) : « via rappn.ch ». */
@@ -81,6 +94,12 @@ export interface PublicDeal {
   page?: boolean;        // a sa propre page /<locale>/deal/<slug>
   alsoAt?: string[];     // autres marchands du même produit (lib/select.ts dedupeProducts)
   variants?: number;     // autres variétés de la même action chez le même marchand
+  /** Commence plus tard (startsAt > maintenant) : jamais en vitrine, jamais « jetzt ». */
+  upcoming?: boolean;
+  /** Vente en magasin (supermarché) : le dernier jour, retirée des vitrines à 18:00. */
+  inStore?: boolean;
+  /** Jamais dans les sections de l'accueil ni les vitrines (contenu sensible ou hors sujet). */
+  noShowcase?: boolean;
 }
 
 export interface Feed {

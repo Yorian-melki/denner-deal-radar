@@ -7,7 +7,7 @@ import { CATEGORY_TEXT, DICTS, LOCALES, dict } from "@/lib/i18n";
 import { projectFeed } from "@/lib/project";
 import {
   balancedSections, categoryCounts, confidenceTier, dedupeProducts, hasRealEnd, isLowestSeen, MIN_CONFIDENCE_TOP,
-  pickTop, productKey, savingPct, scoreTier, timeLeft, unitSaving, whatsappUrl,
+  pickTop, productKey, savingPct, scoreTier, unitSaving, whatsappUrl,
 } from "@/lib/select";
 import { telegramUrl } from "@/lib/site";
 import type { Feed, PublicDeal } from "@/lib/types";
@@ -83,7 +83,7 @@ describe("pickTop", () => {
       ...Array.from({ length: 10 }, (_, i) => mk({ merchant: "Denner", score: 9 - i * 0.1, category: "supermarkt-aktionen" })),
       ...Array.from({ length: 10 }, (_, i) => mk({ merchant: `Shop ${i}`, score: 5, category: CATEGORIES[i % 5].slug })),
     ];
-    const top = pickTop(list);
+    const top = pickTop(list, { n: 12 });
     expect(top).toHaveLength(12);
     const counts = new Map<string, number>();
     for (const d of top) counts.set(d.merchant!, (counts.get(d.merchant!) ?? 0) + 1);
@@ -98,7 +98,7 @@ describe("pickTop", () => {
   it("l'épicerie ne noie pas les autres catégories (plafond par catégorie)", () => {
     const groceries = Array.from({ length: 20 }, (_, i) => mk({ merchant: `G${i}`, score: 9, category: "supermarkt-aktionen" }));
     const others = Array.from({ length: 12 }, (_, i) => mk({ merchant: `O${i}`, score: 4, category: i % 2 ? "haushalt" : "tech-deals" }));
-    const top = pickTop([...groceries, ...others]);
+    const top = pickTop([...groceries, ...others], { n: 12 });
     expect(top.filter((d) => d.category === "supermarkt-aktionen").length).toBe(4);
     expect(top).toHaveLength(12);
   });
@@ -159,8 +159,6 @@ describe("faits par deal (vrais uniquement)", () => {
     expect(hasRealEnd({ endsAt: "2026-10-30T23:59:00+01:00" })).toBe(true);
     expect(hasRealEnd({ endsAt: "2026-10-30T23:59:00+01:00", endsInferred: true })).toBe(false);
     expect(hasRealEnd({})).toBe(false);
-    expect(timeLeft("2026-10-29T15:30:00+01:00", NOW)).toMatchObject({ days: 2, hours: 3, minutes: 30 });
-    expect(timeLeft("2026-10-20T00:00:00+01:00", NOW).ms).toBe(0);
   });
 
   it("économie et pourcentage seulement avec une référence vérifiée", () => {
@@ -216,14 +214,16 @@ describe("i18n et villes", () => {
     expect(dict("xx")).toBe(DICTS.de);
     const byslug = Object.fromEntries(CITIES.map((c) => [c.slug, c]));
     expect(byslug.geneve.name).toEqual({ de: "Genf", fr: "Genève", en: "Geneva" });
-    expect(byslug["st-gallen"].name.fr).toBe("Saint-Gall");
+    expect(byslug["st-gallen"].name.fr).toBe("Saint\u2011Gall");
     expect(launchedCities().map((c) => c.slug)).toEqual(["st-gallen"]);
   });
 
-  /** Toutes les VALEURS (pas les clés) des dictionnaires, fonctions évaluées. */
+  /** Toutes les VALEURS (pas les clés) des dictionnaires, fonctions évaluées. Les
+   * négations honnêtes (« nicht überprüft », « non vérifié ») ne sont pas de l'auto-éloge. */
   const values = (v: unknown): string[] =>
     typeof v === "function" ? [String(v(1, "2", 3))] : typeof v === "string" ? [v] : v && typeof v === "object" ? Object.values(v).flatMap(values) : [];
-  const all = (l?: "de" | "fr" | "en") => values(l ? DICTS[l] : DICTS).join(" | ").toLowerCase();
+  const all = (l?: "de" | "fr" | "en") => values(l ? DICTS[l] : DICTS).join(" | ").toLowerCase()
+    .replace(/noch nicht auf plausibilität geprüft|von uns nicht überprüft|non vérifié par nous|pas encore vérifiée|not yet plausibility-checked|not checked by us/g, "");
 
   it("aucun texte d'interface ne fabrique de rareté, de preuve sociale ni d'auto-éloge", () => {
     for (const bad of ["nur noch", "beeil", "schnell", "dépêche", "plus que", "hurry", "only a few", "personen sehen", "people are viewing", "vergriffen bald",

@@ -13,6 +13,7 @@ describe("changement de langue : toujours la page équivalente", () => {
     expect(switchPath("/en", "de")).toBe("/de");
     expect(switchPath("/de/st-gallen/gratis/2", "en", "?q=kaffee", "#x")).toBe("/en/st-gallen/gratis/2?q=kaffee#x");
     expect(switchPath("/de/missing", "fr")).toBe("/fr");
+    expect(switchPath("/de/st-gallen/tech-deals.html", "en")).toBe("/en/st-gallen/tech-deals");
   });
   it("jamais de lien vers la racine", () => {
     for (const l of LOCALES) expect(switchPath("/", l)).toBe(`/${l}`);

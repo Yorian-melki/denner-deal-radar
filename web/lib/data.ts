@@ -9,7 +9,7 @@ import type { PublicDeal, RawDeal } from "@/lib/types";
 /** Le flux fait plusieurs Mo (au-delà du Data Cache de Next) : mémo en mémoire
  * par processus de build, pour ne le télécharger qu'une fois par worker. */
 const TTL_MS = 15 * 60 * 1000;
-let memo: { at: number; deals: PublicDeal[]; generatedAt: string } | null = null;
+let memo: { at: number; deals: PublicDeal[]; generatedAt: string; now: Date } | null = null;
 
 /** Plafond de taille du flux (le flux réel fait ~12 Mo) : au-delà, on refuse. */
 const MAX_FEED_BYTES = 25 * 1024 * 1024;
@@ -52,11 +52,14 @@ async function loadRaw(url: string): Promise<{ generated_at?: string; deals: Raw
   return raw;
 }
 
-export async function getDeals(): Promise<{ deals: PublicDeal[]; generatedAt: string }> {
+/** Instant de référence du build (« heute », « ab morgen », 18:00) : l'heure réelle,
+ * ou la date de l'échantillon en mode fixture (build reproductible). */
+export async function getDeals(): Promise<{ deals: PublicDeal[]; generatedAt: string; now: Date }> {
   if (memo && Date.now() - memo.at < TTL_MS) return memo;
   const results = await Promise.allSettled(FEEDS.map(async (f) => ({ f, raw: await loadRaw(f.url) })));
   const deals: PublicDeal[] = [];
   let generatedAt = "";
+  let now = new Date();
   for (const r of results) {
     if (r.status === "rejected") {
       console.error(JSON.stringify({ level: "error", msg: "feed_failed", error: String(r.reason) }));
@@ -65,7 +68,8 @@ export async function getDeals(): Promise<{ deals: PublicDeal[]; generatedAt: st
     // Fixture hors ligne : « maintenant » = date de l'échantillon, pour un build
     // reproductible (sinon tous les deals de l'échantillon finissent expirés).
     const fixtureNow = process.env.DATA_FIXTURE === "1" && r.value.raw.generated_at ? new Date(r.value.raw.generated_at) : null;
-    deals.push(...projectFeed(r.value.raw.deals ?? [], r.value.f, fixtureNow ?? new Date()));
+    if (fixtureNow) now = fixtureNow;
+    deals.push(...projectFeed(r.value.raw.deals ?? [], r.value.f, fixtureNow ?? now));
     generatedAt = r.value.raw.generated_at ?? generatedAt;
   }
   // Un flux en panne ne vide jamais le site : dernière version connue, sinon
@@ -74,6 +78,6 @@ export async function getDeals(): Promise<{ deals: PublicDeal[]; generatedAt: st
     if (memo) return memo;
     throw new Error("aucun flux disponible");
   }
-  memo = { at: Date.now(), deals: markPages(rankDeals(deals)), generatedAt };
+  memo = { at: Date.now(), deals: markPages(rankDeals(deals)), generatedAt, now };
   return memo;
 }

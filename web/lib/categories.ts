@@ -30,7 +30,10 @@ export const CATEGORIES: Category[] = [
 const BY_FAMILY = new Map(CATEGORIES.flatMap((c) => c.families.map((f) => [f, c.slug] as const)));
 export const categoryBySlug = (slug: string) => CATEGORIES.find((c) => c.slug === slug);
 
-const SUPERMARKETS = /^(denner|migros|coop|aldi|aldi suisse|lidl|volg|spar|aligro|landi|prodega|topcc|farmy)$/i;
+/** Enseignes de supermarché (marchand ou source) : leurs actions vont dans Supermarkt,
+ * sauf électronique explicite (round 2, item 16 : 233 deals Denner étaient dans Shopping). */
+export const SUPERMARKETS = /^(denner|migros|coop|aldi|aldi suisse|lidl|volg|spar|aligro|landi|prodega|topcc|farmy)$/i;
+export const isSupermarket = (merchant?: string, source?: string) => SUPERMARKETS.test((merchant ?? "").trim()) || SUPERMARKETS.test((source ?? "").trim());
 /** Consommables de ménage vendus en supermarché (restent dans Supermarkt). */
 const CONSUMABLES =
   /wasch|putz|spül|reinig|vanish|finish|persil|ariel|calgon|somat|toilettenpapier|haushaltpapier|taschentücher|shampoo|duschgel|zahnpasta|deo\b|windeln|kosmetik|katzenstreu|tierfutter|katzenfutter|hundefutter/i;
@@ -39,9 +42,9 @@ const TECH =
 const HOUSEHOLD =
   /pfanne|kochgeschirr|kochtopf|\btopf|messer|besteck|küche|staubsauger|saugroboter|kaffeemaschine|kaffeevollautomat|mixer|wasserkocher|airfryer|heissluft|bettwäsche|kissen|bettdecke|matratze|möbel|sofa|stuhl|tisch|lampe|leuchte|katzenstreu|kratzbaum|tierbedarf|aufbewahrung|handtuch|teppich|vorhang|heimtextil|deko|garten|werkzeug|bohrmaschine|akkuschrauber|grill|haushalt|wohnen/i;
 const SERVICES = /massage(?!pistole|gerät|kissen)|praxis|beratung|consultation|coaching|coiffeur|friseur|kosmetikstudio|therapie|psycholog|ernährungs|physio|nachhilfe|fahrschule|umzugs/i;
-const TRIAL = /probeabo|testabo|gratis testen|kostenlos testen|free trial|essai gratuit|\d+\s*monate?\s*(gratis|kostenlos)|gratismonate?/i;
+const TRIAL = /\baudible\b|probeabo|testabo|gratis testen|kostenlos testen|free trial|essai gratuit|\d+\s*monate?\s*(gratis|kostenlos)|gratismonate?/i;
 
-export interface Classifiable { family: string; title: string; merchant?: string; category?: string }
+export interface Classifiable { family: string; title: string; merchant?: string; category?: string; source?: string }
 
 /** Essai gratuit à renouvellement automatique (sort de « Gratis », étiquette « Testabo »). */
 export const isTrial = (d: Pick<Classifiable, "title">) => TRIAL.test(d.title);
@@ -58,6 +61,8 @@ export function categorize(d: Classifiable): string {
   if (fam === "event" || fam === "local_news") return "events";
   if (fam === "travel" || fam === "transport") return "reisen";
   if (fam === "restaurant" || SERVICES.test(d.title)) return "lokal";
+  // Enseigne de supermarché : Supermarkt, sauf électronique explicite (pas de consommable).
+  if (isSupermarket(merchant, d.source)) return !CONSUMABLES.test(text) && TECH.test(d.title) ? "tech-deals" : "supermarkt-aktionen";
   if (fam === "grocery" || fam === "surplus") {
     // Non-alimentaire durable d'un discounter (poêle, aspirateur) : rangé selon le produit.
     if (!CONSUMABLES.test(text) && TECH.test(d.title)) return "tech-deals";

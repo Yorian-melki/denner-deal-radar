@@ -116,9 +116,9 @@ describe("honnêteté des références de prix", () => {
     expect(p.verifiedRef).toBe(false);
   });
 
-  it("prix « au-dessus de l'habituel » (note 0) : jamais barré", () => {
+  it("prix « au-dessus de l'habituel » (note 0) : jamais barré, et pas de note « 0.0 »", () => {
     const p = projectDeal({ ...base, promotion_integrity: "above_usual_price", deal_score: 0 }, FEED, NOW)!;
-    expect(p.score).toBe(0);
+    expect(p.score).toBeUndefined();
     expect(p.verifiedRef).toBe(false);
   });
 
@@ -187,11 +187,11 @@ describe("conditions traduites (jamais de français sur une page allemande)", ()
 });
 
 describe("markPages", () => {
-  it("note ≥ 5 seulement, plafonné, dans l'ordre du classement", () => {
+  it("toute carte publiée a sa page ; au-delà du plafond, le deal n'est pas publié du tout", () => {
     const mk = (score?: number) => projectDeal({ ...base, deal_id: `q:${score}`, title: `T${score}`, deal_score: score }, FEED, NOW)!;
     const ranked = [mk(6.9), mk(6), mk(5.5), mk(4.9), mk(undefined)];
-    expect(markPages(ranked).map(hasPage)).toEqual([true, true, true, false, false]);
-    expect(markPages(ranked, 2).map(hasPage)).toEqual([true, true, false, false, false]);
+    expect(markPages(ranked).map(hasPage)).toEqual([true, true, true, true, true]);
+    expect(markPages(ranked, 2).map((d) => d.id)).toEqual([ranked[0].id, ranked[1].id]);
   });
 });
 
@@ -204,7 +204,7 @@ describe("slugs et titres", () => {
   it("titres nettoyés", () => {
     expect(cleanTitle("[Neukunden] Salt Mobile Swiss")).toBe("Salt Mobile Swiss");
     expect(cleanTitle("Quickline Internet L (Aktionspreis)")).toBe("Quickline Internet L");
-    expect(cleanTitle("MÖVENPICK Mövenpick Kaffee")).toBe("MÖVENPICK Kaffee");
+    expect(cleanTitle("MÖVENPICK Mövenpick Kaffee")).toBe("Mövenpick Kaffee");
   });
 });
 
@@ -230,12 +230,101 @@ describe("catégories et villes", () => {
 });
 
 describe("flux réel (échantillon)", () => {
-  it("projette l'échantillon sans erreur, trié par note", () => {
+  it("projette l'échantillon sans erreur ; prix « statt » d'abord, puis note", () => {
     const raw = JSON.parse(readFileSync(path.join(import.meta.dirname, "..", "fixtures", "universal.sample.json"), "utf8"));
     const deals = projectFeed(raw.deals, FEED, new Date(raw.generated_at));
     expect(deals.length).toBeGreaterThan(50);
     expect(new Set(deals.map((d) => d.slug)).size).toBe(deals.length);
-    const scores = deals.map((d) => d.score ?? -1);
-    expect([...scores].sort((a, b) => b - a)).toEqual(scores);
+    const now = deals.filter((d) => !d.upcoming);
+    // Aucun deal sans prix « statt » ne précède un deal qui en a un (round 2, item 7).
+    const firstUnverified = now.findIndex((d) => !d.verifiedRef);
+    if (firstUnverified >= 0) expect(now.slice(firstUnverified).some((d) => d.verifiedRef)).toBe(false);
+    const verified = now.filter((d) => d.verifiedRef).map((d) => d.score ?? -1);
+    expect([...verified].sort((a, b) => b - a)).toEqual(verified);
+  });
+});
+
+/** Round 2 — régressions et nouvelles règles, sur des cas réels du flux. */
+describe("round 2 : prix « statt » des marchands, plafonds honnêtes", () => {
+  const energizer: RawDeal = {
+    deal_id: "denner:ENERGIZER", source_id: "denner", title: "Energizer Max Batterien AA", family: "retail", merchant: "Denner",
+    source_url: "https://www.denner.ch/de/aktionen/energizer", current_price: 17.8, reference_price: 35.8, reference_price_type: "merchant_previous",
+    discount_percentage: 50, deal_score: 7.6, score_confidence: 0.85, geographic_scope_resolved: "NATIONAL", lifecycle: "ACTIVE",
+    starts_at: "2026-10-27T00:00:00+01:00", ends_at: "2026-11-02T23:59:00+01:00",
+  };
+
+  it("Denner (integrity absente) : prix barré affiché, pas de faux motif « dünn », pas de plafond « confidence »", () => {
+    const p = projectDeal(energizer, FEED, NOW)!;
+    expect(p.verifiedRef).toBe(true);
+    expect(p.scoreCap).toBeUndefined();
+    expect(p.score).toBe(7.6);
+    expect(p.category).toBe("supermarkt-aktionen");
+    expect(Object.values(DICTS).map((t) => JSON.stringify(t.scoreCap)).join(" ")).not.toMatch(/dünn|minces|thin/);
+  });
+
+  it("aucun deal plafonné « confidence » avec une qualité de données élevée", () => {
+    const raw = JSON.parse(readFileSync(path.join(import.meta.dirname, "..", "fixtures", "universal.sample.json"), "utf8"));
+    for (const d of projectFeed(raw.deals, FEED, new Date(raw.generated_at))) {
+      if (d.scoreCap === "confidence") expect(d.confidence ?? 0).toBeLessThan(0.7);
+    }
+  });
+
+  it("comparaison avec un concurrent annoncée par le marchand : plafonnée « unchecked » sans nos relevés", () => {
+    const p = projectDeal({ ...energizer, deal_id: "denner:C", reference_price_type: "competitor" }, FEED, NOW)!;
+    expect(p.verifiedRef).toBe(true);
+    expect(p.score).toBe(6.9);
+    expect(p.scoreCap).toBe("unchecked");
+    const obs = projectDeal({ ...energizer, deal_id: "denner:C2", reference_price_type: "competitor", historical_median: 35.5, history_n: 4 }, FEED, NOW)!;
+    expect(obs.refObserved).toBe(true);
+    expect(obs.scoreCap).toBeUndefined();
+  });
+
+  it("référence gonflée (integrity) : jamais barrée, motif « integrity »", () => {
+    const p = projectDeal({ ...base, promotion_integrity: "inflated_reference", deal_score: 8 }, FEED, NOW)!;
+    expect(p.verifiedRef).toBe(false);
+    expect(p.scoreCap).toBe("integrity");
+  });
+
+  it("note 0 → pas de note ; « ab morgen » → upcoming ; magasin → inStore", () => {
+    expect(projectDeal({ ...base, deal_score: 0 }, FEED, NOW)!.score).toBeUndefined();
+    const up = projectDeal({ ...energizer, deal_id: "denner:U", starts_at: "2026-10-28T00:00:00+01:00" }, FEED, NOW)!;
+    expect(up.upcoming).toBe(true);
+    expect(up.inStore).toBe(true);
+  });
+
+  it("contournement géographique jamais publié ; escort jamais en vitrine", () => {
+    expect(projectDeal({ ...base, title: "Netflix über Bulgarien abonnieren" }, FEED, NOW)).toBeNull();
+    expect(projectDeal({ ...base, title: "Begleiterin für eine Nacht", family: "free" }, FEED, NOW)!.noShowcase).toBe(true);
+  });
+
+  it("supermarchés → Supermarkt (sauf électronique)", () => {
+    expect(categorize({ family: "retail", title: "Energizer Max Batterien AA", merchant: "Denner" })).toBe("supermarkt-aktionen");
+    expect(categorize({ family: "retail", title: "Felix Katzenfutter", merchant: "Denner" })).toBe("supermarkt-aktionen");
+    expect(categorize({ family: "retail", title: "Samsung Galaxy A16 Smartphone", merchant: "Lidl" })).toBe("tech-deals");
+    expect(categorize({ family: "retail", title: "Pfanne 28 cm", source: "aldi" })).toBe("supermarkt-aktionen");
+  });
+
+  it("titres sans marketing (cas réels)", () => {
+    expect(cleanTitle("Winterferien in Interlaken 🏔️")).toBe("Winterferien in Interlaken");
+    expect(cleanTitle("ERHÖHT 35% Rabatt auf alles")).toBe("35% Rabatt auf alles");
+    expect(cleanTitle("Lindt Pralinés zum neuen Tiefstpreis")).toBe("Lindt Pralinés");
+    expect(cleanTitle("Lindt Pralinés zum neuen Tiefstpreis", { keepLowest: true })).toBe("Lindt Pralinés zum neuen Tiefstpreis");
+    expect(cleanTitle("Kopfhörer XY – nur heute!")).toBe("Kopfhörer XY");
+    expect(cleanTitle("100% Bruno Wickart Gutschein für Designmöbel", { discountPct: 10 })).toBe("10% Bruno Wickart Gutschein für Designmöbel");
+    expect(cleanTitle("SOLEVITA Bio Shot")).toBe("Solevita Bio Shot");
+    expect(cleanTitle("BARBIE/HOT WHEELS Adventskalender")).toBe("Barbie/HOT Wheels Adventskalender");
+    expect(cleanTitle("QUALITÉ SUISSE Halbrahm 25% UHT")).toBe("Qualité Suisse Halbrahm 25% UHT");
+  });
+
+  it("abonnement : pas de total 24 mois avec une taxe de mise en service inconnue", () => {
+    const p = projectDeal({ deal_id: "dk:x", source_id: "dschungelkompass", title: "Go Mobile", family: "subscription", merchant: "Go",
+      current_price: 9.9, commitment_months: 1, promo_months: 24, unit: "CHF/Monat", source_url: "https://www.dschungelkompass.ch/x" }, FEED, NOW)!;
+    expect(p.sub?.total24).toBeUndefined();
+  });
+
+  it("enseigne absente de la ville (Aligro à St. Gallen) : jamais affichée", () => {
+    const p = projectDeal({ ...energizer, deal_id: "rappn:a", source_id: "rappn", merchant: "Aligro" }, FEED, NOW)!;
+    expect(inCity(p, CITIES[0])).toBe(false);
+    expect(inCity(projectDeal(energizer, FEED, NOW)!, CITIES[0])).toBe(true);
   });
 });

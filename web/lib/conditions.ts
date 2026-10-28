@@ -18,10 +18,12 @@ const REGION_WORDS: [RegExp, string][] = [[/deutsch/i, "de"], [/franz/i, "fr"], 
 export function guessLang(s: string): Locale | "?" {
   const t = ` ${s.toLowerCase()} `;
   const fr = (t.match(/ (le|la|les|des|du|de|et|sur|pour|avec|dès|jusqu|prix|valable|pièces?|requise?|offert|gratuit)[ ’']/g) ?? []).length;
-  const de = (t.match(/ (der|die|das|und|mit|für|nur|ab|bei|nicht|auf|statt|anstatt|stück|erhältlich|gratis|aktion|monate?n?) /g) ?? []).length;
-  if (fr > de) return "fr";
-  if (de > fr) return "de";
-  return "?";
+  const de = (t.match(/ (der|die|das|und|mit|für|nur|ab|bei|nicht|auf|statt|anstatt|stück|erhältlich|gratis|aktion|monate?n?|rabatt) /g) ?? []).length;
+  const en = (t.match(/ (the|and|for|with|off|your|up|to|on|free|students?|discount|months?) /g) ?? []).length;
+  const max = Math.max(fr, de, en);
+  if (!max) return "?";
+  if ([fr, de, en].filter((x) => x === max).length > 1) return "?";
+  return max === fr ? "fr" : max === de ? "de" : "en";
 }
 
 export function parseCondition(raw: string): Cond | null {

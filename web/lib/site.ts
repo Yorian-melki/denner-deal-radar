@@ -24,6 +24,10 @@ export const SITE_URL = resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL, STRICT)
  * dans la CI) : jamais *.pages.dev ni les previews (contenu dupliqué), jamais sans Impressum complet. */
 export const INDEXABLE = process.env.SITE_INDEXABLE === "1" && !!process.env.NEXT_PUBLIC_SITE_URL && isOperatorComplete();
 
+/** Cloudflare Web Analytics : seulement si un jeton valide est configuré. La politique de
+ * confidentialité ne mentionne la mesure d'audience QUE dans ce cas (round 2, item 8). */
+export const ANALYTICS_TOKEN = /^[a-f0-9]{32}$/i.test(process.env.NEXT_PUBLIC_CF_BEACON_TOKEN ?? "") ? process.env.NEXT_PUBLIC_CF_BEACON_TOKEN! : "";
+
 /** Canal Telegram public (https://t.me/…) ; absent ou invalide → aucun bouton. */
 export function telegramUrl(raw: string | undefined = process.env.NEXT_PUBLIC_TELEGRAM_URL): string | undefined {
   if (!raw) return undefined;
