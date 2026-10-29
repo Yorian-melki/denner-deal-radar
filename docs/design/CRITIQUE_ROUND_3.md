@@ -779,3 +779,120 @@ Les items concernés le signalent avec la mention « (gated) ».
   - La note Supermarkt ajoute « · höchstens ⅓ pro Laden je Seite ».
 - **Acceptation :** le compteur et la constante sont liés (test).
 - **Personas :** LEG
+
+---
+
+## Vérification (vérificateur indépendant, 29.10.2026, ~02:10)
+
+**Périmètre.** Site LIVE https://savradar.pages.dev, déployé par le run `web` du commit `7743983` (00:58 UTC, succès ; `d8d5e4e` ne contient que des captures). Méthode :
+- curl des en-têtes et du HTML, en DE, FR et EN ;
+- crawl de 516 pages deal liées depuis 26 pages de liste ;
+- 120 URL tirées au hasard dans le sitemap (7 368 URL), avec vérification de leurs liens de langue : 120/120 donnent 200 ;
+- mesures dans le navigateur à 375×812 et 320×640 ;
+- lecture des 12 captures `round3-after-*` et du code.
+
+Légende : ✅ fait · 🟡 partiel · ❌ non fait.
+
+### Résultat P0
+
+| # | Verdict | Preuve |
+|---|---|---|
+| 1 | ✅ (réserve) | Il ne reste que `functions/index.ts` et `functions/api/click.ts`. `POST /api/click` renvoie 405 (route non servie sans `CLICKS`). `curl -sI /de/st-gallen` renvoie CSP, HSTS, Permissions-Policy et CORP depuis `_headers`. La 404 profonde `/de/st-gallen/tech-deals/99` répond en 0.09 s, avec FR vers `/fr/st-gallen/tech-deals` (200). **Réserve :** les 404 imbriquées s'arrêtent au niveau catégorie. `/de/st-gallen/supermarkt-aktionen/denner/99` envoie FR vers `/fr/st-gallen/supermarkt-aktionen` au lieu de `/fr/…/denner`. |
+| 2 | ✅ | Tech, Shopping, Refurbished et Handy-Abos : 0 badge. La page Big Brain affiche « Ohne Bewertung – zu wenig verlässliche Daten ». Sur les 516 pages deal, aucune n'a `verdict-num` sans `.was`. Phrase de tri générée : « Neueste zuerst – nie nach Provision ». |
+| 3 | ✅ | Page Finish (nouveau slug `…-tfhsch`) : « statt 27.35 laut Denner » apparaît 1× dans `<main>`. On y lit « CHF 15.40 unter dem Statt-Preis von Denner », « Händlerangabe » et « Begrenzt auf «gut» ». 0 « zuvor » sur 516 pages. 0 meta description avec « Statt-Preis » sans `.was`. |
+| 4 | ✅ | Premier `.price` à 262 px (375×812, /fr). La variante « code » met « −50% » dans le slot `.price` avec « laut Anbieter ». Voir N2 et N3 pour le contenu de cette première section. |
+| 5 | ✅ | Première `.card` à 193 px (375×812, `/fr/st-gallen`). `.wordmark` : `scrollWidth 94 = clientWidth 94` à 320 et 375 px. Pas de scroll horizontal (320/320). À 320×640, la page catégorie FR place sa première carte à 315 px (hors critère, voir N6). |
+| 6 | 🟡 | Il reste dans les H1 : « Exklusiv – CHF 10.-, 20.- oder 30.- Rabatt » (`/de/deal/exklusiv-chf-10-20-oder-30-rabatt-17cmown`), « QoQa-Exklusiv: … », « … zu Toppreisen bei Apfelkiste … », 4× « TeleKing KingFiber … - Aktionspreis », « … / Schnäppchen / Gebraucht » (Revendo) et « …SmartStudents! (PostFinance) ». La casse est cassée : « Gordon'S London Dry Gin » et « Fisher’S Choice » (N5). |
+| 7 | 🟡 | Plus aucun `.seller` égal à un agrégateur. « via Preispirat » est affiché sur la carte, et le CTA dit « Zum Angebot bei Apfelkiste · über preispirat.ch ». En revanche, « Händler unbekannt » s'affiche alors que le marchand figure dans le titre : « Ancient Evil (IndieGala) », « Wingo Red Pro … » (Shopping), « HP Herbst Sale », « Pakete abholen lassen » (Post). Correctif : ajouter IndieGala et `(Steam)`-like à la table des boutiques entre parenthèses, Wingo vers Wingo, et un préfixe de marque vers « <Marque> Store » quand le titre commence par une marque connue. |
+| 8 | 🟡 | Lovense est absent et « Konto nötig » est présent, avec un tri par % puis par date de fin. **Non atteint :** sur `/fr/st-gallen`, 4 des 6 premières cartes sont `lang="de-CH"`, dont « Chani: 12 Monate mit 50% Rabatt … », une phrase allemande en 4e position sur FR et EN. Studis `/de` page 1 contient 2 titres anglais : « COS: 15% Student Discount on Menswear/Womenswear ». |
+| 9 | 🟡 | Le build est propre : 0 hôte traceur sur 516 pages, et Swisscom pointe vers `www.swisscom.ch`. **Mais le LIVE sert encore le lien DoubleClick** sur l'ancienne URL `/de/deal/swisscom-blue-mobile-s-aktionspreis-ui09jp` (`cf-cache-status: HIT`, `age: 4438`). Voir N1. |
+| 10 | 🟡 | La tombstone Mövenpick fonctionne : 200, H1 « … – abgelaufen am Mi 28.10. », `noindex, follow`, aucun CTA ni Offer, « damals, laut Coop », 3 deals vivants, FR et EN sur le même slug. Le build compte 12 033 HTML. **Mais toutes les URL deal du round 2 dont le slug a changé** (pas seulement celles qui contenaient des mots marketing) sont mortes ou servies périmées. `/en/deal/finish-…-u9ah2d` renvoie 404, alors que `/de/deal/finish-…-u9ah2d` renvoie 200 avec le contenu du round 2 depuis le cache, et que son lien EN mène à cette 404. C'est exactement « switch de langue vers une 404 » (N1). |
+| 11 | ✅ | `.next` 17 Mo, `find out -type d -empty` = 0, script `prebuild` présent, 0 `<!-- -->`. |
+
+### Résultat P1
+
+| # | Verdict | Preuve et reste à faire |
+|---|---|---|
+| 12 | ✅ | `round3-after-deal-desktop-light.jpg` : colonne d'achat collante à droite, prix de 48 px, CTA « Zum Angebot bei Denner ↗ » plus étroit que 360 px, un seul bouton « Teilen ». Petit défaut : sur une page non notée, « Warum keine Bewertung » apparaît 2× (titre du panneau et `<summary>`, voir le texte de `/de/deal/big-brain-…-eenecg`). Garder un seul des deux. |
+| 13 | ✅ | 516/516 pages deal ont `id="more"`, la tombstone aussi (« Aktuell in Supermarkt »). |
+| 14 | 🟡 | Les pages magasin `/supermarkt-aktionen/{aldi,denner,lidl,migros,volg}` répondent 200 en 3 langues, et la ligne de couverture « … Coop 0 (Quelle derzeit ohne Daten) » est présente. **Non atteint :** sur les 702 cartes, 543 (77 %) ont une unité ou une quantité (cible 80 %) et seulement 311 ont à la fois la quantité et le prix unitaire (« Due Lune … CHF 16.27/l » ne dit pas 6 × 75 cl). On trouve 3 cartes consécutives du même marchand sur les pages 2, 3, 4, 6–12 (Volg, Migros, Aldi). Les pages magasin ne sont pas dans le sitemap, et leur intro dit « häufigste Händler: Denner » sur la page Denner (à masquer quand le magasin est filtré). Pas d'alerte scanner pour Coop. |
+| 15 | 🟡 | 0 Gewinnspiel, Glücksrad ou KW43. **« Pakete abholen lassen | zu Hause oder am Wunsch-Ort » reste en position 5 de `/de|fr|en/st-gallen/gratis`** (2 occurrences par page). C'est un service, sans produit. |
+| 16 | 🟡 | Icône, manifest `standalone` et `theme-color` clair et sombre sont en place, et l'OG compte 1’595, comme la page. **L'espacement de l'OG est toujours doublé** (« Aktionen␣␣in St. Gallen », `/de/st-gallen/og.png`). Pas d'OG par deal. `start_url` reste `/de/st-gallen` pour toutes les langues. |
+| 17 | 🟡 | « CHF » en petit, `hyphens:manual` et titres sur 2 lignes sont faits. En Tech, les cartes sans valeur (« Letzte ‘erschwingliche’ 4K Gaming-PCs? … », « HP Herbst Sale … ») n'ont pas de ligne prix, et la rangée se décale (`round3-after-category-desktop-light.jpg`, rangées 3 et 4). |
+| 18 | ✅ | 6 chips + « Mehr » sur une seule rangée à 1366 px. Voir N6 pour la double rangée « Alle » sur les pages catégorie. |
+| 19 | 🟡 | (a) « DE – Deutsch » avec la langue courante en `span[aria-current]`, cibles de 44×44 : fait. (c) `<time>` : fait. (d) : fait. (b) Les tokens sont en rem, mais le contenu reste à 0.8125rem (13 px) : `.card-save`, `.was`, `.card-meta`, `.lead` et `.intro-facts` (`globals.css:156-234`). La cible était ≥ 0.9375rem. La ligne d'économie, qui porte la valeur, est en 13 px. |
+| 20 | ✅ | `data-gone` dans `site.js:25,42`, `content-visibility` retiré, builds à 00:01 et 18:01. |
+| 21 | 🟡 | Le glossaire n'est pas appliqué : sur la même page Finish, DE dit « massgebend ist die Seite des **Anbieters** » (pied du panneau) et « … des **Händlers** » (meta), FR dit « page du **vendeur** » et « page du **commerçant** », EN dit « **seller**’s page » et « **retailer**’s page ». EN « according to the **seller** » sur les cartes Studis. Le CTA EN dit « Go to offer at Denner », alors que la spec demandait « View offer at Denner ». Meta DE : « Statt-Preis laut Händler; **M**assgebend … » (majuscule après le point-virgule). `CategoryListing.tsx:189` code « : » en dur : le sr-only FR lit « Retour à Supermarché: » sans espace fine, et répète ensuite le libellé visible. La phrase de tri de Gratis dit « neueste zuerst – ohne Bewertung, die Prozente stammen von den Anbietern » sur une page sans pourcentage, avec une minuscule initiale (idem Handy-Abos : « sortiert nach … »). |
+| 22 | 🟡 | L'intro générée et le passage de Christ et Mido en Shopping sont faits. **Pas de dédoublonnage :** Refurbished contient 8 H1 identiques « Outlet - Apple MacBook Pro 16" … 32 GB RAM … », 4× « iPad 10. Gen 256 GB … Blau » (3 d'entre eux en page 1, à 367, 337 et 296 CHF, sans rien qui les distingue). On trouve aussi 2× « spusu spooooky » (Handy-Abos) et 2× « ThinkPad X13 Gen 6 ». /transparenz promet pourtant « Dieselbe Aktion … zählt einmal ». |
+| 23 | ✅ | **Déjà visible en live**, contrairement à ce que dit le rapport : « Do 29.10., 21:00 » / « jeu. 29 oct., 21 h » / « Mon 30 Nov, 6:45 pm », tri « Nach Datum », aucun « ab ». |
+| 24 | ✅ | « Zuletzt aktualisiert : Do 29.10. » au format jour. |
+| 25 | 🟡 | Aucun lien cookie, et le NEL est mentionné en DE, FR et EN. Le §3 de `/de/datenschutz` décrit le compteur de clics comme actif (« speichern wir nur die Deal-Kennung … Speicherdauer 3 Monate »), alors que `CLICKS` n'est pas lié et que le beacon est coupé. Ajouter « Derzeit nicht aktiv » tant que `CLICKS_BINDING≠1`. |
+| 26 | ✅ | « Die Kontaktadresse folgt vor dem öffentlichen Start », et `security.txt` ne pointe plus vers `/impressum`. |
+| 27 | 🟡 | Beacon conditionné et `/api/*` hors routes : fait. L'échec de build sur un hôte inconnu n'est pas fait. On sort toujours vers `www.secretflying.com` (8) et `gutscheine.20min.ch` (30), ce dernier étant un portail de codes affiliés tiers. Pas de checksum. |
+| 28 | ✅ | `style-src 'self'`, un seul Cache-Control sur `og.png`, en-têtes complets sur le 302 de `/`. |
+| 29 | 🟡 | SHA épinglés et Dependabot actif : fait. Pas de hashes pip ni de lockfile name-test. **Nouveau risque :** Dependabot a ouvert « bump typescript 5.9.3 → 7.0.2 » (majeure). Le workflow `tests` des PR dure 17 s et ne lance pas `next build`, donc un merge laisserait passer une rupture. Ajouter `ignore: update-types: ["version-update:semver-major"]` pour `typescript` et `next`, ou un job `npm run build` sur les PR. |
+| 30 | ✅ | Pytest 228 OK (selon le rapport) ; `uscoring.py:179` commente l'item. Non revérifié en exécution. |
+| 31 | ✅ | `/de/deal/gordon-s-london-dry-gin-ovrnlh?fresh=1` : pas de `.was`, pas de badge, « Spirituosen: keine Preisvergleiche (Alkoholgesetz) ». |
+| 32 | ❌ | Les cartes Handy-Abos n'indiquent ni volume de données, ni roaming, ni réseau. |
+| 33 | ❌ | Aucune projection publique préparée dans `radar/`. |
+
+### Nouveaux constats (round 3)
+
+**N1 (P0). Le cache edge sert indéfiniment les pages deal du round 2.**
+- **Preuve :**
+  - `curl -sI /de/deal/finish-geschirrspulcaps-ultra-all-in-1-u9ah2d` renvoie 200, `cf-cache-status: HIT`, `age: 4980` puis `5425` ; avec `?v=1`, la même URL renvoie 404.
+  - Même comportement pour `coca-cola-classic-1rnj95b` et `swisscom-blue-mobile-s-aktionspreis-ui09jp`, qui contient encore `href="https://ad.doubleclick.net/ddm/trackclk/…"`.
+  - Les liens de langue de ces pages pointent vers `/en/deal/…-u9ah2d`, qui renvoie 404.
+  - Les pages actuelles ne sont pas en cache (pas de `cf-cache-status`). `max-age=60, must-revalidate` est donc ignoré pour les objets mis en cache à l'époque du middleware.
+- **Correctif :**
+  1. Au build, lire la liste des slugs publiés précédemment (`data/slugs-history.json` persisté sur gh-pages, 30 jours).
+  2. Pour chaque ancien slug absent du build : générer une ligne `_redirects` `/<l>/deal/<ancien> /<l>/deal/<nouveau> 301` quand l'id produit stable correspond, sinon vers la tombstone, sinon vers la catégorie.
+  3. Contrôler après le déploiement que `curl -sI` sur 20 anciens slugs renvoie 301 sans `cf-cache-status: HIT`.
+  4. Si le HIT persiste, ajouter `CDN-Cache-Control: no-store` sur `/*/deal/*` et revérifier.
+- **Acceptation :** aucune URL publiée depuis le 22.10 ne renvoie un contenu du round 2, et aucun lien de langue d'une page 200 ne mène à une 404.
+
+**N2 (P1). L'accueil s'ouvre sur 3 alcools dans les 3 langues.**
+- **Preuve :**
+  - `/de|fr|en/st-gallen` affiche dans la première section : Due Lune Nero d’Avola, Leopardo Spumante, Corona.
+  - On les retrouve dans les suggestions de la tombstone Mövenpick et en tête de `/supermarkt-aktionen` (4 alcools sur les 5 premières cartes).
+  - Le public inclut des mineurs : « Kanti-Bandnight 2026 » dans Events, « On: 15% Rabatt auf Trainer für Schüler » dans Studis.
+  - La publicité pour l'alcool ne doit pas viser spécialement les moins de 18 ans (droit alimentaire, ODAlOUs/LGV art. 43, à faire confirmer par le juriste). Hors cadre juridique, c'est aussi un mauvais placement de valeur pour des étudiants.
+- **Correctif :**
+  - Ajouter une famille `ALCOHOL` (Wein, Bier, Spumante, Prosecco, Cidre, DOC, IGP, AOC, Shiraz, Merlot…, en excluant Ginger Beer et les produits sans alcool) dans `project.ts`.
+  - L'exclure des sections de l'accueil, de la vitrine et de « Mehr aus » quand le deal courant n'est pas un alcool. La garder dans Supermarkt, avec le statt.
+  - Ajouter une ligne dans « Was wir nicht zeigen ».
+- **Acceptation :** aucune carte `ALCOHOL` dans `/<l>/st-gallen` ni dans la vitrine.
+
+**N3 (P1). Le départage par économie absolue en CHF favorise les gros conditionnements.**
+- **Preuve :**
+  - `project.ts:435` ordonne par `score`, puis `savingChf`.
+  - Avec le plafond à 6.9, 11 cartes Denner sont à égalité. L'ordre devient donc « carton de vin, 73.50 d'économie » > « 24 Heineken » > « 56 Cailler », qui sont des achats de 25 à 73 CHF.
+- **Correctif :** départager par `savingPct`, puis par l'économie au prix unitaire. Garder `savingChf` en dernier recours. Mettre à jour /transparenz (« dann nach Ersparnis in Franken ») et la fixture de neutralité.
+- **Acceptation :** à score égal, un article à −60 % passe devant un article à −50 %, quel que soit son prix.
+
+**N4 (P2). Mobile : le H2 de la première section est masqué, mais pas sa rangée.**
+- **Preuve :** `round3-after-home-mobile-light.jpg` montre « Alle 702 → » seul au-dessus de la première carte, sans dire de quoi il s'agit. `h2.sr-mobile` est sur `sec-supermarkt-aktionen`. La rangée garde sa hauteur, donc masquer le titre n'a fait gagner aucun pixel.
+- **Correctif :** afficher le H2 en `--t-headline` sur la même ligne que « Alle 702 » (coût : 0 px), et retirer `.sr-mobile`.
+
+**N5 (P2). Casse cassée après une apostrophe.**
+- **Preuve :** les H1 « Gordon'S London Dry Gin » et « Fisher’S Choice ASC Dorade Royal ». Dans `project.ts:120`, `SHOUT` ne capture que `GORDON`.
+- **Correctif :** `SHOUT = /(?<![\p{L}\p{N}])(\p{Lu}{4,}(?:['’]\p{Lu}{1,2})?)(?![\p{L}\p{N}])/gu`, plus un test vitest sur « GORDON'S ».
+
+**N6 (P2). Pages catégorie sur mobile : deux rangées de chips commencent chacune par « Alle » / « Tout ».**
+- **Preuve :** capture à 320 px de `/fr/st-gallen/supermarkt-aktionen` : « Tout | Supermarché | … » puis « Tout | Aldi | Denner … ». La première carte est à 315 px.
+- **Correctif :** sur les pages Supermarkt, renommer la 2e rangée « Alle Läden / Tous les magasins / All stores », ou la remplacer par un `<select>` compact. Retirer « Alle » de la rangée catégories, comme sur l'accueil.
+
+**N7 (P2). Des non-offres sans valeur sont mêlées aux listes.**
+- **Preuve :** Tech p.1 contient « Letzte ‘erschwingliche’ 4K Gaming-PCs? … », qui est un article, et « HP Herbst Sale – Spare bis zu 40% ». Shopping contient « Laufband Speed klappbar … » sans prix, et « Peach Tintenpatrone … für CHF 6.30 » sans prix alors que le titre en donne un.
+- **Correctif :**
+  - Dans les catégories, exiger `price ∨ discountPct ∨ free`. Sinon, sortir la carte de la liste ou la placer en fin de liste.
+  - Extraire `für CHF x` du titre comme prix, puis le retirer du titre.
+
+**N8 (P2). La 404 contredit les tombstones.**
+- **Preuve :** « This address does not exist (any more). Expired deals are removed automatically. »
+- **Correctif :** « Abgelaufene Aktionen bleiben 30 Tage als ‹abgelaufen› sichtbar. Diese Adresse gibt es nicht. »
+
+### Ce qui tient bien
+- Aucun switch de langue n'a échoué sur les 120 URL du sitemap ni sur les 30 routes profondes testées (pagination, magasins, pages légales, 404 imbriquées). **La seule exception est N1.**
+- Les en-têtes de sécurité sont complets partout. Les iframes sont refusées (`frame-ancestors 'none'`). `/api/click` est inerte.
+- Le mode sombre est cohérent sur l'accueil et la page deal (`round3-after-*-dark.jpg`). Aucun scroll horizontal à 320 px.
