@@ -9,6 +9,18 @@ updates:
     directory: /web
     schedule: { interval: weekly }
     open-pull-requests-limit: 5
+    # Round 4, item 20 : pas de saut de version majeure automatique sur la chaîne de build
+    # (TypeScript 7, @types/node 26 : à faire à la main, build complet à l'appui).
+    ignore:
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
+      - dependency-name: next
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+    groups:
+      minor-and-patch:
+        update-types: ["minor", "patch"]
   - package-ecosystem: pip
     directory: /
     schedule: { interval: weekly }
