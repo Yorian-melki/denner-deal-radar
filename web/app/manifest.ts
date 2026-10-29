@@ -12,12 +12,13 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: SITE_NAME,
     description: DICTS.de.metaDescription,
     start_url: paths.city("de", mainCity().slug),
-    display: "browser",
+    display: "standalone",
     background_color: "#f5f5f7",
     theme_color: "#f5f5f7",
     icons: [
       { src: "/icon.svg", type: "image/svg+xml", sizes: "any" },
       { src: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" },
+      { src: "/icon-512.png", type: "image/png", sizes: "512x512", purpose: "maskable" },
     ],
   };
 }

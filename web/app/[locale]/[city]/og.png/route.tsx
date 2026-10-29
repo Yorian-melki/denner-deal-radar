@@ -4,7 +4,7 @@ import { getDeals } from "@/lib/data";
 import { fmtInt } from "@/lib/format";
 import { LOCALES, dict, isLocale, type Locale } from "@/lib/i18n";
 import { inCity } from "@/lib/project";
-import { verifiedCount } from "@/lib/select";
+import { canonical } from "@/lib/select";
 import { SITE_NAME } from "@/lib/site";
 
 /** Image de partage (Open Graph) par langue et par ville, générée au build avec
@@ -28,7 +28,8 @@ export async function GET(_req: Request, { params }: { params: Promise<{ locale:
   let facts = t.tagline;
   try {
     const { deals } = await getDeals();
-    facts = t.factsVerified(fmtInt(verifiedCount(deals.filter((d) => inCity(d, city))), locale));
+    // Même compteur que la ligne de faits de la page (round 3, item 16).
+    facts = t.factsCount(fmtInt(canonical(deals.filter((d) => inCity(d, city))).length, locale));
   } catch {
     /* sans données : slogan seul */
   }
