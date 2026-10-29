@@ -94,6 +94,9 @@ for (const f of walk(OUT).filter((x) => x.endsWith(".html"))) {
     return ""; // runtime Next/React (chunks, bootstrap, __next_f)
   });
   html = html.replace(/<link rel="preload" as="script"[^>]*>/g, "").replace(/<link rel="modulepreload"[^>]*>/g, "");
+  // Métadonnées en ASCII (« Saint-Gall », pas U+2011 ni NBSP) : le texte visible garde l'insécable (item 38).
+  html = html.replace(/<title>([^<]*)<\/title>/, (_m, t) => `<title>${t.replace(/\u2011/g, "-").replace(/\u00a0/g, " ")}</title>`)
+    .replace(/(<meta (?:name|property)="(?:description|og:[a-z_]+|twitter:[a-z_]+)" content=")([^"]*)"/g, (_m, a, c) => `${a}${c.replace(/\u2011/g, "-").replace(/\u00a0/g, " ")}"`);
   // Restes du streaming React, inutiles sans hydratation (round 3, item 11).
   html = html.replace(/<div hidden=""><!--\$--><!--\/\$--><\/div>/g, "").replace(/<!-- -->/g, "").replace(/<!--\/?\$-->/g, "");
   const is404 = /(^|\/)404\.html$/.test(r) || r === "_not-found.html";

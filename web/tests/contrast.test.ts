@@ -44,7 +44,7 @@ describe.each([["clair", light], ["sombre", dark]] as const)("thème %s", (_name
 describe("échelle typographique", () => {
   it("font-size et font-weight seulement via les jetons", () => {
     const rules = css.slice(css.indexOf("/* ---------- Base"));
-    for (const m of rules.matchAll(/font-size:\s*([^;]+);/g)) expect(m[1], m[0]).toMatch(/^(var\(--t-[a-z0-9]+\)|inherit|0\.95em|0\.58em|28px)$/);
+    for (const m of rules.matchAll(/font-size:\s*([^;]+);/g)) expect(m[1], m[0]).toMatch(/^(var\(--t-[a-z0-9]+\)|inherit|0\.95em|0\.58em)$/);
     for (const m of rules.matchAll(/font-weight:\s*([^;]+);/g)) expect(m[1], m[0]).toMatch(/^var\(--w-(regular|medium|semi|bold)\)$/);
   });
 });

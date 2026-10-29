@@ -9,7 +9,7 @@ import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-/** Une entrée par page et par langue, chacune avec ses alternatives hreflang. */
+/** Une entrée par page et par langue (chaque <loc> répond 200), avec hreflang et x-default. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { deals, generatedAt } = await getDeals();
   const lastModified = generatedAt ? new Date(generatedAt) : new Date();
@@ -17,9 +17,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const add = (rest: string, changeFrequency: "hourly" | "daily", priority: number) => {
     const languages: Record<string, string> = {};
     for (const l of LOCALES) languages[HTML_LANG[l]] = `${SITE_URL}/${l}${rest}`;
+    languages["x-default"] = `${SITE_URL}/de${rest}`;
     for (const l of LOCALES) out.push({ url: `${SITE_URL}/${l}${rest}`, lastModified, changeFrequency, priority, alternates: { languages } });
   };
-  add("", "hourly", 1);
+  // Pas d'entrée /de, /fr, /en : ces URL redirigent (302) vers la ville (round 3, item 38).
   for (const c of launchedCities()) {
     add(`/${c.slug}`, "hourly", 0.9);
     const here = deals.filter((d) => inCity(d, c));
