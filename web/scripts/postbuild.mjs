@@ -187,7 +187,10 @@ let legacy = { lines: 0, deal: 0, category: 0, city: 0, dropped: 0 };
       const to = l.split(" ")[1];
       if (!existsSync(path.join(OUT, `${to}.html`))) errors.push(`_redirects : cible inexistante ${to}`);
     }
-    writeFileSync(redirectsFile, `${base.trimEnd()}\n# Anciens liens deal (généré au build depuis /slug-registry.json, round 4, item 1).\n${lines.join("\n")}\n`);
+    // EN TÊTE du fichier : Cloudflare Pages traite toute règle placée après une règle dynamique
+    // (:lang, *) comme dynamique, limite 100 — constaté en ligne le 29.10 (seules ~100 règles
+    // appliquées). Les règles statiques d'abord, donc.
+    writeFileSync(redirectsFile, `# Anciens liens deal (généré au build depuis /slug-registry.json, round 4, item 1).\n${lines.join("\n")}\n${base.trimEnd()}\n`);
   }
 }
 
