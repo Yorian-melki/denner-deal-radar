@@ -61,3 +61,8 @@ export function warnIfMonetisationBlocked(env: Record<string, string | undefined
   const msg = `Impressum incomplet (NEXT_PUBLIC_OPERATOR_NAME/ADDRESS/EMAIL) : ${on.join(", ")} ignoré(s) — aucun lien rémunéré, aucune publicité, pas d'indexation.`;
   console.warn(env.GITHUB_ACTIONS ? `::warning::${msg}` : msg);
 }
+
+/** Placements payants (sponsors) : 0. Tout sponsor futur n'apparaîtrait que dans un
+ * emplacement « Gesponsert », hors de toute liste classée ; le pied de page lit cette
+ * constante (round 3, item 44) — jamais un « 0 » écrit en dur. */
+export const SPONSORS: readonly { name: string }[] = [];

@@ -40,7 +40,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
         <h2>Responsable du traitement</h2>
         {controller}
         <h2>1. Hébergement et journaux serveur (Cloudflare)</h2>
-        <p>Le site est hébergé par Cloudflare, Inc. (États-Unis), sous-traitant. À chaque visite, Cloudflare traite les données techniques nécessaires (adresse IP, horodatage, adresse demandée, navigateur) pour servir la page et la protéger contre les attaques. Base légale : intérêt légitime à un fonctionnement sûr (art. 6, 1, f RGPD ; art. 31 LPD). Transfert aux États-Unis : Data Privacy Framework UE-US et Suisse-US. Nous ne conservons nous-mêmes aucune adresse IP.</p>
+        <p>Le site est hébergé par Cloudflare, Inc. (États-Unis), sous-traitant. À chaque visite, Cloudflare traite les données techniques nécessaires (adresse IP, horodatage, adresse demandée, navigateur) pour servir la page et la protéger contre les attaques. Base légale : intérêt légitime à un fonctionnement sûr (art. 6, 1, f RGPD ; art. 31 LPD). Transfert aux États-Unis : Data Privacy Framework UE-US et Suisse-US. Nous ne conservons nous-mêmes aucune adresse IP. Cloudflare peut aussi demander des rapports d’erreurs réseau (NEL) : ton navigateur signale alors les échecs de connexion directement à Cloudflare, sans le contenu des pages.</p>
         <h2>2. Mesure d’audience</h2>
         {analytics
           ? <p>Nous comptons les pages vues avec Cloudflare Web Analytics, <strong>sans cookie</strong>, sans empreinte numérique ni profil ; nous ne voyons que des totaux (page, page d’origine, pays, type d’appareil). Base légale : intérêt légitime (art. 6, 1, f RGPD).</p>
@@ -55,7 +55,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
         <h2>6. Contact par e-mail</h2>
         <p>Si tu nous écris (p. ex. demande de retrait), ton adresse et ton message servent uniquement à traiter la demande et sont supprimés ensuite, sauf obligation légale de conservation.</p>
         <h2>7. Tes droits</h2>
-        <p>Accès, rectification, effacement, limitation, portabilité, opposition et retrait du consentement (art. 15 à 21 RGPD ; art. 25 s. LPD) : écris-nous via les coordonnées des <a href={L("impressum")}>mentions légales</a>. Tu peux saisir le PFPDT (Suisse) ou la CNIL (France) / l’autorité de ton pays. Aucune décision automatisée, aucun profilage.</p>
+        <p>Accès, rectification, effacement, limitation, portabilité, opposition et retrait du consentement (art. 15 à 21 RGPD ; art. 25 s. LPD)  : {o.email ? <>écris-nous via les coordonnées des <a href={L("impressum")}>mentions légales</a>.</> : "l’adresse de contact sera publiée avant le lancement public."} Tu peux saisir le PFPDT (Suisse) ou la CNIL (France) / l’autorité de ton pays. Aucune décision automatisée, aucun profilage.</p>
       </section>
     </article>
   );
@@ -69,7 +69,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
         <h2>Controller</h2>
         {controller}
         <h2>1. Hosting and server logs (Cloudflare)</h2>
-        <p>The site is hosted by Cloudflare, Inc. (USA) as a processor. On every request Cloudflare processes technically necessary data (IP address, time, requested address, browser identifier) to deliver the page and protect it against attacks. Legal basis: legitimate interest in secure operation (Art. 6(1)(f) GDPR; Art. 31 FADP). Transfer to the USA: EU-US and Swiss-US Data Privacy Framework. We do not store IP addresses ourselves.</p>
+        <p>The site is hosted by Cloudflare, Inc. (USA) as a processor. On every request Cloudflare processes technically necessary data (IP address, time, requested address, browser identifier) to deliver the page and protect it against attacks. Legal basis: legitimate interest in secure operation (Art. 6(1)(f) GDPR; Art. 31 FADP). Transfer to the USA: EU-US and Swiss-US Data Privacy Framework. We do not store IP addresses ourselves. Cloudflare may also request network error reports (NEL): your browser then reports connection failures directly to Cloudflare, without page content.</p>
         <h2>2. Audience measurement</h2>
         {analytics
           ? <p>We count page views with Cloudflare Web Analytics: <strong>no cookies</strong>, no fingerprinting, no profiles; we only see totals (page, referrer, country, device type). Legal basis: legitimate interest (Art. 6(1)(f) GDPR).</p>
@@ -84,7 +84,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
         <h2>6. Contact by e-mail</h2>
         <p>If you write to us (e.g. a removal request), we use your address and message only to handle it and delete them once it is settled, unless the law requires us to keep them.</p>
         <h2>7. Your rights</h2>
-        <p>You have the right to access, rectification, erasure, restriction, portability and objection, and to withdraw consent (Art. 15–21 GDPR; Art. 25 ff. FADP): write to us using the details in the <a href={L("impressum")}>imprint</a>. You can also complain to the FDPIC (Switzerland, <a href="https://www.edoeb.admin.ch" rel="noopener noreferrer">edoeb.admin.ch</a>) or the data protection authority of your EU country. No automated individual decisions, no profiling.</p>
+        <p>You have the right to access, rectification, erasure, restriction, portability and objection, and to withdraw consent (Art. 15–21 GDPR; Art. 25 ff. FADP): {o.email ? <>write to us using the details in the <a href={L("impressum")}>imprint</a>.</> : "a contact address will be published before the public launch."} You can also complain to the FDPIC (Switzerland, <a href="https://www.edoeb.admin.ch" rel="noopener noreferrer">edoeb.admin.ch</a>) or the data protection authority of your EU country. No automated individual decisions, no profiling.</p>
       </section>
     </article>
   );
@@ -98,7 +98,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
         <h2>Verantwortlicher</h2>
         {controller}
         <h2>1. Hosting und Server-Logs (Cloudflare)</h2>
-        <p>Die Website läuft bei Cloudflare, Inc. (USA) als Auftragsverarbeiter. Bei jedem Aufruf verarbeitet Cloudflare technisch notwendige Daten (IP-Adresse, Zeitpunkt, aufgerufene Adresse, Browser-Kennung), um die Seite auszuliefern und vor Angriffen zu schützen. Rechtsgrundlage: berechtigtes Interesse an einem sicheren Betrieb (Art. 6 Abs. 1 lit. f DSGVO; Art. 31 DSG). Übermittlung in die USA: EU-US und Swiss-US Data Privacy Framework (DPF). Wir selbst speichern keine IP-Adressen.</p>
+        <p>Die Website läuft bei Cloudflare, Inc. (USA) als Auftragsverarbeiter. Bei jedem Aufruf verarbeitet Cloudflare technisch notwendige Daten (IP-Adresse, Zeitpunkt, aufgerufene Adresse, Browser-Kennung), um die Seite auszuliefern und vor Angriffen zu schützen. Rechtsgrundlage: berechtigtes Interesse an einem sicheren Betrieb (Art. 6 Abs. 1 lit. f DSGVO; Art. 31 DSG). Übermittlung in die USA: EU-US und Swiss-US Data Privacy Framework (DPF). Wir selbst speichern keine IP-Adressen. Cloudflare kann ausserdem Netzwerkfehler-Berichte (NEL) anfordern: Dein Browser meldet dann Verbindungsfehler direkt an Cloudflare, ohne Inhalte der Seite.</p>
         <h2>2. Reichweitenmessung</h2>
         {analytics
           ? <p>Wir zählen Seitenaufrufe mit Cloudflare Web Analytics. Es werden <strong>keine Cookies</strong> gesetzt, kein Fingerprinting betrieben und keine Profile erstellt; wir sehen nur zusammengefasste Zahlen (Seite, Herkunftsseite, Land, Gerätetyp). Rechtsgrundlage: berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO).</p>
@@ -113,7 +113,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
         <h2>6. Kontakt per E-Mail</h2>
         <p>Schreibst du uns (z. B. eine Entfernungsanfrage), verwenden wir deine E-Mail-Adresse und Nachricht nur zur Bearbeitung und löschen sie, wenn die Sache erledigt ist, ausser eine gesetzliche Aufbewahrungspflicht verlangt etwas anderes.</p>
         <h2>7. Deine Rechte</h2>
-        <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch sowie auf Widerruf einer Einwilligung (Art. 15–21 DSGVO; Art. 25 ff. DSG). Schreib uns dazu über die Kontaktangaben im <a href={L("impressum")}>Impressum</a>. Du kannst dich ausserdem beim EDÖB (Schweiz, <a href="https://www.edoeb.admin.ch" rel="noopener noreferrer">edoeb.admin.ch</a>) oder bei der Datenschutzbehörde deines EU-Landes beschweren (Frankreich: <a href="https://www.cnil.fr" rel="noopener noreferrer">CNIL</a>).</p>
+        <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch sowie auf Widerruf einer Einwilligung (Art. 15–21 DSGVO; Art. 25 ff. DSG). {o.email ? <>Schreib uns dazu über die Kontaktangaben im <a href={L("impressum")}>Impressum</a>.</> : "Die Kontaktadresse dafür folgt vor dem öffentlichen Start."} Du kannst dich ausserdem beim EDÖB (Schweiz, <a href="https://www.edoeb.admin.ch" rel="noopener noreferrer">edoeb.admin.ch</a>) oder bei der Datenschutzbehörde deines EU-Landes beschweren (Frankreich: <a href="https://www.cnil.fr" rel="noopener noreferrer">CNIL</a>).</p>
         <p>Es gibt keine automatisierte Einzelentscheidung und kein Profiling.</p>
       </section>
     </article>

@@ -6,6 +6,7 @@ import { BADGE_MIN_SCORE, OBSERVED_MAX_GAP, OBSERVED_MIN_N, SCORE_CAP, STORE_CLO
 import { HOME_MIN_SCORE, HOME_MIN_SECTION, HISTORY_MIN_OBSERVATIONS, MIN_CONFIDENCE_TOP, PER_BRAND, PER_MERCHANT, SECTION_N, TOP_MIN_SCORE, TOP_MIN_SHOWN, TOP_N } from "@/lib/select";
 import { MAX_SHARE_PER_MERCHANT, PAGE_SIZE } from "@/components/CategoryListing";
 import { paths } from "@/lib/site";
+import { operator } from "@/lib/operator";
 
 const TITLE: Tri = { de: "Methode & Transparenz", fr: "Méthode et transparence", en: "Method & transparency" };
 
@@ -32,6 +33,8 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
   const pct = (v: number) => fmtPct(v * 100, locale);
   const sc = (v: number) => fmtScore(v, locale);
   const active = activeProgrammes();
+  // Aucune promesse de contact tant qu'aucune adresse n'est publiée (round 3, item 26).
+  const contact = !!operator().email;
   const tiers: [string, string][] = [
     [`≥ ${sc(8.5)}`, t.scoreTiers.top],
     [`≥ ${sc(7)}`, t.scoreTiers.great],
@@ -84,7 +87,7 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
         <>Die Liste ist überwiegend schweizweit: Supermarkt-Aktionen gelten meist in allen Filialen, Online-Angebote überall.</>,
       ],
       h4: "Quellen und Fehler",
-      sources: <>Wir lesen nur öffentlich zugängliche Seiten und Feeds und verlinken immer auf die Quelle; massgebend ist die Seite des Anbieters. Führt ein Link zu einer Sammelseite statt zum Händler, steht das auf der Karte («gefunden über …»). Liste und Entfernungsanfragen: <a href={L("quellen")}>Quellen</a>. Fehler gefunden? Kontakt im <a href={L("impressum")}>Impressum</a>.</>,
+      sources: <>Wir lesen nur öffentlich zugängliche Seiten und Feeds und verlinken immer auf die Quelle; massgebend ist die Seite des Anbieters. Führt ein Link zu einer Sammelseite statt zum Händler, steht das auf der Karte («gefunden über …»). Liste und Entfernungsanfragen: <a href={L("quellen")}>Quellen</a>. Fehler gefunden? {contact ? <>Kontakt im <a href={L("impressum")}>Impressum</a>.</> : "Die Kontaktadresse folgt vor dem öffentlichen Start."}</>,
     },
     fr: {
       h1: "Comment la note est calculée",
@@ -130,7 +133,7 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
         <>La liste est surtout nationale : les actions de supermarché valent en général dans tous les magasins, les offres en ligne partout.</>,
       ],
       h4: "Sources et erreurs",
-      sources: <>Nous ne lisons que des pages et flux publics et renvoyons toujours vers la source ; seule la page du vendeur fait foi. Si un lien mène à un agrégateur plutôt qu’au commerçant, la carte l’indique (« trouvé via … »). Liste et demandes de retrait : <a href={L("quellen")}>sources</a>. Une erreur ? Contact dans les <a href={L("impressum")}>mentions légales</a>.</>,
+      sources: <>Nous ne lisons que des pages et flux publics et renvoyons toujours vers la source ; seule la page du vendeur fait foi. Si un lien mène à un agrégateur plutôt qu’au commerçant, la carte l’indique (« trouvé via … »). Liste et demandes de retrait : <a href={L("quellen")}>sources</a>. Une erreur ? {contact ? <>Contact dans les <a href={L("impressum")}>mentions légales</a>.</> : "L’adresse de contact sera publiée avant le lancement public."}</>,
     },
     en: {
       h1: "How the score is built",
@@ -176,7 +179,7 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
         <>The list is mostly nationwide: supermarket deals usually apply in every branch, online offers everywhere.</>,
       ],
       h4: "Sources and errors",
-      sources: <>We only read public pages and feeds and always link to the source; the seller’s page is authoritative. If a link leads to an aggregator rather than the retailer, the card says so (“found via …”). List and removal requests: <a href={L("quellen")}>sources</a>. Found an error? Contact details in the <a href={L("impressum")}>imprint</a>.</>,
+      sources: <>We only read public pages and feeds and always link to the source; the seller’s page is authoritative. If a link leads to an aggregator rather than the retailer, the card says so (“found via …”). List and removal requests: <a href={L("quellen")}>sources</a>. Found an error? {contact ? <>Contact details in the <a href={L("impressum")}>imprint</a>.</> : "A contact address will be published before the public launch."}</>,
     },
   }[locale];
   return (
