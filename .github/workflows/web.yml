@@ -5,9 +5,11 @@ name: web
 on:
   schedule:
     - cron: "20 */2 * * *"
-    # Juste après minuit et à 6 h (heure suisse, hiver UTC+1) : les actions terminées
-    # disparaissent sans attendre le prochain créneau de 2 h.
-    - cron: "5 23 * * *"
+    # 00:01 et 18:01 heure suisse (UTC+1 en hiver, UTC+2 en été : les deux créneaux UTC),
+    # puis 6 h : les actions terminées (et, à 18 h, les ventes en magasin du dernier jour)
+    # quittent les listes sans attendre le créneau de 2 h (round 3, item 20).
+    - cron: "1 22,23 * * *"
+    - cron: "1 16,17 * * *"
     - cron: "5 5 * * *"
   push:
     branches: [main]
@@ -51,8 +53,8 @@ jobs:
       AFF_ALIEXPRESS_TEMPLATE: ${{ vars.AFF_ALIEXPRESS_TEMPLATE }}
       AFF_BOOKING_AID: ${{ vars.AFF_BOOKING_AID }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 24
           cache: npm

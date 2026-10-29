@@ -1,0 +1,14 @@
+# Mises à jour de sécurité (round 3, item 29). Les actions sont épinglées par SHA :
+# Dependabot propose le nouveau SHA avec le tag en commentaire.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: weekly }
+  - package-ecosystem: npm
+    directory: /web
+    schedule: { interval: weekly }
+    open-pull-requests-limit: 5
+  - package-ecosystem: pip
+    directory: /
+    schedule: { interval: weekly }
