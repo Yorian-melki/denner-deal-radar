@@ -119,8 +119,13 @@ export function valueText(deal: PublicDeal, locale: Locale): string | undefined 
 
 /** « bis heute », « bis morgen », « bis Mi 29.10. » (date de fin publiée) ; « ab morgen »,
  * « ab Mo 03.11. » (pas encore commencé). Jamais d'heures ni de minutes. */
-export function dateText(deal: Pick<PublicDeal, "startsAt" | "endsAt" | "endsInferred" | "upcoming">, locale: Locale, now = new Date()): string | undefined {
+export function dateText(deal: Pick<PublicDeal, "startsAt" | "endsAt" | "endsInferred" | "upcoming"> & { category?: string }, locale: Locale, now = new Date()): string | undefined {
   const t = dict(locale);
+  // Événement d'un soir (≤ 18 h ou sans fin) : « Mi 9.12., 20:00 » ; « ab » seulement sur plusieurs jours (round 3, item 23).
+  if (deal.category === "events" && deal.startsAt) {
+    const start = new Date(deal.startsAt).getTime(), end = deal.endsAt ? new Date(deal.endsAt).getTime() : NaN;
+    if (!Number.isFinite(end) || end - start <= 18 * 3600 * 1000) return eventTime(deal.startsAt, locale, now);
+  }
   if (deal.startsAt && (deal.upcoming || new Date(deal.startsAt).getTime() > now.getTime())) {
     return dayDiff(deal.startsAt, now) === 1 ? t.fromTomorrow : t.from(fmtDay(deal.startsAt, locale, now));
   }
@@ -131,6 +136,17 @@ export function dateText(deal: Pick<PublicDeal, "startsAt" | "endsAt" | "endsInf
     return t.until(fmtDay(deal.endsAt, locale, now));
   }
   return undefined;
+}
+
+/** « Mi 9.12., 20:00 » / « mer. 9 déc., 20 h » / « Wed 9 Dec, 8 pm » (heure omise si minuit). */
+export function eventTime(iso: string, locale: Locale, now = new Date()): string {
+  const day = fmtDay(iso, locale, now);
+  const p = new Intl.DateTimeFormat("de-CH", { hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone: "Europe/Zurich" }).formatToParts(new Date(iso));
+  const h = Number(p.find((x) => x.type === "hour")?.value ?? 0), m = p.find((x) => x.type === "minute")?.value ?? "00";
+  if (h === 0 && m === "00") return day;
+  if (locale === "fr") return `${day}, ${h} h${m === "00" ? "" : ` ${m}`}`;
+  if (locale === "en") return `${day}, ${h % 12 || 12}${m === "00" ? "" : `:${m}`} ${h < 12 ? "am" : "pm"}`;
+  return `${day}, ${String(h).padStart(2, "0")}:${m}`;
 }
 
 /** Ligne obligatoire des abonnements : durée, prix ensuite, frais, total 24 mois

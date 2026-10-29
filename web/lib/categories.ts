@@ -22,9 +22,9 @@ export const CATEGORIES: Category[] = [
   { slug: "gutscheine", families: ["coupon", "cashback"], unrated: true },
   // Abonnements : prestations différentes (données, roaming, réseau) → aucune note (round 3, item 2).
   { slug: "handy-abos", families: ["subscription"], unrated: true },
-  { slug: "events", families: ["event", "local_news"] },
+  { slug: "events", families: ["event"] },
   { slug: "reisen", families: ["travel", "transport"] },
-  { slug: "lokal", families: ["restaurant"], noTop: true },
+  { slug: "lokal", families: ["restaurant", "local_news"], noTop: true },
   { slug: "shopping", families: ["retail", "flash", "contest"] },
 ];
 
@@ -50,8 +50,16 @@ export interface Classifiable { family: string; title: string; merchant?: string
 /** Essai gratuit à renouvellement automatique (sort de « Gratis », étiquette « Testabo »). */
 export const isTrial = (d: Pick<Classifiable, "title">) => TRIAL.test(d.title);
 
+/** Montres et bijoux : Shopping, jamais Tech (round 3, item 22). */
+const JEWELRY = /\b(tissot|swatch|longines|certina|fossil|armbanduhr|uhr|uhren|schmuck|halskette|ohrringe|bijou|montre)\b/i;
+const SMART = /smartwatch|apple watch|galaxy watch|garmin|fitbit/i;
+/** Revendo : seulement des appareils reconditionnés (pas les accessoires). */
+const DEVICE = /iphone|ipad|macbook|imac|mac mini|galaxy|pixel|laptop|notebook|smartphone|tablet|watch|airpods|switch|playstation|refurb|generalüberholt|zustand|grade|outlet/i;
+
 export function categorize(d: Classifiable): string {
   const fam = d.family;
+  if ((/^christ$/i.test((d.merchant ?? "").trim()) || JEWELRY.test(d.title)) && !SMART.test(d.title) && fam !== "grocery" && fam !== "student") return "shopping";
+  if (d.source === "revendo" && !DEVICE.test(d.title)) return "shopping";
   const text = `${d.title} ${d.category ?? ""}`;
   const merchant = (d.merchant ?? "").trim();
   if (fam === "student") return "studenten-rabatte";
@@ -59,7 +67,8 @@ export function categorize(d: Classifiable): string {
   if (fam === "subscription") return "handy-abos";
   if (fam === "refurbished" || fam === "secondhand") return "refurbished";
   if (fam === "coupon" || fam === "cashback") return "gutscheine";
-  if (fam === "event" || fam === "local_news") return "events";
+  if (fam === "event") return "events";
+  if (fam === "local_news") return "lokal";
   if (fam === "travel" || fam === "transport") return "reisen";
   if (fam === "restaurant" || SERVICES.test(d.title)) return "lokal";
   // Enseigne de supermarché : Supermarkt, sauf électronique explicite (pas de consommable).

@@ -215,3 +215,21 @@ describe("items 13, 14 : maillage et diversité", () => {
     }
   });
 });
+
+describe("items 22, 23 : catégories et dates d'événements", () => {
+  it("montres et bijoux en Shopping, accessoires Revendo hors Refurbished, avis communaux en Lokal", async () => {
+    const { categorize } = await import("@/lib/categories");
+    expect(categorize({ family: "tech", title: "Tissot PRX Powermatic 80", merchant: "Christ" })).toBe("shopping");
+    expect(categorize({ family: "tech", title: "Apple Watch Series 10", merchant: "Digitec" })).toBe("tech-deals");
+    expect(categorize({ family: "refurbished", title: "Panzerglas Schutzfolie", source: "revendo" })).toBe("shopping");
+    expect(categorize({ family: "refurbished", title: "iPhone 14 128 GB (Zustand: sehr gut)", source: "revendo" })).toBe("refurbished");
+    expect(categorize({ family: "local_news", title: "Nachsammlung Kehricht" })).toBe("lokal");
+  });
+  it("concert d'un soir : jour et heure, jamais « ab »", async () => {
+    const { dateText } = await import("@/components/DealCard");
+    const t = dateText({ category: "events", startsAt: "2026-12-09T20:00:00+01:00", upcoming: true }, "de", NOW);
+    expect(t).toBe("Mi 9.12., 20:00");
+    expect(dateText({ category: "events", startsAt: "2026-12-09T20:00:00+01:00", upcoming: true }, "fr", NOW)).toBe("mer. 9 déc., 20 h");
+    expect(dateText({ category: "events", startsAt: "2026-12-09T20:00:00+01:00", upcoming: true }, "en", NOW)).toBe("Wed 9 Dec, 8 pm");
+  });
+});
