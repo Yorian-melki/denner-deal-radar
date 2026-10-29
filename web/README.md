@@ -16,3 +16,14 @@ npm run deploy:prod              # production (après GO)
 
 Variables : voir `.env.example` (toutes facultatives ; sans identifiant
 d'affiliation, les liens d'origine sont conservés).
+
+## Build local sur une petite machine (8 Go, ~4 Go libres)
+
+```sh
+df -h /                      # arrêter si moins de 1 Go libre
+NEXT_BUILD_CPUS=2 NEXT_PUBLIC_SITE_URL=https://savradar.pages.dev npm run build
+```
+
+`prebuild` supprime `.next` et `out` avant de reconstruire (pas de double occupation) ; hors CI,
+le postbuild supprime `.next/server/app` et `.next/cache` (≈ 16 Mo restent) ainsi que les dossiers
+vides de `out/`. Ne pas lancer wrangler, Chrome et le build en même temps.
