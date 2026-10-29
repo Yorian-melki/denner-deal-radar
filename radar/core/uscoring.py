@@ -38,6 +38,10 @@ SAVINGS_CAPS = [(5.0, 6.0), (15.0, 7.5), (30.0, 8.5)]
 FREE_CURVE = [(0, 0.0), (5, 1.5), (15, 3.0), (30, 5.0), (80, 7.0), (200, 8.0), (500, 9.0), (1500, 10.0)]
 
 
+#: Nombre minimal de relevés pour le bonus « record » (aligné sur web/lib/select.ts).
+RECORD_MIN_N = 3
+
+
 def free_curve(net: float) -> float:
     if net <= 0:
         return 0.0
@@ -54,7 +58,7 @@ class UScore:
     effective_discount: float | None = None
     net_savings: float | None = None
     components: list[tuple[str, float | None]] = field(default_factory=list)
-    integrity: str | None = None   # ok | inflated_reference | above_usual_price | unknown
+    integrity: str | None = None   # ok | unchecked | inflated_reference | above_usual_price | unknown
 
     def as_dict(self) -> dict:
         return {"deal_score": self.score, "score_confidence": round(self.confidence, 2),
@@ -94,6 +98,7 @@ def _discount_based(deal: dict, history: list[dict] | None) -> UScore:
     ref, rtype = deal.get("reference_price"), deal.get("reference_price_type") or "none"
     stats = history_stats(history or [], exclude_deal=deal.get("deal_id"))
     integrity = "unknown"
+    prior_refs_any = False
     candidates: list[tuple[float, float, str]] = []   # (d, conf, libellé)
 
     if total is not None and ref and rtype in REFERENCE_MODEL:
@@ -103,6 +108,7 @@ def _discount_based(deal: dict, history: list[dict] | None) -> UScore:
         prior_refs = [h["reference_price"] for h in (history or [])
                       if h.get("reference_price") and h.get("deal_id") != deal.get("deal_id")
                       and h.get("reference_price_type") == rtype]
+        prior_refs_any = bool(prior_refs)
         if prior_refs and ref > min(prior_refs) * 1.10:
             ref_eff = min(prior_refs) * factor
             integrity = "inflated_reference"
@@ -131,8 +137,12 @@ def _discount_based(deal: dict, history: list[dict] | None) -> UScore:
     d, conf, why = min(candidates, key=lambda c: c[0])
     if len(candidates) > 1:
         conf = min(0.95, max(c[1] for c in candidates) + 0.05)
+    # « ok » seulement si la référence a été confrontée à quelque chose (références antérieures
+    # du même type ou ≥ 3 relevés de prix) ; sinon « unchecked » : le site plafonne alors la
+    # note à 6.9 et écrit « laut <Händler> » (round 3, item 3). Jamais « ok » par défaut.
     if integrity == "unknown":
-        integrity = "ok"
+        checked = bool(ref and rtype in REFERENCE_MODEL and prior_refs_any) or stats.get("n", 0) >= 3
+        integrity = "ok" if checked else "unchecked"
     base = curve(d)
     comps.insert(0, (f"{why} : {d:.0f} %", round(base, 2)))
     adj = 0.0
@@ -142,7 +152,8 @@ def _discount_based(deal: dict, history: list[dict] | None) -> UScore:
         pen = base * (0.08 if mq == 2 else 0.15)
         adj -= pen
         comps.append((f"achat minimum {mq} unités", -pen))
-    if stats.get("n", 0) >= 2 and total is not None and total < stats["min"] * 0.98:
+    # « Record » à partir de 3 relevés, comme le site (LOWEST_MIN_OBSERVATIONS = 3).
+    if stats.get("n", 0) >= RECORD_MIN_N and total is not None and total < stats["min"] * 0.98:
         adj += 0.3
         comps.append(("record : plus bas prix jamais observé", 0.3))
     saving = (ref * REFERENCE_MODEL.get(rtype, (1, 0))[0] - total) if (ref and total is not None) else None
@@ -164,9 +175,8 @@ def _discount_based(deal: dict, history: list[dict] | None) -> UScore:
             cap = 6 - (base + adj)
             adj += cap
             comps.append(("économie absolue < CHF 1 : note plafonnée à 6", cap))
-    if deal.get("family") == "surplus" and (deal.get("distance_km") or 0) > 5:
-        adj -= 0.5
-        comps.append((f"retrait à {deal['distance_km']:.0f} km", -0.5))
+    # La distance depuis le domicile du propriétaire n'entre JAMAIS dans la note publique
+    # (round 3, item 30) : elle reste dans personal_relevance / accessibility().
     if deal.get("cashback") and not deal.get("cashback_certain"):
         comps.append(("cashback incertain : non déduit du prix", 0.0))
 
