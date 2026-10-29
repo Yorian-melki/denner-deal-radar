@@ -57,9 +57,11 @@
 
   // 4. Compteur de clics sortants, anonyme : seulement l'id du deal et la page.
   //    Programme et caractère publicitaire sont déduits côté serveur, jamais envoyés.
+  //    Seulement si le stockage existe (<html data-clicks="1">, CLICKS_BINDING=1 au build) :
+  //    sinon aucune requête, aucune invocation de Function pour rien.
   d.addEventListener("click", function (e) {
     var a = e.target && e.target.closest ? e.target.closest("a[data-deal]") : null;
-    if (!a || !navigator.sendBeacon) return;
+    if (!a || !navigator.sendBeacon || d.documentElement.getAttribute("data-clicks") !== "1") return;
     try {
       navigator.sendBeacon("/api/click", new Blob([JSON.stringify({ deal: a.getAttribute("data-deal"), page: location.pathname })], { type: "text/plain" }));
     } catch (err) {}

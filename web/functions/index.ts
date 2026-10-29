@@ -24,7 +24,7 @@ export const onRequest = async ({ request }: { request: Request }): Promise<Resp
   const lang = pickLang(request.headers.get("Accept-Language"));
   const res = new Response(null, {
     status: 302,
-    headers: { Location: `/${lang}/${MAIN_CITY}${url.search}`, Vary: "Accept-Language", "Cache-Control": "private, max-age=0" },
+    headers: { Location: `/${lang}/${MAIN_CITY}${url.search}`, Vary: "Accept-Language", "Cache-Control": "private, max-age=86400" },
   });
   return secure(res, url);
 };

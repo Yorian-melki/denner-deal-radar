@@ -51,7 +51,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   if (!isLocale(locale)) notFound();
   const t = dict(locale);
   return (
-    <html lang={HTML_LANG[locale]}>
+    <html lang={HTML_LANG[locale]} data-clicks={process.env.CLICKS_BINDING === "1" ? "1" : undefined}>
       <head>
         {/* Un seul script, externe (CSP script-src 'self') : cartes expirées, puces, partage,
             compteur de clics, consentement. Le postbuild le versionne (/s/site.<hash>.js). */}

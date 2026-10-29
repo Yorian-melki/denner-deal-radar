@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
+    "prebuild": "rm -rf .next out",
     "build": "next build && node scripts/postbuild.mjs out",
     "start": "next start",
     "test": "vitest run",

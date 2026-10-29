@@ -12,14 +12,19 @@
 //     statique + UN script vanilla (public/site.js), versionné en /s/site.<hash>.js ;
 //  3. liens du sélecteur de langue → page ÉQUIVALENTE de chaque fichier ;
 //  4. CSP générée (script-src 'self' [+ Cloudflare Web Analytics seulement si activé]) ;
-//  5. _routes.json : les Functions ne tournent que sur les pages et /api, jamais sur les fichiers versionnés.
+//  5. _routes.json : AUCUNE page vue ne passe par une Function (round 3, item 1) : seulement « / »
+//     (langue du navigateur) et /api/* si le compteur de clics est lié (CLICKS_BINDING=1) ;
+//  6. 404 statiques imbriquées (/<l>/deal/404.html, /<l>/<ville>/404.html, /<l>/<ville>/<cat>/404.html)
+//     dont le sélecteur de langue mène au parent équivalent le plus profond qui existe ;
+//  7. security.txt statique ; nettoyage disque (.next/server/app, dossiers vides) hors CI.
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, rmdirSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { ALLOWED_ROUTES, MAIN_CITY, candidates, routesJson, securityTxt } from "./routes.mjs";
 
 const OUT = path.resolve(process.argv[2] ?? "out");
 const LOCALES = ["de", "fr", "en"];
-const MAIN_CITY = "st-gallen";
+const CLICKS = process.env.CLICKS_BINDING === "1";
 const MAX_FILES = 18000;
 const BUDGET = { cityHtmlBytes: 60 * 1024, jsBytes: 8 * 1024 };
 const ANALYTICS = /^[a-f0-9]{32}$/i.test(process.env.NEXT_PUBLIC_CF_BEACON_TOKEN ?? "");
@@ -89,6 +94,8 @@ for (const f of walk(OUT).filter((x) => x.endsWith(".html"))) {
     return ""; // runtime Next/React (chunks, bootstrap, __next_f)
   });
   html = html.replace(/<link rel="preload" as="script"[^>]*>/g, "").replace(/<link rel="modulepreload"[^>]*>/g, "");
+  // Restes du streaming React, inutiles sans hydratation (round 3, item 11).
+  html = html.replace(/<div hidden=""><!--\$--><!--\/\$--><\/div>/g, "").replace(/<!-- -->/g, "").replace(/<!--\/?\$-->/g, "");
   const is404 = /(^|\/)404\.html$/.test(r) || r === "_not-found.html";
   if (is404) html = html.replace(/<link rel="(canonical|alternate)"[^>]*>/g, "");
   const route = routeOf(r);
@@ -101,7 +108,8 @@ const headersFile = path.join(OUT, "_headers");
 if (existsSync(headersFile)) {
   const cf = ANALYTICS ? " https://static.cloudflareinsights.com" : "";
   const cfc = ANALYTICS ? " https://cloudflareinsights.com" : "";
-  const csp = `default-src 'self'; script-src 'self'${cf}; connect-src 'self'${cfc}; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; frame-ancestors 'none'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests`;
+  const ads = /^ca-pub-\d{10,20}$/.test(process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "") ? " 'unsafe-inline'" : "";
+  const csp = `default-src 'self'; script-src 'self'${cf}; connect-src 'self'${cfc}; img-src 'self' data:; style-src 'self'${ads}; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; frame-ancestors 'none'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests`;
   const h = readFileSync(headersFile, "utf8");
   // Seule la valeur de l'en-tête est remplacée (le marqueur figure aussi dans un commentaire).
   const out = h.replace(/^([ \t]*Content-Security-Policy:[ \t]*)__CSP__[ \t]*$/m, `$1${csp}`);
@@ -111,18 +119,63 @@ if (existsSync(headersFile)) {
   writeFileSync(headersFile, out);
 }
 
-// 5. Les Functions ne tournent que là où elles servent.
-writeFileSync(path.join(OUT, "_routes.json"), JSON.stringify({
-  version: 1,
-  include: ["/", "/api/*", "/.well-known/*", "/de/*", "/fr/*", "/en/*"],
-  exclude: ["/_next/*", "/s/*"],
-}, null, 2) + "\n");
+// 5. Les Functions ne tournent que là où elles servent : jamais sur une page vue.
+const routes = routesJson(CLICKS);
+for (const r of routes.include) if (!ALLOWED_ROUTES.has(r)) errors.push(`_routes.json : entrée interdite ${r}`);
+writeFileSync(path.join(OUT, "_routes.json"), JSON.stringify(routes, null, 2) + "\n");
+
+// 5b. 404 imbriquées : Cloudflare Pages sert la 404.html la plus proche du chemin demandé.
+//     Leur sélecteur de langue pointe vers le parent équivalent le plus profond qui existe
+//     (/de/st-gallen/tech-deals/99 → FR : /fr/st-gallen/tech-deals), sans Function.
+const pageExists = (route) => existsSync(path.join(OUT, `${route}.html`)) || existsSync(path.join(OUT, route, "index.html"));
+let nested404 = 0;
+for (const l of LOCALES) {
+  const base = path.join(OUT, l, "404.html");
+  if (!existsSync(base)) continue;
+  const tpl = readFileSync(base, "utf8");
+  const dirs = new Set(["deal"]);
+  for (const name of readdirSync(path.join(OUT, l))) {
+    const p = path.join(OUT, l, name);
+    if (!statSync(p).isDirectory() || name === "deal") continue;
+    if (!existsSync(`${p}.html`) || !existsSync(path.join(p, "og.png"))) continue; // villes seulement
+    dirs.add(name);
+    for (const sub of readdirSync(p)) if (sub.endsWith(".html") && sub !== "404.html") dirs.add(`${name}/${sub.slice(0, -5)}`);
+  }
+  for (const dir of dirs) {
+    const html = tpl.replace(/<a href="[^"]*" data-lang="(de|fr|en)"/g, (_m, to) => {
+      const target = candidates(to, `/${dir}/x`).slice(1).find(pageExists) ?? `/${to}/${MAIN_CITY}`;
+      return `<a href="${target}" data-lang="${to}"`;
+    });
+    mkdirSync(path.join(OUT, l, dir), { recursive: true });
+    writeFileSync(path.join(OUT, l, dir, "404.html"), html);
+    nested404++;
+  }
+}
+
+// 5c. security.txt statique (RFC 9116) : plus de Function sur /.well-known.
+{
+  const origin = (process.env.NEXT_PUBLIC_SITE_URL || "https://savradar.pages.dev").replace(/\/+$/, "");
+  mkdirSync(path.join(OUT, ".well-known"), { recursive: true });
+  writeFileSync(path.join(OUT, ".well-known", "security.txt"), securityTxt(origin, (process.env.NEXT_PUBLIC_OPERATOR_EMAIL || "").trim(), new Date()));
+}
 
 // 6. Repli de « / » (la Function functions/index.ts négocie la langue).
 if (!existsSync(path.join(OUT, "index.html"))) {
   writeFileSync(path.join(OUT, "index.html"),
     `<!doctype html><html lang="de-CH"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=/de/${MAIN_CITY}"><title>…</title></head><body><a href="/de/${MAIN_CITY}">Deutsch</a> · <a href="/fr/${MAIN_CITY}">Français</a> · <a href="/en/${MAIN_CITY}">English</a></body></html>\n`);
 }
+
+// 6b. Dossiers vides laissés par l'export (charges RSC retirées) : supprimés.
+function pruneEmpty(dir) {
+  let empty = true;
+  for (const name of readdirSync(dir)) {
+    const p = path.join(dir, name);
+    if (statSync(p).isDirectory()) { if (!pruneEmpty(p)) empty = false; } else empty = false;
+  }
+  if (empty && dir !== OUT) rmdirSync(dir);
+  return empty;
+}
+pruneEmpty(OUT);
 
 const files = walk(OUT);
 const htmls = files.filter((f) => f.endsWith(".html"));
@@ -153,6 +206,8 @@ for (const f of htmls) {
     if (!m[1].includes("src=") && !/application\/ld\+json/.test(m[1])) { errors.push(`script inline dans ${r}`); break; }
   }
   if (html.includes("__next_f") || /\/_next\/static\/chunks\/[^"]+\.js/.test(html)) errors.push(`runtime Next dans ${r}`);
+  // CSP style-src 'self' : aucun style inline (round 3, item 28).
+  if (/<style[\s>]|\sstyle="/.test(html)) errors.push(`style inline dans ${r}`);
   const nav = html.match(/<nav class="lang"[^>]*>([\s\S]*?)<\/nav>/);
   if (!nav) { if (LOCALES.some((l) => r.startsWith(`${l}/`) || r === `${l}.html`)) errors.push(`sélecteur de langue absent : ${r}`); continue; }
   const route = routeOf(r);
@@ -181,9 +236,15 @@ for (const l of LOCALES) {
 // 13. Budget de fichiers Cloudflare Pages.
 if (files.length >= MAX_FILES) errors.push(`${files.length} fichiers (budget ${MAX_FILES})`);
 
-console.log(JSON.stringify({ files: files.length, html: htmls.length, pruned, rewritten, langLinksChecked: checked, site: sitePath, errors: errors.length }));
+console.log(JSON.stringify({ files: files.length, html: htmls.length, pruned, rewritten, nested404, langLinksChecked: checked, site: sitePath, routes: routes.include, errors: errors.length }));
 if (errors.length) {
   for (const e of errors.slice(0, 40)) console.error(`ERREUR postbuild : ${e}`);
   if (errors.length > 40) console.error(`… et ${errors.length - 40} autres`);
   process.exit(1);
+}
+
+// 14. Disque (machine à 8 Go / ~4 Go libres) : le rendu intermédiaire n'est plus utile.
+if (!process.env.CI) {
+  rmSync(path.join(path.dirname(OUT), ".next", "server", "app"), { recursive: true, force: true });
+  rmSync(path.join(path.dirname(OUT), ".next", "cache"), { recursive: true, force: true });
 }

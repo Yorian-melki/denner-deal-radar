@@ -5,7 +5,7 @@ import { DICTS, LOCALES } from "@/lib/i18n";
 import { fmtInt, fmtPct, fmtPrice, fmtScore, NBSP } from "@/lib/format";
 import { compareDeals } from "@/lib/project";
 import { brandKey, pickShowcase, TOP_N } from "@/lib/select";
-import { candidates } from "@/functions/_middleware";
+import { ADVISORY_URL, candidates, routesJson, securityTxt } from "@/scripts/routes.mjs";
 import { parseClick, isSameOrigin, toPoint } from "@/functions/api/click";
 import { pickLang } from "@/functions/index";
 import type { PublicDeal } from "@/lib/types";
@@ -130,5 +130,16 @@ describe("Functions", () => {
     expect(candidates("de", "/st-gallen/tech-deals/99")).toEqual(["/de/st-gallen/tech-deals/99", "/de/st-gallen/tech-deals", "/de/st-gallen"]);
     expect(candidates("fr", "/deal/kaffee-1ab")).toEqual(["/fr/deal/kaffee-1ab", "/fr/st-gallen"]);
     expect(candidates("en", "")).toEqual(["/en/st-gallen"]);
+  });
+  it("aucune page vue ne passe par une Function (round 3, item 1)", () => {
+    expect(routesJson(false).include).toEqual(["/"]);
+    expect(routesJson(true).include).toEqual(["/", "/api/*"]);
+  });
+  it("security.txt : jamais /impressum ; e-mail seulement s'il est valide (round 3, item 26)", () => {
+    const now = new Date("2026-10-29T00:00:00Z");
+    expect(securityTxt("https://x.pages.dev", "", now)).toContain(`Contact: ${ADVISORY_URL}`);
+    expect(securityTxt("https://x.pages.dev", "a@b.ch", now)).toContain("Contact: mailto:a@b.ch");
+    expect(securityTxt("https://x.pages.dev", "", now)).not.toMatch(/impressum/);
+    expect(securityTxt("https://x.pages.dev", "", now)).toContain("Expires: 2027-04-27T00:00:00.000Z");
   });
 });
