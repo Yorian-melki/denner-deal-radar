@@ -3,13 +3,17 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { FEEDS } from "@/config/cities";
 import { cleanOutbound } from "@/lib/outbound";
-import { markPages, projectFeed, rankDeals } from "@/lib/project";
+import { markPages, projectExpired, projectFeed, rankDeals } from "@/lib/project";
 import type { PublicDeal, RawDeal } from "@/lib/types";
 
 /** Le flux fait plusieurs Mo (au-delà du Data Cache de Next) : mémo en mémoire
  * par processus de build, pour ne le télécharger qu'une fois par worker. */
 const TTL_MS = 15 * 60 * 1000;
-let memo: { at: number; deals: PublicDeal[]; generatedAt: string; now: Date } | null = null;
+let memo: { at: number; deals: PublicDeal[]; expired: PublicDeal[]; generatedAt: string; now: Date } | null = null;
+
+/** Budget de pages deal (vivantes + pierres tombales) : ×3 langues, total HTML < 16 000
+ * (Cloudflare Pages : 20 000 fichiers). Les pierres tombales les plus anciennes sautent d'abord. */
+export const MAX_TOMBSTONES = 1500;
 
 /** Plafond de taille du flux (le flux réel fait ~12 Mo) : au-delà, on refuse. */
 const MAX_FEED_BYTES = 25 * 1024 * 1024;
@@ -54,10 +58,11 @@ async function loadRaw(url: string): Promise<{ generated_at?: string; deals: Raw
 
 /** Instant de référence du build (« heute », « ab morgen », 18:00) : l'heure réelle,
  * ou la date de l'échantillon en mode fixture (build reproductible). */
-export async function getDeals(): Promise<{ deals: PublicDeal[]; generatedAt: string; now: Date }> {
+export async function getDeals(): Promise<{ deals: PublicDeal[]; expired: PublicDeal[]; generatedAt: string; now: Date }> {
   if (memo && Date.now() - memo.at < TTL_MS) return memo;
   const results = await Promise.allSettled(FEEDS.map(async (f) => ({ f, raw: await loadRaw(f.url) })));
   const deals: PublicDeal[] = [];
+  const raws: { raw: RawDeal[]; f: (typeof FEEDS)[number]; now: Date }[] = [];
   let generatedAt = "";
   let now = new Date();
   for (const r of results) {
@@ -70,6 +75,7 @@ export async function getDeals(): Promise<{ deals: PublicDeal[]; generatedAt: st
     const fixtureNow = process.env.DATA_FIXTURE === "1" && r.value.raw.generated_at ? new Date(r.value.raw.generated_at) : null;
     if (fixtureNow) now = fixtureNow;
     deals.push(...projectFeed(r.value.raw.deals ?? [], r.value.f, fixtureNow ?? now));
+    raws.push({ raw: r.value.raw.deals ?? [], f: r.value.f, now: fixtureNow ?? now });
     generatedAt = r.value.raw.generated_at ?? generatedAt;
   }
   // Un flux en panne ne vide jamais le site : dernière version connue, sinon
@@ -78,6 +84,12 @@ export async function getDeals(): Promise<{ deals: PublicDeal[]; generatedAt: st
     if (memo) return memo;
     throw new Error("aucun flux disponible");
   }
-  memo = { at: Date.now(), deals: markPages(rankDeals(deals)), generatedAt, now };
+  const live = markPages(rankDeals(deals));
+  const liveSlugs = new Set(live.map((d) => d.slug));
+  const expired = raws.flatMap((x) => projectExpired(x.raw, x.f, x.now, liveSlugs));
+  const seen = new Set<string>();
+  const tomb = expired.filter((d) => !seen.has(d.slug) && seen.add(d.slug)).slice(0, MAX_TOMBSTONES);
+  console.log(JSON.stringify({ level: "info", msg: "pages", live: live.length, tombstones: tomb.length, droppedTombstones: Math.max(0, expired.length - tomb.length) }));
+  memo = { at: Date.now(), deals: live, expired: tomb, generatedAt, now };
   return memo;
 }

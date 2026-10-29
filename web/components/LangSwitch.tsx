@@ -17,12 +17,19 @@ export function switchPath(pathname: string, to: string, search = "", hash = "")
 export function LangSwitch({ current, label, langs }: { current: string; label: string; langs: { code: string; name: string; hreflang: string }[] }) {
   return (
     <nav className="lang" aria-label={label}>
-      {langs.map((l) => (
-        <a key={l.code} href={`/${l.code}`} data-lang={l.code} hrefLang={l.hreflang} lang={l.hreflang} aria-current={l.code === current ? "true" : undefined}>
-          <span aria-hidden="true">{l.code.toUpperCase()}</span>
-          <span className="sr-only">{l.name}</span>
+      {/* Nom accessible = texte visible d'abord (WCAG 2.5.3) : « FR – Français ». La langue
+          courante n'est pas un lien (jamais d'aria-current sur un lien qui mène ailleurs, ex. 404). */}
+      {langs.map((l) => (l.code === current ? (
+        <span key={l.code} className="lang-current" lang={l.hreflang} aria-current="true">
+          <span>{l.code.toUpperCase()}</span>
+          <span className="sr-only"> – {l.name}</span>
+        </span>
+      ) : (
+        <a key={l.code} href={`/${l.code}`} data-lang={l.code} hrefLang={l.hreflang} lang={l.hreflang}>
+          <span>{l.code.toUpperCase()}</span>
+          <span className="sr-only"> – {l.name}</span>
         </a>
-      ))}
+      )))}
     </nav>
   );
 }

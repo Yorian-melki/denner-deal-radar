@@ -14,5 +14,9 @@ const BY_SOURCE: Record<string, Locale> = {
 
 /** Langue du titre d'un deal ; « ? » si inconnue (on laisse la langue de la page). */
 export function titleLang(source: string, title: string): Locale | "?" {
-  return BY_SOURCE[source] ?? guessLang(title);
+  if (BY_SOURCE[source]) return BY_SOURCE[source];
+  // Marqueurs sûrs d'un titre (round 3, item 8) : umlauts, « Rabatt » → allemand ; « Student Discount », « % off » → anglais.
+  if (/[äöüß]|\bRabatt\b|studentenrabatt/i.test(title)) return "de";
+  if (/\bstudent discount\b|\d\s?%\s*off\b|\bup to\b/i.test(title)) return "en";
+  return guessLang(title);
 }

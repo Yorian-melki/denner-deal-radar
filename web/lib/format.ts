@@ -60,8 +60,8 @@ export function dayDiff(iso: string, ref: Date): number {
   return Math.round((a - b) / 86_400_000);
 }
 
-/** « Mi 29.10. » / « mer. 29.10 » / « Wed 29 Oct ». L'année n'apparaît que si la
- * date sort de l'année de référence ou en est éloignée de plus de 60 jours. */
+/** Validité (round 3, item 21) : « Mi 4.11. » / « mer. 4 nov. » / « Wed 4 Nov ». L'année
+ * n'apparaît que si la date sort de l'année de référence ou en est éloignée de plus de 60 jours. */
 export function fmtDay(iso: string | undefined, locale: Locale, ref: Date = new Date()): string {
   if (!iso || !Number.isFinite(new Date(iso).getTime())) return "";
   const p = parts(iso, locale, { weekday: "short", day: "2-digit", month: "2-digit", year: "numeric" });
@@ -75,15 +75,23 @@ export function fmtDay(iso: string | undefined, locale: Locale, ref: Date = new 
     return `${g.weekday} ${g.day} ${g.month}${withYear ? ` ${g.year}` : ""}`;
   }
   const wd = (p.weekday ?? "").replace(/\.$/, locale === "de" ? "" : ".");
-  const date = locale === "de" ? `${p.day}.${p.month}.${withYear ? p.year : ""}` : `${p.day}.${p.month}${withYear ? `.${p.year}` : ""}`;
-  return `${wd} ${date}`;
+  if (locale === "fr") {
+    const mon = new Intl.DateTimeFormat("fr-CH", { month: "short", timeZone: TZ }).format(new Date(iso));
+    return `${wd} ${Number(p.day)} ${mon}${withYear ? ` ${p.year}` : ""}`;
+  }
+  return `${wd} ${Number(p.day)}.${Number(p.month)}.${withYear ? p.year : ""}`;
 }
 
-/** « 28.10., 12:34 » — jamais « heute » : la page statique peut être lue le lendemain. */
+/** Horodatage (round 3, item 21) : « 28.10., 12:34 » / « 28.10 à 12:34 » / « 28 Oct, 12:34 ».
+ * Jamais « heute » : la page statique peut être lue le lendemain. */
 export function fmtUpdated(iso: string | undefined, locale: Locale): string {
   if (!iso) return "";
   const p = parts(iso, locale, { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
-  return `${p.day}.${p.month}${locale === "de" ? "." : ""}, ${p.hour}:${p.minute}`;
+  if (locale === "en") {
+    const mon = new Intl.DateTimeFormat("en-GB", { month: "short", timeZone: TZ }).format(new Date(iso));
+    return `${Number(p.day)} ${mon}, ${p.hour}:${p.minute}`;
+  }
+  return locale === "fr" ? `${p.day}.${p.month} à ${p.hour}:${p.minute}` : `${p.day}.${p.month}., ${p.hour}:${p.minute}`;
 }
 
 /** Date longue (pages légales, « Stand ») : « 28. Oktober 2026 ». */

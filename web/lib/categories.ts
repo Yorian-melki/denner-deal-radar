@@ -20,7 +20,8 @@ export const CATEGORIES: Category[] = [
   { slug: "haushalt", families: [] },
   { slug: "refurbished", families: ["refurbished", "secondhand"] },
   { slug: "gutscheine", families: ["coupon", "cashback"], unrated: true },
-  { slug: "handy-abos", families: ["subscription"] },
+  // Abonnements : prestations différentes (données, roaming, réseau) → aucune note (round 3, item 2).
+  { slug: "handy-abos", families: ["subscription"], unrated: true },
   { slug: "events", families: ["event", "local_news"] },
   { slug: "reisen", families: ["travel", "transport"] },
   { slug: "lokal", families: ["restaurant"], noTop: true },

@@ -15,7 +15,8 @@
  * Les constantes ci-dessous sont citées telles quelles sur /transparenz.
  */
 import { categoryBySlug } from "@/lib/categories";
-import { compareDeals, pastStoreHours } from "@/lib/project";
+import { compareDeals, pastStoreHours, savingPct, showsRef, shownScore } from "@/lib/project";
+export { savingPct, showsRef, shownScore };
 import type { PublicDeal } from "@/lib/types";
 
 /* ------------------------------------------------------------------ produits */
@@ -40,14 +41,17 @@ export function productKey(d: PublicDeal): string | undefined {
   return e && CROSS_STORE_PREFIXES.some((p) => e.startsWith(p)) ? e : promoKey(d);
 }
 
-/** Meilleur des deux : même comparateur que le classement (prix « statt » d'abord,
- * puis note, économie), puis prix le plus bas, puis id. */
+/** Meilleur des deux : même comparateur que le classement (prix « statt » affiché d'abord,
+ * puis note, économie) ; à égalité sur ces critères, le prix le plus bas. */
 function better(a: PublicDeal, b: PublicDeal): PublicDeal {
   const ua = Number(!!a.upcoming) - Number(!!b.upcoming);
   if (ua) return ua < 0 ? a : b;
-  if (a.verifiedRef !== b.verifiedRef) return a.verifiedRef ? a : b;
-  const sa = a.score ?? -1, sb = b.score ?? -1;
-  if (sa !== sb) return sa > sb ? a : b;
+  const ra = showsRef(a), rb = showsRef(b);
+  if (ra !== rb) return ra ? a : b;
+  if (ra) {
+    const sa = a.score ?? -1, sb = b.score ?? -1;
+    if (sa !== sb) return sa > sb ? a : b;
+  }
   const pa = a.price ?? Infinity, pb = b.price ?? Infinity;
   if (pa !== pb) return pa < pb ? a : b;
   return compareDeals(a, b) <= 0 ? a : b;
@@ -123,7 +127,7 @@ const eligible = (d: PublicDeal, opts: TopOptions) =>
   d.score !== undefined && d.score > 0 && d.score >= (opts.minScore ?? 0) &&
   (d.confidence ?? 0) >= MIN_CONFIDENCE_TOP && !categoryBySlug(d.category)?.noTop && !opts.exclude?.has(d.id) &&
   !d.upcoming && !d.noShowcase && !pastStoreHours(d, opts.now ?? new Date()) &&
-  (!opts.requireRef || d.verifiedRef);
+  (!opts.requireRef || showsRef(d));
 
 /** Liste « top » diversifiée : notés et fiables seulement, produits dédoublonnés,
  * au plus `perMerchant` par marchand et 1 par marque, au plus `perCategory` par
@@ -133,6 +137,9 @@ export function pickTop(deals: PublicDeal[], opts: TopOptions = {}): PublicDeal[
   const perMerchant = opts.perMerchant ?? PER_MERCHANT;
   const perCategory = opts.perCategory ?? Math.max(2, Math.ceil(n / 3));
   const pool = dedupeProducts([...deals].sort(compareDeals).filter((d) => eligible(d, opts)));
+  // Plafond par catégorie seulement s'il y a au moins 2 catégories éligibles (round 3, item 4 :
+  // sinon la vitrine d'une seule catégorie tombait sous 3 cartes et disparaissait).
+  const capCategories = new Set(pool.map((d) => d.category)).size >= 2;
   const picked: PublicDeal[] = [];
   const byMerchant = new Map<string, number>();
   const byBrand = new Map<string, number>();
@@ -151,7 +158,7 @@ export function pickTop(deals: PublicDeal[], opts: TopOptions = {}): PublicDeal[
       byCategory.set(d.category, (byCategory.get(d.category) ?? 0) + 1);
     }
   };
-  take(true);
+  if (capCategories) take(true);
   take(false);
   const rank = new Map(pool.map((d, i) => [d.id, i]));
   return picked.sort((a, b) => rank.get(a.id)! - rank.get(b.id)!);
@@ -169,6 +176,46 @@ export function pickShowcase(deals: PublicDeal[], now: Date = new Date()): Publi
  * plus récent d'abord, puis titre — jamais la taille de la réduction annoncée. */
 export function neutralOrder(deals: PublicDeal[]): PublicDeal[] {
   return [...deals].sort((a, b) => (b.firstSeenAt ?? "").localeCompare(a.firstSeenAt ?? "") || a.title.localeCompare(b.title));
+}
+
+/** Studis (round 3, item 8) : réduction annoncée décroissante, puis fin la plus proche ;
+ * la note « Sortiert nach Rabatt laut Anbieter » le dit au-dessus de la liste. */
+export function studentOrder(deals: PublicDeal[]): PublicDeal[] {
+  const end = (d: PublicDeal) => (d.endsAt && !d.endsInferred ? d.endsAt : "9999");
+  return [...deals].sort((a, b) => (b.discountPct ?? -1) - (a.discountPct ?? -1) || end(a).localeCompare(end(b)) || a.title.localeCompare(b.title));
+}
+
+/** Ordre des sections de l'accueil quand la vitrine est vide (round 3, arbitrage 5) :
+ * d'abord les catégories avec le plus de cartes à prix « statt » affiché, puis Studis,
+ * Gratis en dernier. Calculé à partir des données ; /transparenz cite les mêmes règles. */
+export const HOME_LAST = ["studenten-rabatte", "gratis"];
+export function homeOrder(sections: Section[]): Section[] {
+  const refs = (s: Section) => s.items.filter(showsRef).length;
+  const tail = (slug: string) => HOME_LAST.indexOf(slug);
+  return [...sections].sort((a, b) => {
+    const ta = tail(a.slug), tb = tail(b.slug);
+    if (ta !== tb) return ta - tb; // -1 (notées) < 0 (Studis) < 1 (Gratis)
+    return refs(b) - refs(a);
+  });
+}
+
+/** « Mehr aus … » (round 3, item 13) : TOUJOURS jusqu'à 3 deals de la même catégorie, triés
+ * par le comparateur unique, sans le deal courant, ni la même action, ni la même marque ;
+ * au plus 1 par marchand. */
+export function relatedDeals(deals: PublicDeal[], d: PublicDeal, n = 3): PublicDeal[] {
+  const pk = promoKey(d), bk = brandKey(d);
+  const out: PublicDeal[] = [];
+  const seenM = new Set<string>([merchantKey(d)]), seenB = new Set<string>([bk]);
+  const pool = dedupeProducts(deals.filter((x) => x.category === d.category && x.id !== d.id && !x.upcoming && !x.adult && promoKey(x) !== pk).sort(compareDeals));
+  for (const pass of [true, false]) {
+    for (const x of pool) {
+      if (out.length >= n) break;
+      if (out.includes(x) || seenB.has(brandKey(x))) continue;
+      if (pass && seenM.has(merchantKey(x))) continue;
+      out.push(x); seenM.add(merchantKey(x)); seenB.add(brandKey(x));
+    }
+  }
+  return out.sort(compareDeals);
 }
 
 export interface Section { slug: string; total: number; items: PublicDeal[] }
@@ -191,14 +238,15 @@ export function balancedSections(
     if (categoryBySlug(slug)?.unrated) {
       const counts = new Map<string, number>();
       items = [];
-      for (const d of neutralOrder(inCat)) {
+      for (const d of slug === "studenten-rabatte" ? studentOrder(inCat) : neutralOrder(inCat)) {
         if (items.length >= per) break;
-        if (opts.exclude?.has(d.id) || d.noShowcase || d.upcoming || (counts.get(merchantKey(d)) ?? 0) >= PER_MERCHANT) continue;
+        if (opts.exclude?.has(d.id) || d.noShowcase || d.adult || d.upcoming || (counts.get(merchantKey(d)) ?? 0) >= PER_MERCHANT) continue;
         counts.set(merchantKey(d), (counts.get(merchantKey(d)) ?? 0) + 1);
         items.push(d);
       }
     } else {
-      items = pickTop(inCat, { n: per, perCategory: per, exclude: opts.exclude, minScore: opts.minScore, now: opts.now });
+      // Catégories notées : seulement des cartes avec prix « statt » affiché (une valeur visible).
+      items = pickTop(inCat, { n: per, perCategory: per, exclude: opts.exclude, minScore: opts.minScore, now: opts.now, requireRef: true });
     }
     if (items.length < (opts.minItems ?? 1)) continue;
     out.push({ slug, total: inCat.length, items });
@@ -214,7 +262,7 @@ export function categoryCounts(deals: PublicDeal[]): Map<string, number> {
 }
 
 /** Nombre d'actions avec un prix « statt » du marchand (ligne de faits de la page ville). */
-export const verifiedCount = (deals: PublicDeal[]) => canonical(deals).filter((d) => d.verifiedRef).length;
+export const verifiedCount = (deals: PublicDeal[]) => canonical(deals).filter(showsRef).length;
 
 /* ------------------------------------------------------------ faits par deal */
 
@@ -256,18 +304,11 @@ export function confidenceTier(c: number | undefined): "high" | "mid" | "low" {
 /** Économie unitaire affichable : SEULEMENT avec une référence vérifiée
  * (comparable, intègre, fiable). Montant > 0 du scanner, sinon référence − prix. */
 export function unitSaving(d: PublicDeal): number | undefined {
-  if (!d.verifiedRef) return undefined;
+  if (!showsRef(d)) return undefined;
   if (d.discountAbs !== undefined && d.discountAbs > 0) return d.discountAbs;
   if (d.referencePrice !== undefined && d.price !== undefined && d.referencePrice > d.price)
     return Math.round((d.referencePrice - d.price) * 100) / 100;
   return undefined;
-}
-
-/** Pourcentage d'économie affichable (vérifié, ≥ 1 %). */
-export function savingPct(d: PublicDeal): number | undefined {
-  if (!d.verifiedRef || d.referencePrice === undefined || d.price === undefined || d.referencePrice <= 0) return undefined;
-  const pct = ((d.referencePrice - d.price) / d.referencePrice) * 100;
-  return pct >= 1 ? pct : undefined;
 }
 
 /* -------------------------------------------------------------- partage */

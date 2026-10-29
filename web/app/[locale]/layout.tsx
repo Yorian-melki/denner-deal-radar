@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
     alternates: alternates("", locale),
     openGraph: { type: "website", siteName: SITE_NAME, locale: OG_LOCALE[locale], title: SITE_NAME, description: t.metaDescription, url: paths.home(locale), images: [og] },
     twitter: { card: "summary_large_image", title: SITE_NAME, description: t.metaDescription, images: [og.url] },
-    icons: { icon: [{ url: "/favicon.ico", sizes: "32x32" }, { url: "/icon.svg", type: "image/svg+xml" }], apple: "/apple-touch-icon.png" },
+    icons: { icon: [{ url: "/icon.svg", type: "image/svg+xml" }], apple: "/apple-touch-icon.png" },
     formatDetection: { telephone: false, address: false, email: false },
     manifest: "/manifest.webmanifest",
   };

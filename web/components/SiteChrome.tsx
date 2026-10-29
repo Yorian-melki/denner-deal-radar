@@ -3,6 +3,7 @@ import { ConsentLink } from "@/components/Consent";
 import { Icon } from "@/components/Icon";
 import { LangSwitch } from "@/components/LangSwitch";
 import { activeProgrammes } from "@/lib/affiliate/rewrite";
+import { adClient } from "@/lib/operator";
 import { colon } from "@/lib/format";
 import { DICTS, HTML_LANG, LOCALES, dict, type Locale } from "@/lib/i18n";
 import { paths } from "@/lib/site";
@@ -29,7 +30,8 @@ export function SiteHeader({ siteName, locale }: { siteName: string; locale: Loc
       <a href="#main" className="skip">{t.skip}</a>
       <div className="top-inner">
         <a href={paths.city(locale, city.slug)} className="brand"><BrandMark name={siteName} /></a>
-        <details className="city-menu">
+        {/* Menu de ville seulement quand il y a un choix (round 3, item 5 ; « bald » : pied de page). */}
+        {cities.length > 1 && <details className="city-menu">
           <summary aria-label={`${t.cityMenu}: ${city.name[locale]}`}>
             <span aria-hidden="true">{city.name[locale]}</span><Icon name="chevron" size={16} />
           </summary>
@@ -41,7 +43,7 @@ export function SiteHeader({ siteName, locale }: { siteName: string; locale: Loc
             </nav>
             {upcoming.length > 0 && <p className="city-soon">{colon(t.soon, locale)} {upcoming.map((c) => c.name[locale]).join(", ")}</p>}
           </div>
-        </details>
+        </details>}
         <LangSwitch current={locale} label={t.language} langs={LOCALES.map((l) => ({ code: l, name: DICTS[l].langName, hreflang: HTML_LANG[l] }))} />
       </div>
     </header>
@@ -67,9 +69,10 @@ export function SiteFooter({ siteName, locale }: { siteName: string; locale: Loc
           <p>{t.footerFacts(activeProgrammes().length)}</p>
           {upcoming.length > 0 && <p>{colon(t.soon, locale)} {upcoming.map((c) => c.name[locale]).join(" · ")}</p>}
         </div>
-        <nav className="foot-nav" aria-label={t.transparency}>
+        <nav className="foot-nav" aria-label={t.footerNav}>
           {links.map(([p, label]) => <a key={p} href={paths.page(locale, p)}>{label}</a>)}
-          <ConsentLink label={t.cookieSettings} privacyHref={`${paths.page(locale, "datenschutz")}#cookies`} />
+          {/* Lien de consentement seulement si la publicité existe (round 3, item 25). */}
+          {adClient() && <ConsentLink label={t.cookieSettings} privacyHref={`${paths.page(locale, "datenschutz")}#cookies`} />}
         </nav>
       </div>
     </footer>

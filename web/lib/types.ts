@@ -21,11 +21,10 @@ export interface RawDeal {
 export type RefKind = "comparable" | "vendor" | "vendor_pct" | "none";
 
 /** Motif de plafonnement de la note (à 6.9, « gut » au plus) :
- * - vendor : référence = chiffre du vendeur (UVP, catalogue) ;
- * - confidence : fiabilité des données < 0.7 ;
- * - unchecked : référence pas encore contrôlée par nos relevés (comparaison avec un concurrent) ;
- * - integrity : référence plus haute que ce que nous avons déjà observé. */
-export type ScoreCap = "vendor" | "confidence" | "unchecked" | "integrity";
+ * - unchecked : prix « statt » du marchand que nos relevés n'ont pas (encore) confirmé ;
+ * - integrity : référence plus haute que ce que nous avons déjà observé.
+ * (Chiffre du vendeur ou fiabilité < 0.7 : aucune note du tout, round 3.) */
+export type ScoreCap = "unchecked" | "integrity";
 
 export interface Subscription {
   months?: number;       // durée minimale d'engagement
@@ -69,6 +68,8 @@ export interface PublicDeal {
   entityId?: string;     // canonical_entity_id (gtin:, mpn:, sku:, t:, game:…)
   currency: string;
   unitPrice?: number;
+  /** Quantité de l'emballage (« 6 × 75 cl ») ou nombre de pièces. */
+  size?: { text?: string; pieces?: number };
   unit?: "kg" | "l" | "piece" | "month";
   sub?: Subscription;
   netSavings?: number;
@@ -98,8 +99,16 @@ export interface PublicDeal {
   upcoming?: boolean;
   /** Vente en magasin (supermarché) : le dernier jour, retirée des vitrines à 18:00. */
   inStore?: boolean;
-  /** Jamais dans les sections de l'accueil ni les vitrines (contenu sensible ou hors sujet). */
+  /** Jamais dans les sections de l'accueil ni les vitrines (contenu sensible, marchand inconnu…). */
   noShowcase?: boolean;
+  /** Marque ou contenu pour adultes : jamais sur Studis, Gratis ni l'accueil. */
+  adult?: boolean;
+  /** Spiritueux : jamais de prix barré, de pourcentage ni de note (LAlc art. 42b). */
+  spirits?: boolean;
+  /** Pierre tombale : date de fin (le deal n'est plus en vente, page « abgelaufen »). */
+  endedAt?: string;
+  /** Titres par langue (réductions étudiantes reconstruites : « Acer: 15% Rabatt für Studierende »). */
+  titles?: Partial<Record<"de" | "fr" | "en", string>>;
 }
 
 export interface Feed {

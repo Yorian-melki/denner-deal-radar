@@ -83,7 +83,7 @@ export function mergeConditions(list: (Cond | null)[]): Cond[] {
 }
 
 /** Conditions qui changent vraiment le prix pour l'utilisateur : montrées sur la carte. */
-export const CARD_CONDITIONS = new Set(["lidl_plus", "membership", "min_qty", "min_order", "coupon", "new_customers", "region"]);
+export const CARD_CONDITIONS = new Set(["lidl_plus", "membership", "min_qty", "min_order", "coupon", "new_customers", "region", "pickup"]);
 
 /** Texte d'une condition dans la langue de la page ; null = texte d'une autre
  * langue (remplacé par « autres conditions chez le vendeur »). */

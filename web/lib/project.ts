@@ -2,6 +2,9 @@ import { categoryBySlug, categorize, isSupermarket, isTrial } from "@/lib/catego
 import { dayDiff, zurichHour } from "@/lib/format";
 import { mergeConditions, parseCondition, structuredConditions } from "@/lib/conditions";
 import { cleanOutbound, hostOf, viaHost } from "@/lib/outbound";
+import { resolveMerchant, sourceName, stripMerchantSuffix } from "@/lib/merchant";
+import { CONTEST, SPIRITS, TOBACCO, isAdult, isPastWeek } from "@/lib/blocklist";
+import { titleLang } from "@/lib/titleLang";
 import type { Feed, GeoScope, PublicDeal, RawDeal, RefKind, ScoreCap, Subscription } from "@/lib/types";
 
 const LOCAL_SCOPES = new Set<GeoScope>(["LOCAL", "NEARBY", "REGIONAL"]);
@@ -31,7 +34,8 @@ export function shortHash(s: string): string {
   return (h >>> 0).toString(36);
 }
 
-export const dealSlug = (id: string, title: string) => `${slugify(title) || "deal"}-${shortHash(id)}`;
+/** Slug : titre NETTOYÉ + hachage de la clé produit stable (jamais de « zum-neuen-tiefstpreis »). */
+export const dealSlug = (id: string, title: string) => `${slugify(title) || "deal"}-${shortHash(stableKey(id))}`;
 
 /** Réduction au-delà de laquelle une famille « payante » est suspecte (erreur
  * de parsing, prix au détail vs lot…). Le deal reste listé mais sans note,
@@ -56,12 +60,15 @@ export const NO_SHOWCASE = /\bBegleiter(in)?\b|\bEscort|\bErotik|\bSex(shop|toy)
  * une économie chiffrée. */
 const COMPARABLE = new Set(["merchant_previous", "competitor", "market"]);
 /** Chiffres du vendeur (prix conseillé, catalogue, valeur déclarée) : affichés
- * neutrement (« Preisangabe des Anbieters »), note plafonnée. */
+ * neutrement (« Preisangabe des Anbieters »), sans note (round 3, arbitrage 1). */
 const VENDOR = new Set(["msrp", "catalog", "declared_value"]);
 /** Seulement un pourcentage annoncé ou un chiffre de communauté : aucune note. */
 const VENDOR_PCT = new Set(["stated_percent_only", "community_claimed"]);
 
 export const VERIFY_MIN_CONFIDENCE = 0.7;
+/** Badge de note seulement à partir de 5/10 (en dessous : prix et marchand seulement). */
+export const PAGE_MIN_SCORE = 5;
+export const BADGE_MIN_SCORE = PAGE_MIN_SCORE;
 /** Plafond de note quand la preuve est faible : au plus « gut » (< 7). */
 export const SCORE_CAP = 6.9;
 /** Résultats du contrôle de plausibilité du scanner qui invalident la référence. */
@@ -114,28 +121,113 @@ const redactCodes = (s: string) => s.replace(/\s*\(?\s*(gutscheincode|code promo
 const SHOUT = /(?<![\p{L}\p{N}])(\p{Lu}{4,})(?![\p{L}\p{N}])/gu;
 const titleCase = (w: string) => w.charAt(0) + w.slice(1).toLowerCase();
 
-/** Titre nettoyé, sans vocabulaire marketing (round 2, item 9) :
- * - étiquette « [Neukunden] », « (Aktionspreis) », mot répété ;
- * - « ERHÖHT », « NEU: », « HOT: » en tête ; « zum neuen Tiefstpreis » (sauf si
- *   notre historique le prouve) ; « nur heute… » ; émojis ;
- * - « 100% … Gutschein » sur une réduction de 10 % (pourcentage ≥ 100 impossible) ;
- * - mots en capitales (≥ 4 lettres) en casse de titre. */
-export function cleanTitle(t: string, opts: { discountPct?: number; keepLowest?: boolean } = {}): string {
+/** Préfixes publicitaires (« ERHÖHT 35% », « Exklusiv! », « NEU: ») — en tête ou après « Marque: ». */
+const PROMO_WORDS_ANY_CASE = /(^|[:–-]\s*)(?:ERH(?:Ö|OE?)HT|EXKLUSIV(?:DEAL)?)\b[:!]?\s*/iu;
+const PROMO_WORDS_UPPER = /(^|[:–-]\s*)(?:NEU|HOT|TOP|DEAL)\b[:!]?\s+/u;
+const PROMO_WORDS_COLON = /(^|[:–-]\s*)(?:neu|hot|top|deal)\s*[:!]\s*/iu;
+/** Urgence fabriquée par la source. */
+const URGENCY = /\s*[-–,!(]?\s*\b(?:nur\s+(?:noch\s+)?(?:heute|bis\s+morgen)|nur\s+(?:noch\s+)?\d+\s+(?:Exemplare?|Stück|Stk\.?)\s+(?:übrig|verfügbar)|letzte\s+chance|solange\s+es\s+geht|aujourd[’']hui\s+seulement|dernier\s+jour|today\s+only|last\s+chance|only\s+\d+\s+left)\b[^\p{L}\d«“"]*(?:\)\s*)?/giu;
+/** Superlatifs de prix (« zum neuen Bestpreis »), gardés seulement si notre historique le prouve. */
+const SUPERLATIVE = /\s*[-–,!]?\s*\b(?:zum\s+)?(?:neue[nr]?\s+)?(?:besten\s+Preis|Bestpreis|Tiefstpreis|Niedrigstpreis|Tiefpreis|Toppreis|Allzeit-?Tiefstpreis|Allzeittief(?:preis)?)\b(?:\s+(?:von|für)?\s*(?:CHF|Fr\.)\s*[\d.’',–-]+)?!?/giu;
+const PICKUP = /\s*\((?:nur\s+)?Abholung\)|\s*[-–,]\s*nur\s+Abholung\b/iu;
+/** « bis zum 29.10. (17 Uhr) » dans un titre : date de fin (parsée), retirée du titre. */
+const UNTIL_IN_TITLE = /\s*[-–,(]?\s*\bbis\s+(?:zum\s+)?(\d{1,2})\.(\d{1,2})\.?(?:\s*\(?\s*(\d{1,2})(?::(\d{2}))?\s*Uhr\s*\)?)?\)?/iu;
+
+/** Titre nettoyé, sans vocabulaire marketing (round 2, item 9 ; round 3, item 6) :
+ * (a) préfixe de marque « Marque: » conservé à part ; (b) « ERHÖHT », « NEU: », « Exklusiv! »
+ * en tête ou après la marque, AVANT la casse de titre ; (c) urgence (« nur noch heute ») ;
+ * (d) superlatifs (« zum neuen Bestpreis ») sauf si notre historique le prouve ; (e) « bei
+ * <marchand> » en fin de titre quand il répète le marchand affiché ; (f) « (Abholung) »
+ * devient une condition ; (g) « Nexode20000mAh » → « Nexode 20000mAh » ; (h) guillemets
+ * de la langue ; (i) « 5 % » → « 5% » (DE/EN), « 5 % » (FR) ; (j) marque doublée. */
+export function cleanTitle(t: string, opts: { discountPct?: number; keepLowest?: boolean; merchant?: string; lang?: string } = {}): string {
   let s = t
     .replace(/^\s*\[[^\]]{1,40}\]\s*/, "")
     .replace(/\s*\((aktionspreis|prix promo)\)\s*$/i, "")
-    .replace(/\p{Extended_Pictographic}\uFE0F?/gu, "")
-    .replace(/^\s*(ERHÖHT|NEU|EXKLUSIV)\b[:!]?\s+/, "")
-    .replace(/^\s*(HOT|TOP)\s*[:!]\s*/, "")
-    .replace(/\s*[-–,!]?\s*\bnur heute\b.*$/i, "");
-  if (!opts.keepLowest) s = s.replace(/\s*[-–,!]?\s*\bzum\s+(neuen\s+)?(Tiefst|Best|Top)preis\b.*$/i, "");
+    .replace(/\p{Extended_Pictographic}\uFE0F?/gu, "");
+  // (a)
+  const pm = s.match(/^([^:]{1,40}):\s*/);
+  let brand = pm ? pm[1].trim() : "";
+  let rest = pm ? s.slice(pm[0].length) : s;
+  // (b) en tête du reste, puis en tête absolue (« ERHÖHT: Marke … »).
+  for (let i = 0; i < 2; i++) rest = rest.replace(PROMO_WORDS_ANY_CASE, "$1").replace(PROMO_WORDS_UPPER, "$1").replace(PROMO_WORDS_COLON, "$1");
+  if (/^(?:ERH(?:Ö|OE?)HT|EXKLUSIV(?:DEAL)?|NEU|HOT|TOP)$/iu.test(brand)) brand = "";
+  // (j) « Fnac: Fnac-Karte: … » → « Fnac-Karte: … »
+  if (brand && rest.toLowerCase().startsWith(brand.toLowerCase())) brand = "";
+  s = brand ? `${brand}: ${rest}` : rest;
+  // (c), (d)
+  s = s.replace(URGENCY, " ");
+  if (!opts.keepLowest) s = s.replace(SUPERLATIVE, "");
+  s = s.replace(PICKUP, "").replace(UNTIL_IN_TITLE, "");
   const pct = opts.discountPct;
-  if (pct !== undefined && pct > 0 && pct < 100) s = s.replace(/^(\d{3,})(\s?%)/, (m, n: string, sign: string) => (Number(n) >= 100 ? `${Math.round(pct)}${sign}` : m));
+  if (pct !== undefined && pct > 0 && pct < 100) s = s.replace(/(^|:\s*)(\d{3,})(\s?%)/, (m, pre: string, n: string, sign: string) => (Number(n) >= 100 ? `${pre}${Math.round(pct)}${sign}` : m));
   s = s.replace(/\b(\p{L}{3,})\s+\1\b/giu, "$1");
   if (s.replace(/[^\p{L}]/gu, "").length > 0) s = s.replace(SHOUT, (w) => titleCase(w));
-  s = s.replace(/\s{2,}/g, " ").replace(/\s+([,.:;!?])/g, "$1").trim();
+  // (e)
+  s = stripMerchantSuffix(s.trim(), opts.merchant);
+  // (g)
+  s = s.replace(/(\p{L})(\d{4,})(?=\s?mAh\b)/gu, "$1 $2");
+  // (h)
+  const lang = opts.lang;
+  if (lang === "de" || lang === "fr") s = s.replace(/["“„]([^"“”„«»]{1,60})["”“]/g, "«$1»");
+  else if (lang === "en") s = s.replace(/["„«]([^"“”„«»]{1,60})["”»]/g, "“$1”");
+  // (i)
+  s = lang === "fr" ? s.replace(/(\d)\s?%/g, "$1\u202f%") : s.replace(/(\d)[\s\u202f\u00a0]%/g, "$1%");
+  s = s.replace(/\s{2,}/g, " ").replace(/\s+([,.:;!?])/g, "$1").replace(/^[\s,:;–-]+|[\s,:;–-]+$/g, "").replace(/:\s*$/, "").trim();
+  if (lang === "fr") s = s.replace(/(\S)\s*([:;!?])(?=\s|$)/g, "$1\u202f$2");
   return s || t.trim();
 }
+
+/** Quantité lisible dans toutes les langues (round 3, item 14) : « 500 g », « 6 × 75 cl » ;
+ * un nombre de pièces est rendu par langue (« 28 Stk. »). Rien d'autre (« Pro Stück », « 100 Waschgänge »). */
+export function packSize(raw: unknown, title: string): { text?: string; pieces?: number } | undefined {
+  const s = typeof raw === "string" ? raw.trim() : "";
+  const metric = /^(\d+(?:[.,]\d+)?)\s*(?:[x×]\s*(\d+(?:[.,]\d+)?)\s*)?(g|kg|ml|cl|dl|l)$/i;
+  let m = s.match(metric);
+  if (m) return { text: m[2] ? `${m[1]} × ${m[2]} ${m[3].toLowerCase()}` : `${m[1]} ${m[3].toLowerCase()}` };
+  if ((m = s.match(/^(\d{1,4})\s*(?:Stück|Stk\.?|pièces?|pces?)$/i))) return Number(m[1]) > 1 ? { pieces: Number(m[1]) } : undefined;
+  const t = title.match(/(?:(\d+)\s*[x×]\s*)?(\d+(?:[.,]\d+)?)\s*(kg|g|ml|cl|dl|l)\b/i);
+  if (t) return { text: t[1] ? `${t[1]} × ${t[2]} ${t[3].toLowerCase()}` : `${t[2]} ${t[3].toLowerCase()}` };
+  return undefined;
+}
+
+/** Réduction étudiante « Marque: (bis zu) 15% Studentenrabatt » → titre dans chaque langue
+ * (round 3, item 8). Seulement si le titre ne dit rien de plus (sinon : titre d'origine, lang=). */
+const STUDENT_TITLE = /^([^:]{1,40}):\s*(bis zu|up to|jusqu[’']à)?\s*(\d{1,2})\s?%\*?\s*(?:Studentenrabatt|Studierendenrabatt|Student(?:en)?\s?Discount|Rabatt(?:\s+für\s+Studierende)?|discount|off|de réduction(?: étudiante)?)?\s*(auf alles|auf das gesamte Sortiment|on everything|sitewide|site-wide|sur tout)?\s*$/i;
+export function studentTitles(title: string): PublicDeal["titles"] | undefined {
+  const m = title.match(STUDENT_TITLE);
+  if (!m) return undefined;
+  const brand = m[1].trim(), upTo = !!m[2], pct = Number(m[3]), all = !!m[4];
+  if (!(pct > 0 && pct < 100)) return undefined;
+  return {
+    de: `${brand}: ${upTo ? "bis zu " : ""}${pct}% Rabatt für Studierende${all ? " auf alles" : ""}`,
+    fr: `${brand}\u202f: ${upTo ? "jusqu’à " : ""}${pct}\u202f% de réduction étudiante${all ? " sur tout" : ""}`,
+    en: `${brand}: ${upTo ? "up to " : ""}${pct}% student discount${all ? " on everything" : ""}`,
+  };
+}
+
+/** Le titre d'origine disait « (Abholung) » : condition « nur Abholung ». */
+export const isPickupOnly = (t: string) => PICKUP.test(t);
+
+/** Date de fin écrite dans le titre (« bis zum 29.10. (17 Uhr) »), année du build. */
+export function endsFromTitle(t: string, now: Date): string | undefined {
+  const m = t.match(UNTIL_IN_TITLE);
+  if (!m) return undefined;
+  const day = Number(m[1]), month = Number(m[2]), hour = m[3] !== undefined ? Number(m[3]) : 23, min = m[4] !== undefined ? Number(m[4]) : m[3] !== undefined ? 0 : 59;
+  if (!(day >= 1 && day <= 31 && month >= 1 && month <= 12 && hour <= 23 && min <= 59)) return undefined;
+  let year = now.getUTCFullYear();
+  if (month < now.getUTCMonth() + 1 - 6) year++; // « bis 5.1. » lu en novembre
+  const pad = (n: number) => String(n).padStart(2, "0");
+  // Heure suisse : décalage de la date (hiver +01:00, été +02:00).
+  const probe = new Date(`${year}-${pad(month)}-${pad(day)}T12:00:00Z`);
+  const off = new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Zurich", timeZoneName: "shortOffset" }).formatToParts(probe).find((x) => x.type === "timeZoneName")?.value ?? "GMT+1";
+  const h = Number(off.replace(/^GMT\+?/, "") || 1);
+  return `${year}-${pad(month)}-${pad(day)}T${pad(hour)}:${pad(min)}:00+${pad(h)}:00`;
+}
+
+/** Clé produit stable entre les semaines : sans « -week-YYYYMMDD » ni « :YYYY-MM-DD »
+ * (un lien partagé sur WhatsApp survit à la semaine suivante, round 3, item 10). */
+export const stableKey = (id: string) => id.replace(/-(?:week|weekstart|weekend)-\d{8}$/, "").replace(/:\d{4}-\d{2}-\d{2}$/, "");
 
 function subscription(d: RawDeal, price: number | undefined): Subscription | undefined {
   if (d.family !== "subscription") return undefined;
@@ -165,8 +257,8 @@ export function isLive(d: RawDeal, now: Date): boolean {
 /** Projection publique d'un deal brut. Liste blanche explicite : tout champ
  * non listé (personal_relevance, distance_km, favorite, eligible_home…) est
  * abandonné. Retourne null si le deal n'est pas publiable. */
-export function projectDeal(d: RawDeal, feed: Feed, now: Date): PublicDeal | null {
-  if (!d.deal_id || !d.title || !isLive(d, now)) return null;
+export function projectDeal(d: RawDeal, feed: Feed, now: Date, opts: { expired?: boolean } = {}): PublicDeal | null {
+  if (!d.deal_id || !d.title || (!opts.expired && !isLive(d, now))) return null;
   const rawUrl = str(d.offer_url) ?? str(d.source_url);
   if (!rawUrl || !/^https?:\/\//.test(rawUrl)) return null;
   const clean = cleanOutbound(rawUrl);
@@ -178,10 +270,15 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date): PublicDeal | nul
   if (str(d.promotion_integrity) === "above_usual_price") return null;
   const pricePre = num(d.current_price), lowPre = num(d.historical_low), nPre = num(d.history_n);
   const provenLowest = pricePre !== undefined && lowPre !== undefined && (nPre ?? 0) >= 3 && pricePre <= lowPre + 0.005;
-  const title = cleanTitle(rawTitle, { discountPct: num(d.effective_discount) ?? num(d.discount_percentage), keepLowest: provenLowest }).slice(0, 160);
+  // Concours, articles d'une semaine passée, tabac : jamais publiés (round 3, items 15 et 31).
+  if (d.family === "contest" || CONTEST.test(rawTitle) || isPastWeek(rawTitle, now) || TOBACCO.test(rawTitle)) return null;
+  const titleEnds = endsFromTitle(rawTitle, now);
+  if (!opts.expired && titleEnds && new Date(titleEnds).getTime() < now.getTime()) return null;
+  const merchant = resolveMerchant(d.source_id, str(d.merchant), rawTitle);
+  const lang = titleLang(d.source_id, rawTitle);
+  const title = cleanTitle(rawTitle, { discountPct: num(d.effective_discount) ?? num(d.discount_percentage), keepLowest: provenLowest, merchant, lang }).slice(0, 160);
+  const spirits = SPIRITS.test(rawTitle) && !/kirschstengel|ginger|ginseng/i.test(rawTitle);
   const geo = (str(d.geographic_scope_resolved) ?? str(d.geographic_scope) ?? "NATIONAL") as GeoScope;
-  const merchant = str(d.merchant);
-  const host = hostOf(clean.url) ?? hostOf(str(d.source_url));
   const price = num(d.current_price);
   const referencePrice = num(d.reference_price);
   const discountPct = num(d.effective_discount) ?? num(d.discount_percentage);
@@ -193,30 +290,36 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date): PublicDeal | nul
   const netSavings = num(d.net_savings);
   const category = categorize({ family: d.family, title, merchant, category: str(d.category), source: d.source_id });
   const bonus = price === 0 && BONUS.test(title);
-  const kind = bonus ? "none" : refKind(referenceType, referencePrice !== undefined && price !== undefined && referencePrice > price, (discountPct ?? 0) >= 1);
+  // Spiritueux : ni prix barré, ni pourcentage, ni note (LAlc art. 42b).
+  const kind = bonus || spirits ? "none" : refKind(referenceType, referencePrice !== undefined && price !== undefined && referencePrice > price, (discountPct ?? 0) >= 1);
 
-  // Note publique : règles d'honnêteté appliquées au score du scanner.
+  // Note publique : règles d'honnêteté appliquées au score du scanner (round 3, arbitrage 1 :
+  // une note n'existe que si sa base est visible). Pas de note du tout quand la fiabilité
+  // est < 0.7, quand la référence est un chiffre du vendeur (UVP, catalogue) ou un
+  // pourcentage annoncé, ou dans une catégorie sans note.
   let score = num(d.deal_score);
   let scoreCap: ScoreCap | undefined;
-  if (!isPlausible(d.family, discountPct) || quantityMismatch(title, price, unitPrice, unit) || kind === "none" || kind === "vendor_pct" || categoryBySlug(category)?.unrated) score = undefined;
+  if (
+    !isPlausible(d.family, discountPct) || quantityMismatch(title, price, unitPrice, unit) ||
+    kind !== "comparable" || (confidence ?? 0) < VERIFY_MIN_CONFIDENCE || categoryBySlug(category)?.unrated
+  ) score = undefined;
   // Une note de 0 se lit comme un jugement : pas de note du tout (round 2, item 6).
   if (score !== undefined && score <= 0) score = undefined;
   // Prix « statt » du marchand : affiché dès que la référence est un prix pratiqué
-  // (comparable), sans signal d'incohérence et fiable — que la source ait passé ou non
-  // notre contrôle d'historique (Denner : integrity absente → « unchecked »).
+  // (comparable), sans signal d'incohérence et fiable. Ce n'est PAS une vérification de
+  // notre part (« laut Denner ») tant que nos relevés ne la confirment pas (refObserved).
   const verifiedRef =
     score !== undefined && kind === "comparable" && !BAD_INTEGRITY.has(integrity ?? "") &&
     (confidence ?? 0) >= VERIFY_MIN_CONFIDENCE && (netSavings === undefined || netSavings > 0);
   const historicalMedian = num(d.historical_median), historyN = num(d.history_n);
   const refObserved = verifiedRef && isRefObserved(referencePrice, historicalMedian, historyN);
+  // Comparaison avec un concurrent dont le prix n'est pas affiché : aucune note.
+  if (referenceType === "competitor" && !(verifiedRef && referencePrice !== undefined && price !== undefined && referencePrice > price)) score = undefined;
   if (score !== undefined && score > SCORE_CAP) {
     const cap = (why: ScoreCap) => { score = SCORE_CAP; scoreCap = why; };
-    if (kind === "vendor") cap("vendor");
-    else if ((confidence ?? 0) < VERIFY_MIN_CONFIDENCE) cap("confidence");
-    else if (BAD_INTEGRITY.has(integrity ?? "")) cap("integrity");
-    else if (!verifiedRef) cap("unchecked");
-    // Comparaison avec un concurrent annoncée par le marchand : plafonnée tant que nos relevés ne la confirment pas.
-    else if (referenceType === "competitor" && !refObserved) cap("unchecked");
+    if (BAD_INTEGRITY.has(integrity ?? "")) cap("integrity");
+    // Un « statt » du marchand que nous n'avons pas observé n'est pas un historique : au plus « gut ».
+    else if (!refObserved) cap("unchecked");
   }
   const inStore = isSupermarket(merchant, d.source_id) || undefined;
 
@@ -225,12 +328,13 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date): PublicDeal | nul
   const conds = mergeConditions([
     ...structuredConditions(d as Parameters<typeof structuredConditions>[0]),
     ...rawConds.map((c) => parseCondition(fromSource ? redactCodes(c) : c)),
+    ...(isPickupOnly(rawTitle) ? [{ code: "pickup" }] : []),
   ]).slice(0, 6);
   const brand = str(d.brand) ?? title.split(/\s+/)[0]?.replace(/[^\p{L}\p{N}-]/gu, "");
 
   return {
     id: d.deal_id,
-    slug: dealSlug(d.deal_id, d.title),
+    slug: dealSlug(d.deal_id, title),
     title,
     source: d.source_id,
     merchant,
@@ -242,9 +346,9 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date): PublicDeal | nul
     cities: LOCAL_SCOPES.has(geo) ? feed.cities : ["*"],
     country: feed.country,
     price,
-    referencePrice,
-    discountPct,
-    discountAbs: num(d.discount_absolute),
+    referencePrice: spirits ? undefined : referencePrice,
+    discountPct: spirits ? undefined : discountPct,
+    discountAbs: spirits ? undefined : num(d.discount_absolute),
     referenceType,
     refKind: kind,
     integrity,
@@ -258,6 +362,7 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date): PublicDeal | nul
     currency: str(d.currency) ?? feed.currency,
     unitPrice,
     unit,
+    size: packSize(d.package_size, rawTitle),
     sub: subscription(d, price),
     netSavings,
     score,
@@ -265,7 +370,7 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date): PublicDeal | nul
     urgency: str(d.urgency),
     lifecycle: str(d.lifecycle),
     startsAt: str(d.starts_at),
-    endsAt: str(d.ends_at),
+    endsAt: str(d.ends_at) ?? titleEnds,
     endsInferred: d.ends_inferred === true || undefined,
     firstSeenAt: str(d.first_seen_at),
     lastSeenAt: str(d.last_seen_at),
@@ -273,13 +378,17 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date): PublicDeal | nul
     url: clean.url,
     via: viaHost(clean.url, merchant),
     noAff: clean.wasAffiliate || undefined,
-    attribution: `${merchant ?? d.source_id}${host ? ` (${host})` : ""}`,
+    attribution: sourceName(d.source_id),
     requiresStudent: d.requires_student === true || d.family === "student" || undefined,
     trial: isTrial({ title }) || undefined,
     couponCode: fromSource ? undefined : str(d.coupon_code),
     upcoming: (str(d.starts_at) && new Date(str(d.starts_at)!).getTime() > now.getTime()) || undefined,
     inStore,
-    noShowcase: NO_SHOWCASE.test(rawTitle) || undefined,
+    // Jamais en vitrine ni sur l'accueil, Studis ou Gratis : contenu adulte, spiritueux, marchand inconnu.
+    noShowcase: NO_SHOWCASE.test(rawTitle) || isAdult(rawTitle, merchant, str(d.brand), hostOf(clean.url)) || spirits || !merchant || undefined,
+    titles: d.family === "student" ? studentTitles(title) : undefined,
+    adult: isAdult(rawTitle, merchant, str(d.brand), hostOf(clean.url)) || undefined,
+    spirits: spirits || undefined,
   };
 }
 
@@ -291,22 +400,40 @@ export function pastStoreHours(d: Pick<PublicDeal, "inStore" | "endsAt" | "endsI
   return dayDiff(d.endsAt, now) <= 0 && zurichHour(now) >= STORE_CLOSING_HOUR;
 }
 
-/** Économie en CHF par unité, seulement avec un prix « statt » affichable. */
+/** Pourcentage d'économie affichable (prix « statt » du marchand, ≥ 1 %). */
+export function savingPct(d: Pick<PublicDeal, "verifiedRef" | "referencePrice" | "price">): number | undefined {
+  if (!d.verifiedRef || d.referencePrice === undefined || d.price === undefined || d.referencePrice <= 0) return undefined;
+  const pct = ((d.referencePrice - d.price) / d.referencePrice) * 100;
+  return pct >= 1 ? pct : undefined;
+}
+
+/** Le prix « statt » du marchand est-il RENDU (« .was ») ? Même prédicat pour la carte,
+ * le héros, le badge, le tri et les phrases de tri (round 3, item 2). */
+export const showsRef = (d: Pick<PublicDeal, "verifiedRef" | "referencePrice" | "price">) =>
+  d.verifiedRef && d.referencePrice !== undefined && savingPct(d) !== undefined;
+
+/** Note AFFICHÉE : seulement si sa base (le prix « statt ») est visible et à partir de 5/10. */
+export const shownScore = (d: PublicDeal) => (showsRef(d) && d.score !== undefined && d.score >= BADGE_MIN_SCORE ? d.score : undefined);
+
+/** Économie en CHF par unité, seulement avec un prix « statt » affiché. */
 export function savingChf(d: PublicDeal): number {
-  if (!d.verifiedRef) return -1;
+  if (!showsRef(d)) return -1;
   if (d.discountAbs !== undefined && d.discountAbs > 0) return d.discountAbs;
   return d.referencePrice !== undefined && d.price !== undefined && d.referencePrice > d.price ? d.referencePrice - d.price : -1;
 }
 
-/** Comparateur unique du site (round 2, item 7) : (1) disponible maintenant avant
- * « ab morgen », (2) prix « statt » du marchand avant tout le reste, (3) note,
- * (4) économie en CHF, (5) titre. Utilisé par rankDeals, better(), pickTop et les listes. */
+/** Comparateur UNIQUE du site (round 3, item 2), utilisé par rankDeals, better(), pickTop,
+ * orderCategory et « Mehr aus » :
+ * (1) disponible maintenant avant « ab morgen » ; (2) prix « statt » affiché d'abord ;
+ * (3) parmi eux : note, puis économie en CHF ; parmi les autres : le plus récent d'abord
+ * (aucune note invisible ne classe une carte) ; (4) titre, id. */
 export function compareDeals(a: PublicDeal, b: PublicDeal): number {
+  const ra = showsRef(a), rb = showsRef(b);
   return (
     Number(!!a.upcoming) - Number(!!b.upcoming) ||
-    Number(b.verifiedRef) - Number(a.verifiedRef) ||
-    (b.score ?? -1) - (a.score ?? -1) ||
-    savingChf(b) - savingChf(a) ||
+    Number(rb) - Number(ra) ||
+    (ra && rb ? (b.score ?? -1) - (a.score ?? -1) || savingChf(b) - savingChf(a) : 0) ||
+    (!ra && !rb ? (b.firstSeenAt ?? "").localeCompare(a.firstSeenAt ?? "") : 0) ||
     a.title.localeCompare(b.title) ||
     (a.id < b.id ? -1 : a.id > b.id ? 1 : 0)
   );
@@ -315,6 +442,33 @@ export function compareDeals(a: PublicDeal, b: PublicDeal): number {
 /** Tri éditorial (voir compareDeals) ; les non-évalués en dernier. */
 export function rankDeals(deals: PublicDeal[]): PublicDeal[] {
   return [...deals].sort(compareDeals);
+}
+
+/** Pierres tombales (round 3, item 10) : deals terminés depuis au plus 30 jours. Leur URL
+ * (slug stable) reste valable : page « abgelaufen », noindex, sans bouton ni Offer. */
+export const TOMBSTONE_DAYS = 30;
+export function endedAt(d: RawDeal, now: Date): string | undefined {
+  if (String(d.lifecycle) === "SOURCE_FAILURE" || d.duplicate_of) return undefined;
+  const ends = str(d.ends_at), seen = str(d.last_seen_at);
+  const t = (iso?: string) => (iso ? new Date(iso).getTime() : NaN);
+  let at: string | undefined;
+  if (ends && t(ends) < now.getTime()) at = ends;
+  else if (HIDDEN_LIFECYCLE.has(String(d.lifecycle)) || d.sold_out === true) at = seen && t(seen) <= now.getTime() ? seen : undefined;
+  if (!at || !(now.getTime() - t(at) <= TOMBSTONE_DAYS * 86_400_000)) return undefined;
+  return at;
+}
+
+export function projectExpired(raw: RawDeal[], feed: Feed, now: Date, liveSlugs: Set<string>): PublicDeal[] {
+  const out = new Map<string, PublicDeal>();
+  for (const d of raw) {
+    const at = endedAt(d, now);
+    if (!at) continue;
+    const p = projectDeal(d, feed, now, { expired: true });
+    if (!p || liveSlugs.has(p.slug)) continue;
+    const prev = out.get(p.slug);
+    if (!prev || (prev.endedAt ?? "") < at) out.set(p.slug, { ...p, endedAt: at, page: true });
+  }
+  return [...out.values()].sort((a, b) => (b.endedAt ?? "").localeCompare(a.endedAt ?? ""));
 }
 
 export function projectFeed(raw: RawDeal[], feed: Feed, now: Date): PublicDeal[] {
@@ -330,9 +484,6 @@ export function projectFeed(raw: RawDeal[], feed: Feed, now: Date): PublicDeal[]
   return rankDeals(out);
 }
 
-/** Badge de note seulement à partir de 5/10 (en dessous : prix et marchand seulement). */
-export const PAGE_MIN_SCORE = 5;
-export const BADGE_MIN_SCORE = PAGE_MIN_SCORE;
 /** Pages deal : TOUTE carte publiée a sa page interne (round 2, arbitrage 4) ; la
  * seule sortie vers un tiers est le bouton de la page deal. Plafond = budget de
  * fichiers Cloudflare Pages (20 000 ; 3 fichiers HTML par deal) et cible du

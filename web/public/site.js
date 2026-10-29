@@ -14,17 +14,37 @@
     } catch (e) { return { day: date.toISOString().slice(0, 10), hour: date.getHours() }; }
   }
 
-  // 1. Cartes expirées (page servie avant la prochaine reconstruction) ; vitrine :
-  //    une action en magasin disparaît à 18:00 son dernier jour (plus achetable « maintenant »).
-  function hideExpired() {
-    var now = new Date(), z = zurich(now);
-    $$("[data-ends]").forEach(function (el) {
+  // 1. Cartes expirées (page servie avant la prochaine reconstruction) : grisées, « abgelaufen »
+  //    à la place de la date — jamais masquées (pas de saut de mise en page, compteurs justes).
+  //    Vitrine : une action en magasin est grisée à 18:00 son dernier jour. Page deal expirée :
+  //    le bloc prix et le bouton sont remplacés par l'avis d'expiration (filet de sécurité du cache).
+  function markExpired() {
+    var now = new Date(), z = zurich(now), gone = (d.documentElement.lang || "de").slice(0, 2);
+    var label = { de: "abgelaufen", fr: "terminée", en: "ended" }[gone] || "abgelaufen";
+    function mark(el) {
+      el.setAttribute("data-gone", "");
+      var date = el.querySelector("[data-date]");
+      if (date) date.textContent = label;
+    }
+    $$("li.card[data-ends]").forEach(function (el) {
       var t = Date.parse(el.getAttribute("data-ends"));
-      if (t && t < now.getTime()) el.hidden = true;
+      if (t && t < now.getTime()) mark(el);
     });
     $$("[data-showcase] [data-store-end]").forEach(function (el) {
       var end = new Date(el.getAttribute("data-store-end"));
-      if (!isNaN(end) && zurich(end).day === z.day && z.hour >= 18) el.hidden = true;
+      if (!isNaN(end) && zurich(end).day === z.day && z.hour >= 18) mark(el);
+    });
+    $$("article.deal[data-ends]").forEach(function (el) {
+      var t = Date.parse(el.getAttribute("data-ends"));
+      if (!t || t >= now.getTime()) return;
+      var buy = el.querySelector(".deal-buy");
+      if (!buy) return;
+      el.setAttribute("data-gone", "");
+      var p = d.createElement("p");
+      p.className = "deal-gone";
+      p.textContent = el.getAttribute("data-gone-text") || label;
+      buy.querySelectorAll(".deal-actions, .deal-saving").forEach(function (x) { x.remove(); });
+      buy.insertBefore(p, buy.firstChild);
     });
   }
 
@@ -37,21 +57,17 @@
     });
   }
 
-  // 3. Partage : feuille native si disponible, sinon copie du lien ; WhatsApp reste le repli sans JS.
+  // 3. Partage : UN bouton — feuille native si disponible, sinon copie du lien (« Link kopiert »).
   function share() {
     $$("[data-share-url]").forEach(function (box) {
       var url = box.getAttribute("data-share-url"), title = box.getAttribute("data-share-title"), text = box.getAttribute("data-share-text");
-      var native = box.querySelector('[data-share="native"]'), copy = box.querySelector('[data-share="copy"]');
-      var wa = box.querySelector('[data-share="whatsapp"]'), status = box.querySelector(".share-status");
-      if (navigator.share && native) {
-        native.hidden = false; if (wa) wa.hidden = true;
-        native.addEventListener("click", function () { navigator.share({ title: title, text: text, url: url }).catch(function () {}); });
-      } else if (navigator.clipboard && copy) {
-        copy.hidden = false;
-        copy.addEventListener("click", function () {
-          navigator.clipboard.writeText(url).then(function () { if (status) status.textContent = box.getAttribute("data-copied") || ""; }, function () {});
-        });
-      }
+      var btn = box.querySelector("[data-share]"), status = box.querySelector(".share-status");
+      if (!btn || (!navigator.share && !navigator.clipboard)) return;
+      btn.hidden = false;
+      btn.addEventListener("click", function () {
+        if (navigator.share) { navigator.share({ title: title, text: text, url: url }).catch(function () {}); return; }
+        navigator.clipboard.writeText(url).then(function () { if (status) status.textContent = box.getAttribute("data-copied") || ""; }, function () {});
+      });
     });
   }
 
@@ -133,6 +149,6 @@
     });
   }
 
-  function init() { hideExpired(); centerChip(); share(); consent(); }
+  function init() { markExpired(); centerChip(); share(); consent(); }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();

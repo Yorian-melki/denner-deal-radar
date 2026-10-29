@@ -23,7 +23,8 @@ function mk(p: Partial<PublicDeal> = {}): PublicDeal {
     id: `d:${seq}`, slug: `d-${seq}`, title: `Deal ${seq}`, source: "src", merchant: "Shop A", brand: `B${seq}`,
     family: "tech", category: "tech-deals", geo: "ONLINE", cities: ["*"], country: "CH",
     currency: "CHF", conds: [], url: "https://example.ch/x", attribution: "Shop A",
-    refKind: "comparable", verifiedRef: true, score: 5, confidence: 0.9, ...p,
+    // Prix « statt » affiché par défaut (round 3 : la note n'existe qu'avec sa base visible).
+    refKind: "comparable", verifiedRef: true, score: 5, confidence: 0.9, price: 10, referencePrice: 100, ...p,
   };
 }
 
@@ -162,7 +163,7 @@ describe("faits par deal (vrais uniquement)", () => {
   });
 
   it("économie et pourcentage seulement avec une référence vérifiée", () => {
-    expect(unitSaving(mk({ price: 10 }))).toBeUndefined();
+    expect(unitSaving(mk({ price: 10, referencePrice: undefined }))).toBeUndefined();
     expect(unitSaving(mk({ price: 10, referencePrice: 8 }))).toBeUndefined();
     expect(unitSaving(mk({ price: 10, referencePrice: 13.5 }))).toBe(3.5);
     expect(unitSaving(mk({ price: 10, referencePrice: 13.5, discountAbs: 3.4 }))).toBe(3.4);

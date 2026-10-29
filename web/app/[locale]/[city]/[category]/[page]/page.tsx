@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { cityBySlug, launchedCities } from "@/config/cities";
-import { CategoryListing, categoryList, categoryMetadata, pageCount } from "@/components/CategoryListing";
+import { CategoryListing, categoryList, categoryMetadata, pageCount, storesOf } from "@/components/CategoryListing";
 import { CATEGORIES, categoryBySlug } from "@/lib/categories";
 import { getDeals } from "@/lib/data";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { inCity } from "@/lib/project";
 
-/** Pages 2…N d'une catégorie (la page 1 est /…/<kategorie>). */
+/** Pages 2…N d'une catégorie (la page 1 est /…/<kategorie>) et, pour Supermarkt, page 1 de
+ * chaque magasin (/…/supermarkt-aktionen/<magasin>, round 3, item 14). */
 export const dynamicParams = false;
 export async function generateStaticParams() {
   const { deals } = await getDeals();
@@ -18,6 +19,7 @@ export async function generateStaticParams() {
       const pages = pageCount(categoryList(here, cat.slug).length);
       for (let n = 2; n <= pages; n++) out.push({ city: c.slug, category: cat.slug, page: String(n) });
     }
+    for (const s of storesOf(here)) out.push({ city: c.slug, category: "supermarkt-aktionen", page: s.slug });
   }
   return out;
 }
@@ -25,25 +27,32 @@ export async function generateStaticParams() {
 type P = { params: Promise<{ locale: string; city: string; category: string; page: string }> };
 
 async function resolve(p: Awaited<P["params"]>) {
-  const city = cityBySlug(p.city), cat = categoryBySlug(p.category), page = Number(p.page);
-  if (!city || !cat || !Number.isInteger(page) || page < 2) return null;
+  const city = cityBySlug(p.city), cat = categoryBySlug(p.category);
+  if (!city || !cat) return null;
   const { deals, now } = await getDeals();
   const here = deals.filter((d) => inCity(d, city));
+  if (!/^\d+$/.test(p.page)) {
+    const store = cat.slug === "supermarkt-aktionen" ? storesOf(here).find((s) => s.slug === p.page) : undefined;
+    if (!store) return null;
+    return { city, cat, page: 1, here, n: categoryList(here, cat.slug, store.slug).length, now, store };
+  }
+  const page = Number(p.page);
+  if (!Number.isInteger(page) || page < 2) return null;
   const n = categoryList(here, cat.slug).length;
   if (page > pageCount(n)) return null;
-  return { city, cat, page, here, n, now };
+  return { city, cat, page, here, n, now, store: undefined };
 }
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
   const p = await params;
   const r = await resolve(p);
   if (!r || !isLocale(p.locale)) return {};
-  return categoryMetadata(r.city, p.locale, r.cat.slug, r.page, r.n);
+  return categoryMetadata(r.city, p.locale, r.cat.slug, r.page, r.n, r.store);
 }
 
 export default async function CategoryPageN({ params }: P) {
   const p = await params;
   const r = await resolve(p);
   if (!r) notFound();
-  return <CategoryListing city={r.city} locale={p.locale as Locale} slug={r.cat.slug} page={r.page} here={r.here} now={r.now} />;
+  return <CategoryListing city={r.city} locale={p.locale as Locale} slug={r.cat.slug} page={r.page} here={r.here} now={r.now} store={r.store} />;
 }

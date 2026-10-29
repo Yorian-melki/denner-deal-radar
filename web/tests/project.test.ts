@@ -24,7 +24,8 @@ describe("projectDeal", () => {
     const p = projectDeal(base, FEED, NOW)!;
     const json = JSON.stringify(p);
     for (const k of ["personal_relevance", "distance_km", "favorite", "eligible_home", "1.2"]) expect(json).not.toContain(k);
-    expect(p).toMatchObject({ price: 49, referencePrice: 99, score: 7.2, category: "tech-deals", cities: ["*"], verifiedRef: true });
+    // Round 3, arbitrage 2 : un « statt » non observé par nous → au plus 6.9 (« unchecked »).
+    expect(p).toMatchObject({ price: 49, referencePrice: 99, score: 6.9, scoreCap: "unchecked", category: "tech-deals", cities: ["*"], verifiedRef: true });
   });
 
   it("masque expirés, retirés, épuisés, doublons et dates de fin passées", () => {
@@ -74,14 +75,14 @@ describe("honnêteté des références de prix", () => {
     expect(p.refKind).toBe("vendor_pct");
   });
 
-  it("Tefal 99.90 « statt » 199 (prix catalogue) : jamais barré, note plafonnée à 6.9", () => {
+  it("Tefal 99.90 « statt » 199 (prix catalogue) : jamais barré, aucune note (round 3, arbitrage 1)", () => {
     const p = projectDeal({ deal_id: "daydeal:9439", source_id: "daydeal", title: "Kochgeschirr-Set Tefal Ingenio Emotion 13-teilig", family: "flash", merchant: "DayDeal",
       current_price: 99.9, reference_price: 199, reference_price_type: "catalog", discount_absolute: 99.1, deal_score: 7, score_confidence: 0.7, promotion_integrity: "ok",
       source_url: "https://www.daydeal.ch/de/category/haushalt-wohnen" }, FEED, NOW)!;
     expect(p.verifiedRef).toBe(false);
     expect(p.refKind).toBe("vendor");
-    expect(p.score).toBe(6.9);
-    expect(p.scoreCap).toBe("vendor");
+    expect(p.score).toBeUndefined();
+    expect(p.scoreCap).toBeUndefined();
     expect(p.category).toBe("haushalt");
   });
 
@@ -126,10 +127,10 @@ describe("honnêteté des références de prix", () => {
     expect(p.verifiedRef).toBe(false);
   });
 
-  it("confiance < 0.7 : jamais « sehr gut / Top »", () => {
+  it("confiance < 0.7 : aucune note (round 3, arbitrage 1)", () => {
     const p = projectDeal({ ...base, score_confidence: 0.5, deal_score: 8.4 }, FEED, NOW)!;
-    expect(p.score).toBe(6.9);
-    expect(p.scoreCap).toBe("confidence");
+    expect(p.score).toBeUndefined();
+    expect(p.scoreCap).toBeUndefined();
     expect(p.verifiedRef).toBe(false);
   });
 
@@ -257,19 +258,24 @@ describe("round 2 : prix « statt » des marchands, plafonds honnêtes", () => {
     starts_at: "2026-10-27T00:00:00+01:00", ends_at: "2026-11-02T23:59:00+01:00",
   };
 
-  it("Denner (integrity absente) : prix barré affiché, pas de faux motif « dünn », pas de plafond « confidence »", () => {
+  it("Denner (integrity absente) : prix barré affiché, plafond « unchecked » tant que nos relevés ne le confirment pas", () => {
     const p = projectDeal(energizer, FEED, NOW)!;
     expect(p.verifiedRef).toBe(true);
-    expect(p.scoreCap).toBeUndefined();
-    expect(p.score).toBe(7.6);
+    expect(p.scoreCap).toBe("unchecked");
+    expect(p.score).toBe(6.9);
+    const obs = projectDeal({ ...energizer, deal_id: "denner:OBS", historical_median: 35.6, history_n: 3 }, FEED, NOW)!;
+    expect(obs.refObserved).toBe(true);
+    expect(obs.score).toBe(7.6);
     expect(p.category).toBe("supermarkt-aktionen");
     expect(Object.values(DICTS).map((t) => JSON.stringify(t.scoreCap)).join(" ")).not.toMatch(/dünn|minces|thin/);
   });
 
-  it("aucun deal plafonné « confidence » avec une qualité de données élevée", () => {
+  it("échantillon : aucune note avec confidence < 0.7 ; sans relevé propre, jamais au-dessus de 6.9 (round 3)", () => {
     const raw = JSON.parse(readFileSync(path.join(import.meta.dirname, "..", "fixtures", "universal.sample.json"), "utf8"));
     for (const d of projectFeed(raw.deals, FEED, new Date(raw.generated_at))) {
-      if (d.scoreCap === "confidence") expect(d.confidence ?? 0).toBeLessThan(0.7);
+      if (d.score !== undefined) expect(d.confidence ?? 0).toBeGreaterThanOrEqual(0.7);
+      if (d.refObserved !== true && d.score !== undefined) expect(d.score).toBeLessThanOrEqual(6.9);
+      if (d.score !== undefined) expect(d.refKind).toBe("comparable");
     }
   });
 

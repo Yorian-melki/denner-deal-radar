@@ -17,7 +17,7 @@ function mk(p: Partial<PublicDeal> = {}): PublicDeal {
     id: `d:${seq}`, slug: `d-${seq}`, title: `Deal ${seq}`, source: "src", merchant: `Shop ${seq}`, brand: `B${seq}`,
     family: "tech", category: "tech-deals", geo: "ONLINE", cities: ["*"], country: "CH",
     currency: "CHF", conds: [], url: "https://example.ch/x", attribution: "Shop",
-    refKind: "comparable", verifiedRef: true, score: 8, confidence: 0.9, page: true, ...p,
+    refKind: "comparable", verifiedRef: true, score: 8, confidence: 0.9, page: true, price: 10, referencePrice: 100, ...p,
   };
 }
 

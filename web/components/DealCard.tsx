@@ -10,14 +10,17 @@ import { CARD_CONDITIONS, conditionLines } from "@/lib/conditions";
 import { dayDiff, fmtAmount, fmtDay, fmtPct, fmtPrice, fmtScore } from "@/lib/format";
 import { HTML_LANG, dict, type Locale } from "@/lib/i18n";
 import { rewriteUrl } from "@/lib/affiliate/rewrite";
-import { BADGE_MIN_SCORE, hasPage } from "@/lib/project";
-import { hasRealEnd, isLowestSeen, savingPct, scoreTier, unitSaving } from "@/lib/select";
+import { categoryBySlug } from "@/lib/categories";
+import { BADGE_MIN_SCORE, VERIFY_MIN_CONFIDENCE, hasPage } from "@/lib/project";
+import { hasRealEnd, isLowestSeen, savingPct, scoreTier, showsRef, shownScore, unitSaving } from "@/lib/select";
 import { paths } from "@/lib/site";
 import { titleLang } from "@/lib/titleLang";
+import { AGGREGATOR_SOURCES, sourceName } from "@/lib/merchant";
 import type { PublicDeal } from "@/lib/types";
 
-/** Note affichable : jamais de badge sous 5/10 (en dessous : prix et marchand seulement). */
-export const shownScore = (d: Pick<PublicDeal, "score">) => (d.score !== undefined && d.score >= BADGE_MIN_SCORE ? d.score : undefined);
+/** Note affichable : seulement si le prix « statt » est rendu sur la même carte, et
+ * jamais sous 5/10 (lib/project.ts shownScore, round 3, arbitrage 1). */
+export { shownScore, showsRef };
 
 export function ScoreBadge({ score, locale, size = "md", hidden = false }: { score?: number; locale: Locale; size?: "md" | "lg"; hidden?: boolean }) {
   const t = dict(locale);
@@ -29,43 +32,79 @@ export function ScoreBadge({ score, locale, size = "md", hidden = false }: { sco
   return <span className={cls} role="img" aria-label={t.scoreAria(s, t.scoreTiers[tier])}>{s}</span>;
 }
 
-/** Le prix « statt » du marchand est-il affiché ? (même règle pour la carte, le héros et le panneau). */
-export const showsRef = (d: PublicDeal) => d.verifiedRef && d.referencePrice !== undefined && savingPct(d) !== undefined;
+/** Titre affiché dans une langue : titre reconstruit (réductions étudiantes), sinon celui de la source. */
+export const displayTitle = (deal: PublicDeal, locale: Locale) => deal.titles?.[locale] ?? deal.title;
 
 /** Titre dans sa langue d'origine (lang seulement sur le texte, pas sur les notes sr). */
 export function DealTitle({ deal, locale }: { deal: PublicDeal; locale: Locale }) {
+  const own = deal.titles?.[locale];
+  if (own) return <>{own}</>;
   const tl = titleLang(deal.source, deal.title);
   return tl !== "?" && tl !== locale ? <span lang={HTML_LANG[tl]}>{deal.title}</span> : <>{deal.title}</>;
 }
 
+/** Réduction annoncée en « bis zu » / « up to » dans le titre d'origine. */
+const UP_TO = /\b(bis zu|up to|jusqu[’']à)\b/i;
+
+/** Valeur d'une carte sans prix : le pourcentage annoncé (« −35% », « bis −60% ») dans
+ * l'emplacement du prix, suivi de « laut Anbieter » (round 3, item 4). */
+export function pctValue(deal: PublicDeal, locale: Locale): string | undefined {
+  if (deal.price !== undefined || deal.refKind !== "vendor_pct" || deal.discountPct === undefined || deal.discountPct < 1 || deal.discountPct >= 100) return undefined;
+  const v = `−${fmtPct(deal.discountPct, locale)}`;
+  return UP_TO.test(deal.title) ? `${dict(locale).upTo} ${v}` : v;
+}
+
+/** Pourquoi une page deal n'affiche pas de note (une ligne, round 3, item 12). */
+export function noScoreReason(deal: PublicDeal): string {
+  if (deal.spirits) return "spirits";
+  if (categoryBySlug(deal.category)?.unrated) return "category";
+  if (deal.refKind === "vendor_pct") return "pct";
+  if (deal.refKind === "vendor") return "vendor";
+  if (deal.refKind === "none") return "none";
+  if ((deal.confidence ?? 0) < VERIFY_MIN_CONFIDENCE) return "data";
+  return "hidden";
+}
+
+/** Nom du marchand tel qu'affiché partout (jamais un agrégateur, voir lib/merchant.ts). */
+export const sellerName = (deal: PublicDeal, locale: Locale) => deal.merchant ?? dict(locale).unknownSeller;
+
 /** Prix, avec unité (/Monat) et « statt » seulement si le prix du marchand est affichable.
- * Préfixe sr : « jetzt » si achetable maintenant, sinon la date de début (« ab Do 29.10. »). */
-export function PriceLine({ deal, locale, className = "card-price", now }: { deal: PublicDeal; locale: Locale; className?: string; now?: Date }) {
+ * Préfixe sr : « jetzt » si achetable maintenant, sinon la date de début (« ab Do 29.10. »).
+ * `attrib` (héros de la page deal) : « statt 27.35 laut Denner » tant que nos relevés ne
+ * confirment pas la référence. Une seule économie par carte : le % lu par les lecteurs
+ * d'écran n'est ajouté que si la ligne d'économie en CHF est absente. */
+export function PriceLine({ deal, locale, className = "card-price", now, attrib = false }: { deal: PublicDeal; locale: Locale; className?: string; now?: Date; attrib?: boolean }) {
   const t = dict(locale);
-  if (deal.price === undefined) return null;
+  if (deal.price === undefined) {
+    const v = pctValue(deal, locale);
+    return v ? <p className={className}><span className="price">{v}</span><span className="was">{t.byVendor}</span></p> : null;
+  }
   const pct = savingPct(deal);
   const unit = deal.unit === "month" ? t.units.month : "";
   const prefix = deal.upcoming ? dateText(deal, locale, now) ?? "" : t.now;
+  const was = showsRef(deal) ? fmtAmount(deal.referencePrice!) : undefined;
+  const hasSaving = savingText(deal, locale) !== undefined;
   return (
     <p className={className}>
       <span className="sr-only">{prefix} </span>
-      <span className="price">{deal.price === 0 ? t.free : fmtPrice(deal.price, deal.currency, locale)}</span>
+      <span className="price">{deal.price === 0 ? t.free : <><span className="cur">{deal.currency}</span>{"\u202f"}<span className="amt">{fmtAmount(deal.price)}</span></>}</span>
       {unit && deal.price !== 0 && <span className="price-unit">{unit}</span>}
-      {showsRef(deal) && (
+      {was && (
         <span className="was">
-          {t.insteadOf(fmtAmount(deal.referencePrice!))}
-          <span className="sr-only"> {deal.currency}, {t.cheaperBy(fmtPct(pct!, locale))}</span>
+          {attrib && !deal.refObserved ? t.insteadOfBy(was, sellerName(deal, locale)) : t.insteadOf(was)}
+          {!hasSaving && <span className="sr-only"> {deal.currency}, {t.cheaperBy(fmtPct(pct!, locale))}</span>}
         </span>
       )}
     </p>
   );
 }
 
-/** Accent de la carte : l'économie en CHF, une seule fois, seulement avec un prix « statt ». */
+/** Accent de la carte : l'économie en CHF, une seule fois, seulement avec un prix « statt ».
+ * « als zuvor » seulement si nos relevés confirment la référence (refObserved). */
 export function savingText(deal: PublicDeal, locale: Locale): string | undefined {
   const saving = unitSaving(deal);
   if (saving === undefined || !showsRef(deal)) return undefined;
-  return dict(locale).savingLine(fmtPrice(saving, deal.currency, locale), deal.referenceType ?? "merchant_previous");
+  return dict(locale).savingLine(fmtPrice(saving, deal.currency, locale), deal.referenceType ?? "merchant_previous", !!deal.refObserved, sellerName(deal, locale));
 }
 
 /** Sans prix « statt » : ce que dit la source, en une phrase neutre (jamais d'économie chiffrée). */
@@ -74,7 +113,7 @@ export function valueText(deal: PublicDeal, locale: Locale): string | undefined 
   if (showsRef(deal)) return undefined;
   if (deal.integrity === "above_usual_price") return t.aboveUsual;
   if (deal.refKind === "vendor" && deal.referencePrice !== undefined) return t.vendorPrice(fmtPrice(deal.referencePrice, deal.currency, locale));
-  if (deal.refKind === "vendor_pct" && deal.discountPct !== undefined && deal.discountPct >= 1) return t.vendorPct(fmtPct(deal.discountPct, locale));
+  if (deal.refKind === "vendor_pct" && deal.discountPct !== undefined && deal.discountPct >= 1 && !pctValue(deal, locale)) return t.vendorPct(fmtPct(deal.discountPct, locale));
   return undefined;
 }
 
@@ -110,6 +149,18 @@ export function subscriptionText(deal: PublicDeal, locale: Locale): string | und
   return parts.join(" · ") || undefined;
 }
 
+/** Ligne quantité des cartes épicerie (round 3, item 14) : « 6 × 75 cl · CHF 16.27/l ».
+ * Sans donnée : « Menge: siehe Anbieter » (jamais un prix sans quantité sans le dire). */
+export function unitLine(deal: PublicDeal, locale: Locale): string | undefined {
+  if (deal.category !== "supermarkt-aktionen" || deal.price === undefined) return undefined;
+  const t = dict(locale);
+  const parts: string[] = [];
+  if (deal.size?.text) parts.push(deal.size.text);
+  else if (deal.size?.pieces) parts.push(t.pieces(deal.size.pieces));
+  if (deal.unitPrice !== undefined && deal.unit && deal.unit !== "month") parts.push(`${fmtPrice(deal.unitPrice, deal.currency, locale)}${t.units[deal.unit]}`);
+  return parts.length ? parts.join(" · ") : t.qtyUnknown;
+}
+
 /** Mentions de la carte : conditions qui changent le prix réel + faits utiles. */
 export function cardNotes(deal: PublicDeal, locale: Locale, max = 2): string[] {
   const t = dict(locale);
@@ -132,31 +183,39 @@ export function outbound(deal: PublicDeal) {
 }
 
 export function DealCard({ deal, locale, headingLevel = 3, showcase = false, now }: { deal: PublicDeal; locale: Locale; headingLevel?: 2 | 3; showcase?: boolean; now?: Date }) {
+  const t = dict(locale);
   const href = dealHref(deal, locale);
   const saving = savingText(deal, locale);
   const value = valueText(deal, locale);
   const date = dateText(deal, locale, now);
   const sub = subscriptionText(deal, locale);
   const notes = cardNotes(deal, locale);
-  const titleId = `t-${deal.slug}`;
   const H = headingLevel === 2 ? "h2" : "h3";
-  const seller = deal.merchant ?? deal.attribution;
+  const seller = sellerName(deal, locale);
+  // Source agrégée : « via Preispirat » (promesse de /transparenz) ; Studis : « Konto nötig ».
+  const via = AGGREGATOR_SOURCES.has(deal.source) ? t.viaSource(sourceName(deal.source)) : undefined;
+  const account = deal.category === "studenten-rabatte" ? t.accountNeeded : undefined;
+  const title = displayTitle(deal, locale);
+  const unit = unitLine(deal, locale);
   return (
-    <li className="card" aria-labelledby={titleId}
+    <li className="card" data-observed={deal.refObserved ? "" : undefined}
       data-ends={hasRealEnd(deal) ? deal.endsAt : undefined}
       data-store-end={showcase && deal.inStore && hasRealEnd(deal) ? deal.endsAt : undefined}>
       <div className="card-head">
-        <H className="card-title" id={titleId}>
+        <H className="card-title" title={title.length > 70 ? title : undefined}>
           {href ? <a className="card-link" href={href}><DealTitle deal={deal} locale={locale} /></a> : <DealTitle deal={deal} locale={locale} />}
         </H>
         <ScoreBadge score={shownScore(deal)} locale={locale} />
       </div>
       <PriceLine deal={deal} locale={locale} now={now} />
+      {unit && <p className="card-unit">{unit}</p>}
       {saving && <p className="card-save">{saving}</p>}
       <p className="card-meta">
-        <span className="seller">{seller}</span>
+        <span className={deal.merchant ? "seller" : "seller seller-unknown"}>{seller}</span>
+        {via && <span>{via}</span>}
+        {account && <span>{account}</span>}
         {value && <span>{value}</span>}
-        {date && <span>{date}</span>}
+        {date && <span data-date="">{hasRealEnd(deal) && !deal.upcoming ? <time dateTime={deal.endsAt}>{date}</time> : date}</span>}
       </p>
       {sub && <p className="card-sub">{sub}</p>}
       {notes.length > 0 && (
@@ -168,10 +227,10 @@ export function DealCard({ deal, locale, headingLevel = 3, showcase = false, now
   );
 }
 
-export function DealGrid({ deals, locale, showcase = false, now, labelledBy }: { deals: PublicDeal[]; locale: Locale; showcase?: boolean; now?: Date; labelledBy?: string }) {
+export function DealGrid({ deals, locale, showcase = false, now, labelledBy, describedBy }: { deals: PublicDeal[]; locale: Locale; showcase?: boolean; now?: Date; labelledBy?: string; describedBy?: string }) {
   if (!deals.length) return <p className="empty">{dict(locale).empty}</p>;
   return (
-    <ul className="grid" role="list" aria-labelledby={labelledBy} data-showcase={showcase || undefined}>
+    <ul className="grid" role="list" aria-labelledby={labelledBy} aria-describedby={describedBy} data-showcase={showcase || undefined}>
       {deals.map((d) => <DealCard key={d.slug} deal={d} locale={locale} showcase={showcase} now={now} />)}
     </ul>
   );

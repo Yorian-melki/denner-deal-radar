@@ -1,5 +1,6 @@
 import { PROGRAMMES, parseMidMap, type Env } from "@/lib/affiliate/programmes";
 import { monetisationEnv } from "@/lib/operator";
+import { isTrackerHost } from "@/lib/outbound";
 
 export interface OutLink {
   href: string;
@@ -12,11 +13,6 @@ export interface OutLink {
 /** Marqueurs d'un lien déjà affilié (par la source ou un tiers) : on ne le
  * réécrit JAMAIS — détourner la commission d'un autre éditeur est interdit
  * par les CGU des réseaux et déloyal (art. 2 LCD). */
-const FOREIGN_MARKERS = [
-  /(^|\.)awin1\.com$/, /(^|\.)tradedoubler\.com$/, /(^|\.)s\.click\.aliexpress\.com$/,
-  /(^|\.)amzn\.to$/, /(^|\.)anrdoezrs\.net$/, /(^|\.)dpbolvw\.net$/, /(^|\.)jdoqocy\.com$/,
-  /(^|\.)tkqlhce\.com$/, /(^|\.)kqzyfj\.com$/, /(^|\.)sjv\.io$/, /(^|\.)pxf\.io$/,
-];
 const FOREIGN_PARAMS = ["tag", "aid", "awc", "affid", "aff_id", "affiliate", "ref_id", "clickref", "irclickid"];
 
 const PLAIN: Omit<OutLink, "href"> = { affiliate: false, rel: "noopener noreferrer" };
@@ -24,7 +20,7 @@ const PLAIN: Omit<OutLink, "href"> = { affiliate: false, rel: "noopener noreferr
 const hostMatches = (host: string, h: string) => host === h || host.endsWith(`.${h}`);
 
 export function isForeignAffiliate(u: URL): boolean {
-  if (FOREIGN_MARKERS.some((re) => re.test(u.hostname))) return true;
+  if (isTrackerHost(u.hostname.toLowerCase())) return true;
   return FOREIGN_PARAMS.some((p) => u.searchParams.has(p));
 }
 

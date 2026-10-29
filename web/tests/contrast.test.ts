@@ -28,6 +28,7 @@ const TEXT: [string, string][] = [
   ["fg", "bg"], ["fg", "surface"], ["fg", "fill"], ["muted", "bg"], ["muted", "surface"], ["muted", "fill"],
   ["accent", "bg"], ["accent", "surface"], ["accent-fg", "accent"], ["accent-strong", "accent-tint"], ["bg", "fg"],
 ];
+// Puces (round 3, item 18) : texte --fg sur --surface (inactive) et --fill (active) ; bordure --control sur --bg.
 const CONTROL: [string, string][] = [["control", "bg"], ["control", "surface"], ["focus", "bg"], ["focus", "surface"]];
 
 describe.each([["clair", light], ["sombre", dark]] as const)("thème %s", (_name, t) => {
@@ -43,7 +44,7 @@ describe.each([["clair", light], ["sombre", dark]] as const)("thème %s", (_name
 describe("échelle typographique", () => {
   it("font-size et font-weight seulement via les jetons", () => {
     const rules = css.slice(css.indexOf("/* ---------- Base"));
-    for (const m of rules.matchAll(/font-size:\s*([^;]+);/g)) expect(m[1], m[0]).toMatch(/^(var\(--t-[a-z]+\)|inherit|0\.95em|28px)$/);
-    for (const m of rules.matchAll(/font-weight:\s*([^;]+);/g)) expect(m[1], m[0]).toMatch(/^var\(--w-(regular|semi|bold)\)$/);
+    for (const m of rules.matchAll(/font-size:\s*([^;]+);/g)) expect(m[1], m[0]).toMatch(/^(var\(--t-[a-z0-9]+\)|inherit|0\.95em|0\.58em|28px)$/);
+    for (const m of rules.matchAll(/font-weight:\s*([^;]+);/g)) expect(m[1], m[0]).toMatch(/^var\(--w-(regular|medium|semi|bold)\)$/);
   });
 });

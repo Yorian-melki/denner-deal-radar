@@ -6,7 +6,7 @@ import { Icon } from "@/components/Icon";
 import { CATEGORIES } from "@/lib/categories";
 import { fmtInt, fmtScore, fmtUpdated } from "@/lib/format";
 import { categoryText, dict, type Locale } from "@/lib/i18n";
-import { HOME_MIN_SCORE, HOME_MIN_SECTION, PER_BRAND, SECTION_N, TOP_MIN_SCORE, balancedSections, canonical, categoryCounts, pickShowcase } from "@/lib/select";
+import { HOME_MIN_SCORE, HOME_MIN_SECTION, PER_BRAND, SECTION_N, TOP_MIN_SCORE, balancedSections, canonical, categoryCounts, homeOrder, pickShowcase } from "@/lib/select";
 import { paths, telegramUrl } from "@/lib/site";
 import type { PublicDeal } from "@/lib/types";
 
@@ -30,21 +30,35 @@ export function Intro({ city, locale, deals, generatedAt }: { city: City; locale
   );
 }
 
-/** Puces de catégorie (sans compteur) : « Alle » + catégories non vides, dans l'ordre fixe.
+/** Puces visibles d'emblée (round 3, item 18) ; les autres sous « Mehr ». */
+export const PRIMARY_CHIPS = ["supermarkt-aktionen", "studenten-rabatte", "gratis", "tech-deals", "handy-abos", "haushalt"];
+
+/** Puces de catégorie (sans compteur) : 6 catégories puis « Mehr » (sans JS : details/summary).
+ * La catégorie active est promue dans la rangée au build. Accueil : pas de puce « Alle ».
  * La puce active est ramenée au centre au chargement (site.js, data-chips). */
 export function CategoryChips({ city, locale, deals, active }: { city: City; locale: Locale; deals: PublicDeal[]; active?: string }) {
   const t = dict(locale);
   const counts = categoryCounts(deals);
   const cats = CATEGORIES.filter((c) => counts.get(c.slug));
   if (!cats.length) return null;
+  const primary = PRIMARY_CHIPS.filter((s) => counts.get(s));
+  if (active && active !== "all" && counts.get(active) && !primary.includes(active)) primary.push(active);
+  const rest = cats.filter((c) => !primary.includes(c.slug));
+  const chip = (slug: string) => (
+    <a key={slug} href={paths.category(locale, city.slug, slug)} className="chip" aria-current={active === slug ? "page" : undefined}>
+      {categoryText(locale, slug).label}
+    </a>
+  );
   return (
     <nav className="chips" aria-label={t.categories} data-chips="">
-      <a href={paths.city(locale, city.slug)} className="chip" aria-current={active === "all" ? "page" : undefined}>{t.allChip}</a>
-      {cats.map((c) => (
-        <a key={c.slug} href={paths.category(locale, city.slug, c.slug)} className="chip" aria-current={active === c.slug ? "page" : undefined}>
-          {categoryText(locale, c.slug).label}
-        </a>
-      ))}
+      {active !== "all" && <a href={paths.city(locale, city.slug)} className="chip">{t.allChip}</a>}
+      {primary.map(chip)}
+      {rest.length > 0 && (
+        <details className="chip-more">
+          <summary className="chip">{t.moreChip}</summary>
+          {rest.map((c) => chip(c.slug))}
+        </details>
+      )}
     </nav>
   );
 }
@@ -99,13 +113,14 @@ function SectionHead({ id, title, href, more, moreSr, srOnlyMobile }: { id: stri
 }
 
 /** Page ville : titre factuel, puces, vitrine stricte (prix « statt », note ≥ 7, ≤ 6),
- * puis Studis, Gratis et Supermarkt (3 cartes chacune). */
+ * puis les sections (3 cartes chacune). Sans vitrine, l'ordre des sections est calculé
+ * (lib/select.ts homeOrder) : d'abord celles qui montrent un prix « statt », Gratis en dernier. */
 export function CityDashboard({ city, locale, deals, generatedAt, now }: { city: City; locale: Locale; deals: PublicDeal[]; generatedAt: string; now: Date }) {
   const t = dict(locale);
   const all = canonical(deals);
   const top = pickShowcase(all, now);
   const shown = new Set(top.map((d) => d.id));
-  const sections = balancedSections(all, CITY_SECTIONS, { perSection: SECTION_N, minScore: HOME_MIN_SCORE, minItems: HOME_MIN_SECTION, exclude: shown, now });
+  const sections = homeOrder(balancedSections(all, CITY_SECTIONS, { perSection: SECTION_N, minScore: HOME_MIN_SCORE, minItems: HOME_MIN_SECTION, exclude: shown, now }));
   const counts = categoryCounts(all);
   return (
     <>
@@ -118,13 +133,16 @@ export function CityDashboard({ city, locale, deals, generatedAt, now }: { city:
           <p className="section-foot">{t.topRule(fmtScore(TOP_MIN_SCORE, locale), PER_BRAND)} · <a href={`${paths.page(locale, "transparenz")}#reihenfolge`}>{t.method}</a></p>
         </section>
       )}
-      {sections.map((s) => {
+      {sections.map((s, i) => {
         const href = paths.category(locale, city.slug, s.slug);
         const label = categoryText(locale, s.slug).label;
         const n = fmtInt(counts.get(s.slug) ?? s.total, locale);
+        // Première section rendue (sans vitrine) : titre explicite, masqué visuellement sur mobile.
+        const first = top.length === 0 && i === 0;
+        const title = first ? t.homeFirst[s.slug] ?? label : label;
         return (
-          <section key={s.slug} className="section" aria-labelledby={`sec-${s.slug}`}>
-            <SectionHead id={`sec-${s.slug}`} title={label} href={href} more={t.seeAll(n)} moreSr={`${t.seeAll(n)}: ${label}`} />
+          <section key={s.slug} className={first ? "section section-first" : "section"} aria-labelledby={`sec-${s.slug}`}>
+            <SectionHead id={`sec-${s.slug}`} title={title} href={href} more={t.seeAll(n)} moreSr={`${t.seeAll(n)}: ${label}`} srOnlyMobile={first} />
             <DealGrid deals={s.items} locale={locale} now={now} labelledBy={`sec-${s.slug}`} />
           </section>
         );

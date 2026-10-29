@@ -68,8 +68,12 @@ describe("formats suisses", () => {
   it("dates : jour + date, année seulement si utile ; jamais « heute »", () => {
     const ref = new Date("2026-10-28T10:00:00+01:00");
     expect(fmtDay("2026-10-29T23:59:00+01:00", "de", ref)).toBe("Do 29.10.");
-    expect(fmtDay("2027-03-05T10:00:00+01:00", "de", ref)).toBe("Fr 05.03.2027");
-    expect(fmtDay("2026-10-29T23:59:00+01:00", "fr", ref)).toMatch(/^jeu\.? 29\.10$/);
+    expect(fmtDay("2026-11-04T23:59:00+01:00", "de", ref)).toBe("Mi 4.11.");
+    expect(fmtDay("2027-03-05T10:00:00+01:00", "de", ref)).toBe("Fr 5.3.2027");
+    expect(fmtDay("2026-11-04T23:59:00+01:00", "fr", ref)).toBe("mer. 4 nov.");
+    expect(fmtDay("2026-11-04T23:59:00+01:00", "en", ref)).toBe("Wed 4 Nov");
     expect(fmtUpdated("2026-10-28T12:34:00+01:00", "de")).toBe("28.10., 12:34");
+    expect(fmtUpdated("2026-10-28T12:34:00+01:00", "fr")).toBe("28.10 à 12:34");
+    expect(fmtUpdated("2026-10-28T12:34:00+01:00", "en")).toBe("28 Oct, 12:34");
   });
 });

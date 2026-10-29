@@ -211,6 +211,8 @@ for (const f of htmls) {
   const nav = html.match(/<nav class="lang"[^>]*>([\s\S]*?)<\/nav>/);
   if (!nav) { if (LOCALES.some((l) => r.startsWith(`${l}/`) || r === `${l}.html`)) errors.push(`sélecteur de langue absent : ${r}`); continue; }
   const route = routeOf(r);
+  if (/<a [^>]*data-lang="[^"]*"[^>]*aria-current/.test(nav[1])) errors.push(`lien de langue avec aria-current dans ${r}`);
+  if ((nav[1].match(/data-lang=/g) ?? []).length !== 2) errors.push(`sélecteur de langue : 2 liens attendus dans ${r}`);
   for (const m of nav[1].matchAll(/href="([^"]+)"[^>]*data-lang="(de|fr|en)"/g)) {
     checked++;
     if (!exists(m[1])) errors.push(`sélecteur de langue cassé dans ${r} → ${m[1]}`);
@@ -236,6 +238,45 @@ for (const l of LOCALES) {
 // 13. Budget de fichiers Cloudflare Pages.
 if (files.length >= MAX_FILES) errors.push(`${files.length} fichiers (budget ${MAX_FILES})`);
 
+// 15. Garde-fous de contenu (round 3) : ce que le site promet sur /transparenz.
+const TRACKERS = /href="https?:\/\/(?:[a-z0-9-]+\.)*(?:awin1\.com|tradedoubler\.com|doubleclick\.net|googleadservices\.com|dartsearch\.net|shareasale\.com|linksynergy\.com|skimresources\.com|viglink\.com|digidip\.net|bit\.ly|tidd\.ly|prf\.hn|adtraction\.com|ct0\.ch|amzn\.to|anrdoezrs\.net|dpbolvw\.net|jdoqocy\.com|tkqlhce\.com|kqzyfj\.com|sjv\.io|pxf\.io)[/"?]/i;
+const MARKETING = /nur (noch )?heute|bis morgen!|bestpreis|besten preis|tiefstpreis|exklusiv!|erh(ö|o)ht/i;
+const AGGREGATOR_SELLER = /<span class="seller[^"]*">(Preispirat|Rappn|GamerPower|DealDoktor|preispirat|rappn)<\/span>/;
+const counts = { deal: 0, tombstone: 0, list: 0, legal: 0, notFound: 0, other: 0 };
+const externalHosts = new Set();
+for (const f of htmls) {
+  const r = rel(f);
+  const html = readFileSync(f, "utf8");
+  const isDeal = /^(de|fr|en)\/deal\/[^/]+\.html$/.test(r) && !r.endsWith("404.html");
+  if (/404\.html$/.test(r) || r === "_not-found.html") counts.notFound++;
+  else if (isDeal) html.includes('class="deal deal-ended"') ? counts.tombstone++ : counts.deal++;
+  else if (/^(de|fr|en)\/st-gallen/.test(r)) counts.list++;
+  else if (/^(de|fr|en)\//.test(r)) counts.legal++;
+  else counts.other++;
+  if (TRACKERS.test(html)) errors.push(`lien vers un traceur dans ${r}`);
+  if (/\((preispirat\.ch|gamerpower\.com|rappn\.ch)\)/.test(html)) errors.push(`agrégateur affiché comme marchand dans ${r}`);
+  if (AGGREGATOR_SELLER.test(html)) errors.push(`.seller = agrégateur dans ${r}`);
+  for (const m of html.matchAll(/href="https:\/\/([^/"]+)/g)) externalHosts.add(m[1]);
+  // Cartes : badge seulement avec .was ; « als zuvor » seulement sur une carte observée.
+  for (const card of html.split('<li class="card"').slice(1)) {
+    const c = card.slice(0, card.indexOf("</li>"));
+    if (c.includes('class="badge') && !c.includes('class="was"')) { errors.push(`badge sans prix « statt » dans ${r}`); break; }
+    if (/als zuvor|qu’avant|than before/.test(c) && !c.startsWith(" data-observed")) { errors.push(`« als zuvor » sans relevé dans ${r}`); break; }
+    const title = c.match(/class="card-title"[^>]*>([\s\S]*?)<\/h[23]>/)?.[1] ?? "";
+    if (MARKETING.test(title.replace(/<[^>]+>/g, "")) && !/tiefster Preis seit|prix le plus bas depuis|lowest price since/.test(c)) { errors.push(`titre marketing dans ${r} : ${title.replace(/<[^>]+>/g, "").slice(0, 80)}`); break; }
+  }
+  if (isDeal) {
+    const h1 = html.match(/<h1>([\s\S]*?)<\/h1>/)?.[1]?.replace(/<[^>]+>/g, "") ?? "";
+    if (MARKETING.test(h1) && !/tiefster Preis seit|prix le plus bas depuis|lowest price since/.test(html)) errors.push(`H1 marketing dans ${r} : ${h1.slice(0, 80)}`);
+    if (html.includes('class="verdict-num"') && !html.includes('class="was"')) errors.push(`note sans prix « statt » dans ${r}`);
+    if (!html.includes('id="more"')) errors.push(`page deal sans « Mehr aus » : ${r}`);
+    if (html.includes('class="deal deal-ended"') && (/data-deal=|"@type":"Offer"/.test(html) || !/noindex/.test(html))) errors.push(`pierre tombale avec bouton, Offer ou indexable : ${r}`);
+  }
+}
+const HTML_BUDGET = 16000;
+if (htmls.length > HTML_BUDGET) errors.push(`${htmls.length} fichiers HTML (budget ${HTML_BUDGET})`);
+
+console.log(JSON.stringify({ pages: counts, externalHosts: externalHosts.size }));
 console.log(JSON.stringify({ files: files.length, html: htmls.length, pruned, rewritten, nested404, langLinksChecked: checked, site: sitePath, routes: routes.include, errors: errors.length }));
 if (errors.length) {
   for (const e of errors.slice(0, 40)) console.error(`ERREUR postbuild : ${e}`);
