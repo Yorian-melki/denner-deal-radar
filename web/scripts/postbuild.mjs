@@ -21,6 +21,8 @@ import { createHash } from "node:crypto";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, rmdirSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { ALLOWED_ROUTES, MAIN_CITY, candidates, routesJson, securityTxt } from "./routes.mjs";
+import { MAX_LEGACY_LINES, legacyLines, legacyTargets, validateRegistry } from "../lib/slugs.ts";
+import { SPIRITS, SPIRITS_FOOD, isAlcohol } from "../lib/blocklist.ts";
 
 const OUT = path.resolve(process.argv[2] ?? "out");
 const LOCALES = ["de", "fr", "en"];
@@ -162,6 +164,33 @@ for (const l of LOCALES) {
   writeFileSync(path.join(OUT, ".well-known", "security.txt"), securityTxt(origin, (process.env.NEXT_PUBLIC_OPERATOR_EMAIL || "").trim(), new Date()));
 }
 
+// 5d. Anciens liens deal (round 4, item 1) : chaque slug déjà publié sans page reçoit un 301
+//     statique (une ligne par langue) vers la page actuelle de la même clé, sa catégorie ou la ville.
+let legacy = { lines: 0, deal: 0, category: 0, city: 0, dropped: 0 };
+{
+  const regFile = path.join(OUT, "slug-registry.json");
+  const reg = existsSync(regFile) ? validateRegistry(JSON.parse(readFileSync(regFile, "utf8"))) : null;
+  if (!reg) errors.push("slug-registry.json absent ou invalide");
+  else {
+    const hasDeal = (s) => existsSync(path.join(OUT, "de", "deal", `${s}.html`));
+    const hasCategory = (c) => existsSync(path.join(OUT, "de", MAIN_CITY, `${c}.html`));
+    const targets = legacyTargets(reg, hasDeal, hasCategory, MAIN_CITY);
+    const redirectsFile = path.join(OUT, "_redirects");
+    const base = existsSync(redirectsFile) ? readFileSync(redirectsFile, "utf8") : "";
+    const fixed = base.split("\n").filter((x) => x.trim() && !x.trim().startsWith("#")).length;
+    const lines = legacyLines(targets, MAX_LEGACY_LINES - fixed);
+    for (const t of targets.slice(0, lines.length / 3)) legacy[t.kind]++;
+    legacy.lines = lines.length;
+    legacy.dropped = targets.length - lines.length / 3;
+    if (fixed + lines.length > 2000) errors.push(`_redirects : ${fixed + lines.length} règles (Cloudflare : 2 000 statiques)`);
+    for (const l of lines) {
+      const to = l.split(" ")[1];
+      if (!existsSync(path.join(OUT, `${to}.html`))) errors.push(`_redirects : cible inexistante ${to}`);
+    }
+    writeFileSync(redirectsFile, `${base.trimEnd()}\n# Anciens liens deal (généré au build depuis /slug-registry.json, round 4, item 1).\n${lines.join("\n")}\n`);
+  }
+}
+
 // 6. Repli de « / » (la Function functions/index.ts négocie la langue).
 if (!existsSync(path.join(OUT, "index.html"))) {
   writeFileSync(path.join(OUT, "index.html"),
@@ -211,6 +240,10 @@ for (const f of htmls) {
   if (html.includes("__next_f") || /\/_next\/static\/chunks\/[^"]+\.js/.test(html)) errors.push(`runtime Next dans ${r}`);
   // CSP style-src 'self' : aucun style inline (round 3, item 28).
   if (/<style[\s>]|\sstyle="/.test(html)) errors.push(`style inline dans ${r}`);
+  // hreflang : chaque alternative mène à une page publiée (round 4, item 1).
+  for (const m of html.matchAll(/<link rel="alternate" hrefLang="[^"]+" href="https?:\/\/[^/"]+(\/[^"]*)"/g)) {
+    if (!exists(m[1])) { errors.push(`hreflang cassé dans ${r} → ${m[1]}`); break; }
+  }
   const nav = html.match(/<nav class="lang"[^>]*>([\s\S]*?)<\/nav>/);
   if (!nav) { if (LOCALES.some((l) => r.startsWith(`${l}/`) || r === `${l}.html`)) errors.push(`sélecteur de langue absent : ${r}`); continue; }
   const route = routeOf(r);
@@ -243,7 +276,9 @@ if (files.length >= MAX_FILES) errors.push(`${files.length} fichiers (budget ${M
 
 // 15. Garde-fous de contenu (round 3) : ce que le site promet sur /transparenz.
 const TRACKERS = /href="https?:\/\/(?:[a-z0-9-]+\.)*(?:awin1\.com|tradedoubler\.com|doubleclick\.net|googleadservices\.com|dartsearch\.net|shareasale\.com|linksynergy\.com|skimresources\.com|viglink\.com|digidip\.net|bit\.ly|tidd\.ly|prf\.hn|adtraction\.com|ct0\.ch|amzn\.to|anrdoezrs\.net|dpbolvw\.net|jdoqocy\.com|tkqlhce\.com|kqzyfj\.com|sjv\.io|pxf\.io)[/"?]/i;
-const MARKETING = /nur (noch )?heute|bis morgen!|bestpreis|besten preis|tiefstpreis|exklusiv!|erh(ö|o)ht/i;
+const MARKETING = /nur (noch )?heute|bis morgen!|bestpreis|besten preis|tiefstpreis|exklusiv|erh(ö|o)ht|zu toppreisen|schnäppchen|- aktionspreis|\bspare viel\b/i;
+// Round 4, items 2 et 12 : jamais d'alcool sur l'accueil, jamais de page de spiritueux, jamais « Händler unbekannt ».
+const UNKNOWN_SELLER = /Händler unbekannt|commerçant inconnu|retailer unknown/;
 const AGGREGATOR_SELLER = /<span class="seller[^"]*">(Preispirat|Rappn|GamerPower|DealDoktor|preispirat|rappn)<\/span>/;
 const counts = { deal: 0, tombstone: 0, list: 0, legal: 0, notFound: 0, other: 0 };
 const externalHosts = new Set();
@@ -257,6 +292,18 @@ for (const f of htmls) {
   else if (/^(de|fr|en)\//.test(r)) counts.legal++;
   else counts.other++;
   if (TRACKERS.test(html)) errors.push(`lien vers un traceur dans ${r}`);
+  if (UNKNOWN_SELLER.test(html)) errors.push(`« Händler unbekannt » dans ${r}`);
+  // Publicité (round 4, item 18) : jamais dans une liste, jamais avant la première carte, au plus 1 par page, 0 sur une page deal.
+  const ads = (html.match(/<aside class="ad"/g) ?? []).length;
+  if (ads > 1 || (ads && isDeal)) errors.push(`publicité mal placée (${ads}) dans ${r}`);
+  if (ads && html.indexOf('<aside class="ad"') < html.indexOf('<li class="card"')) errors.push(`publicité avant la première carte dans ${r}`);
+  for (const g of html.matchAll(/<ul class="grid[^"]*"[\s\S]*?<\/ul>/g)) if (g[0].includes('class="ad"')) { errors.push(`publicité dans une liste classée : ${r}`); break; }
+  if (new RegExp(`^(de|fr|en)/${MAIN_CITY}\\.html$`).test(r)) {
+    for (const m of html.matchAll(/class="card-title"[^>]*>([\s\S]*?)<\/h[23]>/g)) {
+      const t = m[1].replace(/<[^>]+>/g, "");
+      if (isAlcohol(t)) errors.push(`alcool sur l'accueil ${r} : ${t.slice(0, 60)}`);
+    }
+  }
   if (/\((preispirat\.ch|gamerpower\.com|rappn\.ch)\)/.test(html)) errors.push(`agrégateur affiché comme marchand dans ${r}`);
   if (AGGREGATOR_SELLER.test(html)) errors.push(`.seller = agrégateur dans ${r}`);
   for (const m of html.matchAll(/href="https:\/\/([^/"]+)/g)) externalHosts.add(m[1]);
@@ -270,6 +317,7 @@ for (const f of htmls) {
   }
   if (isDeal) {
     const h1 = html.match(/<h1>([\s\S]*?)<\/h1>/)?.[1]?.replace(/<[^>]+>/g, "") ?? "";
+    if (SPIRITS.test(h1) && !SPIRITS_FOOD.test(h1)) errors.push(`page de spiritueux ${r} : ${h1.slice(0, 60)}`);
     if (MARKETING.test(h1) && !/tiefster Preis seit|prix le plus bas depuis|lowest price since/.test(html)) errors.push(`H1 marketing dans ${r} : ${h1.slice(0, 80)}`);
     if (html.includes('class="verdict-num"') && !html.includes('class="was"')) errors.push(`note sans prix « statt » dans ${r}`);
     if (!html.includes('id="more"')) errors.push(`page deal sans « Mehr aus » : ${r}`);
@@ -279,7 +327,7 @@ for (const f of htmls) {
 const HTML_BUDGET = 16000;
 if (htmls.length > HTML_BUDGET) errors.push(`${htmls.length} fichiers HTML (budget ${HTML_BUDGET})`);
 
-console.log(JSON.stringify({ pages: counts, externalHosts: externalHosts.size }));
+console.log(JSON.stringify({ pages: counts, externalHosts: externalHosts.size, legacy }));
 console.log(JSON.stringify({ files: files.length, html: htmls.length, pruned, rewritten, nested404, langLinksChecked: checked, site: sitePath, routes: routes.include, errors: errors.length }));
 if (errors.length) {
   for (const e of errors.slice(0, 40)) console.error(`ERREUR postbuild : ${e}`);
