@@ -29,6 +29,8 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
     <p className="note-box">{{ de: "Vorschau: Angaben zum Verantwortlichen folgen vor dem Start.", fr: "Prévisualisation : l’identité du responsable sera ajoutée avant le lancement.", en: "Preview: the controller’s details will be added before launch." }[locale]}</p>
   );
   const ads = !!adClient();
+  // Compteur de clics décrit comme actif SEULEMENT s'il est lié (round 4, item 22).
+  const clicks = process.env.CLICKS_BINDING === "1";
   const analytics = !!ANALYTICS_TOKEN;
 
   if (locale === "fr") return (
@@ -40,22 +42,24 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
         <h2>Responsable du traitement</h2>
         {controller}
         <h2>1. Hébergement et journaux serveur (Cloudflare)</h2>
-        <p>Le site est hébergé par Cloudflare, Inc. (États-Unis), sous-traitant. À chaque visite, Cloudflare traite les données techniques nécessaires (adresse IP, horodatage, adresse demandée, navigateur) pour servir la page et la protéger contre les attaques. Base légale : intérêt légitime à un fonctionnement sûr (art. 6, 1, f RGPD ; art. 31 LPD). Transfert aux États-Unis : Data Privacy Framework UE-US et Suisse-US. Nous ne conservons nous-mêmes aucune adresse IP. Cloudflare peut aussi demander des rapports d’erreurs réseau (NEL) : ton navigateur signale alors les échecs de connexion directement à Cloudflare, sans le contenu des pages.</p>
+        <p>Le site est hébergé par Cloudflare, Inc. (États-Unis), sous-traitant. À chaque visite, Cloudflare traite les données techniques nécessaires (adresse IP, horodatage, adresse demandée, navigateur) pour servir la page et la protéger contre les attaques. Base légale : intérêt légitime à un fonctionnement sûr (art. 6, al. 1, let. f RGPD ; art. 31 LPD). Transfert aux États-Unis : Data Privacy Framework UE-US et Suisse-US. Nous ne conservons nous-mêmes aucune adresse IP. Cloudflare peut aussi demander des rapports d’erreurs réseau (NEL) : ton navigateur signale alors les échecs de connexion directement à Cloudflare, sans le contenu des pages.</p>
         <h2>2. Mesure d’audience</h2>
         {analytics
-          ? <p>Nous comptons les pages vues avec Cloudflare Web Analytics, <strong>sans cookie</strong>, sans empreinte numérique ni profil ; nous ne voyons que des totaux (page, page d’origine, pays, type d’appareil). Base légale : intérêt légitime (art. 6, 1, f RGPD).</p>
-          : <p>Il n’y a actuellement <strong>aucune mesure d’audience</strong> : aucun script d’analyse n’est chargé.</p>}
+          ? <p>Nous comptons les pages vues avec Cloudflare Web Analytics, <strong>sans cookie</strong>, sans empreinte numérique ni profil ; nous ne voyons que des totaux (page, page d’origine, pays, type d’appareil). Base légale : intérêt légitime (art. 6, al. 1, let. f RGPD).</p>
+          : <p>Il n’y a actuellement <strong>aucune mesure d’audience</strong> : aucun script d’analyse n’est chargé.</p>}
         <h2>3. Compteur de clics anonyme</h2>
-        <p>Lors d’un clic vers un marchand, nous enregistrons uniquement l’identifiant de l’offre et la page — <strong>sans adresse IP, cookie ni identifiant</strong>. Base légale : intérêt légitime (savoir quelles sources sont utiles). Conservation : 3 mois maximum.</p>
+        <p>{clicks ? <>Lors d’un clic vers un marchand, nous enregistrons uniquement l’identifiant de l’offre et la page — <strong>sans adresse IP, cookie ni identifiant</strong>. Base légale : intérêt légitime (savoir quelles sources sont utiles). Conservation : 3 mois maximum.</> : <>Actuellement inactif : nous ne comptons aucun clic.</>}</p>
         <h2 id="cookies">4. Cookies, stockage local et publicité</h2>
         <p>Nous ne déposons aucun cookie. {ads ? "Ton choix publicitaire est conservé uniquement dans ton navigateur (localStorage, strictement nécessaire, 13 mois maximum) et n’est jamais transmis." : "Rien n’est enregistré dans ton navigateur."}</p>
-        <p>{ads ? "La publicité (Google AdSense, Google Ireland Ltd. / Google LLC) n’est chargée" : "Aucune publicité n’est affichée actuellement. Si nous activons Google AdSense, la publicité ne sera chargée"} <strong>qu’après ton consentement explicite</strong> (art. 6, 1, a RGPD). Google peut alors déposer des cookies et transférer des données aux États-Unis (Data Privacy Framework UE-US / Suisse-US). Refuser est aussi simple qu’accepter ; sans choix, rien n’est chargé.{ads && <> Retrait à tout moment : <ConsentReset label="Modifier mon choix" /></>}</p>
-        <h2>5. Liens commerciaux (affiliation)</h2>
-        <p>Les liens signalés « lien commercial » passent par un réseau partenaire (p. ex. Tradedoubler, Awin, CJ). C’est seulement <strong>après ton clic</strong>, chez le réseau ou le marchand, qu’un cookie peut être déposé pour attribuer une commission ; ils en sont responsables selon leurs propres politiques. Nous recevons uniquement des rapports agrégés, sans donnée te concernant. Le prix ne change pas pour toi.</p>
+        <p>{ads ? "La publicité (Google AdSense, Google Ireland Ltd. / Google LLC) n’est chargée" : "Aucune publicité n’est affichée actuellement. Si nous activons Google AdSense, la publicité ne sera chargée"} <strong>qu’après ton consentement explicite</strong> (art. 6, al. 1, let. a RGPD). Google peut alors déposer des cookies et transférer des données aux États-Unis (Data Privacy Framework UE-US / Suisse-US). Refuser est aussi simple qu’accepter ; sans choix, rien n’est chargé.{ads && <> Retrait à tout moment : <ConsentReset label="Modifier mon choix" /></>}</p>
+        <h2>5. Liens publicitaires (affiliation)</h2>
+        <p>Les liens signalés « lien publicitaire (affilié) » passent par un réseau partenaire (p. ex. Tradedoubler, Awin, CJ). C’est seulement <strong>après ton clic</strong>, chez le réseau ou le marchand, qu’un cookie peut être déposé pour attribuer une commission ; ils en sont responsables selon leurs propres politiques. Nous recevons uniquement des rapports agrégés, sans donnée te concernant. Le prix ne change pas pour toi.</p>
+        <h2>5b. Sites intermédiaires</h2>
+        <p>Certaines offres viennent de sites qui les rassemblent (Preispirat, GamerPower, Student Beans, UNiDAYS, 20 Minuten Gutscheine) ; le bouton peut alors mener d’abord chez eux. Ce site ne leur transmet rien ; une fois chez eux, leur propre politique de confidentialité s’applique.</p>
         <h2>6. Contact par e-mail</h2>
         <p>Si tu nous écris (p. ex. demande de retrait), ton adresse et ton message servent uniquement à traiter la demande et sont supprimés ensuite, sauf obligation légale de conservation.</p>
         <h2>7. Tes droits</h2>
-        <p>Accès, rectification, effacement, limitation, portabilité, opposition et retrait du consentement (art. 15 à 21 RGPD ; art. 25 s. LPD)  : {o.email ? <>écris-nous via les coordonnées des <a href={L("impressum")}>mentions légales</a>.</> : "l’adresse de contact sera publiée avant le lancement public."} Tu peux saisir le PFPDT (Suisse) ou la CNIL (France) / l’autorité de ton pays. Aucune décision automatisée, aucun profilage.</p>
+        <p>Accès, rectification, effacement, limitation, portabilité, opposition et retrait du consentement (art. 15 à 21 RGPD ; art. 25 s. LPD) : {o.email ? <>écris-nous via les coordonnées des <a href={L("impressum")}>mentions légales</a>.</> : "l’adresse de contact sera publiée avant le lancement public."} Tu peux saisir le PFPDT (Suisse) ou la CNIL (France) / l’autorité de ton pays. Aucune décision automatisée, aucun profilage.</p>
       </section>
     </article>
   );
@@ -75,12 +79,14 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
           ? <p>We count page views with Cloudflare Web Analytics: <strong>no cookies</strong>, no fingerprinting, no profiles; we only see totals (page, referrer, country, device type). Legal basis: legitimate interest (Art. 6(1)(f) GDPR).</p>
           : <p>There is currently <strong>no audience measurement</strong>: no analytics script is loaded.</p>}
         <h2>3. Anonymous click counter</h2>
-        <p>When you click a link to a retailer, we store only the deal identifier and the page — <strong>no IP address, cookie or identifier</strong>. Legal basis: legitimate interest (knowing which sources are useful). Retention: at most 3 months.</p>
+        <p>{clicks ? <>When you click a link to a retailer, we store only the deal identifier and the page — <strong>no IP address, cookie or identifier</strong>. Legal basis: legitimate interest (knowing which sources are useful). Retention: at most 3 months.</> : <>Currently inactive: we do not count any clicks.</>}</p>
         <h2 id="cookies">4. Cookies, local storage and ads</h2>
         <p>We set no cookies. {ads ? "Your ad choice is stored only in your browser (localStorage, strictly necessary, at most 13 months) and is never transmitted." : "Nothing is stored in your browser."}</p>
         <p>{ads ? "Ads (Google AdSense, Google Ireland Ltd. / Google LLC) are loaded" : "No ads are shown at the moment. If we enable Google AdSense, ads will be loaded"} <strong>only after your explicit consent</strong> (Art. 6(1)(a) GDPR). Google may then set cookies and transfer data to the USA (EU-US / Swiss-US Data Privacy Framework). Declining is as easy as accepting; without a choice, nothing is loaded.{ads && <> Withdraw at any time: <ConsentReset label="Change cookie settings" /></>}</p>
         <h2>5. Ad links (affiliate)</h2>
         <p>Links labelled “Ad link” go to the retailer through a partner network (e.g. Tradedoubler, Awin, CJ). Only <strong>after your click</strong>, at the network or retailer, may a cookie be set to attribute a commission; they are responsible for it under their own privacy policies. We only receive aggregated commission reports, never data about you. Your price does not change.</p>
+        <h2>5b. Intermediary sites</h2>
+        <p>Some offers come from sites that collect them (Preispirat, GamerPower, Student Beans, UNiDAYS, 20 Minuten Gutscheine); the button may then lead to them first. This site sends them nothing; once you are on their site, their own privacy policy applies.</p>
         <h2>6. Contact by e-mail</h2>
         <p>If you write to us (e.g. a removal request), we use your address and message only to handle it and delete them once it is settled, unless the law requires us to keep them.</p>
         <h2>7. Your rights</h2>
@@ -104,12 +110,14 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
           ? <p>Wir zählen Seitenaufrufe mit Cloudflare Web Analytics. Es werden <strong>keine Cookies</strong> gesetzt, kein Fingerprinting betrieben und keine Profile erstellt; wir sehen nur zusammengefasste Zahlen (Seite, Herkunftsseite, Land, Gerätetyp). Rechtsgrundlage: berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO).</p>
           : <p>Derzeit findet <strong>keine Reichweitenmessung</strong> statt: Es wird kein Analyse-Skript geladen.</p>}
         <h2>3. Anonymer Klickzähler</h2>
-        <p>Klickst du auf einen Link zu einem Händler, speichern wir nur die Deal-Kennung und die aufgerufene Seite — <strong>ohne IP-Adresse, Cookie oder Kennung</strong>. Rechtsgrundlage: berechtigtes Interesse (welche Quellen nützlich sind). Speicherdauer: höchstens 3 Monate (Cloudflare Workers Analytics Engine).</p>
+        <p>{clicks ? <>Klickst du auf einen Link zu einem Händler, speichern wir nur die Deal-Kennung und die aufgerufene Seite — <strong>ohne IP-Adresse, Cookie oder Kennung</strong>. Rechtsgrundlage: berechtigtes Interesse (welche Quellen nützlich sind). Speicherdauer: höchstens 3 Monate (Cloudflare Workers Analytics Engine).</> : <>Derzeit nicht aktiv: Wir zählen keine Klicks.</>}</p>
         <h2 id="cookies">4. Cookies, lokaler Speicher und Werbung</h2>
         <p>Wir setzen selbst keine Cookies. {ads ? "Deine Werbe-Entscheidung wird nur lokal in deinem Browser gespeichert (localStorage, technisch notwendig, höchstens 13 Monate) und nicht übertragen." : "In deinem Browser wird nichts gespeichert."}</p>
         <p>{ads ? "Werbung (Google AdSense, Google Ireland Ltd. / Google LLC) wird" : "Derzeit wird keine Werbung angezeigt. Falls wir Werbung (Google AdSense) aktivieren, wird sie"} <strong>nur nach deiner ausdrücklichen Einwilligung</strong> geladen (Art. 6 Abs. 1 lit. a DSGVO). Google kann dann Cookies setzen und Daten in die USA übermitteln (EU-US/Swiss-US Data Privacy Framework). Ablehnen ist genauso einfach wie Zustimmen; ohne Entscheidung wird nichts geladen.{ads && <> Du kannst deine Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen: <ConsentReset label="Cookie-Einstellungen ändern" /></>}</p>
         <h2>5. Werbelinks (Affiliate)</h2>
         <p>Als «Werbelink» beschriftete Links führen über ein Partnernetzwerk (z. B. Tradedoubler, Awin, CJ) zum Händler. Erst <strong>nach deinem Klick</strong>, also beim Netzwerk bzw. Händler, kann ein Cookie gesetzt werden, um eine Provision zuzuordnen. Dafür sind das Netzwerk und der Händler verantwortlich; es gelten deren Datenschutzerklärungen. Wir erhalten nur zusammengefasste Provisionsberichte, keine Angaben zu deiner Person. Der Preis ändert sich für dich nicht.</p>
+        <h2>5b. Sammelseiten</h2>
+        <p>Manche Angebote stammen von Seiten, die Angebote sammeln (Preispirat, GamerPower, Student Beans, UNiDAYS, 20 Minuten Gutscheine); der Knopf kann dann zuerst zu ihnen führen. Diese Seite übermittelt ihnen nichts; dort gilt deren eigene Datenschutzerklärung.</p>
         <h2>6. Kontakt per E-Mail</h2>
         <p>Schreibst du uns (z. B. eine Entfernungsanfrage), verwenden wir deine E-Mail-Adresse und Nachricht nur zur Bearbeitung und löschen sie, wenn die Sache erledigt ist, ausser eine gesetzliche Aufbewahrungspflicht verlangt etwas anderes.</p>
         <h2>7. Deine Rechte</h2>

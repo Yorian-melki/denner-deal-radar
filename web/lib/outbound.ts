@@ -38,7 +38,9 @@ function hiddenDestination(u: URL): string | undefined {
 }
 
 /** Agrégateurs connus : le lien mène chez eux, pas chez le marchand. */
-export const AGGREGATOR_HOSTS = ["rappn.ch", "preispirat.ch", "dschungelkompass.ch", "studentbeans.com", "myunidays.com", "mydealz.de", "deals.ch"];
+export const AGGREGATOR_HOSTS = ["rappn.ch", "preispirat.ch", "dschungelkompass.ch", "studentbeans.com", "myunidays.com", "mydealz.de", "deals.ch",
+  // Round 4, item 19 : portail de coupons et blog de vols — le bouton dit « über … », jamais « bei <Händler> » seul.
+  "gutscheine.20min.ch", "secretflying.com", "gamerpower.com"];
 
 export const hostOf = (url: string | undefined): string | undefined => {
   if (!url) return undefined;
@@ -51,6 +53,19 @@ export const hostOf = (url: string | undefined): string | undefined => {
 
 const isAffiliateHost = isTrackerHost;
 
+/** Hôtes punycode (IDN) explicitement admis : aucun pour l'instant (homographes). */
+const IDN_ALLOW = new Set<string>();
+/** Round 4, item 19 : jamais d'URL avec identifiants (« https://denner.ch@evil.example »), de port
+ * non standard, d'adresse IP littérale ni de domaine punycode non listé. */
+export function safeHost(u: URL): boolean {
+  if (u.username || u.password) return false;
+  if (u.port && !(u.protocol === "https:" && u.port === "443") && !(u.protocol === "http:" && u.port === "80")) return false;
+  const h = u.hostname.toLowerCase();
+  if (/^\d{1,3}(?:\.\d{1,3}){3}$/.test(h) || h.startsWith("[") || h.includes(":")) return false;
+  if (h.split(".").some((l) => l.startsWith("xn--")) && !IDN_ALLOW.has(h)) return false;
+  return h.includes(".");
+}
+
 export interface CleanUrl { url: string; /** le lien d'origine était une affiliation tiers → jamais réécrit par nous */ wasAffiliate: boolean }
 
 /** URL publiable, ou null si le lien est une affiliation tiers impossible à désemballer. */
@@ -62,6 +77,7 @@ export function cleanOutbound(raw: string): CleanUrl | null {
     return null;
   }
   if (u.protocol !== "https:" && u.protocol !== "http:") return null;
+  if (!safeHost(u)) return null;
   let wasAffiliate = false;
   for (let hop = 0; hop < 3 && isAffiliateHost(u.hostname.toLowerCase()); hop++) {
     wasAffiliate = true;
@@ -73,7 +89,7 @@ export function cleanOutbound(raw: string): CleanUrl | null {
       return null;
     }
   }
-  if (isAffiliateHost(u.hostname.toLowerCase())) return null;
+  if (isAffiliateHost(u.hostname.toLowerCase()) || !safeHost(u)) return null;
   for (const k of [...u.searchParams.keys()]) {
     if (STRIP_PARAMS.test(k)) {
       if (!/^utm_/i.test(k)) wasAffiliate = true;

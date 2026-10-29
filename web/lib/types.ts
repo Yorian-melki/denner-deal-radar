@@ -32,6 +32,7 @@ export interface Subscription {
   after?: number;        // prix mensuel après la promo
   fee?: number;          // frais de mise en service
   total24?: number;      // coût total sur 24 mois (promo + suite + frais)
+  promoUnknown?: boolean; // prix promotionnel de durée inconnue : aucun total (round 4, item 24)
 }
 
 export interface PublicDeal {
@@ -103,8 +104,10 @@ export interface PublicDeal {
   noShowcase?: boolean;
   /** Marque ou contenu pour adultes : jamais sur Studis, Gratis ni l'accueil. */
   adult?: boolean;
-  /** Spiritueux : jamais de prix barré, de pourcentage ni de note (LAlc art. 42b). */
-  spirits?: boolean;
+  /** Boisson alcoolisée (vin, bière, mousseux) : jamais sur l'accueil, en vitrine, dans « Mehr aus »
+   * d'un produit sans alcool, ni dans les 6 premières cartes d'une liste (round 4, item 2).
+   * Les spiritueux ne sont pas publiés du tout (LAlc art. 42b). */
+  alcohol?: boolean;
   /** Pierre tombale : date de fin (le deal n'est plus en vente, page « abgelaufen »). */
   endedAt?: string;
   /** Titres par langue (réductions étudiantes reconstruites : « Acer: 15% Rabatt für Studierende »). */

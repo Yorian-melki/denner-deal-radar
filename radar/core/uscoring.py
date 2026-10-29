@@ -157,14 +157,17 @@ def _discount_based(deal: dict, history: list[dict] | None) -> UScore:
         adj += 0.3
         comps.append(("record : plus bas prix jamais observé", 0.3))
     saving = (ref * REFERENCE_MODEL.get(rtype, (1, 0))[0] - total) if (ref and total is not None) else None
+    # Biens non durables (épicerie, anti-gaspi) : aucun bonus en CHF absolus — un carton de vin
+    # ne passe pas devant −50 % sur l'eau parce qu'il coûte plus cher (round 4, item 4).
+    non_durable = deal.get("family") in ("grocery", "surplus")
     if saving is not None:
-        if saving >= 300:
+        if saving >= 300 and not non_durable:
             adj += 0.5
             comps.append((f"économie absolue élevée (~CHF {saving:.0f})", 0.5))
-        elif saving >= 100:
+        elif saving >= 100 and not non_durable:
             adj += 0.3
             comps.append((f"économie absolue notable (~CHF {saving:.0f})", 0.3))
-        elif deal.get("family") not in ("grocery", "surplus"):
+        elif not non_durable:
             # Biais de pourcentage : −80 % sur CHF 2.50 n'est pas une affaire exceptionnelle.
             for limit, cap in SAVINGS_CAPS:
                 if saving < limit and base + adj > cap:

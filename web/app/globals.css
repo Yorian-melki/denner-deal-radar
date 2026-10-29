@@ -40,6 +40,8 @@
   --font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --t-caption: 0.75rem; --l-caption: 1rem;
   --t-footnote: 0.8125rem; --l-footnote: 1.125rem;
+  --t-callout: 0.9375rem; --l-callout: 1.25rem;
+  --t-price: 1.75rem; --l-price: 2rem;
   --t-body: 0.9375rem; --l-body: 1.375rem;
   --t-headline: 1.0625rem; --l-headline: 1.375rem;
   --t-title: 1.375rem; --l-title: 1.75rem;
@@ -86,7 +88,6 @@ body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--fo
 h1, h2, h3, p, ul, dl { margin: 0; }
 h1, h2 { text-wrap: balance; hyphens: manual; }
 [hidden] { display: none !important; }
-@media (max-width: 639px) { .sr-mobile { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; } }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: var(--r-sm); }
@@ -153,12 +154,11 @@ button { font: inherit; }
 @media (min-width: 640px) { .intro { padding-top: 32px; gap: 8px; } }
 .intro h1 { font-size: var(--t-h1); line-height: var(--l-h1); font-weight: var(--w-bold); letter-spacing: -0.022em; }
 /* Une ligne de faits ; « · » en ::after (non lu), jamais en début de ligne. */
-.intro-facts { display: flex; flex-wrap: wrap; color: var(--muted); font-size: var(--t-footnote); line-height: var(--l-footnote); }
+.intro-facts { display: flex; flex-wrap: wrap; color: var(--muted); font-size: var(--t-callout); line-height: var(--l-callout); }
 .intro-facts > * { white-space: nowrap; }
 .intro-facts > :not(:last-child)::after { content: "·" / ""; margin: 0 6px; color: var(--muted); }
 .intro-facts a, .section-foot a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-.lead { color: var(--muted); max-width: 680px; font-size: var(--t-footnote); line-height: var(--l-footnote); }
-@media (max-width: 639px) { .lead { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; } }
+.lead { color: var(--muted); max-width: 680px; font-size: var(--t-callout); line-height: var(--l-callout); }
 .crumbs { padding-top: 4px; }
 .crumbs a { position: relative; display: inline-flex; align-items: center; gap: 4px; min-height: 32px; color: var(--muted); font-size: var(--t-footnote); font-weight: var(--w-semi); }
 .crumbs a:hover { color: var(--fg); }
@@ -192,7 +192,9 @@ button { font: inherit; }
 .section-head h2 a { color: var(--fg); }
 .section-more { position: relative; display: inline-flex; align-items: center; gap: 2px; min-height: 28px; font-size: var(--t-footnote); font-weight: var(--w-semi); }
 .section-more::after { content: ""; position: absolute; inset: -8px 0; }
-.section-note { color: var(--muted); font-size: var(--t-footnote); line-height: var(--l-footnote); margin-bottom: 4px; }
+.section-note { color: var(--muted); font-size: var(--t-callout); line-height: var(--l-callout); margin-bottom: 4px; }
+.section-head + .section-note { margin-top: 4px; }
+.section-note + .grid { margin-top: 12px; }
 .section-head + .grid { margin-top: 12px; }
 .results-head { display: grid; gap: 2px; margin-bottom: 12px; }
 .results-head h2 { font-size: var(--t-headline); line-height: var(--l-headline); font-weight: var(--w-semi); }
@@ -205,14 +207,16 @@ button { font: inherit; }
 /* ---------- Grille + cartes ---------- */
 .grid { display: grid; grid-template-columns: 1fr; gap: 12px; list-style: none; margin: 0; padding: 0; }
 .section-head + .grid { margin-top: 12px; }
-@media (max-width: 639px) { .section-first .section-head:has(.sr-mobile) + .grid { margin-top: 0; } }
+/* « Grösste Rabatte » : 6 cartes, 3 sur mobile (round 4, item 3). */
+@media (max-width: 639px) { .grid-trim > li:nth-child(n+4) { display: none; } }
 @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
 @media (min-width: 1000px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .card { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 16px; background: var(--surface); border: 1px solid var(--card-border); border-radius: var(--r-lg); box-shadow: var(--shadow), var(--inset); min-width: 0;
   transition: box-shadow 0.2s ease, border-color 0.2s ease; }
-/* Carte expirée depuis la génération de la page (site.js) : grisée, jamais masquée (pas de CLS). */
-.card[data-gone] { opacity: 0.45; }
-.card[data-gone] .price { text-decoration: line-through; }
+/* Carte expirée depuis la génération de la page (site.js) : jamais masquée (pas de CLS), jamais
+ * d'opacité (round 4, item 7 : contraste ≥ 4.5:1) — prix barré en --muted, « abgelaufen » en pastille. */
+.card[data-gone] .price, .card[data-gone] .pct { color: var(--muted); text-decoration: line-through; }
+.card[data-gone] [data-date] { padding: 0 6px; border-radius: var(--r-sm); background: var(--fill); color: var(--fg); font-weight: var(--w-semi); }
 @media (hover: hover) { .card:hover { box-shadow: var(--shadow-hover), var(--inset); border-color: var(--control); } }
 .card:has(.card-link:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
 .card-head { display: flex; align-items: flex-start; gap: 12px; }
@@ -224,24 +228,29 @@ button { font: inherit; }
 .card-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
 .card-link:hover { text-decoration: none; }
 @supports selector(:has(*)) { .card-link:focus-visible { outline: none; } }
-.card-save { font-size: var(--t-footnote); line-height: var(--l-footnote); font-weight: var(--w-semi); color: var(--accent-strong); font-variant-numeric: tabular-nums lining-nums; }
+/* Valeur en tête (round 4, item 5) : montant 28 px, pastille neutre « −56 % », puis « statt … · laut … ».
+ * Le vert reste réservé à l'interactif (arbitrage 3). */
 .card-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; margin-top: 2px; }
+.card-price .price { font-size: var(--t-price); line-height: var(--l-price); font-weight: var(--w-bold); font-variant-numeric: tabular-nums lining-nums; }
+.card-price .cur { font-size: var(--t-callout); }
+.card-price .was { flex-basis: 100%; }
+.pct { align-self: center; padding: 1px 8px; border-radius: var(--r-sm); background: var(--fill); color: var(--fg); font-size: var(--t-callout); line-height: var(--l-callout); font-weight: var(--w-semi); font-variant-numeric: tabular-nums lining-nums; }
 .price { font-size: var(--t-title); line-height: var(--l-title); font-weight: var(--w-semi); letter-spacing: -0.02em; font-variant-numeric: proportional-nums lining-nums; }
 .cur { font-size: 0.58em; font-weight: var(--w-medium); color: var(--muted); letter-spacing: 0; }
 .price-unit { font-size: var(--t-footnote); color: var(--muted); margin-left: -6px; }
-.card-unit { margin-top: -4px; color: var(--muted); font-size: var(--t-footnote); line-height: var(--l-footnote); font-variant-numeric: tabular-nums; }
-.was { color: var(--muted); font-size: var(--t-footnote); line-height: var(--l-footnote); font-variant-numeric: tabular-nums lining-nums; }
-.card-meta, .card-sub, .card-notes { font-size: var(--t-footnote); line-height: var(--l-footnote); color: var(--muted); font-variant-numeric: tabular-nums; }
+.card-unit { margin-top: -4px; color: var(--muted); font-size: var(--t-callout); line-height: var(--l-callout); font-variant-numeric: tabular-nums; }
+.was { color: var(--muted); font-size: var(--t-callout); line-height: var(--l-callout); font-variant-numeric: tabular-nums lining-nums; }
+.card-meta, .card-sub, .card-notes { font-size: var(--t-callout); line-height: var(--l-callout); color: var(--muted); font-variant-numeric: tabular-nums; }
 /* Chaque fait passe à la ligne d'un bloc (« bis Mi 28.10. » jamais coupé). */
 .card-meta > *, .card-notes > * { display: inline-block; max-width: 100%; }
 .card-meta > :not(:last-child)::after, .card-notes > :not(:last-child)::after { content: "·" / ""; margin: 0 6px; }
 .seller { color: var(--fg); }
-.seller-unknown { color: var(--muted); font-style: italic; }
 .card-notes { color: var(--fg); }
 .note-ad { color: var(--muted); }
 
 /* ---------- Note : badge neutre ; seule la note « Top » est teintée ---------- */
-.badge { flex: none; font-variant-numeric: tabular-nums lining-nums; display: inline-grid; place-items: center; min-width: 40px; height: 32px; padding: 0 8px; border-radius: var(--r-sm); background: var(--fill); color: var(--fg); font-size: var(--t-footnote); font-weight: var(--w-semi); font-variant-numeric: tabular-nums; }
+.badge { flex: none; display: inline-flex; align-items: baseline; justify-content: center; min-width: 40px; height: 32px; padding: 6px 8px 0; border-radius: var(--r-sm); background: var(--fill); color: var(--fg); font-size: var(--t-callout); font-weight: var(--w-semi); font-variant-numeric: tabular-nums lining-nums; }
+.badge-of { font-size: var(--t-caption); font-weight: var(--w-regular); color: var(--muted); }
 .badge-top { background: var(--accent-tint); color: var(--accent-strong); }
 .badge-lg { min-width: 56px; height: 48px; font-size: var(--t-title); border-radius: var(--r-md); }
 
@@ -276,7 +285,7 @@ button { font: inherit; }
 .deal-price-ended .price { color: var(--muted); }
 .deal-saving { color: var(--accent-strong); font-weight: var(--w-semi); font-variant-numeric: tabular-nums lining-nums; }
 .deal-gone { font-weight: var(--w-semi); }
-.deal[data-gone] .deal-price { opacity: 0.45; }
+.deal[data-gone] .deal-price .price { color: var(--muted); text-decoration: line-through; }
 .store-cta { flex: 1; padding: 14px 16px; border-radius: var(--r-md); background: var(--fill); font-weight: var(--w-semi); }
 .deal-note, .deal-date { color: var(--muted); font-size: var(--t-footnote); line-height: var(--l-footnote); }
 .deal-date { color: var(--fg); }

@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
     twitter: { card: "summary_large_image", title: SITE_NAME, description: t.metaDescription, images: [og.url] },
     icons: { icon: [{ url: "/icon.svg", type: "image/svg+xml" }], apple: "/apple-touch-icon.png" },
     formatDetection: { telephone: false, address: false, email: false },
-    manifest: "/manifest.webmanifest",
+    manifest: `/${locale}/manifest.webmanifest`,
   };
 }
 

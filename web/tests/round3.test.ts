@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { interleave, orderCategory, sortNote } from "@/components/CategoryListing";
+import { MAX_RUN, interleave, orderCategory, sortNote } from "@/components/CategoryListing";
 import { PriceLine, savingText } from "@/components/DealCard";
 import { isPastWeek } from "@/lib/blocklist";
 import { DICTS, LOCALES } from "@/lib/i18n";
@@ -41,7 +41,7 @@ describe("item 2 : une note n'existe que si sa base est visible", () => {
   });
   it("phrase de tri générée : « Neueste zuerst » quand aucune carte n'a de Statt-Preis", () => {
     expect(sortNote([mk({ verifiedRef: false })], "tech-deals", "de")).toBe(DICTS.de.sortedByNewestPlain);
-    expect(sortNote([mk()], "tech-deals", "de")).toBe(DICTS.de.sortedByScore);
+    expect(sortNote([mk()], "tech-deals", "de")).toBe(DICTS.de.sortedByScore(MAX_RUN, false));
   });
   it("Handy-Abos : sans note", () => {
     const p = projectDeal({ deal_id: "dk:1", source_id: "dschungelkompass", title: "Salt Mobile", family: "subscription", source_url: "https://www.salt.ch/x",
@@ -66,10 +66,12 @@ describe("item 3 : un « statt » non observé n'est pas un historique", () => {
     const obs = projectDeal({ ...denner, historical_median: 27.2, history_n: 4 }, FEED, NOW)!;
     expect(savingText(obs, "de")).toMatch(/als zuvor$/);
   });
-  it("une seule économie par carte : pas de % lu en plus de la ligne CHF", () => {
+  it("une seule économie par carte (round 4, item 5 : la pastille « −N % », plus de phrase en CHF)", () => {
     const p = projectDeal(denner, FEED, NOW)!;
-    const el = PriceLine({ deal: p, locale: "de" });
-    expect(JSON.stringify(el)).not.toMatch(/günstiger/);
+    const el = JSON.stringify(PriceLine({ deal: p, locale: "de" }));
+    expect(el.match(/günstiger/g) ?? []).toHaveLength(1);
+    expect(el).not.toMatch(/unter dem Statt-Preis|als zuvor/);
+    expect(el).toMatch(/laut Denner/);
   });
   it("ogDescription : la clause « Statt-Preis » seulement avec un .was", () => {
     expect(DICTS.de.ogDescription("", "Denner", false)).not.toMatch(/Statt-Preis/);
@@ -125,7 +127,8 @@ describe("item 7 : jamais un agrégateur comme marchand", () => {
   it("marchand du titre, marque ≠ marchand, graphies", () => {
     expect(resolveMerchant("preispirat", undefined, "Dyson V15 bei MediaMarkt")).toBe("MediaMarkt");
     expect(resolveMerchant("preispirat", undefined, "Gratis Futterprobe für Hunde")).toBeUndefined();
-    expect(resolveMerchant("preispirat", "Apple", "Sky Show 3 Monate gratis")).toBeUndefined();
+    // Round 4, item 12 : le prestataire nommé en tête (Sky), jamais la marque mal attribuée (Apple).
+    expect(resolveMerchant("preispirat", "Apple", "Sky Show 3 Monate gratis")).toBe("Sky");
     expect(resolveMerchant("preispirat", "Preispirat", "X")).toBeUndefined();
     expect(resolveMerchant("denner", undefined, "Kaffee")).toBe("Denner");
     expect(canonicalMerchant("ALDI SUISSE")).toBe("Aldi");
@@ -144,7 +147,11 @@ describe("item 8 : Studis", () => {
   it("titres reconstruits par langue", () => {
     expect(studentTitles("Acer: 15% Studentenrabatt")).toEqual({ de: "Acer: 15% Rabatt für Studierende", fr: "Acer : 15 % de réduction étudiante", en: "Acer: 15% student discount" });
     expect(studentTitles("G-STAR: Bis zu 40 % Rabatt")?.en).toBe("G-STAR: up to 40% student discount");
-    expect(studentTitles("On: 15% Rabatt auf Trainer für Schüler")).toBeUndefined();
+    // Round 4, item 10 : titre allemand gardé en DE (plus précis), repli traduit en FR/EN.
+    const on = studentTitles("On: 15% Rabatt auf Trainer für Schüler", "de")!;
+    expect(on.de).toBeUndefined();
+    expect(on.fr).toBe("On\u202f: 15\u202f% de réduction étudiante");
+    expect(on.en).toBe("On: 15% student discount");
   });
   it("marques pour adultes : jamais sur l'accueil, Studis ni Gratis", () => {
     const p = projectDeal({ deal_id: "studentbeans:1", source_id: "studentbeans", title: "Lovense: 20% Student Discount", family: "student", merchant: "Lovense",
@@ -184,15 +191,14 @@ describe("items 10, 15, 31 : expirés, concours, spiritueux", () => {
     expect(isPastWeek("100% Rabatt Games KW43", NOW)).toBe(true);
     expect(isPastWeek("100% Rabatt Games KW44", NOW)).toBe(false);
   });
-  it("gin Lidl avec ancien prix : ni prix barré, ni économie, ni note", () => {
+  it("gin Lidl avec ancien prix : plus publié du tout (round 4, item 2) ; Kirschstengeli reste", () => {
     const p = projectDeal({ deal_id: "lidl:1", source_id: "lidl", title: "Gordon's London Dry Gin 70cl", family: "grocery", merchant: "Lidl",
       source_url: "https://www.lidl.ch/x", current_price: 14.99, reference_price: 21.99, reference_price_type: "merchant_previous",
-      discount_percentage: 32, deal_score: 7.5, score_confidence: 0.9, lifecycle: "ACTIVE" }, FEED, NOW)!;
-    expect(showsRef(p)).toBe(false);
-    expect(p.score).toBeUndefined();
-    expect(p.discountPct).toBeUndefined();
-    expect(p.noShowcase).toBe(true);
-    expect(projectDeal({ deal_id: "lidl:2", source_id: "lidl", title: "Kirschstengeli 200g", family: "grocery", source_url: "https://www.lidl.ch/x", lifecycle: "ACTIVE" }, FEED, NOW)!.spirits).toBeUndefined();
+      discount_percentage: 32, deal_score: 7.5, score_confidence: 0.9, lifecycle: "ACTIVE" }, FEED, NOW);
+    expect(p).toBeNull();
+    const k = projectDeal({ deal_id: "lidl:2", source_id: "lidl", title: "Kirschstengeli 200g", family: "grocery", source_url: "https://www.lidl.ch/x", lifecycle: "ACTIVE" }, FEED, NOW)!;
+    expect(k).not.toBeNull();
+    expect(k.alcohol).toBeUndefined();
   });
 });
 

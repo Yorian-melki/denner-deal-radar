@@ -65,7 +65,7 @@ export function SiteFooter({ siteName, locale }: { siteName: string; locale: Loc
       <div className="foot-inner">
         <div className="foot-about">
           <p className="foot-brand"><BrandMark name={siteName} tile={false} /></p>
-          <p>{t.footerDisclosure}</p>
+          <p>{t.footerDisclosure(activeProgrammes().length)}</p>
           <p>{t.footerFacts(activeProgrammes().length, SPONSORS.length)}</p>
           {upcoming.length > 0 && <p>{colon(t.soon, locale)} {upcoming.map((c) => c.name[locale]).join(" · ")}</p>}
         </div>

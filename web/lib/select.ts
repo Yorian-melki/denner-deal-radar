@@ -15,7 +15,7 @@
  * Les constantes ci-dessous sont citées telles quelles sur /transparenz.
  */
 import { categoryBySlug } from "@/lib/categories";
-import { compareDeals, pastStoreHours, savingPct, showsRef, shownScore } from "@/lib/project";
+import { baseUnitSaving, compareDeals, pastStoreHours, savingChf, savingPct, showsRef, shownScore } from "@/lib/project";
 export { savingPct, showsRef, shownScore };
 import type { PublicDeal } from "@/lib/types";
 
@@ -126,7 +126,7 @@ export const SECTION_N = 3;
 const eligible = (d: PublicDeal, opts: TopOptions) =>
   d.score !== undefined && d.score > 0 && d.score >= (opts.minScore ?? 0) &&
   (d.confidence ?? 0) >= MIN_CONFIDENCE_TOP && !categoryBySlug(d.category)?.noTop && !opts.exclude?.has(d.id) &&
-  !d.upcoming && !d.noShowcase && !pastStoreHours(d, opts.now ?? new Date()) &&
+  !d.upcoming && !d.noShowcase && !d.alcohol && !pastStoreHours(d, opts.now ?? new Date()) &&
   (!opts.requireRef || showsRef(d));
 
 /** Liste « top » diversifiée : notés et fiables seulement, produits dédoublonnés,
@@ -172,6 +172,47 @@ export function pickShowcase(deals: PublicDeal[], now: Date = new Date()): Publi
   return top.length >= TOP_MIN_SHOWN ? top : [];
 }
 
+/* ------------------------------------------- « Grösste Rabatte – laut Händler » */
+
+/** Bloc d'ouverture de l'accueil (round 4, item 3) : toujours rempli, honnête sur sa base.
+ * Trié par % sous le prix « statt » DU MARCHAND (ancien prix déclaré, ni UVP ni concurrent),
+ * que nous n'avons pas vérifié — le titre et la sous-ligne le disent. Les constantes ci-dessous
+ * sont citées telles quelles dans la sous-ligne et sur /transparenz. */
+export const MARKDOWN_N = 6;
+export const MARKDOWN_N_MOBILE = 3;
+export const MARKDOWN_MIN_SHOWN = 3;
+export const MARKDOWN_PER_STORE = 1;
+/** Au-delà de ce pourcentage, un prix unitaire publié est exigé (erreur de format probable sinon). */
+export const MARKDOWN_MAX_PCT_WITHOUT_UNIT = 70;
+/** Conditions qui changent le prix payé : jamais dans ce bloc (Lidl Plus, compte, coupon, quantité minimale). */
+const PRICE_CHANGING = new Set(["lidl_plus", "membership", "account", "coupon", "new_customers", "min_qty", "min_order"]);
+
+export function markdownEligible(d: PublicDeal, now: Date): boolean {
+  const pct = savingPct(d);
+  if (pct === undefined || !showsRef(d) || d.referenceType !== "merchant_previous") return false;
+  if (d.alcohol || d.adult || d.noShowcase || d.upcoming || d.requiresStudent || pastStoreHours(d, now)) return false;
+  if ((d.confidence ?? 0) < MIN_CONFIDENCE_TOP || categoryBySlug(d.category)?.noTop) return false;
+  if (d.conds.some((c) => PRICE_CHANGING.has(c.code))) return false;
+  const hasUnit = d.unitPrice !== undefined && !!d.unit && d.unit !== "month";
+  if (d.category === "supermarkt-aktionen" && !hasUnit && !d.size?.text && !d.size?.pieces) return false;
+  return pct <= MARKDOWN_MAX_PCT_WITHOUT_UNIT || hasUnit;
+}
+
+/** % décroissant, puis économie par kg/l, puis en CHF ; au plus 1 carte par magasin et par marque. */
+export function pickMarkdowns(deals: PublicDeal[], now: Date = new Date(), exclude?: Set<string>): PublicDeal[] {
+  const pool = dedupeProducts(deals.filter((d) => !exclude?.has(d.id) && markdownEligible(d, now)))
+    .sort((a, b) => (savingPct(b)! - savingPct(a)!) || baseUnitSaving(b) - baseUnitSaving(a) || savingChf(b) - savingChf(a) || compareDeals(a, b));
+  const out: PublicDeal[] = [];
+  const stores = new Map<string, number>(), brands = new Set<string>();
+  for (const d of pool) {
+    if (out.length >= MARKDOWN_N) break;
+    const m = merchantKey(d), b = brandKey(d);
+    if ((stores.get(m) ?? 0) >= MARKDOWN_PER_STORE || brands.has(b)) continue;
+    out.push(d); stores.set(m, (stores.get(m) ?? 0) + 1); brands.add(b);
+  }
+  return out.length >= MARKDOWN_MIN_SHOWN ? out : [];
+}
+
 /** Ordre neutre pour les catégories sans note (pourcentages des vendeurs) :
  * plus récent d'abord, puis titre — jamais la taille de la réduction annoncée. */
 export function neutralOrder(deals: PublicDeal[]): PublicDeal[] {
@@ -201,12 +242,14 @@ export function homeOrder(sections: Section[]): Section[] {
 
 /** « Mehr aus … » (round 3, item 13) : TOUJOURS jusqu'à 3 deals de la même catégorie, triés
  * par le comparateur unique, sans le deal courant, ni la même action, ni la même marque ;
- * au plus 1 par marchand. */
+ * au plus 1 par marchand. Jamais d'alcool sous un produit sans alcool (round 4, item 2).
+ * Un deal sans prix n'a pas de clé d'action : il n'exclut rien (round 4, item 8). */
 export function relatedDeals(deals: PublicDeal[], d: PublicDeal, n = 3): PublicDeal[] {
   const pk = promoKey(d), bk = brandKey(d);
   const out: PublicDeal[] = [];
   const seenM = new Set<string>([merchantKey(d)]), seenB = new Set<string>([bk]);
-  const pool = dedupeProducts(deals.filter((x) => x.category === d.category && x.id !== d.id && !x.upcoming && !x.adult && promoKey(x) !== pk).sort(compareDeals));
+  const pool = dedupeProducts(deals.filter((x) => x.category === d.category && x.id !== d.id && !x.upcoming && !x.adult &&
+    (!x.alcohol || !!d.alcohol) && (pk === undefined || promoKey(x) !== pk)).sort(compareDeals));
   for (const pass of [true, false]) {
     for (const x of pool) {
       if (out.length >= n) break;
@@ -240,7 +283,7 @@ export function balancedSections(
       items = [];
       for (const d of slug === "studenten-rabatte" ? studentOrder(inCat) : neutralOrder(inCat)) {
         if (items.length >= per) break;
-        if (opts.exclude?.has(d.id) || d.noShowcase || d.adult || d.upcoming || (counts.get(merchantKey(d)) ?? 0) >= PER_MERCHANT) continue;
+        if (opts.exclude?.has(d.id) || d.noShowcase || d.adult || d.alcohol || d.upcoming || (counts.get(merchantKey(d)) ?? 0) >= PER_MERCHANT) continue;
         counts.set(merchantKey(d), (counts.get(merchantKey(d)) ?? 0) + 1);
         items.push(d);
       }

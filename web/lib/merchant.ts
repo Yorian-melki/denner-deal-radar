@@ -1,7 +1,7 @@
 /** Qui vend ? (round 3, item 7). Un agrégateur (Preispirat, Rappn, GamerPower…) n'est
  * jamais affiché comme marchand : il est la SOURCE (« via Preispirat »). Si le vrai
- * marchand est inconnu, on l'écrit (« Händler unbekannt ») et le deal sort des vitrines
- * et des sections de l'accueil. Fonctions pures, testées (tests/round3.test.ts). */
+ * marchand est inconnu, la carte n'affiche que la source (« via Preispirat », round 4, item 12 :
+ * plus jamais « Händler unbekannt ») et le deal sort des vitrines et des sections de l'accueil. Fonctions pures, testées (tests/round3.test.ts). */
 
 /** Sources qui republient les offres d'autres commerçants. */
 export const AGGREGATOR_SOURCES = new Set(["preispirat", "rappn", "gamerpower", "dealdoktor", "studentbeans", "unidays", "dschungelkompass", "gutscheine_20min", "ferienpiraten"]);
@@ -33,7 +33,32 @@ const CANONICAL: Record<string, string> = {
   "office world": "Office World", manor: "Manor", jumbo: "Jumbo", conforama: "Conforama", nettoshop: "Nettoshop",
   "ochsner sport": "Ochsner Sport", "ex libris": "Ex Libris", "orell füssli": "Orell Füssli", "epic games": "Epic Games",
   gog: "GOG", steam: "Steam", amazon: "Amazon", "google play": "Google Play", zalando: "Zalando", "hp store": "HP Store",
+  "epic games store": "Epic Games", "epic": "Epic Games", indiegala: "IndieGala", fanatical: "Fanatical", ubisoft: "Ubisoft",
+  "prime gaming": "Prime Gaming", fnac: "Fnac", iherb: "iHerb", peachstore: "Peach", "peach store": "Peach", postfinance: "PostFinance",
 };
+
+/** Boutique entre parenthèses (« Ancient Evil (IndieGala) », « SmartStudents! (PostFinance) »). */
+const PAREN_STORE = /\((IndieGala|GOG|Steam|Epic Games(?: Store)?|Prime Gaming|Ubisoft|Fanatical|PostFinance)\)/i;
+/** « … bei fnac (…) », « … bei iHerb », « … bei pumbi.ch », « im PeachStore » au milieu du titre. */
+const MID_STORE = /\b(?:bei|im|chez)\s+(fnac|iherb|peachstore|pumbi\.ch|galaxus|digitec|brack|interdiscount|mediamarkt|fust|manor|ikea|zalando|amazon)\b/i;
+/** Prestataire nommé en tête du titre (abonnements, services, transports). */
+const LEADING_PROVIDER: [RegExp, string][] = [
+  [/^HP\b/, "HP Store"], [/^Wingo\b/i, "Wingo"], [/^Quickline\b/i, "Quickline"], [/^yallo\b/i, "yallo"], [/^SBB\b/, "SBB"],
+  [/^Sky\b/, "Sky"], [/\bAudible\b/, "Audible"], [/^PubliBike\b/i, "PubliBike"], [/^Update Fitness\b/i, "Update Fitness"],
+  [/^Electra\b/, "Electra"], [/\bNeon[- ]Konto\b|\baufs Neon Konto\b/i, "Neon"], [/^Apple ?TV\b|^AppleTV\b/i, "Apple"],
+  [/^Google\b/, "Google"], [/\bvon Yesim\b|^Yesim\b/i, "Yesim"], [/^Die Post\b|^Post\b/, "Die Post"], [/^Salt\b/, "Salt"],
+  [/^Sunrise\b/, "Sunrise"], [/^Swisscom\b/, "Swisscom"], [/^Galaxus\b/, "Galaxus"], [/^Digitec\b/, "Digitec"],
+];
+
+/** Marchand lu dans le titre ailleurs qu'en fin (round 4, item 12). */
+export function merchantInTitle(title: string): string | undefined {
+  const p = title.match(PAREN_STORE);
+  if (p) return canonicalMerchant(p[1]);
+  const m = title.match(MID_STORE);
+  if (m) return canonicalMerchant(m[1]);
+  for (const [re, name] of LEADING_PROVIDER) if (re.test(title)) return name;
+  return undefined;
+}
 
 export function canonicalMerchant(raw: string | undefined): string | undefined {
   const m = (raw ?? "").replace(/\s+/g, " ").trim();
@@ -73,5 +98,5 @@ export function resolveMerchant(source: string, rawMerchant: string | undefined,
   if (m && !AGGREGATOR_NAMES.test(m) && !(aggregated && BRAND_NOT_MERCHANT.test(m))) return m;
   if (fromTitle && !BRAND_NOT_MERCHANT.test(fromTitle)) return fromTitle;
   if (!aggregated) return m ?? canonicalMerchant(sourceName(source));
-  return undefined;
+  return merchantInTitle(title);
 }

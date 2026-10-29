@@ -17,7 +17,7 @@ export function operator() {
 export const isOperatorComplete = (o = operator()) => !!(o.name && o.address.length && o.email);
 
 /** Date de dernière révision des textes juridiques (à mettre à jour à chaque changement). */
-export const LEGAL_REVISION = "28.10.2026";
+export const LEGAL_REVISION = "29.10.2026";
 
 /** Hébergeur (LCEN art. 6 III 1 d) — LAWYER-CHECK : vérifier adresse/téléphone à jour sur cloudflare.com. */
 export const HOST = {

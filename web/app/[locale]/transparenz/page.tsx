@@ -3,8 +3,12 @@ import { activeProgrammes } from "@/lib/affiliate/rewrite";
 import { fmtPct, fmtScore } from "@/lib/format";
 import { dict, type Locale } from "@/lib/i18n";
 import { BADGE_MIN_SCORE, OBSERVED_MAX_GAP, OBSERVED_MIN_N, SCORE_CAP, STORE_CLOSING_HOUR, VERIFY_MIN_CONFIDENCE } from "@/lib/project";
-import { HOME_MIN_SCORE, HOME_MIN_SECTION, HISTORY_MIN_OBSERVATIONS, MIN_CONFIDENCE_TOP, PER_BRAND, PER_MERCHANT, SECTION_N, TOP_MIN_SCORE, TOP_MIN_SHOWN, TOP_N } from "@/lib/select";
-import { MAX_SHARE_PER_MERCHANT, PAGE_SIZE } from "@/components/CategoryListing";
+import {
+  HOME_MIN_SCORE, HOME_MIN_SECTION, HISTORY_MIN_OBSERVATIONS, MARKDOWN_MAX_PCT_WITHOUT_UNIT, MARKDOWN_MIN_SHOWN, MARKDOWN_N, MARKDOWN_N_MOBILE, MARKDOWN_PER_STORE,
+  MIN_CONFIDENCE_TOP, PER_BRAND, PER_MERCHANT, SECTION_N, TOP_MIN_SCORE, TOP_MIN_SHOWN, TOP_N,
+} from "@/lib/select";
+import { ALCOHOL_FREE_TOP, MAX_RUN, PAGE_SIZE } from "@/components/CategoryListing";
+import { getDeals } from "@/lib/data";
 import { paths } from "@/lib/site";
 import { operator } from "@/lib/operator";
 
@@ -33,6 +37,8 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
   const pct = (v: number) => fmtPct(v * 100, locale);
   const sc = (v: number) => fmtScore(v, locale);
   const active = activeProgrammes();
+  // « Am besten bewertet » n'est décrit que s'il peut s'afficher (un Statt-Preis confirmé par nos relevés, round 4, item 3).
+  const topPossible = (await getDeals()).deals.some((d) => d.refObserved && (d.score ?? 0) >= TOP_MIN_SCORE);
   // Aucune promesse de contact tant qu'aucune adresse n'est publiée (round 3, item 26).
   const contact = !!operator().email;
   const tiers: [string, string][] = [
@@ -58,9 +64,10 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
       tiersTitle: "Stufen",
       h2: "Wie die Reihenfolge entsteht",
       order: [
-        <>Angebote mit sichtbarem Statt-Preis stehen <strong>immer zuerst</strong>, nach Bewertung, dann nach Ersparnis in Franken. Danach folgen die übrigen Angebote, neueste zuerst. Aktionen, die erst später beginnen, stehen am Ende. Über jeder Liste steht, wie sie sortiert ist.</>,
-        <>«Am besten bewertet»: höchstens {TOP_N} Karten, ohne Auffüllen — nur mit Statt-Preis des Händlers, Bewertung ab {sc(TOP_MIN_SCORE)}, Datenqualität ab {pct(MIN_CONFIDENCE_TOP)}, höchstens {PER_MERCHANT} pro Shop und {PER_BRAND} pro Marke, höchstens ein Drittel aus derselben Kategorie. Sind es weniger als {TOP_MIN_SHOWN}, entfällt die Liste. Nicht dabei: Aktionen, die erst morgen beginnen, und Ladenaktionen am letzten Tag nach {STORE_CLOSING_HOUR}:00 Uhr. Dienstleistungen sind ausgeschlossen.</>,
-        <>Stadtseite: Rubriken mit je {SECTION_N} Karten. Zuerst die Rubriken mit den meisten sichtbaren Statt-Preisen (Bewertung ab {sc(HOME_MIN_SCORE)}), dann Studis, Gratis zuletzt. Eine Rubrik erscheint erst ab {HOME_MIN_SECTION} Karten. Alle anderen Kategorien über die Leiste oben. In bewerteten Kategorien stammt pro Seite höchstens {pct(MAX_SHARE_PER_MERCHANT)} der Angebote aus demselben Händler, nie drei hintereinander.</>,
+        <>Angebote mit sichtbarem Statt-Preis stehen <strong>immer zuerst</strong>, nach der angezeigten Bewertung (nur wenn unsere Beobachtungen den Statt-Preis bestätigen), dann nach Rabatt in Prozent, dann nach Ersparnis pro Kilo oder Liter (nicht nach Franken: ein Weinkarton überholt so nie −50 % auf Wasser). Danach folgen die übrigen Angebote, neueste zuerst. Aktionen, die erst später beginnen, stehen am Ende. Nie mehr als {MAX_RUN} Karten desselben Ladens hintereinander, solange ein anderer Laden folgen kann. Über jeder Liste steht, wie sie sortiert ist.</>,
+        <>«Grösste Rabatte – laut Händler» (Stadtseite, oben): die {MARKDOWN_N} Aktionen ({MARKDOWN_N_MOBILE} auf dem Handy) mit dem höchsten Rabatt in Prozent unter dem <strong>früheren Preis laut Händler</strong> — weder UVP noch Konkurrenzpreis, von uns nicht bestätigt. Höchstens {MARKDOWN_PER_STORE} pro Laden und pro Marke, ohne Alkohol, ohne Bedingung wie Kundenkarte, App oder Mindestmenge, Datenqualität ab {pct(MIN_CONFIDENCE_TOP)}, Supermarkt nur mit bekannter Menge; über {fmtPct(MARKDOWN_MAX_PCT_WITHOUT_UNIT, locale)} nur mit Grundpreis. Unter {MARKDOWN_MIN_SHOWN} Karten entfällt der Block.</>,
+        ...(topPossible ? [<>«Am besten bewertet»: höchstens {TOP_N} Karten, ohne Auffüllen — nur mit Statt-Preis des Händlers, Bewertung ab {sc(TOP_MIN_SCORE)}, Datenqualität ab {pct(MIN_CONFIDENCE_TOP)}, höchstens {PER_MERCHANT} pro Shop und {PER_BRAND} pro Marke, höchstens ein Drittel aus derselben Kategorie. Sind es weniger als {TOP_MIN_SHOWN}, entfällt die Liste. Nicht dabei: Aktionen, die erst morgen beginnen, und Ladenaktionen am letzten Tag nach {STORE_CLOSING_HOUR}:00 Uhr. Dienstleistungen sind ausgeschlossen.</>] : []),
+        <>Stadtseite: danach Rubriken mit je {SECTION_N} Karten. Zuerst die Rubriken mit den meisten sichtbaren Statt-Preisen (Bewertung ab {sc(HOME_MIN_SCORE)}), dann Studis, Gratis zuletzt. Eine Rubrik erscheint erst ab {HOME_MIN_SECTION} Karten. Alle anderen Kategorien über die Leiste oben.</>,
         <>Studentenrabatte sind nach dem <strong>Rabatt laut Anbieter</strong> sortiert, dann nach Enddatum. Gratis-Angebote und Gutscheine stehen <strong>neueste zuerst</strong>. Auf der Stadtseite höchstens {PER_MERCHANT} pro Shop.</>,
         <>Handy- und Internet-Abos sind nach <strong>Gesamtkosten über 24 Monate</strong> sortiert (Aktionspreis, Folgepreis, Aufschaltgebühr).</>,
         <>Dieselbe Aktion in mehreren Sorten zählt einmal («+2 Sorten»); dasselbe Produkt in mehreren Shops ebenfalls («auch bei 2 weiteren Shops»).</>,
@@ -80,7 +87,7 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
         <>Angebote, die die Nutzungsbedingungen eines Dienstes umgehen (z. B. Abos «über Bulgarien», VPN-Tricks).</>,
         <>«Aktionen», deren Preis gleich hoch oder höher ist als der übliche Preis, den wir beobachtet haben.</>,
         <>Begleit-, Erotik- und Erwachsenenmarken erscheinen nie auf der Stadtseite, bei Studis, bei Gratis oder in einer Bestenliste. Angebote ohne bekannten Händler ebenfalls nicht.</>,
-        <>Gewinnspiele und Glücksräder (kein Angebot) sowie Tabakwaren. Spirituosen zeigen wir ohne Statt-Preis, Rabatt und Bewertung (Alkoholgesetz).</>,
+        <>Gewinnspiele und Glücksräder (kein Angebot) sowie Tabakwaren. <strong>Spirituosen gar nicht</strong> (Alkoholgesetz). Wein, Bier und Schaumwein nie auf der Stadtseite, in Bestenlisten oder in Vorschlägen unter einem anderen Produkt, und nie unter den ersten {ALCOHOL_FREE_TOP} Karten einer Liste.</>,
         <>Abgelaufene Aktionen: Ihre Seite bleibt 30 Tage erreichbar, als «abgelaufen» markiert, ohne Knopf zum Anbieter.</>,
         <>Werbewörter aus Titeln («ERHÖHT», «zum neuen Tiefstpreis», «nur heute», Emojis); «Tiefstpreis» nur, wenn unsere eigenen Daten es zeigen.</>,
         <>Ladenaktionen von Ketten ohne Filiale in der Nähe (St. Gallen: Aligro).</>,
@@ -104,9 +111,10 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
       tiersTitle: "Paliers",
       h2: "Comment se fait le classement",
       order: [
-        <>Les offres avec prix barré visible passent <strong>toujours en premier</strong>, par note, puis par économie en francs. Viennent ensuite les autres offres, les plus récentes d’abord. Celles qui commencent plus tard sont en fin de liste. Chaque liste indique son ordre au-dessus des cartes.</>,
-        <>« Les mieux notées » : au plus {TOP_N} cartes, sans remplissage — seulement avec prix barré du commerçant, note dès {sc(TOP_MIN_SCORE)}, qualité des données dès {pct(MIN_CONFIDENCE_TOP)}, au plus {PER_MERCHANT} par magasin et {PER_BRAND} par marque, au plus un tiers d’une même catégorie. Sous {TOP_MIN_SHOWN} cartes, la liste disparaît. Exclues : les actions qui ne commencent que demain et les actions en magasin le dernier jour après {STORE_CLOSING_HOUR} h. Les prestations de service sont exclues.</>,
-        <>Page de la ville : des rubriques de {SECTION_N} cartes. D’abord celles qui montrent le plus de prix barrés (note dès {sc(HOME_MIN_SCORE)}), puis Étudiants, Gratuit en dernier. Une rubrique n’apparaît qu’à partir de {HOME_MIN_SECTION} cartes. Les autres catégories via la barre du haut. Dans les catégories notées, un même commerçant fournit au plus {pct(MAX_SHARE_PER_MERCHANT)} d’une page, jamais trois de suite.</>,
+        <>Les offres avec prix barré visible passent <strong>toujours en premier</strong>, par note affichée (seulement si nos relevés confirment le prix barré), puis par réduction en pour cent, puis par économie au kilo ou au litre (pas en francs : un carton de vin ne passe ainsi jamais devant −50 % sur l’eau). Viennent ensuite les autres offres, les plus récentes d’abord. Celles qui commencent plus tard sont en fin de liste. Jamais plus de {MAX_RUN} cartes du même magasin à la suite, tant qu’un autre magasin peut suivre. Chaque liste indique son ordre au-dessus des cartes.</>,
+        <>« Plus fortes baisses – selon le commerçant » (page de la ville, en haut) : les {MARKDOWN_N} actions ({MARKDOWN_N_MOBILE} sur mobile) avec la plus forte baisse en pour cent sous le <strong>prix antérieur indiqué par le commerçant</strong> — ni prix conseillé ni prix concurrent, non confirmé par nous. Au plus {MARKDOWN_PER_STORE} par magasin et par marque, sans alcool, sans condition (carte client, appli, quantité minimale), qualité des données dès {pct(MIN_CONFIDENCE_TOP)}, supermarché seulement avec quantité connue ; au-delà de {fmtPct(MARKDOWN_MAX_PCT_WITHOUT_UNIT, locale)}, seulement avec prix unitaire. Sous {MARKDOWN_MIN_SHOWN} cartes, le bloc disparaît.</>,
+        ...(topPossible ? [<>« Les mieux notées » : au plus {TOP_N} cartes, sans remplissage — seulement avec prix barré du commerçant, note dès {sc(TOP_MIN_SCORE)}, qualité des données dès {pct(MIN_CONFIDENCE_TOP)}, au plus {PER_MERCHANT} par magasin et {PER_BRAND} par marque, au plus un tiers d’une même catégorie. Sous {TOP_MIN_SHOWN} cartes, la liste disparaît. Exclues : les actions qui ne commencent que demain et les actions en magasin le dernier jour après {STORE_CLOSING_HOUR} h. Les prestations de service sont exclues.</>] : []),
+        <>Page de la ville : ensuite des rubriques de {SECTION_N} cartes. D’abord celles qui montrent le plus de prix barrés (note dès {sc(HOME_MIN_SCORE)}), puis Étudiants, Gratuit en dernier. Une rubrique n’apparaît qu’à partir de {HOME_MIN_SECTION} cartes. Les autres catégories via la barre du haut.</>,
         <>Les réductions étudiantes sont triées selon la <strong>réduction annoncée par le vendeur</strong>, puis la date de fin. Offres gratuites et codes promo : <strong>les plus récentes d’abord</strong>. Sur la page de la ville, au plus {PER_MERCHANT} par magasin.</>,
         <>Les abonnements mobile et internet sont triés par <strong>coût total sur 24 mois</strong> (prix promo, prix ensuite, frais de mise en service).</>,
         <>Une même action en plusieurs variétés compte une fois (« +2 variétés ») ; un même produit dans plusieurs magasins aussi (« aussi dans 2 autres magasins »).</>,
@@ -115,7 +123,7 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
       ],
       h3: "Comment nous gagnons de l’argent",
       money: [
-        <><strong>Les liens commerciaux</strong> sont signalés en clair (« lien commercial ») et balisés <code>rel=&quot;sponsored&quot;</code>. Si tu achètes par ce lien, nous pouvons toucher une commission ; ton prix ne change pas.</>,
+        <><strong>Les liens publicitaires</strong> sont signalés en clair (« lien publicitaire (affilié) ») et balisés <code>rel=&quot;sponsored&quot;</code>. Si tu achètes par ce lien, nous pouvons toucher une commission ; ton prix ne change pas.</>,
         <><strong>Les publicités</strong> (si activées) sont signalées « publicité », jamais placées dans un classement, et ne se chargent qu’avec ton accord (<a href={`${L("datenschutz")}#cookies`}>confidentialité</a>).</>,
         <><strong>Placements payants</strong> : aucun.</>,
       ],
@@ -126,7 +134,7 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
         <>Les offres qui contournent les conditions d’un service (p. ex. abonnements « via la Bulgarie », astuces VPN).</>,
         <>Les « actions » dont le prix est égal ou supérieur au prix habituel que nous avons observé.</>,
         <>Les offres d’escorte, érotiques ou de marques pour adultes n’apparaissent jamais sur la page de la ville, chez Étudiants, chez Gratuit ni dans un classement. Les offres sans commerçant connu non plus.</>,
-        <>Les concours et roues de la fortune (ce ne sont pas des offres) et le tabac. Les spiritueux sont montrés sans prix barré, sans réduction et sans note (loi sur l’alcool).</>,
+        <>Les concours et roues de la fortune (ce ne sont pas des offres) et le tabac. <strong>Aucun spiritueux</strong> (loi sur l’alcool). Vin, bière et mousseux jamais sur la page de la ville, dans un classement ni en suggestion sous un autre produit, et jamais parmi les {ALCOHOL_FREE_TOP} premières cartes d’une liste.</>,
         <>Les actions terminées : leur page reste accessible 30 jours, marquée « terminée », sans bouton vers le vendeur.</>,
         <>Les mots publicitaires des titres (« ERHÖHT », « nouveau prix le plus bas », « aujourd’hui seulement », émojis) ; « prix le plus bas » seulement si nos propres données le montrent.</>,
         <>Les actions en magasin d’enseignes sans magasin à proximité (Saint-Gall : Aligro).</>,
@@ -150,9 +158,10 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
       tiersTitle: "Tiers",
       h2: "How ranking works",
       order: [
-        <>Offers with a visible was price <strong>always come first</strong>, by score, then by saving in francs. All other offers follow, newest first. Deals that start later come last. Every list states its order above the cards.</>,
-        <>“Top rated”: at most {TOP_N} cards, never padded — only with the retailer’s “instead of” price, score from {sc(TOP_MIN_SCORE)}, data quality from {pct(MIN_CONFIDENCE_TOP)}, at most {PER_MERCHANT} per shop and {PER_BRAND} per brand, at most a third from one category. With fewer than {TOP_MIN_SHOWN}, the list is not shown. Excluded: deals that only start tomorrow and in-store deals on their last day after {STORE_CLOSING_HOUR}:00. Services are excluded.</>,
-        <>City page: sections of {SECTION_N} cards. First the sections with the most visible was prices (score from {sc(HOME_MIN_SCORE)}), then Students, Free last. A section appears only with {HOME_MIN_SECTION} or more cards. All other categories via the bar at the top. In rated categories one retailer supplies at most {pct(MAX_SHARE_PER_MERCHANT)} of a page, never three in a row.</>,
+        <>Offers with a visible was price <strong>always come first</strong>, by the displayed score (only when our observations confirm the was price), then by percent off, then by saving per kilo or litre (not in francs: a case of wine never overtakes −50% on water). All other offers follow, newest first. Deals that start later come last. Never more than {MAX_RUN} cards from one store in a row while another store can follow. Every list states its order above the cards.</>,
+        <>“Biggest markdowns – as stated by the retailer” (top of the city page): the {MARKDOWN_N} deals ({MARKDOWN_N_MOBILE} on mobile) with the highest percentage below the <strong>retailer’s stated previous price</strong> — neither RRP nor a competitor’s price, not confirmed by us. At most {MARKDOWN_PER_STORE} per store and per brand, no alcohol, no conditions (loyalty card, app, minimum quantity), data quality from {pct(MIN_CONFIDENCE_TOP)}, supermarket deals only with a known quantity; above {fmtPct(MARKDOWN_MAX_PCT_WITHOUT_UNIT, locale)} only with a unit price. With fewer than {MARKDOWN_MIN_SHOWN} cards the block is not shown.</>,
+        ...(topPossible ? [<>“Top rated”: at most {TOP_N} cards, never padded — only with the retailer’s “instead of” price, score from {sc(TOP_MIN_SCORE)}, data quality from {pct(MIN_CONFIDENCE_TOP)}, at most {PER_MERCHANT} per shop and {PER_BRAND} per brand, at most a third from one category. With fewer than {TOP_MIN_SHOWN}, the list is not shown. Excluded: deals that only start tomorrow and in-store deals on their last day after {STORE_CLOSING_HOUR}:00. Services are excluded.</>] : []),
+        <>City page: then sections of {SECTION_N} cards. First the sections with the most visible was prices (score from {sc(HOME_MIN_SCORE)}), then Students, Free last. A section appears only with {HOME_MIN_SECTION} or more cards. All other categories via the bar at the top.</>,
         <>Student discounts are sorted by the <strong>discount stated by the seller</strong>, then by end date. Freebies and coupons: <strong>newest first</strong>. On the city page, at most {PER_MERCHANT} per shop.</>,
         <>Mobile and internet plans are sorted by <strong>total cost over 24 months</strong> (promo price, follow-up price, activation fee).</>,
         <>The same deal in several varieties counts once (“+2 varieties”); the same product at several shops too (“also at 2 other shops”).</>,
@@ -172,7 +181,7 @@ export default async function Transparenz({ params }: { params: Promise<{ locale
         <>Offers that circumvent a service’s terms (e.g. subscriptions “via Bulgaria”, VPN tricks).</>,
         <>“Deals” priced at or above the usual price we have observed.</>,
         <>Escort, adult offers and adult brands never appear on the city page, in Students, in Free or in a top list. Offers without a known retailer do not either.</>,
-        <>Contests and prize wheels (not offers) and tobacco. Spirits are shown without was price, discount or score (Swiss alcohol law).</>,
+        <>Contests and prize wheels (not offers) and tobacco. <strong>No spirits at all</strong> (Swiss alcohol law). Wine, beer and sparkling wine never on the city page, in a top list or suggested under another product, and never among the first {ALCOHOL_FREE_TOP} cards of a list.</>,
         <>Ended deals: their page stays reachable for 30 days, marked “ended”, without a button to the seller.</>,
         <>Marketing words in titles (“ERHÖHT”, “new lowest price”, “today only”, emojis); “lowest price” only when our own data shows it.</>,
         <>In-store deals of chains with no shop nearby (St. Gallen: Aligro).</>,

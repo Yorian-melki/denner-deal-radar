@@ -1,5 +1,6 @@
 import { mainCity } from "@/config/cities";
 import { dict, type Locale } from "@/lib/i18n";
+import { TOMBSTONE_DAYS } from "@/lib/project";
 import { paths } from "@/lib/site";
 
 /** 404 localisée : un message générique (on ne prétend pas savoir que c'était un
@@ -10,7 +11,7 @@ export function NotFoundBody({ locale }: { locale: Locale }) {
   return (
     <section className="nf">
       <h1>{t.notFoundTitle}</h1>
-      <p>{t.notFoundText}</p>
+      <p>{t.notFoundText(TOMBSTONE_DAYS)}</p>
       <p><a href={paths.city(locale, city.slug)} className="btn btn-primary">{t.notFoundCta(city.name[locale])}</a></p>
     </section>
   );

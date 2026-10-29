@@ -3,18 +3,23 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { FEEDS } from "@/config/cities";
 import { cleanOutbound } from "@/lib/outbound";
-import { markPages, projectExpired, projectFeed, rankDeals } from "@/lib/project";
+import { markPages, projectExpired, projectFeed, rankDeals, setCanonicalSlugs } from "@/lib/project";
+import { SITE_URL } from "@/lib/site";
+import { REGISTRY_PATH, type SlugRegistry, mergeRegistries, updateRegistry, validateRegistry } from "@/lib/slugs";
 import type { PublicDeal, RawDeal } from "@/lib/types";
 
 /** Le flux fait plusieurs Mo (au-delà du Data Cache de Next) : mémo en mémoire
  * par processus de build, pour ne le télécharger qu'une fois par worker. */
 const TTL_MS = 15 * 60 * 1000;
-let memo: { at: number; deals: PublicDeal[]; expired: PublicDeal[]; generatedAt: string; now: Date } | null = null;
+type Loaded = { at: number; deals: PublicDeal[]; expired: PublicDeal[]; generatedAt: string; now: Date; registry: SlugRegistry };
+let memo: Loaded | null = null;
 
 /** Budget de pages deal (vivantes + pierres tombales) : ×3 langues, total HTML < 16 000
  * (Cloudflare Pages : 20 000 fichiers). Les pierres tombales les plus anciennes sautent d'abord. */
 export const MAX_TOMBSTONES = 1500;
 
+/** Part maximale de cartes sans marchand connu (round 4, item 12). */
+const MAX_UNKNOWN_MERCHANT = 0.02;
 /** Plafond de taille du flux (le flux réel fait ~12 Mo) : au-delà, on refuse. */
 const MAX_FEED_BYTES = 25 * 1024 * 1024;
 /** Part maximale de deals rejetés pour lien sortant non publiable (affiliation tiers opaque). */
@@ -56,10 +61,29 @@ async function loadRaw(url: string): Promise<{ generated_at?: string; deals: Raw
   return raw;
 }
 
+/** Registre des slugs (round 4, item 1) : celui publié par le build précédent (le site en
+ * ligne est la mémoire, la CI ne commite rien), complété par l'amorce versionnée. Un échec
+ * réseau n'arrête pas le build : l'amorce garde les slugs connus au 29.10. */
+async function loadRegistry(): Promise<SlugRegistry> {
+  const seed = validateRegistry(JSON.parse(await readFile(path.join(process.cwd(), "config", "slug-seed.json"), "utf8")));
+  if (process.env.DATA_FIXTURE === "1" || !/^https:/.test(SITE_URL)) return mergeRegistries(seed);
+  try {
+    const res = await fetch(`${SITE_URL}${REGISTRY_PATH}`, { cache: "no-store", signal: AbortSignal.timeout(15_000) });
+    const live = res.ok ? validateRegistry(await res.json()) : null;
+    console.log(JSON.stringify({ level: live ? "info" : "warn", msg: "slug_registry", status: res.status, canon: live ? Object.keys(live.canon).length : 0 }));
+    return mergeRegistries(live, seed);
+  } catch (e) {
+    console.warn(JSON.stringify({ level: "warn", msg: "slug_registry_failed", error: String(e) }));
+    return mergeRegistries(seed);
+  }
+}
+
 /** Instant de référence du build (« heute », « ab morgen », 18:00) : l'heure réelle,
  * ou la date de l'échantillon en mode fixture (build reproductible). */
-export async function getDeals(): Promise<{ deals: PublicDeal[]; expired: PublicDeal[]; generatedAt: string; now: Date }> {
+export async function getDeals(): Promise<Loaded> {
   if (memo && Date.now() - memo.at < TTL_MS) return memo;
+  const registry0 = await loadRegistry();
+  setCanonicalSlugs(registry0.canon);
   const results = await Promise.allSettled(FEEDS.map(async (f) => ({ f, raw: await loadRaw(f.url) })));
   const deals: PublicDeal[] = [];
   const raws: { raw: RawDeal[]; f: (typeof FEEDS)[number]; now: Date }[] = [];
@@ -84,12 +108,17 @@ export async function getDeals(): Promise<{ deals: PublicDeal[]; expired: Public
     if (memo) return memo;
     throw new Error("aucun flux disponible");
   }
+  // Marchand inconnu (round 4, item 12) : au plus 2 % des cartes, sinon le build échoue.
+  const unknown = deals.filter((d) => !d.merchant).length / deals.length;
+  console.log(JSON.stringify({ level: "info", msg: "unknown_merchant", share: Math.round(unknown * 1000) / 10 }));
+  if (unknown > MAX_UNKNOWN_MERCHANT && process.env.DATA_FIXTURE !== "1") throw new Error(`${Math.round(unknown * 1000) / 10} % de deals sans marchand (> 2 %) — compléter lib/merchant.ts`);
   const live = markPages(rankDeals(deals));
   const liveSlugs = new Set(live.map((d) => d.slug));
   const expired = raws.flatMap((x) => projectExpired(x.raw, x.f, x.now, liveSlugs));
   const seen = new Set<string>();
   const tomb = expired.filter((d) => !seen.has(d.slug) && seen.add(d.slug)).slice(0, MAX_TOMBSTONES);
   console.log(JSON.stringify({ level: "info", msg: "pages", live: live.length, tombstones: tomb.length, droppedTombstones: Math.max(0, expired.length - tomb.length) }));
-  memo = { at: Date.now(), deals: live, expired: tomb, generatedAt, now };
+  const registry = updateRegistry(registry0, [...live, ...tomb], now.toISOString().slice(0, 10));
+  memo = { at: Date.now(), deals: live, expired: tomb, generatedAt, now, registry };
   return memo;
 }

@@ -32,7 +32,8 @@ export const fmtInt = (n: number, _locale?: Locale) => `${n < 0 ? "−" : ""}${g
 export const fmtPct = (pct: number, locale: Locale) => `${Math.round(pct)}${locale === "fr" ? NNBSP : ""}%`;
 
 /** Note sur 10 avec une décimale, point dans toutes les langues (« 8.2 »). */
-export const fmtScore = (s: number, _locale?: Locale) => s.toFixed(1);
+/** Note : virgule décimale en français (« 6,6/10 », round 4, item 41) ; montants CHF inchangés. */
+export const fmtScore = (s: number, locale?: Locale) => (locale === "fr" ? s.toFixed(1).replace(".", ",") : s.toFixed(1));
 
 /** « Libellé : » en français (espace fine insécable), « Label: » sinon. */
 export const colon = (label: string, locale: Locale) => (locale === "fr" ? `${label}${NNBSP}:` : `${label}:`);

@@ -24,7 +24,7 @@ if (js > 10 * 1024) errors.push(`JS : ${js} octets br (budget 10 Ko)`);
 const EMOJI = /\p{Extended_Pictographic}/u;
 let checked = 0;
 for (const f of files.filter((x) => x.endsWith(".html"))) {
-  if (checked++ > 400) break; // échantillon : le gabarit est commun à toutes les pages
+  checked++; // round 4, item 43 : TOUS les fichiers HTML, plus un échantillon
   let html = readFileSync(f, "utf8");
   for (const m of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)) if (!/src=/.test(m[1]) && !/application\/ld\+json/.test(m[1])) errors.push(`script inline : ${path.relative(OUT, f)}`);
   html = html.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<head>[\s\S]*?<\/head>/, "")
@@ -36,5 +36,11 @@ const headers = existsSync(path.join(OUT, "_headers")) ? readFileSync(path.join(
 if (!/^\s*Content-Security-Policy: (?!__CSP__)\S/m.test(headers)) errors.push("_headers : CSP absente");
 if (!/^\s*Strict-Transport-Security: max-age=\d+/m.test(headers)) errors.push("_headers : HSTS absent");
 
-console.log(JSON.stringify({ audit: "vibe", jsBr: js, htmlSampled: Math.min(checked, 401), errors: errors.length }));
+// Grandes ombres et filet gauche d'accent : interdits (round 4, item 43).
+for (const f of files.filter((x) => x.endsWith(".css"))) {
+  const css = readFileSync(f, "utf8");
+  if (/border-left\s*:[^;}]*var\(--accent/.test(css)) errors.push("filet gauche d'accent dans le CSS");
+  for (const m of css.matchAll(/box-shadow\s*:([^;}]*)/g)) for (const b of m[1].matchAll(/\b\d+px\s+(\d+)px\s+(\d+)px/g)) if (Number(b[2]) > 32) errors.push(`ombre de plus de 32 px : ${m[1].trim().slice(0, 40)}`);
+}
+console.log(JSON.stringify({ audit: "vibe", jsBr: js, htmlChecked: checked, errors: errors.length }));
 if (errors.length) { for (const e of [...new Set(errors)].slice(0, 20)) console.error(`ERREUR audit : ${e}`); process.exit(1); }

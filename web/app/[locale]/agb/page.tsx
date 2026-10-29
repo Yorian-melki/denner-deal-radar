@@ -48,7 +48,7 @@ export default async function Agb({ params }: { params: Promise<{ locale: string
         <h2>3. Responsabilité</h2>
         <p>Dans la mesure permise par la loi, nous déclinons toute responsabilité pour les dommages liés à l’utilisation des informations ou des sites liés. Restent réservées la responsabilité pour faute intentionnelle ou lourde, pour atteinte à la vie, au corps ou à la santé, et les dispositions impératives de protection des consommateurs.</p>
         <h2>4. Liens externes</h2>
-        <p>Les sites liés relèvent de leurs éditeurs. Les liens affiliés sont signalés en clair par la mention « lien commercial ».</p>
+        <p>Les sites liés relèvent de leurs éditeurs. Les liens affiliés sont signalés en clair par la mention « lien publicitaire (affilié) ».</p>
         <h2>5. Usage loyal</h2>
         <p>L’accès automatisé n’est permis que dans le respect de notre <a href="/robots.txt">robots.txt</a> et sans charge excessive. La reprise systématique de nos notes et textes pour un service concurrent est interdite, de même que toute manipulation des statistiques.</p>
         <h2>6. Modifications, droit applicable</h2>

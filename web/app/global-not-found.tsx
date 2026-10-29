@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { mainCity } from "@/config/cities";
 import { DICTS, HTML_LANG, LOCALES } from "@/lib/i18n";
+import { TOMBSTONE_DAYS } from "@/lib/project";
 import { SITE_NAME, paths } from "@/lib/site";
 import { BrandMark } from "@/components/SiteChrome";
 import "./globals.css";
@@ -16,12 +17,14 @@ export default function GlobalNotFound() {
       <body>
         <main id="main" className="nf nf-global">
           <p className="brand"><BrandMark name={SITE_NAME} /></p>
-          {LOCALES.map((l) => (
-            <section key={l} lang={HTML_LANG[l]}>
-              <h1>{DICTS[l].notFoundTitle}</h1>
-              <p><a href={paths.city(l, city.slug)}>{DICTS[l].notFoundCta(city.name[l])}</a></p>
-            </section>
-          ))}
+          {/* Un seul H1 (round 4, item 29), puis une ligne par langue. */}
+          <h1>{DICTS.de.notFoundTitle}</h1>
+          <p>{DICTS.de.notFoundText(TOMBSTONE_DAYS)}</p>
+          <p className="nf-langs">
+            {LOCALES.map((l, i) => (
+              <span key={l}>{i > 0 && " · "}<a href={paths.city(l, city.slug)} lang={HTML_LANG[l]} hrefLang={HTML_LANG[l]}>{DICTS[l].langName}</a></span>
+            ))}
+          </p>
         </main>
       </body>
     </html>

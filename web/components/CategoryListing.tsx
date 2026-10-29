@@ -7,7 +7,7 @@ import { DealGrid } from "@/components/DealCard";
 import { Icon } from "@/components/Icon";
 import { JsonLd, breadcrumbLd } from "@/components/JsonLd";
 import { categoryBySlug, isSupermarket } from "@/lib/categories";
-import { fmtInt } from "@/lib/format";
+import { colon, fmtInt } from "@/lib/format";
 import { OG_LOCALE, categoryText, dict, type Locale } from "@/lib/i18n";
 import { hasPage, rankDeals, slugify } from "@/lib/project";
 import { canonical, merchantKey, neutralOrder, showsRef, studentOrder } from "@/lib/select";
@@ -17,41 +17,39 @@ import type { PublicDeal } from "@/lib/types";
 /** 24 offres par page : pagination statique (/…/kategorie, /…/kategorie/2, …). */
 export const PAGE_SIZE = 24;
 
-/** Toute catégorie notée : sur une page de 24, au plus un tiers du même marchand, et jamais
- * 3 cartes consécutives du même marchand (round 3, item 14). Ordre relatif conservé. */
-export const MAX_SHARE_PER_MERCHANT = 1 / 3;
-export function interleave(list: PublicDeal[], pageSize = PAGE_SIZE, share = MAX_SHARE_PER_MERCHANT): PublicDeal[] {
-  const cap = Math.max(1, Math.floor(pageSize * share));
+/** Entrelacement glouton sur la liste triée ENTIÈRE (round 4, item 13, arbitrage 5) : jamais plus
+ * de MAX_RUN cartes du même magasin à la suite tant qu'un autre peut s'intercaler, sans jamais
+ * faire passer une carte sans prix « statt » devant une carte qui en a un ; Supermarkt et Shopping :
+ * aucune boisson alcoolisée dans les ALCOHOL_FREE_TOP premières cartes (round 4, item 2).
+ * Pas de quota par page : la note de tri dit exactement cette règle (constante citée). */
+export const MAX_RUN = 2;
+export const ALCOHOL_FREE_TOP = 6;
+export function interleave(list: PublicDeal[], opts: { maxRun?: number; alcoholFreeTop?: number } = {}): PublicDeal[] {
+  const maxRun = opts.maxRun ?? MAX_RUN, top = opts.alcoholFreeTop ?? 0;
+  const rest = [...list];
   const out: PublicDeal[] = [];
-  let rest = list;
+  const runOf = (m: string) => {
+    let n = 0;
+    for (let k = out.length - 1; k >= 0 && merchantKey(out[k]) === m; k--) n++;
+    return n;
+  };
   while (rest.length) {
-    const counts = new Map<string, number>();
-    const page: PublicDeal[] = [], later: PublicDeal[] = [];
-    for (const d of rest) {
-      const m = merchantKey(d);
-      if (page.length < pageSize && (counts.get(m) ?? 0) < cap) { page.push(d); counts.set(m, (counts.get(m) ?? 0) + 1); }
-      else later.push(d);
-    }
-    // Plus assez d'autres magasins pour remplir : on complète dans l'ordre.
-    while (page.length < pageSize && later.length) page.push(later.shift()!);
-    out.push(...noTriples(page));
-    rest = later;
+    const tier = showsRef(rest[0]);
+    const ok = (d: PublicDeal, strictRun: boolean) =>
+      showsRef(d) === tier && !(out.length < top && d.alcohol) && (!strictRun || runOf(merchantKey(d)) < maxRun);
+    let i = rest.findIndex((d) => ok(d, true));
+    if (i < 0) i = rest.findIndex((d) => ok(d, false));
+    if (i < 0) i = 0;
+    out.push(rest.splice(i, 1)[0]);
   }
   return out;
 }
 
-/** Jamais 3 cartes consécutives du même marchand quand un autre peut s'intercaler. */
-function noTriples(page: PublicDeal[]): PublicDeal[] {
-  const out = [...page];
-  for (let i = 2; i < out.length; i++) {
-    const m = merchantKey(out[i]);
-    if (merchantKey(out[i - 1]) !== m || merchantKey(out[i - 2]) !== m) continue;
-    const j = out.findIndex((d, k) => k > i && merchantKey(d) !== m);
-    if (j < 0) break;
-    const [x] = out.splice(j, 1);
-    out.splice(i, 0, x);
-  }
-  return out;
+/** Séries maximales d'un même magasin (contrôle du postbuild et des tests). */
+export function longestRun(list: PublicDeal[]): number {
+  let best = 0, n = 0;
+  list.forEach((d, i) => { n = i && merchantKey(list[i - 1]) === merchantKey(d) ? n + 1 : 1; best = Math.max(best, n); });
+  return best;
 }
 
 /** Événements : par date de début (le plus proche d'abord), round 3, item 23. */
@@ -63,7 +61,7 @@ const byStart = (list: PublicDeal[]) =>
  * - Studis : réduction annoncée décroissante, puis fin la plus proche ;
  * - autres catégories sans note : plus récent d'abord ;
  * - sinon : comparateur unique (prix « statt » affiché d'abord, puis note ; puis plus récent),
- *   au plus un tiers d'un même marchand par page. */
+ *   jamais plus de MAX_RUN cartes du même magasin à la suite (interleave). */
 export function orderCategory(list: PublicDeal[], slug: string): PublicDeal[] {
   if (slug === "handy-abos") {
     const cost = (d: PublicDeal) => d.sub?.total24 ?? Infinity;
@@ -71,9 +69,12 @@ export function orderCategory(list: PublicDeal[], slug: string): PublicDeal[] {
   }
   if (slug === "events") return byStart(list);
   if (slug === "studenten-rabatte") return studentOrder(list);
-  if (categoryBySlug(slug)?.unrated) return neutralOrder(list);
-  return interleave(rankDeals(list));
+  if (categoryBySlug(slug)?.unrated) return interleave(neutralOrder(list));
+  return interleave(rankDeals(list), { alcoholFreeTop: ALCOHOL_TOP_GUARD.has(slug) ? ALCOHOL_FREE_TOP : 0 });
 }
+
+/** Catégories où l'alcool n'ouvre jamais la liste. */
+const ALCOHOL_TOP_GUARD = new Set(["supermarkt-aktionen", "shopping"]);
 
 /** Supermarkt : seulement les enseignes alimentaires (Office World, SECEND en sortent). */
 const isGrocer = (d: PublicDeal) => isSupermarket(d.merchant, d.source) || d.family === "grocery" || d.family === "surplus";
@@ -83,7 +84,8 @@ export const storeSlug = (d: PublicDeal) => (d.merchant ? slugify(d.merchant) : 
 export function categoryList(deals: PublicDeal[], slug: string, store?: string) {
   let list = canonical(deals).filter((d) => d.category === slug);
   if (slug === "supermarkt-aktionen") list = list.filter(isGrocer);
-  if (store) list = list.filter((d) => storeSlug(d) === store);
+  // Page d'un magasin : un seul magasin, aucun entrelacement (mais toujours sans alcool en tête).
+  if (store) return interleave(rankDeals(list.filter((d) => storeSlug(d) === store)), { maxRun: Infinity, alcoholFreeTop: ALCOHOL_FREE_TOP });
   return orderCategory(list, slug);
 }
 
@@ -108,7 +110,7 @@ export function categoryMetadata(city: City, locale: Locale, slug: string, page:
   const t = dict(locale);
   const txt = categoryText(locale, slug);
   const name = city.name[locale];
-  const head = store ? `${txt.title}: ${store.name}` : txt.title;
+  const head = store ? `${colon(txt.title, locale)} ${store.name}` : txt.title;
   const title = t.catIn(head, name) + (page > 1 ? ` · ${t.pageOf(page, pageCount(count))}` : "");
   const rest = `/${city.slug}/${slug}${store ? `/${store.slug}` : ""}${page > 1 ? `/${page}` : ""}`;
   return {
@@ -131,17 +133,18 @@ export function sortNote(list: PublicDeal[], slug: string, locale: Locale): stri
   if (slug === "events") return t.sortedByDate;
   if (slug === "studenten-rabatte") return t.sortedByDiscount;
   if (categoryBySlug(slug)?.unrated) return t.sortedByNewest;
-  return list.some(showsRef) ? t.sortedByScore : t.sortedByNewestPlain;
+  return list.some(showsRef) ? t.sortedByScore(MAX_RUN, list.some((d) => d.refObserved && d.score !== undefined)) : t.sortedByNewestPlain;
 }
 
 /** Ligne générée (catégories notées, round 3, item 22) : jamais de promesse de « Statt-Preis »
  * quand aucune carte n'en a. « 76 Angebote, davon 12 mit Statt-Preis · häufigste Händler: … ». */
-export function categoryFacts(list: PublicDeal[], locale: Locale): string {
+export function categoryFacts(list: PublicDeal[], locale: Locale, withTop = true): string {
   const t = dict(locale);
   const m = list.filter(showsRef).length;
   const counts = new Map<string, number>();
   for (const d of list) if (d.merchant) counts.set(d.merchant, (counts.get(d.merchant) ?? 0) + 1);
-  const top = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 3).map(([k]) => k);
+  // Page d'un magasin : jamais « häufigste Händler: Denner » sur la page Denner (round 4, item 32).
+  const top = withTop ? [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 3).map(([k]) => k) : [];
   return t.catFacts(fmtInt(list.length, locale), m ? fmtInt(m, locale) : "", top.join(", "));
 }
 
@@ -170,7 +173,7 @@ export function CategoryListing({ city, locale, slug, page, here, now, store }: 
     { name: txt.title, path: catBase },
     ...(store ? [{ name: store.name, path: base }] : []),
   ]);
-  const head = store ? `${txt.title}: ${store.name}` : txt.title;
+  const head = store ? `${colon(txt.title, locale)} ${store.name}` : txt.title;
   const itemList = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -186,16 +189,16 @@ export function CategoryListing({ city, locale, slug, page, here, now, store }: 
   return (
     <>
       <nav className="crumbs" aria-label={t.breadcrumb}>
-        <a href={back.href}><Icon name="back" size={16} /><span className="sr-only">{t.backTo(back.label)}: </span><span aria-hidden="true">{back.label}</span></a>
+        <a href={back.href}><Icon name="back" size={16} /><span className="sr-only">{t.backTo(back.label)}</span><span aria-hidden="true">{back.label}</span></a>
       </nav>
       <header className="intro">
         <h1>{t.catIn(head, city.name[locale])}</h1>
-        <p className="lead">{rated && ordered.length ? categoryFacts(ordered, locale) : txt.intro}</p>
+        <p className="lead">{rated && ordered.length ? categoryFacts(ordered, locale, !store) : txt.intro}</p>
       </header>
       <CategoryChips city={city} locale={locale} deals={here} active={slug} />
       {stores.length > 1 && (
         <nav className="chips chips-sub" aria-label={t.stores} data-chips="">
-          <a href={catBase} className="chip" aria-current={!store ? "page" : undefined}>{t.allChip}</a>
+          <a href={catBase} className="chip" aria-current={!store ? "page" : undefined}>{t.allStores}</a>
           {stores.map((s) => (
             <a key={s.slug} href={`${catBase}/${s.slug}`} className="chip" aria-current={store?.slug === s.slug ? "page" : undefined}>{s.name}</a>
           ))}

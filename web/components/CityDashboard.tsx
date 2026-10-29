@@ -6,7 +6,10 @@ import { Icon } from "@/components/Icon";
 import { CATEGORIES } from "@/lib/categories";
 import { fmtInt, fmtScore, fmtUpdated } from "@/lib/format";
 import { categoryText, dict, type Locale } from "@/lib/i18n";
-import { HOME_MIN_SCORE, HOME_MIN_SECTION, PER_BRAND, SECTION_N, TOP_MIN_SCORE, balancedSections, canonical, categoryCounts, homeOrder, pickShowcase } from "@/lib/select";
+import {
+  HOME_MIN_SCORE, HOME_MIN_SECTION, MARKDOWN_PER_STORE, PER_BRAND, SECTION_N, TOP_MIN_SCORE, balancedSections, canonical, categoryCounts, homeOrder,
+  pickMarkdowns, pickShowcase,
+} from "@/lib/select";
 import { paths, telegramUrl } from "@/lib/site";
 import type { PublicDeal } from "@/lib/types";
 
@@ -34,7 +37,8 @@ export function Intro({ city, locale, deals, generatedAt }: { city: City; locale
 export const PRIMARY_CHIPS = ["supermarkt-aktionen", "studenten-rabatte", "gratis", "tech-deals", "handy-abos", "haushalt"];
 
 /** Puces de catégorie (sans compteur) : 6 catégories puis « Mehr » (sans JS : details/summary).
- * La catégorie active est promue dans la rangée au build. Accueil : pas de puce « Alle ».
+ * La catégorie active est promue dans la rangée au build. Jamais de puce « Alle » (round 4, item 6 :
+ * deux rangées commençaient par « Alle » ; le retour à la ville est le lien de fil d'Ariane).
  * La puce active est ramenée au centre au chargement (site.js, data-chips). */
 export function CategoryChips({ city, locale, deals, active }: { city: City; locale: Locale; deals: PublicDeal[]; active?: string }) {
   const t = dict(locale);
@@ -51,7 +55,6 @@ export function CategoryChips({ city, locale, deals, active }: { city: City; loc
   );
   return (
     <nav className="chips" aria-label={t.categories} data-chips="">
-      {active !== "all" && <a href={paths.city(locale, city.slug)} className="chip">{t.allChip}</a>}
       {primary.map(chip)}
       {rest.length > 0 && (
         <details className="chip-more">
@@ -96,11 +99,12 @@ export function TelegramCta({ locale }: { locale: Locale }) {
   );
 }
 
-/** Titre de section + UN lien « Alle N » (contexte complet pour les lecteurs d'écran). */
-function SectionHead({ id, title, href, more, moreSr, srOnlyMobile }: { id: string; title: string; href?: string; more?: string; moreSr?: string; srOnlyMobile?: boolean }) {
+/** Titre de section + UN lien « Alle N » (contexte complet pour les lecteurs d'écran). Le titre est
+ * toujours visible, sur la même ligne que le lien (round 4, item 6 : plus de « Alle 702 → » orphelin). */
+function SectionHead({ id, title, href, more, moreSr }: { id: string; title: string; href?: string; more?: string; moreSr?: string }) {
   return (
     <div className="section-head">
-      <h2 id={id} className={srOnlyMobile ? "sr-mobile" : undefined}>{title}</h2>
+      <h2 id={id}>{title}</h2>
       {href && more && (
         <a className="section-more" href={href}>
           <span aria-hidden="true">{more}</span>
@@ -112,37 +116,47 @@ function SectionHead({ id, title, href, more, moreSr, srOnlyMobile }: { id: stri
   );
 }
 
-/** Page ville : titre factuel, puces, vitrine stricte (prix « statt », note ≥ 7, ≤ 6),
- * puis les sections (3 cartes chacune). Sans vitrine, l'ordre des sections est calculé
- * (lib/select.ts homeOrder) : d'abord celles qui montrent un prix « statt », Gratis en dernier. */
+/** Page ville : titre factuel, puces, vitrine stricte (prix « statt » observé, note ≥ 7, ≤ 6) quand
+ * elle existe, puis « Grösste Rabatte – laut Händler » (round 4, item 3 : toujours rempli, base
+ * dite dans le titre), puis les sections (3 cartes chacune), ordre calculé (lib/select.ts homeOrder). */
 export function CityDashboard({ city, locale, deals, generatedAt, now }: { city: City; locale: Locale; deals: PublicDeal[]; generatedAt: string; now: Date }) {
   const t = dict(locale);
   const all = canonical(deals);
   const top = pickShowcase(all, now);
   const shown = new Set(top.map((d) => d.id));
+  const markdowns = pickMarkdowns(all, now, shown);
+  for (const d of markdowns) shown.add(d.id);
   const sections = homeOrder(balancedSections(all, CITY_SECTIONS, { perSection: SECTION_N, minScore: HOME_MIN_SCORE, minItems: HOME_MIN_SECTION, exclude: shown, now }));
   const counts = categoryCounts(all);
+  const method = `${paths.page(locale, "transparenz")}#reihenfolge`;
   return (
     <>
       <Intro city={city} locale={locale} deals={all} generatedAt={generatedAt} />
       <CategoryChips city={city} locale={locale} deals={all} active="all" />
       {top.length > 0 && (
         <section aria-labelledby="top" className="section section-first">
-          <SectionHead id="top" title={t.topToday} srOnlyMobile />
+          <SectionHead id="top" title={t.topToday} />
           <DealGrid deals={top} locale={locale} showcase now={now} labelledBy="top" />
-          <p className="section-foot">{t.topRule(fmtScore(TOP_MIN_SCORE, locale), PER_BRAND)} · <a href={`${paths.page(locale, "transparenz")}#reihenfolge`}>{t.method}</a></p>
+          <p className="section-foot">{t.topRule(fmtScore(TOP_MIN_SCORE, locale), PER_BRAND)} · <a href={method}>{t.method}</a></p>
+        </section>
+      )}
+      {markdowns.length > 0 && (
+        <section aria-labelledby="markdowns" className={top.length ? "section" : "section section-first"}>
+          <SectionHead id="markdowns" title={t.markdownsTitle} />
+          <p id="markdowns-desc" className="section-note">{t.markdownsRule(MARKDOWN_PER_STORE)} · <a href={method}>{t.method}</a></p>
+          <DealGrid deals={markdowns} locale={locale} showcase now={now} labelledBy="markdowns" describedBy="markdowns-desc" trimMobile />
         </section>
       )}
       {sections.map((s, i) => {
         const href = paths.category(locale, city.slug, s.slug);
         const label = categoryText(locale, s.slug).label;
         const n = fmtInt(counts.get(s.slug) ?? s.total, locale);
-        // Première section rendue (sans vitrine) : titre explicite, masqué visuellement sur mobile.
-        const first = top.length === 0 && i === 0;
+        // Première section rendue (sans bloc au-dessus) : titre explicite.
+        const first = top.length === 0 && markdowns.length === 0 && i === 0;
         const title = first ? t.homeFirst[s.slug] ?? label : label;
         return (
           <section key={s.slug} className={first ? "section section-first" : "section"} aria-labelledby={`sec-${s.slug}`}>
-            <SectionHead id={`sec-${s.slug}`} title={title} href={href} more={t.seeAll(n)} moreSr={`${t.seeAll(n)}: ${label}`} srOnlyMobile={first} />
+            <SectionHead id={`sec-${s.slug}`} title={title} href={href} more={t.seeAll(n)} moreSr={t.seeAllIn(n, label)} />
             <DealGrid deals={s.items} locale={locale} now={now} labelledBy={`sec-${s.slug}`} />
           </section>
         );

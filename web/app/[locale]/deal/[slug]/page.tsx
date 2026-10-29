@@ -147,11 +147,11 @@ function Tombstone({ d, deals, locale, now }: { d: PublicDeal; deals: PublicDeal
   return (
     <div className="deal-wrap">
       <nav className="crumbs" aria-label={t.breadcrumb}>
-        <a href={catHref}><Icon name="back" size={16} /><span className="sr-only">{t.backTo(cat.label)}: </span><span aria-hidden="true">{cat.label}</span></a>
+        <a href={catHref}><Icon name="back" size={16} /><span className="sr-only">{t.backTo(cat.label)}</span><span aria-hidden="true">{cat.label}</span></a>
       </nav>
       <article className="deal deal-ended" data-ended={d.endedAt?.slice(0, 10)}>
         <header className="deal-head">
-          <p className="deal-seller">{seller}</p>
+          {d.merchant ? <p className="deal-seller">{d.merchant}</p> : <p className="deal-seller">{t.via(sourceName(d.source))}</p>}
           <h1><DealTitle deal={d} locale={locale} /> – {t.expiredOn} <time dateTime={d.endedAt}>{fmtDay(d.endedAt, locale, now)}</time></h1>
           <p className="lead">{t.expiredLead}</p>
         </header>
@@ -229,12 +229,13 @@ export default async function DealPage({ params }: P) {
   return (
     <div className="deal-wrap">
       <nav className="crumbs" aria-label={t.breadcrumb}>
-        <a href={catHref}><Icon name="back" size={16} /><span className="sr-only">{t.backTo(cat.label)}: </span><span aria-hidden="true">{cat.label}</span></a>
+        <a href={catHref}><Icon name="back" size={16} /><span className="sr-only">{t.backTo(cat.label)}</span><span aria-hidden="true">{cat.label}</span></a>
       </nav>
       <article className="deal" data-ends={hasRealEnd(d) ? d.endsAt : undefined} data-gone-text={t.expiredBadge}>
         <header className="deal-head">
           <p className="deal-seller">
-            <span className={d.merchant ? undefined : "seller-unknown"}>{seller}</span>
+            {/* Marchand inconnu : seulement « via <source> » (round 4, item 12), jamais « Händler unbekannt ». */}
+            {d.merchant && <span>{d.merchant}</span>}
             {via && <span className="deal-via">{via}</span>}
             <Share d={d} locale={locale} url={shareUrl} text={share} />
           </p>

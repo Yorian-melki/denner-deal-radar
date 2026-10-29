@@ -10,7 +10,8 @@ import { SITE_NAME } from "@/lib/site";
 /** Image de partage (Open Graph) par langue et par ville, générée au build avec
  * SITE_NAME (même tuile monogramme que l'en-tête) : changer de marque = changer la
  * variable. Police par défaut de next/og (aucun fichier de police embarqué).
- * Contenu factuel (titre + nombre d'actions), aucun montant agrégé. */
+ * Contenu factuel (titre + nombre d'actions), aucun montant agrégé. Round 4, item 30 : interlettrage 0
+ * (la police par défaut rendait « Aktionen  in » avec un double espace à −2.4). */
 export const dynamic = "force-static";
 
 const size = { width: 1200, height: 630 };
@@ -38,10 +39,10 @@ export async function GET(_req: Request, { params }: { params: Promise<{ locale:
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 80, background: "#f5f5f7", color: "#1d1d1f" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 64, height: 64, borderRadius: 14, background: "#1d1d1f", color: "#f5f5f7", fontSize: 40, fontWeight: 700 }}>{SITE_NAME.trim().charAt(0).toUpperCase()}</div>
-          <div style={{ fontSize: 44, fontWeight: 700, letterSpacing: -0.8 }}>{SITE_NAME}</div>
+          <div style={{ fontSize: 44, fontWeight: 700, letterSpacing: 0 }}>{SITE_NAME}</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          <div style={{ fontSize: 88, fontWeight: 700, lineHeight: 1.05, letterSpacing: -2.4 }}>{plain(t.dealsIn(city.name[locale]))}</div>
+          <div style={{ fontSize: 88, fontWeight: 700, lineHeight: 1.05, letterSpacing: 0, whiteSpace: "nowrap" }}>{plain(t.dealsIn(city.name[locale]))}</div>
           <div style={{ fontSize: 34, fontWeight: 400, color: "#515154" }}>{plain(facts)}</div>
         </div>
       </div>

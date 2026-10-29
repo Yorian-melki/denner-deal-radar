@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { dateText } from "@/components/DealCard";
-import { interleave } from "@/components/CategoryListing";
+import { interleave, longestRun } from "@/components/CategoryListing";
 import { DICTS, LOCALES } from "@/lib/i18n";
 import { fmtInt, fmtPct, fmtPrice, fmtScore, NBSP } from "@/lib/format";
 import { compareDeals } from "@/lib/project";
@@ -53,7 +53,8 @@ describe("formats suisses identiques dans les 3 langues", () => {
   it("prix, note, entier, pourcentage", () => {
     for (const l of LOCALES) {
       expect(fmtPrice(1349.5, "CHF", l)).toBe(`CHF${NBSP}1’349.50`);
-      expect(fmtScore(8.2, l)).toBe("8.2");
+      // Round 4, item 41 : note avec virgule décimale en français ; montants CHF identiques.
+      expect(fmtScore(8.2, l)).toBe(l === "fr" ? "8,2" : "8.2");
       expect(fmtInt(12937, l)).toBe("12’937");
     }
     expect(fmtPct(63.4, "de")).toBe("63%");
@@ -94,10 +95,11 @@ describe("classement : un 6.9 sans prix « statt » ne passe jamais devant un 6.
     const a = mk({ score: 6.9, verifiedRef: false }), b = mk({ score: 6.7 });
     expect([a, b].sort(compareDeals)[0].id).toBe(b.id);
   });
-  it("Supermarkt : au plus un tiers du même magasin par page de 24", () => {
+  it("Supermarkt (round 4, arbitrage 5 remplace le quota 1/3) : jamais 3 Coop à la suite tant qu'un autre magasin reste", () => {
     const list = [...Array.from({ length: 30 }, () => mk({ merchant: "Coop" })), ...Array.from({ length: 20 }, (_, i) => mk({ merchant: `M${i % 4}` }))];
-    const page1 = interleave(list).slice(0, 24);
-    expect(page1.filter((d) => d.merchant === "Coop").length).toBeLessThanOrEqual(8);
+    const out = interleave(list);
+    const firstOnlyCoop = out.findIndex((_, i) => out.slice(i).every((d) => d.merchant === "Coop"));
+    expect(longestRun(out.slice(0, firstOnlyCoop))).toBeLessThanOrEqual(2);
   });
 });
 
