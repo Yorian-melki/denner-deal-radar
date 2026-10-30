@@ -14010,7 +14010,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/chrome_1H51fqhRpj-300x184.png",
   "last_changed_at": "2026-10-23T11:21:54+02:00",
   "last_seen_at": "2026-10-23T11:21:54+02:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": -9.64,
@@ -14021,6 +14021,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 89.95,
   "reference_price_type": "competitor",
+  "removed_at": "2026-10-30T11:52:52+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 0 %",
@@ -22203,5 +22205,55 @@
   "tags": [],
   "title": "Mould King 13197 Piratenschiff «Flying Dutchman» (4’364 Klemmbausteine) zum neuen Bestpreis bei Amazon",
   "total_acquisition_cost": 120.8
+ },
+ "preispirat:771133": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:interdiscount:riesiger-samsung-neo-qled-fernseher-qe85qn70-mit-4k-144-hz-und-smart-ai-tv-bei-i",
+  "category": "Home Entertainment & Foto",
+  "cost_assumptions": [],
+  "current_price": 1039.95,
+  "deal_id": "preispirat:771133",
+  "deal_score": 0.0,
+  "description": "Aktuell gibt’s bei Interdiscount ein tolles Angebot. Ihr bekommt nämlich den riesigen Samsung Neo QLED-Fernseher [code masqué] mit 4K@144 Hz und Smart AI TV zum Toppreis von 1’039.95 Franken. Auf diesen Preis kommt ihr, wenn ihr den Rabattcode an der Kasse eingebt. Andere Anbieter starten bei einem ",
+  "discount_absolute": 229.05,
+  "discount_percentage": 18.0,
+  "effective_discount": 0.0,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-10-30T11:52:52+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/chrome_Icoicm331E-300x228.png",
+  "last_changed_at": "2026-10-30T11:52:52+01:00",
+  "last_seen_at": "2026-10-30T11:52:52+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Interdiscount",
+  "missing_scans": 0,
+  "net_savings": -24.75,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-10-30T11:50:15+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 1269.0,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "771133",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/riesiger-samsung-neo-qled-fernseher-qe85qn70-mit-4k144-hz-und-smart-ai-tv-bei-interdiscount/",
+  "tags": [],
+  "title": "Riesiger SAMSUNG Neo QLED Fernseher QE85QN70 mit 4K@144 Hz und Smart AI TV bei Interdiscount",
+  "total_acquisition_cost": 1039.95
  }
 }
