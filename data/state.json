@@ -1,6 +1,6 @@
 {
  "audit": {
-  "checked": "2026-10-30T12:20:03+01:00",
+  "checked": "2026-10-31T11:52:07+01:00",
   "missing": [],
   "ok": true,
   "pages": {
@@ -15,7 +15,7 @@
   },
   "unknown_sections": []
  },
- "audit_checked": "2026-10-30T12:20:03+01:00",
+ "audit_checked": "2026-10-31T11:52:07+01:00",
  "consecutive_failures": 0,
  "flag_failures": {
   "promo_current_week": 0,
@@ -24,9 +24,9 @@
   "weekend_highlight": 0,
   "weekend_highlight_next_week": 0
  },
- "last_attempt": "2026-10-31T00:08:04+01:00",
+ "last_attempt": "2026-10-31T11:52:07+01:00",
  "last_new_at": "2026-10-27T19:12:51+01:00",
- "last_success": "2026-10-31T00:08:04+01:00",
+ "last_success": "2026-10-31T11:52:07+01:00",
  "outbox": [],
  "recaps": {
   "monday": "2026-10-26",
@@ -80,7 +80,7 @@
   "dn-1104466-week-20261008": "2026-10-14"
  },
  "robots": {
-  "checked": "2026-10-30T12:20:03+01:00",
+  "checked": "2026-10-31T11:52:07+01:00",
   "crawl_delay": null,
   "ok": true,
   "paths": {
@@ -91,7 +91,7 @@
    "/sitemap.store.xml": true
   }
  },
- "robots_checked": "2026-10-30T12:20:03+01:00",
+ "robots_checked": "2026-10-31T11:52:07+01:00",
  "sent_keys": {
   "drop:dn-1003699-week-20261015:0.49": "2026-10-20T11:58:28.087907+02:00",
   "drop:dn-1006067-week-20261022:1.99": "2026-10-20T16:58:34.785497+02:00",
@@ -129,22 +129,22 @@
  "sources": {
   "promo_current_week": {
    "anomalous": false,
-   "checked": "2026-10-31T00:08:04+01:00",
+   "checked": "2026-10-31T11:52:07+01:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-31T00:08:04+01:00",
+   "last_ok": "2026-10-31T11:52:07+01:00",
    "ok": true,
    "pages": 3,
-   "received": 262,
-   "total": 262,
+   "received": 259,
+   "total": 259,
    "warnings": []
   },
   "promo_next_week": {
    "anomalous": true,
-   "checked": "2026-10-31T00:08:04+01:00",
+   "checked": "2026-10-31T11:52:07+01:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-31T00:08:04+01:00",
+   "last_ok": "2026-10-31T11:52:07+01:00",
    "ok": true,
    "pages": 1,
    "received": 0,
@@ -153,10 +153,10 @@
   },
   "start_of_the_week_highlight": {
    "anomalous": false,
-   "checked": "2026-10-31T00:08:04+01:00",
+   "checked": "2026-10-31T11:52:07+01:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-31T00:08:04+01:00",
+   "last_ok": "2026-10-31T11:52:07+01:00",
    "ok": true,
    "pages": 1,
    "received": 0,
@@ -165,10 +165,10 @@
   },
   "weekend_highlight": {
    "anomalous": false,
-   "checked": "2026-10-31T00:08:04+01:00",
+   "checked": "2026-10-31T11:52:07+01:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-31T00:08:04+01:00",
+   "last_ok": "2026-10-31T11:52:07+01:00",
    "ok": true,
    "pages": 1,
    "received": 7,
@@ -177,10 +177,10 @@
   },
   "weekend_highlight_next_week": {
    "anomalous": false,
-   "checked": "2026-10-31T00:08:04+01:00",
+   "checked": "2026-10-31T11:52:07+01:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-10-31T00:08:04+01:00",
+   "last_ok": "2026-10-31T11:52:07+01:00",
    "ok": true,
    "pages": 1,
    "received": 0,
@@ -192,7 +192,6 @@
  "totals_history": {
   "promo_current_week": [
    268,
-   268,
    263,
    263,
    263,
@@ -202,7 +201,8 @@
    262,
    262,
    262,
-   262
+   262,
+   259
   ],
   "promo_next_week": [
    267,
