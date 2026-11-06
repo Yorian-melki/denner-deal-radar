@@ -724,8 +724,15 @@
   "title": "Gratis Youtube Werbung skippen",
   "total_acquisition_cost": 0.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2031-01-01T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -773,8 +780,15 @@
   "title": "Jeden Dienstag Gratis Haarschnitt im Aquabasilea (Zeitlich begrenzt)",
   "total_acquisition_cost": 0.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2027-01-01T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -864,8 +878,15 @@
   "tags": [],
   "title": "Wingo Europe Max (Swisscom-Netz, unlimitierte Daten & Anrufe in CH/EU/UK + 100 Min. nach EU/UK + Gratis-Aktivierung)",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-12-31T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -1664,10 +1685,17 @@
   "tags": [],
   "title": "MOVA Rasenroboter LiDAX Ultra 2000 für Flächen bis zu 2000 m² (ohne Begrenzungskabel und RTK) zum neuen Bestpreis",
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:761065": {
@@ -2002,8 +2030,15 @@
   "title": "Terraillon Pro USB 15 Küchenwaage (15 kg, USB-C, Edelstahl) bei nettoshop",
   "total_acquisition_cost": 19.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-07T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -2248,10 +2283,17 @@
   "title": "CHF 10.- aufs Neon Konto bei Anforderung CSS Offerte via Mail",
   "total_acquisition_cost": 0.0,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:764055": {
@@ -2545,8 +2587,15 @@
   "title": "3 × 24 Dosen El Tony Mate 33 cl in allen Sorten (inkl. Zero)",
   "total_acquisition_cost": 97.7,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-30T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -4235,10 +4284,17 @@
   "title": "Engel, Blues und Winterfunkeln Gratis eBook",
   "total_acquisition_cost": 0.0,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:766181": {
@@ -4655,10 +4711,17 @@
   "title": "100 Franken Startbonus für Bankpaket SmartStudents! (PostFinance)",
   "total_acquisition_cost": 0.0,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:766299": {
@@ -6409,10 +6472,17 @@
   "title": "Gratis an die Auto Zürich 2026",
   "total_acquisition_cost": 0.0,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:766734": {
@@ -6821,8 +6891,15 @@
   "tags": [],
   "title": "Quickline Mobile L: schweizweit unlimitiert surfen & telefonieren + 5 GB Roaming für 7.-/Mt.",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-12-20T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -11532,8 +11609,15 @@
   "title": "Brother 4-in-1-Mono-Laser-Multifunktionsdrucker MFC-L2800DW für effektiv CHF 109.95",
   "total_acquisition_cost": 149.95,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-10T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -11975,10 +12059,17 @@
   "title": "Interdiscount Glücksrad | Drehen und Gewinnen",
   "total_acquisition_cost": 0.0,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:768312": {
@@ -12702,8 +12793,15 @@
   "title": "Nintendo Switch 2 (256 GB) mit austauschbarem Akku bei Amazon.fr",
   "total_acquisition_cost": 374.6,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-07T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -13802,8 +13900,15 @@
   "title": "HP OfficeJet Pro 9730e A3-Tintenstrahldrucker mit 3-in-1-Funktion bei Office World",
   "total_acquisition_cost": 165.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-30T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -14667,8 +14772,15 @@
   "title": "AirPods Pro 3 In-Ear-Kopfhörer mit ANC bei Amazon.it in Aktion",
   "total_acquisition_cost": 162.4,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-30T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -14911,10 +15023,17 @@
   "title": "Topstar Verona Bürostuhl in Schwarz zum Toppreis bei Office World",
   "total_acquisition_cost": 139.0,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:769044": {
@@ -15102,10 +15221,17 @@
   "title": "Thriller «Todesprüfung» gratis bei Orell Füssli und Amazon",
   "total_acquisition_cost": 0.0,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:769073": {
@@ -15152,10 +15278,17 @@
   "title": "Bis zu 30% Rabatt auf viele Marken und Kategorien mit der My Manor Karte, z. B. Apple AirPods 5 (Abholung)",
   "total_acquisition_cost": 107.1,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:769082": {
@@ -16377,10 +16510,17 @@
   "title": "Coop SPIELEN & GEWINNEN",
   "total_acquisition_cost": 0.0,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:769429": {
@@ -17167,10 +17307,17 @@
   "title": "100% Rabatt Games KW43",
   "total_acquisition_cost": 0.0,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:769639": {
@@ -17440,8 +17587,15 @@
   "tags": [],
   "title": "-50% Rabatt auf Mode bei Street One",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-12-31T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -17652,8 +17806,15 @@
   "title": "Höhenverstellbarer Monitor HP OMEN 32C (Curved QHD, 165Hz, 400 Nits) zum neuen Bestpreis bei Interdiscount",
   "total_acquisition_cost": 159.95,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-08T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -18751,10 +18912,17 @@
   "tags": [],
   "title": "Wingo Red Handy-Abo (Swisscom-Netz, CH: Alles unlimitiert, 4GB Roaming in über 40 Ländern) + Gratis-Aktivierung",
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:770002": {
@@ -19116,8 +19284,15 @@
   "title": "UGREEN Nexode 20000 mAh Powerbank zum Tiefstpreis (Abholung)",
   "total_acquisition_cost": 20.95,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-18T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -19530,8 +19705,15 @@
   "title": "Kraftwerk Rangierwagenheber flach (2 t, hydraulisch, 85–381 mm Hubhöhe) bei Jumbo in Aktion",
   "total_acquisition_cost": 64.35,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-06T23:59:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -19642,8 +19824,15 @@
   "title": "Azzaro The Most Wanted Intense Geschenkset (50 ml Eau de Parfum + 75 ml Duschgel) bei Notino",
   "total_acquisition_cost": 59.54,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-06T23:59:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -20148,8 +20337,15 @@
   "title": "HP LaserJet MFP M140w Multifunktionsdrucker (Laser, WLAN, 3-in-1) bei MediaMarkt zum Bestpreis",
   "total_acquisition_cost": 69.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-09T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -20393,8 +20589,15 @@
   "tags": [],
   "title": "🎁 Gewinne das neue iPhone Duo und weitere Preise im Wert von CHF 10’000",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-30T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -22021,8 +22224,15 @@
   "title": "Interdiscount 20 % Rabatt auf Samsung-TVs ab 75″ & Soundbars, z.B. Samsung OLED-Fernseher QE77S95F (4K@120 Hz, Smart AI TV)",
   "total_acquisition_cost": 2319.95,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-08T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -22114,8 +22324,15 @@
   "tags": [],
   "title": "Jumbo-Bon 30% auf alle Einhell-Elektrowerkzeuge, z.B. Einhell Professional Akku-Schlagbohrschrauber TP-CD 18/60 Li-i BL (2 × 2-Ah-Akkus)",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-08T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -22330,8 +22547,15 @@
   "title": "Logitech MX Keys S Combo Tastatur-Maus-Set zum neuen Bestpreis bei MediaMarkt",
   "total_acquisition_cost": 109.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-09T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -22390,10 +22614,17 @@
   "title": "Samsung OLED-Fernseher QE83S90DAE mit 4K@144 Hz und Smart TV bei MediaMarkt in Aktion",
   "total_acquisition_cost": 1997.15,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:770867": {
@@ -22446,8 +22677,15 @@
   "title": "Solis Multi Chopper Typ 8330 (2 Behälter, 1000 ml & 150 ml) bei nettoshop in Aktion",
   "total_acquisition_cost": 39.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-08T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -22554,10 +22792,17 @@
   "title": "Jean Paul Gaultier Divine Geschenkset (Eau de Parfum 50 ml + Körperlotion 75 ml) wieder bei Manor in Aktion",
   "total_acquisition_cost": 69.5,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:770876": {
@@ -22610,10 +22855,17 @@
   "title": "Kappa Cafer T-Shirt (100 % Baumwolle, Slim Fit) bei Ochsner Sport in Aktion",
   "total_acquisition_cost": 9.9,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:770901": {
@@ -22757,10 +23009,17 @@
   "title": "LG OLED55G59LS.AVS [2 Jahre PickUp Garantie]",
   "total_acquisition_cost": 999.0,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:770982": {
@@ -22804,8 +23063,15 @@
   "tags": [],
   "title": "FILA Osaka Cropped Damen T-Shirt beige / 95% Baumwolle / Grössen: XS, S, M, L",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-08T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -22916,8 +23182,15 @@
   "title": "G3Ferrari 1XP20000 Delizia Pizza Express Pizza Maker, schwarz",
   "total_acquisition_cost": 65.4,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-08T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -22962,8 +23235,15 @@
   "tags": [],
   "title": "CHmobile Plus (CH alles unlimitiert, 5 GB Roaming EU/USA/CAN & TUR)",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-30T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "SUSPECT"
   }
@@ -23008,8 +23288,15 @@
   "tags": [],
   "title": "CHmobile Plus (CH alles unlimitiert, 5 GB Roaming EU/USA/CAN & TUR)",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-30T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -23054,8 +23341,15 @@
   "tags": [],
   "title": "Amorana Adventskalender Deluxe 2026 mit 24 Überraschungen",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-30T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -23109,10 +23403,17 @@
   "title": "Oral-B iO Series 9 Gold Special Edition",
   "total_acquisition_cost": 159.0,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:771080": {
@@ -23165,8 +23466,15 @@
   "title": "Philips Hue Gradient Lightstrip 65 Zoll",
   "total_acquisition_cost": 91.1,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-06T23:59:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -23221,8 +23529,15 @@
   "title": "Höhenverstellbarer AOC-Monitor CU34G4 (34 Zoll, UWQHD, VA-Panel, 300 Nits, 180 Hz) zum Toppreis bei MediaMarkt",
   "total_acquisition_cost": 149.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-09T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -23277,10 +23592,17 @@
   "title": "Mould King 13197 Piratenschiff «Flying Dutchman» (4’364 Klemmbausteine) zum neuen Bestpreis bei Amazon",
   "total_acquisition_cost": 120.8,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:771133": {
@@ -23333,8 +23655,15 @@
   "title": "Riesiger SAMSUNG Neo QLED Fernseher QE85QN70 mit 4K@144 Hz und Smart AI TV bei Interdiscount",
   "total_acquisition_cost": 1039.95,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-09T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -23389,8 +23718,15 @@
   "title": "Ninja Woodfire Pro XL OG850CH (Outdoor-Grill, Woodfire-Technologie, Smart Cook) bei nettoshop in Aktion",
   "total_acquisition_cost": 289.95,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-09T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -23445,8 +23781,15 @@
   "title": "Logitech G PRO X 60 LIGHTSPEED Gaming-Tastatur zum Bestpreis bei MediaMarkt",
   "total_acquisition_cost": 89.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-09T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -23501,8 +23844,15 @@
   "title": "40% Rabattcode auf UGREEN-Smartphone-Zubehör bei Interdiscount, z.B. UGREEN 90597A Powerbank (25’000 mAh, 145 W, USB-C)",
   "total_acquisition_cost": 25.75,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-18T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -23548,8 +23898,15 @@
   "tags": [],
   "title": "Black Weeks startet schon bis 40% auf Möbel bei Home24",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-19T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -23604,8 +23961,15 @@
   "title": "Seiko Prospex Sea GMT SPB381J1 (42 mm, Automatik, Saphirglas, 72 h Gangreserve) bei CHRIST in Aktion",
   "total_acquisition_cost": 1134.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-09T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -23660,8 +24024,15 @@
   "title": "Dreame V20 Pro Akku-Hand- und Stielsauger zum Toppreis bei Amazon",
   "total_acquisition_cost": 233.2,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-12T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -23715,10 +24086,17 @@
   "title": "Doctor’s Best Magnesiumlysinat-Glycinat mit 100 mg Magnesium pro Tablette (240 Stück) bei iHerb",
   "total_acquisition_cost": 24.67,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:771191": {
@@ -23771,10 +24149,17 @@
   "title": "New Balance Jogginghose für Damen (Relaxed Fit, Baumwollmix) in Beige bei Lounge by Zalando",
   "total_acquisition_cost": 32.8,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:771193": {
@@ -23827,8 +24212,15 @@
   "title": "Brother DCP-L2620DW Multifunktionsdrucker (3-in-1, WLAN, Duplexdruck) bei MediaMarkt in Aktion",
   "total_acquisition_cost": 125.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-09T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -23883,8 +24275,15 @@
   "title": "Amorana Pleasure Kalender Indulge 2026 mit 12 Überraschungen",
   "total_acquisition_cost": 95.9,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-09T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -24025,10 +24424,17 @@
   "title": "Nouvel Prime 3-in-1 Raclettegerät (6 Personen, 1750 W, Raclette, Fondue & Grill) bei Coop City in Aktion",
   "total_acquisition_cost": 103.2,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:19:37+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:771222": {
@@ -24085,8 +24491,15 @@
   "title": "Vans Ward Cross 4 L Gürteltasche Schwarz",
   "total_acquisition_cost": 9.9,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-09T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -24145,8 +24558,15 @@
   "title": "Nike Club Fold Portemonnaie / Onlie-Exklusiv",
   "total_acquisition_cost": 9.9,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:19:37+01:00",
+     "ends": "2026-11-09T16:19:37+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -34532,6 +34952,56 @@
   "tags": [],
   "title": "Microsoft Xbox Series S Konsole 1TB Robot Weiss",
   "total_acquisition_cost": 329.9
+ },
+ "preispirat:774019": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:office:brother-dcp-l3560cdw-led-farblaser-multifunktionsdrucker-fur-effektiv-chf-195-be",
+  "category": "Computer & Büro",
+  "cost_assumptions": [],
+  "current_price": 265.0,
+  "deal_id": "preispirat:774019",
+  "deal_score": 0.0,
+  "description": "Momentan gibt es bei Office World den Brother [code masqué] LED-Farblaser-Multifunktionsdrucker zum Preis von CHF 275.–. Wenn ihr den Newsletter abonniert und den Rabattcode an der Kasse einlöst, zahlt ihr nur noch CHF 265.–. Zusätzlich gibt es bis zum 31.1. ein Cashback-Angebot, bei dem ihr beim Ka",
+  "discount_absolute": 34.95,
+  "discount_percentage": 11.7,
+  "effective_discount": 0.0,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-06T16:19:37+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_ayWu8oSxab-300x300.png",
+  "last_changed_at": "2026-11-06T16:19:37+01:00",
+  "last_seen_at": "2026-11-06T16:19:37+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Office",
+  "missing_scans": 0,
+  "net_savings": -25.04,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-06T16:00:33+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 299.95,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "774019",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/brother-dcp-l3560cdw-led-farblaser-multifunktionsdrucker-fuer-effektiv-chf-195-bei-office-world/",
+  "tags": [],
+  "title": "Brother DCP-L3560CDW LED-Farblaser-Multifunktionsdrucker für effektiv CHF 195.– bei Office World",
+  "total_acquisition_cost": 265.0
  },
  "preispirat:774034": {
   "access": "PUBLIC",
