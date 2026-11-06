@@ -233,6 +233,7 @@ button { font: inherit; }
 .card-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; margin-top: 2px; }
 .card-price .price { font-size: var(--t-price); line-height: var(--l-price); font-weight: var(--w-bold); font-variant-numeric: tabular-nums lining-nums; }
 .card-price .cur { font-size: var(--t-callout); }
+.price-from { font-size: var(--t-callout); font-weight: var(--w-regular); }
 .card-price .was { flex-basis: 100%; }
 .pct { align-self: center; padding: 1px 8px; border-radius: var(--r-sm); background: var(--fill); color: var(--fg); font-size: var(--t-callout); line-height: var(--l-callout); font-weight: var(--w-semi); font-variant-numeric: tabular-nums lining-nums; }
 .price { font-size: var(--t-title); line-height: var(--l-title); font-weight: var(--w-semi); letter-spacing: -0.02em; font-variant-numeric: proportional-nums lining-nums; }

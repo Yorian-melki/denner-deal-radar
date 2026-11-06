@@ -83,9 +83,17 @@ export interface PublicDeal {
   endsAt?: string;
   endsInferred?: boolean; // date de fin déduite, pas publiée → jamais de compte à rebours
   firstSeenAt?: string;
-  lastSeenAt?: string;   // dernière vérification réussie (radar/core/verify.py verified_at), preuve de fraîcheur
-  /** Score de vérification entre 0.50 et 0.80 (R2 §3.3) : listée, hors vitrines, « zu bestätigen ». */
+  lastSeenAt?: string;   // dernière preuve positive (radar/core/verify.py last_verified_at), sinon dernier relevé
+  /** UNCONFIRMED (R2 §3.3, porte fail-closed V2-C X_NOT_RECHECKED) : listée, hors vitrines, « unbestätigt ». */
   unconfirmed?: boolean;
+  /** VERIFIED : preuve positive dans le TTL (V2-C §2.7) → « an der Quelle gesehen <jour> ». */
+  verified?: boolean;
+  /** Plusieurs prix à la source (QoQa « Ab 59.90 bis 249.– », V2-C P_FROM_PRICE) : « ab CHF X », sans économie. */
+  priceFrom?: boolean;
+  /** Prix 0 puis payant (« 3 Monate kostenlos, danach CHF 44 », V2-C P_ZERO_NONFREE) : prix payé ensuite. */
+  zeroThen?: number;
+  /** Offre du shop en ligne seulement (Rappn « Nur online », V2-C C_ONLINE_FLAG) : jamais « Im Laden ». */
+  onlineOnly?: boolean;
   conds: Cond[];
   url: string;           // URL marchande (désemballée d'un lien d'affiliation tiers)
   /** Hôte du lien quand ce n'est pas le site du marchand (agrégateur) : « via rappn.ch ». */

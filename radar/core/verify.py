@@ -28,6 +28,20 @@ une offre SUSPECT/HIDDEN/ENDED ne revient qu'après 2 vérifications OK consécu
 Seul l'état stable (état, code, depuis, série OK, contrôles de page) est persisté dans le deal
 (clé ``verify``), jamais ``p`` qui bouge à chaque passage : pas de réécriture de milliers de
 fichiers par collecte.
+
+Couches V2-C (rangs 0 à 3, ``V2C_FIABILITE_MINIMUM.md`` §2.1) :
+
+    X_NOT_RECHECKED      porte « fail-closed » : sans preuve positive (``last_verified_at``) plus
+                         récente que le TTL de la famille, une offre n'est jamais VERIFIED
+                         (UNCONFIRMED, « unbestätigt », hors vitrines). Preispirat : seule la page
+                         du post relue (200, pas « Abgelaufen ») est une preuve, pas le flux RSS.
+    T_PP_REMAINING       Preispirat « N Tage verbleibend » / « Letzter Tag » → date de fin ;
+                         « Abgelaufen » → ENDED
+    C_ONLINE_FLAG        carte Rappn « Nur online » → jamais « Im Laden »
+    P_FROM_PRICE         « Ab X bis Y » (QoQa ``price_range_max``, « ab CHF X ») → « ab CHF X », sans %
+    P_ZERO_NONFREE       prix 0 mais payant ensuite (« 3 Monate kostenlos, danach CHF 44 »)
+    Q_PARSE_SANITY       quantité ambiguë (« Maximal 250 Stück », « 1000 ml & 150 ml ») → non publiée
+    P_REF_IMPLAUSIBLE    référence concurrente/communautaire > 3 × le prix → non publiée
 """
 from __future__ import annotations
 
@@ -40,7 +54,7 @@ from urllib.parse import urlparse
 
 log = logging.getLogger("radar.verify")
 
-RULE_VERSION = "r2.1"
+RULE_VERSION = "v2c.1"
 
 # TTL de fraîcheur par famille (heures), R2 §3.3.
 TTL_H = {"grocery": 30, "retail": 30, "tech": 30, "surplus": 30, "restaurant": 30, "refurbished": 30,
@@ -147,6 +161,126 @@ def unit_incoherent(d: dict) -> bool:
     return not any(_close(up, p / c) for c in candidates if c > 0)
 
 
+# -- règles de lecture V2-C (§2.1) : ce que l'affichage promet doit être ce que dit la source -------
+
+# « Ab CHF 59.90 », « dès CHF 9.– », « ab 59.90 bis 249.– » dans le TITRE (une description dit souvent
+# « ab CHF 50 Bestellwert », qui est un minimum de commande, pas un prix « à partir de »).
+FROM_PRICE = re.compile(r"\b(?:ab|dès|from)\s+(?:CHF|Fr\.)\s?\d|\bab\s+\d+(?:[.,]\d{1,2}|\.[-–])\s*bis\s+\d", re.I)
+
+
+MIN_ORDER_AFTER = re.compile(r"^[\d.,'’–\-\s]*(?:CHF\s*)?(?:Einkaufs|Bestell|Mindest|Warenkorb|Einkauf\b|d.achat|de commande)", re.I)
+
+
+def price_is_from(d: dict) -> bool:
+    """P_FROM_PRICE : plusieurs prix à la source (QoQa « Ab 59.90 bis 249.– ») → « ab CHF X », sans %.
+    « ab CHF 70.– Einkaufswert » est un minimum d'achat, pas un prix plancher."""
+    p, pmax = d.get("current_price"), d.get("price_max")
+    if isinstance(p, (int, float)) and isinstance(pmax, (int, float)) and pmax > p + 0.005:
+        return True
+    title = str(d.get("title") or "")
+    return any(not MIN_ORDER_AFTER.match(title[m.end() - 1:]) for m in FROM_PRICE.finditer(title))
+
+
+THEN_PRICE = re.compile(r"\b(?:danach|anschliessend|dann|ensuite|puis|then)\s+(?:für\s+)?(?:CHF|Fr\.)\s?(\d+(?:[.,]\d{1,2})?)"
+                        r"|\b(?:ensuite|puis)\s+(\d+(?:[.,]\d{1,2})?)\s*(?:CHF|francs)", re.I)
+FREE_FAMILIES = {"free", "digital_free"}
+
+
+def zero_then_price(d: dict) -> float | None:
+    """P_ZERO_NONFREE : prix 0 affiché « Gratis » alors que l'offre devient payante (« 3 Monate kostenlos,
+    danach CHF 44 ») → prix payé ensuite (sinon None)."""
+    if d.get("current_price") != 0 or d.get("family") in FREE_FAMILIES:
+        return None
+    for k in ("price_after_promo", "regular_monthly_price"):
+        v = d.get(k)
+        if isinstance(v, (int, float)) and v > 0:
+            return float(v)
+    texts = [str(d.get("title") or ""), str(d.get("description") or "")]
+    texts += [c for c in (d.get("conditions") or []) if isinstance(c, str)]
+    for t in texts:
+        m = THEN_PRICE.search(t)
+        if m:
+            v = float((m.group(1) or m.group(2)).replace(",", "."))
+            if v > 0:
+                return v
+    return None
+
+
+# « Maximal 250 Stück zum reduzierten Einzelpreis » est un plafond de vente, pas une taille.
+MAX_COUNT = re.compile(r"\b(?:maximal|max\.?|höchstens|limitiert auf|nur|bis zu)\s+\d[\d']*\s*(?:Stück|Stk\.?|Exemplare?)"
+                       r"|\b\d[\d']*\s*(?:Stück|Stk\.?)\s+zum\b", re.I)
+MEASURE = re.compile(r"(?<![\d.,])(\d+(?:[.,]\d+)?)\s*(kg|g|ml|cl|dl|l|liter)\b", re.I)
+MEASURE_PRODUCT = re.compile(r"\d+\s*[x×]\s*\d+(?:[.,]\d+)?\s*(?:kg|g|ml|cl|dl|l|liter)\b", re.I)
+_DIM = {"kg": ("m", 1000), "g": ("m", 1), "l": ("v", 1000), "liter": ("v", 1000), "dl": ("v", 100),
+        "cl": ("v", 10), "ml": ("v", 1)}
+
+
+def quantity_suspect(d: dict) -> bool:
+    """Q_PARSE_SANITY : la quantité affichable est ambiguë → jamais publiée.
+
+    * un plafond de vente lu comme une taille (« Maximal 250 Stück ») ;
+    * plusieurs mesures différentes de même dimension dans le titre ou le champ taille (« 2 Behälter,
+      1000 ml & 150 ml », « 50 ml Eau de Parfum + 75 ml Duschgel »), sauf un total cohérent
+      (« 500 g (2 × 250 g) », « 1 kg = 2 × 500 g »).
+    """
+    desc = str(d.get("description") or "")
+    head = f"{d.get('title') or ''} {d.get('package_size') or ''}"
+    if MAX_COUNT.search(head) or MAX_COUNT.search(desc):
+        return True
+    text = MEASURE_PRODUCT.sub(lambda m: " ", head)
+    # Prix « pro 100 g », poids par pièce (« ca. 150 g », « 170-240 g ») : pas une taille de l'emballage.
+    text = re.sub(r"\b(?:per|pro|par|je|ca\.?|env\.?|circa)\s*\d+(?:[.,]\d+)?\s*(?:kg|g|ml|cl|dl|l)\b", " ", text, flags=re.I)
+    text = re.sub(r"\d+(?:[.,]\d+)?\s*[-–]\s*\d+(?:[.,]\d+)?\s*(?:kg|g|ml|cl|dl|l)\b", " ", text, flags=re.I)
+    by_dim: dict[str, set[float]] = {}
+    for m in MEASURE.finditer(text):
+        dim, f = _DIM[m.group(2).lower()]
+        by_dim.setdefault(dim, set()).add(round(float(m.group(1).replace(",", ".")) * f, 3))
+    products = [round(float(n) * float(v.replace(",", ".")) * _DIM[u.lower()][1], 3)
+                for n, v, u in re.findall(r"(\d+)\s*[x×]\s*(\d+(?:[.,]\d+)?)\s*(kg|g|ml|cl|dl|l|liter)\b", head, re.I)]
+    for vals in by_dim.values():
+        vals = vals - set(products)
+        if len(vals) >= 2 and max(vals) != round(sum(vals) - max(vals), 3):
+            return True
+    return False
+
+
+# Références que nous ne pouvons pas tenir pour un prix pratiqué par le marchand lui-même.
+WEAK_REF = {None, "competitor", "community_claimed", "stated_percent_only"}
+REF_MAX_RATIO = 3.0
+
+
+def ref_implausible(d: dict) -> bool:
+    """P_REF_IMPLAUSIBLE : référence concurrente ou communautaire > 3 × le prix (Otto's « sonst 3'229 » pour
+    649, alors que Rappn affiche « statt 679 ») sans corroboration → la référence n'est pas publiée."""
+    p, r = d.get("current_price"), d.get("reference_price")
+    if not isinstance(p, (int, float)) or not isinstance(r, (int, float)) or p <= 0:
+        return False
+    return r / p > REF_MAX_RATIO and d.get("reference_price_type") in WEAK_REF and not d.get("corroborated_by")
+
+
+def reading_rules(d: dict) -> tuple[list[str], dict]:
+    """Règles de lecture (0 token) : (codes, correctifs d'affichage pour l'export)."""
+    rules: list[str] = []
+    patch: dict = {}
+    if d.get("online_only") is True:
+        rules.append("C_ONLINE_FLAG")
+        patch["online_only"] = True
+    if price_is_from(d):
+        rules.append("P_FROM_PRICE")
+        patch["price_is_from"] = True
+    then = zero_then_price(d)
+    if then is not None:
+        rules.append("P_ZERO_NONFREE")
+        patch["zero_then_price"] = then
+    if quantity_suspect(d):
+        rules.append("Q_PARSE_SANITY")
+        patch["size_unknown"] = True
+    if ref_implausible(d):
+        rules.append("P_REF_IMPLAUSIBLE")
+        patch["ref_hidden"] = True
+    return rules, patch
+
+
 # -- santé des sources -------------------------------------------------------------------------------
 
 def _dt(s) -> dt.datetime | None:
@@ -181,8 +315,8 @@ def source_health(st: dict, family: str, interval_min: float, now: dt.datetime, 
 
 # Intervalle de recontrôle par source (heures) : sources sans liste complète (R2 §3.1, §3.5).
 RECHECK_H = {"lidl": 12, "studentbeans": 24, "unidays": 24, "preispirat": 8, "poinz": 24}
-MAX_CHECKS_PER_RUN = 45
-CHECK_TIME_BUDGET_S = 150
+MAX_CHECKS_PER_RUN = 60
+CHECK_TIME_BUDGET_S = 200
 KEEP_CHECKS = 3
 
 
@@ -213,6 +347,28 @@ def page_flag(url: str, html: str, deal_id: str = "") -> str | None:
     return None
 
 
+DAYS_LEFT = re.compile(r"<span[^>]*\bclass=\"[^\"]*\bdays_left\b[^\"]*\"[^>]*>(.*?)</span>", re.S)
+
+
+def preispirat_days_left(html: str, now: dt.datetime) -> tuple[str | None, str | None]:
+    """T_PP_REMAINING : compteur du post principal Preispirat (``<span class="days_left">``, avant
+    l'article ; les listes du contenu ne comptent pas). → (drapeau, fin ISO) :
+    « Abgelaufen » → ("expired", None) ; « Letzter Tag » → fin du jour ; « N Tage verbleibend » →
+    maintenant + N jours ; sinon (None, None)."""
+    m = DAYS_LEFT.search(html)
+    if not m:
+        return None, None
+    t = re.sub(r"<[^>]+>", " ", m.group(1))
+    if re.search(r"abgelaufen|expired", t, re.I):
+        return "expired", None
+    if re.search(r"letzter\s+tag", t, re.I):
+        return None, now.replace(hour=23, minute=59, second=59, microsecond=0).isoformat()
+    n = re.search(r"(\d+)\s*Tag(?:e|en)?\s+verbleibend", t, re.I)
+    if n:
+        return None, (now + dt.timedelta(days=int(n.group(1)))).replace(microsecond=0).isoformat()
+    return None, None
+
+
 def _redirected_away(url: str, final: str) -> bool:
     """Redirection vers une autre page (catégorie, accueil) : l'identifiant produit a disparu."""
     ids = re.findall(r"\d{5,}", urlparse(url).path)
@@ -232,6 +388,11 @@ def check_page(http, url: str, deal_id: str, now: dt.datetime) -> dict:
             out["redirect"] = r.url[:200]
         else:
             flag = page_flag(url, r.text, deal_id)
+            if urlparse(url).netloc.lower().endswith("preispirat.ch"):
+                pflag, ends = preispirat_days_left(r.text, now)
+                flag = flag or pflag
+                if ends and not flag:
+                    out["ends"] = ends
             if flag:
                 out["flag"] = flag
     except RobotsDisallowed:
@@ -277,9 +438,11 @@ def due_checks(store, now: dt.datetime) -> list[dict]:
                 prio = 3
             else:
                 continue
-            out.append((prio, checks[-1]["at"] if checks else "", d))
-    out.sort(key=lambda x: (x[0], x[1]))
-    return [d for _, _, d in out]
+            # Sources à preuve par page (Preispirat) d'abord : sans contrôle, la porte fail-closed les
+            # laisse « unbestätigt » (V2-C §2.1).
+            out.append((prio, sid not in PAGE_PROOF_SOURCES, checks[-1]["at"] if checks else "", d))
+    out.sort(key=lambda x: x[:3])
+    return [x[3] for x in out]
 
 
 def run_checks(store, http, now: dt.datetime, limit: int = MAX_CHECKS_PER_RUN,
@@ -328,6 +491,34 @@ def verified_at(d: dict, health: dict | None) -> str | None:
     return best
 
 
+# Sources dont la présence dans la liste ne prouve pas que l'offre vit encore : le flux RSS de
+# Preispirat garde les posts « Abgelaufen » (V2-C : 4/10 affichés). Seule la page relue est une preuve.
+PAGE_PROOF_SOURCES = {"preispirat"}
+
+
+def proof_at(d: dict, health: dict | None) -> str | None:
+    """``last_verified_at`` : dernière preuve POSITIVE que l'offre est encore là (porte fail-closed)."""
+    if d.get("source_id") in PAGE_PROOF_SOURCES:
+        ok = [c["at"] for c in (d.get("verify") or {}).get("checks") or []
+              if c.get("http") == 200 and not c.get("flag") and not c.get("inconclusive")]
+        return max(ok) if ok else None
+    return verified_at(d, health)
+
+
+def fresh_ok(proof: str | None, now: dt.datetime, ttl_h: float) -> bool:
+    """Porte fail-closed (V2-C §2.1) : une preuve positive existe et date de moins du TTL."""
+    t = _dt(proof)
+    return t is not None and (now - t).total_seconds() / 3600 <= ttl_h
+
+
+def checked_end(d: dict) -> str | None:
+    """Fin lue sur la page source au dernier contrôle qui en donne une (T_PP_REMAINING)."""
+    for c in reversed((d.get("verify") or {}).get("checks") or []):
+        if c.get("ends"):
+            return c["ends"]
+    return None
+
+
 def _check_rules(checks: list[dict]) -> tuple[str | None, str | None]:
     """(état, code) imposé par les contrôles de page, ou (None, None)."""
     if not checks:
@@ -356,10 +547,19 @@ def assess(d: dict, health: dict | None, now: dt.datetime) -> dict:
     ui = unit_incoherent(d)
     if ui:
         rules.append("P_UNIT_INCOHERENT")
-    res = {"rules": rules, "verified_at": va, "unit_incoherent": ui}
+    read_rules, patch = reading_rules(d)
+    rules += read_rules
+    proof = proof_at(d, health)
+    res = {"rules": rules, "verified_at": proof, "unit_incoherent": ui, "patch": patch}
     end = _dt(d.get("ends_at"))
     if end and end < now:
         return {**res, "state": "ENDED", "code": "T_EXPIRED", "p": 0.0}
+    pp_end = None if d.get("ends_at") else checked_end(d)
+    if pp_end:
+        rules.append("T_PP_REMAINING")
+        patch["ends_at"] = pp_end
+        if _dt(pp_end) < now:
+            return {**res, "state": "ENDED", "code": "T_PP_REMAINING", "p": 0.0}
     checks = (d.get("verify") or {}).get("checks") or []
     st, code = _check_rules(checks)
     if d.get("sold_out") is True:
@@ -376,7 +576,7 @@ def assess(d: dict, health: dict | None, now: dt.datetime) -> dict:
     l -= 1.0 * min(max(age_h, 0) / ttl, 3)
     l -= 1.5 * (health or {}).get("failure_days", 0)
     l += 0.7 * min(len(d.get("corroborated_by") or []), 2)
-    if not d.get("ends_at"):
+    if not d.get("ends_at") and not pp_end:
         l -= 0.8
         first = _dt(d.get("first_seen_at"))
         days = (now - first).total_seconds() / 86400 if first else 0
@@ -391,6 +591,11 @@ def assess(d: dict, health: dict | None, now: dt.datetime) -> dict:
     else:
         state = "VERIFIED" if p >= P_VERIFIED else "UNCONFIRMED" if p >= P_UNCONFIRMED else \
             "SUSPECT" if p >= P_SUSPECT else "HIDDEN"
+    # Porte fail-closed (V2-C §2.1, X_NOT_RECHECKED) : p peut rester haut par l'a priori de la source,
+    # sans preuve récente. Sans revérification réussie dans le TTL, l'offre n'est jamais VERIFIED.
+    if state == "VERIFIED" and not fresh_ok(proof, now, ttl):
+        rules.append("X_NOT_RECHECKED")
+        return {**res, "state": "UNCONFIRMED", "code": "X_NOT_RECHECKED", "p": min(p, P_VERIFIED - 0.001)}
     return {**res, "state": state, "code": "SCORE", "p": p}
 
 
@@ -508,12 +713,38 @@ def export_fields(d: dict, a: dict | None) -> dict:
     if not a:
         return {}
     out = {"state": a["state"], "state_reason": a["code"], "verify_p": a["p"]}
+    # Rang 0 V2-C : ``last_verified_at`` = dernière preuve positive (porte fail-closed, « Zuletzt an der
+    # Quelle gesehen ») ; ``last_seen_at`` (dernier relevé dans la liste source) est publié par ucli.
     if a.get("verified_at"):
-        out["verified_at"] = a["verified_at"]
+        out["last_verified_at"] = a["verified_at"]
     if a.get("since") and a["state"] in ("ENDED", "HIDDEN", "SUSPECT"):
         out["state_since"] = a["since"]
     if a["rules"]:
         out["verify_rules"] = a["rules"]
     if "R_REGION" in a["rules"]:
         out["region_excluded"] = True
+    return out
+
+
+def apply_patch(out: dict, patch: dict | None) -> dict:
+    """Correctifs d'affichage des règles de lecture, appliqués au deal exporté."""
+    if not patch:
+        return out
+    if patch.get("ref_hidden"):
+        for k in ("reference_price", "regular_price", "discount_percentage", "discount_absolute", "effective_discount",
+                  "net_savings", "deal_score"):
+            out.pop(k, None)
+        out["reference_price_type"] = "none"
+    if patch.get("price_is_from"):
+        # « ab CHF X » : aucune économie chiffrée sur un prix plancher.
+        for k in ("discount_percentage", "discount_absolute", "effective_discount", "net_savings", "deal_score"):
+            out.pop(k, None)
+    if patch.get("size_unknown"):
+        for k in ("quantity", "package_size", "unit_price", "unit"):
+            out.pop(k, None)
+    if patch.get("ends_at") and not out.get("ends_at"):
+        out["ends_at"] = patch["ends_at"]
+    for k in ("online_only", "price_is_from", "zero_then_price", "size_unknown", "ref_hidden"):
+        if patch.get(k) is not None:
+            out[k] = patch[k]
     return out

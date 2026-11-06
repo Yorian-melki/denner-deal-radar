@@ -239,7 +239,8 @@ def test_rappn_normalize():
     check_common(deals, "rappn")
     for d in deals:
         assert d["source_type"] == "aggregator" and d["merchant"] == "Coop"
-        assert d["geographic_scope"] == "LOCAL" and d["ends_at"].startswith("2026-10-")
+        assert d["geographic_scope"] == ("ONLINE" if d.get("online_only") else "LOCAL") and d["ends_at"].startswith("2026-10-")
+    assert 0 < sum(1 for d in deals if d.get("online_only")) < len(deals)   # « Nur online » (V2-C)
     steak = next(d for d in deals if d["title"] == "Schweinshalssteak 8 Stück")
     assert (steak["current_price"], steak["reference_price"], steak["reference_price_type"]) == (19.6, 39.2, "merchant_previous")
     assert steak["ends_at"] == "2026-10-14T23:59:59+02:00" and steak["image_url"].startswith("https://www.coop.ch/")

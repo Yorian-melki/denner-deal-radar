@@ -315,4 +315,198 @@ def test_export_fields():
     a = V.assess(deal(), healthy(consecutive_failures=4), NOW)
     out = V.export_fields(deal(), {**a, "since": iso(NOW)})
     assert out["state"] == "HIDDEN" and out["state_reason"] == "X_SOURCE_STALE" and out["state_since"] == iso(NOW)
-    assert out["verified_at"] == iso(NOW - dt.timedelta(hours=1))   # dernier succès de la source
+    assert out["last_verified_at"] == iso(NOW - dt.timedelta(hours=1))   # dernier succès de la source
+
+
+# == V2-C rangs 0 à 3 (V2C_FIABILITE_MINIMUM.md §2.1, §4) ===============================================
+
+# -- rang 0 : last_seen_at / last_verified_at publiés --------------------------------------------------
+
+def test_export_publishes_last_seen_and_last_verified():
+    from radar.ucli import KEEP_FIELDS_DROP, _publish
+    assert "last_seen_at" not in KEEP_FIELDS_DROP           # bug V2-C : null sur 12 383/12 383 deals
+    d = deal()
+    out = _publish(d, V.assess(d, healthy(), NOW))
+    assert out["last_seen_at"] == d["last_seen_at"]
+    assert out["last_verified_at"] == iso(NOW - dt.timedelta(hours=1))
+
+
+# -- rang 1 : porte fail-closed X_NOT_RECHECKED ----------------------------------------------------------
+
+def test_fail_closed_gate_never_verified_without_recent_proof():
+    # Source saine (pas X_SOURCE_STALE), a priori élevé et recoupé (p ≥ 0.8 par le seul score), mais l'offre
+    # n'a pas été revue depuis 40 h > TTL 30 h.
+    d = deal(source_id="denner", deal_id="dn-1", last_seen_at=iso(NOW - dt.timedelta(hours=40)), missing_scans=0,
+             corroborated_by=["rappn:a", "rappn:b"])
+    h = V.source_health({"last_success": iso(NOW - dt.timedelta(hours=1))}, "grocery", 360, NOW, "denner")
+    a = V.assess(d, h, NOW)
+    assert a["state"] == "UNCONFIRMED" and a["code"] == "X_NOT_RECHECKED" and "X_NOT_RECHECKED" in a["rules"]
+    # Aucune preuve du tout : jamais VERIFIED.
+    a = V.assess(deal(last_seen_at=None), healthy(), NOW)
+    assert a["state"] != "VERIFIED"
+    # Preuve récente : VERIFIED.
+    assert V.assess(deal(), healthy(), NOW)["state"] == "VERIFIED"
+
+
+def test_preispirat_needs_a_page_proof_not_the_rss():
+    d = deal(deal_id="preispirat:773958", source_id="preispirat", family="tech", ends_at=None,
+             source_url="https://www.preispirat.ch/x/", last_seen_at=iso(NOW - dt.timedelta(minutes=30)))
+    h = V.source_health({"last_success": iso(NOW - dt.timedelta(minutes=30))}, "tech", 45, NOW, "preispirat")
+    a = V.assess(d, h, NOW)
+    assert a["state"] != "VERIFIED" and a["verified_at"] is None
+    d["verify"] = {"checks": [{"at": iso(NOW - dt.timedelta(hours=2)), "http": 200,
+                               "ends": iso(NOW + dt.timedelta(days=6))}]}
+    a = V.assess(d, h, NOW)
+    assert a["verified_at"] == iso(NOW - dt.timedelta(hours=2)) and a["state"] in ("VERIFIED", "UNCONFIRMED")
+
+
+# -- rang 2 : T_PP_REMAINING (Preispirat) ----------------------------------------------------------------
+
+PP = ('<div class="meta"><span class="postview_meta">211 </span>'
+      '<span class="days_left"><i class="fas fa-hourglass-start"></i>  {txt}</span></div>'
+      '<article class="post-inner post post-773958 type-post" id="post-773958"><p>Noch 3 Tage verbleibend '
+      'für andere Deals</p></article>')
+
+
+def test_preispirat_days_left_abgelaufen_and_letzter_tag():
+    flag, end = V.preispirat_days_left(PP.format(txt="24 Tage verbleibend"), NOW)
+    assert flag is None and end == iso(NOW + dt.timedelta(days=24))
+    assert V.preispirat_days_left(PP.format(txt="1 Tag verbleibend"), NOW)[1] == iso(NOW + dt.timedelta(days=1))
+    assert V.preispirat_days_left(PP.format(txt="Letzter Tag"), NOW)[1].startswith("2026-11-06T23:59:59")
+    assert V.preispirat_days_left(PP.format(txt="Abgelaufen"), NOW) == ("expired", None)
+    assert V.preispirat_days_left("<p>5 Tage verbleibend</p>", NOW) == (None, None)   # hors compteur du post
+    # De la page au verdict : la fin lue devient ends_at ; passée → ENDED ; « Abgelaufen » → ENDED.
+    u = "https://www.preispirat.ch/x/"
+    c = V.check_page(FakeHttp({u: (200, PP.format(txt="6 Tage verbleibend"), u)}), u, "preispirat:773958", NOW)
+    assert c["ends"] == iso(NOW + dt.timedelta(days=6)) and "flag" not in c
+    c = V.check_page(FakeHttp({u: (200, PP.format(txt="Abgelaufen"), u)}), u, "preispirat:773958", NOW)
+    assert c["flag"] == "expired"
+    d = deal(deal_id="preispirat:773958", source_id="preispirat", family="tech", ends_at=None, source_url=u,
+             verify={"checks": [{"at": iso(NOW - dt.timedelta(days=3)), "http": 200,
+                                 "ends": iso(NOW - dt.timedelta(hours=1))}]})
+    a = V.assess(d, healthy(), NOW)
+    assert a["state"] == "ENDED" and a["code"] == "T_PP_REMAINING"
+    d["verify"]["checks"][0]["ends"] = iso(NOW + dt.timedelta(days=2))
+    a = V.assess(d, healthy(), NOW)
+    assert a["patch"]["ends_at"] == iso(NOW + dt.timedelta(days=2)) and "T_PP_REMAINING" in a["rules"]
+
+
+# -- rang 2 : C_ONLINE_FLAG (Rappn « Nur online ») -----------------------------------------------------
+
+RAPPN_CARD = ('<article class="group oc-card x" id="offer=ab1bf66e-7f5a-4533-b559-4efb86c21fcb"><div class="oc-media">'
+              '<span class="oc-badge text-[12.5px]">−50%</span>{online}</div><div class="oc-body">'
+              '<h3 class="oc-name"><a href="#offer=ab1bf66e" class="oc-link">Vanini Marrons Glacés 4 Stück</a></h3>'
+              '<p class="oc-meta">72 g</p><p class="oc-price"><span class="oc-now text-[21px]"><span class="oc-chf">CHF</span>3.95'
+              '</span><span class="oc-was">statt<!-- --> <s>7.95</s></span></p><p class="oc-unit">CHF 5.49/100 g</p>'
+              '<p class="oc-valid font-medium">bis Mi 11.11.</p></div></article>')
+
+
+def test_rappn_nur_online_is_never_in_store():
+    from types import SimpleNamespace
+    from radar.connectors.rappn import Rappn, parse
+    from radar.parse import TZ as tz
+    ctx = SimpleNamespace(cfg=SimpleNamespace(tz=tz), now=NOW)
+    on = parse(RAPPN_CARD.format(online='<span class="oc-online">Nur online</span>'), "coop", NOW.date())[0]
+    off = parse(RAPPN_CARD.format(online=""), "coop", NOW.date())[0]
+    assert on["online"] is True and off["online"] is False
+    d_on, d_off = Rappn().normalize(on, ctx), Rappn().normalize(off, ctx)
+    assert d_on["online_only"] is True and d_on["geographic_scope"] == "ONLINE" and "nur online" in d_on["conditions"]
+    assert "online_only" not in d_off and d_off["geographic_scope"] == "LOCAL"
+    rules, patch = V.reading_rules(d_on)
+    assert "C_ONLINE_FLAG" in rules and patch["online_only"] is True
+
+
+# -- rang 3 : P_FROM_PRICE, P_ZERO_NONFREE, Q_PARSE_SANITY, P_REF_IMPLAUSIBLE ---------------------------
+
+def test_from_price_qoqa_range_has_no_saving():
+    from radar.ucli import _publish
+    d = deal(deal_id="qoqa:99960", source_id="qoqa", family="flash", title="Cloudpillo", current_price=59.9,
+             price_max=249.0, discount_percentage=40.0, effective_discount=40.0)
+    rules, patch = V.reading_rules(d)
+    assert "P_FROM_PRICE" in rules and patch["price_is_from"] is True
+    out = _publish(d, V.assess(d, healthy(), NOW))
+    assert out["price_is_from"] is True and "discount_percentage" not in out and "effective_discount" not in out
+    assert V.price_is_from(deal(title="Sneaker ab CHF 39.90 bei Zalando", price_max=None))
+    assert not V.price_is_from(deal(title="Coop Bier ab 3 Stück", price_max=None))
+    assert not V.price_is_from(deal(title="Lidl Plus: CHF 5.- Rabatt ab CHF 70.- Einkaufswert", price_max=None))
+    assert not V.price_is_from(deal(price_max=1.29))
+
+
+def test_zero_price_then_paid_is_not_free():
+    d = deal(deal_id="dschungelkompass:internet:sak-internet-m", source_id="dschungelkompass", family="subscription",
+             title="SAK Internet M (Aktionspreis)", current_price=0.0, promo_months=3.0, price_after_promo=44.0)
+    rules, patch = V.reading_rules(d)
+    assert "P_ZERO_NONFREE" in rules and patch["zero_then_price"] == 44.0
+    t = deal(family="subscription", current_price=0.0,
+             conditions=["Internet während 3 Monaten kostenlos, danach CHF 44.00, sowie kostenlose Aufschaltgebühr."])
+    assert V.zero_then_price(t) == 44.0
+    assert V.zero_then_price(deal(family="free", current_price=0.0, conditions=["danach CHF 5"])) is None
+    assert V.zero_then_price(deal(family="event", current_price=0.0)) is None
+
+
+def test_quantity_sanity_rejects_ambiguous_sizes():
+    from radar.ucli import _publish
+    chair = deal(source_id="preispirat", title="Bürostuhl «Songmics Office» (45 – 54.50 cm)", current_price=94.0,
+                 description="Maximal 250 Stück zum reduzierten Einzelpreis verfügbar.")
+    solis = deal(title="Solis Multi Chopper Typ 8330 (2 Behälter, 1000 ml & 150 ml) bei nettoshop", current_price=39.0)
+    azzaro = deal(title="Azzaro The Most Wanted Intense Geschenkset (50 ml Eau de Parfum + 75 ml Duschgel)")
+    assert V.quantity_suspect(chair) and V.quantity_suspect(solis) and V.quantity_suspect(azzaro)
+    # Non-régressions : multipack, total cohérent, prix par 100 g, une seule taille.
+    for ok in (deal(title="Löwenbräu Original 6 x 50 cl"), deal(title="Hackfleisch 500 g (2 x 250 g)"),
+               deal(title="Pouletbrust", package_size="ca. 300 g · Preis pro 100 g"),
+               deal(title="Vanini Marrons Glacés 4 Stück", package_size="72 g")):
+        assert not V.quantity_suspect(ok), ok["title"]
+    solis.update(quantity=0.15, package_size="150 ml", unit_price=260.0, unit="CHF/l")
+    out = _publish(solis, V.assess(solis, healthy(), NOW))
+    assert out["size_unknown"] is True and not {"quantity", "package_size", "unit_price"} & out.keys()
+
+
+def test_implausible_competitor_reference_is_hidden():
+    from radar.ucli import _publish
+    ottos = deal(deal_id="rappn:550d0d0b", source_id="rappn", family="retail", merchant="Otto's",
+                 title="Samsung Kühl-Gefrierkombination RB7300 R", current_price=649.0, reference_price=3229.0,
+                 reference_price_type="competitor", discount_percentage=80.0)
+    assert V.ref_implausible(ottos)
+    out = _publish(ottos, V.assess(ottos, healthy(), NOW))
+    assert out["ref_hidden"] is True and "reference_price" not in out and out["reference_price_type"] == "none"
+    assert "discount_percentage" not in out
+    # Prix « statt » du marchand (−50 %) ou concurrent plausible : conservé.
+    assert not V.ref_implausible({**ottos, "reference_price": 1299.0})
+    assert not V.ref_implausible({**ottos, "reference_price_type": "merchant_previous"})
+    assert not V.ref_implausible({**ottos, "corroborated_by": ["migros:1"]})
+
+
+# -- rang 4 (Revendo) : 429 → Retry-After respecté, abandon au-delà du plafond ----------------------------
+
+def test_http_honours_retry_after_and_gives_up_beyond_cap(monkeypatch):
+    from radar import http as H
+    sleeps = []
+    monkeypatch.setattr(H.time, "sleep", lambda s: sleeps.append(s))
+
+    class S:
+        headers = {"User-Agent": "UA"}
+
+        def __init__(self, ra):
+            self.ra, self.n = ra, 0
+
+        def request(self, *a, **k):
+            self.n += 1
+            r = requests.Response()
+            r.status_code, r.headers["Retry-After"] = 429, self.ra
+            return r
+
+    h = H.Http("UA", retries=2, delay=0)
+    h.s = S("60")
+    try:
+        h._raw("GET", "https://www.revendo.ch/products.json")
+    except requests.HTTPError:
+        pass
+    assert h.s.n == 3 and [s for s in sleeps if s >= 60] == [60.0, 60.0]
+    sleeps.clear()
+    h = H.Http("UA", retries=4, delay=0)
+    h.s = S("3600")
+    try:
+        h._raw("GET", "https://www.revendo.ch/products.json")
+    except requests.HTTPError:
+        pass
+    assert h.s.n == 1 and not sleeps                  # 1 h demandée : on n'insiste pas

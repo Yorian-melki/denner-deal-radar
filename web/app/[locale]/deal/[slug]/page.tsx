@@ -4,7 +4,7 @@ import { CITIES, mainCity } from "@/config/cities";
 import { TelegramCta } from "@/components/CityDashboard";
 import {
   DealGrid, DealTitle, PriceLine, SaveButton, dateText, displayTitle, noScoreReason, outbound, savingText, sellerName, showsRef, shownScore,
-  sizeParts, subscriptionText, valueText,
+  sizeParts, stateLine, subscriptionText, valueText,
 } from "@/components/DealCard";
 import { Icon } from "@/components/Icon";
 import { JsonLd, breadcrumbLd } from "@/components/JsonLd";
@@ -224,6 +224,7 @@ export default async function DealPage({ params }: P) {
   const saving = savingText(d, locale);
   const value = valueText(d, locale);
   const date = dateText(d, locale, now);
+  const state = stateLine(d, locale, now);
   const sub = subscriptionText(d, locale);
   const conds = conditionLines(d.conds, t, locale, money);
   if (d.unitPrice !== undefined && d.unit && d.unit !== "month") conds.unshift(`${colon(t.unitPrice, locale)} ${money(d.unitPrice)}${t.units[d.unit]}`);
@@ -245,9 +246,10 @@ export default async function DealPage({ params }: P) {
     "@type": "Product",
     name: title,
     ...(d.titles?.[locale] ? { inLanguage: HTML_LANG[locale] } : tl !== "?" ? { inLanguage: HTML_LANG[tl] } : {}),
+    // « ab CHF X » (V2-C P_FROM_PRICE) : prix plancher → AggregateOffer.lowPrice, jamais un prix fixe.
     offers: {
-      "@type": "Offer",
-      price: d.price.toFixed(2),
+      "@type": d.priceFrom ? "AggregateOffer" : "Offer",
+      [d.priceFrom ? "lowPrice" : "price"]: d.price.toFixed(2),
       priceCurrency: d.currency,
       ...(d.via ? {} : { url: d.url }),
       ...(hasRealEnd(d) ? { priceValidUntil: d.endsAt!.slice(0, 10) } : {}),
@@ -284,6 +286,7 @@ export default async function DealPage({ params }: P) {
           {value && <p className="deal-note">{value}</p>}
           {sub && <p className="deal-note">{sub}</p>}
           {date && <p className="deal-date">{hasRealEnd(d) ? <time dateTime={d.endsAt}>{date}</time> : date}</p>}
+          {state && <p className="deal-note deal-seen" data-state={d.unconfirmed ? "unconfirmed" : "seen"}>{state}</p>}
           {conds.length === 1 && <p className="deal-note">{conds[0]}</p>}
           {conds.length > 1 && (
             <ul className="conds" aria-label={t.conditions}>

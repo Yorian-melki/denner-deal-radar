@@ -110,8 +110,9 @@ def _technical(store: UStore, cfg, conns, now) -> list[dict]:
 # Export dashboard
 # --------------------------------------------------------------------------
 
-# Champs inutiles à l'application web (allège l'export servi sur iPhone).
-KEEP_FIELDS_DROP = {"raw", "http_cache", "source_offer_id", "last_changed_at", "last_seen_at", "source_type",
+# Champs inutiles à l'application web (allège l'export servi sur iPhone). ``last_seen_at`` est publié
+# (rang 0 V2-C : sans lui, aucune règle de fraîcheur par offre ne peut tourner côté site ni audit).
+KEEP_FIELDS_DROP = {"raw", "http_cache", "source_offer_id", "last_changed_at", "source_type",
                     "accessibility_notes", "offer_type", "geographic_note", "missing_scans", "reference_note",
                     "source_updated", "activation_fee_note", "promo_end_raw", "subcategory", "kind", "engine",
                     "regular_price", "availability_confidence"}
@@ -132,6 +133,7 @@ def _publish(d: dict, verdict: dict | None) -> dict:
     out = _slim(d)
     out.pop("verify", None)
     out.update(verify.export_fields(d, verdict))
+    verify.apply_patch(out, (verdict or {}).get("patch"))
     if verdict and verdict.get("unit_incoherent"):
         out.pop("unit_price", None)
         out.pop("unit", None)

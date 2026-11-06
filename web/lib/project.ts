@@ -255,7 +255,9 @@ function sizeFrom(s: string): PackSize | undefined {
   const out: PackSize = {};
   const metric = [...s.matchAll(METRIC)].filter((m) => !/(?:per|pro|par)\s*$/i.test(s.slice(0, m.index)));
   const m = metric[metric.length - 1];
-  if (m) {
+  // V2-C Q_PARSE_SANITY : deux mesures sans « × » (« 1000 ml & 150 ml », « 50 ml … + 75 ml ») → taille ambiguë.
+  const ambiguous = metric.some((x, i) => i > 0 && !x[1] && /[&+]|\bund\b|\bet\b/.test(s.slice(metric[i - 1].index! + metric[i - 1][0].length, x.index)));
+  if (m && !ambiguous) {
     const n = (m[1] ?? "").trim().replace(/\s*[x×]\s*$/, "").split(/\s*[x×]\s*/).filter(Boolean);
     const u = m[3].toLowerCase() === "liter" ? "l" : m[3].toLowerCase();
     const v = m[2].replace(",", ".");
@@ -265,7 +267,8 @@ function sizeFrom(s: string): PackSize | undefined {
     }
   }
   const p = s.match(PIECES);
-  if (p) { const n = mul(p[1]); if (n > 1 && n < 10000) out.pieces = n; }
+  // « Maximal 250 Stück zum reduzierten Einzelpreis » : plafond de vente, pas une taille (V2-C).
+  if (p && !/(?:maximal|max\.?|höchstens|nur|bis zu)\s*$/i.test(s.slice(0, p.index)) && !/^\s*zum\b/i.test(s.slice(p.index! + p[0].length))) { const n = mul(p[1]); if (n > 1 && n < 10000) out.pieces = n; }
   const w = s.match(WASHES);
   if (w) { const n = mul(w[1]); if (n > 1 && n < 1000) out.washes = n; }
   const per = s.match(PER);
@@ -475,6 +478,12 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date, opts: { expired?:
   const unit = UNIT[str(d.unit) ?? ""];
   const unitPrice = plausibleUnitPrice(num(d.unit_price), unit, `${rawTitle} ${str(d.category) ?? ""}`);
   const netSavings = num(d.net_savings);
+  // V2-C P_FROM_PRICE : « ab CHF X » (QoQa price_range_max, « ab CHF » dans le titre) — jamais d'économie chiffrée.
+  const priceFrom = d.price_is_from === true || (price !== undefined && (num(d.price_max) ?? 0) > price + 0.005);
+  // V2-C P_ZERO_NONFREE : « 3 Monate kostenlos, danach CHF 44 » n'est pas « Gratis ».
+  const zeroThen = price === 0 ? num(d.zero_then_price) : undefined;
+  // V2-C C_ONLINE_FLAG : carte Rappn « Nur online » → jamais « Im Laden ».
+  const onlineOnly = d.online_only === true;
   const category = categorize({ family: d.family, title, merchant, category: str(d.category), source: d.source_id });
   const bonus = price === 0 && BONUS.test(title);
   // Spiritueux : ni prix barré, ni pourcentage, ni note (LAlc art. 42b).
@@ -488,7 +497,8 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date, opts: { expired?:
   let scoreCap: ScoreCap | undefined;
   if (
     !isPlausible(d.family, discountPct) || quantityMismatch(title, price, unitPrice, unit) ||
-    kind !== "comparable" || (confidence ?? 0) < VERIFY_MIN_CONFIDENCE || categoryBySlug(category)?.unrated
+    kind !== "comparable" || (confidence ?? 0) < VERIFY_MIN_CONFIDENCE || categoryBySlug(category)?.unrated ||
+    priceFrom || zeroThen !== undefined
   ) score = undefined;
   // Une note de 0 se lit comme un jugement : pas de note du tout (round 2, item 6).
   if (score !== undefined && score <= 0) score = undefined;
@@ -508,7 +518,7 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date, opts: { expired?:
     // Un « statt » du marchand que nous n'avons pas observé n'est pas un historique : au plus « gut ».
     else if (!refObserved) cap("unchecked");
   }
-  const inStore = isSupermarket(merchant, d.source_id) || undefined;
+  const inStore = (!onlineOnly && isSupermarket(merchant, d.source_id)) || undefined;
 
   const fromSource = THIRD_PARTY_CODE_SOURCES.has(d.source_id);
   const rawConds = Array.isArray(d.conditions) ? d.conditions.filter((c): c is string => typeof c === "string") : [];
@@ -516,6 +526,7 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date, opts: { expired?:
     ...structuredConditions(d as Parameters<typeof structuredConditions>[0]),
     ...rawConds.map((c) => parseCondition(fromSource ? redactCodes(c) : c)),
     ...(isPickupOnly(rawTitle) ? [{ code: "pickup" }] : []),
+    ...(onlineOnly ? [{ code: "online_only" }] : []),
   ]).slice(0, 6);
   const brand = str(d.brand) ?? title.split(/\s+/)[0]?.replace(/[^\p{L}\p{N}-]/gu, "");
 
@@ -551,7 +562,8 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date, opts: { expired?:
     currency: str(d.currency) ?? feed.currency,
     unitPrice,
     unit,
-    size: packSize(d.package_size, rawTitle, { description: d.description, price, unitPrice, unit }),
+    // V2-C Q_PARSE_SANITY : quantité ambiguë (« Maximal 250 Stück », « 1000 ml & 150 ml ») → aucune.
+    size: d.size_unknown === true ? undefined : packSize(d.package_size, rawTitle, { description: d.description, price, unitPrice, unit }),
     sub: subscription(d, price),
     netSavings,
     score,
@@ -564,8 +576,12 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date, opts: { expired?:
     firstSeenAt: str(d.first_seen_at),
     // Dernière vérification réussie de l'offre (scanner : dernier passage où elle figurait à la source,
     // ou contrôle de page 200) — jamais l'heure du build ni celle du flux.
-    lastSeenAt: str(d.verified_at) ?? str(d.last_seen_at),
+    lastSeenAt: str(d.last_verified_at) ?? str(d.verified_at) ?? str(d.last_seen_at),
     unconfirmed: d.state === "UNCONFIRMED" || undefined,
+    verified: d.state === "VERIFIED" || undefined,
+    priceFrom: priceFrom || undefined,
+    zeroThen,
+    onlineOnly: onlineOnly || undefined,
     conds,
     url: clean.url,
     via: viaHost(clean.url, merchant),
@@ -659,7 +675,7 @@ export const TOMBSTONE_DAYS = 30;
 export function endedAt(d: RawDeal, now: Date): string | undefined {
   // Masquée mais peut-être encore valable (source en panne, à confirmer) : pas de pierre tombale.
   if (String(d.lifecycle) === "SOURCE_FAILURE" || d.duplicate_of || d.state === "HIDDEN" || d.state === "SUSPECT") return undefined;
-  const ends = str(d.ends_at), seen = str(d.verified_at) ?? str(d.last_seen_at);
+  const ends = str(d.ends_at), seen = str(d.last_verified_at) ?? str(d.verified_at) ?? str(d.last_seen_at);
   const t = (iso?: string) => (iso ? new Date(iso).getTime() : NaN);
   let at: string | undefined;
   if (ends && t(ends) < now.getTime()) at = ends;

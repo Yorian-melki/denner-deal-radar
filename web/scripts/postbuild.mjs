@@ -53,6 +53,17 @@ for (const l of LOCALES) {
   rmSync(path.join(OUT, l, "missing"), { recursive: true, force: true });
 }
 
+// 1b. Paramètres de repli de generateStaticParams (données d'échantillon sans page 2 ni magasin, 680ea4c) :
+// « …/supermarkt-aktionen/1 » et « …/supermarkt-aktionen/x/1 » ne sont jamais liés (page < 2, magasin
+// fictif) et rendent la page 404 sans sélecteur de langue : retirés de l'export.
+for (const l of LOCALES) {
+  for (const city of existsSync(path.join(OUT, l)) ? readdirSync(path.join(OUT, l)) : []) {
+    const base = path.join(OUT, l, city, "supermarkt-aktionen");
+    if (!existsSync(base) || !statSync(base).isDirectory()) continue;
+    for (const f of ["1.html", "1.txt", "x/1.html", "x/1.txt"]) rmSync(path.join(base, f), { force: true });
+  }
+}
+
 // 2a. Charges RSC : inutiles sans <Link> (navigation classique).
 let pruned = 0;
 for (const f of walk(OUT)) {

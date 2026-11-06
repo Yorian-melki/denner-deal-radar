@@ -20,7 +20,18 @@ class HostUnavailable(RuntimeError):
     """Hôte injoignable plus tôt dans cette exécution : on n'insiste pas."""
 
 
+def retry_after(resp) -> float | None:
+    """En-tête ``Retry-After`` en secondes (forme numérique seulement), sinon None."""
+    v = (getattr(resp, "headers", None) or {}).get("Retry-After") if resp is not None else None
+    try:
+        return max(0.0, float(v)) if v is not None else None
+    except (TypeError, ValueError):
+        return None
+
+
 class Http:
+    max_retry_after = 90.0   # au-delà, une 429 n'est pas réessayée
+
     def __init__(self, user_agent: str, timeout: float = 30, retries: int = 4,
                  backoff: float = 2.0, delay: float = 0.8):
         self.s = requests.Session()
@@ -83,6 +94,13 @@ class Http:
                     raise  # erreur client : inutile d'insister
                 if attempt < self.retries:
                     sleep = self.backoff * (2 ** attempt) + random.uniform(0, 1)
+                    if status == 429:
+                        # Politesse : « Retry-After » du serveur respecté (Revendo : 60 s) ; au-delà
+                        # du plafond, on abandonne plutôt que d'insister (V2-C, Revendo en 429).
+                        ra = retry_after(getattr(e, "response", None))
+                        if ra is not None and ra > self.max_retry_after:
+                            break
+                        sleep = max(sleep, ra or 0)
                     log.warning("%s %s échoue (%s), nouvel essai dans %.1fs", method, url, e, sleep)
                     time.sleep(sleep)
         assert last_exc is not None

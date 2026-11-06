@@ -31,6 +31,7 @@ export function parseCondition(raw: string): Cond | null {
   if (!s) return null;
   let m: RegExpMatchArray | null;
   if (/épuisement du stock|solange vorrat/i.test(s)) return { code: "while_stocks" };
+  if (/^(?:nur online|online only|uniquement en ligne|en ligne uniquement)$/i.test(s)) return { code: "online_only" };
   if ((m = s.match(/(?:dès|ab|minimum)\s+(\d+)\s*(?:pièces?|stück|unités?)/i))) return { code: "min_qty", n: Number(m[1]) };
   if (/lidl plus/i.test(s)) return { code: /plus bas|günstiger/i.test(s) ? "lidl_plus_lower" : "lidl_plus" };
   if (/gamme d.articles|tout un assortiment|ganze[ns]? sortiment/i.test(s)) return { code: "range" };

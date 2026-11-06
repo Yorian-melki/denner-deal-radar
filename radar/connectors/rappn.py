@@ -102,6 +102,8 @@ def parse(html_text: str, slug: str, today: dt.date) -> list[dict]:
             "badge": clean(_one(r'class="oc-badge[^"]*">(.*?)</span>', b)),
             "unit": clean(_one(r'class="oc-unit"[^>]*>(.*?)</p>', b)),
             "valid": clean(_one(r'class="oc-valid[^"]*">(.*?)</p>', b)),
+            # Pastille « Nur online » de la carte (V2-C C_ONLINE_FLAG : Coop 42/877 cartes).
+            "online": bool(re.search(r'class="oc-online[^"]*"[^>]*>\s*(?:Nur\s+online|Online\s+only)', b, re.I)),
             "image": img or None,
         })
     return out
@@ -194,6 +196,11 @@ class Rappn(Connector):
         conds = []
         if minq:
             conds.append(f"dès {minq.group(1)} pièces")
+        online = x.get("online") is True
+        if online:
+            # Offre du shop en ligne seulement : jamais « Im Laden » (V2-C, cause F).
+            scope, note = "ONLINE", f"{chain} : « Nur online » sur la carte Rappn (shop en ligne seulement)"
+            conds.append("nur online")
         return make_deal(
             deal_id=f"{self.id}:{x['uuid']}", source_id=self.id, source_type="aggregator",
             source_offer_id=x["uuid"], source_url=f"{chain_url(x['chain'])}#offer={x['uuid']}",
@@ -205,5 +212,5 @@ class Rappn(Connector):
             discount_percentage=float(pct.group(1)) if pct else None,
             discount_badge=x["badge"] or None, minimum_quantity=int(minq.group(1)) if minq else None,
             conditions=conds, ends_at=iso_day_end(end) if end else None,
-            geographic_scope=scope, geographic_note=note,
+            geographic_scope=scope, geographic_note=note, online_only=True if online else None,
             attribution="Données: rappn.ch", **quantity_fields(price, size, stated))

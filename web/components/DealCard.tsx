@@ -89,12 +89,23 @@ export function PriceLine({ deal, locale, className = "card-price", now, attrib 
   const pct = savingPct(deal);
   const unit = deal.unit === "month" ? t.units.month : "";
   const prefix = deal.upcoming ? dateText(deal, locale, now) ?? "" : t.now;
+  // V2-C P_ZERO_NONFREE : « 3 Mt. gratis, dann CHF 44.00/Mt. », jamais « Gratis » seul.
+  if (deal.price === 0 && deal.zeroThen !== undefined) {
+    return (
+      <p className={className}>
+        <span className="sr-only">{prefix} </span>
+        <span className="price">{t.zeroFirst(deal.sub?.promoMonths)}</span>
+        <span className="was">{t.thenPerMonth(fmtPrice(deal.zeroThen, deal.currency, locale))}</span>
+      </p>
+    );
+  }
   const was = showsRef(deal) ? fmtAmount(deal.referencePrice!) : undefined;
   // Valeur en tête (round 4, item 5) : montant, pastille neutre « −56 % », puis « statt 27.35 · laut Denner ».
   return (
     <p className={className}>
       <span className="sr-only">{prefix} </span>
-      <span className="price">{deal.price === 0 ? t.free : <><span className="cur">{deal.currency}</span>{"\u202f"}<span className="amt">{fmtAmount(deal.price)}</span></>}</span>
+      {/* V2-C P_FROM_PRICE : plusieurs prix à la source → « ab CHF 59.90 » (aucune économie, cf. lib/project.ts). */}
+      <span className="price">{deal.price === 0 ? t.free : <>{deal.priceFrom && <span className="price-from">{t.priceFrom}{"\u00a0"}</span>}<span className="cur">{deal.currency}</span>{"\u202f"}<span className="amt">{fmtAmount(deal.price)}</span></>}</span>
       {unit && deal.price !== 0 && <span className="price-unit">{unit}</span>}
       {was && pct !== undefined && (
         <span className="pct"><span aria-hidden="true">−{fmtPct(pct, locale)}</span><span className="sr-only">{t.cheaperBy(fmtPct(pct, locale))}</span></span>
@@ -208,6 +219,17 @@ export function unitLine(deal: PublicDeal, locale: Locale): string | undefined {
   return parts.length ? parts.join(" · ") : undefined;
 }
 
+/** État de la vérification en un fait daté (V2-C §2.7) : « an der Quelle gesehen Fr 06.11. » (VERIFIED,
+ * preuve positive dans le TTL) ou « unbestätigt · Quelle zuletzt erreicht Do 05.11. » (UNCONFIRMED : porte
+ * fail-closed, source non relue). Précision au jour : deux builds du même jour ne réécrivent pas les pages. */
+export function stateLine(deal: PublicDeal, locale: Locale, now?: Date): string | undefined {
+  const t = dict(locale);
+  const day = deal.lastSeenAt ? fmtDay(deal.lastSeenAt, locale, now) : "";
+  if (deal.unconfirmed) return day ? t.unconfirmedSince(day) : t.dq.low;
+  if (deal.verified && day) return t.seenAtSource(day);
+  return undefined;
+}
+
 /** Mentions de la carte : conditions qui changent le prix réel (`major`, toujours visibles, aussi en
  * liste mobile) puis faits utiles (groupe, variétés, autres magasins : masqués en liste mobile). */
 export function cardNotesTagged(deal: PublicDeal, locale: Locale, max = 2): { text: string; major: boolean }[] {
@@ -270,6 +292,7 @@ export function DealCard({ deal, locale, headingLevel = 3, showcase = false, now
   const via = AGGREGATOR_SOURCES.has(deal.source) ? t.viaSource(sourceName(deal.source)) : undefined;
   const account = deal.category === "studenten-rabatte" ? t.accountNeeded : undefined;
   const unit = unitLine(deal, locale);
+  const state = stateLine(deal, locale, now);
   return (
     <li className="card" data-observed={deal.refObserved ? "" : undefined} data-seen={deal.firstSeenAt}
       data-ends={hasRealEnd(deal) ? deal.endsAt : undefined}
@@ -290,6 +313,7 @@ export function DealCard({ deal, locale, headingLevel = 3, showcase = false, now
         {account && <span>{account}</span>}
         {value && <span>{value}</span>}
         {date && <span data-date="">{hasRealEnd(deal) && !deal.upcoming ? <time dateTime={deal.endsAt}>{date}</time> : date}</span>}
+        {state && <span className="seen" data-state={deal.unconfirmed ? "unconfirmed" : "seen"}>{state}</span>}
       </p>
       {sub && <p className="card-sub">{sub}</p>}
       {notes.length > 0 && (
