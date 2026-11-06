@@ -28,7 +28,7 @@ const OUT = path.resolve(process.argv[2] ?? "out");
 const LOCALES = ["de", "fr", "en"];
 const CLICKS = process.env.CLICKS_BINDING === "1";
 const MAX_FILES = 18000;
-const BUDGET = { cityHtmlBytes: 60 * 1024, jsBytes: 14 * 1024 };
+const BUDGET = { cityHtmlBytes: 60 * 1024, jsBytes: 16 * 1024 };
 const ANALYTICS = /^[a-f0-9]{32}$/i.test(process.env.NEXT_PUBLIC_CF_BEACON_TOKEN ?? "");
 const errors = [];
 

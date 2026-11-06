@@ -44,6 +44,7 @@ export function SiteHeader({ siteName, locale }: { siteName: string; locale: Loc
             {upcoming.length > 0 && <p className="city-soon">{colon(t.soon, locale)} {upcoming.map((c) => c.name[locale]).join(", ")}</p>}
           </div>
         </details>}
+        <a href={paths.page(locale, "merkliste")} className="list-link"><Icon name="star" size={18} /><span className="list-link-text">{t.listNav}</span><span className="list-count" data-list-count="" /></a>
         <LangSwitch current={locale} label={t.language} langs={LOCALES.map((l) => ({ code: l, name: DICTS[l].langName, hreflang: HTML_LANG[l] }))} />
       </div>
     </header>

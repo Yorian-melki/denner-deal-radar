@@ -249,9 +249,6 @@ button { font: inherit; }
 .note-ad { color: var(--muted); }
 
 .meta-unit { display: none !important; }
-/* La quantité est le dernier fait de la ligne en liste mobile ; ailleurs elle est masquée : pas de « · » final. */
-.card-meta > :nth-last-child(2):has(+ .meta-unit)::after { content: none; }
-@media (max-width: 639px) { .grid > .card .card-meta > :nth-last-child(2):has(+ .meta-unit)::after { content: "·" / ""; } }
 /* Mobile (round 4, item 16) : liste en rangées dans un groupe inset, séparateurs fins ; à gauche titre
  * (2 lignes) puis quantité · magasin · date, à droite prix et pastille « −N % ». ≥ 5 deals au 1er écran. */
 @media (max-width: 639px) {
@@ -285,6 +282,31 @@ button { font: inherit; }
 .sib-label { color: var(--muted); }
 .deal-siblings { margin-top: 32px; }
 .deal-siblings h2 { font-size: var(--t-headline); line-height: var(--l-headline); font-weight: var(--w-semi); }
+
+/* Merkliste (rétention) : étoile sur la carte (au-dessus du lien de carte), sur la page deal et dans l'en-tête. */
+.save { position: relative; z-index: 1; flex: none; display: inline-grid; place-items: center; width: 32px; height: 32px; margin: -4px -6px 0 0; padding: 0; border: 0; border-radius: var(--r-full); background: transparent; color: var(--muted); cursor: pointer; }
+.save::after { content: ""; position: absolute; inset: -6px; }
+.save:hover { color: var(--fg); }
+.save[aria-pressed="true"] { color: var(--accent); }
+.save[aria-pressed="true"] path { fill: currentColor; }
+.save-text { width: auto; height: 32px; margin: 0; gap: 4px; display: inline-flex; padding: 0 12px; background: var(--fill); color: var(--fg); font-size: var(--t-footnote); font-weight: var(--w-semi); }
+.list-link { position: relative; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 6px; color: var(--muted); font-size: var(--t-footnote); font-weight: var(--w-semi); }
+.list-link:hover { color: var(--fg); text-decoration: none; }
+.list-count:not(:empty) { min-width: 18px; padding: 0 5px; border-radius: var(--r-full); background: var(--fill); color: var(--fg); font-size: var(--t-caption); line-height: var(--l-caption); text-align: center; }
+@media (max-width: 479px) { .list-link-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } }
+/* « neu seit deinem letzten Besuch » (site.js, data-new) : pastille hors flux, aucun saut de mise en page. */
+.card[data-new]::before { content: "neu"; position: absolute; top: -9px; left: 12px; z-index: 1; padding: 0 6px; border-radius: var(--r-sm); background: var(--fg); color: var(--surface); font-size: var(--t-caption); line-height: var(--l-caption); font-weight: var(--w-semi); }
+html[lang^="fr"] .card[data-new]::before { content: "nouveau"; }
+html[lang^="en"] .card[data-new]::before { content: "new"; }
+@media (max-width: 639px) { .grid > .card[data-new] { box-shadow: inset 4px 0 0 var(--fg); } .grid > .card[data-new]::before { top: 0; left: 0; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); } }
+.list-store { margin-top: 24px; }
+.list-store h2 { font-size: var(--t-headline); line-height: var(--l-headline); font-weight: var(--w-semi); }
+.list-store .sib-list li { display: flex; align-items: center; }
+.list-store .sib-list a { flex: 1; min-width: 0; }
+.list-store .sib-list li.gone .sib-price { color: var(--muted); text-decoration: line-through; }
+.list-del { flex: none; width: 44px; height: 44px; border: 0; background: transparent; color: var(--muted); font-size: var(--t-title); cursor: pointer; }
+.list-del:hover { color: var(--fg); }
+.list-actions { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin-top: 24px; }
 
 /* ---------- Note : badge neutre ; seule la note « Top » est teintée ---------- */
 .badge { flex: none; display: inline-flex; align-items: baseline; justify-content: center; min-width: 40px; height: 32px; padding: 6px 8px 0; border-radius: var(--r-sm); background: var(--fill); color: var(--fg); font-size: var(--t-callout); font-weight: var(--w-semi); font-variant-numeric: tabular-nums lining-nums; }

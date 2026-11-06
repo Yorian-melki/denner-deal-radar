@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { CITIES, mainCity } from "@/config/cities";
 import { TelegramCta } from "@/components/CityDashboard";
 import {
-  DealGrid, DealTitle, PriceLine, dateText, displayTitle, noScoreReason, outbound, savingText, sellerName, showsRef, shownScore,
+  DealGrid, DealTitle, PriceLine, SaveButton, dateText, displayTitle, noScoreReason, outbound, savingText, sellerName, showsRef, shownScore,
   sizeParts, subscriptionText, valueText,
 } from "@/components/DealCard";
 import { Icon } from "@/components/Icon";
@@ -270,6 +270,7 @@ export default async function DealPage({ params }: P) {
             {d.merchant && <span>{d.merchant}</span>}
             {via && <span className="deal-via">{via}</span>}
             <Share d={d} locale={locale} url={shareUrl} text={share} />
+            <SaveButton deal={d} locale={locale} withText />
           </p>
           <h1><DealTitle deal={d} locale={locale} /></h1>
         </header>

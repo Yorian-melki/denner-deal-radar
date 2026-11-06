@@ -16,6 +16,7 @@ import { hasRealEnd, isLowestSeen, savingPct, scoreTier, showsRef, shownScore, u
 import { paths } from "@/lib/site";
 import { titleLang } from "@/lib/titleLang";
 import { AGGREGATOR_SOURCES, sourceName } from "@/lib/merchant";
+import { Icon } from "@/components/Icon";
 import type { PublicDeal } from "@/lib/types";
 
 /** Note affichable : seulement si le prix « statt » est rendu sur la même carte, et
@@ -231,6 +232,24 @@ export function cardNotesTagged(deal: PublicDeal, locale: Locale, max = 2): { te
 }
 export const cardNotes = (deal: PublicDeal, locale: Locale, max = 2) => cardNotesTagged(deal, locale, max).map((n) => n.text);
 
+/** Bouton « Merkliste » (rétention) : caché sans JavaScript ; site.js garde un instantané du deal
+ * (titre, prix, magasin, fin, quantité) dans localStorage, rien n'est envoyé. */
+export function SaveButton({ deal, locale, withText = false }: { deal: PublicDeal; locale: Locale; withText?: boolean }) {
+  if (!hasPage(deal) || deal.endedAt) return null;
+  const t = dict(locale);
+  const title = displayTitle(deal, locale);
+  const item = {
+    t: title.slice(0, 160), p: deal.price, c: deal.currency, m: deal.merchant,
+    e: hasRealEnd(deal) ? deal.endsAt : undefined, u: unitLine(deal, locale) ?? (sizeParts(deal, locale).join(" · ") || undefined),
+  };
+  return (
+    <button type="button" className={withText ? "save save-text" : "save"} data-save={deal.slug} data-item={JSON.stringify(item)} aria-pressed="false" hidden
+      aria-label={withText ? undefined : t.saveLabel(title)}>
+      <Icon name="star" size={withText ? 16 : 20} />{withText && <span>{t.listNav}</span>}
+    </button>
+  );
+}
+
 export const dealHref = (deal: PublicDeal, locale: Locale) => (hasPage(deal) ? paths.deal(locale, deal.slug) : undefined);
 
 /** Lien sortant du deal (réécriture affiliée au build, jamais pour un lien tiers désemballé). */
@@ -252,7 +271,7 @@ export function DealCard({ deal, locale, headingLevel = 3, showcase = false, now
   const account = deal.category === "studenten-rabatte" ? t.accountNeeded : undefined;
   const unit = unitLine(deal, locale);
   return (
-    <li className="card" data-observed={deal.refObserved ? "" : undefined}
+    <li className="card" data-observed={deal.refObserved ? "" : undefined} data-seen={deal.firstSeenAt}
       data-ends={hasRealEnd(deal) ? deal.endsAt : undefined}
       data-store-end={showcase && deal.inStore && hasRealEnd(deal) ? deal.endsAt : undefined}>
       <div className="card-head">
@@ -260,16 +279,17 @@ export function DealCard({ deal, locale, headingLevel = 3, showcase = false, now
           {href ? <a className="card-link" href={href}><DealTitle deal={deal} locale={locale} /></a> : <DealTitle deal={deal} locale={locale} />}
         </H>
         <ScoreBadge score={cardScore(deal)} locale={locale} />
+        <SaveButton deal={deal} locale={locale} />
       </div>
       <PriceLine deal={deal} locale={locale} now={now} />
       {unit && <p className="card-unit">{unit}</p>}
       <p className="card-meta">
         {seller && <span className="seller">{seller}</span>}
+        {unit && <span className="meta-unit">{unit}</span>}
         {via && <span>{via}</span>}
         {account && <span>{account}</span>}
         {value && <span>{value}</span>}
         {date && <span data-date="">{hasRealEnd(deal) && !deal.upcoming ? <time dateTime={deal.endsAt}>{date}</time> : date}</span>}
-        {unit && <span className="meta-unit">{unit}</span>}
       </p>
       {sub && <p className="card-sub">{sub}</p>}
       {notes.length > 0 && (

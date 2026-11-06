@@ -1,6 +1,7 @@
 // Le seul JavaScript du site (≈ 9 Ko, sans dépendance, CSP script-src 'self').
 // Tout fonctionne sans lui : il ne fait qu'améliorer. Aucune donnée personnelle,
-// aucun cookie ; localStorage seulement pour le choix publicitaire (13 mois).
+// aucun cookie ; localStorage pour le choix publicitaire (13 mois), la Merkliste et la date de
+// la dernière visite (« neu ») — jamais envoyés.
 (function () {
   "use strict";
   var d = document;
@@ -161,6 +162,100 @@
     }).catch(function () {});
   }
 
-  function init() { moved(); markExpired(); centerChip(); share(); consent(); }
+  // 9. Merkliste et « neu seit deinem letzten Besuch » (rétention, 06.11) : tout reste sur l'appareil
+  //    (localStorage « list.v1 », « visit.v1 »), rien n'est envoyé ; sans stockage, rien ne s'affiche.
+  var LIST = "list.v1", VISIT = "visit.v1";
+  function load(k, def) { try { var v = JSON.parse(localStorage.getItem(k) || "null"); return v == null ? def : v; } catch (e) { return def; } }
+  function store(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
+  function storageOk() { try { localStorage.setItem("t.v1", "1"); localStorage.removeItem("t.v1"); return true; } catch (e) { return false; } }
+  function lang() { var l = (d.documentElement.lang || "de").slice(0, 2); return /^(de|fr|en)$/.test(l) ? l : "de"; }
+  function items() { var l = load(LIST, []); return Array.isArray(l) ? l.filter(function (x) { return x && typeof x.s === "string" && /^[a-z0-9-]{1,120}$/.test(x.s); }) : []; }
+  function has(s) { return items().some(function (x) { return x.s === s; }); }
+  function money(v, cur) {
+    try { return new Intl.NumberFormat(lang() === "fr" ? "fr-CH" : "de-CH", { style: "currency", currency: cur || "CHF" }).format(v); } catch (e) { return (cur || "CHF") + " " + v.toFixed(2); }
+  }
+  function sync() {
+    var n = items().length;
+    $$("[data-save]").forEach(function (b) { b.setAttribute("aria-pressed", has(b.getAttribute("data-save")) ? "true" : "false"); });
+    $$("[data-list-count]").forEach(function (x) { x.textContent = n ? String(n) : ""; });
+  }
+  function toggle(s, item) {
+    var l = items(), i = -1;
+    l.forEach(function (x, k) { if (x.s === s) i = k; });
+    if (i >= 0) l.splice(i, 1); else if (item) { item.s = s; item.a = Date.now(); l.unshift(item); }
+    store(LIST, l.slice(0, 200));
+  }
+  function saver() {
+    $$("button[data-save]").forEach(function (b) {
+      b.hidden = false;
+      b.addEventListener("click", function (e) {
+        e.preventDefault(); e.stopPropagation();
+        var it = {};
+        try { it = JSON.parse(b.getAttribute("data-item") || "{}"); } catch (err) {}
+        toggle(b.getAttribute("data-save"), it); sync();
+      });
+    });
+    sync();
+  }
+  function visits() {
+    var now = Date.now(), v = load(VISIT, null), since = 0;
+    if (v && typeof v.last === "number") since = now - v.last > 1800000 ? v.last : (typeof v.prev === "number" ? v.prev : 0);
+    store(VISIT, { last: now, prev: since });
+    if (!since) return;
+    $$("li.card[data-seen]").forEach(function (x) { if (Date.parse(x.getAttribute("data-seen")) > since) x.setAttribute("data-new", ""); });
+  }
+  function el(tag, cls, text) { var x = d.createElement(tag); if (cls) x.className = cls; if (text != null) x.textContent = text; return x; }
+  function render() {
+    var root = d.querySelector("[data-list-root]");
+    if (!root) return;
+    var L = function (k) { return root.getAttribute("data-l-" + k) || ""; };
+    var all = items(), now = Date.now();
+    if (!all.length) return;
+    root.textContent = "";
+    var groups = {}, order = [], lines = [], ended = 0;
+    all.forEach(function (x) { var m = typeof x.m === "string" && x.m ? x.m : L("unknown"); if (!groups[m]) { groups[m] = []; order.push(m); } groups[m].push(x); });
+    order.forEach(function (m) {
+      var g = groups[m], sum = 0, cur = "CHF", sec = el("section", "list-store"), ul = el("ul", "sib-list");
+      ul.setAttribute("role", "list");
+      lines.push(m + ":");
+      g.forEach(function (x) {
+        var gone = typeof x.e === "string" && Date.parse(x.e) < now;
+        if (gone) ended++;
+        if (typeof x.p === "number" && !gone) { sum += x.p; cur = x.c || cur; }
+        var li = el("li", gone ? "gone" : null), a = el("a"), title = String(x.t || x.s).slice(0, 160);
+        a.href = "/" + lang() + "/deal/" + x.s;
+        a.appendChild(el("span", "sib-price", typeof x.p === "number" ? money(x.p, x.c) : "–"));
+        a.appendChild(el("span", "sib-label", title + (x.u ? " · " + x.u : "") + (gone ? " · " + L("ended") : "")));
+        var del = el("button", "list-del", "×");
+        del.type = "button"; del.setAttribute("aria-label", L("remove") + ": " + title);
+        del.addEventListener("click", function () { toggle(x.s); sync(); if (items().length) render(); else location.reload(); });
+        li.appendChild(a); li.appendChild(del); ul.appendChild(li);
+        lines.push("- " + title + (typeof x.p === "number" ? " (" + money(x.p, x.c) + ")" : ""));
+      });
+      sec.appendChild(el("h2", null, m));
+      sec.appendChild(el("p", "section-note", L("items").replace("{n}", g.length) + (sum ? " · " + L("total").replace("{sum}", money(sum, cur)) : "")));
+      sec.appendChild(ul);
+      root.appendChild(sec);
+    });
+    var bar = el("p", "list-actions"), share = el("button", "btn btn-secondary", L("share")), status = el("span", "share-status");
+    share.type = "button"; status.setAttribute("role", "status");
+    share.addEventListener("click", function () {
+      var text = L("share-head") + "\n\n" + lines.join("\n") + "\n\n" + location.origin + "/" + lang() + "/st-gallen";
+      if (navigator.share) navigator.share({ text: text }).catch(function () {});
+      else if (navigator.clipboard) navigator.clipboard.writeText(text).then(function () { status.textContent = L("copied"); }, function () {});
+    });
+    bar.appendChild(share);
+    if (ended) {
+      var clr = el("button", "btn btn-secondary", L("clear"));
+      clr.type = "button";
+      clr.addEventListener("click", function () { store(LIST, items().filter(function (x) { return !(typeof x.e === "string" && Date.parse(x.e) < Date.now()); })); sync(); if (items().length) render(); else location.reload(); });
+      bar.appendChild(clr);
+    }
+    bar.appendChild(status);
+    root.appendChild(bar);
+  }
+  function retention() { if (!storageOk()) return; visits(); saver(); render(); }
+
+  function init() { moved(); markExpired(); centerChip(); share(); consent(); retention(); }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
