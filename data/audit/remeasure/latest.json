@@ -1,0 +1,270 @@
+{
+ "generated_at": "2026-11-06T20:18:12+01:00",
+ "day": {
+  "sampled": 60,
+  "verifiable": 60,
+  "unverifiable": 0,
+  "skipped": 0,
+  "M1": {
+   "x": 15,
+   "n": 60,
+   "rate": 0.25,
+   "wilson95": [
+    0.1578,
+    0.3723
+   ],
+   "cp_upper95": 0.3585
+  },
+  "M2": {
+   "x": 15,
+   "n": 59,
+   "rate": 0.2542,
+   "wilson95": [
+    0.1606,
+    0.378
+   ],
+   "cp_upper95": 0.3642
+  },
+  "M_soft": {
+   "x": 0,
+   "n": 60,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.0602
+   ],
+   "cp_upper95": 0.0487
+  },
+  "by_source": {
+   "aldi": {
+    "n": 7,
+    "H": 0,
+    "S": 0,
+    "OK": 7,
+    "U": 0,
+    "SKIP": 0
+   },
+   "denner": {
+    "n": 11,
+    "H": 11,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   },
+   "dschungelkompass": {
+    "n": 2,
+    "H": 0,
+    "S": 0,
+    "OK": 2,
+    "U": 0,
+    "SKIP": 0
+   },
+   "lidl": {
+    "n": 3,
+    "H": 0,
+    "S": 0,
+    "OK": 3,
+    "U": 0,
+    "SKIP": 0
+   },
+   "migros": {
+    "n": 2,
+    "H": 0,
+    "S": 0,
+    "OK": 2,
+    "U": 0,
+    "SKIP": 0
+   },
+   "preispirat": {
+    "n": 3,
+    "H": 0,
+    "S": 0,
+    "OK": 3,
+    "U": 0,
+    "SKIP": 0
+   },
+   "qoqa": {
+    "n": 2,
+    "H": 0,
+    "S": 0,
+    "OK": 2,
+    "U": 0,
+    "SKIP": 0
+   },
+   "rappn": {
+    "n": 9,
+    "H": 2,
+    "S": 0,
+    "OK": 7,
+    "U": 0,
+    "SKIP": 0
+   },
+   "revendo": {
+    "n": 19,
+    "H": 0,
+    "S": 0,
+    "OK": 19,
+    "U": 0,
+    "SKIP": 0
+   },
+   "studentbeans": {
+    "n": 1,
+    "H": 1,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   },
+   "unidays": {
+    "n": 1,
+    "H": 1,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   }
+  },
+  "causes": {
+   "exists": 13,
+   "location": 1,
+   "online": 1
+  }
+ },
+ "rolling_7d": {
+  "sampled": 60,
+  "verifiable": 60,
+  "unverifiable": 0,
+  "skipped": 0,
+  "M1": {
+   "x": 15,
+   "n": 60,
+   "rate": 0.25,
+   "wilson95": [
+    0.1578,
+    0.3723
+   ],
+   "cp_upper95": 0.3585
+  },
+  "M2": {
+   "x": 15,
+   "n": 59,
+   "rate": 0.2542,
+   "wilson95": [
+    0.1606,
+    0.378
+   ],
+   "cp_upper95": 0.3642
+  },
+  "M_soft": {
+   "x": 0,
+   "n": 60,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.0602
+   ],
+   "cp_upper95": 0.0487
+  },
+  "by_source": {
+   "aldi": {
+    "n": 7,
+    "H": 0,
+    "S": 0,
+    "OK": 7,
+    "U": 0,
+    "SKIP": 0
+   },
+   "denner": {
+    "n": 11,
+    "H": 11,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   },
+   "dschungelkompass": {
+    "n": 2,
+    "H": 0,
+    "S": 0,
+    "OK": 2,
+    "U": 0,
+    "SKIP": 0
+   },
+   "lidl": {
+    "n": 3,
+    "H": 0,
+    "S": 0,
+    "OK": 3,
+    "U": 0,
+    "SKIP": 0
+   },
+   "migros": {
+    "n": 2,
+    "H": 0,
+    "S": 0,
+    "OK": 2,
+    "U": 0,
+    "SKIP": 0
+   },
+   "preispirat": {
+    "n": 3,
+    "H": 0,
+    "S": 0,
+    "OK": 3,
+    "U": 0,
+    "SKIP": 0
+   },
+   "qoqa": {
+    "n": 2,
+    "H": 0,
+    "S": 0,
+    "OK": 2,
+    "U": 0,
+    "SKIP": 0
+   },
+   "rappn": {
+    "n": 9,
+    "H": 2,
+    "S": 0,
+    "OK": 7,
+    "U": 0,
+    "SKIP": 0
+   },
+   "revendo": {
+    "n": 19,
+    "H": 0,
+    "S": 0,
+    "OK": 19,
+    "U": 0,
+    "SKIP": 0
+   },
+   "studentbeans": {
+    "n": 1,
+    "H": 1,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   },
+   "unidays": {
+    "n": 1,
+    "H": 1,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   }
+  },
+  "causes": {
+   "exists": 13,
+   "location": 1,
+   "online": 1
+  }
+ },
+ "slo": {
+  "M1_max": 0.03,
+  "M2_max": 0.015,
+  "judged_on": "cp_upper95"
+ }
+}
