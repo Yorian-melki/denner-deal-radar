@@ -3,7 +3,7 @@ import type { City } from "@/config/cities";
 import { AdSlot } from "@/components/AdSlot";
 import { adClient } from "@/lib/operator";
 import { CategoryChips, EmptyState, TelegramCta } from "@/components/CityDashboard";
-import { DealGrid } from "@/components/DealCard";
+import { DealGrid, hasPriceInfo } from "@/components/DealCard";
 import { Icon } from "@/components/Icon";
 import { JsonLd, breadcrumbLd } from "@/components/JsonLd";
 import { categoryBySlug, isSupermarket } from "@/lib/categories";
@@ -81,13 +81,26 @@ const isGrocer = (d: PublicDeal) => isSupermarket(d.merchant, d.source) || d.fam
 
 export const storeSlug = (d: PublicDeal) => (d.merchant ? slugify(d.merchant) : "");
 
+/** Liste classée d'une catégorie (grille et pagination) : dans les catégories de prix, seulement
+ * les cartes avec un prix, un pourcentage ou « gratis » (round 4, item 15). */
 export function categoryList(deals: PublicDeal[], slug: string, store?: string) {
+  const all = categoryListAll(deals, slug, store);
+  return PRICE_CATEGORIES.has(slug) ? all.filter(hasPriceInfo) : all;
+}
+/** Cartes sans prix d'une catégorie de prix : « Ohne Preisangabe (n) », en fin de page 1. */
+export const unpricedList = (deals: PublicDeal[], slug: string, store?: string) =>
+  PRICE_CATEGORIES.has(slug) ? categoryListAll(deals, slug, store).filter((d) => !hasPriceInfo(d)) : [];
+
+function categoryListAll(deals: PublicDeal[], slug: string, store?: string) {
   let list = canonical(deals).filter((d) => d.category === slug);
   if (slug === "supermarkt-aktionen") list = list.filter(isGrocer);
   // Page d'un magasin : un seul magasin, aucun entrelacement (mais toujours sans alcool en tête).
   if (store) return interleave(rankDeals(list.filter((d) => storeSlug(d) === store)), { maxRun: Infinity, alcoholFreeTop: ALCOHOL_FREE_TOP });
   return orderCategory(list, slug);
 }
+
+/** Catégories où une carte sans prix n'entre pas dans la grille (round 4, item 15). */
+export const PRICE_CATEGORIES = new Set(["tech-deals", "shopping", "haushalt", "refurbished", "supermarkt-aktionen"]);
 
 export const pageCount = (n: number) => Math.max(1, Math.ceil(n / PAGE_SIZE));
 
@@ -163,6 +176,9 @@ export function CategoryListing({ city, locale, slug, page, here, now, store }: 
   const t = dict(locale);
   const txt = categoryText(locale, slug);
   const ordered = categoryList(here, slug, store?.slug);
+  // Catégories de prix (round 4, item 15) : une carte sans prix ni pourcentage ne va jamais dans la
+  // grille classée ; elle est listée à part, en fin de page 1, dans « Ohne Preisangabe (n) ».
+  const noPrice = page === 1 ? unpricedList(here, slug, store?.slug) : [];
   const pages = pageCount(ordered.length);
   const slice = ordered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
   const catBase = paths.category(locale, city.slug, slug);
@@ -204,7 +220,7 @@ export function CategoryListing({ city, locale, slug, page, here, now, store }: 
           ))}
         </nav>
       )}
-      {ordered.length === 0 ? (
+      {ordered.length === 0 && noPrice.length === 0 ? (
         <EmptyState city={city} locale={locale} deals={here} exclude={slug} />
       ) : (
         <section aria-labelledby="results" className="section section-first">
@@ -221,6 +237,13 @@ export function CategoryListing({ city, locale, slug, page, here, now, store }: 
               <span className="pager-pos">{t.pageOf(page, pages)}</span>
               {page < pages ? <a className="btn btn-secondary" href={pageHref(page + 1)} rel="next">{t.nextPage}</a> : <span />}
             </nav>
+          )}
+          {noPrice.length > 0 && (
+            <details className="no-price">
+              <summary>{t.noPriceTitle(noPrice.length)}</summary>
+              <p className="section-note">{t.noPriceNote}</p>
+              <DealGrid deals={noPrice} locale={locale} now={now} />
+            </details>
           )}
           {/* Publicité : après les résultats, jamais dans la liste classée. */}
           <AdSlot label={t.adLabel} client={adClient()} />

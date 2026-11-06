@@ -4,7 +4,7 @@ import { CITIES, mainCity } from "@/config/cities";
 import { TelegramCta } from "@/components/CityDashboard";
 import {
   DealGrid, DealTitle, PriceLine, dateText, displayTitle, noScoreReason, outbound, savingText, sellerName, showsRef, shownScore,
-  subscriptionText, valueText,
+  sizeParts, subscriptionText, valueText,
 } from "@/components/DealCard";
 import { Icon } from "@/components/Icon";
 import { JsonLd, breadcrumbLd } from "@/components/JsonLd";
@@ -15,7 +15,7 @@ import { HTML_LANG, OG_LOCALE, categoryText, dict, isLocale, type Locale } from 
 import { AGGREGATOR_SOURCES, sourceName } from "@/lib/merchant";
 import { hostOf } from "@/lib/outbound";
 import { hasPage, inCity } from "@/lib/project";
-import { HISTORY_MIN_OBSERVATIONS, canonical, confidenceTier, hasRealEnd, isLowestSeen, relatedDeals, scoreTier } from "@/lib/select";
+import { HISTORY_MIN_OBSERVATIONS, canonical, conditionOf, confidenceTier, hasRealEnd, isLowestSeen, relatedDeals, scoreTier, siblingsOf } from "@/lib/select";
 import { SITE_NAME, SITE_URL, alternates, ogImage, paths } from "@/lib/site";
 import { titleLang } from "@/lib/titleLang";
 import type { PublicDeal } from "@/lib/types";
@@ -72,7 +72,8 @@ function Facts({ d, locale, generatedAt, now }: { d: PublicDeal; locale: Locale;
   const t = dict(locale);
   const money = (v: number) => fmtPrice(v, d.currency, locale);
   const rows: [string, React.ReactNode][] = [];
-  if (d.referenceType && d.referenceType !== "none") rows.push([t.refType, t.refTypes[d.referenceType] ?? d.referenceType]);
+  // « Vergleichsbasis: keine » quand il n'y a pas de référence (round 4, item 15) : jamais une ligne absente.
+  rows.push([t.refType, d.referenceType && d.referenceType !== "none" ? t.refTypes[d.referenceType] ?? d.referenceType : t.refTypes.none]);
   if (showsRef(d) && d.refObserved) rows.push([t.refPrice, t.refObserved(d.historyN ?? 0)]);
   const n = d.historyN ?? 0;
   if (n >= HISTORY_MIN_OBSERVATIONS) {
@@ -129,6 +130,34 @@ function More({ d, deals, locale, now, title }: { d: PublicDeal; deals: PublicDe
         <a className="section-more" href={href}><span aria-hidden="true">{t.seeAll(fmtInt(total, locale))}</span><span className="sr-only">{t.seeAllIn(fmtInt(total, locale), cat.label)}</span><Icon name="arrow" size={16} /></a>
       </div>
       {related.length > 0 && <DealGrid deals={related} locale={locale} now={now} labelledBy="related" />}
+    </section>
+  );
+}
+
+/** Autres offres du même produit chez le même magasin (round 4, item 11) : prix croissant, état. */
+const SIBLINGS_MAX = 12;
+function Siblings({ d, deals, locale }: { d: PublicDeal; deals: PublicDeal[]; locale: Locale }) {
+  const t = dict(locale);
+  const sib = siblingsOf(deals.filter(hasPage), d);
+  if (!sib.length) return null;
+  return (
+    <section className="section deal-siblings" aria-labelledby="siblings">
+      <h2 id="siblings">{t.siblingsTitle(sellerName(d, locale), sib.length)}</h2>
+      <ul className="sib-list" role="list">
+        {sib.slice(0, SIBLINGS_MAX).map((x) => {
+          const c = conditionOf(x.title);
+          const size = sizeParts(x, locale).join(" · ");
+          return (
+            <li key={x.slug}>
+              <a href={paths.deal(locale, x.slug)}>
+                <span className="sib-price">{x.price === undefined ? "–" : x.price === 0 ? t.free : fmtPrice(x.price, x.currency, locale)}</span>
+                <span className="sib-label">{c ? t.condRange([t.conditionNames[c] ?? c, t.conditionNames[c] ?? c]) : size || x.title}</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      {sib.length > SIBLINGS_MAX && <p className="section-foot">{t.siblingsMore(sib.length - SIBLINGS_MAX)}</p>}
     </section>
   );
 }
@@ -196,6 +225,9 @@ export default async function DealPage({ params }: P) {
   const sub = subscriptionText(d, locale);
   const conds = conditionLines(d.conds, t, locale, money);
   if (d.unitPrice !== undefined && d.unit && d.unit !== "month") conds.unshift(`${colon(t.unitPrice, locale)} ${money(d.unitPrice)}${t.units[d.unit]}`);
+  // Quantité (round 4, item 26) : même ligne que la carte, en tête des conditions.
+  const qty = sizeParts(d, locale);
+  if (qty.length) conds.unshift(qty.join(" · "));
   if (d.requiresStudent) conds.unshift(t.studentsOnly);
   if (d.trial) conds.unshift(t.trial);
   if (isLowestSeen(d)) conds.push(t.lowestSeen);
@@ -309,6 +341,7 @@ export default async function DealPage({ params }: P) {
         </section>
       </article>
 
+      <Siblings d={d} deals={deals} locale={locale} />
       <More d={d} deals={deals} locale={locale} now={now} />
       <TelegramCta locale={locale} />
       {jsonLd && <JsonLd data={jsonLd} />}

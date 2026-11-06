@@ -1,4 +1,4 @@
-// Le seul JavaScript du site (≈ 3 Ko, sans dépendance, CSP script-src 'self').
+// Le seul JavaScript du site (≈ 9 Ko, sans dépendance, CSP script-src 'self').
 // Tout fonctionne sans lui : il ne fait qu'améliorer. Aucune donnée personnelle,
 // aucun cookie ; localStorage seulement pour le choix publicitaire (13 mois).
 (function () {
@@ -149,6 +149,18 @@
     });
   }
 
-  function init() { markExpired(); centerChip(); share(); consent(); }
+  // 8. Ancien lien deal sorti du budget de redirections (round 4, item 28) : la 404 des pages deal
+  //    lit sa cible dans /s/moved.<hash>.json (même origine) et y mène, sinon la 404 reste.
+  function moved() {
+    var m = d.querySelector("main[data-moved]"), p = location.pathname.match(/^\/(de|fr|en)\/deal\/([a-z0-9-]+)\/?$/);
+    if (!m || !p || !window.fetch) return;
+    var h = p[2].slice(p[2].lastIndexOf("-") + 1);
+    fetch(m.getAttribute("data-moved")).then(function (r) { return r.ok ? r.json() : {}; }).then(function (map) {
+      var t = map[h];
+      if (typeof t === "string" && /^\/%\//.test(t)) location.replace(t.replace("%", p[1]) + location.search + location.hash);
+    }).catch(function () {});
+  }
+
+  function init() { moved(); markExpired(); centerChip(); share(); consent(); }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();

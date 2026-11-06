@@ -248,6 +248,44 @@ button { font: inherit; }
 .card-notes { color: var(--fg); }
 .note-ad { color: var(--muted); }
 
+.meta-unit { display: none !important; }
+/* La quantité est le dernier fait de la ligne en liste mobile ; ailleurs elle est masquée : pas de « · » final. */
+.card-meta > :nth-last-child(2):has(+ .meta-unit)::after { content: none; }
+@media (max-width: 639px) { .grid > .card .card-meta > :nth-last-child(2):has(+ .meta-unit)::after { content: "·" / ""; } }
+/* Mobile (round 4, item 16) : liste en rangées dans un groupe inset, séparateurs fins ; à gauche titre
+ * (2 lignes) puis quantité · magasin · date, à droite prix et pastille « −N % ». ≥ 5 deals au 1er écran. */
+@media (max-width: 639px) {
+  .grid { gap: 0; background: var(--surface); border: 1px solid var(--card-border); border-radius: var(--r-lg); box-shadow: var(--shadow); overflow: hidden; }
+  .grid > .card { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; row-gap: 2px; align-content: start; padding: 10px 16px; border: 0; border-radius: 0; box-shadow: none; }
+  .grid > .card + .card { border-top: 1px solid var(--hairline); }
+  .grid > .card > * { grid-column: 1; }
+  .grid > .card > .card-price { grid-column: 2; grid-row: 1 / span 3; flex-direction: column; flex-wrap: nowrap; align-items: flex-end; align-self: start; gap: 4px; margin: 0; text-align: right; }
+  .grid > .card .card-price .price { font-size: var(--t-title); line-height: var(--l-title); font-weight: var(--w-bold); white-space: nowrap; }
+  .grid > .card .card-price .price-unit { margin: -4px 0 0; }
+  .grid > .card .card-price .was { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .grid > .card .card-title { font-size: var(--t-headline); line-height: var(--l-headline); font-weight: var(--w-medium); }
+  .grid > .card .card-meta { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .grid > .card .card-meta > * { display: inline; }
+  .grid > .card .card-notes-minor, .grid > .card .note-minor { display: none; }
+  .grid > .card .card-price .cur { font-size: var(--t-caption); }
+  .grid > .card .card-unit { display: none; }
+  .grid > .card .meta-unit { display: inline !important; }
+  .grid > .card .badge { height: 26px; padding-top: 3px; min-width: 36px; }
+  .grid > .card:has(.card-link:focus-visible) { outline-offset: -3px; }
+}
+/* Cartes sans prix (round 4, item 15) : à part, repliées, jamais dans la grille classée. */
+.no-price { margin-top: 24px; }
+.no-price > summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-weight: var(--w-semi); color: var(--accent); }
+.no-price .grid { margin-top: 8px; }
+/* Page deal : autres offres du même produit chez le même magasin (round 4, item 11). */
+.sib-list { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 0; background: var(--surface); border: 1px solid var(--card-border); border-radius: var(--r-lg); overflow: hidden; }
+.sib-list li + li { border-top: 1px solid var(--hairline); }
+.sib-list a { display: flex; gap: 12px; align-items: baseline; min-height: 44px; padding: 10px 16px; color: var(--fg); }
+.sib-price { font-weight: var(--w-semi); font-variant-numeric: tabular-nums; min-width: 6.5em; }
+.sib-label { color: var(--muted); }
+.deal-siblings { margin-top: 32px; }
+.deal-siblings h2 { font-size: var(--t-headline); line-height: var(--l-headline); font-weight: var(--w-semi); }
+
 /* ---------- Note : badge neutre ; seule la note « Top » est teintée ---------- */
 .badge { flex: none; display: inline-flex; align-items: baseline; justify-content: center; min-width: 40px; height: 32px; padding: 6px 8px 0; border-radius: var(--r-sm); background: var(--fill); color: var(--fg); font-size: var(--t-callout); font-weight: var(--w-semi); font-variant-numeric: tabular-nums lining-nums; }
 .badge-of { font-size: var(--t-caption); font-weight: var(--w-regular); color: var(--muted); }

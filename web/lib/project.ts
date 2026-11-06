@@ -212,19 +212,82 @@ export function cleanTitle(t: string, opts: { discountPct?: number; keepLowest?:
   return s || t.trim();
 }
 
-/** Quantité lisible dans toutes les langues (round 3, item 14) : « 500 g », « 6 × 75 cl » ;
- * un nombre de pièces est rendu par langue (« 28 Stk. »). Rien d'autre (« Pro Stück », « 100 Waschgänge »). */
-export function packSize(raw: unknown, title: string): { text?: string; pieces?: number } | undefined {
-  const s = typeof raw === "string" ? raw.trim() : "";
-  const metric = /^(\d+(?:[.,]\d+)?)\s*(?:[x×]\s*(\d+(?:[.,]\d+)?)\s*)?(g|kg|ml|cl|dl|l)$/i;
-  let m = s.match(metric);
-  if (m) return { text: m[2] ? `${m[1]} × ${m[2]} ${m[3].toLowerCase()}` : `${m[1]} ${m[3].toLowerCase()}` };
-  if ((m = s.match(/^(\d{1,4})\s*(?:Stück|Stk\.?|pièces?|pces?)$/i))) return Number(m[1]) > 1 ? { pieces: Number(m[1]) } : undefined;
-  const t = title.match(/(?:(\d+)\s*[x×]\s*)?(\d+(?:[.,]\d+)?)\s*(kg|g|ml|cl|dl|l)\b/i);
-  if (t) return { text: t[1] ? `${t[1]} × ${t[2]} ${t[3].toLowerCase()}` : `${t[2]} ${t[3].toLowerCase()}` };
+/** Quantité lisible dans toutes les langues (round 3, item 14 ; round 4, item 26) : « 500 g », « 6 × 75 cl »,
+ * « ca. 350 g », « 28 Stk. · 840 g », « 104 Waschgänge » ; « Preis pro 100 g » quand le prix affiché vaut
+ * pour 100 g ou 1 kg. Lu dans `package_size` (n'importe où dans le texte : « Italien, 6 x 75 cl »), sinon
+ * la description, sinon le titre ; à défaut, la quantité totale déduite de prix ÷ prix unitaire publié
+ * quand elle tombe à ±2 % d'une valeur ronde (jamais un format deviné). */
+export type PackSize = NonNullable<PublicDeal["size"]>;
+const METRIC = /((?:\d+\s*[x×]\s*)*)(\d+(?:[.,]\d+)?)\s*(kg|g|ml|cl|dl|liter|l)\b/gi;
+const PIECES = /(\d+(?:\s*[x×]\s*\d+)*)\s*(?:Stück|Stk\.?|pièces?|pces?|Kapseln|capsules|Tabs|Beutel|Rollen)(?![\p{L}])/iu;
+const WASHES = /(\d+(?:\s*[x×]\s*\d+)*)\s*(?:Waschgänge|Spülgänge|lavages|washes)/i;
+const PER = /\b(?:per|pro|par)\s+(100\s*g|kg|100\s*ml|l)\b/i;
+const mul = (s: string) => s.split(/[x×]/).map((x) => Number(x.trim())).reduce((a, b) => a * b, 1);
+function sizeFrom(s: string): PackSize | undefined {
+  if (!s) return undefined;
+  const out: PackSize = {};
+  const metric = [...s.matchAll(METRIC)].filter((m) => !/(?:per|pro|par)\s*$/i.test(s.slice(0, m.index)));
+  const m = metric[metric.length - 1];
+  if (m) {
+    const n = (m[1] ?? "").trim().replace(/\s*[x×]\s*$/, "").split(/\s*[x×]\s*/).filter(Boolean);
+    const u = m[3].toLowerCase() === "liter" ? "l" : m[3].toLowerCase();
+    const v = m[2].replace(",", ".");
+    if (Number(v) > 0) {
+      out.text = [...n, `${v} ${u}`].join(" × ");
+      if (/(?:ca\.?|ungefähr|env\.?|approx\.?|circa)$/i.test(s.slice(0, m.index).trimEnd())) out.approx = true;
+    }
+  }
+  const p = s.match(PIECES);
+  if (p) { const n = mul(p[1]); if (n > 1 && n < 10000) out.pieces = n; }
+  const w = s.match(WASHES);
+  if (w) { const n = mul(w[1]); if (n > 1 && n < 1000) out.washes = n; }
+  const per = s.match(PER);
+  if (per && (out.text || /^\s*(?:per|pro|par)\s/i.test(s))) out.per = per[1].replace(/\s+/, " ").toLowerCase();
+  return out.text || out.pieces || out.washes || out.per ? out : undefined;
+}
+/** Quantité totale déduite du prix unitaire : « ca. 750 g », « ca. 1.5 l », « 6 Stk. » — seulement une valeur ronde. */
+export function inferSize(price: number | undefined, unitPrice: number | undefined, unit: string | undefined): PackSize | undefined {
+  if (!(price && price > 0) || !(unitPrice && unitPrice > 0) || !unit || unit === "month") return undefined;
+  const q = price / unitPrice;
+  if (unit === "piece") {
+    const n = Math.round(q);
+    return n > 1 && n < 1000 && Math.abs(q - n) / n <= 0.01 ? { pieces: n } : undefined;
+  }
+  const base = q * 1000; // g ou ml
+  for (const step of [250, 100, 50, 10, 5]) {
+    const r = Math.round(base / step) * step;
+    if (r > 0 && Math.abs(base - r) / r <= 0.02) {
+      const text = unit === "kg" ? (r >= 1000 ? `${r / 1000} kg` : `${r} g`) : r >= 1000 ? `${r / 1000} l` : r % 10 === 0 ? `${r / 10} cl` : `${r} ml`;
+      // Déduite d'un prix unitaire arrondi au centime : toujours « ca. ».
+      return { text, approx: true };
+    }
+  }
   return undefined;
 }
+export function packSize(raw: unknown, title: string, extra?: { description?: unknown; price?: number; unitPrice?: number; unit?: string }): PackSize | undefined {
+  const s = typeof raw === "string" ? raw.trim() : "";
+  if (/^(\d+(?:[.,]\d+)?)\s*(?:[x×]\s*(\d+(?:[.,]\d+)?)\s*)?(g|kg|ml|cl|dl|l)$/i.test(s)) {
+    const m = s.match(/^(\d+(?:[.,]\d+)?)\s*(?:[x×]\s*(\d+(?:[.,]\d+)?)\s*)?(g|kg|ml|cl|dl|l)$/i)!;
+    return { text: m[2] ? `${m[1]} × ${m[2]} ${m[3].toLowerCase()}` : `${m[1]} ${m[3].toLowerCase()}` };
+  }
+  const fromRaw = sizeFrom(s);
+  if (fromRaw && (fromRaw.text || fromRaw.pieces || fromRaw.washes)) return fromRaw;
+  const desc = typeof extra?.description === "string" ? sizeFrom(extra.description) : undefined;
+  if (desc && (desc.text || desc.pieces || desc.washes)) return { ...desc, ...(fromRaw?.per ? { per: fromRaw.per } : {}) };
+  const t = title.match(/(?:(\d+)\s*[x×]\s*)?(\d+(?:[.,]\d+)?)\s*(kg|g|ml|cl|dl|l)\b/i);
+  if (t) return { text: t[1] ? `${t[1]} × ${t[2]} ${t[3].toLowerCase()}` : `${t[2]} ${t[3].toLowerCase()}` };
+  const inferred = fromRaw?.per ? undefined : inferSize(extra?.price, extra?.unitPrice, extra?.unit);
+  if (inferred) return inferred;
+  return fromRaw;
+}
 
+/** Part minimale des actions Supermarkt (avec prix unitaire publié) qui affichent leur quantité. */
+export const MIN_QTY_COVERAGE = 0.8;
+export function qtyCoverage(deals: PublicDeal[]): { n: number; share: number } {
+  const base = deals.filter((d) => d.category === "supermarkt-aktionen" && d.price !== undefined && d.unitPrice !== undefined && d.unit !== "month");
+  const ok = base.filter((d) => !!d.size).length;
+  return { n: base.length, share: base.length ? ok / base.length : 1 };
+}
 /** Réduction étudiante « Marque: (bis zu) 15% Studentenrabatt » → titre dans chaque langue
  * (round 3, item 8). Seulement si le titre ne dit rien de plus (sinon : titre d'origine, lang=). */
 const STUDENT_TITLE = /^([^:]{1,40}):\s*(bis zu|up to|jusqu[’']à)?\s*(\d{1,2})\s?%\*?\s*(?:Studentenrabatt|Studierendenrabatt|Student(?:en)?\s?Discount|Rabatt(?:\s+für\s+Studierende)?|discount|off|de réduction(?: étudiante)?)?\s*(auf alles|auf das gesamte Sortiment|on everything|sitewide|site-wide|sur tout)?\s*$/i;
@@ -460,7 +523,7 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date, opts: { expired?:
     currency: str(d.currency) ?? feed.currency,
     unitPrice,
     unit,
-    size: packSize(d.package_size, rawTitle),
+    size: packSize(d.package_size, rawTitle, { description: d.description, price, unitPrice, unit }),
     sub: subscription(d, price),
     netSavings,
     score,

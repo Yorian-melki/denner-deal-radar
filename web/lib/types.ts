@@ -69,8 +69,9 @@ export interface PublicDeal {
   entityId?: string;     // canonical_entity_id (gtin:, mpn:, sku:, t:, game:…)
   currency: string;
   unitPrice?: number;
-  /** Quantité de l'emballage (« 6 × 75 cl ») ou nombre de pièces. */
-  size?: { text?: string; pieces?: number };
+  /** Quantité de l'emballage (« 6 × 75 cl »), nombre de pièces ou de lavages ; `approx` = « ca. » ;
+   * `per` = le prix affiché vaut pour cette quantité (« 100 g », « kg »), round 4, item 26. */
+  size?: { text?: string; pieces?: number; washes?: number; approx?: boolean; per?: string };
   unit?: "kg" | "l" | "piece" | "month";
   sub?: Subscription;
   netSavings?: number;
@@ -96,6 +97,8 @@ export interface PublicDeal {
   page?: boolean;        // a sa propre page /<locale>/deal/<slug>
   alsoAt?: string[];     // autres marchands du même produit (lib/select.ts dedupeProducts)
   variants?: number;     // autres variétés de la même action chez le même marchand
+  /** Même produit chez le même magasin en plusieurs offres (round 4, item 11) : « 29 Angebote ab CHF 709 ». */
+  group?: { n: number; from?: number; conds?: [string, string] };
   /** Commence plus tard (startsAt > maintenant) : jamais en vitrine, jamais « jetzt ». */
   upcoming?: boolean;
   /** Vente en magasin (supermarché) : le dernier jour, retirée des vitrines à 18:00. */

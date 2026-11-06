@@ -21,14 +21,14 @@ import { createHash } from "node:crypto";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, rmdirSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { ALLOWED_ROUTES, MAIN_CITY, candidates, routesJson, securityTxt } from "./routes.mjs";
-import { MAX_LEGACY_LINES, legacyLines, legacyTargets, validateRegistry } from "../lib/slugs.ts";
+import { MAX_LEGACY_LINES, hashOfSlug, legacyLines, legacyTargets, validateRegistry } from "../lib/slugs.ts";
 import { SPIRITS, SPIRITS_FOOD, isAlcohol } from "../lib/blocklist.ts";
 
 const OUT = path.resolve(process.argv[2] ?? "out");
 const LOCALES = ["de", "fr", "en"];
 const CLICKS = process.env.CLICKS_BINDING === "1";
 const MAX_FILES = 18000;
-const BUDGET = { cityHtmlBytes: 60 * 1024, jsBytes: 8 * 1024 };
+const BUDGET = { cityHtmlBytes: 60 * 1024, jsBytes: 14 * 1024 };
 const ANALYTICS = /^[a-f0-9]{32}$/i.test(process.env.NEXT_PUBLIC_CF_BEACON_TOKEN ?? "");
 const errors = [];
 
@@ -166,7 +166,7 @@ for (const l of LOCALES) {
 
 // 5d. Anciens liens deal (round 4, item 1) : chaque slug déjà publié sans page reçoit un 301
 //     statique (une ligne par langue) vers la page actuelle de la même clé, sa catégorie ou la ville.
-let legacy = { lines: 0, deal: 0, category: 0, city: 0, dropped: 0 };
+let legacy = { lines: 0, deal: 0, category: 0, city: 0, dropped: 0, fallback: 0 };
 {
   const regFile = path.join(OUT, "slug-registry.json");
   const reg = existsSync(regFile) ? validateRegistry(JSON.parse(readFileSync(regFile, "utf8"))) : null;
@@ -186,6 +186,23 @@ let legacy = { lines: 0, deal: 0, category: 0, city: 0, dropped: 0 };
     for (const l of lines) {
       const to = l.split(" ")[1];
       if (!existsSync(path.join(OUT, `${to}.html`))) errors.push(`_redirects : cible inexistante ${to}`);
+    }
+    // Repli au-delà du budget de règles (round 4, item 28) : TOUS les anciens slugs (hachage → cible, « % » =
+    // langue) dans /s/moved.<hash>.json, lu par site.js sur la 404 des pages deal seulement (location.replace).
+    // Un lien WhatsApp vers une action sortie du budget mène donc à sa page actuelle, sa catégorie ou la ville.
+    const moved = {};
+    for (const t of targets) moved[hashOfSlug(t.slug)] ??= t.target("%");
+    const movedJson = JSON.stringify(moved);
+    const movedPath = `/s/moved.${createHash("sha256").update(movedJson).digest("hex").slice(0, 10)}.json`;
+    mkdirSync(path.join(OUT, "s"), { recursive: true });
+    writeFileSync(path.join(OUT, movedPath.slice(1)), movedJson);
+    legacy.fallback = Object.keys(moved).length;
+    for (const l of LOCALES) {
+      const f = path.join(OUT, l, "deal", "404.html");
+      if (!existsSync(f)) { errors.push(`404 des pages deal absente : ${l}/deal/404.html`); continue; }
+      const html = readFileSync(f, "utf8").replace(/<main id="main"/, `<main id="main" data-moved="${movedPath}"`);
+      if (!html.includes("data-moved=")) errors.push(`${l}/deal/404.html : <main id="main"> introuvable (repli des anciens liens)`);
+      writeFileSync(f, html);
     }
     // EN TÊTE du fichier : Cloudflare Pages traite toute règle placée après une règle dynamique
     // (:lang, *) comme dynamique, limite 100 — constaté en ligne le 29.10 (seules ~100 règles

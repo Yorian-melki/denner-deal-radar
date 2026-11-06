@@ -111,12 +111,25 @@ export function savingText(deal: PublicDeal, locale: Locale): string | undefined
   return dict(locale).savingLine(fmtPrice(saving, deal.currency, locale), deal.referenceType ?? "merchant_previous", !!deal.refObserved, sellerName(deal, locale));
 }
 
+/** Prix de comparaison cité par un agrégateur (Preispirat, Rappn), non vérifié : texte seulement. */
+export function curatorRef(deal: PublicDeal): number | undefined {
+  if (showsRef(deal) || deal.refKind !== "comparable" || !AGGREGATOR_SOURCES.has(deal.source)) return undefined;
+  return deal.referencePrice !== undefined && deal.price !== undefined && deal.referencePrice > deal.price ? deal.referencePrice : undefined;
+}
+
+/** Une carte publiable dans une grille de prix : un prix, un pourcentage annoncé ou « gratis » (round 4, item 15). */
+export const hasPriceInfo = (d: PublicDeal) => d.price !== undefined || (d.discountPct !== undefined && d.discountPct >= 1);
+
 /** Sans prix « statt » : ce que dit la source, en une phrase neutre (jamais d'économie chiffrée). */
 export function valueText(deal: PublicDeal, locale: Locale): string | undefined {
   const t = dict(locale);
   if (showsRef(deal)) return undefined;
   if (deal.integrity === "above_usual_price") return t.aboveUsual;
   if (deal.refKind === "vendor" && deal.referencePrice !== undefined) return t.vendorPrice(fmtPrice(deal.referencePrice, deal.currency, locale));
+  // Prix de comparaison d'un curateur (« Nächstbester Preis » de Preispirat, round 4, item 15) : en texte
+  // seulement, jamais de %, de note ni de place sur l'accueil (la référence n'est pas vérifiée).
+  const curator = curatorRef(deal);
+  if (curator !== undefined) return t.curatorRef(sourceName(deal.source), fmtPrice(curator, deal.currency, locale));
   if (deal.refKind === "vendor_pct" && deal.discountPct !== undefined && deal.discountPct >= 1 && !pctValue(deal, locale)) return t.vendorPct(fmtPct(deal.discountPct, locale));
   return undefined;
 }
@@ -170,32 +183,53 @@ export function subscriptionText(deal: PublicDeal, locale: Locale): string | und
   return parts.join(" · ") || undefined;
 }
 
+/** Quantité d'un deal dans la langue de la page (round 4, item 26) : « 28 Stk. », « ca. 350 g »,
+ * « 104 Waschgänge », « Preis pro 100 g ». Partagée par la carte et la page deal. */
+export function sizeParts(deal: PublicDeal, locale: Locale): string[] {
+  const t = dict(locale), z = deal.size;
+  if (!z) return [];
+  const parts: string[] = [];
+  if (z.pieces) parts.push(t.pieces(z.pieces));
+  if (z.text) parts.push(z.approx ? `${t.approx} ${z.text}` : z.text);
+  if (z.washes) parts.push(t.washes(z.washes));
+  if (z.per) parts.push(t.perQty(z.per === "kg" ? "kg" : z.per));
+  return parts;
+}
+
 /** Ligne quantité des cartes épicerie (round 3, item 14) : « 6 × 75 cl · CHF 16.27/l ».
  * Sans donnée : « Menge: siehe Anbieter » (jamais un prix sans quantité sans le dire). */
 export function unitLine(deal: PublicDeal, locale: Locale): string | undefined {
   if (deal.category !== "supermarkt-aktionen" || deal.price === undefined) return undefined;
   const t = dict(locale);
-  const parts: string[] = [];
-  if (deal.size?.text) parts.push(deal.size.text);
-  else if (deal.size?.pieces) parts.push(t.pieces(deal.size.pieces));
+  const parts = sizeParts(deal, locale);
   if (deal.unitPrice !== undefined && deal.unit && deal.unit !== "month") parts.push(`${fmtPrice(deal.unitPrice, deal.currency, locale)}${t.units[deal.unit]}`);
   // Sans quantité ni prix unitaire : rien (round 4, item 25), plus de « Menge: siehe Händler » répété.
   return parts.length ? parts.join(" · ") : undefined;
 }
 
-/** Mentions de la carte : conditions qui changent le prix réel + faits utiles. */
-export function cardNotes(deal: PublicDeal, locale: Locale, max = 2): string[] {
+/** Mentions de la carte : conditions qui changent le prix réel (`major`, toujours visibles, aussi en
+ * liste mobile) puis faits utiles (groupe, variétés, autres magasins : masqués en liste mobile). */
+export function cardNotesTagged(deal: PublicDeal, locale: Locale, max = 2): { text: string; major: boolean }[] {
   const t = dict(locale);
-  const out: string[] = [];
+  const out: { text: string; major: boolean }[] = [];
   const money = (v: number) => fmtPrice(v, deal.currency, locale);
-  out.push(...conditionLines(deal.conds.filter((c) => CARD_CONDITIONS.has(c.code)), t, locale, money).filter((s) => s !== t.condOther));
-  if (deal.requiresStudent && deal.category !== "studenten-rabatte") out.push(t.studentsOnly);
-  if (deal.trial) out.push(t.trial);
-  if (isLowestSeen(deal)) out.push(t.lowestSeen);
-  if (deal.variants) out.push(t.variants(deal.variants));
-  else if (deal.alsoAt?.length) out.push(t.alsoAt(deal.alsoAt.length));
+  const major = (text: string) => out.push({ text, major: true });
+  const minor = (text: string) => out.push({ text, major: false });
+  conditionLines(deal.conds.filter((c) => CARD_CONDITIONS.has(c.code)), t, locale, money).filter((s) => s !== t.condOther).forEach(major);
+  if (deal.requiresStudent && deal.category !== "studenten-rabatte") major(t.studentsOnly);
+  if (deal.trial) major(t.trial);
+  // Groupe (round 4, item 11) : « 29 Angebote ab CHF 709 · Zustand: wie neu – gebraucht ».
+  const g = deal.group;
+  if (g) {
+    minor(g.from !== undefined ? t.offersFrom(g.n, money(g.from)) : t.offers(g.n));
+    if (g.conds) minor(t.condRange(g.conds.map((c) => t.conditionNames[c] ?? c)));
+  }
+  if (isLowestSeen(deal)) minor(t.lowestSeen);
+  if (deal.variants) minor(t.variants(deal.variants));
+  else if (deal.alsoAt?.length) minor(t.alsoAt(deal.alsoAt.length));
   return out.slice(0, max);
 }
+export const cardNotes = (deal: PublicDeal, locale: Locale, max = 2) => cardNotesTagged(deal, locale, max).map((n) => n.text);
 
 export const dealHref = (deal: PublicDeal, locale: Locale) => (hasPage(deal) ? paths.deal(locale, deal.slug) : undefined);
 
@@ -210,7 +244,7 @@ export function DealCard({ deal, locale, headingLevel = 3, showcase = false, now
   const value = valueText(deal, locale);
   const date = dateText(deal, locale, now);
   const sub = subscriptionText(deal, locale);
-  const notes = cardNotes(deal, locale);
+  const notes = cardNotesTagged(deal, locale);
   const H = headingLevel === 2 ? "h2" : "h3";
   const seller = deal.merchant;
   // Source agrégée : « via Preispirat » (promesse de /transparenz) ; Studis : « Konto nötig ».
@@ -235,11 +269,12 @@ export function DealCard({ deal, locale, headingLevel = 3, showcase = false, now
         {account && <span>{account}</span>}
         {value && <span>{value}</span>}
         {date && <span data-date="">{hasRealEnd(deal) && !deal.upcoming ? <time dateTime={deal.endsAt}>{date}</time> : date}</span>}
+        {unit && <span className="meta-unit">{unit}</span>}
       </p>
       {sub && <p className="card-sub">{sub}</p>}
       {notes.length > 0 && (
-        <p className="card-notes">
-          {notes.map((n) => <span key={n} className="note">{n}</span>)}
+        <p className={notes.some((n) => n.major) ? "card-notes" : "card-notes card-notes-minor"}>
+          {notes.map((n) => <span key={n.text} className={n.major ? "note" : "note note-minor"}>{n.text}</span>)}
         </p>
       )}
     </li>

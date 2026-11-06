@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { FEEDS } from "@/config/cities";
 import { cleanOutbound } from "@/lib/outbound";
-import { markPages, projectExpired, projectFeed, rankDeals, setCanonicalSlugs } from "@/lib/project";
+import { MIN_QTY_COVERAGE, markPages, projectExpired, projectFeed, qtyCoverage, rankDeals, setCanonicalSlugs } from "@/lib/project";
 import { SITE_URL } from "@/lib/site";
 import { REGISTRY_PATH, type SlugRegistry, mergeRegistries, updateRegistry, validateRegistry } from "@/lib/slugs";
 import type { PublicDeal, RawDeal } from "@/lib/types";
@@ -112,6 +112,11 @@ export async function getDeals(): Promise<Loaded> {
   const unknown = deals.filter((d) => !d.merchant).length / deals.length;
   console.log(JSON.stringify({ level: "info", msg: "unknown_merchant", share: Math.round(unknown * 1000) / 10 }));
   if (unknown > MAX_UNKNOWN_MERCHANT && process.env.DATA_FIXTURE !== "1") throw new Error(`${Math.round(unknown * 1000) / 10} % de deals sans marchand (> 2 %) — compléter lib/merchant.ts`);
+  // Quantité des cartes Supermarkt (round 4, item 26) : parmi les actions dont la source publie une
+  // quantité ou un prix unitaire, au moins 80 % affichent la quantité, sinon le build échoue.
+  const qty = qtyCoverage(deals);
+  console.log(JSON.stringify({ level: "info", msg: "qty_coverage", share: Math.round(qty.share * 1000) / 10, n: qty.n }));
+  if (qty.n >= 50 && qty.share < MIN_QTY_COVERAGE && process.env.DATA_FIXTURE !== "1") throw new Error(`quantité affichée sur ${Math.round(qty.share * 100)} % des actions Supermarkt (< 80 %) — compléter packSize (lib/project.ts)`);
   const live = markPages(rankDeals(deals));
   const liveSlugs = new Set(live.map((d) => d.slug));
   const expired = raws.flatMap((x) => projectExpired(x.raw, x.f, x.now, liveSlugs));

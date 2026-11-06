@@ -79,7 +79,55 @@ export function dedupeProducts(deals: PublicDeal[]): PublicDeal[] {
     if (!k) out.push(d);
     else if (winner.get(k)?.id === d.id) out.push(winner.get(k)!);
   }
+  return groupSameTitle(out);
+}
+
+/* ------------------------------------------- même produit, même magasin (round 4, item 11) */
+
+/** États Revendo (« … / 64 GB / Wi-Fi / Sehr gut / Neu »), du meilleur au moins bon. */
+export const CONDITION_ORDER = ["Neu", "Wie neu", "Sehr gut", "Gut", "Akzeptabel", "Gebraucht"];
+/** Titre de base : sans « Outlet - » ni le suffixe « / 64 GB / Wi-Fi / Gut / … ». */
+export const baseTitle = (t: string) => t.replace(/^\s*Outlet\s*[-–]\s*/i, "").split(" / ")[0].trim();
+/** État de l'article lu dans le suffixe du titre (premier segment reconnu après le titre de base). */
+export function conditionOf(t: string): string | undefined {
+  return t.split(" / ").slice(1).map((x) => x.trim()).find((x) => CONDITION_ORDER.includes(x));
+}
+/** Clé de doublon : catégorie + magasin + titre de base normalisé (/transparenz : « zählt einmal »). */
+export const titleKey = (d: PublicDeal) => `${d.category}|${merchantKey(d)}|${baseTitle(d.title).toLowerCase().replace(/\s+/g, " ")}`;
+
+/** Regroupe les cartes d'un même produit chez un même magasin (états, formats, prix différents) :
+ * la PREMIÈRE dans l'ordre reçu (le classement) représente le groupe, avec `group` = nombre
+ * d'offres, prix le plus bas et étendue des états. Les autres gardent leur page (listées sur la page deal). */
+export function groupSameTitle(list: PublicDeal[]): PublicDeal[] {
+  const groups = new Map<string, PublicDeal[]>();
+  for (const d of list) {
+    const k = titleKey(d);
+    groups.set(k, [...(groups.get(k) ?? []), d]);
+  }
+  const out: PublicDeal[] = [];
+  for (const d of list) {
+    const g = groups.get(titleKey(d))!;
+    if (g.length === 1) { out.push(d); continue; }
+    if (g[0] !== d) continue;
+    const prices = g.map((x) => x.price).filter((p): p is number => p !== undefined);
+    const conds = [...new Set(g.map((x) => conditionOf(x.title)).filter((c): c is string => !!c))]
+      .sort((a, b) => CONDITION_ORDER.indexOf(a) - CONDITION_ORDER.indexOf(b));
+    const n = g.reduce((s, x) => s + 1 + (x.variants ?? 0), 0);
+    out.push({
+      ...d,
+      title: baseTitle(d.title) || d.title,
+      variants: undefined,
+      group: { n, from: prices.length ? Math.min(...prices) : undefined, conds: conds.length ? [conds[0], conds[conds.length - 1]] : undefined },
+    });
+  }
   return out;
+}
+
+/** Autres offres du même produit chez le même magasin (page deal), prix croissant. */
+export function siblingsOf(deals: PublicDeal[], d: PublicDeal): PublicDeal[] {
+  const k = titleKey(d);
+  return deals.filter((x) => x.id !== d.id && x.slug !== d.slug && titleKey(x) === k)
+    .sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity) || a.title.localeCompare(b.title));
 }
 
 /** Liste canonique d'une ville : la SEULE source de tous les compteurs (puces,

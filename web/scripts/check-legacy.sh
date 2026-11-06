@@ -15,7 +15,18 @@ while IFS= read -r x; do slugs+=("$x"); done < <( { printf '%s\n' swisscom-blue-
 for s in "${slugs[@]}"; do
   # Slug du constat sorti du budget de règles (MAX_LEGACY_LINES, plus récents d'abord ; round 4,
   # item 28 ouvert) : signalé, pas un échec — seules les règles réellement émises sont contrôlées.
-  if [ -f "$REDIRECTS" ] && ! grep -q "^/de/deal/$s " "$REDIRECTS"; then echo "hors budget (pas de règle) : $s"; continue; fi
+  # Hors budget : le repli JS de la 404 (round 4, item 28) doit connaître le slug et mener à une page 200.
+  if [ -f "$REDIRECTS" ] && ! grep -q "^/de/deal/$s " "$REDIRECTS"; then
+    for l in de fr en; do
+      moved=$(curl -sS --max-time 20 "$ORIGIN/$l/deal/$s" | grep -o 'data-moved="[^"]*"' | head -1 | cut -d'"' -f2 || true)
+      if [ -z "$moved" ]; then echo "ÉCHEC repli $l/$s : pas de data-moved sur la 404"; fail=1; continue; fi
+      target=$(curl -sS --max-time 20 "$ORIGIN$moved" | node -e 'let s="";process.stdin.on("data",c=>s+=c).on("end",()=>{const m=JSON.parse(s);const h=process.argv[1];const t=m[h.slice(h.lastIndexOf("-")+1)];process.stdout.write(t?t.replace("%",process.argv[2]):"")})' "$s" "$l")
+      if [ -z "$target" ]; then echo "ÉCHEC repli $l/$s : absent de $moved"; fail=1; continue; fi
+      tcode=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 "$ORIGIN$target")
+      if [ "$tcode" != "200" ]; then echo "ÉCHEC repli $l/$s → $target : $tcode"; fail=1; else echo "repli JS : $l/$s → $target"; fi
+    done
+    continue
+  fi
   for l in de fr en; do
     h=$(curl -sS -o /dev/null -D - --max-time 20 "$ORIGIN/$l/deal/$s" || true)
     code=$(printf '%s' "$h" | awk 'NR==1{print $2}')
