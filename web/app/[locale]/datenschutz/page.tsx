@@ -4,9 +4,12 @@ import { LegalHead, legalMetadata } from "@/components/Legal";
 import type { Locale } from "@/lib/i18n";
 import { isOperatorComplete, operator, adClient } from "@/lib/operator";
 
-// LAWYER-CHECK : (1) le responsable vit en Suisse et vise aussi l'UE → art. 3(2) RGPD
-// applicable ; vérifier si un représentant UE (art. 27 RGPD) est exigé ou si
-// l'exception « traitement occasionnel, faible risque » (art. 27(2)) s'applique.
+// Responsable : micro-entreprise française (établie en France) → RGPD applicable directement
+// (art. 3(1)), autorité de contrôle chef de file : CNIL. LPD suisse applicable aux visiteurs
+// en Suisse (art. 3 LPD, effets en Suisse) ; représentant en Suisse (art. 14 LPD) non requis
+// tant que le traitement n'est ni à grande échelle ni à risque élevé (PFPDT, 06.11.2026).
+// LAWYER-CHECK : CNIL — les traceurs d'affiliation ne sont pas exemptés de consentement ;
+// ici aucun traceur n'est déposé par le site, seulement par le réseau après le clic.
 // (2) Transferts USA : Cloudflare et Google certifiés EU-US DPF / Swiss-US DPF —
 // vérifier la certification active au lancement (dataprivacyframework.gov).
 // (3) Durées de conservation Cloudflare à reconfirmer dans leurs docs au lancement.
@@ -24,7 +27,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
   const o = operator();
   const complete = isOperatorComplete(o);
   const controller = complete ? (
-    <p>{o.name}, {o.address.join(", ")}, <a href={`mailto:${o.email}`}>{o.email}</a></p>
+    <p>{o.name} ({{ de: "Einzelunternehmer, micro-entreprise", fr: "entrepreneur individuel, micro-entreprise", en: "sole trader, micro-entreprise" }[locale]}, SIRET {o.siret}), {o.address.join(", ")}, <a href={`mailto:${o.email}`}>{o.email}</a></p>
   ) : (
     <p className="note-box">{{ de: "Vorschau: Angaben zum Verantwortlichen folgen vor dem Start.", fr: "Prévisualisation : l’identité du responsable sera ajoutée avant le lancement.", en: "Preview: the controller’s details will be added before launch." }[locale]}</p>
   );
@@ -38,7 +41,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
       <LegalHead locale={locale} title={TITLE} />
       <section id="fr">
         <h2>En bref</h2>
-        <p>{SITE_NAME} ne demande aucun compte, ne dépose aucun cookie sans ton accord et ne crée aucun profil. Nous appliquons la loi suisse sur la protection des données (LPD) et, pour les visiteurs de l’UE/EEE, le RGPD.</p>
+        <p>{SITE_NAME} ne demande aucun compte, ne dépose aucun cookie sans ton accord et ne crée aucun profil. L’éditeur étant établi en France, nous appliquons le RGPD ; pour les visiteurs en Suisse, aussi la loi suisse sur la protection des données (LPD).</p>
         <h2>Responsable du traitement</h2>
         {controller}
         <h2>1. Hébergement et journaux serveur (Cloudflare)</h2>
@@ -59,7 +62,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
         <h2>6. Contact par e-mail</h2>
         <p>Si tu nous écris (p. ex. demande de retrait), ton adresse et ton message servent uniquement à traiter la demande et sont supprimés ensuite, sauf obligation légale de conservation.</p>
         <h2>7. Tes droits</h2>
-        <p>Accès, rectification, effacement, limitation, portabilité, opposition et retrait du consentement (art. 15 à 21 RGPD ; art. 25 s. LPD) : {o.email ? <>écris-nous via les coordonnées des <a href={L("impressum")}>mentions légales</a>.</> : "l’adresse de contact sera publiée avant le lancement public."} Tu peux saisir le PFPDT (Suisse) ou la CNIL (France) / l’autorité de ton pays. Aucune décision automatisée, aucun profilage.</p>
+        <p>Accès, rectification, effacement, limitation, portabilité, opposition et retrait du consentement (art. 15 à 21 RGPD ; art. 25 s. LPD) : {o.email ? <>écris-nous via les coordonnées des <a href={L("impressum")}>mentions légales</a>.</> : "l’adresse de contact sera publiée avant le lancement public."} Tu peux saisir la CNIL (France, <a href="https://www.cnil.fr" rel="noopener noreferrer">cnil.fr</a>), le PFPDT (Suisse) ou l’autorité de ton pays. Aucune décision automatisée, aucun profilage.</p>
       </section>
     </article>
   );
@@ -69,7 +72,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
       <LegalHead locale={locale} title={TITLE} />
       <section id="en">
         <h2>In short</h2>
-        <p>{SITE_NAME} needs no account, sets no cookies without your consent and builds no profiles. We follow the Swiss Federal Act on Data Protection (FADP) and, for visitors from the EU/EEA, the GDPR.</p>
+        <p>{SITE_NAME} needs no account, sets no cookies without your consent and builds no profiles. As the publisher is established in France, the GDPR applies; for visitors in Switzerland, the Swiss Federal Act on Data Protection (FADP) applies as well.</p>
         <h2>Controller</h2>
         {controller}
         <h2>1. Hosting and server logs (Cloudflare)</h2>
@@ -90,7 +93,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
         <h2>6. Contact by e-mail</h2>
         <p>If you write to us (e.g. a removal request), we use your address and message only to handle it and delete them once it is settled, unless the law requires us to keep them.</p>
         <h2>7. Your rights</h2>
-        <p>You have the right to access, rectification, erasure, restriction, portability and objection, and to withdraw consent (Art. 15–21 GDPR; Art. 25 ff. FADP): {o.email ? <>write to us using the details in the <a href={L("impressum")}>imprint</a>.</> : "a contact address will be published before the public launch."} You can also complain to the FDPIC (Switzerland, <a href="https://www.edoeb.admin.ch" rel="noopener noreferrer">edoeb.admin.ch</a>) or the data protection authority of your EU country. No automated individual decisions, no profiling.</p>
+        <p>You have the right to access, rectification, erasure, restriction, portability and objection, and to withdraw consent (Art. 15–21 GDPR; Art. 25 ff. FADP): {o.email ? <>write to us using the details in the <a href={L("impressum")}>imprint</a>.</> : "a contact address will be published before the public launch."} You can also complain to the CNIL (France, our lead authority, <a href="https://www.cnil.fr" rel="noopener noreferrer">cnil.fr</a>), the FDPIC (Switzerland, <a href="https://www.edoeb.admin.ch" rel="noopener noreferrer">edoeb.admin.ch</a>) or the authority of your EU country. No automated individual decisions, no profiling.</p>
       </section>
     </article>
   );
@@ -100,7 +103,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
       <LegalHead locale={locale} title={TITLE} />
       <section id="de">
         <h2>Kurz gesagt</h2>
-        <p>{SITE_NAME} braucht kein Konto, setzt ohne deine Einwilligung keine Cookies und erstellt keine Profile. Wir halten uns an das Schweizer Datenschutzgesetz (DSG) und, für Besucher aus der EU/dem EWR, an die DSGVO.</p>
+        <p>{SITE_NAME} braucht kein Konto, setzt ohne deine Einwilligung keine Cookies und erstellt keine Profile. Da der Herausgeber in Frankreich niedergelassen ist, gilt die DSGVO; für Besucher in der Schweiz zusätzlich das Schweizer Datenschutzgesetz (DSG).</p>
         <h2>Verantwortlicher</h2>
         {controller}
         <h2>1. Hosting und Server-Logs (Cloudflare)</h2>
@@ -121,7 +124,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ locale
         <h2>6. Kontakt per E-Mail</h2>
         <p>Schreibst du uns (z. B. eine Entfernungsanfrage), verwenden wir deine E-Mail-Adresse und Nachricht nur zur Bearbeitung und löschen sie, wenn die Sache erledigt ist, ausser eine gesetzliche Aufbewahrungspflicht verlangt etwas anderes.</p>
         <h2>7. Deine Rechte</h2>
-        <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch sowie auf Widerruf einer Einwilligung (Art. 15–21 DSGVO; Art. 25 ff. DSG). {o.email ? <>Schreib uns dazu über die Kontaktangaben im <a href={L("impressum")}>Impressum</a>.</> : "Die Kontaktadresse dafür folgt vor dem öffentlichen Start."} Du kannst dich ausserdem beim EDÖB (Schweiz, <a href="https://www.edoeb.admin.ch" rel="noopener noreferrer">edoeb.admin.ch</a>) oder bei der Datenschutzbehörde deines EU-Landes beschweren (Frankreich: <a href="https://www.cnil.fr" rel="noopener noreferrer">CNIL</a>).</p>
+        <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch sowie auf Widerruf einer Einwilligung (Art. 15–21 DSGVO; Art. 25 ff. DSG). {o.email ? <>Schreib uns dazu über die Kontaktangaben im <a href={L("impressum")}>Impressum</a>.</> : "Die Kontaktadresse dafür folgt vor dem öffentlichen Start."} Du kannst dich ausserdem bei der CNIL (Frankreich, für uns zuständig, <a href="https://www.cnil.fr" rel="noopener noreferrer">cnil.fr</a>), beim EDÖB (Schweiz, <a href="https://www.edoeb.admin.ch" rel="noopener noreferrer">edoeb.admin.ch</a>) oder bei der Datenschutzbehörde deines Landes beschweren.</p>
         <p>Es gibt keine automatisierte Einzelentscheidung und kein Profiling.</p>
       </section>
     </article>

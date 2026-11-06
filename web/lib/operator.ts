@@ -1,23 +1,52 @@
-/** Identité de l'exploitant (jamais de téléphone : le numéro n'est ni lu ni publié), lue au build depuis les variables NEXT_PUBLIC_OPERATOR_*
- * (GitHub → Variables). Aucune donnée personnelle n'est codée en dur dans le dépôt.
- * Utilisé par Impressum, Datenschutz, AGB et Quellen. */
+/** Identité de l'éditeur, lue au build depuis les variables NEXT_PUBLIC_OPERATOR_*
+ * (GitHub → Variables OPERATOR_*). Aucune donnée personnelle n'est codée en dur dans le dépôt.
+ * Cas visé : micro-entreprise française (entrepreneur individuel) domiciliée chez une société
+ * de domiciliation agréée — l'adresse publiée est TOUJOURS celle du domiciliataire, jamais
+ * le domicile personnel. Le téléphone est facultatif et ne doit être qu'un numéro virtuel
+ * (LCEN art. 1-1 et 19 : voir docs/LAUNCH_RADARSAVE.md) ; sans lui, rien n'est affiché.
+ * Utilisé par Impressum, Datenschutz, Quellen et Transparenz. */
 const clean = (v: string | undefined) => (v ?? "").trim();
 const EMAIL_RE = /^[A-Za-z0-9._%+-]{1,64}@[A-Za-z0-9.-]{1,190}\.[A-Za-z]{2,24}$/;
+/** SIRET = 14 chiffres (espaces tolérés à la saisie, affiché groupé 3-3-3-5). */
+export const normSiret = (v: string | undefined) => {
+  const d = clean(v).replace(/\s+/g, "");
+  return /^\d{14}$/.test(d) ? `${d.slice(0, 3)} ${d.slice(3, 6)} ${d.slice(6, 9)} ${d.slice(9)}` : "";
+};
+/** Téléphone : chiffres, espaces, +, (), -, ./ ; 6 à 20 chiffres. Sinon ignoré. */
+export const normPhone = (v: string | undefined) => {
+  const p = clean(v);
+  const digits = p.replace(/\D/g, "");
+  return /^[+\d][\d\s().\-/]*$/.test(p) && digits.length >= 6 && digits.length <= 20 ? p : "";
+};
 
-export function operator() {
-  const email = clean(process.env.NEXT_PUBLIC_OPERATOR_EMAIL);
+export function operator(env: Record<string, string | undefined> = process.env) {
+  const email = clean(env.NEXT_PUBLIC_OPERATOR_EMAIL);
   return {
-    name: clean(process.env.NEXT_PUBLIC_OPERATOR_NAME),
-    /** Adresse postale ; « | » ou retour à la ligne = saut de ligne affiché. */
-    address: clean(process.env.NEXT_PUBLIC_OPERATOR_ADDRESS).split(/\s*[|\n]\s*/).filter(Boolean),
+    /** Prénom et nom de l'entrepreneur individuel (= directeur de la publication). */
+    name: clean(env.NEXT_PUBLIC_OPERATOR_NAME),
+    /** SIRET de la micro-entreprise (formaté), vide si invalide. */
+    siret: normSiret(env.NEXT_PUBLIC_OPERATOR_SIRET),
+    /** Mention d'immatriculation facultative, p. ex. « RCS Paris » (le SIREN est déduit du SIRET). */
+    rcs: clean(env.NEXT_PUBLIC_OPERATOR_RCS),
+    /** N° de TVA intracommunautaire facultatif (FR + 11 caractères). */
+    vat: /^FR[0-9A-Z]{2}\d{9}$/.test(clean(env.NEXT_PUBLIC_OPERATOR_VAT).replace(/\s+/g, "")) ? clean(env.NEXT_PUBLIC_OPERATOR_VAT).replace(/\s+/g, "") : "",
+    /** Adresse de domiciliation ; « | » ou retour à la ligne = saut de ligne affiché. */
+    address: clean(env.NEXT_PUBLIC_OPERATOR_ADDRESS).split(/\s*[|\n]\s*/).filter(Boolean),
     email: EMAIL_RE.test(email) ? email : "",
+    /** Numéro virtuel facultatif (jamais le portable personnel). */
+    phone: normPhone(env.NEXT_PUBLIC_OPERATOR_PHONE),
   };
 }
 
-export const isOperatorComplete = (o = operator()) => !!(o.name && o.address.length && o.email);
+export type Operator = ReturnType<typeof operator>;
+/** SIREN (9 premiers chiffres du SIRET), pour la mention « RCS <ville> <SIREN> ». */
+export const siren = (o: Operator) => o.siret.replace(/\s/g, "").slice(0, 9).replace(/(\d{3})(\d{3})(\d{3})/, "$1 $2 $3");
+
+/** Impressum complet = nom, SIRET, adresse de domiciliation et e-mail. */
+export const isOperatorComplete = (o = operator()) => !!(o.name && o.siret && o.address.length && o.email);
 
 /** Date de dernière révision des textes juridiques (à mettre à jour à chaque changement). */
-export const LEGAL_REVISION = "29.10.2026";
+export const LEGAL_REVISION = "06.11.2026";
 
 /** Hébergeur (LCEN art. 6 III 1 d) — LAWYER-CHECK : vérifier adresse/téléphone à jour sur cloudflare.com. */
 export const HOST = {
@@ -58,7 +87,7 @@ export const adClient = () => (MONETISATION_ALLOWED ? process.env.NEXT_PUBLIC_AD
 export function warnIfMonetisationBlocked(env: Record<string, string | undefined> = process.env) {
   const on = monetisationBlockers(env, isOperatorComplete());
   if (!on.length) return;
-  const msg = `Impressum incomplet (NEXT_PUBLIC_OPERATOR_NAME/ADDRESS/EMAIL) : ${on.join(", ")} ignoré(s) — aucun lien rémunéré, aucune publicité, pas d'indexation.`;
+  const msg = `Impressum incomplet (NEXT_PUBLIC_OPERATOR_NAME/SIRET/ADDRESS/EMAIL) : ${on.join(", ")} ignoré(s) — aucun lien rémunéré, aucune publicité, pas d'indexation.`;
   console.warn(env.GITHUB_ACTIONS ? `::warning::${msg}` : msg);
 }
 

@@ -1,5 +1,26 @@
 # Lancement de Radarsave : étapes pour Yorian
 
+## Variables d'environnement à remplir (GitHub → Settings → Secrets and variables → Actions → **Variables**)
+
+Toutes les données personnelles passent par ces variables ; rien n'est en dur dans le code. Après les avoir posées : Actions → `web` → *Run workflow*.
+Sans les 4 premières, `/impressum` reste en « version de prévisualisation » et **aucun lien rémunéré, aucune pub, aucune indexation** n'est activé (`web/lib/operator.ts`).
+
+| Variable GitHub | Obligatoire | Valeur à saisir | Exemple de format |
+|-|-|-|-|
+| `OPERATOR_NAME` | oui | Prénom Nom, tel qu'au RNE (= directeur de la publication) | `Yorian Melki` |
+| `OPERATOR_SIRET` | oui | SIRET reçu après immatriculation (14 chiffres, espaces tolérés) | `123 456 789 00012` |
+| `OPERATOR_ADDRESS` | oui | Adresse **de la société de domiciliation** (jamais Neuilly), lignes séparées par `\|` | `c/o Domiciliataire SAS\|10 rue X\|75008 Paris\|France` |
+| `OPERATOR_EMAIL` | oui | `contact@radarsave.ch` (kSuite Infomaniak, actif) | `contact@radarsave.ch` |
+| `OPERATOR_RCS` | recommandé | Greffe indiqué sur l'avis d'immatriculation (le SIREN est déduit du SIRET) | `RCS Paris` |
+| `OPERATOR_PHONE` | recommandé (voir §3) | **Numéro virtuel uniquement**, jamais ton portable. Vide = rien affiché | `+33 9 xx xx xx xx` |
+| `OPERATOR_VAT` | facultatif | N° de TVA intracommunautaire si le SIE t'en attribue un | `FR12123456789` |
+| `SITE_URL` | oui, pour lever le noindex | `https://radarsave.ch` | |
+| `SITE_INDEXABLE` | **ne pas poser maintenant** | `1` seulement quand tu décides de lever le noindex (§5) | |
+
+Guide juridique (régime, création pas à pas, domiciliation, téléphone, sources) : `~/claude-os/BURN_2026-11-06/LEGAL/GUIDE_MICRO_ENTREPRISE.md`.
+
+---
+
 État au 06.11.2026 : le site s'appelle **Radarsave** (DE, FR, EN : titres, meta, manifest, logo, OG, icônes « R »).
 Il tourne sur https://savradar.pages.dev, en **noindex**, sans domaine propre. Le nom vient de
 `SITE_NAME` (défaut `Radarsave` dans `web/lib/site.ts`, variable GitHub `SITE_NAME` facultative).
@@ -71,21 +92,18 @@ adresse ni monétisation tant que `OPERATOR_NAME`, `OPERATOR_ADDRESS` et `OPERAT
    (en France, obligatoire pour domicilier une entreprise). Ordre de prix : 10 à 30 EUR par mois,
    courrier scanné inclus. Le contrat de domiciliation sert de justificatif au guichet INPI.
    Garde le même nom et la même adresse partout : INPI, Impressum, registraires, Tradedoubler.
-3. **Téléphone** : le code ne publie jamais de numéro. La LCEN (art. 6-III) demande un numéro de
-   téléphone pour l'éditeur professionnel. Si tu en veux un, prends un numéro virtuel, pas ton
-   portable. Je dois alors ajouter une variable (le code ne l'a pas encore). **À trancher par toi.**
+3. **Téléphone** : la LCEN (art. 1-1, ex-art. 6 III, et art. 19) demande un numéro à l'éditeur professionnel ;
+   la CJUE (C-298/07) admet un autre moyen de contact rapide. Le plus sûr : un **numéro virtuel** dans
+   `OPERATOR_PHONE` (le code l'affiche s'il est posé, sinon rien). **À trancher par toi.**
 4. **E-mail** : une adresse sur le domaine (par ex. `kontakt@radarsave.ch`, transfert gratuit avec
    Cloudflare Email Routing vers ta boîte).
-5. GitHub → *Variables* :
-   - `OPERATOR_NAME` = « Yorian Melki, Radarsave (micro-entreprise), SIRET … » ;
-   - `OPERATOR_ADDRESS` = l'adresse de domiciliation, lignes séparées par `|` ;
-   - `OPERATOR_EMAIL` = l'adresse ci-dessus.
+5. GitHub → *Variables* : voir le tableau en tête de ce fichier.
 
-Ce que je fais ensuite (une PR) : réécrire le texte de `/impressum` (DE, FR, EN) pour une
-micro-entreprise. Il dira « exploité par … (micro-entreprise, SIRET …) » à la place de « natürliche
-Person, kein Unternehmen ». J'ajouterai le responsable du traitement dans `/datenschutz` (revDSG
-art. 19) et j'incrémenterai `LEGAL_REVISION`. Les mentions exactes sont à valider par toi, ou par un
-juriste si tu veux une certitude : je ne suis pas juriste.
+Fait le 06.11.2026 : `/impressum` (DE, FR, EN) réécrit pour une micro-entreprise domiciliée
+(éditeur, SIRET, RNE/RCS, domiciliation, e-mail, téléphone virtuel facultatif, directeur de la
+publication, hébergeur, section « Publicité et liens d'affiliation ») ; `/datenschutz` nomme la
+micro-entreprise comme responsable (RGPD, CNIL compétente ; LPD pour la Suisse) ; `LEGAL_REVISION`
+= 06.11.2026. Je ne suis pas juriste : points incertains listés dans le guide juridique.
 
 ## 4. Relancer la demande Tradedoubler (site 3505384)
 
