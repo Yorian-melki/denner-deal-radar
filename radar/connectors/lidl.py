@@ -28,7 +28,8 @@ BASE = "https://www.lidl.ch"
 SLUGS = ("wochenaktion", "super-wochenende", "xxl-sparen", "lidl-plus-angebote",
          "unsere-kistenhighlights", "klein-aber-fein", "neu-in-unserem-sortiment")
 MAX_PAGES = 12
-_LINK = re.compile(r'href="(/c/de-CH/([a-z0-9-]+)/a\d+)"')
+# Depuis le 04.11.2026, Lidl préfixe les pages d'actions par « store/ » : les deux formes sont acceptées.
+_LINK = re.compile(r'href="(/c/de-CH/(?:store/)?([a-z0-9-]+)/a\d+)"')
 _GRID = re.compile(r'data-grid-data="([^"]+)"')
 _EXCLUDED_REGION = re.compile(r"nur\s+(?:im|in\s+der)\s+(tessin|westschweiz|romandie|französischen\s+schweiz)", re.I)
 
