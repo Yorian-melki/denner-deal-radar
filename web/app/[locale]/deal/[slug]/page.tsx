@@ -68,7 +68,7 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
 }
 
 /** Faits sous la note : chaque fait UNE fois (le prix « statt » est dans le héros). */
-function Facts({ d, locale, generatedAt, now }: { d: PublicDeal; locale: Locale; generatedAt: string; now: Date }) {
+function Facts({ d, locale, now }: { d: PublicDeal; locale: Locale; now: Date }) {
   const t = dict(locale);
   const money = (v: number) => fmtPrice(v, d.currency, locale);
   const rows: [string, React.ReactNode][] = [];
@@ -84,10 +84,12 @@ function Facts({ d, locale, generatedAt, now }: { d: PublicDeal; locale: Locale;
   }
   // Sans historique propre, la seule base est la déclaration du marchand (jamais « gut »).
   const tier = confidenceTier(d.confidence);
-  rows.push([t.dataSureTitle, n < HISTORY_MIN_OBSERVATIONS && tier !== "low" ? t.dq.merchant : t.dq[tier]]);
+  // Offre que le scanner n'a pas pu reconfirmer récemment (R2 §3.3, UNCONFIRMED) : « unbestätigt ».
+  rows.push([t.dataSureTitle, d.unconfirmed ? t.dq.low : n < HISTORY_MIN_OBSERVATIONS && tier !== "low" ? t.dq.merchant : t.dq[tier]]);
   if (d.firstSeenAt) rows.push([t.seenSince, fmtDay(d.firstSeenAt, locale, now)]);
   // Précision au jour (round 3, item 24) : deux builds du même jour ne réécrivent pas 7 000 pages.
-  const checked = d.lastSeenAt ?? generatedAt;
+  // Dernière vérification RÉELLE de l'offre par le scanner (R2 §3.7), jamais l'heure du build ou du flux.
+  const checked = d.lastSeenAt;
   if (checked) rows.push([t.lastChecked, fmtDay(checked, locale, now)]);
   return (
     <dl className="facts">
@@ -203,7 +205,7 @@ function Tombstone({ d, deals, locale, now }: { d: PublicDeal; deals: PublicDeal
 
 export default async function DealPage({ params }: P) {
   const p = await params;
-  const { deals, generatedAt, now, d, ended } = await find(p.slug);
+  const { deals, now, d, ended } = await find(p.slug);
   if (!d) notFound();
   const locale = p.locale as Locale;
   if (ended) return <Tombstone d={d} deals={deals} locale={locale} now={now} />;
@@ -320,7 +322,7 @@ export default async function DealPage({ params }: P) {
                 <span className="sr-only">{t.scoreAria(fmtScore(shown, locale), t.scoreTiers[scoreTier(shown)])}</span>
               </p>
               {d.scoreCap && <p className="deal-note">{t.scoreCap[d.scoreCap]}</p>}
-              <Facts d={d} locale={locale} generatedAt={generatedAt} now={now} />
+              <Facts d={d} locale={locale} now={now} />
               <p className="source">{t.source(d.attribution)}</p>
               <a className="text-link" href={paths.page(locale, "transparenz")}>{t.howScored}<Icon name="arrow" size={16} /></a>
             </>
@@ -334,7 +336,7 @@ export default async function DealPage({ params }: P) {
               <details className="facts-more">
                 <summary>{t.detailsSummary}</summary>
                 <p className="deal-note">{t.scoreNaWhy}</p>
-                <Facts d={d} locale={locale} generatedAt={generatedAt} now={now} />
+                <Facts d={d} locale={locale} now={now} />
                 <p className="source">{t.source(d.attribution)}</p>
               </details>
             </>

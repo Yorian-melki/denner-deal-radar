@@ -211,10 +211,13 @@ let legacy = { lines: 0, deal: 0, category: 0, city: 0, dropped: 0, fallback: 0 
   }
 }
 
-// 6. Repli de « / » (la Function functions/index.ts négocie la langue).
+// 6. Repli de « / » : normalement jamais servi (_redirects : « / » → 302 /de/<ville>). S'il l'est, il porte
+// les balises og de la ville, pour qu'un lien collé dans WhatsApp ait un aperçu.
 if (!existsSync(path.join(OUT, "index.html"))) {
+  const site = (process.env.NEXT_PUBLIC_SITE_URL || "https://savradar.pages.dev").replace(/\/+$/, "");
+  const og = `<meta property="og:type" content="website"><meta property="og:title" content="Aktionen in St. Gallen diese Woche"><meta property="og:description" content="Aktuelle Aktionen in St. Gallen: Supermärkte, Tech, Gratis, Studentenrabatte – mit Vergleichspreis und Quelle."><meta property="og:url" content="${site}/de/${MAIN_CITY}"><meta property="og:image" content="${site}/de/${MAIN_CITY}/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="${site}/de/${MAIN_CITY}">`;
   writeFileSync(path.join(OUT, "index.html"),
-    `<!doctype html><html lang="de-CH"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=/de/${MAIN_CITY}"><title>…</title></head><body><a href="/de/${MAIN_CITY}">Deutsch</a> · <a href="/fr/${MAIN_CITY}">Français</a> · <a href="/en/${MAIN_CITY}">English</a></body></html>\n`);
+    `<!doctype html><html lang="de-CH"><head><meta charset="utf-8"><meta name="robots" content="noindex">${og}<meta http-equiv="refresh" content="0; url=/de/${MAIN_CITY}"><title>Aktionen in St. Gallen – Radarsave</title></head><body><a href="/de/${MAIN_CITY}">Deutsch</a> · <a href="/fr/${MAIN_CITY}">Français</a> · <a href="/en/${MAIN_CITY}">English</a></body></html>\n`);
 }
 
 // 6b. Dossiers vides laissés par l'export (charges RSC retirées) : supprimés.

@@ -1,5 +1,7 @@
 # Redirections Cloudflare Pages. Chaque page existe sous /de, /fr et /en (mêmes slugs).
-# « / » : functions/index.ts (langue du navigateur → /<l>/st-gallen, 302).
+# « / » : 302 vers la ville (aperçu WhatsApp/Telegram : les robots suivent la redirection et lisent les
+# balises og de /de/st-gallen). Les Functions (functions/index.ts) ne sont pas déployées par web.yml.
+/                       /de/st-gallen            302
 # /de, /fr, /en : tant qu'une seule ville existe, 302 vers la ville (pas de doublon /de ≈ /de/st-gallen).
 /de                     /de/st-gallen            302
 /fr                     /fr/st-gallen            302

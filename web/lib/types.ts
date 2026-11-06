@@ -83,7 +83,9 @@ export interface PublicDeal {
   endsAt?: string;
   endsInferred?: boolean; // date de fin déduite, pas publiée → jamais de compte à rebours
   firstSeenAt?: string;
-  lastSeenAt?: string;   // dernier relevé du scanner (preuve de fraîcheur)
+  lastSeenAt?: string;   // dernière vérification réussie (radar/core/verify.py verified_at), preuve de fraîcheur
+  /** Score de vérification entre 0.50 et 0.80 (R2 §3.3) : listée, hors vitrines, « zu bestätigen ». */
+  unconfirmed?: boolean;
   conds: Cond[];
   url: string;           // URL marchande (désemballée d'un lien d'affiliation tiers)
   /** Hôte du lien quand ce n'est pas le site du marchand (agrégateur) : « via rappn.ch ». */

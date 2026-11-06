@@ -9,6 +9,33 @@ import type { Feed, GeoScope, PublicDeal, RawDeal, RefKind, ScoreCap, Subscripti
 
 const LOCAL_SCOPES = new Set<GeoScope>(["LOCAL", "NEARBY", "REGIONAL"]);
 const HIDDEN_LIFECYCLE = new Set(["EXPIRED", "REMOVED", "SOURCE_FAILURE"]);
+/** États de vérification du scanner (radar/core/verify.py, étude R2 §3.2) qui retirent une offre des
+ * listes : SUSPECT (à confirmer, non listée), HIDDEN (source en panne, score trop bas), ENDED (404/410
+ * confirmé deux fois, drapeau « expired » / « sold out » de la source). UNCONFIRMED reste listée, hors vitrines. */
+export const HIDDEN_STATE = new Set(["SUSPECT", "HIDDEN", "ENDED"]);
+
+/** Offre réservée à une autre région que la Suisse alémanique (R2 §3.3, R_REGION) : « Nur in der
+ * französischen (und italienischen) Schweiz erhältlich », « (nur Romandie) », « uniquement en Suisse romande ».
+ * « Aktion nur in der Deutsch- und Westschweiz » reste valable à Saint-Gall. */
+const REGION_ONLY = /\bnur\s+(?:noch\s+)?(?:im|in\s+der|in)?\s*([\p{L}\s\-–/]{0,60}?(?:schweiz|tessin|romandie|welschland))\b|\b(?:uniquement|seulement|exclusivement)\s+(?:en|au|dans\s+(?:le|la))\s+(suisse\s+romande|romandie|tessin|suisse\s+italienne)/giu;
+const GERMAN_PART = /deutsch|ost|zentral|nordwest|alemann|ganze[nr]?\s+schweiz/i;
+export function regionExcluded(d: RawDeal): boolean {
+  // `eligible_home` (Denner : offre valable dans les filiales du flux de Saint-Gall) n'est jamais publié,
+  // seulement lu ici ; `region_excluded` = même règle côté scanner.
+  if (d.eligible_home === false || d.region_excluded === true) return true;
+  const texts = [d.title, d.description, ...(Array.isArray(d.conditions) ? d.conditions : [])].filter((x): x is string => typeof x === "string");
+  return texts.some((t) => [...t.matchAll(REGION_ONLY)].some((m) => !GERMAN_PART.test(m[1] ?? m[2] ?? "")));
+}
+
+/** Prix unitaire publiable : jamais au-delà de 1 000 CHF/kg ou /l hors cosmétique (bug « 11'990 CHF/kg »,
+ * R2 §3.3 P_UNIT_INCOHERENT ; le scanner retire déjà les incohérences prix ÷ quantité). */
+export const MAX_UNIT_PRICE = 1000;
+const COSMETIC = /parf[uü]m|eau de|s[eé]rum|cr[eè]me|lotion|kosmetik|cosm[eé]ti|make-?up|mascara|lippen|lipstick|contour|nagel|duft|deo|shampoo|gesicht|augen|nivea|artdeco|beauty|pflege|skin/i;
+export function plausibleUnitPrice(unitPrice: number | undefined, unit: string | undefined, text: string): number | undefined {
+  if (unitPrice === undefined || !(unitPrice > 0)) return undefined;
+  if ((unit === "kg" || unit === "l") && unitPrice > MAX_UNIT_PRICE && !COSMETIC.test(text)) return undefined;
+  return unitPrice;
+}
 
 const num = (v: unknown) => (typeof v === "number" && Number.isFinite(v) ? v : undefined);
 const str = (v: unknown) => (typeof v === "string" && v.trim() ? v.trim() : undefined);
@@ -393,7 +420,7 @@ function subscription(d: RawDeal, price: number | undefined): Subscription | und
 
 /** Ce qui est encore valable maintenant (statut recalculé, comme le PWA). */
 export function isLive(d: RawDeal, now: Date): boolean {
-  if (HIDDEN_LIFECYCLE.has(String(d.lifecycle))) return false;
+  if (HIDDEN_LIFECYCLE.has(String(d.lifecycle)) || HIDDEN_STATE.has(String(d.state))) return false;
   if (d.duplicate_of || d.sold_out === true) return false;
   const ends = str(d.ends_at);
   if (ends && new Date(ends).getTime() < now.getTime()) return false;
@@ -446,7 +473,7 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date, opts: { expired?:
   const confidence = num(d.score_confidence);
   const integrity = str(d.promotion_integrity);
   const unit = UNIT[str(d.unit) ?? ""];
-  const unitPrice = num(d.unit_price);
+  const unitPrice = plausibleUnitPrice(num(d.unit_price), unit, `${rawTitle} ${str(d.category) ?? ""}`);
   const netSavings = num(d.net_savings);
   const category = categorize({ family: d.family, title, merchant, category: str(d.category), source: d.source_id });
   const bonus = price === 0 && BONUS.test(title);
@@ -504,7 +531,8 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date, opts: { expired?:
     geo,
     // Un deal local n'appartient qu'aux villes de son flux ; national/en ligne : à tout le pays.
     // Une autre ville nommée dans le titre (« Freibad Marzili in Bern ») : pas une offre de cette ville.
-    cities: OTHER_CITY.test(rawTitle) && !feed.cities.some((c) => rawTitle.toLowerCase().includes(c.replace(/-/g, " "))) ? [] : LOCAL_SCOPES.has(geo) ? feed.cities : ["*"],
+    // Offre réservée à la Romandie ou au Tessin (R_REGION) : dans aucune ville du flux alémanique.
+    cities: regionExcluded(d) || (OTHER_CITY.test(rawTitle) && !feed.cities.some((c) => rawTitle.toLowerCase().includes(c.replace(/-/g, " ")))) ? [] : LOCAL_SCOPES.has(geo) ? feed.cities : ["*"],
     country: feed.country,
     price,
     referencePrice,
@@ -534,7 +562,10 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date, opts: { expired?:
     endsAt: str(d.ends_at) ?? titleEnds,
     endsInferred: d.ends_inferred === true || undefined,
     firstSeenAt: str(d.first_seen_at),
-    lastSeenAt: str(d.last_seen_at),
+    // Dernière vérification réussie de l'offre (scanner : dernier passage où elle figurait à la source,
+    // ou contrôle de page 200) — jamais l'heure du build ni celle du flux.
+    lastSeenAt: str(d.verified_at) ?? str(d.last_seen_at),
+    unconfirmed: d.state === "UNCONFIRMED" || undefined,
     conds,
     url: clean.url,
     via: viaHost(clean.url, merchant),
@@ -546,7 +577,8 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date, opts: { expired?:
     upcoming: (str(d.starts_at) && new Date(str(d.starts_at)!).getTime() > now.getTime()) || undefined,
     inStore,
     // Jamais en vitrine ni sur l'accueil, Studis ou Gratis : contenu adulte, spiritueux, marchand inconnu.
-    noShowcase: NO_SHOWCASE.test(rawTitle) || isAdult(rawTitle, merchant, str(d.brand), hostOf(clean.url)) || alcohol || !merchant || undefined,
+    // UNCONFIRMED (R2 §3.3 : 0.50 ≤ p < 0.80) : listée, jamais en vitrine ni dans les tops.
+    noShowcase: NO_SHOWCASE.test(rawTitle) || isAdult(rawTitle, merchant, str(d.brand), hostOf(clean.url)) || alcohol || !merchant || d.state === "UNCONFIRMED" || undefined,
     titles: flight ?? (d.family === "student" ? studentTitles(title, lang) : undefined),
     adult: isAdult(rawTitle, merchant, str(d.brand), hostOf(clean.url)) || undefined,
     alcohol: alcohol || undefined,
@@ -625,11 +657,14 @@ export function rankDeals(deals: PublicDeal[]): PublicDeal[] {
  * (slug stable) reste valable : page « abgelaufen », noindex, sans bouton ni Offer. */
 export const TOMBSTONE_DAYS = 30;
 export function endedAt(d: RawDeal, now: Date): string | undefined {
-  if (String(d.lifecycle) === "SOURCE_FAILURE" || d.duplicate_of) return undefined;
-  const ends = str(d.ends_at), seen = str(d.last_seen_at);
+  // Masquée mais peut-être encore valable (source en panne, à confirmer) : pas de pierre tombale.
+  if (String(d.lifecycle) === "SOURCE_FAILURE" || d.duplicate_of || d.state === "HIDDEN" || d.state === "SUSPECT") return undefined;
+  const ends = str(d.ends_at), seen = str(d.verified_at) ?? str(d.last_seen_at);
   const t = (iso?: string) => (iso ? new Date(iso).getTime() : NaN);
   let at: string | undefined;
   if (ends && t(ends) < now.getTime()) at = ends;
+  // Fin prouvée par le scanner (404/410 confirmé, « expired » à la source) : page « abgelaufen ».
+  else if (d.state === "ENDED") at = str(d.state_since) ?? seen;
   else if (HIDDEN_LIFECYCLE.has(String(d.lifecycle)) || d.sold_out === true) at = seen && t(seen) <= now.getTime() ? seen : undefined;
   if (!at || !(now.getTime() - t(at) <= TOMBSTONE_DAYS * 86_400_000)) return undefined;
   return at;
