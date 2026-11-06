@@ -34,13 +34,13 @@ const CANONICAL: Record<string, string> = {
   "ochsner sport": "Ochsner Sport", "ex libris": "Ex Libris", "orell füssli": "Orell Füssli", "epic games": "Epic Games",
   gog: "GOG", steam: "Steam", amazon: "Amazon", "google play": "Google Play", zalando: "Zalando", "hp store": "HP Store",
   "epic games store": "Epic Games", "epic": "Epic Games", indiegala: "IndieGala", fanatical: "Fanatical", ubisoft: "Ubisoft",
-  "prime gaming": "Prime Gaming", fnac: "Fnac", iherb: "iHerb", peachstore: "Peach", "peach store": "Peach", postfinance: "PostFinance",
+  "prime gaming": "Prime Gaming", fnac: "Fnac", "post.ch": "Die Post", "samsung store": "Samsung Store", "3djake": "3DJake", iherb: "iHerb", peachstore: "Peach", "peach store": "Peach", postfinance: "PostFinance",
 };
 
 /** Boutique entre parenthèses (« Ancient Evil (IndieGala) », « SmartStudents! (PostFinance) »). */
 const PAREN_STORE = /\((IndieGala|GOG|Steam|Epic Games(?: Store)?|Prime Gaming|Ubisoft|Fanatical|PostFinance)\)/i;
 /** « … bei fnac (…) », « … bei iHerb », « … bei pumbi.ch », « im PeachStore » au milieu du titre. */
-const MID_STORE = /\b(?:bei|im|chez)\s+(fnac|iherb|peachstore|pumbi\.ch|galaxus|digitec|brack|interdiscount|mediamarkt|fust|manor|ikea|zalando|amazon)\b/i;
+const MID_STORE = /\b(?:bei|im|chez)\s+(samsung store|fnac|iherb|peachstore|pumbi\.ch|galaxus|digitec|brack|interdiscount|mediamarkt|fust|manor|ikea|zalando|amazon)\b/i;
 /** Prestataire nommé en tête du titre (abonnements, services, transports). */
 const LEADING_PROVIDER: [RegExp, string][] = [
   [/^HP\b/, "HP Store"], [/^Wingo\b/i, "Wingo"], [/^Quickline\b/i, "Quickline"], [/^yallo\b/i, "yallo"], [/^SBB\b/, "SBB"],
@@ -48,7 +48,32 @@ const LEADING_PROVIDER: [RegExp, string][] = [
   [/^Electra\b/, "Electra"], [/\bNeon[- ]Konto\b|\baufs Neon Konto\b/i, "Neon"], [/^Apple ?TV\b|^AppleTV\b/i, "Apple"],
   [/^Google\b/, "Google"], [/\bvon Yesim\b|^Yesim\b/i, "Yesim"], [/^Die Post\b|^Post\b/, "Die Post"], [/^Salt\b/, "Salt"],
   [/^Sunrise\b/, "Sunrise"], [/^Swisscom\b/, "Swisscom"], [/^Galaxus\b/, "Galaxus"], [/^Digitec\b/, "Digitec"],
+  // Abonnements et services nommés en tête (relevé du 06.11 : 2,3 % sans marchand, build bloqué).
+  [/^CHmobile\b/i, "CHmobile"], [/^Lebara\b/i, "Lebara"], [/^Lyca\b|\bLyca Mobile\b/i, "Lycamobile"], [/^Disney\+/, "Disney+"],
+  [/^ifolor\b/i, "ifolor"], [/^C&A\b/, "C&A"], [/^Alpian\b/, "Alpian"], [/^Freedom24\b/, "Freedom24"], [/^alao\b/i, "alao"],
+  [/\bSunrise (?:We Connect|\d)/, "Sunrise"], [/^Jetpac\b/, "Jetpac"], [/^Volkswagen\b/, "Volkswagen"],
 ];
+
+/** Marchand nommé par l'agrégateur dans la 1re phrase de sa description : « Bei 3DJake findet ihr… »,
+ * « Aktuell bekommt ihr bei yallo das… », « Derzeit bietet Digital Republic das… ». Prudent : 1 à 3 mots,
+ * jamais un agrégateur ni une marque produit, et seulement dans les 160 premiers caractères. */
+const DESC_STORE = [
+  /\b(?:[Bb]ei|[Bb]eim)\s+(?:der\s+|dem\s+)?((?:\p{Lu}|\d|[a-z][\w-]*\.ch\b|alao\b|yallo\b|reichelt\b)[\p{L}\d&.+-]*(?:\s+\p{Lu}[\p{L}\d&.+-]*){0,2}?)\s+(?:und\s+\S+\s+)?(?:findet|gibt|gibt’s|gibt's|gibts|bekommt|erhaltet|erhältst|könnt|kannst|das|den|die)\b/u,
+  /\b(?:bietet|verkauft)\s+((?:\p{Lu})[\p{L}\d&.+-]*(?:\s+\p{Lu}[\p{L}\d&.+-]*){0,2}?)\s+(?:das|den|die|aktuell|derzeit)\b/u,
+];
+const DESC_NOT_STORE = /^(?:preispirat|twint|der|die|das|uns|euch|ihnen|neukunden|aktuell)$/i;
+
+export function merchantInDescription(desc: string | undefined): string | undefined {
+  const head = (desc ?? "").slice(0, 160);
+  for (const re of DESC_STORE) {
+    const m = head.match(re);
+    if (!m) continue;
+    const name = m[1].trim();
+    if (DESC_NOT_STORE.test(name) || AGGREGATOR_NAMES.test(name) || BRAND_NOT_MERCHANT.test(name)) continue;
+    return canonicalMerchant(name);
+  }
+  return undefined;
+}
 
 /** Marchand lu dans le titre ailleurs qu'en fin (round 4, item 12). */
 export function merchantInTitle(title: string): string | undefined {
@@ -91,12 +116,12 @@ export function stripMerchantSuffix(title: string, merchant: string | undefined)
 }
 
 /** Marchand affichable d'un deal brut : jamais un agrégateur ; « undefined » = inconnu. */
-export function resolveMerchant(source: string, rawMerchant: string | undefined, title: string): string | undefined {
+export function resolveMerchant(source: string, rawMerchant: string | undefined, title: string, description?: string): string | undefined {
   const fromTitle = merchantFromTitle(title);
   const m = canonicalMerchant(rawMerchant);
   const aggregated = AGGREGATOR_SOURCES.has(source);
   if (m && !AGGREGATOR_NAMES.test(m) && !(aggregated && BRAND_NOT_MERCHANT.test(m))) return m;
   if (fromTitle && !BRAND_NOT_MERCHANT.test(fromTitle)) return fromTitle;
   if (!aggregated) return m ?? canonicalMerchant(sourceName(source));
-  return merchantInTitle(title);
+  return merchantInTitle(title) ?? merchantInDescription(description);
 }

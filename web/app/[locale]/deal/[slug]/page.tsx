@@ -126,7 +126,7 @@ function More({ d, deals, locale, now, title }: { d: PublicDeal; deals: PublicDe
     <section className="section deal-more" id="more" aria-labelledby="related">
       <div className="section-head">
         <h2 id="related">{title ?? t.moreIn(cat.label)}</h2>
-        <a className="section-more" href={href}><span>{t.allInCat(cat.label, fmtInt(total, locale))}</span><Icon name="arrow" size={16} /></a>
+        <a className="section-more" href={href}><span aria-hidden="true">{t.seeAll(fmtInt(total, locale))}</span><span className="sr-only">{t.seeAllIn(fmtInt(total, locale), cat.label)}</span><Icon name="arrow" size={16} /></a>
       </div>
       {related.length > 0 && <DealGrid deals={related} locale={locale} now={now} labelledBy="related" />}
     </section>
@@ -203,7 +203,7 @@ export default async function DealPage({ params }: P) {
   // est le magasin ; l'agrégateur n'est que la source (round 2, item 25).
   const storeVia = d.inStore && d.via;
   // Le bouton nomme la même entité que la ligne marchand, et l'agrégateur s'il y passe.
-  const ctaLabel = d.via ? t.ctaVia(d.merchant ?? "", d.via) : t.toOffer(seller);
+  const ctaLabel = d.via ? t.ctaVia(d.merchant ?? "", d.via) : d.category === "events" ? t.toEvent(seller) : t.toOffer(seller);
   const via = AGGREGATOR_SOURCES.has(d.source) ? t.via(sourceName(d.source)) : undefined;
   const tl = titleLang(d.source, d.title);
   const jsonLd = d.price !== undefined ? {
@@ -299,7 +299,7 @@ export default async function DealPage({ params }: P) {
                 {" · "}<a href={paths.page(locale, "transparenz")}>{t.howScored}</a>
               </p>
               <details className="facts-more">
-                <summary>{t.whyNoScore}</summary>
+                <summary>{t.detailsSummary}</summary>
                 <p className="deal-note">{t.scoreNaWhy}</p>
                 <Facts d={d} locale={locale} generatedAt={generatedAt} now={now} />
                 <p className="source">{t.source(d.attribution)}</p>

@@ -220,6 +220,9 @@ const de = {
   ctaVia: ((seller: string, host: string) => `Zum Angebot${seller ? ` bei ${seller}` : ""} · über ${host}`) as (seller: string, host: string) => string,
   buyTitle: "Preis und Angebot",
   whyNoScore: "Warum keine Bewertung",
+  // Round 4, items 23/27 : un seul intitulé « pourquoi » (le <summary> dit « Details ») ; CTA des événements.
+  detailsSummary: "Details",
+  toEvent: ((m: string) => `Zum Event bei ${m}`) as (m: string) => string,
   scoreNaLine: ((why: string) => `Ohne Bewertung – ${why}`) as (why: string) => string,
   noScore: {
     pct: "nur Prozentangabe des Anbieters",
@@ -233,7 +236,6 @@ const de = {
   byVendor: "laut Anbieter",
   upTo: "bis",
   shareLink: "Link teilen",
-  allInCat: ((cat: string, n: string) => `Alle ${cat} (${n})`) as (cat: string, n: string) => string,
   homeFirst: { "supermarkt-aktionen": "Aktuell im Supermarkt" } as Record<string, string>,
   expiredH1: ((title: string, date: string) => `${title} – abgelaufen am ${date}`) as (title: string, date: string) => string,
   expiredLead: "Diese Aktion ist vorbei. Den Preis zeigen wir nur zur Information.",
@@ -448,6 +450,8 @@ const fr: Dict = {
   ctaVia: (seller, host) => `Voir l’offre${seller ? ` chez ${seller}` : ""} · via ${host}`,
   buyTitle: "Prix et offre",
   whyNoScore: "Pourquoi pas de note",
+  detailsSummary: "Détails",
+  toEvent: (m) => `Voir l’événement chez ${m}`,
   scoreNaLine: (why) => `Sans note – ${why}`,
   noScore: {
     pct: "seulement un pourcentage annoncé par le vendeur",
@@ -461,7 +465,6 @@ const fr: Dict = {
   byVendor: "selon le vendeur",
   upTo: "jusqu’à",
   shareLink: "Partager le lien",
-  allInCat: (cat, n) => `Tout ${cat} (${n})`,
   homeFirst: { "supermarkt-aktionen": "En ce moment au supermarché" },
   expiredH1: (title, date) => `${title} – terminée le ${date}`,
   expiredLead: "Cette action est terminée. Le prix n’est plus affiché qu’à titre d’information.",
@@ -674,6 +677,8 @@ const en: Dict = {
   ctaVia: (seller, host) => `View offer${seller ? ` at ${seller}` : ""} · via ${host}`,
   buyTitle: "Price and offer",
   whyNoScore: "Why there is no score",
+  detailsSummary: "Details",
+  toEvent: (m) => `View event at ${m}`,
   scoreNaLine: (why) => `Not rated – ${why}`,
   noScore: {
     pct: "only a percentage stated by the seller",
@@ -687,7 +692,6 @@ const en: Dict = {
   byVendor: "according to the seller",
   upTo: "up to",
   shareLink: "Share link",
-  allInCat: (cat, n) => `All ${cat} (${n})`,
   homeFirst: { "supermarkt-aktionen": "Now at the supermarket" },
   expiredH1: (title, date) => `${title} – ended on ${date}`,
   expiredLead: "This offer has ended. The price is shown for information only.",

@@ -3,7 +3,7 @@ import { SITE_NAME } from "@/lib/site";
 /** Tuile de marque unique (round 3, item 16) : initiale de SITE_NAME, graisse 700,
  * #f5f5f7 sur #1d1d1f, rayon 22 % — la même que .logo-tile. Renommer la marque =
  * changer SITE_NAME : favicon, icône d'écran d'accueil et OG suivent. */
-export const brandInitial = () => SITE_NAME.trim().charAt(0).toUpperCase() || "D";
+export const brandInitial = () => SITE_NAME.trim().charAt(0).toUpperCase() || "R";
 
 export function brandSvg(): string {
   const ch = brandInitial().replace(/[<>&"']/g, "");

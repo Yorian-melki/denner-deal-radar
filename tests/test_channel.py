@@ -99,7 +99,7 @@ def test_site_info_from_env(monkeypatch):
     monkeypatch.delenv("SITE_URL", raising=False)
     monkeypatch.delenv("NEXT_PUBLIC_SITE_NAME", raising=False)
     monkeypatch.delenv("NEXT_PUBLIC_SITE_URL", raising=False)
-    assert C.site_info(CCFG) == ("Deal Radar", "")
+    assert C.site_info(CCFG) == ("Radarsave", "")
     monkeypatch.setenv("SITE_NAME", "Spar Radar")
     monkeypatch.setenv("SITE_URL", "https://spar.example/")
     assert C.site_info(CCFG) == ("Spar Radar", "https://spar.example")

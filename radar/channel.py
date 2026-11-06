@@ -75,7 +75,7 @@ def deal_slug(deal_id: str, title: str) -> str:
 # --------------------------------------------------------------------------
 
 DEFAULTS = {
-    "timezone": "Europe/Zurich", "site_name_default": "Deal Radar", "site_url_default": "",
+    "timezone": "Europe/Zurich", "site_name_default": "Radarsave", "site_url_default": "",
     "daily_hour": 18, "daily_until_hour": 22, "daily_top_n": 3, "daily_min_score": 6.0,
     "daily_max_per_source": 1, "instant_min_score": 8.5, "max_instant_per_day": 3,
     "min_minutes_between_instant": 60, "min_confidence": 0.5, "quiet_start": "22:00",
@@ -97,7 +97,7 @@ def site_info(ccfg: dict) -> tuple[str, str]:
     """(nom, url) : variables d'environnement d'abord (marque non définitive)."""
     name = os.environ.get("SITE_NAME") or os.environ.get("NEXT_PUBLIC_SITE_NAME") or ccfg["site_name_default"]
     url = os.environ.get("SITE_URL") or os.environ.get("NEXT_PUBLIC_SITE_URL") or ccfg["site_url_default"] or ""
-    return name.strip() or "Deal Radar", url.strip().rstrip("/")
+    return name.strip() or "Radarsave", url.strip().rstrip("/")
 
 
 # --------------------------------------------------------------------------

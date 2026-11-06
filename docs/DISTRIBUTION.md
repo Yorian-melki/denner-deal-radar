@@ -5,7 +5,7 @@ Ce document couvre la diffusion **publique** : `radar/channel.py`,
 `config/channel.toml`, `.github/workflows/channel.yml`.
 
 Nom de marque et URL du site ne sont pas définitifs : ils viennent des
-variables `SITE_NAME` et `SITE_URL` (défauts : « Deal Radar », pas d'URL →
+variables `SITE_NAME` et `SITE_URL` (défauts : « Radarsave », pas d'URL →
 les liens pointent vers l'offre source). Aucun code à modifier le jour J.
 
 ## 1. Ce qui est publié

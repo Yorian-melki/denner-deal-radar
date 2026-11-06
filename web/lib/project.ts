@@ -167,6 +167,8 @@ export function cleanTitle(t: string, opts: { discountPct?: number; keepLowest?:
     .replace(/\p{Extended_Pictographic}\uFE0F?/gu, "");
   // « QoQa-Exklusiv: … » : le préfixe entier est un slogan.
   s = s.replace(/^\s*\p{L}+-Exklusiv(?:deal)?\s*[:!–-]\s*/iu, "");
+  // « Exklusives Angebot: … », « Exklusiver Rabatt von 5% » (relevé du 06.11) : l'adjectif est un slogan.
+  s = s.replace(/^\s*Exklusives?\s+Angebot\s*[:!–-]\s*/iu, "").replace(/\bexklusive[rsnm]?\s+(?=\p{L})/giu, "");
   for (const re of MARKETING_TAIL) s = s.replace(re, "");
   // Urgence d'abord : « Nur noch heute! Exklusiv – … » laisse sinon « Exklusiv » en tête.
   s = s.replace(URGENCY, " ").replace(/^[\s!,:;–-]+/, "");
@@ -364,7 +366,7 @@ export function projectDeal(d: RawDeal, feed: Feed, now: Date, opts: { expired?:
   if ((d.family === "travel" || d.family === "transport") && !flight && num(d.current_price) === undefined && !/\d/.test(rawTitle)) return null;
   const titleEnds = endsFromTitle(rawTitle, now);
   if (!opts.expired && titleEnds && new Date(titleEnds).getTime() < now.getTime()) return null;
-  const merchant = resolveMerchant(d.source_id, str(d.merchant), rawTitle);
+  const merchant = resolveMerchant(d.source_id, str(d.merchant), rawTitle, str(d.description));
   const lang = titleLang(d.source_id, rawTitle);
   const title = cleanTitle(rawTitle, { discountPct: num(d.effective_discount) ?? num(d.discount_percentage), keepLowest: provenLowest, merchant, lang, free: num(d.current_price) === 0 })
     // Glossaire (round 4, item 10) : « Trainer » (anglicisme de la source) → « Sneaker ».

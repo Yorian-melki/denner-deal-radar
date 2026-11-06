@@ -3,7 +3,7 @@ import { isOperatorComplete } from "@/lib/operator";
 
 /** Nom de marque : une variable (GitHub → Variables → SITE_NAME), aucun code à changer.
  * Aucun nom de marque n'est écrit en dur ailleurs : tout passe par SITE_NAME. */
-export const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || "Deal Radar";
+export const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || "Radarsave";
 
 /** URL publique absolue (canonical, og:url, sitemap, JSON-LD, liens de partage).
  * Un build de production (CI, Cloudflare, `next build`) sans URL https valide

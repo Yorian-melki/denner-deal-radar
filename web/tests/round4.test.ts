@@ -160,6 +160,14 @@ describe("items 8, 12, 13", () => {
     expect(resolveMerchant("preispirat", undefined, "Wingo Red Pro (Swisscom-Netz)")).toBe("Wingo");
     expect(resolveMerchant("preispirat", undefined, "Quickline Mobile L")).toBe("Quickline");
     expect(resolveMerchant("preispirat", undefined, "Gratis Futterprobe")).toBeUndefined();
+    // Description de l'agrégateur (relevé du 06.11) : 1re phrase seulement, jamais un agrégateur ni Twint.
+    expect(resolveMerchant("preispirat", undefined, "Snapmaker U1", "Bei 3DJake findet ihr aktuell den Snapmaker U1 in Aktion")).toBe("3DJake");
+    expect(resolveMerchant("preispirat", undefined, "CMF Phone 1", "Bei post.ch findet ihr aktuell das CMF Phone 1")).toBe("Die Post");
+    expect(resolveMerchant("preispirat", undefined, "Go! Max", "Aktuell bekommt ihr bei yallo das Internet")).toBe("yallo");
+    expect(resolveMerchant("preispirat", undefined, "Flat Mobile", "Derzeit bietet Digital Republic das Flat Mobile Handy-Abo")).toBe("Digital Republic");
+    expect(resolveMerchant("preispirat", undefined, "Dealalarm", "Für alle die es nicht wissen: Bei Preispirat gibt es für registrierte Benutzer")).toBeUndefined();
+    expect(resolveMerchant("preispirat", undefined, "Oral-B iO", "Über Twint gibt es die Oral B iO")).toBeUndefined();
+    expect(resolveMerchant("preispirat", undefined, "CHmobile Plus (CH alles unlimitiert)")).toBe("CHmobile");
   });
   it("entrelacement global : séries ≤ MAX_RUN tant qu'un autre magasin reste ; jamais une carte sans « statt » avant une carte avec", () => {
     const list = [
@@ -208,6 +216,8 @@ describe("item 9 : formules commerciales et casse", () => {
     ["Game X (metacritic User-Score: 7.0)", "Game X"],
     ["Bankpaket SmartStudents! (PostFinance)", "Bankpaket SmartStudents (PostFinance)"],
     ["Kaffee 500g - neu...", "Kaffee 500 g – neu…"],
+    ["Exklusives Angebot: CHF 100.– Qualipet-Gutschein", "CHF 100.– Qualipet-Gutschein"],
+    ["Qatar Airways: Exklusiver Rabatt von 5%", "Qatar Airways: Rabatt von 5%"],
   ])("%s", (raw, clean) => expect(cleanTitle(raw, { lang: "de" })).toBe(clean));
   it("« gratis » final retiré quand le prix affiché dit déjà « Gratis »", () => {
     expect(cleanTitle("Harry Potter Hörbuch gratis", { lang: "de", free: true })).toBe("Harry Potter Hörbuch");
