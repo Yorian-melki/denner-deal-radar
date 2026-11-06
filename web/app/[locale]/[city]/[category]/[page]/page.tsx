@@ -21,7 +21,8 @@ export async function generateStaticParams() {
     }
     for (const s of storesOf(here)) out.push({ city: c.slug, category: "supermarkt-aktionen", page: s.slug });
   }
-  return out;
+  // Next exige au moins un paramètre avec dynamicParams = false (données d'échantillon en CI) : la page « 1 » n'est jamais liée.
+  return out.length ? out : [{ city: launchedCities()[0].slug, category: "supermarkt-aktionen", page: "1" }];
 }
 
 type P = { params: Promise<{ locale: string; city: string; category: string; page: string }> };
