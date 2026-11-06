@@ -157,7 +157,7 @@ button { font: inherit; }
 .intro-facts { display: flex; flex-wrap: wrap; color: var(--muted); font-size: var(--t-callout); line-height: var(--l-callout); }
 .intro-facts > * { white-space: nowrap; }
 .intro-facts > :not(:last-child)::after { content: "·" / ""; margin: 0 6px; color: var(--muted); }
-.intro-facts a, .section-foot a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.intro-facts a, .section-foot a, .section-note a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .lead { color: var(--muted); max-width: 680px; font-size: var(--t-callout); line-height: var(--l-callout); }
 .crumbs { padding-top: 4px; }
 .crumbs a { position: relative; display: inline-flex; align-items: center; gap: 4px; min-height: 32px; color: var(--muted); font-size: var(--t-footnote); font-weight: var(--w-semi); }
@@ -286,12 +286,16 @@ button { font: inherit; }
 /* Merkliste (rétention) : étoile sur la carte (au-dessus du lien de carte), sur la page deal et dans l'en-tête. */
 .save { position: relative; z-index: 1; flex: none; display: inline-grid; place-items: center; width: 32px; height: 32px; margin: -4px -6px 0 0; padding: 0; border: 0; border-radius: var(--r-full); background: transparent; color: var(--muted); cursor: pointer; }
 .save::after { content: ""; position: absolute; inset: -6px; }
+/* Place réservée avant site.js (aucun saut de mise en page) ; sans JavaScript, l'étoile reste invisible. */
+.save[hidden] { display: inline-grid; visibility: hidden; }
+.save-text[hidden] { display: inline-flex; }
 .save:hover { color: var(--fg); }
 .save[aria-pressed="true"] { color: var(--accent); }
 .save[aria-pressed="true"] path { fill: currentColor; }
 .save-text { width: auto; height: 32px; margin: 0; gap: 4px; display: inline-flex; padding: 0 12px; background: var(--fill); color: var(--fg); font-size: var(--t-footnote); font-weight: var(--w-semi); }
 .list-link { position: relative; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 6px; color: var(--muted); font-size: var(--t-footnote); font-weight: var(--w-semi); }
 .list-link:hover { color: var(--fg); text-decoration: none; }
+.list-count { display: inline-block; min-width: 18px; }
 .list-count:not(:empty) { min-width: 18px; padding: 0 5px; border-radius: var(--r-full); background: var(--fill); color: var(--fg); font-size: var(--t-caption); line-height: var(--l-caption); text-align: center; }
 @media (max-width: 479px) { .list-link-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } }
 /* « neu seit deinem letzten Besuch » (site.js, data-new) : pastille hors flux, aucun saut de mise en page. */
