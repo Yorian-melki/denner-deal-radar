@@ -28523,8 +28523,15 @@
   "title": "KENWOOD Cooking Chef XL für CHF 789.- & kombinierbar mit weiteren Aktionen (siehe Beschreibung)",
   "total_acquisition_cost": 789.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-12T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -28579,8 +28586,15 @@
   "title": "Mattel Brick Shop Toyota Supra MkIV (1994, Elite Series, Hot Wheels) bei fnac in Aktion",
   "total_acquisition_cost": 39.99,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-12T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -28634,8 +28648,15 @@
   "title": "Sony WH-1000XM5SA mit Softcase",
   "total_acquisition_cost": 149.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-12T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -28681,8 +28702,15 @@
   "tags": [],
   "title": "CHmobile Plus Handy-Abo (CH alles unlimitiert, 5 GB Datenroaming in Europa, den USA, Kanada und der Türkei)",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-12T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -28741,8 +28769,15 @@
   "title": "Bauknecht WM BK10A CH A Waschmaschine (Fassungsvermögen 10 kg) mit Gutschein zum neuen Bestpreis",
   "total_acquisition_cost": 469.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-12T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -28797,8 +28832,15 @@
   "title": "UGREEN Nexode Pro USB-Ladegerät (45 W, USB-C, Silber/Schwarz) bei Interdiscount (Abholung)",
   "total_acquisition_cost": 14.95,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-18T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -28846,8 +28888,15 @@
   ],
   "title": "Zweifel Aromat Chips 25% beim Kauf von 2 Stück",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-10T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -28902,8 +28951,15 @@
   "title": "HP G6 (100W, mit Alt-Mode, 3x USB-A, 2x USB-C) inkl. 120W Netzteil bei MediaMarkt",
   "total_acquisition_cost": 99.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-09T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -28949,10 +29005,17 @@
   "tags": [],
   "title": "MOVA V50 Ultra Complete Saug- und Wischroboter zum neuen Bestpreis",
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:46:48+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:772274": {
@@ -28998,10 +29061,17 @@
   ],
   "title": "Halloween treats zum halben Preis bei Coop",
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-06T15:46:31+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-06T16:46:48+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:772287": {
@@ -29045,8 +29115,15 @@
   "tags": [],
   "title": "Easy Internet bis zu 1 Gbit/s bei Sunrise",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-30T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -29101,8 +29178,15 @@
   "title": "Amorana Premium Erotik-Adventskalender 2026",
   "total_acquisition_cost": 119.6,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-12T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -29147,8 +29231,15 @@
   "tags": [],
   "title": "Alpian Bankkonto mit CHF 90.- Willkommensbonus",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-12-31T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -29202,8 +29293,15 @@
   "title": "Bambu Lab X2D 3D-Drucker inkl. AMS2 Pro",
   "total_acquisition_cost": 667.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-12T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -29249,8 +29347,15 @@
   "tags": [],
   "title": "Coop Mobile Abos Swiss S für 9.95 CHF pro Monat & gratis Aktivierung (Swisscom-Netz, 6 GB ohne Verfall)",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-30T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -29305,8 +29410,15 @@
   "title": "HERMÈS Barénia Geschenkset (Eau de Parfum 60 ml + 15 ml) bei Marionnaud",
   "total_acquisition_cost": 56.3,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-12T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -29361,8 +29473,15 @@
   "title": "Metroid Prime 4: Beyond für Nintendo Switch zum neuen Bestpreis",
   "total_acquisition_cost": 26.4,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-12T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
@@ -29417,8 +29536,15 @@
   "title": "Certina DS PH200M Powermatic 80 Automatikuhr mit Diamanten 39mm bei CHRIST in Aktion",
   "total_acquisition_cost": 647.5,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-06T16:46:48+01:00",
+     "ends": "2026-11-12T16:46:48+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-06T15:46:31+01:00",
    "state": "HIDDEN"
   }
