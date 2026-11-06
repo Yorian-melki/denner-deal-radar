@@ -1,0 +1,56 @@
+name: audit
+
+# V2-C rang 3 (§2.8) : audit quotidien de 100 offres servies, tirées au hasard dans le sitemap,
+# comparées à la source publique. Publie M1 (erreur dure) et M2 (affirmé à tort « gesehen »)
+# avec IC95 dans data/audit/latest.json. Aucun LLM, user-agent honnête, robots.txt des sources respecté.
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+    inputs:
+      n:
+        description: "taille de l'échantillon"
+        default: "100"
+      seed:
+        description: "graine du tirage (vide = date du jour)"
+        default: ""
+      out:
+        description: "dossier de sortie"
+        default: "data/audit"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: radar-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Audit
+        env:
+          N: ${{ inputs.n || '100' }}
+          SEED: ${{ inputs.seed }}
+          OUT: ${{ inputs.out || 'data/audit' }}
+        run: python -m radar audit --n "$N" ${SEED:+--seed "$SEED"} --out "$OUT"
+      - name: Publication (git)
+        run: |
+          git config user.name "deal-radar-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/audit
+          if git diff --cached --quiet; then echo "rien à commiter"; exit 0; fi
+          git commit -m "data(audit): $(date -u +%Y-%m-%d) [skip ci]"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push && exit 0
+            sleep $((i * 7))
+          done
+          exit 1
