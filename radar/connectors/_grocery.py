@@ -44,7 +44,7 @@ def quantity_fields(price: float | None, size_text: str, stated_unit: tuple[floa
     return out
 
 
-_STATED = re.compile(r"(\d+(?:[.,]\d+)?)?\s*(kg|g|l|dl|cl|ml|stück|stk\.?|piece|pièce)\s*=\s*"
+_STATED = re.compile(r"(\d+(?:[.,]\d+)?)?\s*(?<![A-Za-zÄÖÜäöü])(kg|g|l|dl|cl|ml|stück|stk\.?|piece|pièce)\s*=\s*"
                      r"((?:CHF\s*)?(?:\d+(?:[.,]\d{1,2})?|[–-]\.\d{2})(?:\.[–-])?)", re.I)
 _BASE = {"kg": ("CHF/kg", 1.0), "g": ("CHF/kg", 1000.0), "l": ("CHF/l", 1.0), "dl": ("CHF/l", 10.0),
          "cl": ("CHF/l", 100.0), "ml": ("CHF/l", 1000.0)}

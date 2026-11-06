@@ -5,6 +5,7 @@
     data/universal/history/<source>.json      observations de prix par entité canonique
     data/universal/events/AAAA-MM.ndjson      journal des changements (append-only)
     data/universal/runs/AAAA-MM.ndjson        journal des exécutions
+    data/universal/decisions/AAAA-MM.ndjson   journal des décisions de vérification (append-only)
     data/universal/state.json                 santé des sources, ETag, notifications
 
 Les données Denner V2 (data/offers, data/price_history.json…) ne sont pas
@@ -34,6 +35,7 @@ class UStore:
         self.state: dict = _read(self.dir / "state.json", {})
         self._events: list[dict] = []
         self._runs: list[dict] = []
+        self.decisions: list[dict] = []   # journal des décisions de vérification (core/verify.py)
         self._archive: dict[tuple[str, str], dict] = {}
 
     # -- accès ------------------------------------------------------------
@@ -126,11 +128,11 @@ class UStore:
         self._archive = {}
         if _write_if_changed(self.dir / "state.json", _dump(self.state)):
             changed.append("state")
-        for sub, rows in (("events", self._events), ("runs", self._runs)):
+        for sub, rows in (("events", self._events), ("runs", self._runs), ("decisions", self.decisions)):
             for r in rows:
                 p = self.dir / sub / f"{r['at'][:7]}.ndjson"
                 p.parent.mkdir(parents=True, exist_ok=True)
                 with open(p, "a", encoding="utf-8") as f:
                     f.write(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n")
-        self._events, self._runs = [], []
+        self._events, self._runs, self.decisions = [], [], []
         return changed

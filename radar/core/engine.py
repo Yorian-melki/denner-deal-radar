@@ -22,12 +22,13 @@ from .connector import Connector, Context, FetchResult
 from .entity import canonical_entity_id, canonical_game_id, deduplicate
 from .store import UStore
 from .uscoring import accessibility, score_deal
+from .verify import note_seen
 
 log = logging.getLogger("radar.core")
 TRACKED = ("current_price", "reference_price", "ends_at", "starts_at", "stock_remaining",
            "stock_percent_sold", "conditions", "minimum_quantity", "shipping_cost")
 SEEN_GRANULARITY = dt.timedelta(hours=6)
-REFRESH_SKIP = {"first_seen_at", "deal_id", "missing_scans", "lifecycle", "removed_at"}
+REFRESH_SKIP = {"first_seen_at", "deal_id", "missing_scans", "lifecycle", "removed_at", "verify"}
 
 
 def iso(now: dt.datetime) -> str:
@@ -159,6 +160,7 @@ def apply(store: UStore, c: Connector, fresh: dict[str, dict], state: str, now: 
         if not old.get("last_seen_at") or now - dt.datetime.fromisoformat(old["last_seen_at"]) >= SEEN_GRANULARITY:
             old["last_seen_at"] = at
         old["missing_scans"] = 0
+        note_seen(old)   # offre masquée revue dans la liste source : +1 vérification OK
         if changes:
             old["last_changed_at"] = at
             store.observe(old, at)

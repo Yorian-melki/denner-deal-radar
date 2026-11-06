@@ -16,7 +16,7 @@ from . import notify as N
 from .config import load
 from .connectors import REGISTRY, enabled_connectors
 from .connectors import denner_v2
-from .core import engine, ualerts
+from .core import engine, ualerts, verify
 from .core.deal import FAMILIES
 from .core.store import UStore
 from .storage import Store
@@ -63,8 +63,15 @@ def cmd_uscan(args) -> int:
     den = denner_v2.deals(radar_store, now)
     live = engine.enrich(store, cfg, cfg.prefs, now, extra=den)
     store.archive_old(now)
+    # Vérification (R2 §3) : recontrôle poli de pages (404/410, drapeaux de fin), puis états
+    # persistés et journal des décisions — avant les alertes, qui ignorent les offres masquées.
+    if args.checks:
+        verify.run_checks(store, http, now, limit=args.checks)
+    verdicts = verify.assess_all(store, radar_store, cfg, now, den=den, persist=True, journal=store.decisions)
+    hidden = {k for k, a in verdicts.items() if a["state"] not in verify.LISTED}
+    shown = [d for d in live + den if d["deal_id"] not in hidden]
 
-    msgs = ualerts.build(live + den, cfg, now, store) if not args.no_notify else []
+    msgs = ualerts.build(shown, cfg, now, store) if not args.no_notify else []
     msgs += _technical(store, cfg, conns, now)
     box = _Box(store.notify_state)
     if msgs:
@@ -92,7 +99,7 @@ def _technical(store: UStore, cfg, conns, now) -> list[dict]:
             out.append(N.technical(f"tech:u:{c.id}:{now.date()}",
                                    f"⚠️ Source <b>{N.esc(c.name)}</b> en échec depuis {n} collectes : "
                                    f"{N.esc(st.get('last_error') or st.get('last_state'))}\n"
-                                   "Ses dernières données valides restent affichées."))
+                                   "Ses offres sont masquées dès 3 échecs (X_SOURCE_STALE), réaffichées au retour."))
         if n == 0 and st.get("failure_alerted"):
             st.pop("failure_alerted")
             out.append(N.technical(f"tech:u:{c.id}:ok:{now.isoformat()}", f"✅ Source <b>{N.esc(c.name)}</b> rétablie."))
@@ -119,6 +126,18 @@ def _slim(d: dict) -> dict:
     return out
 
 
+def _publish(d: dict, verdict: dict | None) -> dict:
+    """Deal exporté : champs allégés + état de vérification (core/verify.py). Un prix unitaire
+    incohérent (P_UNIT_INCOHERENT) n'est jamais publié."""
+    out = _slim(d)
+    out.pop("verify", None)
+    out.update(verify.export_fields(d, verdict))
+    if verdict and verdict.get("unit_incoherent"):
+        out.pop("unit_price", None)
+        out.pop("unit", None)
+    return out
+
+
 def write_export(store: UStore, radar_store: Store, cfg, now, out: Path, live=None, den=None) -> None:
     if live is None:
         den = denner_v2.deals(radar_store, now)
@@ -136,8 +155,9 @@ def write_export(store: UStore, radar_store: Store, cfg, now, out: Path, live=No
             allx.append(d)
     for d in allx:
         d["record"] = d["deal_id"] in ranked_ids or d.get("record", False)
+    verdicts = verify.assess_all(store, radar_store, cfg, now, den=den)
     payload = {"generated_at": now.replace(microsecond=0).isoformat(),
-               "deals": [_slim(d) for d in allx]}
+               "deals": [_publish(d, verdicts.get(d["deal_id"])) for d in allx]}
     out.mkdir(parents=True, exist_ok=True)
     (out / "universal.json").write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":"), default=str), "utf-8")
     (out / "sources.json").write_text(json.dumps(sources_report(store, cfg, now, radar_store, allx), ensure_ascii=False,
@@ -231,6 +251,8 @@ def register(sub) -> None:
     p.add_argument("--out-dry")
     p.add_argument("--raw-dir", default="raw")
     p.add_argument("--max-minutes", type=float, default=18.0, help="budget global de collecte")
+    p.add_argument("--checks", type=int, default=verify.MAX_CHECKS_PER_RUN,
+                   help="pages recontrôlées au plus (404/410, drapeaux de fin) ; 0 = aucune")
     p.add_argument("--now")
     p.set_defaults(fn=cmd_uscan)
     p = sub.add_parser("u-export")

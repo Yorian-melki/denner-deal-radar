@@ -69,6 +69,8 @@ class QoQa(Connector):
             discount_percentage=None if ref else (float(m.group(1)) if m else None),
             price_max=o.get("price_range_max") if o.get("price_range_max") != price else None,
             stock_percent_sold=100 - o["remaining_stock_percent"] if o.get("remaining_stock_percent") is not None else None,
+            # Épuisée à la source (R2 §3.3, T_SRC_EXPIRED_FLAG) : stock restant 0 % ou ``is_sold_out``.
+            sold_out=True if o.get("is_sold_out") is True or o.get("remaining_stock_percent") == 0 else None,
             starts_at=iso_local(o.get("started_at"), tz), ends_at=iso_local(o.get("ends_at"), tz),
             geographic_scope="ONLINE", delivery_scope="CH", access="PUBLIC",
             reference_note="regular_price QoQa (prix public conseillé selon QoQa)" if ref else None)
