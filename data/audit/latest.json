@@ -1,0 +1,334 @@
+{
+ "generated_at": "2026-11-07T13:58:41+01:00",
+ "day": {
+  "sampled": 100,
+  "verifiable": 99,
+  "unverifiable": 1,
+  "skipped": 0,
+  "M1": {
+   "x": 19,
+   "n": 99,
+   "rate": 0.1919,
+   "wilson95": [
+    0.1265,
+    0.2804
+   ],
+   "cp_upper95": 0.2688
+  },
+  "M2": {
+   "x": 17,
+   "n": 84,
+   "rate": 0.2024,
+   "wilson95": [
+    0.1304,
+    0.3004
+   ],
+   "cp_upper95": 0.288
+  },
+  "M_soft": {
+   "x": 0,
+   "n": 99,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.0374
+   ],
+   "cp_upper95": 0.0298
+  },
+  "by_source": {
+   "aldi": {
+    "n": 19,
+    "H": 0,
+    "S": 0,
+    "OK": 19,
+    "U": 0,
+    "SKIP": 0
+   },
+   "denner": {
+    "n": 12,
+    "H": 12,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   },
+   "dschungelkompass": {
+    "n": 1,
+    "H": 0,
+    "S": 0,
+    "OK": 1,
+    "U": 0,
+    "SKIP": 0
+   },
+   "galaxus_daily": {
+    "n": 1,
+    "H": 0,
+    "S": 0,
+    "OK": 0,
+    "U": 1,
+    "SKIP": 0
+   },
+   "gamerpower": {
+    "n": 1,
+    "H": 0,
+    "S": 0,
+    "OK": 1,
+    "U": 0,
+    "SKIP": 0
+   },
+   "gutscheine_20min": {
+    "n": 3,
+    "H": 0,
+    "S": 0,
+    "OK": 3,
+    "U": 0,
+    "SKIP": 0
+   },
+   "lidl": {
+    "n": 2,
+    "H": 0,
+    "S": 0,
+    "OK": 2,
+    "U": 0,
+    "SKIP": 0
+   },
+   "migros": {
+    "n": 2,
+    "H": 0,
+    "S": 0,
+    "OK": 2,
+    "U": 0,
+    "SKIP": 0
+   },
+   "poinz": {
+    "n": 4,
+    "H": 0,
+    "S": 0,
+    "OK": 4,
+    "U": 0,
+    "SKIP": 0
+   },
+   "preispirat": {
+    "n": 13,
+    "H": 0,
+    "S": 0,
+    "OK": 13,
+    "U": 0,
+    "SKIP": 0
+   },
+   "qoqa": {
+    "n": 2,
+    "H": 1,
+    "S": 0,
+    "OK": 1,
+    "U": 0,
+    "SKIP": 0
+   },
+   "rappn": {
+    "n": 15,
+    "H": 5,
+    "S": 0,
+    "OK": 10,
+    "U": 0,
+    "SKIP": 0
+   },
+   "revendo": {
+    "n": 23,
+    "H": 0,
+    "S": 0,
+    "OK": 23,
+    "U": 0,
+    "SKIP": 0
+   },
+   "studentbeans": {
+    "n": 1,
+    "H": 1,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   },
+   "volg": {
+    "n": 1,
+    "H": 0,
+    "S": 0,
+    "OK": 1,
+    "U": 0,
+    "SKIP": 0
+   }
+  },
+  "causes": {
+   "exists": 14,
+   "location": 5,
+   "price": 1
+  }
+ },
+ "rolling_7d": {
+  "sampled": 100,
+  "verifiable": 99,
+  "unverifiable": 1,
+  "skipped": 0,
+  "M1": {
+   "x": 19,
+   "n": 99,
+   "rate": 0.1919,
+   "wilson95": [
+    0.1265,
+    0.2804
+   ],
+   "cp_upper95": 0.2688
+  },
+  "M2": {
+   "x": 17,
+   "n": 84,
+   "rate": 0.2024,
+   "wilson95": [
+    0.1304,
+    0.3004
+   ],
+   "cp_upper95": 0.288
+  },
+  "M_soft": {
+   "x": 0,
+   "n": 99,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.0374
+   ],
+   "cp_upper95": 0.0298
+  },
+  "by_source": {
+   "aldi": {
+    "n": 19,
+    "H": 0,
+    "S": 0,
+    "OK": 19,
+    "U": 0,
+    "SKIP": 0
+   },
+   "denner": {
+    "n": 12,
+    "H": 12,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   },
+   "dschungelkompass": {
+    "n": 1,
+    "H": 0,
+    "S": 0,
+    "OK": 1,
+    "U": 0,
+    "SKIP": 0
+   },
+   "galaxus_daily": {
+    "n": 1,
+    "H": 0,
+    "S": 0,
+    "OK": 0,
+    "U": 1,
+    "SKIP": 0
+   },
+   "gamerpower": {
+    "n": 1,
+    "H": 0,
+    "S": 0,
+    "OK": 1,
+    "U": 0,
+    "SKIP": 0
+   },
+   "gutscheine_20min": {
+    "n": 3,
+    "H": 0,
+    "S": 0,
+    "OK": 3,
+    "U": 0,
+    "SKIP": 0
+   },
+   "lidl": {
+    "n": 2,
+    "H": 0,
+    "S": 0,
+    "OK": 2,
+    "U": 0,
+    "SKIP": 0
+   },
+   "migros": {
+    "n": 2,
+    "H": 0,
+    "S": 0,
+    "OK": 2,
+    "U": 0,
+    "SKIP": 0
+   },
+   "poinz": {
+    "n": 4,
+    "H": 0,
+    "S": 0,
+    "OK": 4,
+    "U": 0,
+    "SKIP": 0
+   },
+   "preispirat": {
+    "n": 13,
+    "H": 0,
+    "S": 0,
+    "OK": 13,
+    "U": 0,
+    "SKIP": 0
+   },
+   "qoqa": {
+    "n": 2,
+    "H": 1,
+    "S": 0,
+    "OK": 1,
+    "U": 0,
+    "SKIP": 0
+   },
+   "rappn": {
+    "n": 15,
+    "H": 5,
+    "S": 0,
+    "OK": 10,
+    "U": 0,
+    "SKIP": 0
+   },
+   "revendo": {
+    "n": 23,
+    "H": 0,
+    "S": 0,
+    "OK": 23,
+    "U": 0,
+    "SKIP": 0
+   },
+   "studentbeans": {
+    "n": 1,
+    "H": 1,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   },
+   "volg": {
+    "n": 1,
+    "H": 0,
+    "S": 0,
+    "OK": 1,
+    "U": 0,
+    "SKIP": 0
+   }
+  },
+  "causes": {
+   "exists": 14,
+   "location": 5,
+   "price": 1
+  }
+ },
+ "slo": {
+  "M1_max": 0.03,
+  "M2_max": 0.015,
+  "judged_on": "cp_upper95"
+ }
+}
