@@ -1295,21 +1295,14 @@
     7
    ],
    "http_cache": {},
-   "last_attempt": "2026-11-08T01:39:03+01:00",
+   "last_attempt": "2026-11-08T03:31:10+01:00",
    "last_error": null,
    "last_items": 7,
-   "last_latency_s": 1.18,
+   "last_latency_s": 1.35,
    "last_state": "OK",
-   "last_success": "2026-11-08T01:39:03+01:00",
+   "last_success": "2026-11-08T03:31:10+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-02T01:46:28+01:00",
-     "items": 7,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-02T03:33:50+01:00",
      "items": 7,
@@ -1512,6 +1505,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-11-08T03:31:10+01:00",
+     "items": 7,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -1535,21 +1535,14 @@
     8
    ],
    "http_cache": {},
-   "last_attempt": "2026-11-08T01:39:03+01:00",
+   "last_attempt": "2026-11-08T03:31:10+01:00",
    "last_error": null,
    "last_items": 8,
-   "last_latency_s": 2.67,
+   "last_latency_s": 4.42,
    "last_state": "OK",
-   "last_success": "2026-11-08T01:39:03+01:00",
+   "last_success": "2026-11-08T03:31:10+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-01T22:12:04+01:00",
-     "items": 8,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-02T01:46:28+01:00",
      "items": 8,
@@ -1752,6 +1745,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-11-08T03:31:10+01:00",
+     "items": 8,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -1775,23 +1775,16 @@
     77
    ],
    "http_cache": {},
-   "last_attempt": "2026-11-08T01:39:03+01:00",
+   "last_attempt": "2026-11-08T03:31:10+01:00",
    "last_error": null,
    "last_items": 88,
-   "last_latency_s": 3.23,
+   "last_latency_s": 2.19,
    "last_state": "PARTIAL",
-   "last_success": "2026-11-08T01:39:03+01:00",
+   "last_success": "2026-11-08T03:31:10+01:00",
    "last_warnings": [
     "mobile : 52/70 offres (suite via POST non suivie)"
    ],
    "recent": [
-    {
-     "at": "2026-11-01T22:12:04+01:00",
-     "items": 81,
-     "rejected": 0,
-     "state": "PARTIAL",
-     "warn": 1
-    },
     {
      "at": "2026-11-02T01:46:28+01:00",
      "items": 77,
@@ -1990,6 +1983,13 @@
     },
     {
      "at": "2026-11-08T01:39:03+01:00",
+     "items": 88,
+     "rejected": 0,
+     "state": "PARTIAL",
+     "warn": 1
+    },
+    {
+     "at": "2026-11-08T03:31:10+01:00",
      "items": 88,
      "rejected": 0,
      "state": "PARTIAL",
@@ -2245,7 +2245,6 @@
    "counts": [
     7,
     7,
-    7,
     6,
     6,
     6,
@@ -2254,29 +2253,23 @@
     5,
     8,
     7,
+    7,
     7
    ],
    "http_cache": {
     "https://www.ferienpiraten.ch/feed": {
-     "etag": "W/\"c4447e7596bfefd339aa26366f2ddfa0\"",
-     "last_modified": "Sat, 07 Nov 2026 23:45:23 GMT"
+     "etag": "W/\"c008b694f0bf8797d27460422a2f60c9\"",
+     "last_modified": "Sun, 08 Nov 2026 01:45:23 GMT"
     }
    },
-   "last_attempt": "2026-11-08T01:39:03+01:00",
+   "last_attempt": "2026-11-08T03:31:10+01:00",
    "last_error": null,
    "last_items": 7,
-   "last_latency_s": 2.05,
+   "last_latency_s": 1.76,
    "last_state": "OK",
-   "last_success": "2026-11-08T01:39:03+01:00",
+   "last_success": "2026-11-08T03:31:10+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-01T22:12:04+01:00",
-     "items": 11,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-02T01:46:28+01:00",
      "items": 11,
@@ -2479,6 +2472,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-11-08T03:31:10+01:00",
+     "items": 7,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -2493,30 +2493,23 @@
     15,
     15,
     15,
-    15,
     18,
     18,
     18,
     18,
     18,
+    20,
     20
    ],
    "http_cache": {},
-   "last_attempt": "2026-11-08T01:39:03+01:00",
+   "last_attempt": "2026-11-08T03:31:10+01:00",
    "last_error": null,
    "last_items": 20,
-   "last_latency_s": 4.62,
+   "last_latency_s": 4.05,
    "last_state": "OK",
-   "last_success": "2026-11-08T01:39:03+01:00",
+   "last_success": "2026-11-08T03:31:10+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-01T22:12:04+01:00",
-     "items": 10,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-02T01:46:28+01:00",
      "items": 12,
@@ -2715,6 +2708,13 @@
     },
     {
      "at": "2026-11-08T01:39:03+01:00",
+     "items": 20,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-11-08T03:31:10+01:00",
      "items": 20,
      "rejected": 0,
      "state": "OK",
@@ -4384,7 +4384,6 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "counts": [
-    56,
     58,
     59,
     59,
@@ -4394,6 +4393,7 @@
     60,
     60,
     59,
+    58,
     58,
     58
    ],
@@ -4407,21 +4407,14 @@
      "last_modified": "Sat, 07 Nov 2026 21:00:09 GMT"
     }
    },
-   "last_attempt": "2026-11-08T01:39:03+01:00",
+   "last_attempt": "2026-11-08T03:31:10+01:00",
    "last_error": null,
    "last_items": 58,
-   "last_latency_s": 2.43,
+   "last_latency_s": 3.09,
    "last_state": "OK",
-   "last_success": "2026-11-08T01:39:03+01:00",
+   "last_success": "2026-11-08T03:31:10+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-02T01:46:28+01:00",
-     "items": 59,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-02T03:33:50+01:00",
      "items": 59,
@@ -4624,6 +4617,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-11-08T03:31:10+01:00",
+     "items": 58,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 0.98,
@@ -4636,13 +4636,13 @@
     42,
     42,
     42,
-    42,
     43,
     43,
     43,
     41,
     42,
     40,
+    39,
     39,
     39
    ],
@@ -10371,21 +10371,14 @@
     ]
    },
    "http_cache": {},
-   "last_attempt": "2026-11-08T01:39:03+01:00",
+   "last_attempt": "2026-11-08T03:31:10+01:00",
    "last_error": null,
    "last_items": 39,
-   "last_latency_s": 1.25,
+   "last_latency_s": 1.36,
    "last_state": "OK",
-   "last_success": "2026-11-08T01:39:03+01:00",
+   "last_success": "2026-11-08T03:31:10+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-02T03:33:50+01:00",
-     "items": 19,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-02T12:16:38+01:00",
      "items": 38,
@@ -10588,6 +10581,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-11-08T03:31:10+01:00",
+     "items": 39,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -10597,25 +10597,18 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "http_cache": {},
-   "last_attempt": "2026-11-08T01:39:03+01:00",
+   "last_attempt": "2026-11-08T03:31:10+01:00",
    "last_error": null,
    "last_items": 401,
-   "last_latency_s": 26.48,
+   "last_latency_s": 24.13,
    "last_state": "PARTIAL",
-   "last_success": "2026-11-08T01:39:03+01:00",
+   "last_success": "2026-11-08T03:31:10+01:00",
    "last_warnings": [
     "aligro: aucune carte d'offre",
     "coop: 3 page(s) lue(s), suite non collectée (volume limité)",
     "ottos: 2 page(s) lue(s), suite non collectée (volume limité)"
    ],
    "recent": [
-    {
-     "at": "2026-11-02T03:33:50+01:00",
-     "items": 475,
-     "rejected": 0,
-     "state": "PARTIAL",
-     "warn": 2
-    },
     {
      "at": "2026-11-02T12:16:38+01:00",
      "items": 474,
@@ -10814,6 +10807,13 @@
     },
     {
      "at": "2026-11-08T01:39:03+01:00",
+     "items": 401,
+     "rejected": 0,
+     "state": "PARTIAL",
+     "warn": 3
+    },
+    {
+     "at": "2026-11-08T03:31:10+01:00",
      "items": 401,
      "rejected": 0,
      "state": "PARTIAL",
