@@ -837,13 +837,15 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/06/Screenshot_20260602_205510_Chrome-300x97.jpg",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
   "last_seen_at": "2026-11-02T03:33:50+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": null,
   "offer_type": "freebie",
   "personal_relevance": 0.6,
   "promotion_integrity": null,
   "published_at": "2026-06-02T21:07:13+02:00",
+  "removed_at": "2026-11-09T03:41:50+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "valeur inconnue : gratuit non évalué",
@@ -1821,17 +1823,17 @@
   "access": "PUBLIC",
   "accessibility": 1.0,
   "accessibility_notes": [],
-  "best_score": 0.9,
+  "best_score": 6.2,
   "canonical_entity_id": "t:conforama:ohmex-gasgrill-ohm-bbq-3525-3-brenner-7-5-kw-51-5-33-5-cm-inkl-lieferung-zum-pir",
-  "category": "Garten & Baumarkt",
+  "category": "Garten & Baumarkt, redaktion",
   "cost_assumptions": [],
   "current_price": 79.95,
   "deal_id": "preispirat:761035",
-  "deal_score": 0.9,
+  "deal_score": 6.2,
   "description": "Derzeit gibt es bei Conforama den OHMEX Gasgrill [code masqué] (3 Brenner, 7.5 kW, 51.5 × 33.5 cm) zum Piratenpreis von 89.95 Franken, und das mit Lieferung nach Hause. Wenn ihr zusätzlich den Newsletter abonniert und mit dem Account, mit dem ihr den Newsletter abonniert habt, den zugesandten Code a",
-  "discount_absolute": 24.95,
-  "discount_percentage": 23.8,
-  "effective_discount": 4.7,
+  "discount_absolute": 87.55,
+  "discount_percentage": 52.3,
+  "effective_discount": 40.3,
   "family": "retail",
   "feed": "https://www.preispirat.ch/feed/",
   "first_seen_at": "2026-10-19T10:58:29+02:00",
@@ -1839,25 +1841,23 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/09/chrome_ClmNqAOecE-270x300.png",
-  "last_changed_at": "2026-10-19T10:58:29+02:00",
-  "last_seen_at": "2026-10-25T02:14:05+01:00",
-  "lifecycle": "REMOVED",
+  "last_changed_at": "2026-11-09T03:41:50+01:00",
+  "last_seen_at": "2026-11-09T03:41:50+01:00",
+  "lifecycle": "ACTIVE",
   "merchant": "Conforama",
   "missing_scans": 0,
-  "net_savings": 3.97,
+  "net_savings": 54.05,
   "offer_type": "community_deal",
   "personal_relevance": 0.55,
   "promotion_integrity": "unchecked",
-  "published_at": "2026-10-23T19:00:17+02:00",
+  "published_at": "2026-11-09T03:30:17+01:00",
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
-  "reference_price": 104.9,
+  "reference_price": 167.5,
   "reference_price_type": "competitor",
-  "removed_at": "2026-11-01T03:16:31+01:00",
-  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
-    "réduction vs prix concurrent (−20 %) : 5 %",
-    0.95
+    "réduction vs prix concurrent (−20 %) : 40 %",
+    6.24
    ]
   ],
   "score_confidence": 0.5,
@@ -25305,10 +25305,15 @@
      "at": "2026-11-07T00:50:04+01:00",
      "ends": "2026-11-30T00:50:04+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-09T03:41:50+01:00",
+     "ends": "2026-11-30T03:41:50+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-08T22:13:34+01:00",
    "state": "SUSPECT"
   }
@@ -27604,10 +27609,15 @@
      "at": "2026-11-07T00:50:04+01:00",
      "ends": "2026-11-11T00:50:04+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-09T03:41:50+01:00",
+     "ends": "2026-11-11T03:41:50+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-08T22:13:34+01:00",
    "state": "SUSPECT"
   }
@@ -27871,10 +27881,15 @@
      "at": "2026-11-07T00:50:04+01:00",
      "ends": "2026-11-11T00:50:04+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-09T03:41:50+01:00",
+     "ends": "2026-11-12T03:41:50+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-08T22:13:34+01:00",
    "state": "SUSPECT"
   }
@@ -28256,10 +28271,15 @@
      "at": "2026-11-07T00:50:04+01:00",
      "ends": "2026-11-12T00:50:04+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-09T03:41:50+01:00",
+     "ends": "2026-11-11T03:41:50+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-08T22:13:34+01:00",
    "state": "SUSPECT"
   }
@@ -28324,10 +28344,15 @@
      "at": "2026-11-07T03:51:09+01:00",
      "ends": "2026-11-11T03:51:09+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-09T03:41:50+01:00",
+     "ends": "2026-11-11T03:41:50+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-09T01:56:49+01:00",
    "state": "SUSPECT"
   }
@@ -28382,10 +28407,15 @@
      "at": "2026-11-07T03:51:09+01:00",
      "ends": "2026-11-11T03:51:09+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-09T03:41:50+01:00",
+     "ends": "2026-11-11T03:41:50+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-09T01:56:49+01:00",
    "state": "SUSPECT"
   }
@@ -28440,10 +28470,15 @@
      "at": "2026-11-07T03:51:09+01:00",
      "ends": "2026-12-31T03:51:09+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-09T03:41:50+01:00",
+     "ends": "2026-12-31T03:41:50+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-09T01:56:49+01:00",
    "state": "SUSPECT"
   }
@@ -28615,10 +28650,15 @@
      "at": "2026-11-07T03:51:09+01:00",
      "ends": "2026-11-11T03:51:09+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-09T03:41:50+01:00",
+     "ends": "2026-11-11T03:41:50+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-09T01:56:49+01:00",
    "state": "SUSPECT"
   }
@@ -28875,7 +28915,7 @@
     }
    ],
    "code": "T_PP_REMAINING",
-   "ok_streak": 3,
+   "ok_streak": 4,
    "since": "2026-11-08T12:18:05+01:00",
    "state": "ENDED"
   }
@@ -42133,6 +42173,56 @@
   "tags": [],
   "title": "DREAME X60 Pro Ultra Complete Saugroboter zum neuen Bestpreis – 42kPa, bis 10cm Hindernisüberwindung",
   "total_acquisition_cost": 788.0
+ },
+ "preispirat:774996": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:interdiscount:ultimate-ears-boom-4-mobiler-lautsprecher-zum-neuen-bestpreis-bei-interdiscount",
+  "category": "Smartphones, Wearables & Kopfhörer, redaktion",
+  "cost_assumptions": [],
+  "current_price": 69.95,
+  "deal_id": "preispirat:774996",
+  "deal_score": 0.0,
+  "description": "Ihr seid viel unterwegs und wollt auch die Welt an eurem Sound teilhaben lassen? Dann habt ihr auch sicher schon ein Auge auf die UE Boom 4 Lautsprecher geworfen 👀 Diese gibt’s gerade wieder zum neuen Bestpreis bei Interdiscount für knapp unter 70 Franken! Laut toppreise lag dieser nämlich bei 73.50",
+  "discount_absolute": 11.75,
+  "discount_percentage": 14.4,
+  "effective_discount": 0.0,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-09T03:41:50+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/81MrQhI3mL._AC_SL1500_-121x300.jpg",
+  "last_changed_at": "2026-11-09T03:41:50+01:00",
+  "last_seen_at": "2026-11-09T03:41:50+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Interdiscount",
+  "missing_scans": 0,
+  "net_savings": -4.59,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.55,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-09T02:30:57+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 81.7,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "774996",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/ultimate-ears-boom-4-mobiler-lautsprecher-zum-neuen-bestpreis-bei-interdiscount/",
+  "tags": [],
+  "title": "ULTIMATE EARS Boom 4 mobiler Lautsprecher zum neuen Bestpreis bei Interdiscount",
+  "total_acquisition_cost": 69.95
  },
  "preispirat:775024": {
   "access": "PUBLIC",
