@@ -24,12 +24,12 @@
   "weekend_highlight": 0,
   "weekend_highlight_next_week": 0
  },
- "last_attempt": "2026-11-09T00:03:33+01:00",
- "last_new_at": "2026-11-03T13:43:55+01:00",
- "last_success": "2026-11-09T00:03:33+01:00",
+ "last_attempt": "2026-11-09T08:12:43+01:00",
+ "last_new_at": "2026-11-09T08:12:43+01:00",
+ "last_success": "2026-11-09T08:12:43+01:00",
  "outbox": [],
  "recaps": {
-  "monday": "2026-11-02",
+  "monday": "2026-11-09",
   "thursday": "2026-11-05"
  },
  "reminded": {
@@ -122,6 +122,7 @@
   "recap:monday:2026-10-19": "2026-10-19T07:21:07.509844+02:00",
   "recap:monday:2026-10-26": "2026-10-26T09:57:30.109453+01:00",
   "recap:monday:2026-11-02": "2026-11-02T07:51:58.431490+01:00",
+  "recap:monday:2026-11-09": "2026-11-09T08:12:43.224738+01:00",
   "recap:thursday:2026-10-15": "2026-10-15T09:43:46.741049+02:00",
   "recap:thursday:2026-10-22": "2026-10-22T09:57:33.109294+02:00",
   "recap:thursday:2026-10-29": "2026-10-29T09:54:32.465444+01:00",
@@ -155,67 +156,68 @@
   "wave:2026-10-27T19:12:51+01:00": "2026-10-27T19:12:51.095452+01:00",
   "wave:2026-11-02T07:51:58+01:00": "2026-11-02T07:51:58.431490+01:00",
   "wave:2026-11-02T12:10:50+01:00": "2026-11-02T12:10:50.413092+01:00",
-  "wave:2026-11-03T13:43:55+01:00": "2026-11-03T13:43:55.447425+01:00"
+  "wave:2026-11-03T13:43:55+01:00": "2026-11-03T13:43:55.447425+01:00",
+  "wave:2026-11-09T08:12:43+01:00": "2026-11-09T08:12:43.224738+01:00"
  },
  "sources": {
   "promo_current_week": {
    "anomalous": false,
-   "checked": "2026-11-09T00:03:33+01:00",
+   "checked": "2026-11-09T08:12:43+01:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-11-09T00:03:33+01:00",
+   "last_ok": "2026-11-09T08:12:43+01:00",
    "ok": true,
    "pages": 3,
-   "received": 290,
-   "total": 290,
+   "received": 283,
+   "total": 283,
    "warnings": []
   },
   "promo_next_week": {
-   "anomalous": true,
-   "checked": "2026-11-09T00:03:33+01:00",
+   "anomalous": false,
+   "checked": "2026-11-09T08:12:43+01:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-11-09T00:03:33+01:00",
+   "last_ok": "2026-11-09T08:12:43+01:00",
    "ok": true,
-   "pages": 1,
-   "received": 0,
-   "total": 0,
+   "pages": 4,
+   "received": 316,
+   "total": 316,
    "warnings": []
   },
   "start_of_the_week_highlight": {
    "anomalous": false,
-   "checked": "2026-11-09T00:03:33+01:00",
+   "checked": "2026-11-09T08:12:43+01:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-11-09T00:03:33+01:00",
-   "ok": true,
-   "pages": 1,
-   "received": 0,
-   "total": 0,
-   "warnings": []
-  },
-  "weekend_highlight": {
-   "anomalous": false,
-   "checked": "2026-11-09T00:03:33+01:00",
-   "complete": true,
-   "error": null,
-   "last_ok": "2026-11-09T00:03:33+01:00",
+   "last_ok": "2026-11-09T08:12:43+01:00",
    "ok": true,
    "pages": 1,
    "received": 6,
    "total": 6,
    "warnings": []
   },
-  "weekend_highlight_next_week": {
+  "weekend_highlight": {
    "anomalous": false,
-   "checked": "2026-11-09T00:03:33+01:00",
+   "checked": "2026-11-09T08:12:43+01:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-11-09T00:03:33+01:00",
+   "last_ok": "2026-11-09T08:12:43+01:00",
    "ok": true,
    "pages": 1,
    "received": 0,
    "total": 0,
+   "warnings": []
+  },
+  "weekend_highlight_next_week": {
+   "anomalous": false,
+   "checked": "2026-11-09T08:12:43+01:00",
+   "complete": true,
+   "error": null,
+   "last_ok": "2026-11-09T08:12:43+01:00",
+   "ok": true,
+   "pages": 1,
+   "received": 4,
+   "total": 4,
    "warnings": []
   }
  },
@@ -233,10 +235,9 @@
    290,
    290,
    290,
-   290
+   283
   ],
   "promo_next_week": [
-   312,
    307,
    307,
    307,
@@ -247,7 +248,8 @@
    290,
    290,
    290,
-   290
+   290,
+   316
   ],
   "start_of_the_week_highlight": [
    0,
@@ -261,7 +263,7 @@
    0,
    0,
    0,
-   0
+   6
   ],
   "weekend_highlight": [
    6,
@@ -275,7 +277,7 @@
    6,
    6,
    6,
-   6
+   0
   ],
   "weekend_highlight_next_week": [
    0,
@@ -289,7 +291,7 @@
    0,
    0,
    0,
-   0
+   4
   ]
  }
 }
