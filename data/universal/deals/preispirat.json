@@ -1393,8 +1393,15 @@
   "tags": [],
   "title": "Günstige Automatikuhr - Proxima PX1697 39mm mit Saphirglas & 20 Bar Wasserdichtigkeit in 4 Farben bei AliExpress",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T01:53:59+01:00",
+     "ends": "2026-11-18T01:53:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T20:48:57+01:00",
    "state": "SUSPECT"
   }
@@ -2768,6 +2775,56 @@
   "tags": [],
   "title": "OUTDOORCHEF Davos 570 G Gas-Kugelgrill Schwarz",
   "total_acquisition_cost": 345.75
+ },
+ "preispirat:763782": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.4,
+  "canonical_entity_id": "t:ochsner-sport:nike-utility-power-2-0-51-l-sporttasche-bei-ochsner-sport",
+  "category": "Freizeit & Reisen, Sport & Outdoor, redaktion",
+  "cost_assumptions": [],
+  "current_price": 42.95,
+  "deal_id": "preispirat:763782",
+  "deal_score": 3.4,
+  "description": "Bei Ochsner Sport gibt’s in der Outlet-Abteilung jeweils ein paar tolle Schnäppchen - unter anderem habe ich die Utility Power 2.0 51 L Sporttasche von Nike für 42.95 Franken gefunden. Woanders wären laut Google Shopping sonst 66.74 Franken dafür fällig. Außenfächer mit Reißverschluss Seitliche Auße",
+  "discount_absolute": 23.79,
+  "discount_percentage": 35.6,
+  "effective_discount": 19.6,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T01:53:59+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/chrome_xjXBst3glZ-300x300.png",
+  "last_changed_at": "2026-11-14T01:53:59+01:00",
+  "last_seen_at": "2026-11-14T01:53:59+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Ochsner Sport",
+  "missing_scans": 0,
+  "net_savings": 10.44,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T01:00:08+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 66.74,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 20 %",
+    3.43
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "763782",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/nike-utility-power-2-0-51-l-sporttasche-bei-ochsner-sport/",
+  "tags": [],
+  "title": "Nike Utility Power 2.0 51 L Sporttasche bei Ochsner Sport",
+  "total_acquisition_cost": 42.95
  },
  "preispirat:763979": {
   "access": "PUBLIC",
@@ -6690,8 +6747,15 @@
   "title": "GTA 6 schon günstiger vorbestellen: Grand Theft Auto VI für PS5/Xbox als Digitalcode",
   "total_acquisition_cost": 64.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T01:53:59+01:00",
+     "ends": "2026-11-21T01:53:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T20:48:57+01:00",
    "state": "HIDDEN"
   }
@@ -22561,7 +22625,7 @@
   "accessibility_notes": [],
   "best_score": 0.0,
   "canonical_entity_id": "t:mediamarkt:microsoft-365-family-2025-6-personen-multiplattform-deutsch",
-  "category": "Gaming & Apps",
+  "category": "Gaming & Apps, redaktion",
   "cost_assumptions": [],
   "current_price": 69.0,
   "deal_id": "preispirat:770562",
@@ -22578,7 +22642,7 @@
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/Screenshot_1-7-295x300.jpg",
   "last_changed_at": "2026-10-28T17:50:21+01:00",
-  "last_seen_at": "2026-11-08T22:13:34+01:00",
+  "last_seen_at": "2026-11-14T01:53:59+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "MediaMarkt",
   "missing_scans": 0,
@@ -22586,7 +22650,7 @@
   "offer_type": "community_deal",
   "personal_relevance": 0.5,
   "promotion_integrity": "unchecked",
-  "published_at": "2026-11-08T21:30:45+01:00",
+  "published_at": "2026-11-13T23:00:45+01:00",
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 83.9,
   "reference_price_type": "competitor",
@@ -22613,7 +22677,7 @@
     }
    ],
    "code": "T_PP_REMAINING",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-09T12:39:44+01:00",
    "state": "ENDED"
   }
@@ -34598,7 +34662,11 @@
      "ends": "2026-11-15T12:04:10+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T01:53:59+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:773176": {
@@ -34670,7 +34738,7 @@
   "accessibility_notes": [],
   "best_score": 1.1,
   "canonical_entity_id": "t:jumbo:bosch-professional-gsr-18v-52-akku-bohrschrauber-set-18-v-2-ah-4-ah-akku-bei-jum",
-  "category": "Garten & Baumarkt",
+  "category": "Garten & Baumarkt, redaktion",
   "cost_assumptions": [],
   "current_price": 150.3,
   "deal_id": "preispirat:773177",
@@ -34687,20 +34755,18 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_g1fXfmXutQ-300x281.png",
   "last_changed_at": "2026-11-04T13:10:53+01:00",
-  "last_seen_at": "2026-11-05T04:31:30+01:00",
-  "lifecycle": "REMOVED",
+  "last_seen_at": "2026-11-14T01:53:59+01:00",
+  "lifecycle": "ACTIVE",
   "merchant": "Jumbo",
   "missing_scans": 0,
   "net_savings": 8.9,
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unchecked",
-  "published_at": "2026-11-04T13:00:53+01:00",
+  "published_at": "2026-11-13T22:00:53+01:00",
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 199.0,
   "reference_price_type": "competitor",
-  "removed_at": "2026-11-12T04:50:51+01:00",
-  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 6 %",
@@ -34734,7 +34800,7 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T13:14:33+01:00",
    "state": "SUSPECT"
   }
@@ -41127,8 +41193,15 @@
   "tags": [],
   "title": "Wingo Internet Red für nur CHF 39.95/Mt.",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T01:53:59+01:00",
+     "ends": "2026-12-07T01:53:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T20:48:57+01:00",
    "state": "SUSPECT"
   }
@@ -41171,7 +41244,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/pre-black-friday-angebote-und-bundles/",
   "tags": [],
-  "title": "Pre-Black Friday Angebote und Bundles!"
+  "title": "Pre-Black Friday Angebote und Bundles!",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T01:53:59+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:774145": {
   "access": "PUBLIC",
@@ -45907,7 +45986,13 @@
   "source_url": "https://www.preispirat.ch/chants-of-sennaar-gratis-im-epic-games-store-bis-12-11-um-17-uhr/",
   "tags": [],
   "title": "Chants of Sennaar gratis im Epic Games Store bis 12.11. um 17 Uhr",
-  "total_acquisition_cost": 0.0
+  "total_acquisition_cost": 0.0,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T01:53:59+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:775267": {
   "access": "PUBLIC",
@@ -47820,10 +47905,17 @@
   "tags": [],
   "title": "Sammeldeal zu den Puma Singles Day Deals",
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-14T01:53:59+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-13T20:48:57+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T01:53:59+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:775846": {
@@ -48226,7 +48318,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/wein-special-bei-daydeal-2/",
   "tags": [],
-  "title": "Wein-Special bei DayDeal"
+  "title": "Wein-Special bei DayDeal",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T01:53:59+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:775957": {
   "access": "PUBLIC",
@@ -48447,8 +48545,15 @@
   "title": "Lenovo Idea Tab Pro (12,7″, 256 GB, 8 GB RAM) mit 3K-Display inkl. Pen in Aktion",
   "total_acquisition_cost": 298.32,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T01:53:59+01:00",
+     "ends": "2026-11-30T01:53:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T20:48:57+01:00",
    "state": "SUSPECT"
   }
@@ -48973,10 +49078,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-13T04:26:21+01:00",
-   "state": "SUSPECT"
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-14T01:53:59+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:776174": {
@@ -49142,15 +49247,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T04:26:21+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-13T13:14:33+01:00",
      "http": 404
     },
     {
      "at": "2026-11-13T20:48:57+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-14T01:53:59+01:00",
      "http": 404
     }
    ],
@@ -49391,8 +49496,15 @@
   "title": "Diverse LEGO-Sets bei fnac in Aktion, z.B. LEGO Star Wars 75409 zum neuen Bestpreis (Geschenkidee)",
   "total_acquisition_cost": 213.3,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T01:53:59+01:00",
+     "ends": "2026-11-30T01:53:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T20:48:57+01:00",
    "state": "SUSPECT"
   }
@@ -49842,8 +49954,15 @@
   "title": "LG OLED evo AI C5 OLED77C5 Fernseher mit 4K bei 144 Hz, Smart TV und webOS zum neuen Bestpreis bei MediaMarkt",
   "total_acquisition_cost": 1495.2,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T01:53:59+01:00",
+     "ends": "2026-11-14T23:59:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T20:48:57+01:00",
    "state": "SUSPECT"
   }
@@ -49900,7 +50019,13 @@
   "source_url": "https://www.preispirat.ch/microsoft-surface-pro-12-edition-13-zoll-x2p-64-100-16-gb-ram-512-gb-ssd-600-nits-bei-mediamarkt/",
   "tags": [],
   "title": "Microsoft Surface Pro (12. Edition, 13 Zoll, X2P-64-100, 16 GB RAM, 512 GB SSD, 600 Nits) bei MediaMarkt",
-  "total_acquisition_cost": 890.0
+  "total_acquisition_cost": 890.0,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T01:53:59+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:776495": {
   "access": "PUBLIC",
@@ -50130,8 +50255,15 @@
   "tags": [],
   "title": "Dyson Gutscheincode für bis zu 10% Rabatt im Online-Shop",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T01:53:59+01:00",
+     "ends": "2026-11-30T01:53:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T20:48:57+01:00",
    "state": "SUSPECT"
   }
@@ -50186,8 +50318,15 @@
   "title": "JBL Live Beam 4 Kabellose In-Ear-Kopfhörer mit ANC zum neuen Bestpreis bei Interdiscount",
   "total_acquisition_cost": 99.95,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T01:53:59+01:00",
+     "ends": "2026-11-18T01:53:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T20:48:57+01:00",
    "state": "SUSPECT"
   }
@@ -50242,8 +50381,15 @@
   "title": "TP-Link Deco BE25 Wi-Fi 7 Mesh-System (3er-Pack, BE3600, 2,5 Gbit/s) bei MediaMarkt",
   "total_acquisition_cost": 149.55,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T01:53:59+01:00",
+     "ends": "2026-11-21T01:53:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T20:48:57+01:00",
    "state": "SUSPECT"
   }
@@ -50298,8 +50444,15 @@
   "title": "KitchenAid K45 Classic Küchenmaschine mit 10 Geschwindigkeitsstufen und Edelstahlschüssel bei Fust",
   "total_acquisition_cost": 259.95,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T01:53:59+01:00",
+     "ends": "2026-11-21T01:53:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T20:48:57+01:00",
    "state": "SUSPECT"
   }
@@ -50636,7 +50789,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/disney-fuer-3-monate-ab-chf-6-90-monat-fuer-neukunden-und-teilnahmeberechtigte-rueckkehrer/",
   "tags": [],
-  "title": "Disney+ für 3 Monate ab CHF 6.90/Monat für Neukunden und teilnahmeberechtigte Rückkehrer"
+  "title": "Disney+ für 3 Monate ab CHF 6.90/Monat für Neukunden und teilnahmeberechtigte Rückkehrer",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T01:53:59+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:776819": {
   "access": "PUBLIC",
@@ -50834,7 +50993,13 @@
   "source_url": "https://www.preispirat.ch/keychron-nape-pro-wireless-in-schwarz-zum-bestpreis/",
   "tags": [],
   "title": "Keychron Nape Pro Wireless in Schwarz zum Bestpreis",
-  "total_acquisition_cost": 77.9
+  "total_acquisition_cost": 77.9,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T01:53:59+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:776906": {
   "access": "PUBLIC",
@@ -52193,6 +52358,49 @@
   "title": "Acer Notebook Aspire Lite 15 (Ryzen 5 7430U, 16 GB, 1.0 TB SSD, CH-Layout)",
   "total_acquisition_cost": 449.0
  },
+ "preispirat:777313": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 8.0,
+  "canonical_entity_id": "t:preispirat:60-rabatt-auf-handyabos",
+  "category": "Abonnemente & Karten, singlesdaystandard",
+  "deal_id": "preispirat:777313",
+  "deal_score": 8.0,
+  "description": "Abo Swiss Unlimited für CHF 9.90 statt CHF 24.90 Alles unlimitiert in der Schweiz Lebenslanger Rabatt, keine Mindestvertragsdauer Aktivierung nur CHF 1.-",
+  "discount_percentage": 60.0,
+  "effective_discount": 60.0,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T01:53:59+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/431444ee-81fb-478b-a776-769f37c03131__2610_Sujet1_600x300_ASM_Patoc_Preispirat_Monerio_Singlesdaydeals_BlackFriday_Logo-300x150.png",
+  "last_changed_at": "2026-11-14T01:53:59+01:00",
+  "last_seen_at": "2026-11-14T01:53:59+01:00",
+  "lifecycle": "ACTIVE",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-13T23:45:00+01:00",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 60 %",
+    8.0
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "preispirat",
+  "source_offer_id": "777313",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/60-rabatt-auf-handyabos/",
+  "tags": [],
+  "title": "60% Rabatt auf Handyabos"
+ },
  "preispirat:777323": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -53024,6 +53232,47 @@
   "title": "Polti Siebträgermaschine Coffea G50S (2.8 Liter Wassertank mit Touchpanel & Energieeffizienzklasse B)",
   "total_acquisition_cost": 258.0
  },
+ "preispirat:777706": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:nettoshop:dreame-aqua10-roller-roboterstaubsauger-bei-nettoshop-30-000-pa-wischwalze-mit-s",
+  "category": "Wohnen & Haushalt",
+  "deal_id": "preispirat:777706",
+  "deal_score": null,
+  "description": "Bei Nettoshop findet ihr aktuell den Dreame Aqua10 Roller Roboterstaubsauger in Aktion für 399.- CHF! Bis wann der Deal noch gilt, ist leider unbekannt. Der Dreame Aqua10 Roller übernimmt die tägliche Bodenreinigung und hält die Walze dank Aquafabill™-Technologie während des Betriebs sauber. Mit 30’",
+  "effective_discount": null,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T01:53:59+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/10816829-1-300x300.jpg",
+  "last_changed_at": "2026-11-14T01:53:59+01:00",
+  "last_seen_at": "2026-11-14T01:53:59+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Nettoshop",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-13T22:00:14+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "777706",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/dreame-aqua10-roller-roboterstaubsauger-weiss/",
+  "tags": [],
+  "title": "Dreame Aqua10 Roller Roboterstaubsauger bei Nettoshop (30’000 Pa, Wischwalze mit Selbstreinigung)"
+ },
  "preispirat:777708": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -53073,6 +53322,56 @@
   "tags": [],
   "title": "JOULE PERFORMANCE Gaming PC (AMD Ryzen 7 9850X3D, 32 GB RAM, 2 TB SSD, NVIDIA GeForce RTX 5080)",
   "total_acquisition_cost": 3204.61
+ },
+ "preispirat:777729": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:mediamarkt:sony-bravia-6-oled-tv-flat-65-uhd-4k-google-smart-tv-bei-mediamarkt-zum-neuen-be",
+  "category": "Home Entertainment & Foto",
+  "cost_assumptions": [],
+  "current_price": 1059.72,
+  "deal_id": "preispirat:777729",
+  "deal_score": 0.0,
+  "description": "Bei MediaMarkt bekommt ihr derzeit den SONY BRAVIA 6 OLED TV für 1059.72 CHF zum neuen Bestpreis, der zuvor noch bei 1067.95 CHF lag. Der Deal gilt noch bis zum 14.11.26. Auf den Preis kommt ihr wenn ihr einen füllartikel hinzufügt und von den 11% Rabatt profitiert. Der 65-Zoll-OLED-Fernseher liefer",
+  "discount_absolute": 129.28,
+  "discount_percentage": 10.9,
+  "effective_discount": 0.0,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T01:53:59+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/ASSET_MMS_182704089-300x300.jpg",
+  "last_changed_at": "2026-11-14T01:53:59+01:00",
+  "last_seen_at": "2026-11-14T01:53:59+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "MediaMarkt",
+  "missing_scans": 0,
+  "net_savings": -108.52,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.65,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-13T21:00:25+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 1189.0,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "777729",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/sony-bravia-6-oled-tv-flat-65-uhd-4k-google-smart-tv-bei-mediamarkt-zum-neuen-bestpreis/",
+  "tags": [],
+  "title": "SONY BRAVIA 6 OLED TV (Flat, 65“ UHD 4K, Google Smart TV) bei MediaMarkt zum neuen Bestpreis",
+  "total_acquisition_cost": 1059.72
  },
  "preispirat:777734": {
   "access": "PUBLIC",
