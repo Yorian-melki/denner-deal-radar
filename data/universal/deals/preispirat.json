@@ -1002,8 +1002,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T02:29:11+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:731903": {
@@ -2406,13 +2406,15 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2025/03/17201dead792ced5092162e77fd5fec4_image_picker_3374CF5D-F8FE-4924-9283-398AD1FAE8A2-10988-0000125906C4B065-1-300x290.jpg",
   "last_changed_at": "2026-11-06T15:46:31+01:00",
   "last_seen_at": "2026-11-07T17:50:41+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": null,
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-06T15:30:09+01:00",
+  "removed_at": "2026-11-14T18:19:10+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -11639,8 +11641,15 @@
   "tags": [],
   "title": "Quickline Mobile L (CH alles unlimitiert + 5 GB Roaming in EU, UK, USA & Kanada, Sunrise-Netz, 24 Mt.)",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T18:19:10+01:00",
+     "ends": "2026-12-20T18:19:10+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T12:30:00+01:00",
    "state": "HIDDEN"
   }
@@ -22688,7 +22697,7 @@
     }
    ],
    "code": "T_PP_REMAINING",
-   "ok_streak": 3,
+   "ok_streak": 4,
    "since": "2026-11-09T12:39:44+01:00",
    "state": "ENDED"
   }
@@ -34547,9 +34556,9 @@
      "http": 200
     }
    ],
-   "code": "T_SRC_EXPIRED_FLAG",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-07T11:18:25+01:00",
+   "since": "2026-11-14T18:19:10+01:00",
    "state": "ENDED"
   }
  },
@@ -34821,7 +34830,7 @@
     }
    ],
    "code": "T_PP_REMAINING",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T12:30:00+01:00",
    "state": "ENDED"
   }
@@ -35176,10 +35185,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773225": {
@@ -35251,10 +35260,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773234": {
@@ -35308,7 +35317,11 @@
      "ends": "2026-12-06T12:53:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:773254": {
@@ -35596,10 +35609,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773281": {
@@ -35671,10 +35684,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773285": {
@@ -35825,10 +35838,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773295": {
@@ -35959,10 +35972,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773300": {
@@ -36159,10 +36172,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773344": {
@@ -36291,10 +36304,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773378": {
@@ -36436,10 +36449,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773422": {
@@ -40110,9 +40123,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774017": {
@@ -40206,7 +40219,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_ayWu8oSxab-300x300.png",
   "last_changed_at": "2026-11-06T16:19:37+01:00",
   "last_seen_at": "2026-11-07T17:50:41+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Office",
   "missing_scans": 0,
   "net_savings": -25.04,
@@ -40217,6 +40230,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 299.95,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-14T18:19:10+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 0 %",
@@ -40410,9 +40425,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774050": {
@@ -40454,7 +40469,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/20-auf-alles-bei-livique/",
   "tags": [],
-  "title": "20% auf alles* bei Livique"
+  "title": "20% auf alles* bei Livique",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:774053": {
   "access": "PUBLIC",
@@ -40838,9 +40859,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774097": {
@@ -40944,9 +40965,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774102": {
@@ -41041,7 +41062,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_8PZXcBXQib-230x300.png",
   "last_changed_at": "2026-11-06T20:26:13+01:00",
   "last_seen_at": "2026-11-07T17:50:41+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "MediaMarkt",
   "missing_scans": 0,
   "net_savings": -19.8,
@@ -41052,6 +41073,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 159.0,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-14T18:19:10+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 0 %",
@@ -41079,10 +41102,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:774111": {
@@ -41421,8 +41444,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T02:29:11+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774162": {
@@ -41473,9 +41496,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774175": {
@@ -41570,7 +41593,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_iA50iHh9eZ-300x270.png",
   "last_changed_at": "2026-11-06T20:26:13+01:00",
   "last_seen_at": "2026-11-07T17:50:41+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Lounge",
   "missing_scans": 0,
   "net_savings": 3.44,
@@ -41581,6 +41604,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 96.55,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-14T18:19:10+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 4 %",
@@ -41837,7 +41862,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/mould-king-la-voiture-noire-1793978547-300x300.jpeg",
   "last_changed_at": "2026-11-06T20:26:13+01:00",
   "last_seen_at": "2026-11-07T17:50:41+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": 1.02,
   "offer_type": "community_deal",
@@ -41847,6 +41872,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 229.9,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-14T18:19:10+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 1 %",
@@ -42490,7 +42517,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/Ninja-ES601CH-Luxe-Café-Premier-Kaffeemaschine-300x300.jpg",
   "last_changed_at": "2026-11-07T11:18:25+01:00",
   "last_seen_at": "2026-11-07T17:50:41+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": -19.8,
   "offer_type": "community_deal",
@@ -42500,6 +42527,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 399.0,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-14T18:19:10+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 0 %",
@@ -42793,9 +42822,9 @@
      "http": 200
     }
    ],
-   "code": "T_SRC_EXPIRED_FLAG",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-11T20:37:59+01:00",
+   "since": "2026-11-14T18:19:10+01:00",
    "state": "ENDED"
   }
  },
@@ -44814,9 +44843,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774970": {
@@ -45007,9 +45036,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:775024": {
@@ -45124,9 +45153,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:775051": {
@@ -45187,9 +45216,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:775069": {
@@ -45317,9 +45346,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-11T01:40:34+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:775105": {
@@ -45380,9 +45409,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-11T01:40:34+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:775110": {
@@ -45442,9 +45471,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-11T01:40:34+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:775122": {
@@ -45567,9 +45596,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-11T01:40:34+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:775135": {
@@ -45630,9 +45659,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-11T01:40:34+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:775147": {
@@ -45815,9 +45844,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-11T01:40:34+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:775174": {
@@ -45868,9 +45897,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-11T01:40:34+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:775223": {
@@ -45931,9 +45960,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-11T01:40:34+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:775229": {
@@ -49376,15 +49405,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T01:53:59+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-14T04:21:10+01:00",
      "http": 404
     },
     {
      "at": "2026-11-14T12:30:00+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-14T18:19:10+01:00",
      "http": 404
     }
    ],
@@ -49513,7 +49542,11 @@
      "ends": "2026-11-14T13:14:33+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:776319": {
@@ -49727,7 +49760,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/r36s-retro-handheld-spielkonsole-mit-35%e2%80%b3-ips-display-und-64-128-gb-speicher/",
   "tags": [],
-  "title": "R36S Retro-Handheld-Spielkonsole mit 3,5″ IPS-Display und 64/128 GB Speicher"
+  "title": "R36S Retro-Handheld-Spielkonsole mit 3,5″ IPS-Display und 64/128 GB Speicher",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:776415": {
   "access": "PUBLIC",
@@ -50115,7 +50154,7 @@
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_nen1K53cdU-300x247.png",
   "last_changed_at": "2026-11-11T20:37:59+01:00",
-  "last_seen_at": "2026-11-12T21:29:32+01:00",
+  "last_seen_at": "2026-11-14T18:19:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "MediaMarkt",
   "missing_scans": 0,
@@ -50123,7 +50162,7 @@
   "offer_type": "community_deal",
   "personal_relevance": 0.5,
   "promotion_integrity": "unchecked",
-  "published_at": "2026-11-12T08:30:59+01:00",
+  "published_at": "2026-11-14T15:00:59+01:00",
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 1247.0,
   "reference_price_type": "competitor",
@@ -50152,11 +50191,7 @@
      "ends": "2026-11-14T23:59:59+01:00",
      "http": 200
     }
-   ],
-   "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-14T01:53:59+01:00",
-   "state": "SUSPECT"
+   ]
   }
  },
  "preispirat:776495": {
@@ -50991,7 +51026,13 @@
   "source_url": "https://www.preispirat.ch/xiaomi-redmi-pad-2-pro-tablet-121%e2%80%b3-25k-display-120-hz-6-gb-ram-128-gb-bei-amazon-zum-toppreis/",
   "tags": [],
   "title": "Xiaomi Redmi Pad 2 Pro Tablet (12,1″ 2,5K-Display, 120 Hz, 6 GB RAM/128 GB) bei Amazon zum Toppreis",
-  "total_acquisition_cost": 175.9
+  "total_acquisition_cost": 175.9,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:776837": {
   "access": "PUBLIC",
@@ -51037,8 +51078,15 @@
   "tags": [],
   "title": "30% Rabatt auf Spielwaren bei Jumbo & Coop City + 10 % mit Bon, z.B. LEGO, Brändi Dog, Toniebox & mehr (Weihnachtsgeschenke)",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T18:19:10+01:00",
+     "ends": "2026-11-15T18:19:10+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T12:30:00+01:00",
    "state": "SUSPECT"
   }
@@ -51095,7 +51143,13 @@
   "source_url": "https://www.preispirat.ch/40-rabattcode-auf-weihnachtsbeleuchtung-weihnachtsdeko-von-star-trading-bei-nettoshop/",
   "tags": [],
   "title": "40% Rabattcode auf Weihnachtsbeleuchtung & Weihnachtsdeko von Star Trading bei nettoshop",
-  "total_acquisition_cost": 12.6
+  "total_acquisition_cost": 12.6,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:776904": {
   "access": "PUBLIC",
@@ -51258,7 +51312,13 @@
   "source_url": "https://www.preispirat.ch/logitech-mx-master-4-etui-premium-bundle-maus-bei-mediamarkt-fuer-effektiv-chf-56-20/",
   "tags": [],
   "title": "Logitech MX Master 4 + Etui Premium Bundle Maus bei MediaMarkt für effektiv CHF 56.20",
-  "total_acquisition_cost": 71.2
+  "total_acquisition_cost": 71.2,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:776926": {
   "access": "PUBLIC",
@@ -51310,8 +51370,15 @@
   "title": "Zum neuen Bestpreis bei Amazon - Apple Mac mini mit Apple M6 Chip | 16GB RAM | 256GB SSD",
   "total_acquisition_cost": 737.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T18:19:10+01:00",
+     "ends": "2026-11-22T18:19:10+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T12:30:00+01:00",
    "state": "SUSPECT"
   }
@@ -51364,7 +51431,13 @@
   "source_url": "https://www.preispirat.ch/original-braendi-dog-brettspiel-fuer-6-spieler-zum-neuen-bestpreis-bei-jumbo-abholung/",
   "tags": [],
   "title": "Original Brändi Dog Brettspiel für 6 Spieler zum neuen Bestpreis bei Jumbo (Abholung)",
-  "total_acquisition_cost": 52.95
+  "total_acquisition_cost": 52.95,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:776945": {
   "access": "PUBLIC",
@@ -51416,8 +51489,15 @@
   "title": "SAMSUNG Odyssey Ark 2nd Gen (55″, VA-Panel, 600 nits, 4K @ 165 Hz) mit Cockpit-Modus +  Galaxy Buds4 Pro",
   "total_acquisition_cost": 1309.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T18:19:10+01:00",
+     "ends": "2026-11-26T18:19:10+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T12:30:00+01:00",
    "state": "SUSPECT"
   }
@@ -51471,10 +51551,17 @@
   "title": "Zotac GAMING GeForce RTX 5090 SOLID OC NVIDIA 32 GB GDDR7",
   "total_acquisition_cost": 8334.35,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-14T18:19:10+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-14T12:30:00+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:776956": {
@@ -51570,8 +51657,15 @@
   "title": "Amorana Adventskalender Deluxe 2026 mit 24 Überraschungen (Geschenkidee)",
   "total_acquisition_cost": 257.3,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T18:19:10+01:00",
+     "ends": "2026-11-22T18:19:10+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T12:30:00+01:00",
    "state": "SUSPECT"
   }
@@ -51618,8 +51712,15 @@
   "tags": [],
   "title": "prepmymeal Black Friday 2026 Meal-Box",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T18:19:10+01:00",
+     "ends": "2026-11-22T18:19:10+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T12:30:00+01:00",
    "state": "SUSPECT"
   }
@@ -51674,8 +51775,15 @@
   "title": "Meta Quest 3 Virtual-Reality-Brille mit 512 GB Speicher inkl. Controller bei Conrad (Pro-Mitglieder)",
   "total_acquisition_cost": 424.15,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T18:19:10+01:00",
+     "ends": "2026-11-22T18:19:10+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T12:30:00+01:00",
    "state": "SUSPECT"
   }
@@ -51811,8 +51919,15 @@
   "tags": [],
   "title": "yallo BLACK Ultra",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T18:19:10+01:00",
+     "ends": "2026-11-19T18:19:10+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T12:30:00+01:00",
    "state": "SUSPECT"
   }
@@ -51868,7 +51983,13 @@
   "source_url": "https://www.preispirat.ch/brother-dcp-l2620dw-multifunktionsdrucker-3-in-1-wlan-duplexdruck-bei-mediamarkt-zum-neuen-bestpreis/",
   "tags": [],
   "title": "Brother DCP-L2620DW Multifunktionsdrucker (3-in-1, WLAN, Duplexdruck) bei MediaMarkt zum neuen Bestpreis",
-  "total_acquisition_cost": 112.15
+  "total_acquisition_cost": 112.15,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777043": {
   "access": "PUBLIC",
@@ -51920,8 +52041,15 @@
   "title": "Topstar RS 1 Chefsessel Bürostuhl mit gepolsterter Kopfstütze und Wippmechanik bei Office World",
   "total_acquisition_cost": 289.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T18:19:10+01:00",
+     "ends": "2026-11-22T18:19:10+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T12:30:00+01:00",
    "state": "SUSPECT"
   }
@@ -51974,7 +52102,13 @@
   "source_url": "https://www.preispirat.ch/womanizer-premium-pleasure-air-auflegevibrator-bei-amorana/",
   "tags": [],
   "title": "Womanizer Premium Pleasure Air Auflegevibrator bei Amorana",
-  "total_acquisition_cost": 77.2
+  "total_acquisition_cost": 77.2,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777055": {
   "access": "PUBLIC",
@@ -52026,8 +52160,15 @@
   "title": "Seiko Prospex SEA Automatik-Herrenuhr mit Saphirglas und 300m Wasserdichtigkeit bei Christ Uhren & Schmuck",
   "total_acquisition_cost": 798.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T18:19:10+01:00",
+     "ends": "2026-11-22T18:19:10+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T12:30:00+01:00",
    "state": "SUSPECT"
   }
@@ -52080,7 +52221,13 @@
   "source_url": "https://www.preispirat.ch/ulanzi-pb008-spritzwassergeschuetzte-dslr-kameratasche-fuer-canon-nikon-und-sony-bei-aliexpress/",
   "tags": [],
   "title": "Ulanzi PB008 Spritzwassergeschützte DSLR-Kameratasche für Canon, Nikon und Sony bei AliExpress",
-  "total_acquisition_cost": 30.65
+  "total_acquisition_cost": 30.65,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777096": {
   "access": "PUBLIC",
@@ -52130,7 +52277,13 @@
   "source_url": "https://www.preispirat.ch/schneider-sch-ktl-1789d-wasserkocher-17-l-2200-w-touchscreen-und-farbdisplay-bei-conforama-abholung-lieferung/",
   "tags": [],
   "title": "Schneider SCH-KTL-1789D Wasserkocher (1,7 l, 2200 W, Touchscreen und Farbdisplay) bei Conforama (Abholung/Lieferung)",
-  "total_acquisition_cost": 29.95
+  "total_acquisition_cost": 29.95,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777100": {
   "access": "PUBLIC",
@@ -52178,8 +52331,15 @@
   "tags": [],
   "title": "Amorana Rabattcode 22% Rabatt auf das gesamte Sortiment ohenmidnetbsetrllwert",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-14T18:19:10+01:00",
+     "ends": "2026-11-30T18:19:10+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T12:30:00+01:00",
    "state": "SUSPECT"
   }
@@ -52311,7 +52471,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/aqara-temperatur-und-luftfeuchtigkeitssensor-im-3er-set-bei-aliexpress/",
   "tags": [],
-  "title": "Aqara Tür- und Fenstersensor im 3er-Pack mit Zigbee, Mi Home und Apple HomeKit bei AliExpress"
+  "title": "Aqara Tür- und Fenstersensor im 3er-Pack mit Zigbee, Mi Home und Apple HomeKit bei AliExpress",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777128": {
   "access": "PUBLIC",
@@ -52393,7 +52559,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/vx1-dashboard-display-fuer-tesla-model-3-model-y-mit-geschwindigkeits-und-batterieanzeige-bei-aliexpress/",
   "tags": [],
-  "title": "VX1 Dashboard-Display für Tesla Model 3 & Model Y mit Geschwindigkeits- und Batterieanzeige bei AliExpress"
+  "title": "VX1 Dashboard-Display für Tesla Model 3 & Model Y mit Geschwindigkeits- und Batterieanzeige bei AliExpress",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777162": {
   "access": "PUBLIC",
@@ -52538,7 +52710,13 @@
   "source_url": "https://www.preispirat.ch/laurastar-buegelsystem-go/",
   "tags": [],
   "title": "LauraStar Bügelsystem GO",
-  "total_acquisition_cost": 404.1
+  "total_acquisition_cost": 404.1,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777290": {
   "access": "PUBLIC",
@@ -53029,7 +53207,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/black-friday-weeks-bei-jenni-hemden/",
   "tags": [],
-  "title": "Black Friday Weeks bei Jenni Hemden"
+  "title": "Black Friday Weeks bei Jenni Hemden",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T18:19:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777504": {
   "access": "PUBLIC",
@@ -53909,7 +54093,7 @@
   "accessibility": 1.0,
   "accessibility_notes": [],
   "canonical_entity_id": "t:ikea:gratis-ikea-family-kreditkarte-mit-chf-100-startbonus",
-  "category": "Abonnemente & Karten, Gratis, Wohnen & Haushalt",
+  "category": "Abonnemente & Karten, Gratis, Wohnen & Haushalt, redaktion",
   "cost_assumptions": [],
   "current_price": 0.0,
   "deal_id": "preispirat:777912",
@@ -53932,7 +54116,7 @@
   "offer_type": "freebie",
   "personal_relevance": 0.6,
   "promotion_integrity": null,
-  "published_at": "2026-11-14T07:43:56+01:00",
+  "published_at": "2026-11-14T17:00:56+01:00",
   "score_components": [
    [
     "valeur inconnue : gratuit non évalué",
@@ -54290,6 +54474,55 @@
   "title": "The Legend of Zelda: Tears of the Kingdom (Nintendo Switch 2 Edition) bei Amazon zum Bestpreis",
   "total_acquisition_cost": 48.75
  },
+ "preispirat:778059": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:preispirat:sony-wh-1000xm6-over-ear-kopfhorer-mit-anc-und-40-h-akkulaufzeit-bei-fnac-zum-to",
+  "category": "Smartphones, Wearables & Kopfhörer, redaktion",
+  "cost_assumptions": [],
+  "current_price": 279.95,
+  "deal_id": "preispirat:778059",
+  "deal_score": 0.0,
+  "description": "Bei fnac findet ihr aktuell den Sony [code masqué] Over-Ear-Kopfhörer mit ANC und 40 h Akkulaufzeit zum Toppreis von 279.95 Franken. Auf diesen Preis kommt ihr, wenn ihr den Rabattcode an der Kasse anwendet. Der aktuelle Vergleichspreis liegt bei 310.80 Franken. Das Angebot gilt nur, solange der Vor",
+  "discount_absolute": 30.85,
+  "discount_percentage": 9.9,
+  "effective_discount": 0.0,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T18:19:10+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/Casque-Arceau-sans-fil-Sony-WH1000XM6-avec-reduction-active-du-bruit-Noir-300x300.png",
+  "last_changed_at": "2026-11-14T18:19:10+01:00",
+  "last_seen_at": "2026-11-14T18:19:10+01:00",
+  "lifecycle": "ACTIVE",
+  "missing_scans": 0,
+  "net_savings": -31.31,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.55,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T13:00:35+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 310.8,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778059",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/sony-wh-1000xm6-over-ear-kopfhoerer-mit-anc-und-40-h-akkulaufzeit-bei-fnac-zum-toppreis/",
+  "tags": [],
+  "title": "Sony WH-1000XM6 Over-Ear-Kopfhörer mit ANC und 40 h Akkulaufzeit bei fnac zum Toppreis",
+  "total_acquisition_cost": 279.95
+ },
  "preispirat:778064": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -54381,6 +54614,56 @@
   "title": "Ecovacs W2 Pro Omni Fensterputzroboter mit 6-in-1-Station zum neuen Bestpreis bei nettoshop & Fust",
   "total_acquisition_cost": 209.0
  },
+ "preispirat:778081": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:jumbo:lego-technic-42172-mclaren-p1-bei-jumbo-coop-city-in-aktion-geschenkidee",
+  "category": "Kids & Spielwaren",
+  "cost_assumptions": [],
+  "current_price": 238.75,
+  "deal_id": "preispirat:778081",
+  "deal_score": 0.0,
+  "description": "Aktuell gibt es das LEGO Technic 42172 McLaren P1 Modellbauset bei Jumbo und Coop City in Aktion. Aktiviert den Bon in der Supercard-App, um bei Jumbo auf den Preis von 238.75 Franken zu kommen. Alternativ könnt ihr bei Coop City den Newsletter abonnieren und den zugesandten Gutscheincode an der Kas",
+  "discount_absolute": 35.85,
+  "discount_percentage": 13.1,
+  "effective_discount": 0.0,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T18:19:10+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/7271067-001-300x200.jpg",
+  "last_changed_at": "2026-11-14T18:19:10+01:00",
+  "last_seen_at": "2026-11-14T18:19:10+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Jumbo",
+  "missing_scans": 0,
+  "net_savings": -19.07,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T13:00:40+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 274.6,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778081",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/lego-technic-42172-mclaren-p1-bei-jumbo-coop-city-in-aktion-geschenkidee/",
+  "tags": [],
+  "title": "LEGO Technic 42172 McLaren P1 bei Jumbo & Coop City in Aktion (Geschenkidee)",
+  "total_acquisition_cost": 238.75
+ },
  "preispirat:778090": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -54430,5 +54713,288 @@
   "tags": [],
   "title": "Ecovacs T90S PRO OMNI Care Kit Schwarz",
   "total_acquisition_cost": 379.0
+ },
+ "preispirat:778117": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:preispirat:yallo-black-ch-alles-unlimitiert-roaming-in-eu-usa-can-tur-10-gb-in-48-reiseziel",
+  "category": "Abonnemente & Karten",
+  "deal_id": "preispirat:778117",
+  "deal_score": null,
+  "description": "Aktuell bekommt ihr bei yallo das Yallo BLACK (CH alles unlimitiert, Roaming in EU, USA, CAN & TUR + 10 GB in 48 Reisezielen) zum Preis von 24.95 Franken pro Monat. Unbegrenztes Datenvolumen in der Schweiz mit bis zu 2 Gbit/s (5G) Unbegrenztes Datenroaming in der EU, den USA, Kanada und der Türkei 1",
+  "effective_discount": null,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T18:19:10+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/image-1-191x300.png",
+  "last_changed_at": "2026-11-14T18:19:10+01:00",
+  "last_seen_at": "2026-11-14T18:19:10+01:00",
+  "lifecycle": "ACTIVE",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.55,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-14T14:00:07+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "778117",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/yallo-black-ch-alles-unlimitiert-roaming-in-eu-usa-can-tur-10-gb-in-48-reisezielen/",
+  "tags": [],
+  "title": "Yallo BLACK (CH alles unlimitiert, Roaming in EU, USA, CAN & TUR + 10 GB in 48 Reisezielen)"
+ },
+ "preispirat:778120": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:aliexpress:zsus-14-tragbarer-2k-monitor-2160-1440-60-hz-fur-laptop-pc-und-konsolen-bei-alie",
+  "category": "Computer & Büro",
+  "deal_id": "preispirat:778120",
+  "deal_score": null,
+  "description": "Derzeit findet ihr bei AliExpress den tragbaren ZSUS 14″-2K-Monitor (2160 × 1440, 60 Hz) für Laptop, PC und Konsolen zum Preis von 59.71 Franken. Auf diesen Preis kommt ihr, wenn ihr den Rabattcode an der Kasse anwendet. Einen Vergleichspreis habe ich hierzu leider nicht. Das Angebot gilt bis zum 18",
+  "effective_discount": null,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T18:19:10+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/zsus-21601440-14-zoll-2k-tragbarer-monitor-mit-60-hz-fr-laptop-xbox-ps45-switch-tv-box-handy-und-pc-1794651231-300x300.jpeg",
+  "last_changed_at": "2026-11-14T18:19:10+01:00",
+  "last_seen_at": "2026-11-14T18:19:10+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "AliExpress",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-14T15:00:36+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "778120",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/zsus-14%e2%80%b3-tragbarer-2k-monitor-2160-x-1440-60-hz-fuer-laptop-pc-und-konsolen-bei-aliexpress/",
+  "tags": [],
+  "title": "ZSUS 14″ tragbarer 2K-Monitor (2160 × 1440, 60 Hz) für Laptop, PC und Konsolen bei AliExpress"
+ },
+ "preispirat:778130": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:preispirat:xgimi-horizon-20-pro-beamer",
+  "category": "Home Entertainment & Foto",
+  "cost_assumptions": [],
+  "current_price": 1529.0,
+  "deal_id": "preispirat:778130",
+  "deal_score": 0.0,
+  "description": "Guter 4K Beamer (Pixel shifting, nicht nativ) zum historischen Bestpreis laut Toppreise. Den Nachfolger gibt es übrigens auch gerade zu einem Top Preis bei Azone.ch für 1’999.-Die 30er Serie hat u.a. eine doppelte mechanische Blende.",
+  "discount_absolute": 221.0,
+  "discount_percentage": 12.6,
+  "effective_discount": 0.0,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T18:19:10+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/8aa978e3819851c7155414e24d473e40_1000013948-1-300x300.jpg",
+  "last_changed_at": "2026-11-14T18:19:10+01:00",
+  "last_seen_at": "2026-11-14T18:19:10+01:00",
+  "lifecycle": "ACTIVE",
+  "missing_scans": 0,
+  "net_savings": -129.0,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T12:40:58+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 1750.0,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778130",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/xgimi-horizon-20-pro-beamer/",
+  "tags": [],
+  "title": "Xgimi Horizon 20 Pro Beamer",
+  "total_acquisition_cost": 1529.0
+ },
+ "preispirat:778145": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:amazon:anker-prime-200w-gan-ladestation-mit-6-usb-anschlussen-und-schnellladefunktion-b",
+  "category": "Computer & Büro",
+  "cost_assumptions": [],
+  "current_price": 42.65,
+  "deal_id": "preispirat:778145",
+  "deal_score": 0.0,
+  "description": "Bis zum 30.11. findet ihr die Anker Prime 200W GaN-Ladestation mit 6 USB-Anschlüssen und Schnellladefunktion bei Amazon.it zum neuen Bestpreis von umgerechnet 42.65 Franken. Der aktuelle Vergleichspreis liegt bei 52.90 Franken. Alternativ gibt es die Ladestation auch bei Amazon.de zum Preis von umge",
+  "discount_absolute": 10.25,
+  "discount_percentage": 19.4,
+  "effective_discount": 0.0,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T18:19:10+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/anker-prime-200w-usb-c-ladegert-mit-6-anschlssen-und-gan-technologie-1794655230-300x208.jpeg",
+  "last_changed_at": "2026-11-14T18:19:10+01:00",
+  "last_seen_at": "2026-11-14T18:19:10+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": -0.33,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.65,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T17:00:43+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 52.9,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778145",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/anker-prime-200w-gan-ladestation-mit-6-usb-anschluessen-und-schnellladefunktion-bei-amazon-it-zum-neuen-bestpreis/",
+  "tags": [],
+  "title": "Anker Prime 200W GaN-Ladestation mit 6 USB-Anschlüssen und Schnellladefunktion bei Amazon.it zum neuen Bestpreis",
+  "total_acquisition_cost": 42.65
+ },
+ "preispirat:778157": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:mediamarkt:epson-lifestudio-flex-ef-72-4k-beamer-1000-lumen-google-tv-bose-sound-bei-mediam",
+  "category": "Home Entertainment & Foto",
+  "cost_assumptions": [],
+  "current_price": 712.0,
+  "deal_id": "preispirat:778157",
+  "deal_score": 0.0,
+  "description": "Nur noch heute gibt es bei MediaMarkt den Epson Lifestudio Flex EF-72 4K-Beamer (1000 Lumen, Google TV, Bose-Sound) zum neuen Bestpreis von 712.– Franken. Auf diesen Preis kommt ihr, wenn ihr einen zusätzlichen Füllartikel in den Warenkorb legt. Der aktuelle Vergleichspreis liegt bei 809.45 Franken.",
+  "discount_absolute": 92.25,
+  "discount_percentage": 11.5,
+  "effective_discount": 0.0,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T18:19:10+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/ASSET_MMS_161871178-300x225.png",
+  "last_changed_at": "2026-11-14T18:19:10+01:00",
+  "last_seen_at": "2026-11-14T18:19:10+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "MediaMarkt",
+  "missing_scans": 0,
+  "net_savings": -68.6,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.65,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T16:00:27+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 804.25,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778157",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/epson-lifestudio-flex-ef-72-4k-beamer-1000-lumen-google-tv-bose-sound-bei-mediamarkt-nur-noch-heute-zum-neuen-bestpreis/",
+  "tags": [],
+  "title": "Epson Lifestudio Flex EF-72 4K-Beamer (1000 Lumen, Google TV, Bose-Sound) bei MediaMarkt nur noch heute zum neuen Bestpreis",
+  "total_acquisition_cost": 712.0
+ },
+ "preispirat:778168": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 4.5,
+  "canonical_entity_id": "t:preispirat:bis-zu-70-rabatt-im-christ-outlet-auf-uhren-schmuck-z-b-hamilton-khaki-aviation-",
+  "category": "Fashion & Schmuck",
+  "cost_assumptions": [],
+  "current_price": 597.0,
+  "deal_id": "preispirat:778168",
+  "deal_score": 4.5,
+  "description": "Bei CHRIST Uhren & Schmuck könnt ihr euch aktuell bis zu 70 % Rabatt auf ausgewählte Uhren und Schmuckstücke im Outlet sichern! Ob Armbanduhren, Halsketten, Ringe, Armbänder oder Ohrringe – im CHRIST Outlet findet ihr verschiedene reduzierte Artikel zu günstigen Preisen. Hierzu habe ich ein paar Bei",
+  "discount_absolute": 398.0,
+  "discount_percentage": 40.0,
+  "effective_discount": 25.0,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T18:19:10+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/product-loading-300x50.png",
+  "last_changed_at": "2026-11-14T18:19:10+01:00",
+  "last_seen_at": "2026-11-14T18:19:10+01:00",
+  "lifecycle": "ACTIVE",
+  "missing_scans": 0,
+  "net_savings": 199.0,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T18:00:20+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 995.0,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 25 %",
+    4.25
+   ],
+   [
+    "économie absolue notable (~CHF 199)",
+    0.3
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778168",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/bis-zu-70-rabatt-im-christ-outlet-auf-uhren-schmuck-z-b-hamilton-khaki-aviation-pilot-36-mm-automatik-herrenuhr/",
+  "tags": [],
+  "title": "Bis zu 70% Rabatt im CHRIST Outlet auf Uhren & Schmuck, z.B. Hamilton Khaki Aviation Pilot 36 mm Automatik-Herrenuhr",
+  "total_acquisition_cost": 597.0
  }
 }
