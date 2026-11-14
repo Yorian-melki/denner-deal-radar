@@ -1,0 +1,1687 @@
+{
+ "generated_at": "2026-11-14T14:29:32+01:00",
+ "method": "V2-C §1.1 (pages servies, source en direct)",
+ "site": "https://radarsave.ch",
+ "seed": "2026-11-14",
+ "population": 2561,
+ "elapsed_s": 523,
+ "summary": {
+  "sampled": 100,
+  "verifiable": 100,
+  "unverifiable": 0,
+  "skipped": 0,
+  "M1": {
+   "x": 54,
+   "n": 100,
+   "rate": 0.54,
+   "wilson95": [
+    0.4426,
+    0.6344
+   ],
+   "cp_upper95": 0.6252
+  },
+  "M2": {
+   "x": 51,
+   "n": 93,
+   "rate": 0.5484,
+   "wilson95": [
+    0.4473,
+    0.6456
+   ],
+   "cp_upper95": 0.6365
+  },
+  "M_soft": {
+   "x": 0,
+   "n": 100,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.037
+   ],
+   "cp_upper95": 0.0295
+  },
+  "by_source": {
+   "aldi": {
+    "n": 15,
+    "H": 0,
+    "S": 0,
+    "OK": 15,
+    "U": 0,
+    "SKIP": 0
+   },
+   "denner": {
+    "n": 28,
+    "H": 28,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   },
+   "gutscheine_20min": {
+    "n": 1,
+    "H": 0,
+    "S": 0,
+    "OK": 1,
+    "U": 0,
+    "SKIP": 0
+   },
+   "lidl": {
+    "n": 5,
+    "H": 3,
+    "S": 0,
+    "OK": 2,
+    "U": 0,
+    "SKIP": 0
+   },
+   "migros": {
+    "n": 4,
+    "H": 0,
+    "S": 0,
+    "OK": 4,
+    "U": 0,
+    "SKIP": 0
+   },
+   "poinz": {
+    "n": 3,
+    "H": 0,
+    "S": 0,
+    "OK": 3,
+    "U": 0,
+    "SKIP": 0
+   },
+   "preispirat": {
+    "n": 5,
+    "H": 1,
+    "S": 0,
+    "OK": 4,
+    "U": 0,
+    "SKIP": 0
+   },
+   "qoqa": {
+    "n": 1,
+    "H": 1,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   },
+   "rappn": {
+    "n": 19,
+    "H": 19,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   },
+   "revendo": {
+    "n": 15,
+    "H": 0,
+    "S": 0,
+    "OK": 15,
+    "U": 0,
+    "SKIP": 0
+   },
+   "studentbeans": {
+    "n": 2,
+    "H": 2,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   },
+   "volg": {
+    "n": 2,
+    "H": 0,
+    "S": 0,
+    "OK": 2,
+    "U": 0,
+    "SKIP": 0
+   }
+  },
+  "causes": {
+   "exists": 50,
+   "location": 4
+  }
+ },
+ "offers": [
+  {
+   "deal_id": "denner:dn-1003972-week-20261105",
+   "source": "denner",
+   "shown_price": 3.75,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 6.25,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/emozione-kaffeekapseln-brioso-17nwoac"
+  },
+  {
+   "deal_id": "lidl:10061712",
+   "source": "lidl",
+   "shown_price": 1.99,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 2.95,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "",
+   "url": "https://radarsave.ch/de/deal/certossa-pinsa-bf2dk4"
+  },
+  {
+   "deal_id": "rappn:305a012d-7df9-4209-bab6-f681ef98d1aa",
+   "source": "rappn",
+   "shown_price": 2.37,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 3.95,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 13 pages coop",
+   "url": "https://radarsave.ch/de/deal/wernli-butterherzli-100-g-2k9xqg"
+  },
+  {
+   "deal_id": "denner:dn-1124368-week-20261105",
+   "source": "denner",
+   "shown_price": 16.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/somat-geschirrspultabs-all-in-1-extra-8rqyyp"
+  },
+  {
+   "deal_id": "revendo:58913970487560",
+   "source": "revendo",
+   "shown_price": 123.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/outlet-apple-ipad-9-gen-2021-64-gb-wi-fi-silber-1r9yoow"
+  },
+  {
+   "deal_id": "migros:100218350",
+   "source": "migros",
+   "shown_price": 17.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": false,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix non trouvé dans le texte (non contrôlé)",
+   "url": "https://radarsave.ch/de/deal/nivea-power-serum-1qz312s"
+  },
+  {
+   "deal_id": "migros:100226227",
+   "source": "migros",
+   "shown_price": 2.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": null,
+   "price_checked": false,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix non trouvé dans le texte (non contrôlé)",
+   "url": "https://radarsave.ch/de/deal/emmi-energy-milk-drink-mkjm32"
+  },
+  {
+   "deal_id": "aldi:000000000000748211",
+   "source": "aldi",
+   "shown_price": 0.59,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "UPCOMING",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/home-creation-weihnachtsgeschenkpapier-tx7u88"
+  },
+  {
+   "deal_id": "preispirat:775709",
+   "source": "preispirat",
+   "shown_price": 90.35,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 102.0,
+   "shown_state": "unconfirmed",
+   "feed_state": "SUSPECT",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/mattel-brick-shop-hot-wheels-lamborghini-miura-p400-sv-bause-geqcmn"
+  },
+  {
+   "deal_id": "denner:dn-1104201-week-20261112",
+   "source": "denner",
+   "shown_price": 24.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 54.45,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/persil-waschpulver-universal-morgenfrische-j7mg9h"
+  },
+  {
+   "deal_id": "lidl:10062034",
+   "source": "lidl",
+   "shown_price": 1.59,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 2.39,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/schweizer-bio-ruebli-mix-1ai96ra"
+  },
+  {
+   "deal_id": "aldi:000000000752732004",
+   "source": "aldi",
+   "shown_price": 11.99,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/branded-panettone-handverpackt-pistazie-schokolade-s86hqt"
+  },
+  {
+   "deal_id": "denner:dn-1003528-week-20261105",
+   "source": "denner",
+   "shown_price": 15.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/schweizer-raclette-1v53q4b"
+  },
+  {
+   "deal_id": "rappn:075367f0-40eb-471c-97f4-41e386f41be6",
+   "source": "rappn",
+   "shown_price": 1.8,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 2.2,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "location"
+   ],
+   "note": "carte : 1.8 statt 2.2",
+   "url": "https://radarsave.ch/de/deal/datteln-gondoles-400-g-1ldo6cl"
+  },
+  {
+   "deal_id": "denner:dn-1025229-week-20261029",
+   "source": "denner",
+   "shown_price": 8.5,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 12.75,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/colgate-zahnpasta-total-kdu4l"
+  },
+  {
+   "deal_id": "volg:77409",
+   "source": "volg",
+   "shown_price": 2.25,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 2.85,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/volg-konfituren-11lzats"
+  },
+  {
+   "deal_id": "studentbeans:fa761fba-ca80-408b-bb3c-f157f385d25c",
+   "source": "studentbeans",
+   "shown_price": null,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "",
+   "url": "https://radarsave.ch/de/deal/farfetch-black-friday-extra-20-off-sale-kids-1cib8i"
+  },
+  {
+   "deal_id": "aldi:000000000000745590",
+   "source": "aldi",
+   "shown_price": 3.99,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "UPCOMING",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/home-creation-teddy-kissen-1s42frn"
+  },
+  {
+   "deal_id": "lidl:10061728",
+   "source": "lidl",
+   "shown_price": 4.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "HIDDEN",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "",
+   "url": "https://radarsave.ch/de/deal/ferrero-kinder-cards-family-pack-833zqh"
+  },
+  {
+   "deal_id": "migros:100040542",
+   "source": "migros",
+   "shown_price": 2.15,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 3.1,
+   "shown_state": "verified",
+   "feed_state": null,
+   "price_checked": false,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix non trouvé dans le texte (non contrôlé)",
+   "url": "https://radarsave.ch/de/deal/peperoni-1pla6a4"
+  },
+  {
+   "deal_id": "denner:dn-1028385-week-20261112",
+   "source": "denner",
+   "shown_price": 6.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 12.9,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/volvic-tee-pfirsich-p44wb9"
+  },
+  {
+   "deal_id": "rappn:759827c8-6186-4220-a703-b10c1de8d064",
+   "source": "rappn",
+   "shown_price": 1.5,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 2.5,
+   "shown_state": "verified",
+   "feed_state": null,
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 13 pages coop",
+   "url": "https://radarsave.ch/de/deal/barilla-pipe-rigate-n-91-500-g-h6f2e5"
+  },
+  {
+   "deal_id": "aldi:000000000000682238",
+   "source": "aldi",
+   "shown_price": 3.29,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "UPCOMING",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/mr-brownie-orange-brownies-1az4s36"
+  },
+  {
+   "deal_id": "rappn:29291857-2d8f-40b2-ba6d-c93fe1f6da18",
+   "source": "rappn",
+   "shown_price": 2.67,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 4.45,
+   "shown_state": "verified",
+   "feed_state": null,
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 13 pages coop",
+   "url": "https://radarsave.ch/de/deal/barilla-pesto-basilikum-und-chili-195-g-f56x4h"
+  },
+  {
+   "deal_id": "aldi:7442581588161432001116",
+   "source": "aldi",
+   "shown_price": 4.99,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/crane-damen-herren-ski-accessoires-handschuhe-1ne09n3"
+  },
+  {
+   "deal_id": "denner:dn-1020921-week-20261112",
+   "source": "denner",
+   "shown_price": 3.35,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 4.2,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/zweifel-original-chips-5h1q7h"
+  },
+  {
+   "deal_id": "rappn:19210d48-9e2b-4c97-bc93-57609a6fa433",
+   "source": "rappn",
+   "shown_price": 1.62,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 2.7,
+   "shown_state": "verified",
+   "feed_state": null,
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 13 pages coop",
+   "url": "https://radarsave.ch/de/deal/barilla-collezione-trofie-500-g-p7iw2e"
+  },
+  {
+   "deal_id": "rappn:672bc373-336d-4ddd-a459-8a63518acac4",
+   "source": "rappn",
+   "shown_price": 2.1,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 3.5,
+   "shown_state": "verified",
+   "feed_state": null,
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 13 pages coop",
+   "url": "https://radarsave.ch/de/deal/barilla-tomatensauce-400-g-1fq2n0s"
+  },
+  {
+   "deal_id": "aldi:000000000000458247",
+   "source": "aldi",
+   "shown_price": 5.99,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/gourmet-finest-cuisine-chinois-weihnachtsstern-6pve4n"
+  },
+  {
+   "deal_id": "volg:77417",
+   "source": "volg",
+   "shown_price": 5.4,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 7.2,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/chirat-essiggemuse-1jbt5f"
+  },
+  {
+   "deal_id": "denner:dn-1003456-week-20261112",
+   "source": "denner",
+   "shown_price": 5.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 8.95,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/morcheln-14vrj25"
+  },
+  {
+   "deal_id": "denner:dn-1101063-week-20261112",
+   "source": "denner",
+   "shown_price": 0.99,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 1.5,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/mmmh-mischsalat-rustico-g6x8hu"
+  },
+  {
+   "deal_id": "rappn:af3168fc-f44e-4592-8c14-055a2107e77f",
+   "source": "rappn",
+   "shown_price": 2.97,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 4.95,
+   "shown_state": "verified",
+   "feed_state": null,
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 13 pages coop",
+   "url": "https://radarsave.ch/de/deal/barilla-pesto-ricotta-und-walnusse-nach-sizilianischer-art-1-otbbhx"
+  },
+  {
+   "deal_id": "revendo:58913971208456",
+   "source": "revendo",
+   "shown_price": 134.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/outlet-apple-ipad-9-gen-2021-64-gb-wi-fi-silber-9k3jjc"
+  },
+  {
+   "deal_id": "denner:dn-1022748-week-20261105",
+   "source": "denner",
+   "shown_price": 8.2,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 11.85,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/milka-choco-brownie-qhhrrs"
+  },
+  {
+   "deal_id": "preispirat:775964",
+   "source": "preispirat",
+   "shown_price": null,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "unconfirmed",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "",
+   "url": "https://radarsave.ch/de/deal/aoc-q27g4zdr-26-5-2560-x-1440-schwarz-rot-1ts12e4"
+  },
+  {
+   "deal_id": "rappn:62181740-ab76-497b-a1a6-e9577d785bb9",
+   "source": "rappn",
+   "shown_price": 2.37,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 3.95,
+   "shown_state": "verified",
+   "feed_state": null,
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 13 pages coop",
+   "url": "https://radarsave.ch/de/deal/barilla-collezione-grune-lasagneblatter-500-g-5euoxe"
+  },
+  {
+   "deal_id": "rappn:96de7ef8-c24b-44f5-85b5-c2b1c8564b0a",
+   "source": "rappn",
+   "shown_price": 2.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "unconfirmed",
+   "feed_state": "HIDDEN",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 60 pages ottos",
+   "url": "https://radarsave.ch/de/deal/mutti-tomaten-passata-2-x-400-g-gcqdlx"
+  },
+  {
+   "deal_id": "revendo:58845322150152",
+   "source": "revendo",
+   "shown_price": 96.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/outlet-apple-ipad-8-gen-2020-32-gb-wi-fi-silber-4s4dyd"
+  },
+  {
+   "deal_id": "denner:dn-1020170-week-20261112",
+   "source": "denner",
+   "shown_price": 15.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 27.0,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/nescafe-gold-de-luxe-16cn8vj"
+  },
+  {
+   "deal_id": "rappn:64621f3d-cf6f-4fbc-aa11-c1cd0ed2e0a3",
+   "source": "rappn",
+   "shown_price": 2.76,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 4.6,
+   "shown_state": "verified",
+   "feed_state": null,
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 13 pages coop",
+   "url": "https://radarsave.ch/de/deal/barilla-tomatensauce-mit-oliven-400-g-1dozet7"
+  },
+  {
+   "deal_id": "denner:dn-1030240-week-20261105",
+   "source": "denner",
+   "shown_price": 13.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 26.15,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/felix-katzenfutter-original-gemischte-vielfalt-in-gelee-16kpmp6"
+  },
+  {
+   "deal_id": "denner:dn-1026874-week-20261105",
+   "source": "denner",
+   "shown_price": 29.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 9.0,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/louis-pierre-pinot-noir-suisse-vin-de-pays-bdbxv2"
+  },
+  {
+   "deal_id": "revendo:58858494099720",
+   "source": "revendo",
+   "shown_price": 798.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/outlet-apple-macbook-pro-16-space-grau-m1-pro-10-core-cpu-un-bek4y0"
+  },
+  {
+   "deal_id": "rappn:e1f321de-55f8-4b09-b463-5cc1d1b0acec",
+   "source": "rappn",
+   "shown_price": 3.47,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 4.95,
+   "shown_state": "verified",
+   "feed_state": "HIDDEN",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 13 pages coop",
+   "url": "https://radarsave.ch/de/deal/edamame-mit-schale-9d2in8"
+  },
+  {
+   "deal_id": "rappn:8d08bc33-665c-4f84-97db-20da668ce08c",
+   "source": "rappn",
+   "shown_price": 4.46,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 5.95,
+   "shown_state": "verified",
+   "feed_state": null,
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 13 pages coop",
+   "url": "https://radarsave.ch/de/deal/the-green-mountain-smashburger-1riearl"
+  },
+  {
+   "deal_id": "revendo:59048551612680",
+   "source": "revendo",
+   "shown_price": 136.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/outlet-apple-ipad-9-gen-2021-64-gb-wi-fi-space-grau-k5tn84"
+  },
+  {
+   "deal_id": "aldi:000000000722994001",
+   "source": "aldi",
+   "shown_price": 3.49,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "UPCOMING",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/trader-joe-s-xxl-muffins-stracciatella-owjhbz"
+  },
+  {
+   "deal_id": "denner:dn-1024377-week-20261105",
+   "source": "denner",
+   "shown_price": 25.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 62.0,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/persil-waschmittel-kraft-gel-universal-ofwcsg"
+  },
+  {
+   "deal_id": "revendo:59048557740296",
+   "source": "revendo",
+   "shown_price": 136.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/outlet-apple-ipad-9-gen-2021-64-gb-wi-fi-space-grau-169ccz1"
+  },
+  {
+   "deal_id": "aldi:000000000000752830",
+   "source": "aldi",
+   "shown_price": 9.99,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/licensed-herren-pyjama-ldimau"
+  },
+  {
+   "deal_id": "denner:dn-1003706-week-20261112",
+   "source": "denner",
+   "shown_price": 0.89,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/denner-schweinshuft-1a9xgod"
+  },
+  {
+   "deal_id": "preispirat:775987",
+   "source": "preispirat",
+   "shown_price": 339.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 347.05,
+   "shown_state": "unconfirmed",
+   "feed_state": "HIDDEN",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/nintendo-switch-2-nur-fur-sunrise-kunden-220sn"
+  },
+  {
+   "deal_id": "denner:dn-1008884-week-20261112",
+   "source": "denner",
+   "shown_price": 3.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/latta-original-halbfettmargarine-t0q2dx"
+  },
+  {
+   "deal_id": "rappn:2e99d56c-09d4-4247-9de7-616c34647e19",
+   "source": "rappn",
+   "shown_price": 15.9,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 20.6,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "location"
+   ],
+   "note": "carte : 15.9 statt 20.6",
+   "url": "https://radarsave.ch/de/deal/rindfleisch-fur-voressen-gastro-frisch-gyoluj"
+  },
+  {
+   "deal_id": "migros:grp:2379998",
+   "source": "migros",
+   "shown_price": null,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": null,
+   "price_checked": false,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix non trouvé dans le texte (non contrôlé)",
+   "url": "https://radarsave.ch/de/deal/birnen-conference-2vg15s"
+  },
+  {
+   "deal_id": "denner:dn-1035677-week-20261112",
+   "source": "denner",
+   "shown_price": 6.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/air-wick-aroma-ol-flakon-bergamotte-lavendel-68gn7l"
+  },
+  {
+   "deal_id": "gutscheine_20min:584787",
+   "source": "gutscheine_20min",
+   "shown_price": null,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": null,
+   "price_checked": false,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix non trouvé dans le texte (non contrôlé)",
+   "url": "https://radarsave.ch/de/deal/bis-zu-70-rabatt-bei-den-black-friday-angeboten-1xg4bqc"
+  },
+  {
+   "deal_id": "denner:dn-1026649-week-20261112",
+   "source": "denner",
+   "shown_price": 70.5,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 95.1,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/bio-monte-zovo-sa-solin-ripasso-della-valpolicella-doc-super-1c4cgkk"
+  },
+  {
+   "deal_id": "rappn:7d84a926-b22a-4864-999a-601cbc211b58",
+   "source": "rappn",
+   "shown_price": 3.95,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 6.9,
+   "shown_state": "verified",
+   "feed_state": null,
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 13 pages coop",
+   "url": "https://radarsave.ch/de/deal/susskartoffeln-batati-1-kg-vtxb06"
+  },
+  {
+   "deal_id": "denner:dn-1003170-week-20261105",
+   "source": "denner",
+   "shown_price": 5.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 7.0,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/denner-kalbscipollata-avu6ci"
+  },
+  {
+   "deal_id": "denner:dn-1020409-week-20261112",
+   "source": "denner",
+   "shown_price": 4.15,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 5.95,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/starbucks-by-nespresso-kaffeekapseln-smooth-caramel-1hjuhto"
+  },
+  {
+   "deal_id": "preispirat:775957",
+   "source": "preispirat",
+   "shown_price": 1344.63,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 2264.05,
+   "shown_state": "unconfirmed",
+   "feed_state": "SUSPECT",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/lenovo-thinkpad-t16-gen-4-amd-ryzen-7-ai-pro-350-32gb-ram-1t-yx3e"
+  },
+  {
+   "deal_id": "denner:dn-1021423-week-20261105",
+   "source": "denner",
+   "shown_price": 5.45,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 7.2,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/camille-bloch-tafelschokolade-1mmdd51"
+  },
+  {
+   "deal_id": "revendo:50693597004040",
+   "source": "revendo",
+   "shown_price": 1239.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": null,
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/apple-macbook-pro-16-space-grau-m1-pro-10-core-cpu-und-16-co-t1xmma"
+  },
+  {
+   "deal_id": "poinz:cashback:4174",
+   "source": "poinz",
+   "shown_price": null,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": false,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix non trouvé dans le texte (non contrôlé)",
+   "url": "https://radarsave.ch/de/deal/9-cashback-chez-uweed-ch-7phspf"
+  },
+  {
+   "deal_id": "aldi:000000000525137002",
+   "source": "aldi",
+   "shown_price": 2.29,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/dr-oetker-backaroma-butter-vanille-1qo90lk"
+  },
+  {
+   "deal_id": "denner:dn-1119273-week-20261112",
+   "source": "denner",
+   "shown_price": 9.7,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/neutrogena-feuchtigkeitscreme-ultra-gentle-1n41c06"
+  },
+  {
+   "deal_id": "rappn:689d4ce9-1bd0-45f8-94da-692fb22f3ed2",
+   "source": "rappn",
+   "shown_price": 2.85,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 3.3,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "location"
+   ],
+   "note": "carte : 2.85 statt 3.3",
+   "url": "https://radarsave.ch/de/deal/chnuspernussli-giant-300-g-1ickdbp"
+  },
+  {
+   "deal_id": "rappn:08b67beb-4ab0-4c1a-8fd5-046740b1a0eb",
+   "source": "rappn",
+   "shown_price": 25.8,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 35.8,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "location"
+   ],
+   "note": "carte : 25.8 statt 35.8",
+   "url": "https://radarsave.ch/de/deal/red-bull-energy-drink-24x250-ml-1gdybwx"
+  },
+  {
+   "deal_id": "poinz:cashback:4626",
+   "source": "poinz",
+   "shown_price": null,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": false,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix non trouvé dans le texte (non contrôlé)",
+   "url": "https://radarsave.ch/de/deal/15-cashback-6o4v5l"
+  },
+  {
+   "deal_id": "rappn:3848e689-9ce5-4fda-862c-4c1ac0404206",
+   "source": "rappn",
+   "shown_price": 5.4,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 10.9,
+   "shown_state": "verified",
+   "feed_state": null,
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 13 pages coop",
+   "url": "https://radarsave.ch/de/deal/pouletschenkel-ca-840-g-rg88hr"
+  },
+  {
+   "deal_id": "denner:dn-1025014-week-20261029",
+   "source": "denner",
+   "shown_price": 14.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/nivea-cellular-expert-lift-anti-age-tagespflege-1pg1623"
+  },
+  {
+   "deal_id": "revendo:58945136099592",
+   "source": "revendo",
+   "shown_price": 141.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/outlet-apple-ipad-9-gen-2021-64-gb-wi-fi-space-grau-16k54uf"
+  },
+  {
+   "deal_id": "aldi:000000000000748699",
+   "source": "aldi",
+   "shown_price": 2.99,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/crofton-besteck-erganzungsset-fplzws"
+  },
+  {
+   "deal_id": "aldi:000000000000751951",
+   "source": "aldi",
+   "shown_price": 1.49,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/home-creation-weihnachts-geschenkband-14dpqk7"
+  },
+  {
+   "deal_id": "rappn:ae4e3367-a3c8-4df1-bfe1-e4fbf601b2c2",
+   "source": "rappn",
+   "shown_price": 1.56,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 2.6,
+   "shown_state": "verified",
+   "feed_state": null,
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 13 pages coop",
+   "url": "https://radarsave.ch/de/deal/barilla-cannelloni-250-g-1k27rot"
+  },
+  {
+   "deal_id": "aldi:000000000000681900",
+   "source": "aldi",
+   "shown_price": 19.99,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/crane-premium-damen-herren-skitouren-jacke-acg39n"
+  },
+  {
+   "deal_id": "revendo:59280930570504",
+   "source": "revendo",
+   "shown_price": 301.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/outlet-apple-ipad-10-gen-2022-64-gb-wi-fi-cellular-silber-ksah25"
+  },
+  {
+   "deal_id": "studentbeans:a462c597-cb1f-4bcf-aa4e-f6220fe3cf7f",
+   "source": "studentbeans",
+   "shown_price": null,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": null,
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "",
+   "url": "https://radarsave.ch/de/deal/dc-shoes-10-studentenrabatt-6b323a"
+  },
+  {
+   "deal_id": "denner:dn-1002832-week-20261105",
+   "source": "denner",
+   "shown_price": 1.49,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 1.99,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/denner-bundner-bergkase-1s448ie"
+  },
+  {
+   "deal_id": "rappn:313463f9-c79f-4142-93fc-2ffde60a1a9a",
+   "source": "rappn",
+   "shown_price": 11.9,
+   "shown_from": false,
+   "shown_in_store": true,
+   "shown_ref": 23.9,
+   "shown_state": "verified",
+   "feed_state": null,
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "absente des 13 pages coop",
+   "url": "https://radarsave.ch/de/deal/raclettekase-scheiben-assortiert-oibplk"
+  },
+  {
+   "deal_id": "lidl:10061709",
+   "source": "lidl",
+   "shown_price": 4.39,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 4.89,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "",
+   "url": "https://radarsave.ch/de/deal/bellarom-instant-kaffee-gold-167xf20"
+  },
+  {
+   "deal_id": "poinz:cashback:4755",
+   "source": "poinz",
+   "shown_price": null,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": false,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix non trouvé dans le texte (non contrôlé)",
+   "url": "https://radarsave.ch/de/deal/10-cashback-b8bzow"
+  },
+  {
+   "deal_id": "revendo:50691597041928",
+   "source": "revendo",
+   "shown_price": 29.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/wren-design-zementsack-sleeve-weiss-fur-macbook-12-a3ew9c"
+  },
+  {
+   "deal_id": "revendo:59121744445704",
+   "source": "revendo",
+   "shown_price": 901.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/outlet-apple-macbook-pro-16-space-grau-m1-pro-10-core-cpu-un-bij937"
+  },
+  {
+   "deal_id": "revendo:59048552759560",
+   "source": "revendo",
+   "shown_price": 136.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/outlet-apple-ipad-9-gen-2021-64-gb-wi-fi-silber-14elhv0"
+  },
+  {
+   "deal_id": "denner:dn-1022439-week-20261105",
+   "source": "denner",
+   "shown_price": 4.6,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 6.6,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/fisherman-s-friend-eucalyptus-1bl98rt"
+  },
+  {
+   "deal_id": "revendo:58858559176968",
+   "source": "revendo",
+   "shown_price": 716.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/outlet-apple-macbook-pro-16-space-grau-m1-pro-10-core-cpu-un-akgpmm"
+  },
+  {
+   "deal_id": "denner:dn-1109933-week-20261105",
+   "source": "denner",
+   "shown_price": 5.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/dona-bakina-salata-zsdduk"
+  },
+  {
+   "deal_id": "denner:dn-1022821-week-20261112",
+   "source": "denner",
+   "shown_price": 7.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 11.85,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/kagi-fret-classic-mini-10ngylc"
+  },
+  {
+   "deal_id": "revendo:59165690593544",
+   "source": "revendo",
+   "shown_price": 279.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/outlet-apple-watch-ultra-2-gps-cellular-49-mm-titangehause-n-1ij5fwj"
+  },
+  {
+   "deal_id": "lidl:10061968",
+   "source": "lidl",
+   "shown_price": 1.19,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": 1.39,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/milbona-high-protein-pudding-2-in-1-hqwblf"
+  },
+  {
+   "deal_id": "revendo:50692098523400",
+   "source": "revendo",
+   "shown_price": 357.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "verdict": "OK",
+   "failed": [],
+   "note": "catalogue : None",
+   "url": "https://radarsave.ch/de/deal/apple-iphone-14-128-gb-mitternacht-schwarz-128-gb-neu-gebrau-ekl5bh"
+  },
+  {
+   "deal_id": "aldi:000000000545049001",
+   "source": "aldi",
+   "shown_price": 3.49,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/fairy-geschirrspulmittel-konzentrat-original-1spjiht"
+  },
+  {
+   "deal_id": "aldi:000000000511083005",
+   "source": "aldi",
+   "shown_price": 4.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "UPCOMING",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/knorr-schnellsuppen-trio-erbsen-croutons-wo61rq"
+  },
+  {
+   "deal_id": "aldi:000000000000745400",
+   "source": "aldi",
+   "shown_price": 7.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "UPCOMING",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
+   "url": "https://radarsave.ch/de/deal/l-oreal-mizellenwasser-uyhbsd"
+  },
+  {
+   "deal_id": "denner:dn-1025937-week-20261105",
+   "source": "denner",
+   "shown_price": 4.95,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "verified",
+   "feed_state": "ENDED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "API : []",
+   "url": "https://radarsave.ch/de/deal/palmolive-naturals-duschcreme-olive-milch-rsc0ej"
+  },
+  {
+   "deal_id": "preispirat:775748",
+   "source": "preispirat",
+   "shown_price": null,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "unconfirmed",
+   "feed_state": "SUSPECT",
+   "price_checked": false,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix non trouvé dans le texte (non contrôlé)",
+   "url": "https://radarsave.ch/de/deal/logicc-jahresabo-business-1df08ko"
+  },
+  {
+   "deal_id": "qoqa:99959",
+   "source": "qoqa",
+   "shown_price": 565.0,
+   "shown_from": false,
+   "shown_in_store": false,
+   "shown_ref": null,
+   "shown_state": "unconfirmed",
+   "feed_state": null,
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "",
+   "url": "https://radarsave.ch/de/deal/parkhotel-gunten-3-sterne-superior-wellnesshotel-gunten-2-ub-jlfuge"
+  }
+ ]
+}
