@@ -19,7 +19,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2021/08/Preipirat-265x250-dt-300x283.jpg",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Zak",
   "missing_scans": 0,
@@ -70,7 +70,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2022/11/alarm-1673577_1280-300x300.png",
   "last_changed_at": "2026-11-05T21:17:54+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Preispirat",
   "missing_scans": 0,
@@ -231,7 +231,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2024/03/352415511_254690180577870_1250455761170558773_n-300x300.png",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -343,7 +343,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2025/09/c06f93d1-95a8-473f-a906-aa54f986758c-e1791814925689-256x300.png",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "IKEA",
   "missing_scans": 0,
@@ -1051,11 +1051,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-06T16:19:37+01:00",
-     "ends": "2031-01-01T16:19:37+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-06T20:26:13+01:00",
      "ends": "2031-01-01T20:26:13+01:00",
      "http": 200
@@ -1064,10 +1059,15 @@
      "at": "2026-11-08T22:13:34+01:00",
      "ends": "2031-01-01T22:13:34+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-14T12:30:00+01:00",
+     "ends": "2031-01-01T12:30:00+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T02:29:11+01:00",
    "state": "SUSPECT"
   }
@@ -1272,7 +1272,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/07/chrome_PaaEaiRNUX-300x234.jpg",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -1324,7 +1324,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/07/fc-mobile-x-apple-tv-2026-emeia-1784461185-300x149.png",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Apple",
   "missing_scans": 0,
@@ -1431,7 +1431,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2025/06/images-1-300x300.png",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Revolut",
   "missing_scans": 0,
@@ -1529,7 +1529,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/08/chrome_5rzaMscusm-300x220.png",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -1632,7 +1632,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/08/chrome_frzF3Gl512-300x167.png",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -1684,7 +1684,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/06/update-fitness-cropped-300x122.png",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -1738,7 +1738,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/08/400x400bb-75-300x300.jpg",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -2129,8 +2129,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-12T21:29:32+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:761058": {
@@ -2465,7 +2465,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/07/fc-mobile-x-apple-tv-2026-emeia-1784461185-300x149.png",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Apple",
   "missing_scans": 0,
@@ -2804,7 +2804,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/chrome_xjXBst3glZ-300x300.png",
   "last_changed_at": "2026-11-14T01:53:59+01:00",
-  "last_seen_at": "2026-11-14T01:53:59+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Ochsner Sport",
   "missing_scans": 0,
@@ -3279,7 +3279,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/6-kostenlose-Strategie-Games-300x225.png",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -3418,7 +3418,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/hrspiele-mit-kasimir-1791629054-300x100.jpeg",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "BZfE",
   "missing_scans": 0,
@@ -3652,8 +3652,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-12T21:29:32+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:765602": {
@@ -11637,7 +11637,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/quickline-mobile-l-ch-alles-unlimitiert-5-gb-roaming-in-eu-uk-usa-kanada-sunrise-netz-24-mt/",
   "tags": [],
-  "title": "Quickline Mobile L (CH alles unlimitiert + 5 GB Roaming in EU, UK, USA & Kanada, Sunrise-Netz, 24 Mt.)"
+  "title": "Quickline Mobile L (CH alles unlimitiert + 5 GB Roaming in EU, UK, USA & Kanada, Sunrise-Netz, 24 Mt.)",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "HIDDEN"
+  }
  },
  "preispirat:768056": {
   "access": "PUBLIC",
@@ -18788,7 +18794,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/8a123a056672e427f38a3d4a5d9779fb_image_picker_AF0AA73B-80CE-45BC-9BBA-096D6497EB25-26617-000002A1D0A20FF1-1-300x244.jpg",
   "last_changed_at": "2026-10-26T17:48:20+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -22647,7 +22653,7 @@
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/Screenshot_1-7-295x300.jpg",
   "last_changed_at": "2026-10-28T17:50:21+01:00",
-  "last_seen_at": "2026-11-14T01:53:59+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "MediaMarkt",
   "missing_scans": 0,
@@ -22682,7 +22688,7 @@
     }
    ],
    "code": "T_PP_REMAINING",
-   "ok_streak": 2,
+   "ok_streak": 3,
    "since": "2026-11-09T12:39:44+01:00",
    "state": "ENDED"
   }
@@ -22707,7 +22713,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/Unbenannt-2-300x170.jpg",
   "last_changed_at": "2026-10-28T22:39:55+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -25735,11 +25741,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-06T16:33:14+01:00",
-     "ends": "2026-11-30T16:33:14+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-07T00:50:04+01:00",
      "ends": "2026-11-30T00:50:04+01:00",
      "http": 200
@@ -25748,10 +25749,15 @@
      "at": "2026-11-09T03:41:50+01:00",
      "ends": "2026-11-30T03:41:50+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-14T12:30:00+01:00",
+     "ends": "2026-11-30T12:30:00+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T13:14:33+01:00",
    "state": "HIDDEN"
   }
@@ -25890,7 +25896,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/cb8970340aca1d677bdc90fe5b19e471_1000043043-1-300x200.png",
   "last_changed_at": "2026-10-30T22:31:19+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -29010,7 +29016,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/IMG_0358-300x120.jpeg",
   "last_changed_at": "2026-11-01T18:10:47+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -29820,7 +29826,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/IMG_2913-271x300.jpeg",
   "last_changed_at": "2026-11-02T12:16:38+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": 14.9,
@@ -31080,7 +31086,11 @@
      "ends": "2026-11-30T13:54:12+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:772421": {
@@ -32606,7 +32616,11 @@
      "ends": "2026-12-07T12:53:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:772790": {
@@ -34319,10 +34333,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773130": {
@@ -34463,10 +34477,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773139": {
@@ -34762,7 +34776,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_g1fXfmXutQ-300x281.png",
   "last_changed_at": "2026-11-04T13:10:53+01:00",
-  "last_seen_at": "2026-11-14T01:53:59+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Jumbo",
   "missing_scans": 0,
@@ -34805,7 +34819,11 @@
      "ends": "2026-11-14T12:04:10+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773179": {
@@ -34955,10 +34973,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773206": {
@@ -36804,7 +36822,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/a51b8a010d45ea2213c5f38c84f0813d_78584-1-300x272.jpg",
   "last_changed_at": "2026-11-05T13:24:09+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": 5.0,
@@ -37626,7 +37644,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/69f6db4752065c11b6f131cdd6dca8a2_1000045620-1-214x300.jpg",
   "last_changed_at": "2026-11-05T21:17:54+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -38097,9 +38115,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773703": {
@@ -38321,10 +38339,15 @@
      "at": "2026-11-10T13:41:13+01:00",
      "ends": "2026-11-15T13:41:13+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-14T12:30:00+01:00",
+     "ends": "2026-11-15T12:30:00+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T04:21:10+01:00",
    "state": "HIDDEN"
   }
@@ -38428,10 +38451,15 @@
      "at": "2026-11-10T13:41:13+01:00",
      "ends": "2026-11-15T13:41:13+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-14T12:30:00+01:00",
+     "ends": "2026-11-15T12:30:00+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T04:21:10+01:00",
    "state": "HIDDEN"
   }
@@ -38481,10 +38509,15 @@
      "at": "2026-11-10T13:41:13+01:00",
      "ends": "2026-11-15T13:41:13+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-14T12:30:00+01:00",
+     "ends": "2026-11-15T12:30:00+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T04:21:10+01:00",
    "state": "HIDDEN"
   }
@@ -38538,9 +38571,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773739": {
@@ -38645,10 +38678,15 @@
      "at": "2026-11-10T13:41:13+01:00",
      "ends": "2026-11-15T13:41:13+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-14T12:30:00+01:00",
+     "ends": "2026-11-15T12:30:00+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T04:21:10+01:00",
    "state": "HIDDEN"
   }
@@ -38702,9 +38740,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773751": {
@@ -38808,9 +38846,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773760": {
@@ -39023,7 +39061,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/bd4acefbd67e2c7d636b6269c16bebb1_image_picker_28111F19-1858-419D-8ED6-C56644BC8071-45136-0000079E4A7BA39D-1-300x300.jpg",
   "last_changed_at": "2026-11-05T21:17:54+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Gooods",
   "missing_scans": 0,
@@ -39078,7 +39116,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/KW45_100_Gratis_Games-300x300.png",
   "last_changed_at": "2026-11-08T22:13:34+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -39785,7 +39823,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_tNanaLAddv-300x223.png",
   "last_changed_at": "2026-11-06T15:46:31+01:00",
   "last_seen_at": "2026-11-07T11:18:25+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Nettoshop",
   "missing_scans": 0,
   "net_savings": -49.8,
@@ -39796,6 +39834,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 599.0,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-14T12:30:00+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 0 %",
@@ -39853,7 +39893,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_p7HHnYZiJV-300x224.png",
   "last_changed_at": "2026-11-06T13:08:41+01:00",
   "last_seen_at": "2026-11-07T11:18:25+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": -241.48,
   "offer_type": "community_deal",
@@ -39863,6 +39903,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 1674.0,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-14T12:30:00+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 0 %",
@@ -39920,7 +39962,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_s60JwPWN7h-278x300.png",
   "last_changed_at": "2026-11-06T15:46:31+01:00",
   "last_seen_at": "2026-11-07T11:18:25+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Jumbo",
   "missing_scans": 0,
   "net_savings": 25.1,
@@ -39931,6 +39973,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 199.0,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-14T12:30:00+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 16 %",
@@ -40013,9 +40057,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774009": {
@@ -40591,13 +40635,15 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/csm_bank-wir-beteiligungsschein-investor-relations_2a8fd02dee-300x169.jpg",
   "last_changed_at": "2026-11-06T15:46:31+01:00",
   "last_seen_at": "2026-11-07T11:18:25+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": null,
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-06T13:16:43+01:00",
+  "removed_at": "2026-11-14T12:30:00+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40703,13 +40749,15 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/images-300x300.png",
   "last_changed_at": "2026-11-06T15:46:31+01:00",
   "last_seen_at": "2026-11-07T11:18:25+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": null,
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-06T13:45:30+01:00",
+  "removed_at": "2026-11-14T12:30:00+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -41061,7 +41109,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/e-scooter-rush-20-kmh-schwarzrot-1793970238-300x300.jpeg",
   "last_changed_at": "2026-11-06T15:46:31+01:00",
   "last_seen_at": "2026-11-07T11:18:25+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "GONSER.CH",
   "missing_scans": 0,
   "net_savings": 10.02,
@@ -41072,6 +41120,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 199.9,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-14T12:30:00+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 6 %",
@@ -41124,7 +41174,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_LUO6mJ9Ryt-300x212.png",
   "last_changed_at": "2026-11-06T20:26:13+01:00",
   "last_seen_at": "2026-11-07T11:18:25+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Conforama",
   "missing_scans": 0,
   "net_savings": null,
@@ -41132,6 +41182,8 @@
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-06T20:00:40+01:00",
+  "removed_at": "2026-11-14T12:30:00+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -43166,7 +43218,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/Screenshot-2026-11-07-at-13.15.58-300x250.png",
   "last_changed_at": "2026-11-07T17:50:41+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -43220,7 +43272,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/06/Gemini_Generated_Image_sq5n1vsq5n1vsq5n-299x300.png",
   "last_changed_at": "2026-11-07T21:54:14+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -43968,10 +44020,15 @@
      "at": "2026-11-08T22:13:34+01:00",
      "ends": "2026-11-16T22:13:34+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-14T12:30:00+01:00",
+     "ends": "2026-11-16T12:30:00+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T02:29:11+01:00",
    "state": "HIDDEN"
   }
@@ -44030,10 +44087,15 @@
      "at": "2026-11-10T05:38:53+01:00",
      "ends": "2026-11-16T05:38:53+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-14T12:30:00+01:00",
+     "ends": "2026-11-16T12:30:00+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T20:48:57+01:00",
    "state": "HIDDEN"
   }
@@ -44092,10 +44154,15 @@
      "at": "2026-11-08T18:15:08+01:00",
      "ends": "2026-11-15T18:15:08+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-14T12:30:00+01:00",
+     "ends": "2026-11-15T12:30:00+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-12T13:44:49+01:00",
    "state": "HIDDEN"
   }
@@ -44200,10 +44267,15 @@
      "at": "2026-11-10T05:38:53+01:00",
      "ends": "2026-11-15T05:38:53+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-14T12:30:00+01:00",
+     "ends": "2026-11-15T12:30:00+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-13T20:48:57+01:00",
    "state": "HIDDEN"
   }
@@ -44452,10 +44524,15 @@
      "at": "2026-11-08T18:15:08+01:00",
      "ends": "2026-11-29T18:15:08+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-14T12:30:00+01:00",
+     "ends": "2026-11-29T12:30:00+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-12T13:44:49+01:00",
    "state": "HIDDEN"
   }
@@ -44612,10 +44689,15 @@
      "at": "2026-11-08T22:13:34+01:00",
      "ends": "2026-11-18T22:13:34+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-14T12:30:00+01:00",
+     "ends": "2026-11-18T12:30:00+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-12T13:44:49+01:00",
    "state": "HIDDEN"
   }
@@ -46215,7 +46297,11 @@
      "ends": "2026-11-30T02:41:23+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:775293": {
@@ -46362,7 +46448,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_Q59V9LbkAU-300x157.png",
   "last_changed_at": "2026-11-09T23:59:44+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -47224,10 +47310,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-12T02:41:23+01:00",
-   "state": "SUSPECT"
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:775696": {
@@ -48291,7 +48377,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/dead-water-a-cornish-crime-thriller-cornish-crime-rego-poldhu-book-1-english-edition-1794319142-218x300.jpeg",
   "last_changed_at": "2026-11-11T12:04:10+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -49290,15 +49376,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T20:48:57+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-14T01:53:59+01:00",
      "http": 404
     },
     {
      "at": "2026-11-14T04:21:10+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-14T12:30:00+01:00",
      "http": 404
     }
    ],
@@ -49376,16 +49462,16 @@
   "accessibility": 1.0,
   "accessibility_notes": [],
   "best_score": 0.7,
-  "canonical_entity_id": "t:mediamarkt:11-bei-mediamarkt-ab-2-produkten-bis-zum-14-11-z-b-logitech-mx-keys-s-combo-zum-",
+  "canonical_entity_id": "t:mediamarkt:11-rabatt-bei-mediamarkt-ab-2-stk-bis-zum-14-11-z-b-logitech-mx-master-4-etui-pr",
   "category": "Computer & Büro, Wohnen & Haushalt, redaktion",
   "cost_assumptions": [],
-  "current_price": 97.9,
+  "current_price": 71.2,
   "deal_id": "preispirat:776317",
-  "deal_score": 0.7,
+  "deal_score": 0.4,
   "description": "Zum Singles Day 2026 gibt es bei MediaMarkt Schweiz eine neue Rabattaktion! Als myMediaMarkt-Mitglied profitiert ihr vom 11.11. bis zum 14.11.2026 von 11 % Rabatt auf euren Einkauf, sofern ihr mindestens zwei teilnehmende Produkte kauft. Der Rabatt wird automatisch im Warenkorb beziehungsweise an de",
-  "discount_absolute": 29.1,
-  "discount_percentage": 22.9,
-  "effective_discount": 3.6,
+  "discount_absolute": 19.65,
+  "discount_percentage": 21.6,
+  "effective_discount": 2.0,
   "family": "tech",
   "feed": "https://www.preispirat.ch/feed/",
   "first_seen_at": "2026-11-11T12:04:10+01:00",
@@ -49393,23 +49479,23 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_u0pVjsxi73-300x182.png",
-  "last_changed_at": "2026-11-11T12:04:10+01:00",
-  "last_seen_at": "2026-11-12T02:41:23+01:00",
+  "last_changed_at": "2026-11-14T12:30:00+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "MediaMarkt",
   "missing_scans": 0,
-  "net_savings": 3.7,
+  "net_savings": 1.48,
   "offer_type": "community_deal",
-  "personal_relevance": 0.65,
+  "personal_relevance": 0.5,
   "promotion_integrity": "unchecked",
-  "published_at": "2026-11-11T10:00:17+01:00",
+  "published_at": "2026-11-14T09:00:17+01:00",
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
-  "reference_price": 127.0,
+  "reference_price": 90.85,
   "reference_price_type": "competitor",
   "score_components": [
    [
-    "réduction vs prix concurrent (−20 %) : 4 %",
-    0.73
+    "réduction vs prix concurrent (−20 %) : 2 %",
+    0.41
    ]
   ],
   "score_confidence": 0.5,
@@ -49418,8 +49504,8 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/11-bei-mediamarkt-ab-2-produkten-bis-zum-14-11-z-b-logitech-mx-keys-s-combo-zum-neuen-bestpreis/",
   "tags": [],
-  "title": "11% bei MediaMarkt ab 2 Produkten bis zum 14.11., z.B. Logitech MX Keys S Combo zum neuen Bestpreis",
-  "total_acquisition_cost": 97.9,
+  "title": "11% Rabatt bei MediaMarkt ab 2 Stk. bis zum 14.11., z.B. Logitech MX Master 4 + Etui Premium Bundle für effektiv CHF 56.20",
+  "total_acquisition_cost": 71.2,
   "verify": {
    "checks": [
     {
@@ -49427,11 +49513,7 @@
      "ends": "2026-11-14T13:14:33+01:00",
      "http": 200
     }
-   ],
-   "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-13T04:26:21+01:00",
-   "state": "SUSPECT"
+   ]
   }
  },
  "preispirat:776319": {
@@ -50953,7 +51035,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/51-auf-spielwaren-bei-jumbo-coop-city-mit-bon-z-b-lego-toniebox-mehr-zu-piratenpreisen-weihnachtsgeschenke/",
   "tags": [],
-  "title": "30% Rabatt auf Spielwaren bei Jumbo & Coop City + 10 % mit Bon, z.B. LEGO, Brändi Dog, Toniebox & mehr (Weihnachtsgeschenke)"
+  "title": "30% Rabatt auf Spielwaren bei Jumbo & Coop City + 10 % mit Bon, z.B. LEGO, Brändi Dog, Toniebox & mehr (Weihnachtsgeschenke)",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:776873": {
   "access": "PUBLIC",
@@ -51220,7 +51308,13 @@
   "source_url": "https://www.preispirat.ch/zum-neuen-bestpreis-bei-amazon-apple-mac-mini-mit-apple-m6-chip-16gb-ram-256gb-ssd/",
   "tags": [],
   "title": "Zum neuen Bestpreis bei Amazon - Apple Mac mini mit Apple M6 Chip | 16GB RAM | 256GB SSD",
-  "total_acquisition_cost": 737.0
+  "total_acquisition_cost": 737.0,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:776936": {
   "access": "PUBLIC",
@@ -51320,7 +51414,13 @@
   "source_url": "https://www.preispirat.ch/samsung-odyssey-ark-2nd-gen-55%e2%80%b3-va-panel-600-nits-4k-165-hz-mit-cockpit-modus-galaxy-buds4-pro/",
   "tags": [],
   "title": "SAMSUNG Odyssey Ark 2nd Gen (55″, VA-Panel, 600 nits, 4K @ 165 Hz) mit Cockpit-Modus +  Galaxy Buds4 Pro",
-  "total_acquisition_cost": 1309.0
+  "total_acquisition_cost": 1309.0,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:776948": {
   "access": "PUBLIC",
@@ -51369,7 +51469,13 @@
   "source_url": "https://www.preispirat.ch/zotac-gaming-geforce-rtx-5090-solid-oc-nvidia-32-gb-gddr7/",
   "tags": [],
   "title": "Zotac GAMING GeForce RTX 5090 SOLID OC NVIDIA 32 GB GDDR7",
-  "total_acquisition_cost": 8334.35
+  "total_acquisition_cost": 8334.35,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:776956": {
   "access": "PUBLIC",
@@ -51391,7 +51497,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/Screenshot-2026-11-12-125712-300x212.png",
   "last_changed_at": "2026-11-12T13:44:49+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -51462,7 +51568,13 @@
   "source_url": "https://www.preispirat.ch/amorana-adventskalender-deluxe-2026-mit-24-ueberraschungen-geschenkidee/",
   "tags": [],
   "title": "Amorana Adventskalender Deluxe 2026 mit 24 Überraschungen (Geschenkidee)",
-  "total_acquisition_cost": 257.3
+  "total_acquisition_cost": 257.3,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:776992": {
   "access": "PUBLIC",
@@ -51504,7 +51616,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/prepmymeal-black-friday-2026-meal-box/",
   "tags": [],
-  "title": "prepmymeal Black Friday 2026 Meal-Box"
+  "title": "prepmymeal Black Friday 2026 Meal-Box",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777005": {
   "access": "PUBLIC",
@@ -51554,7 +51672,13 @@
   "source_url": "https://www.preispirat.ch/meta-quest-3-virtual-reality-brille-mit-512-gb-speicher-inkl-controller-bei-conrad-pro-mitglieder/",
   "tags": [],
   "title": "Meta Quest 3 Virtual-Reality-Brille mit 512 GB Speicher inkl. Controller bei Conrad (Pro-Mitglieder)",
-  "total_acquisition_cost": 424.15
+  "total_acquisition_cost": 424.15,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777006": {
   "access": "PUBLIC",
@@ -51578,7 +51702,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_SjkYHUBzSU-273x300.png",
   "last_changed_at": "2026-11-12T21:29:32+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -51623,7 +51747,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/knightica-1794489176-300x169.jpeg",
   "last_changed_at": "2026-11-12T21:29:32+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Epic Games",
   "missing_scans": 0,
@@ -51685,7 +51809,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/yallo-black-ultra/",
   "tags": [],
-  "title": "yallo BLACK Ultra"
+  "title": "yallo BLACK Ultra",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777026": {
   "access": "PUBLIC",
@@ -51788,7 +51918,13 @@
   "source_url": "https://www.preispirat.ch/topstar-rs-1-chefsessel-buerostuhl-mit-gepolsterter-kopfstuetze-und-wippmechanik-bei-office-world/",
   "tags": [],
   "title": "Topstar RS 1 Chefsessel Bürostuhl mit gepolsterter Kopfstütze und Wippmechanik bei Office World",
-  "total_acquisition_cost": 289.0
+  "total_acquisition_cost": 289.0,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777046": {
   "access": "PUBLIC",
@@ -51888,7 +52024,13 @@
   "source_url": "https://www.preispirat.ch/seiko-prospex-sea-automatik-herrenuhr-mit-saphirglas-und-300m-wasserdichtigkeit-bei-christ-uhren-schmuck/",
   "tags": [],
   "title": "Seiko Prospex SEA Automatik-Herrenuhr mit Saphirglas und 300m Wasserdichtigkeit bei Christ Uhren & Schmuck",
-  "total_acquisition_cost": 798.0
+  "total_acquisition_cost": 798.0,
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777058": {
   "access": "PUBLIC",
@@ -52034,7 +52176,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/amorana-rabattcode-22-rabatt-auf-das-gesamte-sortiment-ohenmidnetbsetrllwert/",
   "tags": [],
-  "title": "Amorana Rabattcode 22% Rabatt auf das gesamte Sortiment ohenmidnetbsetrllwert"
+  "title": "Amorana Rabattcode 22% Rabatt auf das gesamte Sortiment ohenmidnetbsetrllwert",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777109": {
   "access": "PUBLIC",
@@ -52116,7 +52264,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/aqara-temperatur-und-luftfeuchtigkeitssensor-im-4er-set-bei-aliexpress/",
   "tags": [],
-  "title": "Aqara Temperatur- und Luftfeuchtigkeitssensor im 4er-Set bei AliExpress"
+  "title": "Aqara Temperatur- und Luftfeuchtigkeitssensor im 4er-Set bei AliExpress",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777124": {
   "access": "PUBLIC",
@@ -52164,7 +52318,7 @@
   "accessibility": 1.0,
   "accessibility_notes": [],
   "canonical_entity_id": "t:aliexpress:der-herr-der-ringe-minas-tirith-moc-modell-der-weissen-stadt-bei-aliexpress-gesc",
-  "category": "Kids & Spielwaren",
+  "category": "Kids & Spielwaren, redaktion",
   "deal_id": "preispirat:777128",
   "deal_score": null,
   "description": "Für alle «Der Herr der Ringe»-Fans gibt es bei AliExpress aktuell das Minas-Tirith-Bauset, ein Modell der Weissen Stadt, für nur 36.43 Franken. Um auf diesen Preis zu kommen, müsst ihr lediglich den Rabattcode an der Kasse eingeben. Das Angebot ist bis zum 18.11. gültig, solange der Vorrat reicht. V",
@@ -52177,7 +52331,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_rvp5tcef99-300x293.png",
   "last_changed_at": "2026-11-13T13:14:33+01:00",
-  "last_seen_at": "2026-11-13T13:14:33+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "AliExpress",
   "missing_scans": 0,
@@ -52185,7 +52339,7 @@
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
-  "published_at": "2026-11-13T07:00:35+01:00",
+  "published_at": "2026-11-14T07:00:35+01:00",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -52262,7 +52416,7 @@
   "group": "coupon",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/B6xFGNkJ0Q-300x262.png",
   "last_changed_at": "2026-11-12T21:29:32+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -52328,7 +52482,13 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/20-rabatt-auf-ikea-smart-home-matter-standard/",
   "tags": [],
-  "title": "20% Rabatt auf IKEA Smart Home (Matter Standard)"
+  "title": "20% Rabatt auf IKEA Smart Home (Matter Standard)",
+  "verify": {
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-14T12:30:00+01:00",
+   "state": "SUSPECT"
+  }
  },
  "preispirat:777237": {
   "access": "PUBLIC",
@@ -52403,7 +52563,7 @@
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/720-40144a-300x300.jpg",
   "last_changed_at": "2026-11-13T13:14:33+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": 26.2,
@@ -52449,7 +52609,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/431444ee-81fb-478b-a776-769f37c03131__2610_Sujet1_600x300_ASM_Patoc_Preispirat_Monerio_Singlesdaydeals_BlackFriday_Logo-300x150.png",
   "last_changed_at": "2026-11-14T01:53:59+01:00",
-  "last_seen_at": "2026-11-14T01:53:59+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -52877,7 +53037,7 @@
   "accessibility_notes": [],
   "best_score": 0.0,
   "canonical_entity_id": "t:amazon:amd-ryzen-x3d-cpus-zu-bestpreisen-5800x3d-7800x3d-9800x3d-9850x3d-bei-amazon",
-  "category": "Computer & Büro, Gaming & Apps",
+  "category": "Computer & Büro, Gaming & Apps, redaktion",
   "cost_assumptions": [],
   "current_price": 251.0,
   "deal_id": "preispirat:777504",
@@ -52894,7 +53054,7 @@
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/amd-ryzen-300x224.png",
   "last_changed_at": "2026-11-13T13:14:33+01:00",
-  "last_seen_at": "2026-11-13T13:14:33+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -52902,7 +53062,7 @@
   "offer_type": "community_deal",
   "personal_relevance": 0.65,
   "promotion_integrity": "unchecked",
-  "published_at": "2026-11-13T10:30:19+01:00",
+  "published_at": "2026-11-14T05:00:19+01:00",
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 267.1,
   "reference_price_type": "competitor",
@@ -52939,7 +53099,7 @@
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/S1c0437dc851e45e0bb2c6f5c679becf6P.jpg_960x960q75.jpg_-300x300.png",
   "last_changed_at": "2026-11-13T20:48:57+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "AliExpress",
   "missing_scans": 0,
@@ -53159,7 +53319,7 @@
   "accessibility_notes": [],
   "best_score": 0.0,
   "canonical_entity_id": "t:dyson:dyson-v15s-detect-submarine-nass-und-trockensauger-gratis-freistehende-ladestati",
-  "category": "Wohnen & Haushalt",
+  "category": "Wohnen & Haushalt, redaktion",
   "cost_assumptions": [],
   "current_price": 569.0,
   "deal_id": "preispirat:777680",
@@ -53176,7 +53336,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/dyson-v15s-detect-submarine-kabelloser-nass-und-trockensauger-1794573868-200x300.jpeg",
   "last_changed_at": "2026-11-13T20:48:57+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Dyson",
   "missing_scans": 0,
@@ -53184,7 +53344,7 @@
   "offer_type": "community_deal",
   "personal_relevance": 0.55,
   "promotion_integrity": "unchecked",
-  "published_at": "2026-11-13T20:00:16+01:00",
+  "published_at": "2026-11-14T11:00:16+01:00",
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 658.75,
   "reference_price_type": "competitor",
@@ -53276,7 +53436,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/polti-siebtrgermaschine-coffea-g50s-1794574942-300x300.jpeg",
   "last_changed_at": "2026-11-13T20:48:57+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Ackermann",
   "missing_scans": 0,
@@ -53321,7 +53481,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/10816829-1-300x300.jpg",
   "last_changed_at": "2026-11-14T01:53:59+01:00",
-  "last_seen_at": "2026-11-14T01:53:59+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Nettoshop",
   "missing_scans": 0,
@@ -53367,7 +53527,7 @@
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/ASSET_MMS_187763521-300x300.jpg",
   "last_changed_at": "2026-11-13T20:48:57+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "MediaMarkt",
   "missing_scans": 0,
@@ -53417,7 +53577,7 @@
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/ASSET_MMS_175257783-300x225.png",
   "last_changed_at": "2026-11-14T04:21:10+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "MediaMarkt",
   "missing_scans": 0,
@@ -53467,7 +53627,7 @@
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/ASSET_MMS_182704089-300x300.jpg",
   "last_changed_at": "2026-11-14T01:53:59+01:00",
-  "last_seen_at": "2026-11-14T01:53:59+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "MediaMarkt",
   "missing_scans": 0,
@@ -53667,7 +53827,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/fairphone-wireless-over-ear-kopfhrer-fairbuds-xl-schwarz-1794579760-300x225.jpeg",
   "last_changed_at": "2026-11-13T20:48:57+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Brack",
   "missing_scans": 0,
@@ -53717,7 +53877,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/roborock-saros-20-flow-complete-36000-pa-wischrolle-1794593517-283x300.jpeg",
   "last_changed_at": "2026-11-13T20:48:57+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Digitec",
   "missing_scans": 0,
@@ -53743,5 +53903,532 @@
   "tags": [],
   "title": "Roborock Saros 20 Flow Complete (36000 Pa, Wischrolle)",
   "total_acquisition_cost": 749.0
+ },
+ "preispirat:777912": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:ikea:gratis-ikea-family-kreditkarte-mit-chf-100-startbonus",
+  "category": "Abonnemente & Karten, Gratis, Wohnen & Haushalt",
+  "cost_assumptions": [],
+  "current_price": 0.0,
+  "deal_id": "preispirat:777912",
+  "deal_score": null,
+  "description": "Aktuell bekommt ihr bei IKEA die IKEA Family Kreditkarte mit einem Startbonus von CHF 100.-. Das Angebot läuft noch bis zum 03.01.2027. *Die kostenlose Kreditkarte richtet sich an IKEA Family Mitglieder und verbindet flexible Zahlungsoptionen mit einem Bonusprogramm. Bei Beantragung bis zum 3. Janua",
+  "effective_discount": null,
+  "family": "free",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T12:30:00+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "free",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/image-300x78.png",
+  "last_changed_at": "2026-11-14T12:30:00+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "IKEA",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "freebie",
+  "personal_relevance": 0.6,
+  "promotion_integrity": null,
+  "published_at": "2026-11-14T07:43:56+01:00",
+  "score_components": [
+   [
+    "valeur inconnue : gratuit non évalué",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "777912",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/gratis-ikea-family-kreditkarte-mit-chf-100-startbonus/",
+  "tags": [],
+  "title": "Gratis IKEA Family Kreditkarte mit CHF 100.- Startbonus!",
+  "total_acquisition_cost": 0.0
+ },
+ "preispirat:777925": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 2.4,
+  "canonical_entity_id": "t:brack:diverse-red-bull-sorten-im-24er-pack-bei-brack-z-b-red-bull-energy-drink-the-gla",
+  "category": "Lebensmittel",
+  "cost_assumptions": [],
+  "current_price": 27.95,
+  "deal_id": "preispirat:777925",
+  "deal_score": 2.4,
+  "description": "Nur für kurze Zeit findet ihr bei BRACK.CH tolle Angebote. Unter anderem gibt es diverse Red-Bull-Energy-Drink-Sorten im 24 × 0,25-l-Pack für 27.95 Franken bei Abholung. Wenn ihr gleich zwei Packungen bestellt, ist die Lieferung versandkostenfrei. Hier ein paar Sorten, die ihr zu diesem Preis bekomm",
+  "discount_absolute": 12.0,
+  "discount_percentage": 30.0,
+  "effective_discount": 12.5,
+  "family": "grocery",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T12:30:00+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "boissons",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/404269050_xxl-300x225.png",
+  "last_changed_at": "2026-11-14T12:30:00+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Brack",
+  "missing_scans": 0,
+  "net_savings": 4.01,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T10:40:10+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 39.95,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 13 %",
+    2.38
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "777925",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/diverse-red-bull-sorten-im-24er-pack-bei-brack-z-b-red-bull-energy-drink-the-glacier-edition-24-x-025-l/",
+  "tags": [],
+  "title": "Diverse Red-Bull-Sorten im 24er-Pack bei Brack, z. B. Red Bull Energy Drink The Glacier Edition 24 × 0,25 l",
+  "total_acquisition_cost": 27.95
+ },
+ "preispirat:777954": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.5,
+  "canonical_entity_id": "t:amazon:nothing-ear-3-in-ear-kopfhorer-22-stunden-akku-anc-bei-amazon-zum-neuen-bestprei",
+  "category": "Smartphones, Wearables & Kopfhörer",
+  "cost_assumptions": [],
+  "current_price": 83.22,
+  "deal_id": "preispirat:777954",
+  "deal_score": 3.5,
+  "description": "Bei Amazon findet ihr aktuell die Nothing Ear (3) zum neuen Bestpreis für 83.22 CHF. Wie lange der Deal noch gilt, ist unklar. Der Bestpreis lag zuvor noch bei 94.95 CHF. Die Nothing Ear (3) verbinden klaren, detailreichen Klang mit aktiver Geräuschunterdrückung, damit du Musik und Podcasts auch in ",
+  "discount_absolute": 46.93,
+  "discount_percentage": 36.1,
+  "effective_discount": 20.1,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T12:30:00+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/nothing-ear-3-kabellose-in-ear-kopfhrer-weiss-1794618931-203x300.jpeg",
+  "last_changed_at": "2026-11-14T12:30:00+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": 20.9,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.55,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T08:00:34+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 130.15,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 20 %",
+    3.51
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "777954",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/nothing-ear-3-kabellose-in-ear-kopfhoerer-bei-amazon-zum-neuen-bestpreis-in-schwarz-weiss/",
+  "tags": [],
+  "title": "Nothing Ear (3) In-Ear-Kopfhörer (22 Stunden Akku, ANC) bei Amazon zum neuen Bestpreis in Schwarz & Weiss",
+  "total_acquisition_cost": 83.22
+ },
+ "preispirat:778001": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:brack:lg-tv-86mrgb96b9b-avs-86-3840-x-2160-ultra-hd-4k-led-lcd",
+  "category": "Home Entertainment & Foto",
+  "cost_assumptions": [],
+  "current_price": 4499.0,
+  "deal_id": "preispirat:778001",
+  "deal_score": 0.0,
+  "description": "Bei BRACK findet ihr aktuell den LG TV 86MRGB96B9B.AVS zum reduzierten Preis von 4499.00! Bis wann der Deal noch gilt, ist unklar. Der LG Fernseher bringt mit seiner 86-Zoll-Diagonale und der 4K-Auflösung echtes Heimkino-Feeling ins Wohnzimmer. HDR10 und Hybrid Log-Gamma sorgen für kontrastreiche Bi",
+  "discount_absolute": 1000.0,
+  "discount_percentage": 18.2,
+  "effective_discount": 0.0,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T12:30:00+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/lg-tv-86mrgb96b9bavs-86-3840-x-2160-ultra-hd-4k-led-lcd-1794641429-300x225.jpeg",
+  "last_changed_at": "2026-11-14T12:30:00+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Brack",
+  "missing_scans": 0,
+  "net_savings": -99.8,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T08:42:42+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 5499.0,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778001",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/lg-tv-86mrgb96b9b-avs-86-3840-x-2160-ultra-hd-4k-led-lcd/",
+  "tags": [],
+  "title": "LG TV 86MRGB96B9B.AVS 86″, 3840 x 2160 (Ultra HD 4K), LED-LCD",
+  "total_acquisition_cost": 4499.0
+ },
+ "preispirat:778023": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:coop:red-bull-energy-24-25-cl-bei-coop-fur-ca-chf-1-03-pro-dose",
+  "category": "Lebensmittel",
+  "deal_id": "preispirat:778023",
+  "deal_score": null,
+  "description": "Red Bull Energy 24x25cl - nur CHF 24.90, 1.0375 pro Dose! Red Bull Energy Drink ist ein funktionales Getränk, das Flügel verleiht, wann immer man sie braucht.Red Bull Energy Drink wird weltweit von Spitzensportlern, Studenten, in stark fordernden Berufen sowie bei langen Autofahrten geschätzt. Kohle",
+  "effective_discount": null,
+  "family": "grocery",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T12:30:00+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "boissons",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/4390087_001-300x300.png",
+  "last_changed_at": "2026-11-14T12:30:00+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Coop",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-14T08:54:29+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "778023",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/red-bull-energy-24-x-25-cl-bei-coop-fuer-ca-chf-1-03-pro-dose/",
+  "tags": [],
+  "title": "Red Bull Energy 24 × 25 cl bei Coop für ca. CHF 1.03 pro Dose"
+ },
+ "preispirat:778025": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:mediamarkt:msi-stealth-14-studio-a13ve-notebook-14-i7-13700h-16-gb-ram-1-tb-ssd-rtx-4050-be",
+  "category": "Computer & Büro",
+  "cost_assumptions": [],
+  "current_price": 890.0,
+  "deal_id": "preispirat:778025",
+  "deal_score": 0.0,
+  "description": "Als Tagesdeal gibt es heute bei MediaMarkt das MSI Stealth 14 Studio A13VE Notebook (14″, i7-13700H, 16 GB RAM, 1 TB SSD, RTX 4050) zum Preis von 890.- Franken. Auf diesen Preis kommt ihr, wenn ihr einen zusätzlichen Füllartikel in den Warenkorb legt. Der aktuelle Vergleichspreis liegt bei 1097.35 F",
+  "discount_absolute": 207.35,
+  "discount_percentage": 18.9,
+  "effective_discount": 0.0,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T12:30:00+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/ASSET_MMS_165881756-300x225.png",
+  "last_changed_at": "2026-11-14T12:30:00+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "MediaMarkt",
+  "missing_scans": 0,
+  "net_savings": -12.12,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T09:00:16+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 1097.35,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778025",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/msi-stealth-14-studio-a13ve-notebook-14%e2%80%b3-i7-13700h-16-gb-ram-1-tb-ssd-rtx-4050-bei-mediamarkt-nur-heute-in-aktion/",
+  "tags": [],
+  "title": "MSI Stealth 14 Studio A13VE Notebook (14″, i7-13700H, 16 GB RAM, 1 TB SSD, RTX 4050) bei MediaMarkt nur heute in Aktion",
+  "total_acquisition_cost": 890.0
+ },
+ "preispirat:778028": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.4,
+  "canonical_entity_id": "t:galaxus:bluebrixx-pro-normannenburg-turmburg",
+  "category": "Kids & Spielwaren",
+  "cost_assumptions": [],
+  "current_price": 299.0,
+  "deal_id": "preispirat:778028",
+  "deal_score": 3.4,
+  "description": "Bei Galaxus findet ihr aktuell die BlueBrixx-Pro Normannenburg: Turmburg in Aktion für 299.00 CHF! Bis wann der Deal noch gilt, ist leider unbekannt. Die Normannenburg bringt mittelalterliche Baukunst als detailreiches Bauprojekt ins Regal und lädt zu ausdauernden Bausessions ein. Dank der abnehmbar",
+  "discount_absolute": 163.3,
+  "discount_percentage": 35.3,
+  "effective_discount": 19.2,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T12:30:00+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/019efef1-82fc-7229-9fe5-38394252aec4_720-300x300.png",
+  "last_changed_at": "2026-11-14T12:30:00+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Galaxus",
+  "missing_scans": 0,
+  "net_savings": 70.84,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "possible_duplicate_of": "galaxus_daily:71866917:2026-11-13",
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T08:59:05+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 462.3,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 19 %",
+    3.37
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778028",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/bluebrixx-pro-normannenburg-turmburg/",
+  "tags": [],
+  "title": "BlueBrixx-Pro Normannenburg: Turmburg",
+  "total_acquisition_cost": 299.0
+ },
+ "preispirat:778049": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:amazon:the-legend-of-zelda-tears-of-the-kingdom-nintendo-switch-2-edition-bei-amazon-zu",
+  "category": "Gaming & Apps",
+  "cost_assumptions": [],
+  "current_price": 48.75,
+  "deal_id": "preispirat:778049",
+  "deal_score": 0.0,
+  "description": "Aktuell bekommt ihr bei Amazon «The Legend of Zelda: Tears of the Kingdom – Nintendo Switch 2 Edition» zum Preis von umgerechnet 48.75 Franken. Bei anderen Anbietern starten die Preise aktuell bei 55.90 Franken. Bis wann der Deal noch gilt, ist unklar. Die Switch-2-Edition lädt dich dazu ein, Hyrule",
+  "discount_absolute": 7.15,
+  "discount_percentage": 12.8,
+  "effective_discount": 0.0,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T12:30:00+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/the-legend-of-zelda-tears-of-the-kingdom-nintendo-switch-2-edition-1794642068-185x300.jpeg",
+  "last_changed_at": "2026-11-14T12:30:00+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": -4.03,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.65,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T11:00:29+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 55.9,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778049",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/the-legend-of-zelda-tears-of-the-kingdom-nintendo-switch-2-edition-bei-amazon-zum-bestpreis/",
+  "tags": [],
+  "title": "The Legend of Zelda: Tears of the Kingdom (Nintendo Switch 2 Edition) bei Amazon zum Bestpreis",
+  "total_acquisition_cost": 48.75
+ },
+ "preispirat:778064": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:edenfinder-com:der-kirchheimerhof-4-s-in-bad-kleinkirchheim-2-nachte-black-weeks-bei-edenfinder",
+  "category": "Freizeit & Reisen",
+  "deal_id": "preispirat:778064",
+  "deal_score": null,
+  "description": "Werte Piraten Edenfinder.com hat aktuell einen Black-Weeks-Deal. Mit der Newsletter-Anmeldung bekommt ihr den Code «[code masqué]», den ihr bei der Suche eingeben könnt. Damit lassen sich viele Hotels zu Sonderkonditionen buchen, teilweise günstiger als die günstigste Variante auf Google Hotels. Ein",
+  "effective_discount": null,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T12:30:00+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/0_cover-kirchheimerhof-600-300x300.jpg",
+  "last_changed_at": "2026-11-14T12:30:00+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Edenfinder.com",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-14T09:55:18+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "778064",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/der-kirchheimerhof-4s-in-bad-kleinkirchheim-2-naechte-black-weeks-bei-edenfinder-com/",
+  "tags": [],
+  "title": "Der Kirchheimerhof 4*S in Bad Kleinkirchheim (2 Nächte) – Black Weeks bei Edenfinder.com"
+ },
+ "preispirat:778065": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 2.4,
+  "canonical_entity_id": "t:nettoshop:ecovacs-w2-pro-omni-fensterputzroboter-mit-6-in-1-station-zum-neuen-bestpreis-be",
+  "category": "Wohnen & Haushalt",
+  "cost_assumptions": [],
+  "current_price": 209.0,
+  "deal_id": "preispirat:778065",
+  "deal_score": 2.4,
+  "description": "Derzeit gibt es bei nettoshop und Fust den Ecovacs W2 Pro Omni Fensterputzroboter mit 6-in-1-Station zum neuen Bestpreis von 229.– Franken. Wenn ihr euch zusätzlich beim Gutscheingenerator einen Gutschein erstellen lasst, könnt ihr bei nettoshop weitere 20.– Franken sparen, indem ihr den generierten",
+  "discount_absolute": 90.0,
+  "discount_percentage": 30.1,
+  "effective_discount": 12.6,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T12:30:00+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/IP411503-3-300x300.png",
+  "last_changed_at": "2026-11-14T12:30:00+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Nettoshop",
+  "missing_scans": 0,
+  "net_savings": 30.2,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.55,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T11:50:02+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 299.0,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 13 %",
+    2.39
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778065",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/ecovacs-w2-pro-omni-fensterputzroboter-mit-6-in-1-station-zum-neuen-bestpreis-bei-nettoshop-fust/",
+  "tags": [],
+  "title": "Ecovacs W2 Pro Omni Fensterputzroboter mit 6-in-1-Station zum neuen Bestpreis bei nettoshop & Fust",
+  "total_acquisition_cost": 209.0
+ },
+ "preispirat:778090": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 2.5,
+  "canonical_entity_id": "t:nettoshop:ecovacs-t90s-pro-omni-care-kit-schwarz",
+  "category": "Wohnen & Haushalt",
+  "cost_assumptions": [],
+  "current_price": 379.0,
+  "deal_id": "preispirat:778090",
+  "deal_score": 2.5,
+  "description": "Bei Nettoshop, Fust, Galaxus und Digitec gibt es momentan das Ecovacs T90S PRO OMNI Care Kit in Schwarz zum Aktionspreis von 399.– Franken. Bis wann das Angebot gilt, ist ungewiss. Wenn ihr euch hier einen Gutschein generieren lasst und den zugesandten Gutscheincode an der Kasse eingebt, zahlt ihr b",
+  "discount_absolute": 166.82,
+  "discount_percentage": 30.6,
+  "effective_discount": 13.2,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-14T12:30:00+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/720-31fce2-300x300.png",
+  "last_changed_at": "2026-11-14T12:30:00+01:00",
+  "last_seen_at": "2026-11-14T12:30:00+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Nettoshop",
+  "missing_scans": 0,
+  "net_savings": 57.66,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-14T10:49:16+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 545.82,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 13 %",
+    2.48
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778090",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/ecovacs-t90s-pro-omni-care-kit-schwarz/",
+  "tags": [],
+  "title": "Ecovacs T90S PRO OMNI Care Kit Schwarz",
+  "total_acquisition_cost": 379.0
  }
 }
