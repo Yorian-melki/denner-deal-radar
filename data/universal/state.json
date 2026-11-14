@@ -1225,7 +1225,6 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "counts": [
-    531,
     539,
     539,
     539,
@@ -1236,24 +1235,18 @@
     537,
     537,
     537,
+    537,
     537
    ],
    "http_cache": {},
-   "last_attempt": "2026-11-14T12:30:00+01:00",
+   "last_attempt": "2026-11-14T22:41:33+01:00",
    "last_error": null,
    "last_items": 537,
-   "last_latency_s": 15.33,
+   "last_latency_s": 13.33,
    "last_state": "OK",
-   "last_success": "2026-11-14T12:30:00+01:00",
+   "last_success": "2026-11-14T22:41:33+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-02T12:16:38+01:00",
-     "items": 419,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-02T22:57:10+01:00",
      "items": 419,
@@ -1456,6 +1449,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-11-14T22:41:33+01:00",
+     "items": 537,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -1524,21 +1524,14 @@
     7
    ],
    "http_cache": {},
-   "last_attempt": "2026-11-14T18:19:10+01:00",
+   "last_attempt": "2026-11-14T22:41:33+01:00",
    "last_error": null,
    "last_items": 7,
-   "last_latency_s": 1.42,
+   "last_latency_s": 1.17,
    "last_state": "OK",
-   "last_success": "2026-11-14T18:19:10+01:00",
+   "last_success": "2026-11-14T22:41:33+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-08T03:31:10+01:00",
-     "items": 7,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-08T11:27:50+01:00",
      "items": 7,
@@ -1741,6 +1734,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-11-14T22:41:33+01:00",
+     "items": 7,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -1753,7 +1753,7 @@
     9,
     9,
     9,
-    9,
+    8,
     8,
     8,
     8,
@@ -1764,21 +1764,14 @@
     8
    ],
    "http_cache": {},
-   "last_attempt": "2026-11-14T18:19:10+01:00",
+   "last_attempt": "2026-11-14T22:41:33+01:00",
    "last_error": null,
    "last_items": 8,
-   "last_latency_s": 5.53,
+   "last_latency_s": 6.4,
    "last_state": "OK",
-   "last_success": "2026-11-14T18:19:10+01:00",
+   "last_success": "2026-11-14T22:41:33+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-07T21:54:14+01:00",
-     "items": 8,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-08T01:39:03+01:00",
      "items": 8,
@@ -1981,6 +1974,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-11-14T22:41:33+01:00",
+     "items": 8,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -2004,23 +2004,16 @@
     77
    ],
    "http_cache": {},
-   "last_attempt": "2026-11-14T18:19:10+01:00",
+   "last_attempt": "2026-11-14T22:41:33+01:00",
    "last_error": null,
    "last_items": 90,
-   "last_latency_s": 2.36,
+   "last_latency_s": 2.06,
    "last_state": "PARTIAL",
-   "last_success": "2026-11-14T18:19:10+01:00",
+   "last_success": "2026-11-14T22:41:33+01:00",
    "last_warnings": [
     "mobile : 52/72 offres (suite via POST non suivie)"
    ],
    "recent": [
-    {
-     "at": "2026-11-08T03:31:10+01:00",
-     "items": 88,
-     "rejected": 0,
-     "state": "PARTIAL",
-     "warn": 1
-    },
     {
      "at": "2026-11-08T11:27:50+01:00",
      "items": 88,
@@ -2219,6 +2212,13 @@
     },
     {
      "at": "2026-11-14T18:19:10+01:00",
+     "items": 90,
+     "rejected": 0,
+     "state": "PARTIAL",
+     "warn": 1
+    },
+    {
+     "at": "2026-11-14T22:41:33+01:00",
      "items": 90,
      "rejected": 0,
      "state": "PARTIAL",
@@ -2473,7 +2473,6 @@
    "consecutive_failures": 0,
    "counts": [
     9,
-    9,
     7,
     7,
     7,
@@ -2483,29 +2482,23 @@
     7,
     7,
     9,
+    8,
     8
    ],
    "http_cache": {
     "https://www.ferienpiraten.ch/feed": {
-     "etag": "W/\"c5340f45ff49508465c2266beb376e46\"",
-     "last_modified": "Sat, 14 Nov 2026 16:27:38 GMT"
+     "etag": "W/\"9b42e6a4952e299b8d95243558333ad2\"",
+     "last_modified": "Sat, 14 Nov 2026 21:27:36 GMT"
     }
    },
-   "last_attempt": "2026-11-14T18:19:10+01:00",
+   "last_attempt": "2026-11-14T22:41:33+01:00",
    "last_error": null,
    "last_items": 8,
-   "last_latency_s": 1.48,
+   "last_latency_s": 1.23,
    "last_state": "OK",
-   "last_success": "2026-11-14T18:19:10+01:00",
+   "last_success": "2026-11-14T22:41:33+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-07T21:54:14+01:00",
-     "items": 7,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-08T01:39:03+01:00",
      "items": 7,
@@ -2704,6 +2697,13 @@
     },
     {
      "at": "2026-11-14T18:19:10+01:00",
+     "items": 8,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-11-14T22:41:33+01:00",
      "items": 8,
      "rejected": 0,
      "state": "OK",
@@ -2720,32 +2720,25 @@
     15,
     15,
     15,
-    15,
     14,
     14,
     14,
     14,
+    10,
     10,
     10,
     10,
     10
    ],
    "http_cache": {},
-   "last_attempt": "2026-11-14T18:19:10+01:00",
+   "last_attempt": "2026-11-14T22:41:33+01:00",
    "last_error": null,
    "last_items": 10,
-   "last_latency_s": 4.56,
+   "last_latency_s": 4.33,
    "last_state": "OK",
-   "last_success": "2026-11-14T18:19:10+01:00",
+   "last_success": "2026-11-14T22:41:33+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-07T21:54:14+01:00",
-     "items": 18,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-08T01:39:03+01:00",
      "items": 20,
@@ -2944,6 +2937,13 @@
     },
     {
      "at": "2026-11-14T18:19:10+01:00",
+     "items": 10,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-11-14T22:41:33+01:00",
      "items": 10,
      "rejected": 0,
      "state": "OK",
@@ -2972,24 +2972,17 @@
    ],
    "http_cache": {
     "https://www.gamerpower.com/rss/giveaways": {
-     "last_modified": "Sat, 14 Nov 2026 17:14:42 GMT"
+     "last_modified": "Sat, 14 Nov 2026 21:36:11 GMT"
     }
    },
-   "last_attempt": "2026-11-14T18:19:10+01:00",
+   "last_attempt": "2026-11-14T22:41:33+01:00",
    "last_error": null,
    "last_items": 14,
-   "last_latency_s": 0.82,
+   "last_latency_s": 0.84,
    "last_state": "OK",
-   "last_success": "2026-11-14T18:19:10+01:00",
+   "last_success": "2026-11-14T22:41:33+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-06T13:08:41+01:00",
-     "items": 14,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-06T16:33:14+01:00",
      "items": 14,
@@ -3188,6 +3181,13 @@
     },
     {
      "at": "2026-11-14T18:19:10+01:00",
+     "items": 14,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-11-14T22:41:33+01:00",
      "items": 14,
      "rejected": 0,
      "state": "OK",
@@ -4643,7 +4643,6 @@
    "counts": [
     59,
     59,
-    59,
     57,
     57,
     58,
@@ -4652,33 +4651,27 @@
     60,
     60,
     59,
-    59
+    59,
+    58
    ],
    "http_cache": {
     "https://www.preispirat.ch/cat/freebies/feed/": {
-     "etag": "W/\"7386f81209bdebe84b63740fcb99446c\"",
-     "last_modified": "Sat, 14 Nov 2026 17:01:21 GMT"
+     "etag": "W/\"cba5191ee5c0b89954d79fb3fae68b7a\"",
+     "last_modified": "Sat, 14 Nov 2026 21:01:09 GMT"
     },
     "https://www.preispirat.ch/feed/": {
-     "etag": "W/\"7386f81209bdebe84b63740fcb99446c\"",
-     "last_modified": "Sat, 14 Nov 2026 17:01:21 GMT"
+     "etag": "W/\"cba5191ee5c0b89954d79fb3fae68b7a\"",
+     "last_modified": "Sat, 14 Nov 2026 21:01:09 GMT"
     }
    },
-   "last_attempt": "2026-11-14T18:19:10+01:00",
+   "last_attempt": "2026-11-14T22:41:33+01:00",
    "last_error": null,
-   "last_items": 59,
-   "last_latency_s": 3.2,
+   "last_items": 58,
+   "last_latency_s": 2.54,
    "last_state": "OK",
-   "last_success": "2026-11-14T18:19:10+01:00",
+   "last_success": "2026-11-14T22:41:33+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-08T03:31:10+01:00",
-     "items": 58,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-08T11:27:50+01:00",
      "items": 57,
@@ -4881,6 +4874,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-11-14T22:41:33+01:00",
+     "items": 58,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -4891,7 +4891,6 @@
    "consecutive_failures": 0,
    "counts": [
     31,
-    31,
     26,
     26,
     26,
@@ -4901,7 +4900,8 @@
     31,
     31,
     26,
-    26
+    26,
+    25
    ],
    "details": {
     "100001": [
@@ -6020,23 +6020,6 @@
       "stock": "sold_out"
      }
     ],
-    "100498": [
-     {
-      "price": 55.0,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 99.0,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 189.0,
-      "regular": null,
-      "stock": "available"
-     }
-    ],
     "100658": [
      {
       "price": 299.0,
@@ -6300,108 +6283,6 @@
      {
       "price": 99.9,
       "regular": 150.0,
-      "stock": "available"
-     }
-    ],
-    "97838": [
-     {
-      "price": 49.0,
-      "regular": 75.0,
-      "stock": "available"
-     },
-     {
-      "price": 89.0,
-      "regular": 138.0,
-      "stock": "available"
-     },
-     {
-      "price": 169.0,
-      "regular": 252.0,
-      "stock": "available"
-     },
-     {
-      "price": 65.9,
-      "regular": 99.0,
-      "stock": "available"
-     },
-     {
-      "price": 119.0,
-      "regular": 174.0,
-      "stock": "available"
-     },
-     {
-      "price": 229.0,
-      "regular": 348.0,
-      "stock": "available"
-     },
-     {
-      "price": 119.0,
-      "regular": 165.0,
-      "stock": "sold_out"
-     },
-     {
-      "price": 229.0,
-      "regular": 330.0,
-      "stock": "sold_out"
-     },
-     {
-      "price": 449.0,
-      "regular": 660.0,
-      "stock": "sold_out"
-     },
-     {
-      "price": 99.0,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 189.0,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 369.0,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 79.0,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 228.0,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 447.0,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 75.9,
-      "regular": null,
-      "stock": "sold_out"
-     },
-     {
-      "price": 139.0,
-      "regular": null,
-      "stock": "sold_out"
-     },
-     {
-      "price": 269.0,
-      "regular": null,
-      "stock": "sold_out"
-     },
-     {
-      "price": 109.0,
-      "regular": null,
-      "stock": "available"
-     },
-     {
-      "price": 318.0,
-      "regular": null,
       "stock": "available"
      }
     ],
@@ -7874,6 +7755,23 @@
       "stock": "available"
      }
     ],
+    "99623": [
+     {
+      "price": 45.0,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 79.0,
+      "regular": null,
+      "stock": "available"
+     },
+     {
+      "price": 149.0,
+      "regular": null,
+      "stock": "available"
+     }
+    ],
     "99932": [
      {
       "price": 495.0,
@@ -7883,21 +7781,14 @@
     ]
    },
    "http_cache": {},
-   "last_attempt": "2026-11-14T18:19:10+01:00",
+   "last_attempt": "2026-11-14T22:41:33+01:00",
    "last_error": null,
-   "last_items": 26,
-   "last_latency_s": 1.13,
+   "last_items": 25,
+   "last_latency_s": 1.8,
    "last_state": "OK",
-   "last_success": "2026-11-14T18:19:10+01:00",
+   "last_success": "2026-11-14T22:41:33+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-08T03:31:10+01:00",
-     "items": 39,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-08T11:27:50+01:00",
      "items": 40,
@@ -8100,33 +7991,33 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-11-14T22:41:33+01:00",
+     "items": 25,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
-   "requests": 2
+   "requests": 3
   },
   "rappn": {
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "http_cache": {},
-   "last_attempt": "2026-11-14T18:19:10+01:00",
+   "last_attempt": "2026-11-14T22:41:33+01:00",
    "last_error": null,
    "last_items": 476,
-   "last_latency_s": 28.46,
+   "last_latency_s": 28.31,
    "last_state": "PARTIAL",
-   "last_success": "2026-11-14T18:19:10+01:00",
+   "last_success": "2026-11-14T22:41:33+01:00",
    "last_warnings": [
     "coop: 3 page(s) lue(s), suite non collectée (volume limité)",
     "ottos: 2 page(s) lue(s), suite non collectée (volume limité)"
    ],
    "recent": [
-    {
-     "at": "2026-11-08T03:31:10+01:00",
-     "items": 401,
-     "rejected": 0,
-     "state": "PARTIAL",
-     "warn": 3
-    },
     {
      "at": "2026-11-08T11:27:50+01:00",
      "items": 401,
@@ -8329,6 +8220,13 @@
      "rejected": 0,
      "state": "PARTIAL",
      "warn": 2
+    },
+    {
+     "at": "2026-11-14T22:41:33+01:00",
+     "items": 476,
+     "rejected": 0,
+     "state": "PARTIAL",
+     "warn": 2
     }
    ],
    "reliability": 0.75,
@@ -8338,7 +8236,6 @@
    "bootstrap_at": "2026-10-14T03:07:57+02:00",
    "consecutive_failures": 0,
    "counts": [
-    439,
     480,
     615,
     613,
@@ -8349,24 +8246,18 @@
     666,
     645,
     643,
-    640
+    640,
+    637
    ],
    "http_cache": {},
-   "last_attempt": "2026-11-14T18:19:10+01:00",
+   "last_attempt": "2026-11-14T22:41:33+01:00",
    "last_error": null,
-   "last_items": 640,
-   "last_latency_s": 13.47,
+   "last_items": 637,
+   "last_latency_s": 15.48,
    "last_state": "OK",
-   "last_success": "2026-11-14T18:19:10+01:00",
+   "last_success": "2026-11-14T22:41:33+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-06T02:08:28+01:00",
-     "items": 496,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-06T13:08:41+01:00",
      "items": 495,
@@ -8569,6 +8460,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-11-14T22:41:33+01:00",
+     "items": 637,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -8613,21 +8511,14 @@
     9
    ],
    "http_cache": {},
-   "last_attempt": "2026-11-14T18:19:10+01:00",
+   "last_attempt": "2026-11-14T22:41:33+01:00",
    "last_error": null,
    "last_items": 9,
-   "last_latency_s": 5.59,
+   "last_latency_s": 4.73,
    "last_state": "OK",
-   "last_success": "2026-11-14T18:19:10+01:00",
+   "last_success": "2026-11-14T22:41:33+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-06T13:08:41+01:00",
-     "items": 9,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-06T16:33:14+01:00",
      "items": 9,
@@ -8830,6 +8721,13 @@
      "rejected": 0,
      "state": "OK",
      "warn": 0
+    },
+    {
+     "at": "2026-11-14T22:41:33+01:00",
+     "items": 9,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
     }
    ],
    "reliability": 1.0,
@@ -8842,7 +8740,7 @@
     2,
     2,
     2,
-    2,
+    1,
     1,
     1,
     1,
@@ -8854,25 +8752,18 @@
    ],
    "http_cache": {
     "https://www.stadt.sg.ch/home/_jcr_content/NewsPar.RssFeed.qualident__item0.rdf": {
-     "etag": "\"954a23642974dd1:0\"",
-     "last_modified": "Sat, 14 Nov 2026 11:15:01 GMT"
+     "etag": "\"56471a172a74dd1:0\"",
+     "last_modified": "Sat, 14 Nov 2026 11:20:01 GMT"
     }
    },
-   "last_attempt": "2026-11-14T18:19:10+01:00",
+   "last_attempt": "2026-11-14T22:41:33+01:00",
    "last_error": null,
    "last_items": 1,
-   "last_latency_s": 2.01,
+   "last_latency_s": 1.57,
    "last_state": "OK",
-   "last_success": "2026-11-14T18:19:10+01:00",
+   "last_success": "2026-11-14T22:41:33+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-06T16:33:14+01:00",
-     "items": 2,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-06T20:26:13+01:00",
      "items": 2,
@@ -9071,6 +8962,13 @@
     },
     {
      "at": "2026-11-14T18:19:10+01:00",
+     "items": 1,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-11-14T22:41:33+01:00",
      "items": 1,
      "rejected": 0,
      "state": "OK",
@@ -9602,21 +9500,14 @@
     25
    ],
    "http_cache": {},
-   "last_attempt": "2026-11-14T12:30:00+01:00",
+   "last_attempt": "2026-11-14T22:41:33+01:00",
    "last_error": null,
    "last_items": 25,
-   "last_latency_s": 1.21,
+   "last_latency_s": 0.98,
    "last_state": "OK",
-   "last_success": "2026-11-14T12:30:00+01:00",
+   "last_success": "2026-11-14T22:41:33+01:00",
    "last_warnings": [],
    "recent": [
-    {
-     "at": "2026-11-02T12:16:38+01:00",
-     "items": 25,
-     "rejected": 0,
-     "state": "OK",
-     "warn": 0
-    },
     {
      "at": "2026-11-02T22:57:10+01:00",
      "items": 25,
@@ -9815,6 +9706,13 @@
     },
     {
      "at": "2026-11-14T12:30:00+01:00",
+     "items": 25,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-11-14T22:41:33+01:00",
      "items": 25,
      "rejected": 0,
      "state": "OK",
