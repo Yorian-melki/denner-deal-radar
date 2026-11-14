@@ -7,7 +7,7 @@
  *  4. méta : marchand · date (« bis heute », « ab morgen », « bis Mi 28.10. »)
  *  5. au plus 2 mentions qui changent le prix réel (Lidl Plus, ab 3 Stück…) */
 import { CARD_CONDITIONS, conditionLines } from "@/lib/conditions";
-import { dayDiff, fmtAmount, fmtDay, fmtPct, fmtPrice, fmtScore } from "@/lib/format";
+import { dayDiff, fmtAmount, fmtDay, fmtEur, fmtPct, fmtPrice, fmtScore } from "@/lib/format";
 import { HTML_LANG, dict, type Locale } from "@/lib/i18n";
 import { rewriteUrl } from "@/lib/affiliate/rewrite";
 import { categoryBySlug } from "@/lib/categories";
@@ -105,7 +105,7 @@ export function PriceLine({ deal, locale, className = "card-price", now, attrib 
     <p className={className}>
       <span className="sr-only">{prefix} </span>
       {/* V2-C P_FROM_PRICE : plusieurs prix à la source → « ab CHF 59.90 » (aucune économie, cf. lib/project.ts). */}
-      <span className="price">{deal.price === 0 ? t.free : <>{deal.priceFrom && <span className="price-from">{t.priceFrom}{"\u00a0"}</span>}<span className="cur">{deal.currency}</span>{"\u202f"}<span className="amt">{fmtAmount(deal.price)}</span></>}</span>
+      <span className="price">{deal.price === 0 ? t.free : <>{deal.priceFrom && <span className="price-from">{t.priceFrom}{"\u00a0"}</span>}{deal.currency === "EUR" ? <span className="amt">{fmtEur(deal.price)}</span> : <><span className="cur">{deal.currency}</span>{"\u202f"}<span className="amt">{fmtAmount(deal.price)}</span></>}</>}</span>
       {unit && deal.price !== 0 && <span className="price-unit">{unit}</span>}
       {was && pct !== undefined && (
         <span className="pct"><span aria-hidden="true">−{fmtPct(pct, locale)}</span><span className="sr-only">{t.cheaperBy(fmtPct(pct, locale))}</span></span>

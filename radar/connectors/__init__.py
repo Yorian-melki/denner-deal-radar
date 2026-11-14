@@ -20,8 +20,11 @@ def register(cls: type[Connector]) -> type[Connector]:
 def enabled_connectors(cfg) -> list[Connector]:
     _load_all()
     conf = cfg.settings.get("sources", {})
+    feed = current_feed()
     out = []
     for sid, cls in sorted(REGISTRY.items()):
+        if cls.feed != feed:
+            continue
         c = conf.get(sid, {})
         if not c.get("enabled", True):
             continue
@@ -30,6 +33,12 @@ def enabled_connectors(cfg) -> list[Connector]:
             inst.interval_minutes = int(c["interval_minutes"])
         out.append(inst)
     return out
+
+
+def current_feed() -> str:
+    """Flux collecté : ``ch-sg`` (Saint-Gall, défaut) ou ``fr-toulon`` (bêta), via RADAR_FEED."""
+    import os
+    return os.environ.get("RADAR_FEED", "ch-sg")
 
 
 def _load_all() -> None:

@@ -13,6 +13,12 @@ import {
 import { paths, telegramUrl } from "@/lib/site";
 import type { PublicDeal } from "@/lib/types";
 
+const BETA_NOTE: Record<Locale, string> = {
+  de: "Beta · noch wenige Quellen, Preise in Euro",
+  fr: "Bêta · encore peu de sources, prix en euros",
+  en: "Beta · only a few sources so far, prices in euros",
+};
+
 /** Sections de la page ville après la vitrine (round 2, item 37) : le reste n'est
  * accessible que par les puces (Haushalt, Gutscheine, Shopping…). */
 export const CITY_SECTIONS = ["studenten-rabatte", "gratis", "supermarkt-aktionen"];
@@ -24,6 +30,7 @@ export function Intro({ city, locale, deals, generatedAt }: { city: City; locale
   return (
     <header className="intro">
       <h1>{t.dealsIn(city.name[locale])}</h1>
+      {city.beta && <p className="beta-note">{BETA_NOTE[locale]}</p>}
       <p className="intro-facts">
         <span>{t.factsCount(fmtInt(deals.length, locale))}</span>
         {generatedAt && <span>{t.updated(fmtUpdated(generatedAt, locale))}</span>}

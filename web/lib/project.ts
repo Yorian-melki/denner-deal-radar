@@ -175,7 +175,7 @@ const PROMO_WORDS_COLON = /(^|[:–-]\s*)(?:neu|hot|top|deal)\s*[:!]\s*/iu;
 /** Urgence fabriquée par la source. */
 const URGENCY = /\s*[-–,!(]?\s*\b(?:nur\s+(?:noch\s+)?(?:heute|bis\s+morgen)|nur\s+(?:noch\s+)?\d+\s+(?:Exemplare?|Stück|Stk\.?)\s+(?:übrig|verfügbar)|letzte\s+chance|solange\s+es\s+geht|aujourd[’']hui\s+seulement|dernier\s+jour|today\s+only|last\s+chance|only\s+\d+\s+left)\b[^\p{L}\d«“"]*(?:\)\s*)?/giu;
 /** Superlatifs de prix (« zum neuen Bestpreis »), gardés seulement si notre historique le prouve. */
-const SUPERLATIVE = /\s*[-–,!]?\s*\b(?:zum\s+)?(?:neue[nr]?\s+)?(?:besten\s+Preis|Bestpreis|Tiefstpreis|Niedrigstpreis|Tiefpreis|Toppreis|Allzeit-?Tiefstpreis|Allzeittief(?:preis)?)\b(?:\s+(?:von|für)?\s*(?:CHF|Fr\.)\s*[\d.’',–-]+)?!?/giu;
+const SUPERLATIVE = /\s*[-–,!]?\s*\b(?:zum?\s+)?(?:neue[nr]?\s+)?(?:besten\s+Preis(?:en)?|(?:Welt)?Bestpreis(?:en|e)?|Tiefstpreis(?:en|e)?|Niedrigstpreis|Tiefpreis|Toppreis|Allzeit-?Tiefstpreis|Allzeittief(?:preis)?)\b(?:\s+(?:von|für)?\s*(?:CHF|Fr\.)\s*[\d.’',–-]+)?!?/giu;
 const PICKUP = /\s*\((?:nur\s+)?Abholung\)|\s*[-–,]\s*nur\s+Abholung\b/iu;
 /** « bis zum 29.10. (17 Uhr) » dans un titre : date de fin (parsée), retirée du titre. */
 const UNTIL_IN_TITLE = /\s*[-–,(]?\s*\bbis\s+(?:zum\s+)?(\d{1,2})\.(\d{1,2})\.?(?:\s*\(?\s*(\d{1,2})(?::(\d{2}))?\s*Uhr\s*\)?)?\)?/iu;

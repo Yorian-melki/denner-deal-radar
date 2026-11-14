@@ -419,3 +419,6 @@ html[lang^="en"] .card[data-new]::before { content: "new"; }
 
 /* Liens dans un texte courant : soulignés (pas seulement la couleur — WCAG 1.4.1). */
 .legal p a, .legal li a, .lead a, .note-box a, .source a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* Bandeau bêta discret (villes en bêta, ex. Toulon) */
+.beta-note { margin: .25rem 0 0; font-size: var(--t-footnote); color: var(--muted); }

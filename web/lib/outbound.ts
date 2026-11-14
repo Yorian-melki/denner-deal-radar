@@ -40,7 +40,7 @@ function hiddenDestination(u: URL): string | undefined {
 /** Agrégateurs connus : le lien mène chez eux, pas chez le marchand. */
 export const AGGREGATOR_HOSTS = ["rappn.ch", "preispirat.ch", "dschungelkompass.ch", "studentbeans.com", "myunidays.com", "mydealz.de", "deals.ch",
   // Round 4, item 19 : portail de coupons et blog de vols — le bouton dit « über … », jamais « bei <Händler> » seul.
-  "gutscheine.20min.ch", "secretflying.com", "gamerpower.com"];
+  "gutscheine.20min.ch", "secretflying.com", "gamerpower.com", "dealabs.com"];
 
 export const hostOf = (url: string | undefined): string | undefined => {
   if (!url) return undefined;

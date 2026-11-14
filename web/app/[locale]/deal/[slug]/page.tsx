@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CITIES, mainCity } from "@/config/cities";
+import { CITIES, launchedCities, mainCity } from "@/config/cities";
 import { TelegramCta } from "@/components/CityDashboard";
 import {
   DealGrid, DealTitle, PriceLine, SaveButton, dateText, displayTitle, noScoreReason, outbound, savingText, sellerName, showsRef, shownScore,
@@ -37,7 +37,8 @@ async function find(slug: string) {
 }
 
 /** Ville d'un deal : sa ville de flux, sinon la ville principale. */
-const cityOf = (d: PublicDeal) => (d.cities.includes("*") ? mainCity() : CITIES.find((c) => c.slug === d.cities[0]) ?? mainCity());
+const cityOf = (d: PublicDeal) =>
+  (d.cities.includes("*") ? launchedCities().find((c) => c.country === d.country) : CITIES.find((c) => c.slug === d.cities[0])) ?? mainCity();
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
   const p = await params;

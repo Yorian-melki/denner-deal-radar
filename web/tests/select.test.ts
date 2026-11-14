@@ -216,7 +216,7 @@ describe("i18n et villes", () => {
     const byslug = Object.fromEntries(CITIES.map((c) => [c.slug, c]));
     expect(byslug.geneve.name).toEqual({ de: "Genf", fr: "Genève", en: "Geneva" });
     expect(byslug["st-gallen"].name.fr).toBe("Saint\u2011Gall");
-    expect(launchedCities().map((c) => c.slug)).toEqual(["st-gallen"]);
+    expect(launchedCities().map((c) => c.slug)).toEqual(["st-gallen", "toulon"]);
   });
 
   /** Toutes les VALEURS (pas les clés) des dictionnaires, fonctions évaluées. Les

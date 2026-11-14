@@ -4,7 +4,8 @@
  * plus jamais « Händler unbekannt ») et le deal sort des vitrines et des sections de l'accueil. Fonctions pures, testées (tests/round3.test.ts). */
 
 /** Sources qui republient les offres d'autres commerçants. */
-export const AGGREGATOR_SOURCES = new Set(["preispirat", "rappn", "gamerpower", "dealdoktor", "studentbeans", "unidays", "dschungelkompass", "gutscheine_20min", "ferienpiraten"]);
+export const AGGREGATOR_SOURCES = new Set(["preispirat", "rappn", "gamerpower", "dealdoktor", "studentbeans", "unidays", "dschungelkompass", "gutscheine_20min", "ferienpiraten",
+  "dealabs", "studentbeans_fr", "gamerpower_fr"]);
 
 /** Nom public d'une source (« via Preispirat »). */
 const SOURCE_NAMES: Record<string, string> = {
@@ -16,6 +17,7 @@ const SOURCE_NAMES: Record<string, string> = {
   revendo: "Revendo", qoqa: "QoQa", poinz: "Poinz", tutti_free: "tutti.ch", anibis_free: "anibis.ch",
   epic_free: "Epic Games", secretflying: "Secret Flying", stadtsg_news: "Stadt St. Gallen",
   grabenhalle_events: "Grabenhalle", kut_events: "KUT", saiten_events: "Saiten",
+  lidl_fr: "Lidl", dealabs: "Dealabs", studentbeans_fr: "Student Beans", epic_free_fr: "Epic Games", gamerpower_fr: "GamerPower",
 };
 export const sourceName = (id: string) => SOURCE_NAMES[id] ?? id.replace(/_/g, " ").replace(/\b\p{Ll}/gu, (c) => c.toUpperCase());
 

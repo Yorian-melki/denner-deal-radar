@@ -44,16 +44,17 @@ class StudentBeans(Connector):
     interval_minutes = 720
     base_url = "https://www.studentbeans.com"
     documentation = "Page /ch, nœuds Offer de la charge RSC ; 1 requête/jour"
+    country = "ch"
 
     def fetch(self, ctx):
-        html = ctx.get(URL).text
+        html = ctx.get(f"https://www.studentbeans.com/{self.country}").text
         offers = parse_offers(html)
         if not offers:
             return FetchResult(error="aucun nœud Offer dans self.__next_f (structure changée ?)")
         return FetchResult(items=offers, complete=True, raw={"offers": len(offers)})
 
     def normalize(self, n, ctx):
-        if (n.get("country") or {}).get("slug") != "ch" or n.get("expired") or n.get("isAdvert"):
+        if (n.get("country") or {}).get("slug") != self.country or n.get("expired") or n.get("isAdvert"):
             return None
         group = n.get("closedConsumerGroup")
         if group and group != "student":
@@ -62,8 +63,8 @@ class StudentBeans(Connector):
         title = text(n.get("title"))
         disc = parse_discount(title)
         pct = disc.get("discount_percentage")
-        url = (f"https://www.studentbeans.com/student-discount/ch/{brand['slug']}/{n['slug']}"
-               if brand.get("slug") and n.get("slug") else URL)
+        url = (f"https://www.studentbeans.com/student-discount/{self.country}/{brand['slug']}/{n['slug']}"
+               if brand.get("slug") and n.get("slug") else f"https://www.studentbeans.com/{self.country}")
         channel = (n.get("redemptionClass") or "").lower()
         return make_deal(
             deal_id=f"{self.id}:{n['uid']}", source_id=self.id, source_type="aggregator", source_offer_id=n["uid"],
@@ -75,4 +76,4 @@ class StudentBeans(Connector):
             requires_student=True, requires_account=True, access="MEMBER",
             eligibility="Student Beans : statut étudiant vérifié", channel=channel or None,
             image_url=n.get("defaultImageSmall"),
-            geographic_scope="ONLINE" if channel in ("online", "") else "NATIONAL", delivery_scope="CH")
+            geographic_scope="ONLINE" if channel in ("online", "") else "NATIONAL", delivery_scope=self.country.upper())

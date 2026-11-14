@@ -1,0 +1,46 @@
+name: toulon
+
+# Bêta express Toulon (flux fr-toulon, EUR) : collecte toutes les 3 h, même moteur
+# (verify.py fail-closed), données séparées dans data/fr-toulon/. Le flux publié
+# (data/fr-toulon/feed/universal.json) est lu par le build web via raw.githubusercontent.
+on:
+  schedule:
+    - cron: "40 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: radar-data
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      RADAR_FEED: fr-toulon
+      RADAR_DATA_DIR: ${{ github.workspace }}/data/fr-toulon
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Collecte fr-toulon
+        run: python -m radar u-scan --due --no-notify --out data/fr-toulon/feed
+      - name: Sauvegarde (git)
+        if: always()
+        run: |
+          git config user.name "deal-radar-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/fr-toulon
+          if git diff --cached --quiet; then echo "rien à commiter"; exit 0; fi
+          git commit -m "data(fr-toulon): relevé $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push && exit 0
+            sleep $((i * 7))
+          done
+          exit 1

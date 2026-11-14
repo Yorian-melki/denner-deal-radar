@@ -58,9 +58,10 @@ class EpicFree(Connector):
     interval_minutes = 360
     base_url = "https://store.epicgames.com"
     documentation = "freeGamesPromotions?country=CH (1 req) ; rotation jeudi 15:00 UTC"
+    url, store, currency = URL, STORE, "CHF"
 
     def fetch(self, ctx):
-        r = ctx.get(URL, headers={"Accept": "application/json"})
+        r = ctx.get(self.url, headers={"Accept": "application/json"})
         payload = r.json()
         try:
             items = parse_free_games(payload)
@@ -74,19 +75,19 @@ class EpicFree(Connector):
         e, w = it["el"], it["window"]
         tp = (e.get("price") or {}).get("totalPrice") or {}
         cur = (tp.get("currencyCode") or "").upper()
-        ref = tp.get("originalPrice") / 100 if cur == "CHF" and tp.get("originalPrice") else None
+        ref = tp.get("originalPrice") / 100 if cur == self.currency and tp.get("originalPrice") else None
         img = {k.get("type"): k.get("url") for k in e.get("keyImages") or []}
         slug = _slug(e)
         start = iso_local(w.get("startDate"), tz)
         return make_deal(
             deal_id=f"{self.id}:{e['id']}:{(w.get('startDate') or '')[:10]}", source_id=self.id,
             source_type="merchant", source_offer_id=e["id"], merchant="Epic Games Store",
-            source_url=STORE + slug if slug else self.base_url + "/de/free-games",
+            source_url=self.store + slug if slug else self.store.replace("/p/", "/free-games"),
             title=e["title"], description=text(e.get("description"))[:300] or None,
             family="digital_free", offer_type="free_game", category=e.get("offerType"),
             brand=(e.get("seller") or {}).get("name"), condition="new",
             current_price=0.0, reference_price=ref, reference_price_type="msrp" if ref else None,
-            reference_note="prix de liste Epic Games Store (CHF)" if ref else None,
+            reference_note=f"prix de liste Epic Games Store ({self.currency})" if ref else None,
             starts_at=start, ends_at=iso_local(w.get("endDate"), tz), status_hint=it["status"],
             image_url=img.get("OfferImageWide") or img.get("Thumbnail"),
             geographic_scope="ONLINE", delivery_scope="DIGITAL", access="PUBLIC", requires_account=True,

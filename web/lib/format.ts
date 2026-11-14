@@ -23,7 +23,10 @@ export function fmtAmount(v: number): string {
 
 /** « CHF 13.15 » dans les trois langues (NBSP entre devise et montant). */
 export const fmtPrice = (v: number | undefined, cur: string, _locale?: Locale) =>
-  v === undefined ? "" : `${cur}${NBSP}${fmtAmount(v)}`;
+  v === undefined ? "" : cur === "EUR" ? fmtEur(v) : `${cur}${NBSP}${fmtAmount(v)}`;
+
+/** Euro (bêta Toulon) : « 1 349,50 € », virgule décimale, symbole après le montant. */
+export const fmtEur = (v: number) => `${fmtAmount(v).replace(/’/g, NNBSP).replace(".", ",")}${NBSP}€`;
 
 /** Entier avec séparateur de milliers suisse (« 1’349 »), toutes langues. */
 export const fmtInt = (n: number, _locale?: Locale) => `${n < 0 ? "−" : ""}${group(String(Math.abs(Math.round(n))))}`;

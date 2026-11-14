@@ -103,6 +103,8 @@ class Connector:
     window_ttl_hours: float = 72
     time_budget_s: float = 180      # au-delà, le connecteur est interrompu (isolé)
     documentation: str = ""
+    # Flux (ville) auquel appartient le connecteur ; sélection par RADAR_FEED (défaut ch-sg).
+    feed: str = "ch-sg"
 
     @property
     def min_interval(self) -> int:

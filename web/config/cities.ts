@@ -16,6 +16,8 @@ export interface City {
   /** Enseignes sans filiale à moins de 15 km (vente en magasin seulement) : leurs
    * actions ne sont pas montrées dans cette ville (round 2, item 18). */
   absentChains?: string[];
+  /** Ville en bêta : bandeau discret sur sa page. */
+  beta?: boolean;
 }
 
 const same = (n: string): Record<Locale, string> => ({ de: n, fr: n, en: n });
@@ -28,6 +30,8 @@ export const CITIES: City[] = [
   { slug: "bern", name: { de: "Bern", fr: "Berne", en: "Bern" }, country: "CH", launched: false },
   { slug: "basel", name: { de: "Basel", fr: "Bâle", en: "Basel" }, country: "CH", launched: false },
   { slug: "lausanne", name: same("Lausanne"), country: "CH", launched: false },
+  // Bêta express (14.11.2026) : flux fr-toulon en EUR (Lidl FR, Dealabs, Student Beans FR, jeux gratuits).
+  { slug: "toulon", name: same("Toulon"), country: "FR", feed: "fr-toulon", launched: true, beta: true },
   { slug: "geneve", name: { de: "Genf", fr: "Genève", en: "Geneva" }, country: "CH", launched: false },
 ];
 
@@ -40,6 +44,15 @@ export const FEEDS: Feed[] = [
       process.env.DATA_URL_CH_SG ??
       "https://yorian-melki.github.io/denner-deal-radar/data/universal.json",
     cities: ["st-gallen"],
+  },
+  {
+    id: "fr-toulon",
+    country: "FR",
+    currency: "EUR",
+    url:
+      process.env.DATA_URL_FR_TOULON ??
+      "https://raw.githubusercontent.com/Yorian-melki/denner-deal-radar/main/data/fr-toulon/feed/universal.json",
+    cities: ["toulon"],
   },
 ];
 
