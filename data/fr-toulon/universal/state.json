@@ -6,15 +6,16 @@
    "consecutive_failures": 0,
    "counts": [
     65,
-    65
+    65,
+    70
    ],
    "http_cache": {},
-   "last_attempt": "2026-11-14T18:28:51+01:00",
+   "last_attempt": "2026-11-14T23:45:03+01:00",
    "last_error": null,
-   "last_items": 65,
+   "last_items": 70,
    "last_latency_s": 2.69,
    "last_state": "OK",
-   "last_success": "2026-11-14T18:28:51+01:00",
+   "last_success": "2026-11-14T23:45:03+01:00",
    "last_warnings": [],
    "recent": [
     {
@@ -27,6 +28,13 @@
     {
      "at": "2026-11-14T18:28:51+01:00",
      "items": 65,
+     "rejected": 0,
+     "state": "OK",
+     "warn": 0
+    },
+    {
+     "at": "2026-11-14T23:45:03+01:00",
+     "items": 70,
      "rejected": 0,
      "state": "OK",
      "warn": 0
@@ -73,19 +81,20 @@
    "bootstrap_at": "2026-11-14T18:26:46+01:00",
    "consecutive_failures": 0,
    "counts": [
+    14,
     14
    ],
    "http_cache": {
     "https://www.gamerpower.com/rss/giveaways": {
-     "last_modified": "Sat, 14 Nov 2026 17:16:45 GMT"
+     "last_modified": "Sat, 14 Nov 2026 22:45:06 GMT"
     }
    },
-   "last_attempt": "2026-11-14T18:28:51+01:00",
+   "last_attempt": "2026-11-14T23:45:03+01:00",
    "last_error": null,
-   "last_items": 0,
-   "last_latency_s": 0.92,
-   "last_state": "NOT_MODIFIED",
-   "last_success": "2026-11-14T18:28:51+01:00",
+   "last_items": 14,
+   "last_latency_s": 1.14,
+   "last_state": "OK",
+   "last_success": "2026-11-14T23:45:03+01:00",
    "last_warnings": [],
    "recent": [
     {
@@ -100,6 +109,13 @@
      "items": 0,
      "rejected": 0,
      "state": "NOT_MODIFIED",
+     "warn": 0
+    },
+    {
+     "at": "2026-11-14T23:45:03+01:00",
+     "items": 14,
+     "rejected": 0,
+     "state": "OK",
      "warn": 0
     }
    ],
