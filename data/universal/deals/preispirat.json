@@ -37001,7 +37001,7 @@
     }
    ],
    "code": "T_PP_REMAINING",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-15T12:58:04+01:00",
    "state": "ENDED"
   }
@@ -38998,9 +38998,9 @@
      "http": 200
     }
    ],
-   "code": "T_SRC_EXPIRED_FLAG",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-15T03:43:31+01:00",
+   "since": "2026-11-15T14:22:04+01:00",
    "state": "ENDED"
   }
  },
@@ -49795,15 +49795,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T02:20:11+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T03:43:31+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T12:01:23+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     }
    ],
@@ -50214,12 +50214,13 @@
      "at": "2026-11-13T13:14:33+01:00",
      "ends": "2026-11-30T13:14:33+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-15T14:22:04+01:00",
+     "ends": "2026-11-30T14:22:04+01:00",
+     "http": 200
     }
-   ],
-   "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-13T04:26:21+01:00",
-   "state": "SUSPECT"
+   ]
   }
  },
  "preispirat:776424": {
@@ -53151,8 +53152,15 @@
   "tags": [],
   "title": "Jelmoli Gutschein für 35% Rabatt auf Mode, Wäsche & Schuhe - z.B. Rieker Winterstiefel oder Reebok-Sneakers",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T14:22:04+01:00",
+     "ends": "2027-02-28T14:22:04+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-15T12:58:04+01:00",
    "state": "SUSPECT"
   }
@@ -53326,8 +53334,15 @@
   "title": "Acer Notebook Aspire Lite 15 (Ryzen 5 7430U, 16 GB, 1.0 TB SSD, CH-Layout)",
   "total_acquisition_cost": 449.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T14:22:04+01:00",
+     "ends": "2026-11-22T14:22:04+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-15T12:58:04+01:00",
    "state": "SUSPECT"
   }
@@ -53375,8 +53390,15 @@
   "tags": [],
   "title": "60% Rabatt auf Handyabos",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T14:22:04+01:00",
+     "ends": "2026-11-15T23:59:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-15T12:58:04+01:00",
    "state": "SUSPECT"
   }
@@ -53975,8 +53997,15 @@
   "tags": [],
   "title": "Leno Mini-PC (AMD Ryzen 5 6600H mit 16 GB RAM und 512 GB SSD) bei AliExpress",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T14:22:04+01:00",
+     "ends": "2026-11-23T14:22:04+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-15T12:58:04+01:00",
    "state": "SUSPECT"
   }
@@ -54374,8 +54403,15 @@
   "title": "Polti Siebträgermaschine Coffea G50S (2.8 Liter Wassertank mit Touchpanel & Energieeffizienzklasse B)",
   "total_acquisition_cost": 258.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T14:22:04+01:00",
+     "ends": "2026-11-23T14:22:04+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-15T12:58:04+01:00",
    "state": "SUSPECT"
   }
@@ -54421,10 +54457,17 @@
   "tags": [],
   "title": "Dreame Aqua10 Roller Roboterstaubsauger bei Nettoshop (30’000 Pa, Wischwalze mit Selbstreinigung)",
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-15T14:22:04+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-15T12:58:04+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T14:22:04+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:777708": {
@@ -54477,10 +54520,17 @@
   "title": "JOULE PERFORMANCE Gaming PC (AMD Ryzen 7 9850X3D, 32 GB RAM, 2 TB SSD, NVIDIA GeForce RTX 5080)",
   "total_acquisition_cost": 3204.61,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-15T14:22:04+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-15T12:58:04+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T14:22:04+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:777710": {
@@ -54533,10 +54583,17 @@
   "title": "Nur noch heute - OLED Fernseher Samsung QE65S90H + Füllartikel zum Bestpreis bei MediaMarkt",
   "total_acquisition_cost": 1157.6,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-15T14:22:04+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-15T12:58:04+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T14:22:04+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:777729": {
@@ -54589,10 +54646,17 @@
   "title": "SONY BRAVIA 6 OLED TV (Flat, 65“ UHD 4K, Google Smart TV) bei MediaMarkt zum neuen Bestpreis",
   "total_acquisition_cost": 1059.72,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-15T14:22:04+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-15T12:58:04+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T14:22:04+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:777734": {
@@ -54834,8 +54898,15 @@
   "title": "Fairphone Wireless Over-Ear-Kopfhörer Fairbuds XL Schwarz",
   "total_acquisition_cost": 79.95,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T14:22:04+01:00",
+     "ends": "2026-11-23T14:22:04+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-15T12:58:04+01:00",
    "state": "SUSPECT"
   }
@@ -54890,8 +54961,15 @@
   "title": "Roborock Saros 20 Flow Complete (36000 Pa, Wischrolle)",
   "total_acquisition_cost": 749.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T14:22:04+01:00",
+     "ends": "2026-11-23T14:22:04+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-15T12:58:04+01:00",
    "state": "SUSPECT"
   }
@@ -55231,10 +55309,17 @@
   "title": "BlueBrixx-Pro Normannenburg: Turmburg",
   "total_acquisition_cost": 299.0,
   "verify": {
-   "code": "SCORE",
+   "checks": [
+    {
+     "at": "2026-11-15T14:22:04+01:00",
+     "flag": "expired",
+     "http": 200
+    }
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
    "ok_streak": 0,
-   "since": "2026-11-15T12:58:04+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T14:22:04+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:778049": {
@@ -55925,7 +56010,7 @@
   "description": "Aktuell könnt ihr die Wochenzeitung «DIE ZEIT» 4 Wochen lang kostenlos lesen. Dabei habt ihr die Wahl zwischen der Print- und der Digitalausgabe. Bei der Printausgabe erhaltet ihr 4 Ausgaben kostenlos. Wichtig: Nach den kostenlosen Probeausgaben läuft das Abo kostenpflichtig weiter. Bei der Printaus",
   "effective_discount": null,
   "family": "digital_free",
-  "feed": "https://www.preispirat.ch/feed/",
+  "feed": "https://www.preispirat.ch/cat/freebies/feed/",
   "first_seen_at": "2026-11-14T22:41:33+01:00",
   "geographic_scope": "ONLINE",
   "geographic_scope_resolved": "ONLINE",
@@ -56497,6 +56582,56 @@
   "title": "Nintendo Switch 2 Konsole bei MediaMarkt zum Toppreis",
   "total_acquisition_cost": 359.0
  },
+ "preispirat:778414": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:conforama:gta-6-grand-theft-auto-vi-fur-ps5-zum-neuen-bestpreis",
+  "category": "Gaming & Apps, redaktion",
+  "cost_assumptions": [],
+  "current_price": 58.9,
+  "deal_id": "preispirat:778414",
+  "deal_score": 0.0,
+  "description": "Aktuell bekommt ihr das Spiel Grand Theft Auto VI (GTA 6) von Rockstar Games für die PS5 bei Conforama zum Preis von 49.95 Franken bei Abholung. Mit Lieferung nach Hause zahlt ihr insgesamt 58.90 Franken. Grand Theft Auto VI entführt dich in eine lebendige, detailreiche Spielwelt auf der PS5. Du beg",
+  "discount_absolute": 5.1,
+  "discount_percentage": 8.0,
+  "effective_discount": 0.0,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-15T14:22:04+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_2NkZXpZi4d-244x300.png",
+  "last_changed_at": "2026-11-15T14:22:04+01:00",
+  "last_seen_at": "2026-11-15T14:22:04+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Conforama",
+  "missing_scans": 0,
+  "net_savings": -7.7,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.65,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-15T09:11:17+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 64.0,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778414",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/gta-6-grand-theft-auto-vi-fuer-ps5-zum-neuen-bestpreis-abholung-lieferung/",
+  "tags": [],
+  "title": "GTA 6: Grand Theft Auto VI für PS5 zum neuen Bestpreis",
+  "total_acquisition_cost": 58.9
+ },
  "preispirat:778424": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -56552,7 +56687,7 @@
   "accessibility": 1.0,
   "accessibility_notes": [],
   "canonical_entity_id": "t:tchibo:nur-heute-gratis-versand-ohne-mindestbestellwert-bei-tchibo",
-  "category": "Fashion & Schmuck, Wohnen & Haushalt",
+  "category": "Fashion & Schmuck, Wohnen & Haushalt, redaktion",
   "deal_id": "preispirat:778451",
   "deal_score": null,
   "description": "Nur heute Sonntag, verschickt Tchibo sämtliche Bestellungen ohne Mindestbestellwert, kostenfrei zu euch nach Hause.",
@@ -56573,7 +56708,7 @@
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
-  "published_at": "2026-11-15T09:32:53+01:00",
+  "published_at": "2026-11-15T13:00:53+01:00",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -56826,5 +56961,280 @@
   "tags": [],
   "title": "SONY BRAVIA 8A OLED TV, K-55XR8A neuer Bestpreis Black Friday, (Flat, 55’’ / 139 cm, UHD 4K, Google Smart TV)",
   "total_acquisition_cost": 999.0
+ },
+ "preispirat:778541": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:mediamarkt:black-weeks-bei-mediamarkt-sammeldeal-mit-nintendo-switch-2-garmin-fenix-8-mehr",
+  "category": "Beauty & Gesundheit, Computer & Büro, Gaming & Apps, Home Entertainment & Foto, Smartphones, Wearables & Kopfhörer, Sport & Outdoor, Verschiedenes, Wohnen & Haushalt",
+  "deal_id": "preispirat:778541",
+  "deal_score": null,
+  "description": "Bei MediaMarkt laufen aktuell die Black Weeks mit einigen richtig guten Angeboten! 🔥 Ob Nintendo Switch 2, Garmin Fenix 8, Apple AirPods oder Gaming-Monitore, es ist einiges dabei. Ich habe euch die spannendsten Angebote in diesem Sammeldeal zusammengestellt.",
+  "effective_discount": null,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-15T14:22:04+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/MM-Black-Week-300x230.jpg",
+  "last_changed_at": "2026-11-15T14:22:04+01:00",
+  "last_seen_at": "2026-11-15T14:22:04+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "MediaMarkt",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-15T13:30:34+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "778541",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/black-weeks-bei-mediamarkt-sammeldeal-mit-nintendo-switch-2-garmin-fenix-8-mehr/",
+  "tags": [],
+  "title": "Black Weeks bei MediaMarkt Sammeldeal mit Nintendo Switch 2, Garmin Fenix 8 & mehr"
+ },
+ "preispirat:778542": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:mediamarkt:roborock-saros-20-sonic-complete-mit-36-000-pa-saugkraft-und-100-c-moppwasche-be",
+  "category": "Wohnen & Haushalt",
+  "cost_assumptions": [],
+  "current_price": 699.0,
+  "deal_id": "preispirat:778542",
+  "deal_score": 0.0,
+  "description": "Momentan gibt es den Roborock Saros 20 Sonic Complete bei MediaMarkt zum Preis von 699.– Franken. Der aktuelle Vergleichspreis für dasselbe Modell liegt bei 799.– Franken. Das Angebot gilt nur, solange der Vorrat reicht. Der ROBOROCK Saros 20 Sonic Complete nimmt dir einen grossen Teil der täglichen",
+  "discount_absolute": 100.0,
+  "discount_percentage": 12.5,
+  "effective_discount": 0.0,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-15T14:22:04+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_4LHgwjFdHl-300x263.png",
+  "last_changed_at": "2026-11-15T14:22:04+01:00",
+  "last_seen_at": "2026-11-15T14:22:04+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "MediaMarkt",
+  "missing_scans": 0,
+  "net_savings": -59.8,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-15T13:00:45+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 799.0,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778542",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/roborock-saros-20-sonic-complete-mit-36000-pa-saugkraft-und-100-c-moppwaesche-bei-mediamarkt/",
+  "tags": [],
+  "title": "Roborock Saros 20 Sonic Complete mit 36’000 Pa Saugkraft und 100 °C Moppwäsche bei MediaMarkt",
+  "total_acquisition_cost": 699.0
+ },
+ "preispirat:778590": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:mediamarkt:aoc-agon-q27g4zdr-27-qd-oled-qhd-240-hz-fur-nur-chf-239-bei-mediamarkt",
+  "category": "Computer & Büro",
+  "cost_assumptions": [],
+  "current_price": 239.0,
+  "deal_id": "preispirat:778590",
+  "deal_score": 0.0,
+  "description": "Bei MediaMarkt gibt es aktuell den AOC AGON Q27G4ZDR für CHF 239.–. Das ist der bisherige Tiefstpreis für diesen Gaming-Monitor. Technische Daten: 26,5 Zoll QD-OLED-Panel 240 Hz Bildwiederholrate QHD-Auflösung (2560 × 1440) 0,03 ms Reaktionszeit (GtG) HDMI 2.1 und DisplayPort 1.4 Höhenverstellbarer ",
+  "discount_absolute": 43.2,
+  "discount_percentage": 15.3,
+  "effective_discount": 0.0,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-15T14:22:04+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/720-e3a3db-300x300.jpg",
+  "last_changed_at": "2026-11-15T14:22:04+01:00",
+  "last_seen_at": "2026-11-15T14:22:04+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "MediaMarkt",
+  "missing_scans": 0,
+  "net_savings": -13.24,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-15T12:43:19+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 282.2,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778590",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/aoc-agon-q27g4zdr-27-qd-oled-qhd-240-hz-fuer-nur-chf-239-bei-mediamarkt/",
+  "tags": [],
+  "title": "AOC AGON Q27G4ZDR – 27″ QD-OLED, QHD, 240 Hz für nur CHF 239.– bei MediaMarkt",
+  "total_acquisition_cost": 239.0
+ },
+ "preispirat:778594": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:gonser-ch:polsterbett-daina-160-x-200-cm-beige",
+  "category": "Wohnen & Haushalt",
+  "deal_id": "preispirat:778594",
+  "deal_score": null,
+  "description": "Bei GONSER.CH findet ihr aktuell das Polsterbett DAINA 160 x 200 cm beige in Aktion für CHF 199.00. Bis wann der Deal noch gilt, ist leider unbekannt. Das Polsterbett DAINA schafft mit seinem schlichten beigen Samtbezug eine ruhige und wohnliche Atmosphäre im Schlafzimmer. Das gepolsterte Kopfteil l",
+  "effective_discount": null,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-15T14:22:04+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/polsterbett-daina-160-x-200-cm-beige-1794743318-300x300.jpeg",
+  "last_changed_at": "2026-11-15T14:22:04+01:00",
+  "last_seen_at": "2026-11-15T14:22:04+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "GONSER.CH",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-15T13:58:26+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "778594",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/polsterbett-daina-160-x-200-cm-beige/",
+  "tags": [],
+  "title": "Polsterbett DAINA 160 x 200 cm beige"
+ },
+ "preispirat:778614": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 7.3,
+  "canonical_entity_id": "t:preispirat:headspace-50-rabatt-auf-ein-jahresabonnement-auch-verschenkbar",
+  "category": "Abonnemente & Karten, Beauty & Gesundheit",
+  "deal_id": "preispirat:778614",
+  "deal_score": 7.3,
+  "description": "Hoi zusammen Zu Black Friday gibts es das Headspace Jahresabonnement für USD 34,99 (etwas unter CHF 30) anstatt USD 69,99 für das erste Jahr. Ich finde es super zum Meditieren und zum Einschlafen mit den Sleepcasts. Einziger Wermutstropfen: Leider kann man die Sleepcasts nicht runterladen. Für Neumi",
+  "discount_percentage": 50.0,
+  "effective_discount": 50.0,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-15T14:22:04+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/headspace_50-300x253.png",
+  "last_changed_at": "2026-11-15T14:22:04+01:00",
+  "last_seen_at": "2026-11-15T14:22:04+01:00",
+  "lifecycle": "ACTIVE",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-15T14:12:10+01:00",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 50 %",
+    7.3
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "preispirat",
+  "source_offer_id": "778614",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/headspace-50-rabatt-auf-ein-jahresabonnement-auch-verschenkbar/",
+  "tags": [],
+  "title": "Headspace: 50% Rabatt auf ein Jahresabonnement (auch verschenkbar)"
+ },
+ "preispirat:778621": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:amazon:google-pixel-11-android-smartphone-256-gb-bei-amazon-fr-zum-neuen-bestpreis",
+  "category": "Smartphones, Wearables & Kopfhörer",
+  "cost_assumptions": [],
+  "current_price": 540.85,
+  "deal_id": "preispirat:778621",
+  "deal_score": 0.0,
+  "description": "Aktuell gibt es das Google Pixel 11 Android-Smartphone (256 GB) bei Amazon.fr zum neuen Bestpreis von umgerechnet 540.85 Franken. Bei anderen Anbietern starten die Preise derzeit bei 649.– Franken. Falls jemand lieber bei Amazon.de bestellt, gibt es auch dort ein gutes Angebot zum Preis von umgerech",
+  "discount_absolute": 108.15,
+  "discount_percentage": 16.7,
+  "effective_discount": 0.0,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-15T14:22:04+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/google-pixel-11-entsperrtes-android-smartphone-volcanic-black-256-gb-1794744608-250x300.jpeg",
+  "last_changed_at": "2026-11-15T14:22:04+01:00",
+  "last_seen_at": "2026-11-15T14:22:04+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": -21.65,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.55,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-15T14:00:42+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 649.0,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "778621",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/google-pixel-11-android-smartphone-256-gb-bei-amazon-fr-zum-neuen-bestpreis/",
+  "tags": [],
+  "title": "Google Pixel 11 Android-Smartphone (256 GB) bei Amazon.fr zum neuen Bestpreis",
+  "total_acquisition_cost": 540.85
  }
 }
