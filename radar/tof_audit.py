@@ -192,6 +192,23 @@ PP_EXPIRED = re.compile(r'class="days_left"[^>]*>(?:\s*<i[^>]*>\s*</i>)?\s*Abgel
                         r'|<article[^>]*class="[^"]*\bpost-inner\b[^"]*\bexpired\b', re.I)
 
 
+def _denner_articles(it: dict) -> list[dict]:
+    """Articles d'un item de l'API Denner, quel que soit le format.
+
+    Ancien format : ``attributeInfo`` = liste d'articles {articleId, price, promotionTo}.
+    Format du 11/2026 : ``attributeInfo`` = liste {attributeName, vals:[{value}]} décrivant UN article
+    (l'ancien parseur lisait chaque attribut comme un article → 0 article trouvé, 11 faux « exists »).
+    """
+    info = it.get("attributeInfo") or []
+    if info and all(isinstance(a, dict) and "attributeName" in a for a in info):
+        flat = {a["attributeName"]: ((a.get("vals") or [{}])[0] or {}).get("value") for a in info}
+        price = it.get("price")
+        if price is None:
+            price = _num(str(flat.get("price") or ""))
+        return [{"articleId": flat.get("articleId"), "price": price, "promotionTo": flat.get("promotionTo")}]
+    return info or [it]
+
+
 class Auditor:
     def __init__(self, http, now: dt.datetime):
         self.http, self.now = http, now
@@ -214,7 +231,7 @@ class Auditor:
                                                  "page": page, "hitsPerPage": 100, "sort": None, "includeHighlights": False},
                                                 referer="https://www.denner.ch/de/aktionen/aktuelle-aktionen")
                         for it in d.get("items", []):
-                            for a in it.get("attributeInfo") or [it]:
+                            for a in _denner_articles(it):
                                 arts.setdefault(str(a.get("articleId")), []).append(
                                     {"price": a.get("price"), "to": a.get("promotionTo")})
                         if page * 100 >= (d.get("stats") or {}).get("totalResults", 0):
