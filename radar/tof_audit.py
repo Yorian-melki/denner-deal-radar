@@ -37,6 +37,9 @@ log = logging.getLogger("radar.tof_audit")
 
 SITE = "https://radarsave.ch"
 FEED = "https://yorian-melki.github.io/denner-deal-radar/data/universal.json"
+# Flux des autres villes servies par le même site (mêmes URLs que web/config/cities.ts) : sans eux,
+# leurs pages tombaient en « invérifiable : deal absent du flux » (14/100 le 15/11, bêta Toulon).
+EXTRA_FEEDS = ["https://raw.githubusercontent.com/Yorian-melki/denner-deal-radar/main/data/fr-toulon/feed/universal.json"]
 ABSENT_CHAINS = {"aligro"}          # aucune filiale à Saint-Gall (même liste que web/config/cities.ts)
 RAPPN_MAX_PAGES = 60
 REVENDO_MAX_PAGES = 40
@@ -420,6 +423,13 @@ def run(http, now: dt.datetime, n: int = 100, seed: str | None = None, site: str
     seed = seed or now.date().isoformat()
     sample = random.Random(seed).sample(urls, min(n, len(urls)))
     feed = {d["deal_id"]: d for d in own_get(http, feed_url).json().get("deals", [])}
+    if feed_url == FEED:
+        for extra in EXTRA_FEEDS:
+            try:
+                for d in own_get(http, extra).json().get("deals", []):
+                    feed.setdefault(d["deal_id"], d)
+            except Exception as e:  # noqa: BLE001 — un flux secondaire en panne laisse ses pages en « U »
+                log.warning("flux %s : %s", extra, e)
     aud = Auditor(http, now)
     offers = []
     t0 = time.monotonic()
