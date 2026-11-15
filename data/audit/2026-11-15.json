@@ -1,54 +1,46 @@
 {
- "generated_at": "2026-11-15T13:36:13+01:00",
+ "generated_at": "2026-11-15T13:39:35+01:00",
  "method": "V2-C §1.1 (pages servies, source en direct)",
  "site": "https://radarsave.ch",
  "seed": "2026-11-15",
  "population": 2692,
- "elapsed_s": 171,
+ "elapsed_s": 169,
  "summary": {
   "sampled": 100,
-  "verifiable": 84,
-  "unverifiable": 16,
+  "verifiable": 98,
+  "unverifiable": 2,
   "skipped": 0,
   "M1": {
-   "x": 0,
-   "n": 84,
-   "rate": 0.0,
+   "x": 1,
+   "n": 98,
+   "rate": 0.0102,
    "wilson95": [
-    0.0,
-    0.0437
+    0.0018,
+    0.0556
    ],
-   "cp_upper95": 0.035
+   "cp_upper95": 0.0475
   },
   "M2": {
-   "x": 0,
-   "n": 79,
-   "rate": 0.0,
+   "x": 1,
+   "n": 93,
+   "rate": 0.0108,
    "wilson95": [
-    0.0,
-    0.0464
+    0.0019,
+    0.0584
    ],
-   "cp_upper95": 0.0372
+   "cp_upper95": 0.05
   },
   "M_soft": {
    "x": 0,
-   "n": 84,
+   "n": 98,
    "rate": 0.0,
    "wilson95": [
     0.0,
-    0.0437
+    0.0377
    ],
-   "cp_upper95": 0.035
+   "cp_upper95": 0.0301
   },
   "by_source": {
-   "?": {
-    "n": 14,
-    "H": 0,
-    "S": 0,
-    "OK": 0,
-    "U": 14,
-    "SKIP": 0
-   },
    "aldi": {
     "n": 18,
     "H": 0,
@@ -62,6 +54,14 @@
     "H": 0,
     "S": 0,
     "OK": 1,
+    "U": 0,
+    "SKIP": 0
+   },
+   "dealabs": {
+    "n": 7,
+    "H": 0,
+    "S": 0,
+    "OK": 7,
     "U": 0,
     "SKIP": 0
    },
@@ -105,6 +105,14 @@
     "U": 0,
     "SKIP": 0
    },
+   "lidl_fr": {
+    "n": 6,
+    "H": 0,
+    "S": 0,
+    "OK": 6,
+    "U": 0,
+    "SKIP": 0
+   },
    "migros": {
     "n": 3,
     "H": 0,
@@ -137,6 +145,14 @@
     "U": 0,
     "SKIP": 0
    },
+   "studentbeans_fr": {
+    "n": 1,
+    "H": 1,
+    "S": 0,
+    "OK": 0,
+    "U": 0,
+    "SKIP": 0
+   },
    "volg": {
     "n": 1,
     "H": 0,
@@ -146,7 +162,9 @@
     "SKIP": 0
    }
   },
-  "causes": {}
+  "causes": {
+   "exists": 1
+  }
  },
  "offers": [
   {
@@ -380,15 +398,17 @@
   },
   {
    "deal_id": "dealabs:3455744",
-   "source": null,
+   "source": "dealabs",
    "shown_price": 398.0,
    "shown_from": false,
    "shown_in_store": false,
    "shown_ref": null,
    "shown_state": "verified",
-   "feed_state": null,
-   "verdict": "U",
-   "note": "deal absent du flux publié",
+   "feed_state": "VERIFIED",
+   "price_checked": false,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix non trouvé dans le texte (non contrôlé)",
    "url": "https://radarsave.ch/de/deal/smartphone-6-7-samsung-galaxy-a57-5g-256-go-ram-8-go-chargeu-15ftfhl"
   },
   {
@@ -568,15 +588,17 @@
   },
   {
    "deal_id": "lidl_fr:100413059:2026-11-12",
-   "source": null,
+   "source": "lidl_fr",
    "shown_price": 5.99,
    "shown_from": false,
    "shown_in_store": false,
    "shown_ref": null,
    "shown_state": "verified",
-   "feed_state": null,
-   "verdict": "U",
-   "note": "deal absent du flux publié",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
    "url": "https://radarsave.ch/de/deal/uno-jeu-de-cartes-k-pop-demon-hunters-14aqi1o"
   },
   {
@@ -610,15 +632,17 @@
   },
   {
    "deal_id": "dealabs:3455732",
-   "source": null,
+   "source": "dealabs",
    "shown_price": 1700.0,
    "shown_from": false,
    "shown_in_store": false,
    "shown_ref": null,
    "shown_state": "verified",
-   "feed_state": null,
-   "verdict": "U",
-   "note": "deal absent du flux publié",
+   "feed_state": "VERIFIED",
+   "price_checked": false,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix non trouvé dans le texte (non contrôlé)",
    "url": "https://radarsave.ch/de/deal/barre-de-son-devialet-dione-dolby-atmos-noir-acshas"
   },
   {
@@ -652,28 +676,32 @@
   },
   {
    "deal_id": "lidl_fr:100392457:2026-11-12",
-   "source": null,
+   "source": "lidl_fr",
    "shown_price": 29.99,
    "shown_from": false,
    "shown_in_store": false,
    "shown_ref": null,
    "shown_state": "verified",
-   "feed_state": null,
-   "verdict": "U",
-   "note": "deal absent du flux publié",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
    "url": "https://radarsave.ch/de/deal/crivit-mini-pistolet-de-massage-cmmg-3-7-a1-4-tetes-5-vitess-1uek7lk"
   },
   {
    "deal_id": "dealabs:3455662",
-   "source": null,
+   "source": "dealabs",
    "shown_price": 69.9,
    "shown_from": false,
    "shown_in_store": false,
    "shown_ref": null,
    "shown_state": "verified",
-   "feed_state": null,
-   "verdict": "U",
-   "note": "deal absent du flux publié",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
    "url": "https://radarsave.ch/de/deal/ecran-pc-24-aoc-24g50f-fhd-180hz-ips-0-5ms-18kt4uu"
   },
   {
@@ -736,15 +764,17 @@
   },
   {
    "deal_id": "dealabs:3455778",
-   "source": null,
+   "source": "dealabs",
    "shown_price": 74.68,
    "shown_from": false,
    "shown_in_store": false,
    "shown_ref": null,
    "shown_state": "verified",
-   "feed_state": null,
-   "verdict": "U",
-   "note": "deal absent du flux publié",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
    "url": "https://radarsave.ch/de/deal/tracker-d-activite-google-fitbit-charge-6-15zvsdi"
   },
   {
@@ -921,15 +951,17 @@
   },
   {
    "deal_id": "dealabs:3454346",
-   "source": null,
+   "source": "dealabs",
    "shown_price": 10.0,
    "shown_from": false,
    "shown_in_store": false,
    "shown_ref": null,
    "shown_state": "verified",
-   "feed_state": null,
-   "verdict": "U",
-   "note": "deal absent du flux publié",
+   "feed_state": "VERIFIED",
+   "price_checked": false,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix non trouvé dans le texte (non contrôlé)",
    "url": "https://radarsave.ch/de/deal/10-de-reduction-sur-une-selection-de-pc-portables-pc-de-bure-1rno0oq"
   },
   {
@@ -1062,15 +1094,17 @@
   },
   {
    "deal_id": "lidl_fr:100414104:2026-10-29",
-   "source": null,
+   "source": "lidl_fr",
    "shown_price": 29.99,
    "shown_from": false,
    "shown_in_store": false,
    "shown_ref": null,
    "shown_state": "verified",
-   "feed_state": null,
-   "verdict": "U",
-   "note": "deal absent du flux publié",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
    "url": "https://radarsave.ch/de/deal/silvercrest-distributeur-de-boissons-chaudes-shga-1800-a1-kkbr92"
   },
   {
@@ -1117,15 +1151,17 @@
   },
   {
    "deal_id": "lidl_fr:100411576:2026-10-29",
-   "source": null,
+   "source": "lidl_fr",
    "shown_price": 19.99,
    "shown_from": false,
    "shown_in_store": false,
    "shown_ref": null,
    "shown_state": "verified",
-   "feed_state": null,
-   "verdict": "U",
-   "note": "deal absent du flux publié",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
    "url": "https://radarsave.ch/de/deal/livarno-sapin-de-noel-artificiel-180-cm-1ww632a"
   },
   {
@@ -1144,15 +1180,17 @@
   },
   {
    "deal_id": "dealabs:3455783",
-   "source": null,
+   "source": "dealabs",
    "shown_price": 96.95,
    "shown_from": false,
    "shown_in_store": false,
    "shown_ref": null,
    "shown_state": "verified",
-   "feed_state": null,
-   "verdict": "U",
-   "note": "deal absent du flux publié",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
    "url": "https://radarsave.ch/de/deal/enceinte-portable-bose-soundlink-flex-2e-gen-3y718w"
   },
   {
@@ -1214,28 +1252,33 @@
   },
   {
    "deal_id": "studentbeans_fr:eacf56cb-8d07-4671-b7e3-e85b089b7bb2",
-   "source": null,
+   "source": "studentbeans_fr",
    "shown_price": null,
    "shown_from": false,
    "shown_in_store": false,
    "shown_ref": null,
    "shown_state": "verified",
-   "feed_state": null,
-   "verdict": "U",
-   "note": "deal absent du flux publié",
+   "feed_state": "VERIFIED",
+   "verdict": "H",
+   "failed": [
+    "exists"
+   ],
+   "note": "",
    "url": "https://radarsave.ch/de/deal/samsung-boosted-5-supplementaires-avec-le-code-nanz5v"
   },
   {
    "deal_id": "lidl_fr:100409227:2026-10-29",
-   "source": null,
+   "source": "lidl_fr",
    "shown_price": 19.99,
    "shown_from": false,
    "shown_in_store": false,
    "shown_ref": null,
    "shown_state": "verified",
-   "feed_state": null,
-   "verdict": "U",
-   "note": "deal absent du flux publié",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
    "url": "https://radarsave.ch/de/deal/silvercrest-raclette-gril-srgs-1400-f1-jppne6"
   },
   {
@@ -1338,15 +1381,17 @@
   },
   {
    "deal_id": "dealabs:3455279",
-   "source": null,
+   "source": "dealabs",
    "shown_price": 1.99,
    "shown_from": false,
    "shown_in_store": false,
    "shown_ref": null,
    "shown_state": "verified",
-   "feed_state": null,
-   "verdict": "U",
-   "note": "deal absent du flux publié",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
    "url": "https://radarsave.ch/de/deal/sachet-de-500-g-de-noix-de-grenoble-a-o-p-slaiv6"
   },
   {
@@ -1381,15 +1426,17 @@
   },
   {
    "deal_id": "lidl_fr:100408278:2026-11-12",
-   "source": null,
+   "source": "lidl_fr",
    "shown_price": 59.99,
    "shown_from": false,
    "shown_in_store": false,
    "shown_ref": null,
    "shown_state": "verified",
-   "feed_state": null,
-   "verdict": "U",
-   "note": "deal absent du flux publié",
+   "feed_state": "VERIFIED",
+   "price_checked": true,
+   "verdict": "OK",
+   "failed": [],
+   "note": "prix lu sur la page",
    "url": "https://radarsave.ch/de/deal/silvercrest-machine-a-expresso-sem-1100-e1-15-bar-noire-v51n27"
   },
   {
