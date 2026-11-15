@@ -314,7 +314,10 @@ def source_health(st: dict, family: str, interval_min: float, now: dt.datetime, 
 # -- contrôles de page (404/410 et drapeaux de fin) --------------------------------------------------
 
 # Intervalle de recontrôle par source (heures) : sources sans liste complète (R2 §3.1, §3.5).
-RECHECK_H = {"lidl": 12, "studentbeans": 24, "unidays": 24, "preispirat": 8, "poinz": 24}
+RECHECK_H = {"lidl": 12, "studentbeans": 24, "unidays": 24, "preispirat": 8, "poinz": 24,
+             # Flux fr-toulon : sans ces clés, 0 recontrôle (audit 15/11 : offre Student Beans FR
+             # retirée, page 404, encore « vérifiée »). Sources absentes d'un flux = 0 deal, sans coût.
+             "studentbeans_fr": 24, "lidl_fr": 12, "dealabs": 12}
 MAX_CHECKS_PER_RUN = 60
 CHECK_TIME_BUDGET_S = 200
 KEEP_CHECKS = 3
