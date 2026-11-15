@@ -320,6 +320,13 @@ RECHECK_H = {"lidl": 12, "studentbeans": 24, "unidays": 24, "preispirat": 8, "po
              "studentbeans_fr": 24, "lidl_fr": 12, "dealabs": 12}
 MAX_CHECKS_PER_RUN = 60
 CHECK_TIME_BUDGET_S = 200
+# Rappn : le connecteur ne lit que les 2–3 premières pages d'une chaîne, donc une offre retirée n'y
+# « manque » jamais et restait affichée jusqu'au TTL de 30 h (audit 15/11 : 2 offres Otto's/Coop
+# absentes des listes complètes, encore « vérifiées »). Recontrôle par la liste COMPLÈTE de la chaîne
+# (une lecture par chaîne pour tous ses deals), même logique 404 : absente → masquée, 2× à ≥ 1 h → finie.
+LIST_SOURCES = {"rappn": 6}
+LIST_MAX_PAGES = 80
+LIST_TIME_BUDGET_S = 540   # mesuré 15/11 : Otto's 60 pages = 394 s, Coop 15 s ; job universal 3–7 min / 25
 KEEP_CHECKS = 3
 
 
@@ -417,10 +424,10 @@ def _check_url(d: dict) -> str | None:
     return u if isinstance(u, str) and u.startswith("http") else None
 
 
-def due_checks(store, now: dt.datetime) -> list[dict]:
+def due_checks(store, now: dt.datetime, plan: dict[str, float] | None = None) -> list[dict]:
     """Deals à recontrôler, par priorité : 404 à confirmer (≥ 1 h), jamais contrôlés, plus anciens."""
     out = []
-    for sid, interval_h in RECHECK_H.items():
+    for sid, interval_h in (RECHECK_H if plan is None else plan).items():
         for d in store.source_deals(sid).values():
             if d.get("lifecycle") in ("EXPIRED", "REMOVED") or not _check_url(d):
                 continue
@@ -464,6 +471,68 @@ def run_checks(store, http, now: dt.datetime, limit: int = MAX_CHECKS_PER_RUN,
         stats["flag"] += bool(c.get("flag"))
         stats["inconclusive"] += bool(c.get("inconclusive"))
     log.info("recontrôle de pages : %s", stats)
+    stats["lists"] = run_list_checks(store, http, now)
+    return stats
+
+
+_RAPPN_CHAIN = re.compile(r"rappn\.ch/de/aktionen/([a-z0-9-]+)/k/")
+
+
+def rappn_full_list(http, chain: str, max_pages: int = LIST_MAX_PAGES,
+                    deadline: float = math.inf) -> tuple[set[str] | None, str | None]:
+    """Identifiants de TOUTES les offres d'une chaîne (canton SG), ou (None, raison) si incomplet."""
+    from ..connectors import rappn
+    ids: set[str] = set()
+    for page in range(1, max_pages + 1):
+        if time.monotonic() > deadline:
+            return None, f"budget atteint p{page}"
+        try:
+            r = http.get(rappn.chain_url(chain, page), headers={"Accept": "text/html"})
+        except Exception as e:  # noqa: BLE001 — liste incomplète = aucune conclusion
+            return None, f"p{page}: {type(e).__name__}"[:80]
+        if getattr(r, "status_code", 200) != 200:
+            return None, f"p{page}: HTTP {r.status_code}"
+        got = rappn._CARD.findall(r.text)
+        if not got and page == 1:
+            return None, "p1 : aucune carte"
+        ids.update(u for u, _ in got)
+        if not rappn.has_page(r.text, chain, page + 1):
+            return ids, None
+    return None, f"plafond {max_pages} pages"
+
+
+def run_list_checks(store, http, now: dt.datetime, budget_s: float = LIST_TIME_BUDGET_S) -> dict:
+    """Recontrôle par liste complète (Rappn) : une lecture par chaîne, un contrôle par deal dû."""
+    t0, stats = time.monotonic(), {"checked": 0, "gone": 0, "inconclusive": 0, "chains": 0}
+    by_chain: dict[str, list[dict]] = {}
+    for d in due_checks(store, now, LIST_SOURCES):
+        m = _RAPPN_CHAIN.search(d.get("source_url") or "")
+        if m:
+            by_chain.setdefault(m.group(1), []).append(d)
+    at = now.replace(microsecond=0).isoformat()
+    # Petites chaînes d'abord : un budget épuisé ne coûte que la plus longue liste (reportée).
+    for chain, deals in sorted(by_chain.items(), key=lambda kv: len(kv[1])):
+        if time.monotonic() - t0 > budget_s:
+            break
+        ids, err = rappn_full_list(http, chain, deadline=t0 + budget_s)
+        if err and err.startswith("budget"):
+            break   # aucune conclusion : les deals restent dus pour le passage suivant
+        stats["chains"] += 1
+        for d in deals:
+            uuid = d["deal_id"].split(":", 1)[1]
+            if ids is None:
+                c = {"at": at, "http": None, "inconclusive": f"liste {chain} : {err}"}
+            elif uuid in ids:
+                c = {"at": at, "http": 200, "list": chain}
+            else:
+                c = {"at": at, "http": 404, "list": chain}
+            v = d.setdefault("verify", {})
+            v["checks"] = ((v.get("checks") or []) + [c])[-KEEP_CHECKS:]
+            note_check(d)
+            stats["checked"] += 1
+            stats["gone"] += c.get("http") in GONE
+            stats["inconclusive"] += bool(c.get("inconclusive"))
+    log.info("recontrôle par listes complètes : %s", stats)
     return stats
 
 
