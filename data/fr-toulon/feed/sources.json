@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-15T13:48:36+01:00",
+ "generated_at": "2026-11-15T17:35:42+01:00",
  "health": [
   {
    "id": "denner",
@@ -18,13 +18,13 @@
    "family": "retail",
    "tier": "FAST",
    "interval_min": 120,
-   "last_attempt": "2026-11-15T13:44:31+01:00",
-   "last_success": "2026-11-15T13:44:31+01:00",
+   "last_attempt": "2026-11-15T17:35:42+01:00",
+   "last_success": "2026-11-15T17:35:42+01:00",
    "state": "OK",
    "items": 71,
    "error": null,
    "warnings": [],
-   "latency_s": 2.65,
+   "latency_s": 2.62,
    "reliability": 1.0,
    "stale": false
   },
@@ -50,13 +50,13 @@
    "family": "digital_free",
    "tier": "DAILY",
    "interval_min": 180,
-   "last_attempt": "2026-11-15T13:44:31+01:00",
-   "last_success": "2026-11-15T13:44:31+01:00",
+   "last_attempt": "2026-11-15T17:35:42+01:00",
+   "last_success": "2026-11-15T17:35:42+01:00",
    "state": "OK",
    "items": 14,
    "error": null,
    "warnings": [],
-   "latency_s": 0.82,
+   "latency_s": 0.85,
    "reliability": 1.0,
    "stale": false
   },
@@ -3299,15 +3299,15 @@
   "local_news": "📍 Ouverture / fermeture"
  },
  "deal_counts": {
-  "live": 335,
-  "unique": 334,
+  "live": 368,
+  "unique": 367,
   "duplicates": 1,
   "possible_duplicates": 0,
   "scored": 31,
   "by_family": {
-   "grocery": 16,
-   "retail": 141,
-   "tech": 106,
+   "grocery": 19,
+   "retail": 142,
+   "tech": 135,
    "flash": 0,
    "surplus": 0,
    "free": 19,
