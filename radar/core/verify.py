@@ -318,15 +318,15 @@ RECHECK_H = {"lidl": 12, "studentbeans": 24, "unidays": 24, "preispirat": 8, "po
              # Flux fr-toulon : sans ces clés, 0 recontrôle (audit 15/11 : offre Student Beans FR
              # retirée, page 404, encore « vérifiée »). Sources absentes d'un flux = 0 deal, sans coût.
              "studentbeans_fr": 24, "lidl_fr": 12, "dealabs": 12}
-MAX_CHECKS_PER_RUN = 60
-CHECK_TIME_BUDGET_S = 200
+MAX_CHECKS_PER_RUN = 200   # 15/11 : crons sautés → 60/run laissait 60 Preispirat jamais contrôlés
+CHECK_TIME_BUDGET_S = 300
 # Rappn : le connecteur ne lit que les 2–3 premières pages d'une chaîne, donc une offre retirée n'y
 # « manque » jamais et restait affichée jusqu'au TTL de 30 h (audit 15/11 : 2 offres Otto's/Coop
 # absentes des listes complètes, encore « vérifiées »). Recontrôle par la liste COMPLÈTE de la chaîne
 # (une lecture par chaîne pour tous ses deals), même logique 404 : absente → masquée, 2× à ≥ 1 h → finie.
 LIST_SOURCES = {"rappn": 6}
 LIST_MAX_PAGES = 80
-LIST_TIME_BUDGET_S = 540   # mesuré 15/11 : Otto's 60 pages = 394 s, Coop 15 s ; job universal 3–7 min / 25
+LIST_TIME_BUDGET_S = 480   # mesuré 15/11 : Otto's 60 pages = 394 s, Coop 15 s ; job universal 3–7 min / 25
 KEEP_CHECKS = 3
 
 
