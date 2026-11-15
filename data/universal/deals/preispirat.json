@@ -160,9 +160,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:530457": {
@@ -283,7 +283,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2024/04/amazon-verbrauchsgegenstände-300x300.png",
   "last_changed_at": "2026-11-06T20:26:13+01:00",
   "last_seen_at": "2026-11-08T01:39:03+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
@@ -291,6 +291,8 @@
   "personal_relevance": 0.8,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-06T19:00:10+01:00",
+  "removed_at": "2026-11-15T02:20:11+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -318,9 +320,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-09T23:59:44+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:623016": {
@@ -2522,9 +2524,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-09T23:59:44+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:761819": {
@@ -2886,7 +2888,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/chrome_xjXBst3glZ-300x300.png",
   "last_changed_at": "2026-11-14T01:53:59+01:00",
-  "last_seen_at": "2026-11-14T12:30:00+01:00",
+  "last_seen_at": "2026-11-15T02:20:11+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Ochsner Sport",
   "missing_scans": 0,
@@ -25506,8 +25508,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:771204": {
@@ -30899,9 +30901,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T21:01:57+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:772290": {
@@ -31161,11 +31163,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-06T16:46:48+01:00",
-     "ends": "2026-11-30T16:46:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-07T03:51:09+01:00",
      "ends": "2026-11-30T03:51:09+01:00",
      "http": 200
@@ -31174,10 +31171,15 @@
      "at": "2026-11-09T13:54:12+01:00",
      "ends": "2026-11-30T13:54:12+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-15T02:20:11+01:00",
+     "ends": "2026-11-30T02:20:11+01:00",
+     "http": 200
     }
    ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T12:30:00+01:00",
    "state": "SUSPECT"
   }
@@ -31689,10 +31691,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:772457": {
@@ -31868,9 +31870,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-11T12:04:10+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:772549": {
@@ -34989,8 +34991,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773201": {
@@ -35129,8 +35131,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773222": {
@@ -35191,9 +35193,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-11T12:04:10+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773223": {
@@ -35397,11 +35399,7 @@
      "ends": "2026-12-06T12:53:48+01:00",
      "http": 200
     }
-   ],
-   "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-14T18:19:10+01:00",
-   "state": "SUSPECT"
+   ]
   }
  },
  "preispirat:773254": {
@@ -35541,8 +35539,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773266": {
@@ -35616,8 +35614,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773269": {
@@ -35845,8 +35843,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773292": {
@@ -35980,7 +35978,11 @@
      "ends": "2026-11-30T12:53:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:773298": {
@@ -36188,8 +36190,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773335": {
@@ -36320,8 +36322,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773355": {
@@ -36810,8 +36812,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773513": {
@@ -37025,8 +37027,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773538": {
@@ -37170,8 +37172,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773552": {
@@ -37240,8 +37242,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773576": {
@@ -37314,8 +37316,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773578": {
@@ -37453,8 +37455,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773595": {
@@ -37523,8 +37525,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773599": {
@@ -37658,8 +37660,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773607": {
@@ -37834,8 +37836,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773621": {
@@ -37965,8 +37967,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773638": {
@@ -38025,8 +38027,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773683": {
@@ -38331,6 +38333,47 @@
    "since": "2026-11-12T02:41:23+01:00",
    "state": "ENDED"
   }
+ },
+ "preispirat:773710": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:mediamarkt:black-weeks-bei-mediamarkt",
+  "category": "Home Entertainment & Foto, singlesdaymain",
+  "deal_id": "preispirat:773710",
+  "deal_score": null,
+  "description": "Warum bis zum Black Friday warten, wenn du die besten Angebote bereits heute bei MediaMarkt findest?",
+  "effective_discount": null,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-15T02:20:11+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/1d598bef-01c0-4893-8ad2-0e559c988e81__MM-Logo-rot-600x300-300x150.png",
+  "last_changed_at": "2026-11-15T02:20:11+01:00",
+  "last_seen_at": "2026-11-15T02:20:11+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "MediaMarkt",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-14T23:45:00+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "773710",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/black-weeks-bei-mediamarkt-4/",
+  "tags": [],
+  "title": "Black Weeks bei MediaMarkt"
  },
  "preispirat:773713": {
   "access": "PUBLIC",
@@ -39061,8 +39104,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773781": {
@@ -39307,8 +39350,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773895": {
@@ -39367,8 +39410,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773897": {
@@ -39427,8 +39470,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773899": {
@@ -39497,8 +39540,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773935": {
@@ -39695,8 +39738,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773958": {
@@ -39765,8 +39808,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773964": {
@@ -39825,8 +39868,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773983": {
@@ -39958,8 +40001,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:773995": {
@@ -40097,8 +40140,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774005": {
@@ -40202,10 +40245,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-14T18:19:10+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:774017": {
@@ -40270,9 +40313,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774019": {
@@ -40341,8 +40384,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774034": {
@@ -40504,10 +40547,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-14T18:19:10+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:774050": {
@@ -40780,8 +40823,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774083": {
@@ -40894,8 +40937,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774096": {
@@ -40945,10 +40988,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-14T18:19:10+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:774097": {
@@ -41081,7 +41124,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_9jBQ8V75G1-224x300.png",
   "last_changed_at": "2026-11-07T00:50:04+01:00",
   "last_seen_at": "2026-11-08T01:39:03+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": -30.5,
@@ -41092,6 +41135,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 294.0,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-15T02:20:11+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 0 %",
@@ -41120,9 +41165,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-09T23:59:44+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774109": {
@@ -41261,8 +41306,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774112": {
@@ -41529,10 +41574,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-14T18:19:10+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:774162": {
@@ -41582,10 +41627,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-14T18:19:10+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:774175": {
@@ -41612,7 +41657,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_5NQnQ1X9WU-204x300.png",
   "last_changed_at": "2026-11-07T00:50:04+01:00",
   "last_seen_at": "2026-11-08T01:39:03+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "CHRIST",
   "missing_scans": 0,
   "net_savings": -65.7,
@@ -41623,6 +41668,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 730.0,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-15T02:20:11+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 0 %",
@@ -41651,9 +41698,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-09T23:59:44+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774177": {
@@ -41784,9 +41831,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-10T13:41:13+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774181": {
@@ -41813,7 +41860,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_veKz66YLeE-300x235.png",
   "last_changed_at": "2026-11-07T00:50:04+01:00",
   "last_seen_at": "2026-11-08T01:39:03+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Sephora",
   "missing_scans": 0,
   "net_savings": 15.02,
@@ -41824,6 +41871,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 109.27,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-15T02:20:11+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 17 %",
@@ -41852,9 +41901,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-09T23:59:44+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:774183": {
@@ -42018,7 +42067,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/dreo-quiet-floor-fan-fr-schlafzimmer-27-m-luftstrom-leise-90-oszillierend-dc-motor-8-geschwindigkeiten-3-modi-hhenverstellbar-96106-cm-8-stunden-timer-105-manuelle-neigung-1793979995-217x300.jpeg",
   "last_changed_at": "2026-11-06T20:26:13+01:00",
   "last_seen_at": "2026-11-08T01:39:03+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": 53.66,
@@ -42029,6 +42078,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 161.0,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-15T02:20:11+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 42 %",
@@ -42086,7 +42137,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/helmet-300x299.jpg",
   "last_changed_at": "2026-11-06T20:26:13+01:00",
   "last_seen_at": "2026-11-08T01:39:03+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": 16.47,
@@ -42097,6 +42148,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 102.0,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-15T02:20:11+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 20 %",
@@ -42202,13 +42255,15 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/29efa610d08ad6af74e27ab110a03a38_1000043356-1-300x225.png",
   "last_changed_at": "2026-11-07T00:50:04+01:00",
   "last_seen_at": "2026-11-08T01:39:03+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": null,
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-06T20:50:20+01:00",
+  "removed_at": "2026-11-15T02:20:11+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -43106,9 +43161,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-12T13:44:49+01:00",
-   "state": "HIDDEN"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:774432": {
@@ -43173,9 +43228,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-12T13:44:49+01:00",
-   "state": "HIDDEN"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:774435": {
@@ -43241,9 +43296,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-12T13:44:49+01:00",
-   "state": "HIDDEN"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:774438": {
@@ -43309,9 +43364,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-12T13:44:49+01:00",
-   "state": "HIDDEN"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:774455": {
@@ -46635,9 +46690,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-11T01:40:34+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:775432": {
@@ -46698,9 +46753,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-11T01:40:34+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:775446": {
@@ -46761,9 +46816,9 @@
     }
    ],
    "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-11T01:40:34+01:00",
-   "state": "SUSPECT"
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:775478": {
@@ -49496,15 +49551,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T12:30:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-14T18:19:10+01:00",
      "http": 404
     },
     {
      "at": "2026-11-14T22:41:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-15T02:20:11+01:00",
      "http": 404
     }
    ],
@@ -50223,10 +50278,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-13T20:48:57+01:00",
-   "state": "SUSPECT"
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:776470": {
@@ -50289,7 +50344,11 @@
      "ends": "2026-11-14T23:59:59+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-15T02:20:11+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:776495": {
@@ -50788,6 +50847,46 @@
    "since": "2026-11-13T04:26:21+01:00",
    "state": "SUSPECT"
   }
+ },
+ "preispirat:776634": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:preispirat:sunday-deal-20-auf-das-kids-sortiment",
+  "category": "Sport & Outdoor, singlesdaystandard",
+  "deal_id": "preispirat:776634",
+  "deal_score": null,
+  "description": "Exklusiv für CLUB Mitglieder und Neu-Mitglieder. Nicht kumulierbar mit anderen Aktionen. Nicht gültig auf bereits reduzierte Artikel",
+  "effective_discount": null,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-15T02:20:11+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/6e332054-92d9-433a-aa1a-861d66a179ec__Ochsner-Sport_Black-Week_Affiliate-Partner_2026_Logo-600x300_DFI-300x150.png",
+  "last_changed_at": "2026-11-15T02:20:11+01:00",
+  "last_seen_at": "2026-11-15T02:20:11+01:00",
+  "lifecycle": "ACTIVE",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-14T23:45:00+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "776634",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/sunday-deal-20-auf-das-kids-sortiment/",
+  "tags": [],
+  "title": "SUNDAY DEAL – 20% AUF DAS KIDS-SORTIMENT"
  },
  "preispirat:776643": {
   "access": "PUBLIC",
@@ -51376,8 +51475,15 @@
   "title": "Roborock H60 Hub Ultra Akku-Staubsauger mit Absaugstation (27’000 Pa, 60 Min. Laufzeit) bei Amazon.fr",
   "total_acquisition_cost": 171.25,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T02:20:11+01:00",
+     "ends": "2026-11-30T02:20:11+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T22:41:33+01:00",
    "state": "SUSPECT"
   }
@@ -51577,14 +51683,14 @@
   "accessibility_notes": [],
   "best_score": 0.0,
   "canonical_entity_id": "t:samsung:samsung-odyssey-ark-2nd-gen-55-va-panel-600-nits-4k-165-hz-mit-cockpit-modus-gal",
-  "category": "Computer & Büro",
+  "category": "Computer & Büro, redaktion",
   "cost_assumptions": [],
   "current_price": 1309.0,
   "deal_id": "preispirat:776945",
   "deal_score": 0.0,
   "description": "Bei Samsung findet ihr aktuell den Samsung Odyssey Ark 2nd Gen (55″, VA-Panel, 600 Nits, 4K bei 165 Hz) mit Cockpit-Modus zum Preis von 1309 Franken. Auf diesen Preis kommt ihr, wenn ihr den Rabattcode an der Kasse anwendet. Zusätzlich gibt es die Galaxy Buds4 Pro gratis dazu. Der aktuelle Vergleich",
-  "discount_absolute": 188.15,
-  "discount_percentage": 12.6,
+  "discount_absolute": 192.6,
+  "discount_percentage": 12.8,
   "effective_discount": 0.0,
   "family": "tech",
   "feed": "https://www.preispirat.ch/feed/",
@@ -51593,18 +51699,18 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_7ImG2kl9Hk-300x269.png",
-  "last_changed_at": "2026-11-12T21:29:32+01:00",
-  "last_seen_at": "2026-11-13T04:26:21+01:00",
+  "last_changed_at": "2026-11-15T02:20:11+01:00",
+  "last_seen_at": "2026-11-15T02:20:11+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Samsung",
   "missing_scans": 0,
-  "net_savings": -111.28,
+  "net_savings": -107.72,
   "offer_type": "community_deal",
   "personal_relevance": 0.5,
   "promotion_integrity": "unchecked",
-  "published_at": "2026-11-12T16:00:09+01:00",
+  "published_at": "2026-11-15T01:00:09+01:00",
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
-  "reference_price": 1497.15,
+  "reference_price": 1501.6,
   "reference_price_type": "competitor",
   "score_components": [
    [
@@ -51627,11 +51733,7 @@
      "ends": "2026-11-26T18:19:10+01:00",
      "http": 200
     }
-   ],
-   "code": "SCORE",
-   "ok_streak": 1,
-   "since": "2026-11-14T12:30:00+01:00",
-   "state": "SUSPECT"
+   ]
   }
  },
  "preispirat:776948": {
@@ -52735,8 +52837,15 @@
   "tags": [],
   "title": "VX1 Dashboard-Display für Tesla Model 3 & Model Y mit Geschwindigkeits- und Batterieanzeige bei AliExpress",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T02:20:11+01:00",
+     "ends": "2026-11-18T02:20:11+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T18:19:10+01:00",
    "state": "SUSPECT"
   }
@@ -52830,8 +52939,15 @@
   "tags": [],
   "title": "20% Rabatt auf IKEA Smart Home (Matter Standard)",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T02:20:11+01:00",
+     "ends": "2026-11-15T23:59:59+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T22:41:33+01:00",
    "state": "HIDDEN"
   }
@@ -52886,8 +53002,15 @@
   "title": "LauraStar Bügelsystem GO",
   "total_acquisition_cost": 404.1,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T02:20:11+01:00",
+     "ends": "2026-11-19T02:20:11+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T18:19:10+01:00",
    "state": "SUSPECT"
   }
@@ -53034,8 +53157,15 @@
   "title": "LOGITECH G G923 SE Lenkrad & Pedale Set (Schwarz)",
   "total_acquisition_cost": 199.95,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T02:20:11+01:00",
+     "ends": "2026-11-18T02:20:11+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T22:41:33+01:00",
    "state": "SUSPECT"
   }
@@ -53090,8 +53220,15 @@
   "title": "LOGITECH G PRO X 2 Superstrike Maus (Kabellos, Gaming, Schwarz, Weiss)",
   "total_acquisition_cost": 124.0,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T02:20:11+01:00",
+     "ends": "2026-11-18T02:20:11+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T22:41:33+01:00",
    "state": "SUSPECT"
   }
@@ -53196,8 +53333,15 @@
   "title": "SONY DualSense Wireless – Marathon Limited Edition Controller (Grün, Weiss)",
   "total_acquisition_cost": 59.95,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T02:20:11+01:00",
+     "ends": "2026-11-21T02:20:11+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T22:41:33+01:00",
    "state": "SUSPECT"
   }
@@ -53360,8 +53504,15 @@
   "title": "APPLE AirPods Max 2 (ANC, Mitternacht) | Interdiscount & Amazon",
   "total_acquisition_cost": 419.95,
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T02:20:11+01:00",
+     "ends": "2026-11-18T02:20:11+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T22:41:33+01:00",
    "state": "SUSPECT"
   }
@@ -53407,8 +53558,15 @@
   "tags": [],
   "title": "Black Friday Weeks bei Jenni Hemden",
   "verify": {
+   "checks": [
+    {
+     "at": "2026-11-15T02:20:11+01:00",
+     "ends": "2026-11-30T02:20:11+01:00",
+     "http": 200
+    }
+   ],
    "code": "SCORE",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-14T18:19:10+01:00",
    "state": "SUSPECT"
   }
@@ -53560,7 +53718,7 @@
   "accessibility_notes": [],
   "best_score": 0.0,
   "canonical_entity_id": "t:alternate:lego-75367-star-wars-angriffskreuzer-der-venator-klasse-5374-teile-bei-alternate",
-  "category": "Kids & Spielwaren",
+  "category": "Kids & Spielwaren, redaktion",
   "cost_assumptions": [],
   "current_price": 432.0,
   "deal_id": "preispirat:777612",
@@ -53577,7 +53735,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/LEGO_75367_Star_Wars_Republikanischer_Angriffskreuzer_der_Venator_Klasse__Konstruktionsspielzeug@@100015498-300x300.jpg",
   "last_changed_at": "2026-11-13T20:48:57+01:00",
-  "last_seen_at": "2026-11-14T04:21:10+01:00",
+  "last_seen_at": "2026-11-15T02:20:11+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Alternate",
   "missing_scans": 0,
@@ -53585,7 +53743,7 @@
   "offer_type": "community_deal",
   "personal_relevance": 0.55,
   "promotion_integrity": "unchecked",
-  "published_at": "2026-11-13T15:00:59+01:00",
+  "published_at": "2026-11-14T23:00:59+01:00",
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 465.8,
   "reference_price_type": "competitor",
@@ -54601,7 +54759,6 @@
   "net_savings": 70.84,
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
-  "possible_duplicate_of": "galaxus_daily:71866917:2026-11-13",
   "promotion_integrity": "unchecked",
   "published_at": "2026-11-14T08:59:05+01:00",
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
@@ -54695,7 +54852,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/Casque-Arceau-sans-fil-Sony-WH1000XM6-avec-reduction-active-du-bruit-Noir-300x300.png",
   "last_changed_at": "2026-11-14T18:19:10+01:00",
-  "last_seen_at": "2026-11-14T18:19:10+01:00",
+  "last_seen_at": "2026-11-15T02:20:11+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": -31.31,
@@ -54835,7 +54992,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/7271067-001-300x200.jpg",
   "last_changed_at": "2026-11-14T18:19:10+01:00",
-  "last_seen_at": "2026-11-14T18:19:10+01:00",
+  "last_seen_at": "2026-11-15T02:20:11+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Jumbo",
   "missing_scans": 0,
@@ -55016,7 +55173,7 @@
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/8aa978e3819851c7155414e24d473e40_1000013948-1-300x300.jpg",
   "last_changed_at": "2026-11-14T18:19:10+01:00",
-  "last_seen_at": "2026-11-14T18:19:10+01:00",
+  "last_seen_at": "2026-11-15T02:20:11+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": -129.0,
@@ -55165,7 +55322,7 @@
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/anker-prime-200w-usb-c-ladegert-mit-6-anschlssen-und-gan-technologie-1794655230-300x208.jpeg",
   "last_changed_at": "2026-11-14T18:19:10+01:00",
-  "last_seen_at": "2026-11-14T18:19:10+01:00",
+  "last_seen_at": "2026-11-15T02:20:11+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -55265,7 +55422,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/product-loading-300x50.png",
   "last_changed_at": "2026-11-14T18:19:10+01:00",
-  "last_seen_at": "2026-11-14T18:19:10+01:00",
+  "last_seen_at": "2026-11-15T02:20:11+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": 199.0,
