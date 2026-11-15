@@ -60242,6 +60242,7 @@
    "Poulet ≤ 12 CHF/kg",
    "Poulet ≤ 12 CHF/kg",
    "Poulet ≤ 12 CHF/kg",
+   "Poulet ≤ 12 CHF/kg",
    "Poulet ≤ 12 CHF/kg"
   ]
  },
@@ -68349,7 +68350,15 @@
   "title": "Jumbo Candle",
   "total_acquisition_cost": 9.89,
   "unit": "CHF/pièce",
-  "unit_price": 9.89
+  "unit_price": 9.89,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T00:24:21+01:00",
+     "http": 200
+    }
+   ]
+  }
  },
  "lidl:10062330": {
   "access": "PUBLIC",
@@ -68404,7 +68413,15 @@
   "title": "DOUSSY Weichspüler Spa Moments",
   "total_acquisition_cost": 1.99,
   "unit": "CHF/l",
-  "unit_price": 2.65
+  "unit_price": 2.65,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T00:24:21+01:00",
+     "http": 200
+    }
+   ]
+  }
  },
  "lidl:10062331": {
   "access": "MEMBER",
@@ -68475,7 +68492,15 @@
   "title": "ALESTO Getrocknete Früchte",
   "total_acquisition_cost": 2.99,
   "unit": "CHF/kg",
-  "unit_price": 37.38
+  "unit_price": 37.38,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T00:24:21+01:00",
+     "http": 200
+    }
+   ]
+  }
  },
  "lidl:10062339": {
   "access": "PUBLIC",
@@ -68533,7 +68558,15 @@
   "title": "QUALITÉ SUISSE Rindshackfleisch light Duopack XXL",
   "total_acquisition_cost": 14.99,
   "unit": "CHF/kg",
-  "unit_price": 18.7
+  "unit_price": 18.7,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T00:24:21+01:00",
+     "http": 200
+    }
+   ]
+  }
  },
  "lidl:10062340": {
   "access": "PUBLIC",
@@ -68589,7 +68622,15 @@
   "title": "Die Kochbutter",
   "total_acquisition_cost": 12.69,
   "unit": "CHF/kg",
-  "unit_price": 12.69
+  "unit_price": 12.69,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T00:24:21+01:00",
+     "http": 200
+    }
+   ]
+  }
  },
  "lidl:10062341": {
   "access": "PUBLIC",
@@ -68647,7 +68688,15 @@
   "title": "Coca-Cola",
   "total_acquisition_cost": 5.95,
   "unit": "CHF/l",
-  "unit_price": 2.25
+  "unit_price": 2.25,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T00:24:21+01:00",
+     "http": 200
+    }
+   ]
+  }
  },
  "lidl:10062342": {
   "access": "MEMBER",
@@ -68717,6 +68766,14 @@
   "title": "CIEN Hydra Tages und Nachtcreme",
   "total_acquisition_cost": 3.19,
   "unit": "CHF/l",
-  "unit_price": 63.8
+  "unit_price": 63.8,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T00:24:21+01:00",
+     "http": 200
+    }
+   ]
+  }
  }
 }

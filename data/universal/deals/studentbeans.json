@@ -100,15 +100,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -215,7 +215,19 @@
   "source_type": "aggregator",
   "source_url": "https://www.studentbeans.com/student-discount/ch/figs/0-student-discount-93f198e6-9204-4539-a19f-ad86a080a602",
   "tags": [],
-  "title": "FIGS: 20% Studentenrabatt"
+  "title": "FIGS: 20% Studentenrabatt",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T00:24:21+01:00",
+     "http": 404
+    }
+   ],
+   "code": "T_GONE_404_PENDING",
+   "ok_streak": 0,
+   "since": "2026-11-16T00:24:21+01:00",
+   "state": "SUSPECT"
+  }
  },
  "studentbeans:1c4c9bcc-7877-494b-a82d-cb84247a66c9": {
   "access": "MEMBER",
@@ -268,15 +280,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -391,15 +403,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -608,15 +620,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -727,15 +739,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -792,7 +804,19 @@
   "source_type": "aggregator",
   "source_url": "https://www.studentbeans.com/student-discount/ch/aspinal-of-london/0-student-discount-a78c008c-454d-475f-b038-c9f4d7b5052d",
   "tags": [],
-  "title": "Aspinal of London: 10% Student Discount"
+  "title": "Aspinal of London: 10% Student Discount",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T00:24:21+01:00",
+     "http": 404
+    }
+   ],
+   "code": "T_GONE_404_PENDING",
+   "ok_streak": 0,
+   "since": "2026-11-16T00:24:21+01:00",
+   "state": "SUSPECT"
+  }
  },
  "studentbeans:4902a23c-4182-4158-8d1e-5f559e653e22": {
   "access": "MEMBER",
@@ -845,15 +869,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -914,15 +938,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -1097,7 +1121,19 @@
   "source_type": "aggregator",
   "source_url": "https://www.studentbeans.com/student-discount/ch/tommy-hilfiger/0-student-discount-f76b54d0-3c71-4fa6-af5e-d75e8684197b",
   "tags": [],
-  "title": "Tommy Hilfiger: 10% Studentenrabatt auf Artikel zum vollen Preis"
+  "title": "Tommy Hilfiger: 10% Studentenrabatt auf Artikel zum vollen Preis",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T00:24:21+01:00",
+     "http": 404
+    }
+   ],
+   "code": "T_GONE_404_PENDING",
+   "ok_streak": 0,
+   "since": "2026-11-16T00:24:21+01:00",
+   "state": "SUSPECT"
+  }
  },
  "studentbeans:60ff194e-13c7-4238-a179-b00df2b28122": {
   "access": "MEMBER",
@@ -1197,15 +1233,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -1313,15 +1349,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -1382,15 +1418,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -1448,7 +1484,19 @@
   "source_type": "aggregator",
   "source_url": "https://www.studentbeans.com/student-discount/ch/outletcity/0-student-discount-c383389e-c1d7-4570-a6e9-1457d591ee48",
   "tags": [],
-  "title": "Outletcity: 13% Studentenrabatt"
+  "title": "Outletcity: 13% Studentenrabatt",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T00:24:21+01:00",
+     "http": 404
+    }
+   ],
+   "code": "T_GONE_404_PENDING",
+   "ok_streak": 0,
+   "since": "2026-11-16T00:24:21+01:00",
+   "state": "SUSPECT"
+  }
  },
  "studentbeans:74b4028d-4ec6-4bae-9dae-e72b7bee142e": {
   "access": "MEMBER",
@@ -1650,15 +1698,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -1818,15 +1866,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -1939,15 +1987,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -2008,15 +2056,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -2073,7 +2121,19 @@
   "source_type": "aggregator",
   "source_url": "https://www.studentbeans.com/student-discount/ch/slam-jam/0-student-discount-650a3305-f11c-4a33-9cd4-8554876b18ad",
   "tags": [],
-  "title": "Slam Jam: Slam Jam Black Friday Preview - Up to 40% off"
+  "title": "Slam Jam: Slam Jam Black Friday Preview - Up to 40% off",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T00:24:21+01:00",
+     "http": 404
+    }
+   ],
+   "code": "T_GONE_404_PENDING",
+   "ok_streak": 0,
+   "since": "2026-11-16T00:24:21+01:00",
+   "state": "SUSPECT"
+  }
  },
  "studentbeans:8498ad6e-3fb5-4449-8e4a-8dd04808bc04": {
   "access": "MEMBER",
@@ -2126,15 +2186,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -2193,7 +2253,19 @@
   "source_type": "aggregator",
   "source_url": "https://www.studentbeans.com/student-discount/ch/calvin-klein/0-student-discount-52a1c830-ace1-4a89-883f-61ec101488be",
   "tags": [],
-  "title": "Calvin Klein: Zusätzliche 10% Rabatt auf reduzierte Artikel"
+  "title": "Calvin Klein: Zusätzliche 10% Rabatt auf reduzierte Artikel",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T00:24:21+01:00",
+     "http": 404
+    }
+   ],
+   "code": "T_GONE_404_PENDING",
+   "ok_streak": 0,
+   "since": "2026-11-16T00:24:21+01:00",
+   "state": "SUSPECT"
+  }
  },
  "studentbeans:88e9b151-5b13-4b2a-8997-f5b33400bc7b": {
   "access": "MEMBER",
@@ -2315,15 +2387,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -2641,15 +2713,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -2850,15 +2922,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -2965,15 +3037,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -3034,15 +3106,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -3304,15 +3376,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -3373,15 +3445,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -3632,15 +3704,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -3772,15 +3844,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -3841,15 +3913,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -3964,15 +4036,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -4031,15 +4103,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -4146,15 +4218,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "http": 404
     },
     {
      "at": "2026-11-15T19:52:45+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T00:24:21+01:00",
      "http": 404
     }
    ],
@@ -4213,7 +4285,19 @@
   "source_type": "aggregator",
   "source_url": "https://www.studentbeans.com/student-discount/ch/farfetch/0-student-discount-e22adf87-27e3-4c2d-b6bf-e2c7b88efce9",
   "tags": [],
-  "title": "FARFETCH: BLACK FRIDAY: Extra 20% off sale Kids"
+  "title": "FARFETCH: BLACK FRIDAY: Extra 20% off sale Kids",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T00:24:21+01:00",
+     "http": 404
+    }
+   ],
+   "code": "T_GONE_404_PENDING",
+   "ok_streak": 0,
+   "since": "2026-11-16T00:24:21+01:00",
+   "state": "SUSPECT"
+  }
  },
  "studentbeans:fba4d86e-4edb-4fe2-9c62-4ef1051872dc": {
   "access": "MEMBER",
