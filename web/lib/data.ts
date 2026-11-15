@@ -49,7 +49,10 @@ async function loadRaw(url: string): Promise<{ generated_at?: string; deals: Raw
     const p = path.join(process.cwd(), "fixtures", "universal.sample.json");
     return validateFeed(JSON.parse(await readFile(p, "utf8")));
   }
-  const res = await fetch(url, { cache: "force-cache", signal: AbortSignal.timeout(30_000) });
+  // Contourne le cache CDN de GitHub Pages (max-age 600) : le build déclenché juste après un relevé
+  // doit lire ce relevé, pas la copie d'il y a 10 min. Un seul jeton par build (dédup Next conservé).
+  const bust = process.env.GITHUB_RUN_ID ?? "local";
+  const res = await fetch(`${url}${url.includes("?") ? "&" : "?"}b=${bust}`, { cache: "force-cache", signal: AbortSignal.timeout(30_000) });
   if (!res.ok) throw new Error(`feed ${url}: HTTP ${res.status}`);
   if (Number(res.headers.get("content-length") ?? 0) > MAX_FEED_BYTES) throw new Error(`feed ${url}: trop volumineux`);
   const text = await res.text();

@@ -14,6 +14,11 @@ on:
   push:
     branches: [main]
     paths: ["web/**", ".github/workflows/web.yml"]
+  # Fraîcheur : reconstruit dès qu'un relevé de données réussit (les cron GitHub sautent des
+  # créneaux : 14-15/11, 7 h sans build → offres terminées affichées « vérifiées », audit M1 54 %).
+  workflow_run:
+    workflows: ["universal", "toulon", "scan"]
+    types: [completed]
   workflow_dispatch:
 
 concurrency:
@@ -27,6 +32,7 @@ jobs:
   # Round 4, item 21 : le job qui exécute le code des dépendances (npm ci, next build) n'a
   # accès à AUCUN secret ; le déploiement est un job séparé, sans node_modules du dépôt.
   build:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     defaults:
