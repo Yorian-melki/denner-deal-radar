@@ -68,12 +68,14 @@
   "group": "retail",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Boulanger",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -94,7 +96,11 @@
      "at": "2026-11-15T13:47:16+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3452255": {
@@ -141,6 +147,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:47:16+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -191,6 +201,10 @@
     {
      "at": "2026-11-15T13:47:16+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -240,6 +254,10 @@
     {
      "at": "2026-11-15T13:47:16+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -288,6 +306,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:47:16+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -340,6 +362,10 @@
     {
      "at": "2026-11-15T13:47:16+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -388,6 +414,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:47:16+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -438,6 +468,10 @@
     {
      "at": "2026-11-15T13:47:16+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -486,6 +520,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:47:16+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -536,6 +574,10 @@
     {
      "at": "2026-11-15T13:47:16+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -584,6 +626,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:47:16+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -636,6 +682,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -684,6 +734,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:48:36+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -736,6 +790,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -760,12 +818,14 @@
   "group": "free",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "KIA",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.6,
   "promotion_integrity": null,
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "valeur inconnue : gratuit non évalué",
@@ -786,7 +846,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3453308": {
@@ -809,12 +873,14 @@
   "group": "free",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Epic Games Store",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.6,
   "promotion_integrity": null,
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "valeur inconnue : gratuit non évalué",
@@ -835,7 +901,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3453332": {
@@ -883,8 +953,16 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 410
     }
-   ]
+   ],
+   "code": "T_GONE_404_PENDING",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3453576": {
@@ -931,6 +1009,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:48:36+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -981,6 +1063,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -1004,7 +1090,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -1029,6 +1115,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:48:36+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -1079,6 +1169,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -1127,6 +1221,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:48:36+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -1572,6 +1670,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -1620,6 +1722,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:48:36+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -1792,12 +1898,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Fnac",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -1818,7 +1926,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3454367": {
@@ -1840,7 +1952,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Intermarché",
   "missing_scans": 0,
@@ -1866,6 +1978,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -1889,7 +2005,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Intermarché",
   "missing_scans": 0,
@@ -1915,6 +2031,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -1938,7 +2058,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -1963,6 +2083,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:48:36+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -2379,7 +2503,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Meta",
   "missing_scans": 0,
@@ -2405,6 +2529,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -2428,7 +2556,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -2454,6 +2582,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -2477,7 +2609,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "App Store",
   "missing_scans": 0,
@@ -2503,6 +2635,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -2526,7 +2662,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Action",
   "missing_scans": 0,
@@ -2552,6 +2688,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -2575,7 +2715,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -2601,6 +2741,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -2610,7 +2754,7 @@
   "accessibility": 1.0,
   "accessibility_notes": [],
   "canonical_entity_id": "t:amazon:barres-proteinees-raw-flapjack-20-g-12-x-75-g-brownie-au-chocolat-caramel-sale-c",
-  "category": "Épicerie & Courses",
+  "category": "Sports & Plein air",
   "cost_assumptions": [],
   "currency": "EUR",
   "current_price": 11.47,
@@ -2618,18 +2762,18 @@
   "deal_score": null,
   "delivery_scope": "FR",
   "effective_discount": null,
-  "family": "grocery",
+  "family": "retail",
   "first_seen_at": "2026-11-14T18:26:46+01:00",
   "geographic_scope": "NATIONAL",
   "geographic_scope_resolved": "NATIONAL",
-  "group": "autres",
+  "group": "retail",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
-  "personal_relevance": 0.8,
+  "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "score_components": [
    [
@@ -2649,6 +2793,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:48:36+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -2673,7 +2821,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Vertbaudet",
   "missing_scans": 0,
@@ -2699,6 +2847,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -2722,7 +2874,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -2748,6 +2900,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -2771,7 +2927,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -2797,6 +2953,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -2820,7 +2980,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -2846,6 +3006,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -2869,7 +3033,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Lidl",
   "missing_scans": 0,
@@ -2895,6 +3059,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -2918,7 +3086,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Veepee",
   "missing_scans": 0,
@@ -2944,6 +3112,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -2967,7 +3139,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Mangeons Frais",
   "missing_scans": 0,
@@ -2992,6 +3164,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:48:36+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -3213,12 +3389,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Ubaldi",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3239,7 +3417,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455456": {
@@ -3262,12 +3444,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "JoyBuy",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3288,7 +3472,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455461": {
@@ -3311,12 +3499,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Eufy",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3337,7 +3527,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455462": {
@@ -3360,12 +3554,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Tapo by TP-Link",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3386,7 +3582,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455465": {
@@ -3409,12 +3609,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Veepee",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3435,7 +3637,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455469": {
@@ -3458,12 +3664,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Veepee",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3484,7 +3692,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455470": {
@@ -3507,12 +3719,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3533,7 +3747,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455473": {
@@ -3556,12 +3774,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Son-vidéo.com",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3582,7 +3802,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455478": {
@@ -3605,12 +3829,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Carrefour",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3631,7 +3857,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455495": {
@@ -3653,7 +3883,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -3679,6 +3909,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -3703,12 +3937,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Eufy",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3729,7 +3965,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455500": {
@@ -3752,12 +3992,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Oppo",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3778,7 +4020,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455512": {
@@ -3801,12 +4047,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Fnac",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3827,7 +4075,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455514": {
@@ -3850,12 +4102,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Fnac",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3876,7 +4130,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455518": {
@@ -3899,12 +4157,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3925,7 +4185,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455520": {
@@ -3948,12 +4212,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -3974,7 +4240,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455522": {
@@ -3997,12 +4267,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Fnac",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -4023,7 +4295,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455523": {
@@ -4046,12 +4322,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Xiaomi",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -4072,7 +4350,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455526": {
@@ -4095,12 +4377,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "JoyBuy",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -4121,7 +4405,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455527": {
@@ -4144,12 +4432,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -4170,7 +4460,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455529": {
@@ -4193,12 +4487,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -4219,7 +4515,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455530": {
@@ -4242,12 +4542,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Fnac",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -4303,12 +4605,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Alternate",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -4329,7 +4633,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455539": {
@@ -4352,12 +4660,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:28:51+01:00",
   "last_seen_at": "2026-11-14T18:28:51+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -4378,7 +4688,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455540": {
@@ -4401,12 +4715,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:28:51+01:00",
   "last_seen_at": "2026-11-14T18:28:51+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -4427,7 +4743,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455544": {
@@ -4450,12 +4770,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-14T18:26:46+01:00",
   "last_seen_at": "2026-11-14T18:26:46+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Decathlon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-16T20:51:49+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -4476,7 +4798,11 @@
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455604": {
@@ -4523,6 +4849,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:48:36+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -4573,6 +4903,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -4621,6 +4955,10 @@
    "checks": [
     {
      "at": "2026-11-15T13:48:36+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -4671,6 +5009,10 @@
     {
      "at": "2026-11-15T13:48:36+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -4719,6 +5061,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -4769,6 +5115,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -4817,6 +5167,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -4867,6 +5221,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -4916,6 +5274,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -4939,7 +5301,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-14T23:45:03+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Pokémon Go",
   "missing_scans": 0,
@@ -4964,6 +5326,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -5014,6 +5380,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -5062,6 +5432,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -5112,6 +5486,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -5160,6 +5538,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -5210,6 +5592,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -5258,6 +5644,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -5308,6 +5698,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -5356,6 +5750,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -5406,6 +5804,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -5454,6 +5856,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -5504,6 +5910,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -5552,6 +5962,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -5602,6 +6016,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -5650,6 +6068,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -5700,6 +6122,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -5748,6 +6174,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -5798,6 +6228,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -5846,6 +6280,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -5896,6 +6334,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -5919,7 +6361,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-14T23:45:03+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "BUT",
   "missing_scans": 0,
@@ -5944,6 +6386,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -5994,6 +6440,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -6042,6 +6492,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -6092,6 +6546,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -6140,6 +6598,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -6190,6 +6652,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -6238,6 +6704,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -6288,6 +6758,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -6336,6 +6810,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -6386,6 +6864,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -6434,6 +6916,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -6484,6 +6970,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -6532,6 +7022,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -6582,8 +7076,17 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 404,
+     "redirect": "https://www.dealabs.com/bons-plans/enceinte-bluetooth-bose-soundlink-flex-se-2e-gen-ultra-portable-12-heures-dautonomie-via-remise-au-panier-3454207"
     }
-   ]
+   ],
+   "code": "T_GONE_404_PENDING",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455786": {
@@ -6630,6 +7133,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -6680,6 +7187,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -6728,6 +7239,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -6778,6 +7293,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -6826,6 +7345,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -6876,6 +7399,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -6924,6 +7451,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -6974,6 +7505,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -6997,7 +7532,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-15T08:11:59+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -7022,6 +7557,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -7072,6 +7611,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -7120,6 +7663,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -7170,6 +7717,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -7218,6 +7769,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -7268,6 +7823,10 @@
     {
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
     }
    ]
   }
@@ -7316,6 +7875,10 @@
    "checks": [
     {
      "at": "2026-11-15T17:35:42+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
@@ -7367,7 +7930,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455932": {
@@ -7416,7 +7983,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455938": {
@@ -7465,7 +8036,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455940": {
@@ -7514,7 +8089,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455942": {
@@ -7563,7 +8142,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455943": {
@@ -7612,7 +8195,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455949": {
@@ -7661,7 +8248,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455951": {
@@ -7710,7 +8301,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455962": {
@@ -7759,7 +8354,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455972": {
@@ -7808,7 +8407,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455976": {
@@ -7857,7 +8460,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455989": {
@@ -7906,7 +8513,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455990": {
@@ -7955,7 +8566,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3455994": {
@@ -8004,7 +8619,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456014": {
@@ -8053,7 +8672,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456020": {
@@ -8102,7 +8725,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456029": {
@@ -8151,7 +8778,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456034": {
@@ -8200,7 +8831,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456036": {
@@ -8249,7 +8884,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456054": {
@@ -8298,7 +8937,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456062": {
@@ -8320,7 +8963,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-15T13:44:31+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Uber Eats",
   "missing_scans": 0,
@@ -8396,7 +9039,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456081": {
@@ -8445,7 +9092,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456098": {
@@ -8494,7 +9145,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456109": {
@@ -8540,17 +9195,17 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T17:35:42+01:00",
-     "http": 404,
-     "redirect": "https://www.dealabs.com/bons-plans/sony-a7c-ii-3456054"
-    },
-    {
      "at": "2026-11-16T00:10:30+01:00",
      "http": 404,
      "redirect": "https://www.dealabs.com/bons-plans/sony-a7c-ii-3456054"
     },
     {
      "at": "2026-11-16T08:16:30+01:00",
+     "http": 404,
+     "redirect": "https://www.dealabs.com/bons-plans/sony-a7c-ii-3456054"
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 404,
      "redirect": "https://www.dealabs.com/bons-plans/sony-a7c-ii-3456054"
     }
@@ -8607,7 +9262,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456118": {
@@ -8653,15 +9312,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T17:35:42+01:00",
-     "http": 410
-    },
-    {
      "at": "2026-11-16T00:10:30+01:00",
      "http": 410
     },
     {
      "at": "2026-11-16T08:16:30+01:00",
+     "http": 410
+    },
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 410
     }
    ],
@@ -8717,7 +9376,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456154": {
@@ -8739,7 +9402,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-15T17:35:42+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "E.Leclerc",
   "missing_scans": 0,
@@ -8815,7 +9478,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456165": {
@@ -8864,7 +9531,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456170": {
@@ -8886,7 +9557,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-15T17:35:42+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -8962,7 +9633,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456174": {
@@ -9011,7 +9686,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456176": {
@@ -9060,7 +9739,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456194": {
@@ -9109,7 +9792,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456197": {
@@ -9158,7 +9845,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456200": {
@@ -9207,7 +9898,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456202": {
@@ -9229,7 +9924,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-15T17:35:42+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -9305,7 +10000,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456206": {
@@ -9354,7 +10053,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456216": {
@@ -9403,7 +10106,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456217": {
@@ -9452,7 +10159,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456222": {
@@ -9501,7 +10212,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456244": {
@@ -9550,7 +10265,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456251": {
@@ -9599,7 +10318,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456252": {
@@ -9648,7 +10371,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456258": {
@@ -9697,7 +10424,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456264": {
@@ -9746,7 +10477,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456273": {
@@ -9795,7 +10530,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456274": {
@@ -9844,7 +10583,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456275": {
@@ -9893,7 +10636,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456276": {
@@ -9915,7 +10662,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-15T17:35:42+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -10040,7 +10787,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456290": {
@@ -10089,7 +10840,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456292": {
@@ -10138,7 +10893,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456295": {
@@ -10187,7 +10946,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456298": {
@@ -10236,7 +10999,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456300": {
@@ -10285,7 +11052,11 @@
      "at": "2026-11-15T17:35:42+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-16T20:51:49+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3456496": {
@@ -10751,7 +11522,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-16T08:16:30+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -10800,7 +11571,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-16T08:16:30+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -10898,7 +11669,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-16T08:16:30+01:00",
-  "last_seen_at": "2026-11-16T08:16:30+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -12001,6 +12772,2360 @@
    "checks": [
     {
      "at": "2026-11-16T08:16:30+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3457011": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:lidl:lidl-lot-de-2-paquets-de-fromage-a-raclette-fumee-chene-d-argent-2-x-250g",
+  "category": "Épicerie & Courses",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 4.78,
+  "deal_id": "dealabs:3457011",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "grocery",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "laitier_oeufs",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Lidl",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 1.0,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3457011",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/lidl-plus-lot-de-2-paquets-de-fromage-a-raclette-fumee-chene-dargent-2x250g-soit-179-eur-le-2e-paquet-lidl-en-supermarche-3457011",
+  "tags": [
+   "nourriture"
+  ],
+  "title": "[Lidl+] Lot de 2 paquets de fromage à raclette fumée Chêne d'Argent - 2 x 250g",
+  "total_acquisition_cost": 4.78,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3457081": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:presses-a-ail-et-a-gingembre-joseph-joseph-cleanforce",
+  "category": "Épicerie & Courses",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 11.99,
+  "deal_id": "dealabs:3457081",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "grocery",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "autres",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3457081",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/joseph-joseph-cleanforce-presses-a-ail-et-a-gingembre-hachoir-puissant-facile-a-presser-et-a-nettoyer-green-3457081",
+  "tags": [],
+  "title": "Presses à ail et à gingembre Joseph Joseph CleanForce",
+  "total_acquisition_cost": 11.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3457257": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:netto:bouteille-de-75cl-d-huile-d-olive-vierge-extra-netto-via-2-5-sur-la-carte-de-fid",
+  "category": "Épicerie & Courses",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 4.96,
+  "deal_id": "dealabs:3457257",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "grocery",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "autres",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Netto",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3457257",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/carte-netto-huile-dolive-vierge-extra-75-ml-netto-3457257",
+  "tags": [],
+  "title": "Bouteille de 75cl d'Huile d'Olive Vierge Extra Netto (Via 2,5€ sur la Carte de Fidélité)",
+  "total_acquisition_cost": 4.96,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3457353": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:carrefour:jouet-lego-fortnite-77075-le-camp-de-banane-et-mecano",
+  "category": "Famille & Enfants",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 10.49,
+  "deal_id": "dealabs:3457353",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "retail",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Carrefour",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3457353",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/jouet-lego-fortnite-77075-le-camp-de-banane-et-mecano-3457353",
+  "tags": [],
+  "title": "Jouet Lego Fortnite 77075 - Le Camp de Banane et Mécano",
+  "total_acquisition_cost": 10.49,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3457396": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:aldi:barquette-de-1-kg-de-clementines-fine-de-corse-igp",
+  "category": "Épicerie & Courses",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 2.99,
+  "deal_id": "dealabs:3457396",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "grocery",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "autres",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Aldi",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3457396",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/barquette-de-1kg-de-clementines-fine-de-corse-igp-3457396",
+  "tags": [],
+  "title": "Barquette de 1 kg de Clémentines Fine de Corse IGP",
+  "total_acquisition_cost": 2.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3457523": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:four-a-pizza-g3-ferrari-g10006-delizia-1200-w-thermostat-reglable-jusqu-a-400-c-",
+  "category": "Maison & Habitat",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 69.99,
+  "deal_id": "dealabs:3457523",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "retail",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3457523",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/g3-ferrari-g10006-delizia-four-a-pizza-1200-w-thermostat-reglable-jusqua-400c-cuit-une-pizza-savoureuse-en-5-min-3457523",
+  "tags": [],
+  "title": "Four à Pizza G3 Ferrari G10006 Delizia - 1200 W, Thermostat Réglable jusqu’à 400°C, Double Résistance",
+  "total_acquisition_cost": 69.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3457563": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:square-enix:possesseurs-final-fantasy-xiv-30-jours-de-jeu-gratuit-pour-ffxiv-online-sous-con",
+  "category": "Consoles & Jeux vidéo",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 0.0,
+  "deal_id": "dealabs:3457563",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "free",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "free",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Square Enix",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.6,
+  "promotion_integrity": null,
+  "score_components": [
+   [
+    "valeur inconnue : gratuit non évalué",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3457563",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/jusqua-30-jours-de-jeu-gratuit-pour-ffxiv-online-sous-conditions-pour-la-sortie-devercold-3457563",
+  "tags": [],
+  "title": "[Possesseurs Final Fantasy XIV] 30 Jours de Jeu gratuit pour FFXIV Online (sous conditions)",
+  "total_acquisition_cost": 0.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3457591": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:bouteille-de-500ml-de-cafe-glace-a-diluer-nescafe-espresso-concentrate-classic-v",
+  "category": "Épicerie & Courses",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 4.16,
+  "deal_id": "dealabs:3457591",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "grocery",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "boissons",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3457591",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/nescafe-espresso-concentrate-classic-vanille-caramel-cafe-glace-a-diluer-500ml-3457591",
+  "tags": [],
+  "title": "Bouteille de 500ml de Café Glacé à Diluer Nescafé Espresso Concentrate Classic, Vanille ou Caramel",
+  "total_acquisition_cost": 4.16,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3457687": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:fnac:pack-ecouteurs-sans-fil-samsung-buds-4-noir-pad-a-induction-magnetique-25w",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 79.99,
+  "deal_id": "dealabs:3457687",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Fnac",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3457687",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/pack-ecouteurs-sans-fil-samsung-buds-4-noir-pad-a-induction-magnetique-25w-3457687",
+  "tags": [],
+  "title": "Pack écouteurs sans fil Samsung Buds 4 (Noir) + Pad à induction magnétique 25W",
+  "total_acquisition_cost": 79.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3457709": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:cuiseur-riz-russell-hobbs-19750-56-3300g",
+  "category": "Épicerie & Courses",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 27.99,
+  "deal_id": "dealabs:3457709",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "grocery",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "autres",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3457709",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/russell-hobbs-19750-56-cuiseur-riz-3300g-3457709",
+  "tags": [],
+  "title": "Cuiseur Riz Russell Hobbs 19750-56 - 3300g",
+  "total_acquisition_cost": 27.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3457725": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:telerama:telerama-en-acces-libre-pendant-une-semaine",
+  "category": "Culture & Divertissement",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 0.0,
+  "deal_id": "dealabs:3457725",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "free",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "free",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Telerama",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.6,
+  "promotion_integrity": null,
+  "score_components": [
+   [
+    "valeur inconnue : gratuit non évalué",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3457725",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/telerama-en-acces-libre-pendant-une-semaine-3457725",
+  "tags": [],
+  "title": "Télérama en Accès Libre pendant une Semaine",
+  "total_acquisition_cost": 0.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3457883": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:cecotec:four-a-pizza-cecotec-pizza-co-500-gyro",
+  "category": "Maison & Habitat",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 179.0,
+  "deal_id": "dealabs:3457883",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "retail",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Cecotec",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3457883",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/four-a-pizza-cecotec-gyro-500-3457883",
+  "tags": [],
+  "title": "Four à Pizza Cecotec Pizza&Co 500 Gyro",
+  "total_acquisition_cost": 179.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3457926": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:pok-mon-go:chaussures-crocs-pikachu-gratuites-pour-avatar-pokemon-go",
+  "category": "Consoles & Jeux vidéo",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 0.0,
+  "deal_id": "dealabs:3457926",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "free",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "free",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Pokémon Go",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.6,
+  "promotion_integrity": null,
+  "score_components": [
+   [
+    "valeur inconnue : gratuit non évalué",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3457926",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/chaussures-crocs-pikachu-gratuites-pour-avatar-pokemon-go-3457926",
+  "tags": [],
+  "title": "Chaussures Crocs Pikachu gratuites pour avatar Pokémon Go",
+  "total_acquisition_cost": 0.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3457954": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:bouygues-telecom:abonnes-non-clients-google-ai-6-mois-a-google-ai-plus-offerts",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 0.0,
+  "deal_id": "dealabs:3457954",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "free",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "free",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Bouygues Telecom",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.6,
+  "promotion_integrity": null,
+  "score_components": [
+   [
+    "valeur inconnue : gratuit non évalué",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3457954",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/6-mois-de-google-ai-plus-gratuits-chez-bouygues-telecom-3457954",
+  "tags": [],
+  "title": "[Abonnés - Non Clients Google AI] 6 mois à Google AI Plus offerts",
+  "total_acquisition_cost": 0.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458028": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:lot-de-2-cameras-de-surveillance-ring-stick-up-cam-exterieure-indoor-cam-2e-gene",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 34.99,
+  "deal_id": "dealabs:3458028",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458028",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/lot-de-2-cameras-de-surveillance-ring-stick-up-cam-exterieure-indoor-cam-2e-generation-3458028",
+  "tags": [],
+  "title": "Lot de 2 caméras de surveillance Ring - Stick Up Cam extérieure + Indoor Cam 2e génération",
+  "total_acquisition_cost": 34.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458030": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:galaxus:ecouteurs-sans-fil-technics-eah-az40m2-reduction-de-bruit-multipoint-3-appareils",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 91.14,
+  "deal_id": "dealabs:3458030",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Galaxus",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458030",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/ecouteurs-sans-fil-technics-eah-az40m2-reduction-de-bruit-multipoint-3-appareils-coloris-or-3458030",
+  "tags": [],
+  "title": "Écouteurs sans fil Technics EAH-AZ40M2 - Réduction de bruit, multipoint 3 appareils (coloris Or)",
+  "total_acquisition_cost": 91.14,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458031": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:darty:ecran-pc-26-5-asus-gaming-rog-xg27aqwmg-r-280-hz-oled",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 469.99,
+  "deal_id": "dealabs:3458031",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Darty",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458031",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/asus-gaming-rog-xg27aqwmg-r-265-280-hz-oled-3458031",
+  "tags": [],
+  "title": "Ecran PC 26,5\" Asus Gaming Rog XG27AQWMG-R - 280 Hz, OLED",
+  "total_acquisition_cost": 469.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458033": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:carte-mere-msi-mpg-b850-edge-ti-wifi",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 219.99,
+  "deal_id": "dealabs:3458033",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458033",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/msi-mpg-b850-edge-ti-wifi-3458033",
+  "tags": [],
+  "title": "Carte mère MSI mpg B850 Edge TI wifi",
+  "total_acquisition_cost": 219.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458038": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:ecran-tactile-14-5-corsair-xeneon-edge-lcd-2k",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 209.9,
+  "deal_id": "dealabs:3458038",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458038",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/ecran-tactile-lcd-xeneon-edge-145-lcd-2k-3458038",
+  "tags": [],
+  "title": "Écran tactile 14,5\" Corsair Xeneon Edge - LCD 2K",
+  "total_acquisition_cost": 209.9,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458040": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:carrefour:smartphone-6-3-apple-iphone-17-5g-8-go-ram-256-go-via-223-80-sur-la-carte-de-fid",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 895.2,
+  "deal_id": "dealabs:3458040",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Carrefour",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458040",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/smartphone-63-apple-iphone-17-5g-8-go-ram-256-go-via-22380-eur-sur-la-carte-de-fidelite-3458040",
+  "tags": [],
+  "title": "Smartphone 6.3\" Apple iPhone 17 - 5G, 8 Go RAM, 256 Go (via 223,80 € sur la carte de fidélité)",
+  "total_acquisition_cost": 895.2,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458052": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:ecran-pc-lg-ultragear-34gx900a-b-aeu-34-gaming-monitor-oled-qhd-3440-x-1440-0-03",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 649.0,
+  "deal_id": "dealabs:3458052",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458052",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/lg-ultragear-34gx900a-baeu-34-gaming-monitor-oled-qhd-3440-x-1440-003ms-240hz-3458052",
+  "tags": [],
+  "title": "Écran PC LG Ultragear 34GX900A-B.AEU 34\" Gaming Monitor - OLED QHD (3440 x 1440), 0.03ms 240Hz (vendeur tiers)",
+  "total_acquisition_cost": 649.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458055": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:auchan:10-cagnotte-sur-votre-compte-des-3a-euros-d-achat-sur-tout-high-tech-multimedia-",
+  "category": "Maison & Habitat",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 0.0,
+  "deal_id": "dealabs:3458055",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "free",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "free",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Auchan",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.6,
+  "promotion_integrity": null,
+  "score_components": [
+   [
+    "valeur inconnue : gratuit non évalué",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458055",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/10-cagnotte-sur-votre-compte-des-3a-euros-dachat-sur-tout-high-tech-multimedia-et-electromenager-3458055",
+  "tags": [],
+  "title": "10% cagnotté sur votre compte dès 3à euros d'achat sur tout High tech/ Multimédia et Electroménager",
+  "total_acquisition_cost": 0.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458063": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:carrefour:enceinte-bluetooth-marshall-acton-iii-60-w-noir",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 179.99,
+  "deal_id": "dealabs:3458063",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Carrefour",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458063",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/enceinte-bluetooth-marshall-acton-iii-60-w-noir-3458063",
+  "tags": [],
+  "title": "Enceinte Bluetooth Marshall Acton III - 60 W, Noir",
+  "total_acquisition_cost": 179.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458066": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:auchan:videoprojecteur-wifi-selection-de-magasin",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 39.99,
+  "deal_id": "dealabs:3458066",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Auchan",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458066",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/projecteur-video-wifi-3458066",
+  "tags": [],
+  "title": "Vidéoprojecteur wifi (sélection de magasin)",
+  "total_acquisition_cost": 39.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458069": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:darty:tablette-11-1-lenovo-yoga-tab-gen-2-zaj00111se-256-go-bleu-cosmique-stylet-lenov",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 539.99,
+  "deal_id": "dealabs:3458069",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Darty",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458069",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/lenovo-yoga-tab-gen-2-zaj00111se-111-256-go-bleu-cosmique-stylet-lenovo-tab-pen-pro-2-3458069",
+  "tags": [],
+  "title": "Tablette 11,1\" Lenovo Yoga Tab Gen 2 ZAJ00111SE - 256 Go, Bleu Cosmique + Stylet Lenovo Tab Pen Pro 2",
+  "total_acquisition_cost": 539.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458074": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:pc-portable-13-apple-macbook-neo-2026-puce-a18-pro-8-go-ram-512-go-ssd",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 724.0,
+  "deal_id": "dealabs:3458074",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458074",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/macbook-neo-512go-3458074",
+  "tags": [],
+  "title": "PC Portable 13\" Apple MacBook Neo 2026 - Puce A18 Pro, 8 Go RAM, 512 Go SSD",
+  "total_acquisition_cost": 724.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458080": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:pc-portable-13-apple-macbook-neo-puce-a18-pro-512-go-ssd-8-go-ram-avec-touch-id",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 724.0,
+  "deal_id": "dealabs:3458080",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458080",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/pc-portable-13-apple-macbook-neo-puce-a18-pro-512-go-ssd-8-go-ram-avec-touch-id-3458080",
+  "tags": [],
+  "title": "PC Portable 13\" Apple MacBook Neo - Puce A18 Pro, 512 Go SSD, 8 Go RAM, avec touch id",
+  "total_acquisition_cost": 724.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458081": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:ecran-pc-39-incurve-lg-ultragear-39gx90sa-w-2025-oled-wqhd-240hz-0-03ms-displayh",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 749.99,
+  "deal_id": "dealabs:3458081",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458081",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/lg-ultragear-39gx90sa-w-ecran-pc-gaming-39-dalle-oled-resolution-qhd-3440-x-1440-1ms-240hz-3458081",
+  "tags": [],
+  "title": "Écran PC 39\" incurvé LG Ultragear 39GX90SA-W (2025) - OLED, WQHD, 240Hz, 0.03ms, DisplayHDR400 TRUE BLACK, G-SYNC, FreeSync Premium",
+  "total_acquisition_cost": 749.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458087": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:easylounge:videoprojecteur-hisense-m2-pro",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 849.95,
+  "deal_id": "dealabs:3458087",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Easylounge",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458087",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/videoprojecteur-hisense-m2-pro-via-200-euros-dodr-3458087",
+  "tags": [],
+  "title": "Vidéoprojecteur Hisense m2 pro",
+  "total_acquisition_cost": 849.95,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458095": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:alimentation-pc-corsair-hx1500i-2025-atx-entierement-modulaire-compatible-atx-3-",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 227.99,
+  "deal_id": "dealabs:3458095",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458095",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/corsair-hx1500i-2025-alimentation-atx-entierement-modulaire-noir-3458095",
+  "tags": [],
+  "title": "Alimentation Pc Corsair HX1500i (2025) ATX Entièrement Modulaire, Compatible ATX 3.1 & PCIe 5.1, Platinum",
+  "total_acquisition_cost": 227.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458097": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:lot-de-24-piles-rechargeables-amazon-basics-aaa-850mah-1-2v",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 16.98,
+  "deal_id": "dealabs:3458097",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458097",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/amazon-basics-lot-de-24-piles-rechargeables-nimh-aa-2400-mah-12-v-haute-capacite-rechargeables-jusqua-400-fois-prechargees-3458097",
+  "tags": [],
+  "title": "Lot de 24 Piles Rechargeables Amazon Basics AAA - 850mAh, 1,2V",
+  "total_acquisition_cost": 16.98,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458111": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:tv-76-hisense-75u7se-qled-mini-led",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 939.0,
+  "deal_id": "dealabs:3458111",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458111",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/tv-qled-mini-led-76-pouce-3458111",
+  "tags": [],
+  "title": "TV 76\" Hisense 75U7SE - QLED Mini LED",
+  "total_acquisition_cost": 939.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458114": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:smartphone-pliable-samsung-galaxy-z-fold8-5g-256-go-graphite",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 1149.0,
+  "deal_id": "dealabs:3458114",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458114",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/samsung-galaxy-z-fold8-smartphone-pliable-5g-256-go-graphite-3458114",
+  "tags": [],
+  "title": "Smartphone Pliable Samsung Galaxy Z Fold8 - 5G, 256 Go, Graphite",
+  "total_acquisition_cost": 1149.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458116": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:barre-de-son-lg-s60tr-5-1-canaux-440-w",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 179.0,
+  "deal_id": "dealabs:3458116",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458116",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/barre-de-son-lg-s60tr-51-canaux-440-w-3458116",
+  "tags": [],
+  "title": "Barre de son LG S60TR - 5.1 canaux 440 W",
+  "total_acquisition_cost": 179.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458120": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:fnac:tablette-tactile-12-7-lenovo-yoga-tab-plus-256-go-coquillage-stylet-lenovo",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 599.99,
+  "deal_id": "dealabs:3458120",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Fnac",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458120",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/tablette-tactile-lenovo-yoga-tab-plus-127-256-go-coquillage-stylet-lenovo-3458120",
+  "tags": [],
+  "title": "Tablette Tactile 12,7\" Lenovo Yoga Tab Plus - 256 Go, Coquillage + Stylet Lenovo",
+  "total_acquisition_cost": 599.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458121": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:sonovente-com:controleur-pioneer-ddj-flx2",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 139.0,
+  "deal_id": "dealabs:3458121",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "SonoVente.com",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458121",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/controleur-pioneer-dj-flx-2-3458121",
+  "tags": [],
+  "title": "Contrôleur Pioneer DDJ-FLX2",
+  "total_acquisition_cost": 139.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458124": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:homecin-solutions:barre-de-son-sonos-arc-ultra-sub-gen-4",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 1399.0,
+  "deal_id": "dealabs:3458124",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "HomeCinéSolutions",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458124",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/sonos-arc-ultra-sub4-3458124",
+  "tags": [],
+  "title": "Barre de son Sonos arc ultra + Sub Gen 4",
+  "total_acquisition_cost": 1399.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458126": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:interrupteur-a-cadran-portatif-philips-hue-tap-dial-blanc",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 32.49,
+  "deal_id": "dealabs:3458126",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458126",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/philips-hue-tap-dial-blanc-3458126",
+  "tags": [],
+  "title": "Interrupteur à Cadran Portatif Philips Hue Tap dial blanc",
+  "total_acquisition_cost": 32.49,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458129": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:aldi:beurre-doux-le-hameau-1kg",
+  "category": "Épicerie & Courses",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 6.49,
+  "deal_id": "dealabs:3458129",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "grocery",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "autres",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Aldi",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458129",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/beurre-doux-3458129",
+  "tags": [],
+  "title": "Beurre doux Le Hameau - 1Kg",
+  "total_acquisition_cost": 6.49,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458130": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:tablette-tactile-12-7-lenovo-yoga-tab-plus-2-en-1-16-go-ram-512-go-keyboard-pack",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 569.0,
+  "deal_id": "dealabs:3458130",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458130",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/lenovo-yoga-tab-plus-tablette-tactile-127-ram-16go-512go-2-en-1-keyboard-pack-tab-pen-pro-3458130",
+  "tags": [],
+  "title": "Tablette Tactile 12.7'' Lenovo Yoga Tab Plus 2-en-1 - 16 Go RAM, 512 Go, Keyboard Pack + Tab Pen Pro",
+  "total_acquisition_cost": 569.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458132": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:samsung:samsung-montre-connectee-samsung-galaxy-watch-8-classic-46mm-bt",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 299.0,
+  "deal_id": "dealabs:3458132",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Samsung",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458132",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/samsung-galaxy-watch-8-classic-46mm-bt-3458132",
+  "tags": [],
+  "title": "[Samsung+] Montre connectée Samsung Galaxy watch 8 classic - 46mm, bt",
+  "total_acquisition_cost": 299.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458135": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:intermarch:lot-beurre-paysan-breton-demi-sel-ou-doux-2-x-500g",
+  "category": "Épicerie & Courses",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 7.96,
+  "deal_id": "dealabs:3458135",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "grocery",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "autres",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Intermarché",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458135",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/lot-beurre-paysan-breton-demi-sel-ou-doux-3458135",
+  "tags": [],
+  "title": "Lot Beurre paysan breton demi sel ou doux - 2 x 500g",
+  "total_acquisition_cost": 7.96,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458139": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:ecouteurs-a-oreilles-ouvertes-sans-fil-jbl-soundgear-clips-ghost-black",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 69.04,
+  "deal_id": "dealabs:3458139",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458139",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/jbl-soundgear-clips-ecouteurs-a-oreilles-ouvertes-sans-fil-ghost-black-3458139",
+  "tags": [],
+  "title": "Écouteurs à Oreilles Ouvertes sans fil JBL Soundgear Clips - Ghost Black",
+  "total_acquisition_cost": 69.04,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458152": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:bosch:kit-de-superposition-avec-tablette-pour-seche-linge-wtz27400",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 70.0,
+  "deal_id": "dealabs:3458152",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Bosch",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458152",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/kit-de-superposition-avec-tablette-pour-seche-linge-wtz27400-3458152",
+  "tags": [],
+  "title": "Kit de superposition avec tablette pour sèche-linge WTZ27400",
+  "total_acquisition_cost": 70.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458154": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:hello-bank:clients-hello-prime-carte-fnac-gratuite-pendant-3-ans",
+  "category": "Services",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 0.0,
+  "deal_id": "dealabs:3458154",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "free",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "free",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Hello bank!",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.6,
+  "promotion_integrity": null,
+  "score_components": [
+   [
+    "valeur inconnue : gratuit non évalué",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458154",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/client-hello-prime-carte-fnac-gratuite-pendant-3-ans-3458154",
+  "tags": [],
+  "title": "[Clients Hello Prime] Carte Fnac+ Gratuite pendant 3 ans",
+  "total_acquisition_cost": 0.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458156": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:ecouteurs-bluetooth-intra-auriculaires-sans-fil-jabra-evolve2-buds",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 109.0,
+  "deal_id": "dealabs:3458156",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458156",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/jabra-evolve2-buds-ecouteurs-bluetooth-intra-auriculaires-sans-fil-3458156",
+  "tags": [],
+  "title": "Écouteurs Bluetooth intra-auriculaires sans fil Jabra Evolve2 Buds",
+  "total_acquisition_cost": 109.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458158": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:bande-led-philips-hue-omniglow-micro-eclairage-d-ambiance-connecte-3m",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 111.79,
+  "deal_id": "dealabs:3458158",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458158",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/philips-hue-bande-led-omniglow-micro-eclairage-dambiance-connecte-3m-3458158",
+  "tags": [],
+  "title": "Bande LED Philips Hue OmniGlow Micro - Éclairage d'ambiance connecté, 3m",
+  "total_acquisition_cost": 111.79,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3458160": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:pack-fortnite-feu-glace-obscurs-sur-nintendo-switch-2-code-dans-la-boite",
+  "category": "Consoles & Jeux vidéo",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 10.0,
+  "deal_id": "dealabs:3458160",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-16T20:51:49+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-16T20:51:49+01:00",
+  "last_seen_at": "2026-11-16T20:51:49+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3458160",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/pack-fortnite-feu-glace-obscurs-sur-nintendo-switch-2-code-in-a-box-3458160",
+  "tags": [],
+  "title": "Pack Fortnite Feu & Glace Obscurs sur Nintendo Switch 2 (Code dans la boite)",
+  "total_acquisition_cost": 10.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T20:51:49+01:00",
      "http": 200
     }
    ]
