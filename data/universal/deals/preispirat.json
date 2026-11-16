@@ -1000,6 +1000,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-12-13T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-12-13T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -1168,6 +1173,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-12-13T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-12-13T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -1217,11 +1227,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T03:43:31+01:00",
-     "ends": "2036-06-10T03:43:31+02:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2036-06-10T14:53:34+02:00",
      "http": 200
@@ -1229,6 +1234,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2036-06-10T03:46:45+02:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2036-06-10T13:47:21+02:00",
      "http": 200
     }
    ]
@@ -1279,11 +1289,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T12:30:00+01:00",
-     "ends": "2031-01-01T12:30:00+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2031-01-01T14:53:34+01:00",
      "http": 200
@@ -1291,6 +1296,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2031-01-01T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2031-01-01T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -1341,11 +1351,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T04:21:10+01:00",
-     "ends": "2027-01-01T04:21:10+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2027-01-01T14:53:34+01:00",
      "http": 200
@@ -1353,6 +1358,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2027-01-01T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2027-01-01T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -1650,11 +1660,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T01:53:59+01:00",
-     "ends": "2026-11-18T01:53:59+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-18T14:53:34+01:00",
      "http": 200
@@ -1662,6 +1667,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -2400,7 +2410,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/09/chrome_ClmNqAOecE-270x300.png",
   "last_changed_at": "2026-11-09T03:41:50+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Conforama",
   "missing_scans": 0,
   "net_savings": 54.05,
@@ -2411,6 +2421,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 167.5,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 40 %",
@@ -3167,6 +3179,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -3982,7 +3999,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/71Gk-LLNS5L._AC_SL1500_-205x300.jpg",
   "last_changed_at": "2026-10-28T10:45:11+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
@@ -3990,6 +4007,8 @@
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-09T00:05:15+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -7056,11 +7075,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-30T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -7068,6 +7082,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -7128,11 +7147,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T01:53:59+01:00",
-     "ends": "2026-11-21T01:53:59+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-21T14:53:34+01:00",
      "http": 200
@@ -7140,6 +7154,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-21T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-21T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -12021,11 +12040,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T18:19:10+01:00",
-     "ends": "2026-12-20T18:19:10+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-12-20T14:53:34+01:00",
      "http": 200
@@ -12033,6 +12047,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-12-20T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-12-20T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -26160,11 +26179,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T12:30:00+01:00",
-     "ends": "2026-11-30T12:30:00+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -26172,6 +26186,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -30149,11 +30168,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T20:48:57+01:00",
-     "ends": "2026-11-30T20:48:57+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -30161,6 +30175,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -31517,11 +31536,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T02:20:11+01:00",
-     "ends": "2026-11-30T02:20:11+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -31529,6 +31543,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -32188,13 +32207,15 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/yallo-abo-black-friday-2026-300x240.png",
   "last_changed_at": "2026-11-02T22:57:10+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": null,
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-09T00:10:21+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -32921,11 +32942,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-10T05:38:53+01:00",
-     "ends": "2026-11-30T05:38:53+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-16T00:24:21+01:00",
      "ends": "2026-11-30T00:24:21+01:00",
      "http": 200
@@ -32933,6 +32949,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -33051,11 +33072,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-12-07T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-12-07T14:53:34+01:00",
      "http": 200
@@ -33063,6 +33079,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-12-07T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-12-07T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -33911,7 +33932,7 @@
     }
    ],
    "code": "T_PP_REMAINING",
-   "ok_streak": 1,
+   "ok_streak": 2,
    "since": "2026-11-09T12:39:44+01:00",
    "state": "ENDED"
   }
@@ -35020,7 +35041,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/09/apple-airtag-2-generation-4er-pack-1789454895-300x162.jpeg",
   "last_changed_at": "2026-11-04T12:00:01+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": -3.57,
@@ -35031,6 +35052,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 78.85,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 0 %",
@@ -35529,11 +35552,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-30T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -35542,8 +35560,17 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "flag": "expired",
+     "http": 200
     }
-   ]
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
+   "ok_streak": 0,
+   "since": "2026-11-16T13:47:21+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773223": {
@@ -36317,11 +36344,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-30T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -36329,6 +36351,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -38544,13 +38571,15 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/preispirat-fresh-highlights-300x300.png",
   "last_changed_at": "2026-11-09T01:56:49+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": null,
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-09T01:30:03+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -39065,7 +39094,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/86075c28-9723-4bed-8b8e-b84a3288c9eb__CoopMobile-Logo-600x300px-150dpi-300x150.png",
   "last_changed_at": "2026-11-09T01:56:49+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Coop",
   "missing_scans": 0,
   "net_savings": null,
@@ -39073,6 +39102,8 @@
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-08T23:45:00+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -39129,7 +39160,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/3ece85e8-57e1-4cbd-a122-5c70ec53441a__MM-Logo-rot-600x300-300x150.png",
   "last_changed_at": "2026-11-09T01:56:49+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "MediaMarkt",
   "missing_scans": 0,
   "net_savings": null,
@@ -39137,6 +39168,8 @@
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-08T23:45:00+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -39246,7 +39279,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/14f0eb0d-20eb-44a5-bbac-75c1cf920737__261021_Black-Friday-2_Logo_600x300-300x150.jpg",
   "last_changed_at": "2026-11-09T01:56:49+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Migros",
   "missing_scans": 0,
   "net_savings": null,
@@ -39254,6 +39287,8 @@
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-08T23:45:00+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -39370,13 +39405,15 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/5ab5fbd7-b6ec-4f14-bb4d-ebe99609807c__895bd88d-4c21-4f4e-9e39-232ae88d2d74__LogoMarionnaud-300x150.png",
   "last_changed_at": "2026-11-09T01:56:49+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": null,
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-08T23:45:00+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -39727,7 +39764,7 @@
     }
    ],
    "code": "T_PP_REMAINING",
-   "ok_streak": 2,
+   "ok_streak": 3,
    "since": "2026-11-16T00:24:21+01:00",
    "state": "ENDED"
   }
@@ -40186,10 +40223,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-15T02:20:11+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-16T13:47:21+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773958": {
@@ -40316,10 +40353,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-15T02:20:11+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-16T13:47:21+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:773983": {
@@ -40615,7 +40652,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/fdc744ff-e715-4b18-bb65-60277195c33e__lenovo-logo-01-300x150.png",
   "last_changed_at": "2026-11-09T01:56:49+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Lenovo",
   "missing_scans": 0,
   "net_savings": null,
@@ -40623,6 +40660,8 @@
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-08T23:45:00+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40679,13 +40718,15 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/18d12c4c-645c-4ae3-8890-ed866edbd285__MTEL_CH_Logo_600x300_transparent-300x150.png",
   "last_changed_at": "2026-11-09T01:56:49+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": null,
   "offer_type": "community_deal",
   "personal_relevance": 0.55,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-08T23:45:00+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40776,10 +40817,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-15T02:20:11+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-16T13:47:21+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:774019": {
@@ -40846,10 +40887,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-15T02:20:11+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-16T13:47:21+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:774034": {
@@ -40994,13 +41035,15 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/f2dee5eb-d0fa-40d1-9b12-9abd2c98ee49__EN_yallo_BlackFriday_logo_600x300-300x150.png",
   "last_changed_at": "2026-11-09T01:56:49+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": null,
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-08T23:45:00+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -41352,7 +41395,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/9c1b6055-b3a1-4984-9195-f062681bbc4b__fnac_logo_600x300-300x150.jpg",
   "last_changed_at": "2026-11-09T01:56:49+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Fnac",
   "missing_scans": 0,
   "net_savings": null,
@@ -41360,6 +41403,8 @@
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-08T23:45:00+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -41466,13 +41511,15 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2024/11/6f99833e-2797-4c7f-9144-8fb6d7de6765__cedi_logo-300x150.png",
   "last_changed_at": "2026-11-09T01:56:49+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": null,
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-08T23:45:00+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -41578,13 +41625,15 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/06ce7b83-c377-4bc0-b23b-7477171445b0__DE_CHmobile_Plus_FAF_990_Affiliates_600x600px_Red-300x300.png",
   "last_changed_at": "2026-11-09T01:56:49+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": null,
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-09T00:00:00+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -41822,10 +41871,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-15T02:20:11+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-16T13:47:21+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:774112": {
@@ -41927,11 +41976,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T01:53:59+01:00",
-     "ends": "2026-12-07T01:53:59+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-12-07T14:53:34+01:00",
      "http": 200
@@ -41939,6 +41983,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-12-07T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-12-07T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -42125,13 +42174,15 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/77d4a377-d9a2-468c-80a6-061a442bbaf6__Zak_app_600x300-1-300x150.png",
   "last_changed_at": "2026-11-09T01:56:49+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": null,
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-08T23:45:00+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -42223,10 +42274,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-15T02:20:11+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-16T13:47:21+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:774177": {
@@ -42358,10 +42409,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-15T02:20:11+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-16T13:47:21+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:774181": {
@@ -42428,10 +42479,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-15T02:20:11+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-16T13:47:21+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:774183": {
@@ -44836,7 +44887,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/nettoshop-citiz-260x300.jpg",
   "last_changed_at": "2026-11-08T22:13:34+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": 0.1,
   "offer_type": "community_deal",
@@ -44846,6 +44897,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 189.0,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 0 %",
@@ -45652,7 +45705,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/G_619500_A-300x226.jpg",
   "last_changed_at": "2026-11-09T01:56:49+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Conforama",
   "missing_scans": 0,
   "net_savings": -2.64,
@@ -45663,6 +45716,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 121.64,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 0 %",
@@ -45721,7 +45776,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/4217d4b558b19eaf4b94bc24c52269ac5fb2-300x300.jpg",
   "last_changed_at": "2026-11-09T01:56:49+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Interdiscount",
   "missing_scans": 0,
   "net_savings": -0.75,
@@ -45732,6 +45787,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 2999.0,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 0 %",
@@ -45851,7 +45908,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/81MrQhI3mL._AC_SL1500_-121x300.jpg",
   "last_changed_at": "2026-11-09T03:41:50+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Interdiscount",
   "missing_scans": 0,
   "net_savings": -4.59,
@@ -45862,6 +45919,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 81.7,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 0 %",
@@ -45980,7 +46039,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_hdNfr7kodW-300x68.png",
   "last_changed_at": "2026-11-09T12:39:44+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "TalkTalk",
   "missing_scans": 0,
   "net_savings": null,
@@ -45988,6 +46047,8 @@
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
   "published_at": "2026-11-09T07:05:04+01:00",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -46045,7 +46106,7 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/philips-hue-smartplug-ch-1794203748-300x300.jpeg",
   "last_changed_at": "2026-11-09T12:39:44+01:00",
   "last_seen_at": "2026-11-09T12:39:44+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Interdiscount",
   "missing_scans": 0,
   "net_savings": 2.05,
@@ -46056,6 +46117,8 @@
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 27.5,
   "reference_price_type": "competitor",
+  "removed_at": "2026-11-16T13:47:21+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "réduction vs prix concurrent (−20 %) : 9 %",
@@ -46209,11 +46272,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "ends": "2026-11-19T12:01:23+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-19T14:53:34+01:00",
      "http": 200
@@ -46221,6 +46279,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-19T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-19T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -46278,11 +46341,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "ends": "2026-11-19T12:01:23+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-19T14:53:34+01:00",
      "http": 200
@@ -46290,6 +46348,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-19T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-19T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -46346,11 +46409,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:01:23+01:00",
-     "ends": "2026-11-19T12:01:23+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-19T14:53:34+01:00",
      "http": 200
@@ -46358,6 +46416,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-19T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-19T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -46551,11 +46614,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-18T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-18T14:53:34+01:00",
      "http": 200
@@ -46563,6 +46621,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -46810,11 +46873,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-12-07T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-12-07T14:53:34+01:00",
      "http": 200
@@ -46822,6 +46880,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-12-07T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-12-07T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -46879,11 +46942,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-19T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-19T14:53:34+01:00",
      "http": 200
@@ -46891,6 +46949,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-19T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-19T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -47259,11 +47322,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-30T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -47271,6 +47329,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -47504,11 +47567,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-30T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -47516,6 +47574,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -47573,11 +47636,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-19T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-19T14:53:34+01:00",
      "http": 200
@@ -47585,6 +47643,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-19T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-19T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -47642,11 +47705,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-18T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-18T14:53:34+01:00",
      "http": 200
@@ -47654,6 +47712,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -47891,11 +47954,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-12T04:50:51+01:00",
-     "ends": "2026-11-20T04:50:51+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-20T12:58:04+01:00",
      "http": 200
@@ -47903,6 +47961,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-20T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-20T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -48257,11 +48320,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-12T04:50:51+01:00",
-     "ends": "2026-12-06T04:50:51+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-12-06T12:58:04+01:00",
      "http": 200
@@ -48269,6 +48327,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-12-06T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-12-06T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -48452,11 +48515,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-12T13:44:49+01:00",
-     "ends": "2026-11-20T13:44:49+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-20T12:58:04+01:00",
      "http": 200
@@ -48464,6 +48522,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-20T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-20T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -48521,11 +48584,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-12T13:44:49+01:00",
-     "ends": "2026-11-20T13:44:49+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-20T12:58:04+01:00",
      "http": 200
@@ -48533,6 +48591,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-20T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-20T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -48590,11 +48653,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T02:29:11+01:00",
-     "ends": "2026-11-20T02:29:11+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-20T12:58:04+01:00",
      "http": 200
@@ -48602,6 +48660,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-20T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-20T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -48659,11 +48722,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-12T21:29:32+01:00",
-     "ends": "2026-11-18T21:29:32+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-18T12:58:04+01:00",
      "http": 200
@@ -48671,6 +48729,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -48719,11 +48782,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-12T13:44:49+01:00",
-     "ends": "2026-11-30T13:44:49+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-30T12:58:04+01:00",
      "http": 200
@@ -48731,6 +48789,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -48788,11 +48851,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-12T13:44:49+01:00",
-     "ends": "2026-11-20T13:44:49+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-20T12:58:04+01:00",
      "http": 200
@@ -48800,6 +48858,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-20T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-20T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -48911,11 +48974,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-12T13:44:49+01:00",
-     "ends": "2026-11-20T13:44:49+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-20T12:58:04+01:00",
      "http": 200
@@ -48923,6 +48981,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-20T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-20T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -49155,11 +49218,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-12T21:29:32+01:00",
-     "ends": "2026-11-20T21:29:32+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-20T12:58:04+01:00",
      "http": 200
@@ -49167,6 +49225,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-20T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-20T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -49224,11 +49287,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-12T21:29:32+01:00",
-     "ends": "2026-11-20T21:29:32+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-20T12:58:04+01:00",
      "http": 200
@@ -49236,6 +49294,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-20T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-20T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -49486,6 +49549,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-20T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-20T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -49599,11 +49667,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T02:29:11+01:00",
-     "ends": "2026-11-20T02:29:11+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-20T12:58:04+01:00",
      "http": 200
@@ -49611,6 +49674,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-20T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-20T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -49713,11 +49781,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-18T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-18T14:53:34+01:00",
      "http": 200
@@ -49725,6 +49788,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -49781,11 +49849,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T01:53:59+01:00",
-     "ends": "2026-11-30T01:53:59+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -49793,6 +49856,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -49899,11 +49967,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-12-31T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-12-31T14:53:34+01:00",
      "http": 200
@@ -49911,6 +49974,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-12-31T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-12-31T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -50082,11 +50150,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T02:29:11+01:00",
-     "ends": "2026-12-06T02:29:11+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-12-06T12:58:04+01:00",
      "http": 200
@@ -50094,6 +50157,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-12-06T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-12-06T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -50151,11 +50219,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T02:29:11+01:00",
-     "ends": "2026-11-20T02:29:11+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-20T12:58:04+01:00",
      "http": 200
@@ -50163,6 +50226,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-20T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-20T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -50220,11 +50288,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T02:29:11+01:00",
-     "ends": "2026-11-20T02:29:11+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-20T12:58:04+01:00",
      "http": 200
@@ -50232,6 +50295,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-20T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-20T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -50410,11 +50478,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T04:26:21+01:00",
-     "ends": "2026-11-20T04:26:21+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-20T12:58:04+01:00",
      "http": 200
@@ -50422,6 +50485,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-20T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-20T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -50527,15 +50595,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-16T00:24:21+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-16T03:46:45+01:00",
      "http": 404
     },
     {
      "at": "2026-11-16T12:30:26+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
      "http": 404
     }
    ],
@@ -50597,11 +50665,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T13:14:33+01:00",
-     "ends": "2026-11-21T13:14:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-21T12:58:04+01:00",
      "http": 200
@@ -50609,6 +50672,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-21T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-21T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -50722,11 +50790,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T04:26:21+01:00",
-     "ends": "2026-11-30T04:26:21+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-30T12:58:04+01:00",
      "http": 200
@@ -50734,6 +50797,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -50790,11 +50858,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T01:53:59+01:00",
-     "ends": "2026-11-30T01:53:59+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -50802,6 +50865,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -50850,11 +50918,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T04:26:21+01:00",
-     "ends": "2026-11-30T04:26:21+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T12:58:04+01:00",
      "ends": "2026-11-30T12:58:04+01:00",
      "http": 200
@@ -50862,6 +50925,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -50910,11 +50978,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T22:41:33+01:00",
-     "ends": "2026-11-18T22:41:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-18T14:53:34+01:00",
      "http": 200
@@ -50922,6 +50985,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -50970,11 +51038,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T13:14:33+01:00",
-     "ends": "2026-11-30T13:14:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:22:04+01:00",
      "ends": "2026-11-30T14:22:04+01:00",
      "http": 200
@@ -50982,6 +51045,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -51096,11 +51164,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T13:14:33+01:00",
-     "ends": "2026-11-21T13:14:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-21T14:53:34+01:00",
      "http": 200
@@ -51108,6 +51171,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-21T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-21T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -51165,11 +51233,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T13:14:33+01:00",
-     "ends": "2026-11-18T13:14:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-18T14:53:34+01:00",
      "http": 200
@@ -51177,6 +51240,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -51234,11 +51302,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T13:14:33+01:00",
-     "ends": "2026-11-21T13:14:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-21T14:53:34+01:00",
      "http": 200
@@ -51246,6 +51309,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-21T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-21T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -51496,11 +51564,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T13:14:33+01:00",
-     "ends": "2026-11-21T13:14:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-21T14:53:34+01:00",
      "http": 200
@@ -51508,6 +51571,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-21T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-21T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -51617,11 +51685,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T01:53:59+01:00",
-     "ends": "2026-11-30T01:53:59+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -51629,6 +51692,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -51686,11 +51754,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T01:53:59+01:00",
-     "ends": "2026-11-18T01:53:59+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-18T14:53:34+01:00",
      "http": 200
@@ -51698,6 +51761,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -51755,11 +51823,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T01:53:59+01:00",
-     "ends": "2026-11-21T01:53:59+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-21T14:53:34+01:00",
      "http": 200
@@ -51767,6 +51830,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-21T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-21T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -51824,11 +51892,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T01:53:59+01:00",
-     "ends": "2026-11-21T01:53:59+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-21T14:53:34+01:00",
      "http": 200
@@ -51836,6 +51899,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-21T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-21T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -51897,11 +51965,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T13:14:33+01:00",
-     "ends": "2026-11-21T13:14:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-21T14:53:34+01:00",
      "http": 200
@@ -51909,6 +51972,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-21T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-21T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -52018,11 +52086,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T20:48:57+01:00",
-     "ends": "2027-08-31T20:48:57+02:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2027-08-31T14:53:34+02:00",
      "http": 200
@@ -52030,6 +52093,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2027-08-31T03:46:45+02:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2027-08-31T13:47:21+02:00",
      "http": 200
     }
    ]
@@ -52309,11 +52377,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-13T20:48:57+01:00",
-     "ends": "2026-11-30T20:48:57+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -52321,6 +52384,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -52368,11 +52436,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T04:21:10+01:00",
-     "ends": "2026-11-21T04:21:10+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-21T14:53:34+01:00",
      "http": 200
@@ -52380,6 +52443,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-21T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-21T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -52427,11 +52495,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T04:21:10+01:00",
-     "ends": "2026-11-24T04:21:10+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-24T14:53:34+01:00",
      "http": 200
@@ -52439,6 +52502,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-24T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-24T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -52496,11 +52564,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T22:41:33+01:00",
-     "ends": "2026-11-30T22:41:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -52508,6 +52571,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -52631,11 +52699,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T22:41:33+01:00",
-     "ends": "2026-12-02T22:41:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-12-02T14:53:34+01:00",
      "http": 200
@@ -52643,6 +52706,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-12-02T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-12-02T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -52700,11 +52768,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T04:21:10+01:00",
-     "ends": "2026-11-30T04:21:10+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -52712,6 +52775,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -52769,11 +52837,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T02:20:11+01:00",
-     "ends": "2026-11-30T02:20:11+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -52781,6 +52844,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -52838,11 +52906,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T22:41:33+01:00",
-     "ends": "2026-11-22T22:41:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-22T14:53:34+01:00",
      "http": 200
@@ -52850,6 +52913,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-22T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-22T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -52907,11 +52975,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T18:19:10+01:00",
-     "ends": "2026-11-22T18:19:10+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-22T14:53:34+01:00",
      "http": 200
@@ -52919,6 +52982,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-22T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-22T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -53176,6 +53244,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2028-12-31T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2028-12-31T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -53292,11 +53365,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T18:19:10+01:00",
-     "ends": "2026-11-22T18:19:10+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-22T14:53:34+01:00",
      "http": 200
@@ -53304,6 +53372,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-22T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-22T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -53361,11 +53434,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T18:19:10+01:00",
-     "ends": "2026-11-22T18:19:10+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-22T14:53:34+01:00",
      "http": 200
@@ -53373,6 +53441,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-22T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-22T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -53432,6 +53505,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2027-02-02T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2027-02-02T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -53493,6 +53571,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-19T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-19T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -53539,11 +53622,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T18:19:10+01:00",
-     "ends": "2026-11-19T18:19:10+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-19T14:53:34+01:00",
      "http": 200
@@ -53551,6 +53629,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-19T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-19T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -53611,11 +53694,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T22:41:33+01:00",
-     "ends": "2026-11-22T22:41:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-22T14:53:34+01:00",
      "http": 200
@@ -53623,6 +53701,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-22T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-22T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -53680,11 +53763,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T18:19:10+01:00",
-     "ends": "2026-11-22T18:19:10+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-22T14:53:34+01:00",
      "http": 200
@@ -53692,6 +53770,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-22T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-22T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -53749,11 +53832,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T22:41:33+01:00",
-     "ends": "2026-11-22T22:41:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-22T14:53:34+01:00",
      "http": 200
@@ -53761,6 +53839,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-22T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-22T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -53818,11 +53901,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T18:19:10+01:00",
-     "ends": "2026-11-22T18:19:10+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-22T14:53:34+01:00",
      "http": 200
@@ -53830,6 +53908,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-22T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-22T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -53887,11 +53970,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T22:41:33+01:00",
-     "ends": "2026-11-22T22:41:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-22T14:53:34+01:00",
      "http": 200
@@ -53899,6 +53977,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-22T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-22T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -53956,11 +54039,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T22:41:33+01:00",
-     "ends": "2026-11-21T22:41:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-21T14:53:34+01:00",
      "http": 200
@@ -53968,6 +54046,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-21T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-21T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -54021,11 +54104,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T18:19:10+01:00",
-     "ends": "2026-11-30T18:19:10+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -54033,6 +54111,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -54081,11 +54164,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-22T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-22T14:53:34+01:00",
      "http": 200
@@ -54093,6 +54171,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-22T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-22T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -54141,11 +54224,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T22:41:33+01:00",
-     "ends": "2026-11-18T22:41:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-18T14:53:34+01:00",
      "http": 200
@@ -54153,6 +54231,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -54201,11 +54284,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-14T22:41:33+01:00",
-     "ends": "2026-11-22T22:41:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-22T14:53:34+01:00",
      "http": 200
@@ -54213,6 +54291,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-22T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-22T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -54269,6 +54352,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -54316,11 +54404,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T02:20:11+01:00",
-     "ends": "2026-11-18T02:20:11+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-18T14:53:34+01:00",
      "http": 200
@@ -54328,6 +54411,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -55216,11 +55304,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T02:20:11+01:00",
-     "ends": "2026-11-19T02:20:11+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-19T14:53:34+01:00",
      "http": 200
@@ -55228,6 +55311,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-19T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-19T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -55414,11 +55502,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T02:20:11+01:00",
-     "ends": "2026-11-18T02:20:11+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-18T14:53:34+01:00",
      "http": 200
@@ -55426,6 +55509,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -55483,11 +55571,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T02:20:11+01:00",
-     "ends": "2026-11-18T02:20:11+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-18T14:53:34+01:00",
      "http": 200
@@ -55495,6 +55578,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -55552,11 +55640,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-18T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-18T14:53:34+01:00",
      "http": 200
@@ -55564,6 +55647,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -55621,11 +55709,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T02:20:11+01:00",
-     "ends": "2026-11-21T02:20:11+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-21T14:53:34+01:00",
      "http": 200
@@ -55633,6 +55716,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-21T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-21T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -55690,11 +55778,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-18T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-18T14:53:34+01:00",
      "http": 200
@@ -55702,6 +55785,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -55830,11 +55918,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T02:20:11+01:00",
-     "ends": "2026-11-18T02:20:11+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-18T14:53:34+01:00",
      "http": 200
@@ -55842,6 +55925,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -55890,11 +55978,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T02:20:11+01:00",
-     "ends": "2026-11-30T02:20:11+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-30T14:53:34+01:00",
      "http": 200
@@ -55902,6 +55985,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -56183,6 +56271,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-29T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-29T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -56732,11 +56825,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-19T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-19T14:53:34+01:00",
      "http": 200
@@ -56744,6 +56832,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-19T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-19T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -56809,6 +56902,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-23T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-23T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -56856,11 +56954,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-23T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-23T14:53:34+01:00",
      "http": 200
@@ -56868,6 +56961,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-23T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-23T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -56925,11 +57023,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-11-23T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-11-23T14:53:34+01:00",
      "http": 200
@@ -56937,6 +57030,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-23T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-23T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -57002,6 +57100,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-23T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-23T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -57058,11 +57161,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-15T12:58:04+01:00",
-     "ends": "2026-12-01T12:58:04+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-15T14:53:34+01:00",
      "ends": "2026-12-01T14:53:34+01:00",
      "http": 200
@@ -57070,6 +57168,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-12-01T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-12-01T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -57882,6 +57985,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2027-01-03T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2027-01-03T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -57945,6 +58053,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-20T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-20T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -58010,6 +58123,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-24T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-24T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -58074,6 +58192,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-24T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-24T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -58128,6 +58251,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-24T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-24T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -58319,6 +58447,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-24T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-24T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -58382,6 +58515,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-24T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-24T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -58436,6 +58574,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-12-01T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-12-01T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -58501,6 +58644,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-24T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-24T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -58565,6 +58713,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-24T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-24T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -58628,6 +58781,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -58737,6 +58895,11 @@
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-18T03:46:45+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
+     "http": 200
     }
    ]
   }
@@ -58799,6 +58962,11 @@
     {
      "at": "2026-11-16T03:46:45+01:00",
      "ends": "2026-11-30T03:46:45+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-30T13:47:21+01:00",
      "http": 200
     }
    ]
@@ -59506,7 +59674,7 @@
   "accessibility": 1.0,
   "accessibility_notes": [],
   "canonical_entity_id": "t:nasa:gratis-dein-name-auf-einen-chip-zum-saturn",
-  "category": "Gratis",
+  "category": "Gratis, redaktion",
   "cost_assumptions": [],
   "current_price": 0.0,
   "deal_id": "preispirat:778326",
@@ -59514,7 +59682,7 @@
   "description": "Bei NASA könnt ihr euren Namen kostenlos auf die Passagierliste der Dragonfly-Mission setzen lassen. Die Anmeldung ist bis zum 15. Januar 2027 möglich. Mit der kostenlosen Registrierung erhaltet ihr einen personalisierten Boarding Pass und könnt euren Namen auf einem Chip an Bord des Dragonfly-Raumf",
   "effective_discount": null,
   "family": "free",
-  "feed": "https://www.preispirat.ch/cat/freebies/feed/",
+  "feed": "https://www.preispirat.ch/feed/",
   "first_seen_at": "2026-11-15T12:01:23+01:00",
   "geographic_scope": "NATIONAL",
   "geographic_scope_resolved": "NATIONAL",
@@ -59529,7 +59697,7 @@
   "offer_type": "freebie",
   "personal_relevance": 0.6,
   "promotion_integrity": null,
-  "published_at": "2026-11-15T07:45:23+01:00",
+  "published_at": "2026-11-16T13:00:23+01:00",
   "score_components": [
    [
     "valeur inconnue : gratuit non évalué",
@@ -61272,7 +61440,7 @@
   "accessibility": 1.0,
   "accessibility_notes": [],
   "best_score": 2.1,
-  "canonical_entity_id": "t:mediamarkt:aoc-monitor-24g4hre-23-8-fhd-200-hz-300-nits-ips-panel-bei-mediamkert-zum-neuen-",
+  "canonical_entity_id": "t:mediamarkt:aoc-monitor-24g4hre-23-8-fhd-200-hz-300-nits-ips-panel-bei-mediamarkt-zum-neuen-",
   "category": "Computer & Büro",
   "cost_assumptions": [],
   "current_price": 59.0,
@@ -61314,7 +61482,7 @@
   "source_type": "community",
   "source_url": "https://www.preispirat.ch/aoc-monitor-24g4hre-23-8%e2%80%b3-fhd-200%e2%80%afhz-300%e2%80%afnits-ips-panel-bei-mediamkert-zum-neuen-bestpreis/",
   "tags": [],
-  "title": "AOC Monitor 24G4HRE (23.8″, FHD, 200 Hz, 300 Nits, IPS-Panel) bei Mediamkert zum neuen Bestpreis",
+  "title": "AOC Monitor 24G4HRE (23.8″, FHD, 200 Hz, 300 Nits, IPS-Panel) bei Mediamarkt zum neuen Bestpreis",
   "total_acquisition_cost": 59.0,
   "verify": {
    "checks": [
@@ -62485,6 +62653,65 @@
     {
      "at": "2026-11-16T12:30:26+01:00",
      "ends": "2026-12-31T12:30:26+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "preispirat:779191": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:interdiscount:hp-omnibook-x-flip-2-in-1-16-oder-14-intel-core-ultra-7-16-gb-ram-512-gb-ssd-met",
+  "category": "Computer & Büro",
+  "cost_assumptions": [],
+  "current_price": 899.95,
+  "deal_id": "preispirat:779191",
+  "deal_score": 0.0,
+  "description": "Bei Interdiscount findet ihr aktuell das HP OmniBook X Flip 2-in-1 14-kb0717nzx in Aktion für 899.95! Schlagt schnell zu, denn das Angebot gilt nur bis zum 18.11.2026. Das 16″-Modell wäre noch günstiger - für 799.95 Franken. *Das HP OmniBook X Flip verbindet die Flexibilität eines Convertibles mit d",
+  "discount_absolute": 33.7,
+  "discount_percentage": 3.6,
+  "effective_discount": 0.0,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-16T13:47:21+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/hp-omnibook-x-flip-2-in-1-14-kb0717nzx-2026-14-intel-core-ultra-7-16-gb-ram-512-gb-ssd-meteor-silver-1794832385-300x300.jpeg",
+  "last_changed_at": "2026-11-16T13:47:21+01:00",
+  "last_seen_at": "2026-11-16T13:47:21+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Interdiscount",
+  "missing_scans": 0,
+  "net_savings": -153.03,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-16T13:42:08+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 933.65,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "779191",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/hp-omnibook-x-flip-2-in-1-16-oder-14-intel-core-ultra-7-16-gb-ram-512-gb-ssd-meteor-silver/",
+  "tags": [],
+  "title": "HP OmniBook X Flip 2-in-1 16″ oder 14″ (Intel Core Ultra 7, 16 GB RAM, 512 GB SSD, Meteor Silver)",
+  "total_acquisition_cost": 899.95,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-16T13:47:21+01:00",
+     "ends": "2026-11-18T13:47:21+01:00",
      "http": 200
     }
    ]
