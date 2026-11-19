@@ -4457,7 +4457,7 @@
   "geographic_scope_resolved": "ONLINE",
   "group": "flash",
   "image_url": "https://images.daydeal.ch/files/DD4-0-Hauptbild-Kopie-6ae8ae97e4ee9.jpg",
-  "last_changed_at": "2026-11-18T22:27:09+01:00",
+  "last_changed_at": "2026-11-19T03:51:56+01:00",
   "last_seen_at": "2026-11-18T22:27:09+01:00",
   "lifecycle": "LOW_STOCK",
   "merchant": "DayDeal",
@@ -4477,16 +4477,22 @@
    ]
   ],
   "score_confidence": 0.7,
-  "sold_out": false,
+  "sold_out": true,
   "source_id": "daydeal",
   "source_offer_id": 9522,
   "source_type": "merchant",
   "source_url": "https://www.daydeal.ch/de/category/sport-freizeit",
   "starts_at": "2026-11-13T09:00:00+01:00",
-  "stock_percent_sold": 99.0,
+  "stock_percent_sold": 100.0,
   "tags": [],
   "title": "Smartwatch Kospet Tank T4C",
-  "total_acquisition_cost": 79.0
+  "total_acquisition_cost": 79.0,
+  "verify": {
+   "code": "T_SRC_EXPIRED_FLAG",
+   "ok_streak": 0,
+   "since": "2026-11-19T03:51:56+01:00",
+   "state": "ENDED"
+  }
  },
  "daydeal:9524": {
   "access": "PUBLIC",
@@ -5020,7 +5026,7 @@
   "total_acquisition_cost": 31.9,
   "verify": {
    "code": "T_SRC_EXPIRED_FLAG",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-18T22:27:09+01:00",
    "state": "ENDED"
   }
