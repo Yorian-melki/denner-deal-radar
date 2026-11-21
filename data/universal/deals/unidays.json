@@ -22,15 +22,16 @@
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/c0b69140-7c20-4184-a46c-02f1c7f95183",
   "last_changed_at": "2026-10-18T01:08:47+02:00",
   "last_seen_at": "2026-11-19T22:37:43+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Fnac",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_text": "Fnac-Karte: 5 % Rabatt",
   "offer_type": "perk",
   "personal_relevance": 0.8,
   "promotion_integrity": "unchecked",
   "reference_price_type": "stated_percent_only",
+  "removed_at": "2026-11-21T20:51:21+01:00",
   "requires_account": true,
   "requires_student": true,
   "score_components": [
@@ -91,7 +92,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/c9454879-e367-48b0-bf5a-2a5fa916329a",
   "last_changed_at": "2026-11-20T22:07:36+01:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "limited_time": true,
   "merchant": "Timberland",
@@ -121,15 +122,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -137,6 +138,69 @@
    "ok_streak": 0,
    "since": "2026-11-21T03:18:00+01:00",
    "state": "ENDED"
+  }
+ },
+ "unidays:0780365e-eb37-4269-a8a0-412d731f1a33": {
+  "access": "MEMBER",
+  "accessibility": 0.9,
+  "accessibility_notes": [
+   "compte requis"
+  ],
+  "best_score": 5.0,
+  "canonical_entity_id": "t:missoma:missoma-30-rabatt",
+  "channel": "online",
+  "deal_id": "unidays:0780365e-eb37-4269-a8a0-412d731f1a33",
+  "deal_score": 5.0,
+  "delivery_scope": "CH",
+  "discount_percentage": 30.0,
+  "effective_discount": 30.0,
+  "eligibility": "UNiDAYS : statut étudiant vérifié",
+  "ends_at": "2026-11-23T05:59:59+01:00",
+  "family": "student",
+  "first_seen_at": "2026-11-21T20:51:21+01:00",
+  "geographic_scope": "ONLINE",
+  "geographic_scope_resolved": "ONLINE",
+  "group": "student",
+  "image_url": "https://images.unidays.world/i/perks/native/raw-banner/2008460a-d540-4394-8d79-63427ba9c3e8",
+  "last_changed_at": "2026-11-21T20:51:21+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
+  "lifecycle": "ACTIVE",
+  "limited_time": true,
+  "merchant": "Missoma",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_text": "30% Rabatt",
+  "offer_type": "perk",
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "requires_account": true,
+  "requires_student": true,
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 30 %",
+    5.0
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "unidays",
+  "source_offer_id": "0780365e-eb37-4269-a8a0-412d731f1a33",
+  "source_type": "aggregator",
+  "source_url": "https://www.myunidays.com/perks/0780365e-eb37-4269-a8a0-412d731f1a33",
+  "starts_at": "2026-11-20T10:21:38+01:00",
+  "tags": [],
+  "title": "Missoma: 30% Rabatt",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-21T20:51:21+01:00",
+     "http": 404
+    }
+   ],
+   "code": "T_GONE_404_PENDING",
+   "ok_streak": 0,
+   "since": "2026-11-21T20:51:21+01:00",
+   "state": "SUSPECT"
   }
  },
  "unidays:16111a93-5b44-44fa-86f2-9c179e8dc88a": {
@@ -164,7 +228,7 @@
   "last_seen_at": "2026-11-20T22:07:36+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Evernote",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "40% Studi-Rabatt auf Evernote Advanced",
   "offer_type": "perk",
@@ -190,15 +254,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -230,7 +294,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/0407bc37-a635-4239-a637-9ffda2d73b68",
   "last_changed_at": "2026-11-13T02:29:11+01:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "limited_time": true,
   "merchant": "NordVPN",
@@ -259,15 +323,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -301,7 +365,7 @@
   "last_seen_at": "2026-11-20T22:07:36+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Sennheiser",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "Bis zu 40% Studentenrabatt",
   "offer_type": "perk",
@@ -326,15 +390,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -398,7 +462,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/1a7d9771-86c8-453f-a3e6-a9c72b5c572a",
   "last_changed_at": "2026-11-13T02:29:11+01:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "limited_time": true,
   "merchant": "LUAMAYA",
@@ -428,15 +492,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -469,15 +533,16 @@
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/fe88fba2-fe0b-4e39-a814-26955886d785",
   "last_changed_at": "2026-10-16T03:25:03+02:00",
   "last_seen_at": "2026-11-19T22:37:43+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "DC Shoes",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_text": "20% Rabatt",
   "offer_type": "perk",
   "personal_relevance": 0.8,
   "promotion_integrity": "unchecked",
   "reference_price_type": "stated_percent_only",
+  "removed_at": "2026-11-21T20:51:21+01:00",
   "requires_account": true,
   "requires_student": true,
   "score_components": [
@@ -538,15 +603,16 @@
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/d8e1bb06-a739-405c-8aae-b915791e982a",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
   "last_seen_at": "2026-11-19T22:37:43+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "DJI",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_text": "5 % Rabatt auf tragbare Kameras",
   "offer_type": "perk",
   "personal_relevance": 0.8,
   "promotion_integrity": "unchecked",
   "reference_price_type": "stated_percent_only",
+  "removed_at": "2026-11-21T20:51:21+01:00",
   "requires_account": true,
   "requires_student": true,
   "score_components": [
@@ -609,7 +675,7 @@
   "last_seen_at": "2026-11-20T22:07:36+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Ed Hardy",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "Exklusiv 15 % Rabatt",
   "offer_type": "perk",
@@ -635,15 +701,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -675,7 +741,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/d9c69d4e-2dfd-40c5-b027-c1824607fc84",
   "last_changed_at": "2026-10-15T03:31:07+02:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Quiksilver",
   "missing_scans": 0,
@@ -704,15 +770,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -815,7 +881,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/95a04d03-8b15-40e7-a2ff-00b6463f26c4",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Disney+",
   "missing_scans": 0,
@@ -844,15 +910,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -884,7 +950,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/3cd563dd-2117-44dd-92e5-ba17e1c1cbc5",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "adidas",
   "missing_scans": 0,
@@ -913,15 +979,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -953,7 +1019,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/e5dc883d-6edc-4ccb-9765-bcfd88c292ec",
   "last_changed_at": "2026-11-18T22:27:09+01:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "limited_time": true,
   "merchant": "ExpressVPN",
@@ -982,15 +1048,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -1194,14 +1260,15 @@
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/84a56e05-ebc3-4b7c-bdc1-33f97a574e54",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
   "last_seen_at": "2026-11-19T22:37:43+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Apple Music",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_text": "CHF 8.90/Monat und Apple TV kostenlos",
   "offer_type": "perk",
   "personal_relevance": 0.8,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-21T20:51:21+01:00",
   "requires_account": true,
   "requires_student": true,
   "score_components": [
@@ -1262,7 +1329,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/fc3be9f6-de58-4cdc-9208-3f0b46a6e956",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Mango Outlet",
   "missing_scans": 0,
@@ -1291,15 +1358,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -1329,7 +1396,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/d7591917-b7c3-4730-a343-f5b52f1bfae6",
   "last_changed_at": "2026-11-07T00:50:04+01:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "limited_time": true,
   "merchant": "Sony",
@@ -1358,15 +1425,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -1470,15 +1537,16 @@
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/83c08816-0d47-43db-b7aa-aace6644e098",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
   "last_seen_at": "2026-11-19T22:37:43+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Ray-Ban",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_text": "10% Rabatt auf Ray-Ban Meta",
   "offer_type": "perk",
   "personal_relevance": 0.8,
   "promotion_integrity": "unchecked",
   "reference_price_type": "stated_percent_only",
+  "removed_at": "2026-11-21T20:51:21+01:00",
   "requires_account": true,
   "requires_student": true,
   "score_components": [
@@ -1539,15 +1607,16 @@
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/186dd188-65a6-4775-a701-b1c2bf05f662",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
   "last_seen_at": "2026-11-19T22:37:43+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Next",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_text": "10% Studentenrabatt",
   "offer_type": "perk",
   "personal_relevance": 0.8,
   "promotion_integrity": "unchecked",
   "reference_price_type": "stated_percent_only",
+  "removed_at": "2026-11-21T20:51:21+01:00",
   "requires_account": true,
   "requires_student": true,
   "score_components": [
@@ -1610,7 +1679,7 @@
   "last_seen_at": "2026-11-20T22:07:36+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Mixcloud",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "3 Jahre lang 50% Rabatt",
   "offer_type": "perk",
@@ -1636,15 +1705,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -1676,7 +1745,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/543fd624-7fb4-48ba-8199-285529983a42",
   "last_changed_at": "2026-10-24T21:29:51+02:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Missoma",
   "missing_scans": 0,
@@ -1705,15 +1774,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -1745,7 +1814,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/bf9ae2ec-ac28-48ea-94a6-e1afa4b638a5",
   "last_changed_at": "2026-11-18T22:27:09+01:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "limited_time": true,
   "merchant": "ExpressVPN",
@@ -1774,15 +1843,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -1812,7 +1881,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/4db3345e-977e-4492-a92d-9bc6979147b2",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Deezer",
   "missing_scans": 0,
@@ -1840,15 +1909,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -1883,7 +1952,7 @@
   "last_seen_at": "2026-11-20T22:07:36+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "DJI",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "5 % Rabatt auf tragbare",
   "offer_type": "perk",
@@ -1909,15 +1978,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -2076,7 +2145,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/3930517a-6769-4af4-8cfa-9075a6e68e8a",
   "last_changed_at": "2026-11-16T00:24:21+01:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "limited_time": true,
   "merchant": "LUAMAYA",
@@ -2106,15 +2175,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -2146,7 +2215,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/860da935-e0bc-46d9-9b3c-88ddf453e918",
   "last_changed_at": "2026-10-24T21:29:51+02:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Acer",
   "missing_scans": 0,
@@ -2175,15 +2244,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -2216,15 +2285,16 @@
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/d5dc92f2-9266-42f9-b617-f32d20472db3",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
   "last_seen_at": "2026-11-19T22:37:43+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "DJI",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_text": "5 % Rabatt auf 360°-Kameras",
   "offer_type": "perk",
   "personal_relevance": 0.8,
   "promotion_integrity": "unchecked",
   "reference_price_type": "stated_percent_only",
+  "removed_at": "2026-11-21T20:51:21+01:00",
   "requires_account": true,
   "requires_student": true,
   "score_components": [
@@ -2354,7 +2424,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/48d71824-df3f-47b8-b279-306a3a6a1556",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Creamy Fabrics",
   "missing_scans": 0,
@@ -2383,15 +2453,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -2493,10 +2563,10 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/acbaeb87-608f-415f-9e18-bb0d95d8ebf4",
   "last_changed_at": "2026-10-17T01:37:41+02:00",
-  "last_seen_at": "2026-11-19T22:37:43+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Dyson",
-  "missing_scans": 1,
+  "missing_scans": 0,
   "net_savings": null,
   "offer_text": "10% Studentenrabatt",
   "offer_type": "perk",
@@ -2522,15 +2592,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -2565,7 +2635,7 @@
   "last_seen_at": "2026-11-20T22:07:36+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "OACE",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "15% Rabatt",
   "offer_type": "perk",
@@ -2591,15 +2661,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -2607,6 +2677,69 @@
    "ok_streak": 0,
    "since": "2026-11-16T03:46:45+01:00",
    "state": "ENDED"
+  }
+ },
+ "unidays:c299cec2-8c9d-48d5-9397-5773bebbb065": {
+  "access": "MEMBER",
+  "accessibility": 0.9,
+  "accessibility_notes": [
+   "compte requis"
+  ],
+  "best_score": 1.0,
+  "canonical_entity_id": "t:ray-ban:ray-ban-25-rabatt-auf-ray-ban-meta-5-extra-rabatt",
+  "channel": "online",
+  "deal_id": "unidays:c299cec2-8c9d-48d5-9397-5773bebbb065",
+  "deal_score": 1.0,
+  "delivery_scope": "CH",
+  "discount_percentage": 5.0,
+  "effective_discount": 5.0,
+  "eligibility": "UNiDAYS : statut étudiant vérifié",
+  "ends_at": "2026-11-30T23:59:59+01:00",
+  "family": "student",
+  "first_seen_at": "2026-11-21T20:51:21+01:00",
+  "geographic_scope": "ONLINE",
+  "geographic_scope_resolved": "ONLINE",
+  "group": "student",
+  "image_url": "https://images.unidays.world/i/perks/native/raw-banner/83c08816-0d47-43db-b7aa-aace6644e098",
+  "last_changed_at": "2026-11-21T20:51:21+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
+  "lifecycle": "ACTIVE",
+  "limited_time": true,
+  "merchant": "Ray-Ban",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_text": "25 % Rabatt auf Ray-Ban Meta + 5 % Extra-Rabatt",
+  "offer_type": "perk",
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "requires_account": true,
+  "requires_student": true,
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 5 %",
+    1.0
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "unidays",
+  "source_offer_id": "c299cec2-8c9d-48d5-9397-5773bebbb065",
+  "source_type": "aggregator",
+  "source_url": "https://www.myunidays.com/perks/c299cec2-8c9d-48d5-9397-5773bebbb065",
+  "starts_at": "2026-11-21T00:00:00+01:00",
+  "tags": [],
+  "title": "Ray-Ban: 25 % Rabatt auf Ray-Ban Meta + 5 % Extra-Rabatt",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-21T20:51:21+01:00",
+     "http": 404
+    }
+   ],
+   "code": "T_GONE_404_PENDING",
+   "ok_streak": 0,
+   "since": "2026-11-21T20:51:21+01:00",
+   "state": "SUSPECT"
   }
  },
  "unidays:c442d3f4-d970-412b-923c-1874aba7e086": {
@@ -2637,7 +2770,7 @@
   "lifecycle": "ACTIVE",
   "limited_time": true,
   "merchant": "adidas",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "bis zu 50 % Rabatt + zusätzlich 10 %",
   "offer_type": "perk",
@@ -2663,15 +2796,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -2703,17 +2836,16 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/02411865-919b-47d1-aafe-64e53252106f",
   "last_changed_at": "2026-10-17T01:37:41+02:00",
-  "last_seen_at": "2026-11-18T22:27:09+01:00",
-  "lifecycle": "REMOVED",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
+  "lifecycle": "ACTIVE",
   "merchant": "beyerdynamic",
-  "missing_scans": 2,
+  "missing_scans": 0,
   "net_savings": null,
   "offer_text": "10 % Rabatt auf Gaming-Kopfhörer",
   "offer_type": "perk",
   "personal_relevance": 0.8,
   "promotion_integrity": "unchecked",
   "reference_price_type": "stated_percent_only",
-  "removed_at": "2026-11-20T22:07:36+01:00",
   "requires_account": true,
   "requires_student": true,
   "score_components": [
@@ -2733,15 +2865,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-20T03:39:30+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-20T05:00:10+01:00",
      "http": 404
     },
     {
      "at": "2026-11-20T13:55:55+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -2776,7 +2908,7 @@
   "last_seen_at": "2026-11-20T22:07:36+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Dell",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "5% Rabatt auf ausgewählte Laptops",
   "offer_type": "perk",
@@ -2802,15 +2934,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -2818,6 +2950,70 @@
    "ok_streak": 0,
    "since": "2026-11-21T03:18:00+01:00",
    "state": "ENDED"
+  }
+ },
+ "unidays:d456c383-e25b-40ee-856a-7e0d754500f5": {
+  "access": "MEMBER",
+  "accessibility": 0.9,
+  "accessibility_notes": [
+   "compte requis"
+  ],
+  "best_score": 1.0,
+  "canonical_entity_id": "t:ray-ban:ray-ban-bis-zu-50-rabatt-5-extra",
+  "channel": "online",
+  "deal_id": "unidays:d456c383-e25b-40ee-856a-7e0d754500f5",
+  "deal_score": 1.0,
+  "delivery_scope": "CH",
+  "discount_max_percentage": 50.0,
+  "discount_percentage": 5.0,
+  "effective_discount": 5.0,
+  "eligibility": "UNiDAYS : statut étudiant vérifié",
+  "ends_at": "2026-11-29T23:59:59+01:00",
+  "family": "student",
+  "first_seen_at": "2026-11-21T20:51:21+01:00",
+  "geographic_scope": "ONLINE",
+  "geographic_scope_resolved": "ONLINE",
+  "group": "student",
+  "image_url": "https://images.unidays.world/i/perks/native/raw-banner/00389022-2460-425c-b63a-94a85407fe2c",
+  "last_changed_at": "2026-11-21T20:51:21+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
+  "lifecycle": "ACTIVE",
+  "limited_time": true,
+  "merchant": "Ray-Ban",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_text": "Bis zu 50% Rabatt + 5% Extra",
+  "offer_type": "perk",
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "requires_account": true,
+  "requires_student": true,
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 5 %",
+    1.0
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "unidays",
+  "source_offer_id": "d456c383-e25b-40ee-856a-7e0d754500f5",
+  "source_type": "aggregator",
+  "source_url": "https://www.myunidays.com/perks/d456c383-e25b-40ee-856a-7e0d754500f5",
+  "starts_at": "2026-11-21T00:00:00+01:00",
+  "tags": [],
+  "title": "Ray-Ban: Bis zu 50% Rabatt + 5% Extra",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-21T20:51:21+01:00",
+     "http": 404
+    }
+   ],
+   "code": "T_GONE_404_PENDING",
+   "ok_streak": 0,
+   "since": "2026-11-21T20:51:21+01:00",
+   "state": "SUSPECT"
   }
  },
  "unidays:d5a17e89-ea5e-48ed-86c8-2dffe35984c6": {
@@ -2843,15 +3039,16 @@
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/c7941d11-6736-43f6-8dbe-e0acc44dbc63",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
   "last_seen_at": "2026-11-19T22:37:43+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Roxy",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_text": "5% Extra-Rabatt",
   "offer_type": "perk",
   "personal_relevance": 0.8,
   "promotion_integrity": "unchecked",
   "reference_price_type": "stated_percent_only",
+  "removed_at": "2026-11-21T20:51:21+01:00",
   "requires_account": true,
   "requires_student": true,
   "score_components": [
@@ -3032,7 +3229,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/6677f0f5-aeaa-4163-8ec2-63d2ba63eec0",
   "last_changed_at": "2026-10-15T03:31:07+02:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Farfetch",
   "missing_scans": 0,
@@ -3061,15 +3258,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -3102,7 +3299,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/db725aaa-f73c-4164-b00a-4ad83b427c2c",
   "last_changed_at": "2026-11-15T02:20:11+01:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Airalo",
   "missing_scans": 0,
@@ -3131,15 +3328,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -3147,6 +3344,70 @@
    "ok_streak": 0,
    "since": "2026-11-16T03:46:45+01:00",
    "state": "ENDED"
+  }
+ },
+ "unidays:e0fc2bc1-9b84-4bb3-849b-f0b521fe67fe": {
+  "access": "MEMBER",
+  "accessibility": 0.9,
+  "accessibility_notes": [
+   "compte requis"
+  ],
+  "best_score": 2.0,
+  "canonical_entity_id": "t:adidas:adidas-bis-zu-50-rabatt-10-extra",
+  "channel": "online",
+  "deal_id": "unidays:e0fc2bc1-9b84-4bb3-849b-f0b521fe67fe",
+  "deal_score": 2.0,
+  "delivery_scope": "CH",
+  "discount_max_percentage": 50.0,
+  "discount_percentage": 10.0,
+  "effective_discount": 10.0,
+  "eligibility": "UNiDAYS : statut étudiant vérifié",
+  "ends_at": "2026-11-30T23:59:59+01:00",
+  "family": "student",
+  "first_seen_at": "2026-11-21T20:51:21+01:00",
+  "geographic_scope": "ONLINE",
+  "geographic_scope_resolved": "ONLINE",
+  "group": "student",
+  "image_url": "https://images.unidays.world/i/perks/native/raw-banner/964e8289-7e09-423a-9d3c-518e46d0453b",
+  "last_changed_at": "2026-11-21T20:51:21+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
+  "lifecycle": "ACTIVE",
+  "limited_time": true,
+  "merchant": "adidas",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_text": "Bis zu 50% Rabatt + 10% Extra",
+  "offer_type": "perk",
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "requires_account": true,
+  "requires_student": true,
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 10 %",
+    2.0
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "unidays",
+  "source_offer_id": "e0fc2bc1-9b84-4bb3-849b-f0b521fe67fe",
+  "source_type": "aggregator",
+  "source_url": "https://www.myunidays.com/perks/e0fc2bc1-9b84-4bb3-849b-f0b521fe67fe",
+  "starts_at": "2026-11-20T00:01:00+01:00",
+  "tags": [],
+  "title": "adidas: Bis zu 50% Rabatt + 10% Extra",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-21T20:51:21+01:00",
+     "http": 404
+    }
+   ],
+   "code": "T_GONE_404_PENDING",
+   "ok_streak": 0,
+   "since": "2026-11-21T20:51:21+01:00",
+   "state": "SUSPECT"
   }
  },
  "unidays:e29be416-37d3-4ba9-878c-aa0a1d016d6b": {
@@ -3243,7 +3504,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/82d1a3cf-056c-49c0-9a7e-8393a82c75fb",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "hhv",
   "missing_scans": 0,
@@ -3272,15 +3533,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -3317,7 +3578,7 @@
   "lifecycle": "ACTIVE",
   "limited_time": true,
   "merchant": "LUAMAYA",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "15% auf unseren Adventskalender",
   "offer_type": "perk",
@@ -3343,15 +3604,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -3382,7 +3643,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/85afe61c-ae19-4e72-b663-c3ae825b8f03",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "HP",
   "missing_scans": 0,
@@ -3410,15 +3671,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -3520,7 +3781,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/e153fbba-4339-4ab2-afb0-9bada235be93",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "DJI",
   "missing_scans": 0,
@@ -3549,15 +3810,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
@@ -3589,7 +3850,7 @@
   "group": "student",
   "image_url": "https://images.unidays.world/i/perks/native/raw-banner/45f011be-3816-46f7-b407-cfca1488f93d",
   "last_changed_at": "2026-10-18T01:08:47+02:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
+  "last_seen_at": "2026-11-21T20:51:21+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Mister Spex",
   "missing_scans": 0,
@@ -3618,15 +3879,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T03:18:00+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-21T05:00:03+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T13:41:09+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-21T20:51:21+01:00",
      "http": 404
     }
    ],
