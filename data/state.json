@@ -24,12 +24,12 @@
   "weekend_highlight": 0,
   "weekend_highlight_next_week": 0
  },
- "last_attempt": "2026-11-23T01:25:30+01:00",
- "last_new_at": "2026-11-18T14:51:12+01:00",
- "last_success": "2026-11-23T01:25:30+01:00",
+ "last_attempt": "2026-11-23T09:16:22+01:00",
+ "last_new_at": "2026-11-23T09:16:22+01:00",
+ "last_success": "2026-11-23T09:16:22+01:00",
  "outbox": [],
  "recaps": {
-  "monday": "2026-11-16",
+  "monday": "2026-11-23",
   "thursday": "2026-11-19"
  },
  "reminded": {
@@ -173,6 +173,7 @@
   "recap:monday:2026-11-02": "2026-11-02T07:51:58.431490+01:00",
   "recap:monday:2026-11-09": "2026-11-09T08:12:43.224738+01:00",
   "recap:monday:2026-11-16": "2026-11-16T08:19:48.690003+01:00",
+  "recap:monday:2026-11-23": "2026-11-23T09:16:22.401434+01:00",
   "recap:thursday:2026-10-15": "2026-10-15T09:43:46.741049+02:00",
   "recap:thursday:2026-10-22": "2026-10-22T09:57:33.109294+02:00",
   "recap:thursday:2026-10-29": "2026-10-29T09:54:32.465444+01:00",
@@ -221,67 +222,68 @@
   "wave:2026-11-03T13:43:55+01:00": "2026-11-03T13:43:55.447425+01:00",
   "wave:2026-11-09T08:12:43+01:00": "2026-11-09T08:12:43.224738+01:00",
   "wave:2026-11-16T08:19:48+01:00": "2026-11-16T08:19:48.690003+01:00",
-  "wave:2026-11-18T14:51:12+01:00": "2026-11-18T14:51:12.345961+01:00"
+  "wave:2026-11-18T14:51:12+01:00": "2026-11-18T14:51:12.345961+01:00",
+  "wave:2026-11-23T09:16:22+01:00": "2026-11-23T09:16:22.401434+01:00"
  },
  "sources": {
   "promo_current_week": {
    "anomalous": false,
-   "checked": "2026-11-23T01:25:30+01:00",
+   "checked": "2026-11-23T09:16:22+01:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-11-23T01:25:30+01:00",
+   "last_ok": "2026-11-23T09:16:22+01:00",
    "ok": true,
    "pages": 3,
-   "received": 267,
-   "total": 267,
+   "received": 258,
+   "total": 258,
    "warnings": []
   },
   "promo_next_week": {
-   "anomalous": true,
-   "checked": "2026-11-23T01:25:30+01:00",
+   "anomalous": false,
+   "checked": "2026-11-23T09:16:22+01:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-11-23T01:25:30+01:00",
+   "last_ok": "2026-11-23T09:16:22+01:00",
    "ok": true,
-   "pages": 1,
-   "received": 0,
-   "total": 0,
+   "pages": 3,
+   "received": 265,
+   "total": 265,
    "warnings": []
   },
   "start_of_the_week_highlight": {
    "anomalous": false,
-   "checked": "2026-11-23T01:25:30+01:00",
+   "checked": "2026-11-23T09:16:22+01:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-11-23T01:25:30+01:00",
+   "last_ok": "2026-11-23T09:16:22+01:00",
    "ok": true,
    "pages": 1,
-   "received": 0,
-   "total": 0,
+   "received": 9,
+   "total": 9,
    "warnings": []
   },
   "weekend_highlight": {
    "anomalous": false,
-   "checked": "2026-11-23T01:25:30+01:00",
+   "checked": "2026-11-23T09:16:22+01:00",
    "complete": true,
    "error": null,
-   "last_ok": "2026-11-23T01:25:30+01:00",
-   "ok": true,
-   "pages": 1,
-   "received": 5,
-   "total": 5,
-   "warnings": []
-  },
-  "weekend_highlight_next_week": {
-   "anomalous": false,
-   "checked": "2026-11-23T01:25:30+01:00",
-   "complete": true,
-   "error": null,
-   "last_ok": "2026-11-23T01:25:30+01:00",
+   "last_ok": "2026-11-23T09:16:22+01:00",
    "ok": true,
    "pages": 1,
    "received": 0,
    "total": 0,
+   "warnings": []
+  },
+  "weekend_highlight_next_week": {
+   "anomalous": false,
+   "checked": "2026-11-23T09:16:22+01:00",
+   "complete": true,
+   "error": null,
+   "last_ok": "2026-11-23T09:16:22+01:00",
+   "ok": true,
+   "pages": 1,
+   "received": 8,
+   "total": 8,
    "warnings": []
   }
  },
@@ -299,21 +301,21 @@
    267,
    267,
    267,
-   267
+   258
   ],
   "promo_next_week": [
    264,
    264,
    264,
    264,
-   264,
    267,
    267,
    267,
    267,
    267,
    267,
-   267
+   267,
+   265
   ],
   "start_of_the_week_highlight": [
    0,
@@ -327,7 +329,7 @@
    0,
    0,
    0,
-   0
+   9
   ],
   "weekend_highlight": [
    5,
@@ -341,7 +343,7 @@
    5,
    5,
    5,
-   5
+   0
   ],
   "weekend_highlight_next_week": [
    0,
@@ -355,7 +357,7 @@
    0,
    0,
    0,
-   0
+   8
   ]
  }
 }
