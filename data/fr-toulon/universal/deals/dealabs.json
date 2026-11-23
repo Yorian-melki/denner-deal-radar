@@ -19657,8 +19657,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-22T12:58:57+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "HIDDEN"
   }
  },
  "dealabs:3458435": {
@@ -19720,8 +19720,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-22T12:58:57+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "HIDDEN"
   }
  },
  "dealabs:3458527": {
@@ -19849,8 +19849,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-22T12:58:57+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "HIDDEN"
   }
  },
  "dealabs:3458784": {
@@ -19912,8 +19912,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-22T12:58:57+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "HIDDEN"
   }
  },
  "dealabs:3458904": {
@@ -19975,8 +19975,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-22T12:58:57+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "HIDDEN"
   }
  },
  "dealabs:3459057": {
@@ -21298,8 +21298,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-22T12:58:57+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "HIDDEN"
   }
  },
  "dealabs:3459192": {
@@ -22054,8 +22054,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-22T12:58:57+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "HIDDEN"
   }
  },
  "dealabs:3459383": {
@@ -25052,12 +25052,14 @@
   "group": "free",
   "last_changed_at": "2026-11-18T13:14:55+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Carrefour",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.6,
   "promotion_integrity": null,
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "valeur inconnue : gratuit non évalué",
@@ -26352,15 +26354,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-20T03:36:18+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-21T03:50:21+01:00",
      "http": 200
     },
     {
      "at": "2026-11-22T02:34:31+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 200
     }
    ]
@@ -26409,15 +26411,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-20T03:36:18+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-21T03:50:21+01:00",
      "http": 200
     },
     {
      "at": "2026-11-22T02:34:31+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 200
     }
    ]
@@ -26466,15 +26468,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-20T03:36:18+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-21T03:50:21+01:00",
      "http": 200
     },
     {
      "at": "2026-11-22T02:34:31+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 200
     }
    ]
@@ -26523,15 +26525,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-20T03:36:18+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-21T03:50:21+01:00",
      "http": 200
     },
     {
      "at": "2026-11-22T02:34:31+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 200
     }
    ]
@@ -26580,15 +26582,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-20T03:36:18+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-21T03:50:21+01:00",
      "http": 200
     },
     {
      "at": "2026-11-22T02:34:31+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 200
     }
    ]
@@ -26637,15 +26639,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-20T03:36:18+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-21T03:50:21+01:00",
      "http": 200
     },
     {
      "at": "2026-11-22T02:34:31+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 200
     }
    ]
@@ -26694,15 +26696,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-20T03:36:18+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-21T03:50:21+01:00",
      "http": 200
     },
     {
      "at": "2026-11-22T02:34:31+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 200
     }
    ]
@@ -26751,15 +26753,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-20T03:36:18+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-21T03:50:21+01:00",
      "http": 200
     },
     {
      "at": "2026-11-22T02:34:31+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 200
     }
    ]
@@ -27481,15 +27483,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-20T03:36:18+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-21T03:50:21+01:00",
      "http": 200
     },
     {
      "at": "2026-11-22T02:34:31+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 200
     }
    ]
@@ -32875,7 +32877,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-19T21:58:30+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -34315,7 +34317,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-19T21:58:30+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -34784,7 +34786,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462541": {
@@ -34843,7 +34849,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462544": {
@@ -34902,7 +34912,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462548": {
@@ -34961,7 +34975,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462557": {
@@ -35020,7 +35038,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462567": {
@@ -35079,7 +35101,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462575": {
@@ -35101,7 +35127,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-20T03:36:18+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Conforama",
   "missing_scans": 0,
@@ -35195,7 +35221,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462578": {
@@ -35254,7 +35284,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462580": {
@@ -35313,7 +35347,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462595": {
@@ -35335,7 +35373,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "proteines",
   "last_changed_at": "2026-11-20T03:36:18+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -35432,7 +35470,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462602": {
@@ -35491,7 +35533,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462604": {
@@ -35550,7 +35596,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462605": {
@@ -35609,7 +35659,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462624": {
@@ -35668,7 +35722,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462628": {
@@ -35727,7 +35785,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462637": {
@@ -35786,7 +35848,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462641": {
@@ -35845,7 +35911,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462644": {
@@ -35904,7 +35974,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462649": {
@@ -35963,7 +36037,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462656": {
@@ -36022,7 +36100,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462667": {
@@ -36081,7 +36163,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462669": {
@@ -36103,7 +36189,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-20T03:36:18+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Leclerc Drive",
   "missing_scans": 0,
@@ -36197,7 +36283,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462676": {
@@ -36219,7 +36309,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-20T03:36:18+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Gibert",
   "missing_scans": 0,
@@ -36445,7 +36535,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462691": {
@@ -36504,7 +36598,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462692": {
@@ -36629,7 +36727,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462701": {
@@ -36651,7 +36753,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-20T13:10:57+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -36708,7 +36810,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-20T13:10:57+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -36765,7 +36867,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-20T13:10:57+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -36822,7 +36924,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "nourriture",
   "last_changed_at": "2026-11-20T13:10:57+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -36881,7 +36983,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-20T13:10:57+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Supercell",
   "missing_scans": 0,
@@ -36969,7 +37071,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3462994": {
@@ -37130,7 +37236,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463093": {
@@ -37388,7 +37498,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-20T13:10:57+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "App Store",
   "missing_scans": 0,
@@ -37852,7 +37962,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-20T13:10:57+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Myprotein",
   "missing_scans": 0,
@@ -38892,7 +39002,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Myprotein",
   "missing_scans": 0,
@@ -38980,7 +39090,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463358": {
@@ -39033,7 +39147,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463367": {
@@ -39086,7 +39204,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463374": {
@@ -39139,7 +39261,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463382": {
@@ -39192,7 +39318,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463396": {
@@ -39245,7 +39375,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463448": {
@@ -39267,7 +39401,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Supercell",
   "missing_scans": 0,
@@ -39355,7 +39489,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463505": {
@@ -39408,7 +39546,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463545": {
@@ -39430,7 +39572,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Uber Eats",
   "missing_scans": 0,
@@ -39487,7 +39629,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Steam",
   "missing_scans": 0,
@@ -39575,7 +39717,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463648": {
@@ -39597,7 +39743,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Gran Turismo",
   "missing_scans": 0,
@@ -39708,12 +39854,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -39765,12 +39913,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Apple Store",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -39821,7 +39971,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "boissons",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -39879,12 +40029,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -39936,12 +40088,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Easylounge",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -39993,12 +40147,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Fnac",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40050,12 +40206,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40107,12 +40265,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40164,12 +40324,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Son-vidéo.com",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40221,12 +40383,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Fnac",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40278,12 +40442,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40335,12 +40501,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40392,12 +40560,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40449,12 +40619,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40506,12 +40678,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40563,12 +40737,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Fnac",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40620,12 +40796,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "E.Leclerc",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40677,12 +40855,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40734,12 +40914,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Teufel",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40791,12 +40973,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Fnac",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40848,12 +41032,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Son-vidéo.com",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40905,12 +41091,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -40962,12 +41150,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Media Markt",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -41019,12 +41209,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Fnac",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -41076,12 +41268,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Amazon",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -41140,12 +41334,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "HP",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -41196,7 +41392,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Leroy Merlin",
   "missing_scans": 0,
@@ -41254,12 +41450,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Planète Technologie",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -41311,12 +41509,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Planète Technologie",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -41368,12 +41568,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Ubaldi",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -41425,12 +41627,14 @@
   "group": "tech",
   "last_changed_at": "2026-11-20T21:43:32+01:00",
   "last_seen_at": "2026-11-20T21:43:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Planète Technologie",
   "missing_scans": 0,
   "net_savings": null,
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-23T02:58:27+01:00",
+  "removed_reason": "non revue depuis 48 h (flux à fenêtre)",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -41512,7 +41716,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463938": {
@@ -41565,7 +41773,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463941": {
@@ -41618,7 +41830,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463943": {
@@ -41671,7 +41887,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463944": {
@@ -41724,7 +41944,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463946": {
@@ -41777,7 +42001,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463948": {
@@ -41830,7 +42058,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463949": {
@@ -41883,7 +42115,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463954": {
@@ -41936,7 +42172,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463956": {
@@ -41989,7 +42229,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3463975": {
@@ -42011,7 +42255,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-21T12:46:56+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Tefal",
   "missing_scans": 0,
@@ -42088,15 +42332,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-22T02:34:31+01:00",
-     "http": 410
-    },
-    {
      "at": "2026-11-22T12:58:57+01:00",
      "http": 410
     },
     {
      "at": "2026-11-22T20:58:09+01:00",
+     "http": 410
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 410
     }
    ],
@@ -42156,7 +42400,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3464003": {
@@ -42209,7 +42457,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3464006": {
@@ -42262,7 +42514,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3464007": {
@@ -42315,7 +42571,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3464009": {
@@ -42368,7 +42628,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3464013": {
@@ -42414,15 +42678,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-22T02:34:31+01:00",
-     "http": 410
-    },
-    {
      "at": "2026-11-22T12:58:57+01:00",
      "http": 410
     },
     {
      "at": "2026-11-22T20:58:09+01:00",
+     "http": 410
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 410
     }
    ],
@@ -42535,7 +42799,11 @@
      "at": "2026-11-22T02:34:31+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-23T02:58:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "dealabs:3464030": {
@@ -42557,7 +42825,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-21T12:46:56+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -42610,7 +42878,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-21T12:46:56+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -42769,7 +43037,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-21T12:46:56+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Myprotein",
   "missing_scans": 0,
@@ -43482,16 +43750,17 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T12:46:56+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-22T12:58:57+01:00",
      "http": 404,
      "redirect": "https://www.dealabs.com/bons-plans/lot-de-2-chauffes-mains-electrique-fitabok-6000mah-doree-vendeur-tiers-3462514"
     },
     {
      "at": "2026-11-22T20:58:09+01:00",
+     "http": 404,
+     "redirect": "https://www.dealabs.com/bons-plans/lot-de-2-chauffes-mains-electrique-fitabok-6000mah-doree-vendeur-tiers-3462514"
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 404,
      "redirect": "https://www.dealabs.com/bons-plans/lot-de-2-chauffes-mains-electrique-fitabok-6000mah-doree-vendeur-tiers-3462514"
     }
@@ -44128,15 +44397,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-21T12:46:56+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-22T12:58:57+01:00",
      "http": 410
     },
     {
      "at": "2026-11-22T20:58:09+01:00",
+     "http": 410
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 410
     }
    ],
@@ -44165,7 +44434,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "feculents",
   "last_changed_at": "2026-11-21T20:47:50+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Intermarché",
   "missing_scans": 0,
@@ -45068,7 +45337,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-21T20:47:50+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Carrefour",
   "missing_scans": 0,
@@ -45492,7 +45761,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-21T20:47:50+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Monoprix",
   "missing_scans": 0,
@@ -45571,6 +45840,10 @@
     {
      "at": "2026-11-21T20:47:50+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -45619,6 +45892,10 @@
    "checks": [
     {
      "at": "2026-11-21T20:47:50+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 200
     }
    ]
@@ -45669,6 +45946,10 @@
     {
      "at": "2026-11-21T20:47:50+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -45717,6 +45998,10 @@
    "checks": [
     {
      "at": "2026-11-21T20:47:50+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 200
     }
    ]
@@ -46133,7 +46418,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-22T02:34:31+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -46525,7 +46810,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-22T02:34:31+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -47113,7 +47398,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-22T12:58:57+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -47162,7 +47447,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-22T12:58:57+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -47211,7 +47496,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-22T12:58:57+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -47309,7 +47594,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "fruits_legumes",
   "last_changed_at": "2026-11-22T12:58:57+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -47360,7 +47645,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "autres",
   "last_changed_at": "2026-11-22T12:58:57+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -48830,7 +49115,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-22T20:58:09+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -48879,7 +49164,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-22T20:58:09+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -49124,7 +49409,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-22T20:58:09+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -50055,7 +50340,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "last_changed_at": "2026-11-22T20:58:09+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -50251,7 +50536,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-22T20:58:09+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Auchan",
   "missing_scans": 0,
@@ -50496,7 +50781,7 @@
   "geographic_scope_resolved": "NATIONAL",
   "group": "retail",
   "last_changed_at": "2026-11-22T20:58:09+01:00",
-  "last_seen_at": "2026-11-22T20:58:09+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amazon",
   "missing_scans": 0,
@@ -50521,6 +50806,1530 @@
    "checks": [
     {
      "at": "2026-11-22T20:58:09+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465625": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:camera-eufy-e220-2-2k-360-reconditionne-excellent-etat-vendeur-tiers",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 19.99,
+  "deal_id": "dealabs:3465625",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465625",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/camera-eufy-e220-22k-360-reconditionne-excellent-3465625",
+  "tags": [],
+  "title": "Camera eufy e220 2.2k, 360. (Reconditionné excellent état - vendeur tiers)",
+  "total_acquisition_cost": 19.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465638": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:e-leclerc:tablette-apple-ipad-a16-128-go-via-74-85-de-remise-fidelite",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 424.15,
+  "deal_id": "dealabs:3465638",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "E.Leclerc",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465638",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/ipad-a16-128-go-neuf-3465638",
+  "tags": [],
+  "title": "Tablette Apple iPad A16 - 128 Go (via 74,85€ de remise fidélité)",
+  "total_acquisition_cost": 424.15,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465642": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:chargeur-ugreen-nexode-65w-3-ports-gan-tech-charge-rapide-vendeur-tiers",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 19.79,
+  "deal_id": "dealabs:3465642",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "historical_low": 19.79,
+  "historical_median": 19.79,
+  "history_n": 1,
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465642",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/chargeur-ugreen-nexode-65w-3-ports-gan-tech-charge-rapide-vendeur-tiers-3465642",
+  "tags": [],
+  "title": "Chargeur Ugreen Nexode - 65W, 3 ports, GaN Tech, charge rapide (Vendeur tiers)",
+  "total_acquisition_cost": 19.79,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465643": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:ecran-pc-27-iiyama-g-master-red-eagle-g2771qs-b1-27-wqhd-200hz-fast-ips-0-5ms",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 135.83,
+  "deal_id": "dealabs:3465643",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465643",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/iiyama-g2771qs-b1-27-ips-2560x1440200hz-2h1dp-3465643",
+  "tags": [],
+  "title": "Ecran PC 27\" iiyama G-Master Red Eagle G2771QS-B1-27 - WQHD, 200Hz, Fast IPS, 0.5ms",
+  "total_acquisition_cost": 135.83,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465649": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:prime-pad-thermique-a-changement-de-phase-thermal-grizzly-phasesheet-ptm-vendeur",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 9.0,
+  "deal_id": "dealabs:3465649",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465649",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/pad-thermique-a-changement-de-phase-thermal-grizzly-phasesheet-ptm-50-x-40-mm-3465649",
+  "tags": [],
+  "title": "[Prime] Pad thermique à changement de phase Thermal Grizzly PhaseSheet PTM (vendeur tiers)",
+  "total_acquisition_cost": 9.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465650": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:batterie-portable-vonmahlen-evergreen-go-ultra-compacte-1000-mah-vendeur-tiers",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 17.47,
+  "deal_id": "dealabs:3465650",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465650",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/vonmahlen-evergreen-go-batterie-portable-ultra-compacte-1000-mah-3465650",
+  "tags": [],
+  "title": "Batterie Portable Vonmählen Evergreen Go - Ultra compacte 1000 mAh (vendeur tiers)",
+  "total_acquisition_cost": 17.47,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465656": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:e-leclerc:smartphone-6-5-apple-iphone-air-ram-12-go-512-go-blanc-nuage-via-332-25-sur-la-c",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 996.75,
+  "deal_id": "dealabs:3465656",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "E.Leclerc",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465656",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/smartphone-65-apple-iphone-air-ram-12-go-512-go-blanc-nuage-via-33225-eur-sur-la-carte-de-fidelite-3465656",
+  "tags": [],
+  "title": "Smartphone 6,5\" Apple iPhone Air - RAM 12 Go, 512 go, Blanc Nuage (Via 332,25 € sur la Carte de Fidélité)",
+  "total_acquisition_cost": 996.75,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465659": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:prime-ventirad-thermalright-peerless-assassin-140-digital-black-vendeur-tiers",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 40.85,
+  "deal_id": "dealabs:3465659",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465659",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/ventirad-thermalright-peerless-assassin-140-digital-black-vendeur-tiers-3465659",
+  "tags": [],
+  "title": "[Prime] Ventirad Thermalright Peerless Assassin 140 Digital Black (Vendeur Tiers)",
+  "total_acquisition_cost": 40.85,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465671": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:montre-connectee-apple-watch-se-3-gps-40mm-boitier-en-aluminium",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 231.5,
+  "deal_id": "dealabs:3465671",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465671",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/apple-watch-se-3-3465671",
+  "tags": [],
+  "title": "Montre connectée Apple Watch SE 3 GPS - 40mm, Boîtier en Aluminium",
+  "total_acquisition_cost": 231.5,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465682": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:e-leclerc:tv-tcl-4k-qd-mini-led-55qled810l",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 499.0,
+  "deal_id": "dealabs:3465682",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "E.Leclerc",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465682",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/tv-tcl-4k-qd-mini-led-55qled810l-3465682",
+  "tags": [],
+  "title": "TV TCL 4K QD-Mini LED 55QLED810L",
+  "total_acquisition_cost": 499.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465685": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:chargeur-usb-c-rapide-45w-2-port-usb-c-phone-chargeur-avec-1-1-2-2m-vendeur-tier",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 21.42,
+  "deal_id": "dealabs:3465685",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465685",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/45w-chargeur-usb-c-rapide-2-port-usb-c-phone-chargeur-avec-1122m-3465685",
+  "tags": [],
+  "title": "Chargeur USB C rapide 45W 2 Port USB C Phone Chargeur avec 1/1/2/2M (vendeur tiers)",
+  "total_acquisition_cost": 21.42,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465686": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:sonovente-com:casque-beyerdynamic-dt-770-pro-250-reconditionne-stock-b",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 105.0,
+  "deal_id": "dealabs:3465686",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "SonoVente.com",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465686",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/beyerdynamic-dt-770-pro-250-stock-b-3465686",
+  "tags": [],
+  "title": "Casque Beyerdynamic DT 770 PRO 250 (Reconditionné - Stock B)",
+  "total_acquisition_cost": 105.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465687": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:xiaomi:tablette-redmi-pad-2-9-7-gris-4-go-128-go-redmi-buds-6-active-redmi-pad-2-9-7-co",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 191.0,
+  "deal_id": "dealabs:3465687",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Xiaomi",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465687",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/redmi-pad-2-97-gris-4-go-128-go-redmi-buds-6-active-redmi-pad-2-97-cover-3465687",
+  "tags": [],
+  "title": "Tablette Redmi Pad 2 9.7 Gris 4 GO + 128 GO + REDMI Buds 6 Active + REDMI Pad 2 9.7 Cover",
+  "total_acquisition_cost": 191.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465690": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:interrupteur-a-cadran-portatif-philips-hue-tap-dial-blanc-via-coupon",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 24.99,
+  "deal_id": "dealabs:3465690",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465690",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/interrupteur-a-cadran-portatif-philips-hue-tap-dial-blanc-via-remise-au-panier-3465690",
+  "tags": [],
+  "title": "Interrupteur à Cadran Portatif Philips Hue Tap dial blanc (via coupon)",
+  "total_acquisition_cost": 24.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465693": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:fnac:ecran-pc-gaming-tcl-32g64-31-5-180-hz-qhd-support-vesa-100x100",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 295.77,
+  "deal_id": "dealabs:3465693",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Fnac",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465693",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/ecran-pc-gaming-tcl-32g64-315-180-hz-qhd-support-vesa-100x100-3465693",
+  "tags": [],
+  "title": "Ecran PC Gaming TCL 32G64 31.5\" 180 Hz QHD support VESA 100x100",
+  "total_acquisition_cost": 295.77,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465696": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:appareil-photo-sony-alpha-6400-boitier-nu",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 689.0,
+  "deal_id": "dealabs:3465696",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465696",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/sony-alpha-6400-boitier-nu-3465696",
+  "tags": [],
+  "title": "Appareil photo Sony Alpha 6400 - Boîtier nu",
+  "total_acquisition_cost": 689.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465698": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:mini-drone-fpv-avec-camera-f417pro-4k-telecommande-avec-ecran-lcd-flip-3d-type-c",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 69.99,
+  "deal_id": "dealabs:3465698",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465698",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/f417pro-drone-avec-camera-4k-telecommande-avec-lcd-ecran-mini-fpv-drone-brushless-reglable-flip-3d-type-c-3465698",
+  "tags": [],
+  "title": "Mini Drone FPV avec Caméra F417PRO 4K - Télécommande avec écran, LCD, Flip 3D, Type-C (vendeur tiers)",
+  "total_acquisition_cost": 69.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465706": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon-it:videoprojecteur-portable-xgimi-elfin-flip-4k-rgb-triple-laser-home-cinema-vendeu",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 687.54,
+  "deal_id": "dealabs:3465706",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon.it",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465706",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/xgimi-elfin-flip-4k-videoprojecteur-portable-rgb-triple-laser-home-cinema-3465706",
+  "tags": [],
+  "title": "Videoprojecteur Portable XGIMI Elfin Flip 4K - RGB, Triple Laser, Home Cinéma (vendeur tiers)",
+  "total_acquisition_cost": 687.54,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465707": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:bras-ecran-pc-suptek-17-35-a-ressort-a-gaz-11-kg-max-vesa-75-100-rotation-360-no",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 22.94,
+  "deal_id": "dealabs:3465707",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465707",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/bras-ecran-pc-suptek-17-35-a-ressort-a-gaz-11-kg-max-vesa-75100-rotation-360-noir-vendeur-tiers-3465707",
+  "tags": [],
+  "title": "Bras écran PC Suptek 17-35\" à ressort à gaz - 11 kg max, VESA 75/100, rotation 360°, Noir (Vendeur tiers)",
+  "total_acquisition_cost": 22.94,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465713": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:joybuy:enceinte-soundcore-select-3",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 21.9,
+  "deal_id": "dealabs:3465713",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "JoyBuy",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465713",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/soundcore-select-3-via-5eur-de-bienvenue-3465713",
+  "tags": [],
+  "title": "Enceinte Soundcore Select 3",
+  "total_acquisition_cost": 21.9,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465718": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:canal:saisons-1-et-2-de-loups-garous-offertes-a-tous-sur-canal",
+  "category": "Culture & Divertissement",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 0.0,
+  "deal_id": "dealabs:3465718",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "free",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "free",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Canal+",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.6,
+  "promotion_integrity": null,
+  "score_components": [
+   [
+    "valeur inconnue : gratuit non évalué",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465718",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/saisons-1-et-2-de-loups-garous-offertes-a-tous-sur-canal-3465718",
+  "tags": [],
+  "title": "Saisons 1 et 2 de Loups Garous offertes à tous sur Canal+",
+  "total_acquisition_cost": 0.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465728": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:cuillere-portionneuse-a-glace-a-manche-eutectique-de-buyer",
+  "category": "Épicerie & Courses",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 9.15,
+  "deal_id": "dealabs:3465728",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "grocery",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "nourriture",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465728",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/de-buyer-cuillere-portionneuse-a-glace-a-manche-eutectique-3465728",
+  "tags": [
+   "nourriture"
+  ],
+  "title": "Cuillère portionneuse à glace à manche eutectique De Buyer",
+  "total_acquisition_cost": 9.15,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465733": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:carrefour:ecouteurs-sans-fil-apple-airpods-5-reduction-active-du-bruit-boitier-usb-c-mkfw4",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 109.17,
+  "deal_id": "dealabs:3465733",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Carrefour",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465733",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/ecouteurs-sans-fil-apple-airpods-5-reduction-active-du-bruit-boitier-usb-c-mkfw4zma-via-15eur-fidelite-2483-eur-en-bon-dachat-3465733",
+  "tags": [],
+  "title": "Écouteurs sans fil Apple AirPods 5 - Réduction Active du Bruit, Boîtier USB C, MKFW4ZM/A (via 15€ fidélité & 24,83€ en bon d'achat)",
+  "total_acquisition_cost": 109.17,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465736": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:smartphone-6-9-xiaomi-18-pro-max-12-512go-bordeaux-via-coupon",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 1503.0,
+  "deal_id": "dealabs:3465736",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465736",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/xiaomi-18-pro-max-smartphone-12512go-bordeaux-via-coupon-3465736",
+  "tags": [],
+  "title": "Smartphone 6,9\" Xiaomi 18 Pro Max, 12 + 512Go Bordeaux (via coupon)",
+  "total_acquisition_cost": 1503.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465744": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:carte-graphique-rx-9070-gre-gaming-oc-12g-vendeur-tiers",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 724.99,
+  "deal_id": "dealabs:3465744",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465744",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/carte-graphique-rx-9070-gre-gaming-oc-12g-3465744",
+  "tags": [],
+  "title": "Carte graphique RX 9070 GRE Gaming OC 12G (Vendeur tiers)",
+  "total_acquisition_cost": 724.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465757": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:cdiscount:montre-connectee-apple-watch-se-3-gps-44mm-boitier-midnight-vendeur-tiers-darty",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 255.0,
+  "deal_id": "dealabs:3465757",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Cdiscount",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465757",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/montre-connectee-apple-watch-se-3-gps-44mm-boitier-midnight-vendeur-tiers-darty-3465757",
+  "tags": [],
+  "title": "Montre connectée Apple Watch SE 3 GPS - 44mm - Boîtier Midnight (Vendeur tiers Darty)",
+  "total_acquisition_cost": 255.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465758": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:joybuy:ecran-pc-27-hkc-oled-trueblack",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 299.99,
+  "deal_id": "dealabs:3465758",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "JoyBuy",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465758",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/ecr-hkc-oled-27-pouces-3465758",
+  "tags": [],
+  "title": "Écran PC 27\" HKC Oled trueblack",
+  "total_acquisition_cost": 299.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465761": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:casque-pc-sans-fil-logitech-g-pro-x-2-lightspeed",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 110.06,
+  "deal_id": "dealabs:3465761",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465761",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/logitech-g-pro-x-2-lightspeed-3465761",
+  "tags": [],
+  "title": "Casque PC sans fil Logitech G PRO X 2 Lightspeed",
+  "total_acquisition_cost": 110.06,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465774": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:e-leclerc:montre-connectee-echo-rainbow-lite-noir-bracelet-bleu-marine-via-avantage-carte",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 19.0,
+  "deal_id": "dealabs:3465774",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "E.Leclerc",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465774",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/montre-connectee-echo-rainbow-lite-noir-bracelet-bleu-marine-3465774",
+  "tags": [],
+  "title": "Montre Connectée Echo Rainbow Lite Noir + bracelet Bleu Marine (via avantage carte)",
+  "total_acquisition_cost": 19.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465775": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:coffret-4k-integrale-harry-potter-8-films",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 89.61,
+  "deal_id": "dealabs:3465775",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465775",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/harry-potter-coffret-integrale-8-films-4k-ultra-hd-blu-ray-3465775",
+  "tags": [],
+  "title": "Coffret 4K Intégrale Harry Potter - 8 films",
+  "total_acquisition_cost": 89.61,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "dealabs:3465783": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:amazon:chargeur-anker-nano-ii-65w-vendeur-tiers",
+  "category": "High-Tech",
+  "cost_assumptions": [],
+  "currency": "EUR",
+  "current_price": 19.99,
+  "deal_id": "dealabs:3465783",
+  "deal_score": null,
+  "delivery_scope": "FR",
+  "effective_discount": null,
+  "family": "tech",
+  "first_seen_at": "2026-11-23T02:58:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "last_changed_at": "2026-11-23T02:58:27+01:00",
+  "last_seen_at": "2026-11-23T02:58:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": null,
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "dealabs",
+  "source_offer_id": "3465783",
+  "source_type": "aggregator",
+  "source_url": "https://www.dealabs.com/bons-plans/chargeur-anker-nano-ii-65w-3465783",
+  "tags": [],
+  "title": "Chargeur Anker Nano II - 65W (Vendeur tiers)",
+  "total_acquisition_cost": 19.99,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-23T02:58:27+01:00",
      "http": 200
     }
    ]
