@@ -215,7 +215,7 @@
   "last_seen_at": "2026-11-25T06:27:32+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "FIGS",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "20% Studentenrabatt",
   "offer_type": "student_discount",
@@ -240,15 +240,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -351,7 +351,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/092/830/original/default_image.jpg?1783010493",
   "last_changed_at": "2026-10-15T03:31:07+02:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "TOEFL iBT",
   "missing_scans": 0,
@@ -379,15 +379,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -474,7 +474,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/118/962/original/default_image.jpg?1794261263",
   "last_changed_at": "2026-11-03T20:30:01+01:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "On",
   "missing_scans": 0,
@@ -502,15 +502,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -542,10 +542,10 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/103/907/original/default_image.jpg?1759427300",
   "last_changed_at": "2026-10-15T03:31:07+02:00",
-  "last_seen_at": "2026-11-24T15:54:31+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Qatar Airways",
-  "missing_scans": 1,
+  "missing_scans": 0,
   "net_savings": null,
   "offer_text": "Bis zu 9%* Studentenrabatt",
   "offer_type": "student_discount",
@@ -569,15 +569,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -733,7 +733,7 @@
   "last_seen_at": "2026-11-25T06:27:32+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Amorelie",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "15% Studentenrabatt",
   "offer_type": "student_discount",
@@ -758,15 +758,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -833,7 +833,7 @@
    "compte requis"
   ],
   "best_score": 2.3,
-  "canonical_entity_id": "t:other-stories:other-stories-12-student-discount",
+  "canonical_entity_id": "t:other-stories:other-stories-black-friday-20-off-extra-12-student-discount",
   "category": "Fashion",
   "channel": "online",
   "deal_id": "studentbeans:41306e05-a5ed-471b-a9c2-7de95affe62f",
@@ -842,24 +842,25 @@
   "discount_percentage": 12.0,
   "effective_discount": 12.0,
   "eligibility": "Student Beans : statut étudiant vérifié",
+  "ends_at": "2026-11-30T23:59:00+01:00",
+  "expiring_soon": true,
   "family": "student",
   "first_seen_at": "2026-10-14T03:07:57+02:00",
   "geographic_scope": "ONLINE",
   "geographic_scope_resolved": "ONLINE",
   "group": "student",
-  "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/079/562/original/default_image.jpg?1793844770",
-  "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-20T22:07:36+01:00",
-  "lifecycle": "REMOVED",
+  "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/120/681/original/default_image.jpg?1795529568",
+  "last_changed_at": "2026-11-26T00:21:10+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
+  "lifecycle": "ACTIVE",
   "merchant": "& Other Stories",
-  "missing_scans": 2,
+  "missing_scans": 0,
   "net_savings": null,
-  "offer_text": "12% Student Discount",
+  "offer_text": "Black Friday: 20% Off + Extra 12% Student Discount",
   "offer_type": "student_discount",
   "personal_relevance": 0.8,
   "promotion_integrity": "unchecked",
   "reference_price_type": "stated_percent_only",
-  "removed_at": "2026-11-22T01:21:21+01:00",
   "requires_account": true,
   "requires_student": true,
   "score_components": [
@@ -874,19 +875,19 @@
   "source_type": "aggregator",
   "source_url": "https://www.studentbeans.com/student-discount/ch/other-stories/0-student-discount-f74d6674-fbfe-4985-bdd1-a45ce16d5ec5",
   "tags": [],
-  "title": "& Other Stories: 12% Student Discount",
+  "title": "& Other Stories: Black Friday: 20% Off + Extra 12% Student Discount",
   "verify": {
    "checks": [
-    {
-     "at": "2026-11-21T05:00:03+01:00",
-     "http": 404
-    },
     {
      "at": "2026-11-21T13:41:09+01:00",
      "http": 404
     },
     {
      "at": "2026-11-21T20:51:21+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -919,10 +920,10 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/093/103/original/default_image.jpg?1775839146",
   "last_changed_at": "2026-11-10T13:41:13+01:00",
-  "last_seen_at": "2026-11-24T15:54:31+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Aspinal of London",
-  "missing_scans": 1,
+  "missing_scans": 0,
   "net_savings": null,
   "offer_text": "10% Student Discount",
   "offer_type": "student_discount",
@@ -947,15 +948,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -1042,7 +1043,7 @@
    "compte requis"
   ],
   "best_score": 2.6,
-  "canonical_entity_id": "t:arket:arket-14-student-discount",
+  "canonical_entity_id": "t:arket:arket-black-friday-members-20-off-extra-14-over-100",
   "category": "Fashion",
   "channel": "online",
   "deal_id": "studentbeans:4e0aa7fd-0fbb-4bc7-9437-6a287a41c367",
@@ -1056,14 +1057,14 @@
   "geographic_scope": "ONLINE",
   "geographic_scope_resolved": "ONLINE",
   "group": "student",
-  "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/083/059/original/default_image.jpg?1794518062",
+  "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/083/059/original/default_image.jpg?1795513505",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "ARKET",
   "missing_scans": 0,
   "net_savings": null,
-  "offer_text": "14% Student Discount",
+  "offer_text": "Black Friday: Members 20% Off + Extra 14% Over €100",
   "offer_type": "student_discount",
   "personal_relevance": 0.8,
   "promotion_integrity": "unchecked",
@@ -1082,19 +1083,19 @@
   "source_type": "aggregator",
   "source_url": "https://www.studentbeans.com/student-discount/ch/arket/0-student-discount-bb2fd063-4d1b-4ae2-bed8-080378e2432d",
   "tags": [],
-  "title": "ARKET: 14% Student Discount",
+  "title": "ARKET: Black Friday: Members 20% Off + Extra 14% Over €100",
   "verify": {
    "checks": [
-    {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
     {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -1128,10 +1129,10 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/079/624/original/default_image.jpg?1795343266",
   "last_changed_at": "2026-10-15T03:31:07+02:00",
-  "last_seen_at": "2026-11-24T15:54:31+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "The North Face",
-  "missing_scans": 1,
+  "missing_scans": 0,
   "net_savings": null,
   "offer_text": "Black Friday Early Access: Bis zu 40% Rabatt plus zusätzlicher Studentenrabatt von 10%",
   "offer_type": "student_discount",
@@ -1156,15 +1157,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -1299,16 +1300,16 @@
    "compte requis"
   ],
   "best_score": 5.0,
-  "canonical_entity_id": "t:tommy-hilfiger:tommy-hilfiger-black-friday-30-rabatt-auf-fast-alles-bei-bestellungen-uber-99-ch",
+  "canonical_entity_id": "t:tommy-hilfiger:tommy-hilfiger-black-friday-bis-zu-50-rabatt-auf-ausgewahlte-tommy-hilfiger-arti",
   "category": "Fashion",
   "channel": "online",
   "deal_id": "studentbeans:60b42892-6af0-457f-a46f-310982177a2d",
   "deal_score": null,
   "delivery_scope": "CH",
-  "discount_percentage": 30.0,
+  "discount_max_percentage": 50.0,
   "effective_discount": null,
   "eligibility": "Student Beans : statut étudiant vérifié",
-  "ends_at": "2026-11-22T23:59:00+01:00",
+  "ends_at": "2026-11-30T23:59:00+01:00",
   "expiring_soon": true,
   "family": "student",
   "first_seen_at": "2026-11-18T05:27:16+01:00",
@@ -1316,17 +1317,16 @@
   "geographic_scope_resolved": "ONLINE",
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/120/160/original/default_image.jpg?1794956069",
-  "last_changed_at": "2026-11-25T06:27:32+01:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
-  "lifecycle": "EXPIRED",
+  "last_changed_at": "2026-11-26T00:21:10+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
+  "lifecycle": "ACTIVE",
   "merchant": "Tommy Hilfiger",
   "missing_scans": 0,
   "net_savings": null,
-  "offer_text": "Black Friday: 30% Rabatt auf fast alles bei Bestellungen über 99 CHF*",
+  "offer_text": "Black Friday: Bis zu 50 % Rabatt auf ausgewählte Tommy Hilfiger Artikel",
   "offer_type": "student_discount",
   "personal_relevance": 0.8,
   "promotion_integrity": "unknown",
-  "reference_price_type": "stated_percent_only",
   "requires_account": true,
   "requires_student": true,
   "score_components": [
@@ -1341,13 +1341,9 @@
   "source_type": "aggregator",
   "source_url": "https://www.studentbeans.com/student-discount/ch/tommy-hilfiger/0-student-discount-b1dbbb0f-31f0-443f-9928-41a70b846841",
   "tags": [],
-  "title": "Tommy Hilfiger: Black Friday: 30% Rabatt auf fast alles bei Bestellungen über 99 CHF*",
+  "title": "Tommy Hilfiger: Black Friday: Bis zu 50 % Rabatt auf ausgewählte Tommy Hilfiger Artikel",
   "verify": {
    "checks": [
-    {
-     "at": "2026-11-24T07:58:03+01:00",
-     "http": 404
-    },
     {
      "at": "2026-11-24T15:54:31+01:00",
      "http": 404
@@ -1355,10 +1351,14 @@
     {
      "at": "2026-11-25T00:54:48+01:00",
      "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
+     "http": 404
     }
    ],
    "code": "T_GONE_404",
-   "ok_streak": 1,
+   "ok_streak": 0,
    "since": "2026-11-18T14:05:41+01:00",
    "state": "ENDED"
   }
@@ -1384,10 +1384,10 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/088/065/original/default_image.jpg?1728069145",
   "last_changed_at": "2026-11-13T02:29:11+01:00",
-  "last_seen_at": "2026-11-24T15:54:31+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "LEGO",
-  "missing_scans": 1,
+  "missing_scans": 0,
   "net_savings": null,
   "offer_text": "Free Shipping with Orders above CHF35",
   "offer_type": "student_discount",
@@ -1411,15 +1411,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -1524,9 +1524,9 @@
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/088/376/original/default_image.jpg?1728448290",
   "last_changed_at": "2026-11-16T23:54:09+01:00",
   "last_seen_at": "2026-11-25T06:27:32+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "ENDING_SOON",
   "merchant": "Acer",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "Black Friday beginnt jetzt: Bis zu 50% Rabatt",
   "offer_type": "student_discount",
@@ -1550,15 +1550,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -1663,7 +1663,7 @@
   "last_seen_at": "2026-11-25T06:27:32+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "FARFETCH",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "BLACK FRIDAY: Extra 20% off sale Women",
   "offer_type": "student_discount",
@@ -1688,15 +1688,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-22T21:01:31+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -1729,7 +1729,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/104/581/original/default_image.jpg?1793757267",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "COS",
   "missing_scans": 0,
@@ -1757,15 +1757,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -1952,13 +1952,12 @@
    "compte requis"
   ],
   "best_score": 2.1,
-  "canonical_entity_id": "t:weekday:weekday-black-friday-up-to-50-off-extra-11-student-discount",
+  "canonical_entity_id": "t:weekday:weekday-11-student-discount",
   "category": "Fashion",
   "channel": "online",
   "deal_id": "studentbeans:78d04768-3ef6-4fda-a611-0f2e6c61a59e",
   "deal_score": 2.1,
   "delivery_scope": "CH",
-  "discount_max_percentage": 50.0,
   "discount_percentage": 11.0,
   "effective_discount": 11.0,
   "eligibility": "Student Beans : statut étudiant vérifié",
@@ -1969,12 +1968,12 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/076/535/original/default_image.jpg?1795002085",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Weekday",
   "missing_scans": 0,
   "net_savings": null,
-  "offer_text": "Black Friday: Up to 50% off + Extra 11% Student Discount",
+  "offer_text": "11% Student Discount",
   "offer_type": "student_discount",
   "personal_relevance": 0.8,
   "promotion_integrity": "unchecked",
@@ -1993,19 +1992,19 @@
   "source_type": "aggregator",
   "source_url": "https://www.studentbeans.com/student-discount/ch/weekday/0-student-discount-0e0e4d96-61a5-4d46-be0a-d88a3906bbfd",
   "tags": [],
-  "title": "Weekday: Black Friday: Up to 50% off + Extra 11% Student Discount",
+  "title": "Weekday: 11% Student Discount",
   "verify": {
    "checks": [
-    {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
     {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -2091,30 +2090,30 @@
   "accessibility_notes": [
    "compte requis"
   ],
-  "canonical_entity_id": "t:calvin-klein:calvin-klein-bis-zu-30-rabatt",
+  "canonical_entity_id": "t:calvin-klein:calvin-klein-bis-zu-50-rabatt",
   "category": "Fashion",
   "channel": "online",
   "deal_id": "studentbeans:7bc4c63d-5fe1-4edf-a31f-8d2e39b08e15",
   "deal_score": null,
   "delivery_scope": "CH",
-  "discount_max_percentage": 30.0,
+  "discount_max_percentage": 50.0,
   "effective_discount": null,
   "eligibility": "Student Beans : statut étudiant vérifié",
-  "ends_at": "2026-10-26T23:59:00+01:00",
+  "ends_at": "2026-11-30T23:59:00+01:00",
   "expiring_soon": true,
   "family": "student",
   "first_seen_at": "2026-10-14T03:07:57+02:00",
   "geographic_scope": "ONLINE",
   "geographic_scope_resolved": "ONLINE",
   "group": "student",
-  "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/117/808/original/default_image.jpg?1790953844",
-  "last_changed_at": "2026-10-22T00:23:02+02:00",
-  "last_seen_at": "2026-10-29T23:01:54+01:00",
-  "lifecycle": "EXPIRED",
+  "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/117/808/original/default_image.jpg?1795517045",
+  "last_changed_at": "2026-11-26T00:21:10+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
+  "lifecycle": "ACTIVE",
   "merchant": "Calvin Klein",
   "missing_scans": 0,
   "net_savings": null,
-  "offer_text": "Bis zu 30 % Rabatt",
+  "offer_text": "Bis zu 50 % Rabatt",
   "offer_type": "student_discount",
   "personal_relevance": 0.8,
   "promotion_integrity": "unknown",
@@ -2132,7 +2131,19 @@
   "source_type": "aggregator",
   "source_url": "https://www.studentbeans.com/student-discount/ch/calvin-klein/0-student-discount-143530f5-6664-4aea-bed3-94dba9bce181",
   "tags": [],
-  "title": "Calvin Klein: Bis zu 30 % Rabatt"
+  "title": "Calvin Klein: Bis zu 50 % Rabatt",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-26T00:21:10+01:00",
+     "http": 404
+    }
+   ],
+   "code": "T_GONE_404_PENDING",
+   "ok_streak": 0,
+   "since": "2026-11-26T00:21:10+01:00",
+   "state": "SUSPECT"
+  }
  },
  "studentbeans:7c15fcbc-577a-4e70-9c36-0ef4253ba5c1": {
   "access": "MEMBER",
@@ -2207,7 +2218,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/114/245/original/default_image.jpg?1795014663",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Emma",
   "missing_scans": 0,
@@ -2235,15 +2246,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -2331,7 +2342,7 @@
   "last_seen_at": "2026-11-25T06:27:32+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Slam Jam",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "10% off adidas at Slam Jam",
   "offer_type": "student_discount",
@@ -2356,15 +2367,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-22T21:01:31+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -2472,7 +2483,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/085/540/original/default_image.jpg?1794749474",
   "last_changed_at": "2026-11-16T03:46:45+01:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Gymshark",
   "missing_scans": 0,
@@ -2500,15 +2511,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -2543,10 +2554,10 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/093/627/original/default_image.jpg?1779133023",
   "last_changed_at": "2026-11-22T12:37:37+01:00",
-  "last_seen_at": "2026-11-24T15:54:31+01:00",
-  "lifecycle": "ACTIVE",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
+  "lifecycle": "ENDING_SOON",
   "merchant": "Slam Jam",
-  "missing_scans": 1,
+  "missing_scans": 0,
   "net_savings": null,
   "offer_text": "Black Week - Extra 10% off",
   "offer_type": "student_discount",
@@ -2571,15 +2582,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -2754,10 +2765,10 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/108/664/original/default_image.jpg?1780537647",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-24T15:54:31+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Qatar Airways",
-  "missing_scans": 1,
+  "missing_scans": 0,
   "net_savings": null,
   "offer_text": "Exklusiver Rabatt von 5%",
   "offer_type": "student_discount",
@@ -2782,15 +2793,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -2822,7 +2833,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/118/064/original/default_image.jpg?1791812557",
   "last_changed_at": "2026-10-15T03:31:07+02:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Jackson",
   "missing_scans": 0,
@@ -2849,15 +2860,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -2893,7 +2904,7 @@
   "last_seen_at": "2026-11-25T06:27:32+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Roborock",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "10 % Studentenrabatt",
   "offer_type": "student_discount",
@@ -2918,15 +2929,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-22T21:01:31+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -2961,7 +2972,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/115/639/original/default_image.jpg?1795204131",
   "last_changed_at": "2026-11-21T13:41:09+01:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "DJI",
   "missing_scans": 0,
@@ -2989,15 +3000,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -3031,15 +3042,16 @@
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/116/683/original/default_image.jpg?1788453241",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
   "last_seen_at": "2026-11-24T15:54:31+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Calvin Klein",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_text": "10% Studentenrabatt auf Artikel zum vollen Preis",
   "offer_type": "student_discount",
   "personal_relevance": 0.95,
   "promotion_integrity": "unchecked",
   "reference_price_type": "stated_percent_only",
+  "removed_at": "2026-11-26T00:21:10+01:00",
   "requires_account": true,
   "requires_student": true,
   "score_components": [
@@ -3238,7 +3250,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/119/296/original/default_image.jpg?1793992063",
   "last_changed_at": "2026-11-16T23:54:09+01:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "WalkFit",
   "missing_scans": 0,
@@ -3265,15 +3277,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -3360,7 +3372,7 @@
   "last_seen_at": "2026-11-25T06:27:32+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Mango Outlet",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "Bis zu 85 % Rabatt + 5 % Studentenrabatt",
   "offer_type": "student_discount",
@@ -3385,15 +3397,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -3498,10 +3510,10 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/104/487/original/default_image.jpg?1761255408",
   "last_changed_at": "2026-10-14T16:41:15+02:00",
-  "last_seen_at": "2026-11-24T15:54:31+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "BODYLAB",
-  "missing_scans": 1,
+  "missing_scans": 0,
   "net_savings": null,
   "offer_text": "30% Studentenrabatt",
   "offer_type": "student_discount",
@@ -3526,15 +3538,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -3543,6 +3555,37 @@
    "since": "2026-11-08T18:15:08+01:00",
    "state": "ENDED"
   }
+ },
+ "studentbeans:ad1e85b4-7fb8-4f89-b528-b007462efe86": {
+  "access": "MEMBER",
+  "canonical_entity_id": "t:gymshark:gymshark-extra-20-off-gym-essentials",
+  "category": "Fashion",
+  "channel": "online",
+  "deal_id": "studentbeans:ad1e85b4-7fb8-4f89-b528-b007462efe86",
+  "delivery_scope": "CH",
+  "discount_percentage": 20.0,
+  "eligibility": "Student Beans : statut étudiant vérifié",
+  "ends_at": "2026-11-25T09:59:00+01:00",
+  "expiring_soon": true,
+  "family": "student",
+  "first_seen_at": "2026-11-26T00:21:10+01:00",
+  "geographic_scope": "ONLINE",
+  "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/080/448/original/default_image.jpg?1795528524",
+  "last_changed_at": "2026-11-26T00:21:10+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
+  "lifecycle": "EXPIRED",
+  "merchant": "Gymshark",
+  "missing_scans": 0,
+  "offer_text": "Extra 20% off Gym Essentials",
+  "offer_type": "student_discount",
+  "reference_price_type": "stated_percent_only",
+  "requires_account": true,
+  "requires_student": true,
+  "source_id": "studentbeans",
+  "source_offer_id": "ad1e85b4-7fb8-4f89-b528-b007462efe86",
+  "source_type": "aggregator",
+  "source_url": "https://www.studentbeans.com/student-discount/ch/gymshark/0-student-discount-5339f991-9128-49cc-b4ce-01d67d49657c",
+  "title": "Gymshark: Extra 20% off Gym Essentials"
  },
  "studentbeans:add41d61-1a4a-4c12-b065-71ff1e913129": {
   "access": "MEMBER",
@@ -3566,7 +3609,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/119/204/original/default_image.jpg?1793964981",
   "last_changed_at": "2026-11-16T23:54:09+01:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Muscle Booster",
   "missing_scans": 0,
@@ -3593,15 +3636,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -3633,7 +3676,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/095/584/original/default_image.jpg?1752505614",
   "last_changed_at": "2026-11-03T20:30:01+01:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Just Eat",
   "missing_scans": 0,
@@ -3660,15 +3703,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -3749,7 +3792,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/118/424/original/default_image.jpg?1792331166",
   "last_changed_at": "2026-10-19T18:59:32+02:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "ExpressVPN",
   "missing_scans": 0,
@@ -3776,15 +3819,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -3817,10 +3860,10 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/110/007/original/default_image.jpg?1776266237",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-24T15:54:31+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Salomon",
-  "missing_scans": 1,
+  "missing_scans": 0,
   "net_savings": null,
   "offer_text": "20 % Rabatt auf den regulären Preis + zusätzliche 10 % auf bereits reduzierte Artikel",
   "offer_type": "student_discount",
@@ -3845,15 +3888,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -4076,7 +4119,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/119/239/original/default_image.jpg?1793982178",
   "last_changed_at": "2026-11-16T23:54:09+01:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Yoga-Go",
   "missing_scans": 0,
@@ -4103,15 +4146,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -4266,7 +4309,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/002/415/original/default_image.jpg?1785770302",
   "last_changed_at": "2026-10-19T18:59:32+02:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Charles & Keith",
   "missing_scans": 0,
@@ -4294,15 +4337,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -4335,7 +4378,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/085/909/original/default_image.jpg?1793757273",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "COS",
   "missing_scans": 0,
@@ -4363,15 +4406,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -4473,9 +4516,9 @@
   "geographic_scope": "ONLINE",
   "geographic_scope_resolved": "ONLINE",
   "group": "student",
-  "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/112/847/original/default_image.jpg?1795209378",
+  "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/112/847/original/default_image.jpg?1795464827",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Jaded London",
   "missing_scans": 0,
@@ -4503,15 +4546,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -4614,7 +4657,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/063/364/original/default_image.jpg?1694057454",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "FARFETCH",
   "missing_scans": 0,
@@ -4642,15 +4685,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -4822,7 +4865,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/120/069/original/default_image.jpg?1794856165",
   "last_changed_at": "2026-11-16T23:54:09+01:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Sweat",
   "missing_scans": 0,
@@ -4850,15 +4893,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -4875,14 +4918,14 @@
    "compte requis"
   ],
   "best_score": 6.8,
-  "canonical_entity_id": "t:the-female-company:the-female-company-erhoht-35-rabatt-auf-alles",
+  "canonical_entity_id": "t:the-female-company:the-female-company-erhoht-45-rabatt-auf-alles",
   "category": "Fashion",
   "channel": "online",
   "deal_id": "studentbeans:df27c227-b0a5-4c77-b8dd-925fdfd13360",
-  "deal_score": 5.6,
+  "deal_score": 6.8,
   "delivery_scope": "CH",
-  "discount_percentage": 35.0,
-  "effective_discount": 35.0,
+  "discount_percentage": 45.0,
+  "effective_discount": 45.0,
   "eligibility": "Student Beans : statut étudiant vérifié",
   "ends_at": "2026-11-30T23:59:00+01:00",
   "expiring_soon": true,
@@ -4893,12 +4936,12 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/118/649/original/default_image.jpg?1792683089",
   "last_changed_at": "2026-10-26T22:38:57+01:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "The Female Company",
   "missing_scans": 0,
   "net_savings": null,
-  "offer_text": "ERHÖHT 35% Rabatt auf alles",
+  "offer_text": "ERHÖHT 45% Rabatt auf alles",
   "offer_type": "student_discount",
   "personal_relevance": 0.8,
   "promotion_integrity": "unchecked",
@@ -4907,8 +4950,8 @@
   "requires_student": true,
   "score_components": [
    [
-    "pourcentage annoncé seul : 35 %",
-    5.6
+    "pourcentage annoncé seul : 45 %",
+    6.75
    ]
   ],
   "score_confidence": 0.55,
@@ -4917,19 +4960,19 @@
   "source_type": "aggregator",
   "source_url": "https://www.studentbeans.com/student-discount/ch/the-female-company/0-student-discount-9e999d95-9ae5-4464-96c4-85a30189b399",
   "tags": [],
-  "title": "The Female Company: ERHÖHT 35% Rabatt auf alles",
+  "title": "The Female Company: ERHÖHT 45% Rabatt auf alles",
   "verify": {
    "checks": [
-    {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
     {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -4965,7 +5008,7 @@
   "last_seen_at": "2026-11-25T06:27:32+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "CHANI",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_text": "12 Monate mit 50% Rabatt auf ein monatliches Abonnement",
   "offer_type": "student_discount",
@@ -4990,15 +5033,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -5086,8 +5129,8 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/088/492/original/default_image.jpg?1728940350",
   "last_changed_at": "2026-11-05T13:24:09+01:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
-  "lifecycle": "ACTIVE",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
+  "lifecycle": "ENDING_SOON",
   "merchant": "Acer",
   "missing_scans": 0,
   "net_savings": null,
@@ -5113,15 +5156,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -5153,7 +5196,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/117/598/original/default_image.jpg?1790262664",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "PreSonus",
   "missing_scans": 0,
@@ -5180,15 +5223,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -5268,7 +5311,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/118/032/original/default_image.jpg?1791562507",
   "last_changed_at": "2026-10-15T03:31:07+02:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Fender",
   "missing_scans": 0,
@@ -5295,15 +5338,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -5409,7 +5452,7 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/119/454/original/default_image.jpg?1794150268",
   "last_changed_at": "2026-11-09T23:59:44+01:00",
-  "last_seen_at": "2026-11-25T06:27:32+01:00",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "FARFETCH",
   "missing_scans": 0,
@@ -5437,15 +5480,15 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "http": 404
-    },
-    {
      "at": "2026-11-25T06:27:32+01:00",
      "http": 404
     },
     {
      "at": "2026-11-25T15:25:33+01:00",
+     "http": 404
+    },
+    {
+     "at": "2026-11-26T00:21:10+01:00",
      "http": 404
     }
    ],
@@ -5528,10 +5571,10 @@
   "group": "student",
   "image_url": "https://cdn.studentbeans.com/offers/redemption_types/default_images/000/120/655/original/default_image.jpg?1795513538",
   "last_changed_at": "2026-11-24T15:54:31+01:00",
-  "last_seen_at": "2026-11-24T15:54:31+01:00",
-  "lifecycle": "ENDING_SOON",
+  "last_seen_at": "2026-11-26T00:21:10+01:00",
+  "lifecycle": "EXPIRED",
   "merchant": "ARKET",
-  "missing_scans": 1,
+  "missing_scans": 0,
   "net_savings": null,
   "offer_text": "Black Friday: Members 20% Off + Extra 14% Over €100",
   "offer_type": "student_discount",
@@ -5569,7 +5612,7 @@
     }
    ],
    "code": "T_GONE_404",
-   "ok_streak": 0,
+   "ok_streak": 1,
    "since": "2026-11-25T00:54:48+01:00",
    "state": "ENDED"
   }
