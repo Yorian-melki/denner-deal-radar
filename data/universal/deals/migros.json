@@ -262,6 +262,75 @@
   "unit": "CHF/pièce",
   "unit_price": 0.83
  },
+ "migros:100005010": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 2.3,
+  "brand": "Valflora",
+  "canonical_entity_id": "sku:migros:204126100000",
+  "category": "Milchprodukte, Eier & frische Fertiggerichte",
+  "condition": "new",
+  "conditions": [
+   "Ab 3 Stück"
+  ],
+  "cost_assumptions": [],
+  "current_price": 1.79,
+  "deal_id": "migros:100005010",
+  "deal_score": 2.3,
+  "description": "Valflora · Kaffeerahm",
+  "discount_absolute": 0.31,
+  "discount_badge": "15%, Ab 3 Stück",
+  "discount_percentage": 15.0,
+  "effective_discount": 14.8,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "boissons",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/2dfb3dac9b19b81b97234edea1ffedf1443402f8/valflora-kaffeerahm.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "merchant_sku": "204126100000",
+  "minimum_quantity": 3.0,
+  "missing_scans": 0,
+  "net_savings": 0.31,
+  "offer_type": "weekly_promotion",
+  "package_size": "500ml",
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unchecked",
+  "quantity": 0.5,
+  "reference_price": 2.1,
+  "reference_price_type": "merchant_previous",
+  "regular_price": 2.1,
+  "score_components": [
+   [
+    "réduction vs ancien prix marchand : 15 %",
+    2.71
+   ],
+   [
+    "achat minimum 3 unités",
+    -0.41
+   ]
+  ],
+  "score_confidence": 0.85,
+  "source_id": "migros",
+  "source_offer_id": "100005010",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/product/204126100000",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "subcategory": "Milch, Butter & Eier > Rahm & Schlagrahm > Kaffeerahm",
+  "tags": [],
+  "title": "Valflora Kaffeerahm",
+  "total_acquisition_cost": 1.79,
+  "unit": "CHF/l",
+  "unit_price": 3.6
+ },
  "migros:100005183": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -473,6 +542,67 @@
   "unit": "CHF/l",
   "unit_price": 7.3
  },
+ "migros:100005574": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.6,
+  "brand": "Migros",
+  "canonical_entity_id": "sku:migros:111283000000",
+  "category": "Brot, Backwaren & Frühstück",
+  "condition": "new",
+  "cost_assumptions": [],
+  "current_price": 2.7,
+  "deal_id": "migros:100005574",
+  "deal_score": 3.6,
+  "description": "Migros · XL-Sandwich · hell",
+  "discount_absolute": 0.7,
+  "discount_badge": "20%",
+  "discount_percentage": 20.0,
+  "effective_discount": 20.6,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "autres",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/b72da34211aacd3326a87cc546ca0583931d8257/migros-xl-sandwich-hell.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "merchant_sku": "111283000000",
+  "missing_scans": 0,
+  "net_savings": 0.7,
+  "offer_type": "weekly_promotion",
+  "package_size": "730g",
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unchecked",
+  "quantity": 0.73,
+  "reference_price": 3.4,
+  "reference_price_type": "merchant_previous",
+  "regular_price": 3.4,
+  "score_components": [
+   [
+    "réduction vs ancien prix marchand : 21 %",
+    3.59
+   ]
+  ],
+  "score_confidence": 0.85,
+  "source_id": "migros",
+  "source_offer_id": "100005574",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/product/111283000000",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "subcategory": "Brot & Zwieback > Toast",
+  "tags": [],
+  "title": "Migros XL-Sandwich",
+  "total_acquisition_cost": 2.7,
+  "unit": "CHF/kg",
+  "unit_price": 3.7
+ },
  "migros:100008717": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -504,7 +634,7 @@
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
   "merchant_sku": "717478400000",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": 75.0,
   "offer_type": "weekly_promotion",
   "package_size": "1 Stück",
@@ -1375,6 +1505,70 @@
   "unit": "CHF/kg",
   "unit_price": 5.4
  },
+ "migros:100042922": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.7,
+  "brand": "Migros",
+  "canonical_entity_id": "sku:migros:273800502400",
+  "category": "Früchte & Gemüse",
+  "condition": "new",
+  "cost_assumptions": [],
+  "current_price": 2.2,
+  "deal_id": "migros:100042922",
+  "deal_score": 3.7,
+  "description": "Migros · Bohnen",
+  "discount_absolute": 0.6,
+  "discount_badge": "21%",
+  "discount_percentage": 21.0,
+  "effective_discount": 21.4,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "feculents",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/bcc289fed5622abd5b081217f766d72aa9c2b0e1/migros-bohnen.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "merchant_sku": "273800502400",
+  "missing_scans": 0,
+  "net_savings": 0.6,
+  "offer_type": "weekly_promotion",
+  "package_size": "500g",
+  "personal_relevance": 1.0,
+  "promotion_integrity": "unchecked",
+  "quantity": 0.5,
+  "reference_price": 2.8,
+  "reference_price_type": "merchant_previous",
+  "regular_price": 2.8,
+  "score_components": [
+   [
+    "réduction vs ancien prix marchand : 21 %",
+    3.71
+   ]
+  ],
+  "score_confidence": 0.85,
+  "source_id": "migros",
+  "source_offer_id": "100042922",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/product/273800502400",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "subcategory": "Gemüse > Bohnen & Mais",
+  "tags": [
+   "nourriture",
+   "proteines"
+  ],
+  "title": "Migros Bohnen",
+  "total_acquisition_cost": 2.2,
+  "unit": "CHF/kg",
+  "unit_price": 4.4
+ },
  "migros:100042923": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -1893,6 +2087,69 @@
   "unit": "CHF/kg",
   "unit_price": 1.1
  },
+ "migros:100048522": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 5.8,
+  "brand": "Migros",
+  "canonical_entity_id": "sku:migros:271413502300",
+  "category": "Früchte & Gemüse",
+  "condition": "new",
+  "cost_assumptions": [],
+  "current_price": 2.5,
+  "deal_id": "migros:100048522",
+  "deal_score": 5.8,
+  "description": "Migros · Cherrytomaten · am Zweig",
+  "discount_absolute": 1.45,
+  "discount_badge": "36%",
+  "discount_percentage": 36.0,
+  "effective_discount": 36.7,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "fruits_legumes",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/cda8ff32570061ca77f4534c44758ed825ec3a6f/migros-cherrytomaten-am-zweig.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "merchant_sku": "271413502300",
+  "missing_scans": 0,
+  "net_savings": 1.45,
+  "offer_type": "weekly_promotion",
+  "package_size": "500g",
+  "personal_relevance": 0.85,
+  "promotion_integrity": "unchecked",
+  "quantity": 0.5,
+  "reference_price": 3.95,
+  "reference_price_type": "merchant_previous",
+  "regular_price": 3.95,
+  "score_components": [
+   [
+    "réduction vs ancien prix marchand : 37 %",
+    5.81
+   ]
+  ],
+  "score_confidence": 0.85,
+  "source_id": "migros",
+  "source_offer_id": "100048522",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/product/271413502300",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "subcategory": "Gemüse > Tomaten",
+  "tags": [
+   "nourriture"
+  ],
+  "title": "Migros Cherrytomaten",
+  "total_acquisition_cost": 2.5,
+  "unit": "CHF/kg",
+  "unit_price": 5.0
+ },
  "migros:100048550": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -2115,7 +2372,7 @@
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
   "merchant_sku": "221272060092",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": 1.0,
   "offer_type": "weekly_promotion",
   "package_size": "100 g",
@@ -2619,7 +2876,7 @@
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
   "merchant_sku": "514294300000",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": 3.45,
   "offer_type": "weekly_promotion",
   "package_size": "2 x 400ml",
@@ -2906,6 +3163,73 @@
   "unit": "CHF/kg",
   "unit_price": 19.9
  },
+ "migros:100103859": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 4.8,
+  "brand": "Extra",
+  "canonical_entity_id": "sku:migros:264400913300",
+  "category": "Früchte & Gemüse",
+  "condition": "new",
+  "cost_assumptions": [],
+  "current_price": 1.0,
+  "deal_id": "migros:100103859",
+  "deal_score": 4.8,
+  "description": "Extra · Kiwi · Gold",
+  "discount_absolute": 0.4,
+  "discount_badge": "1.–",
+  "discount_percentage": 28.6,
+  "effective_discount": 28.6,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "extra_tags": [
+   "prix_fixe_action"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "fruits_legumes",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/074aa23197c3075f9a1626365987e5930aa0aaa2/extra-kiwi-gold.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "merchant_sku": "264400913300",
+  "missing_scans": 0,
+  "net_savings": 0.4,
+  "offer_type": "weekly_promotion",
+  "package_size": "1 Stück",
+  "personal_relevance": 0.85,
+  "promotion_integrity": "unchecked",
+  "quantity": 1.0,
+  "reference_price": 1.4,
+  "reference_price_type": "merchant_previous",
+  "regular_price": 1.4,
+  "score_components": [
+   [
+    "réduction vs ancien prix marchand : 29 %",
+    4.79
+   ]
+  ],
+  "score_confidence": 0.85,
+  "source_id": "migros",
+  "source_offer_id": "100103859",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/product/264400913300",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "subcategory": "Früchte > Exotische Früchte > Kiwis",
+  "tags": [
+   "nourriture",
+   "prix_fixe_action"
+  ],
+  "title": "Extra Kiwi",
+  "total_acquisition_cost": 1.0,
+  "unit": "CHF/pièce",
+  "unit_price": 1.0
+ },
  "migros:100131530": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -3095,6 +3419,74 @@
   "total_acquisition_cost": 4.6,
   "unit": "CHF/kg",
   "unit_price": 46.0
+ },
+ "migros:100170127": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 6.0,
+  "brand": "Migros",
+  "canonical_entity_id": "gtin:07623186537295",
+  "category": "Früchte & Gemüse",
+  "condition": "new",
+  "cost_assumptions": [],
+  "current_price": 1.2,
+  "deal_id": "migros:100170127",
+  "deal_score": 6.0,
+  "description": "Migros · Broccoli",
+  "discount_absolute": 0.8,
+  "discount_badge": "40%",
+  "discount_percentage": 40.0,
+  "effective_discount": 40.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "fruits_legumes",
+  "gtin": "7623186537295",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/8bfb83a2fd62ce4dc79a47662f05f9c3e3d36441/migros-broccoli.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "merchant_sku": "275704602300",
+  "missing_scans": 0,
+  "net_savings": 0.8,
+  "offer_type": "weekly_promotion",
+  "package_size": "500g",
+  "personal_relevance": 0.85,
+  "promotion_integrity": "unchecked",
+  "quantity": 0.5,
+  "reference_price": 2.0,
+  "reference_price_type": "merchant_previous",
+  "regular_price": 2.0,
+  "score_components": [
+   [
+    "réduction vs ancien prix marchand : 40 %",
+    6.2
+   ],
+   [
+    "économie absolue < CHF 1 : note plafonnée à 6",
+    -0.2
+   ]
+  ],
+  "score_confidence": 0.85,
+  "source_id": "migros",
+  "source_offer_id": "100170127",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/product/275704602300",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "subcategory": "Gemüse > Blumenkohl, Broccoli & Kohl",
+  "tags": [
+   "nourriture"
+  ],
+  "title": "Migros Broccoli",
+  "total_acquisition_cost": 1.2,
+  "unit": "CHF/kg",
+  "unit_price": 2.4
  },
  "migros:100199391": {
   "access": "PUBLIC",
@@ -3452,7 +3844,7 @@
   "merchant": "Migros",
   "merchant_sku": "204001900000",
   "minimum_quantity": 2.0,
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": 0.49,
   "offer_type": "weekly_promotion",
   "package_size": "1l",
@@ -5088,10 +5480,10 @@
   "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/32ee6009256b6b673a6997ea19432011ac471df8/selection-raclette-weihnachtsgewuerze.jpg",
   "last_changed_at": "2026-11-19T03:51:56+01:00",
   "last_seen_at": "2026-11-25T15:25:33+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Migros",
   "merchant_sku": "210653900000",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_type": "weekly_promotion",
   "package_size": "240g",
@@ -5099,6 +5491,7 @@
   "promotion_integrity": "unknown",
   "quantity": 0.24,
   "regular_price": 7.4,
+  "removed_at": "2026-11-26T06:07:48+01:00",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -8935,6 +9328,7 @@
    "Poulet ≤ 12 CHF/kg",
    "Poulet ≤ 12 CHF/kg",
    "Poulet ≤ 12 CHF/kg",
+   "Poulet ≤ 12 CHF/kg",
    "Poulet ≤ 12 CHF/kg"
   ]
  },
@@ -9002,6 +9396,7 @@
   "unit": "CHF/kg",
   "unit_price": 6.5,
   "watchlists": [
+   "Poulet ≤ 12 CHF/kg",
    "Poulet ≤ 12 CHF/kg",
    "Poulet ≤ 12 CHF/kg",
    "Poulet ≤ 12 CHF/kg",
@@ -9257,7 +9652,7 @@
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
   "merchant_sku": "526501700000",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": 1.45,
   "offer_type": "weekly_promotion",
   "package_size": "1 Stück",
@@ -10298,6 +10693,72 @@
   ],
   "title": "Gesamtes Klostergarten Tee-Sortiment"
  },
+ "migros:grp:2374181": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.2,
+  "canonical_entity_id": "t:migros:alle-lindt-tafelschokoladen",
+  "category": "Snacks & Süssigkeiten",
+  "condition": "new",
+  "conditions": [
+   "Ab 2 Stück",
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2374181",
+  "deal_score": 3.2,
+  "description": "ab 2 Stück, z.B. Milch Extra, 100 g, 2.56 statt 3.20, Angebot gilt nur vom 26.11. bis 2.12.2026, solange Vorrat.",
+  "discount_badge": "20%, Ab 2 Stück",
+  "discount_percentage": 20.0,
+  "effective_discount": 20.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "example_price": 2.56,
+  "example_reference_price": 3.2,
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "nourriture",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/bc09b023f5bf361421ba8a68eda1078a91d6a03d.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "minimum_quantity": 2.0,
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 0.8,
+  "products_count": 39,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 20 %",
+    3.5
+   ],
+   [
+    "achat minimum 2 unités",
+    -0.28
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2374181",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme",
+   "nourriture"
+  ],
+  "title": "Alle Lindt Tafelschokoladen"
+ },
  "migros:grp:2374233": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -11044,6 +11505,72 @@
    "nourriture"
   ],
   "title": "Gesamtes Migros Bio Gemüse-Sortiment"
+ },
+ "migros:grp:2374802": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.2,
+  "canonical_entity_id": "t:migros:alle-reis-und-maiswaffeln",
+  "category": "Brot, Backwaren & Frühstück, Snacks & Süssigkeiten",
+  "condition": "new",
+  "conditions": [
+   "Ab 2 Stück",
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2374802",
+  "deal_score": 3.2,
+  "description": "ab 2 Stück, (ohne Alnatura und Migros Bio), z.B. Lilibiggs Maiswaffeln, 130 g, 1.36 statt 1.70, 100 g = 1.05, Angebot gilt nur vom 26.11. bis 2.12.2026, solange Vorrat.",
+  "discount_badge": "20%, Ab 2 Stück",
+  "discount_percentage": 20.0,
+  "effective_discount": 20.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "example_price": 1.36,
+  "example_reference_price": 1.7,
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "feculents",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/365acc8d33d6084070cf2999d01bdb57e8b2a7ed.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "minimum_quantity": 2.0,
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 1.0,
+  "products_count": 11,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 20 %",
+    3.5
+   ],
+   [
+    "achat minimum 2 unités",
+    -0.28
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2374802",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme",
+   "nourriture"
+  ],
+  "title": "Alle Reis- und Maiswaffeln"
  },
  "migros:grp:2374831": {
   "access": "PUBLIC",
@@ -12112,7 +12639,7 @@
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
   "minimum_quantity": 2.0,
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.85,
@@ -12766,6 +13293,71 @@
   ],
   "title": "Alle Migros Bio-Trockenfrüchte und -Nüsse sowie -Nüsse gesalzen"
  },
+ "migros:grp:2377419": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 5.7,
+  "canonical_entity_id": "t:migros:alle-kaffeekapseln",
+  "category": "Getränke, Kaffee & Tee",
+  "condition": "new",
+  "conditions": [
+   "Ab 2 Stück",
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2377419",
+  "deal_score": 5.7,
+  "description": "ab 2 Stück, (ohne Starbucks), z.B. Delizio Lungo Crema, 12 Kapseln, 3.18 statt 5.30, 100 g = 4.42, Angebot gilt nur vom 26.11. bis 29.11.2026, solange Vorrat.",
+  "discount_badge": "40%, Ab 2 Stück",
+  "discount_percentage": 40.0,
+  "effective_discount": 40.0,
+  "ends_at": "2026-11-29T23:59:59+01:00",
+  "example_price": 3.18,
+  "example_reference_price": 5.3,
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "boissons",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/004ab43e297e23bb05dc06a47798d6750df0964c.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "minimum_quantity": 2.0,
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 0.8,
+  "products_count": 96,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 40 %",
+    6.2
+   ],
+   [
+    "achat minimum 2 unités",
+    -0.5
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2377419",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme"
+  ],
+  "title": "Alle Kaffeekapseln"
+ },
  "migros:grp:2378537": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -12950,6 +13542,72 @@
   ],
   "title": "Alle Appenzeller in Selbstbedienung"
  },
+ "migros:grp:2378633": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.2,
+  "canonical_entity_id": "t:migros:alle-alfredo-mozzarellas",
+  "category": "Milchprodukte, Eier & frische Fertiggerichte",
+  "condition": "new",
+  "conditions": [
+   "Ab 2 Stück",
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2378633",
+  "deal_score": 3.2,
+  "description": "ab 2 Stück, z.B. Kugel, 150 g, 1.20 statt 1.50, 100 g = 0.80, Angebot gilt nur vom 26.11. bis 2.12.2026, solange Vorrat.",
+  "discount_badge": "20%, Ab 2 Stück",
+  "discount_percentage": 20.0,
+  "effective_discount": 20.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "example_price": 1.2,
+  "example_reference_price": 1.5,
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "laitier_oeufs",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/13329ab0b0cd66757cab99d70a14f73770d607f7.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "minimum_quantity": 2.0,
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 1.0,
+  "products_count": 6,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 20 %",
+    3.5
+   ],
+   [
+    "achat minimum 2 unités",
+    -0.28
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2378633",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme",
+   "nourriture"
+  ],
+  "title": "Alle Alfredo Mozzarellas"
+ },
  "migros:grp:2378647": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -13115,7 +13773,7 @@
   "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.8,
@@ -13323,6 +13981,66 @@
    "nourriture"
   ],
   "title": "Raccard Raclette Scheiben aromatisiert und assortiert"
+ },
+ "migros:grp:2378941": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 2.8,
+  "canonical_entity_id": "t:migros:valflora-saurer-halbrahm-saucenhalbrahm-und-m-dessert",
+  "category": "Milchprodukte, Eier & frische Fertiggerichte",
+  "condition": "new",
+  "conditions": [
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2378941",
+  "deal_score": 2.8,
+  "description": "z.B. Saurer Halbrahm, 200 ml, 1.45 statt 1.70, 100 ml = 0.73, Angebot gilt nur vom 26.11. bis 2.12.2026, solange Vorrat.",
+  "discount_badge": "15%",
+  "discount_percentage": 15.0,
+  "effective_discount": 15.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "example_price": 1.45,
+  "example_reference_price": 1.7,
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "nourriture",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/59b5da46ac5eac139efae493e1dc0ad0d883a80a.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 0.8,
+  "products_count": 3,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 15 %",
+    2.75
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2378941",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme",
+   "nourriture"
+  ],
+  "title": "Valflora-Saurer Halbrahm, -Saucenhalbrahm und -M-Dessert"
  },
  "migros:grp:2378962": {
   "access": "PUBLIC",
@@ -13632,6 +14350,66 @@
   ],
   "title": "Alle Torten ungekühlt"
  },
+ "migros:grp:2379110": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.5,
+  "canonical_entity_id": "t:migros:gesamtes-garofalo-frische-pasta-sortiment-gekuhlt",
+  "category": "Milchprodukte, Eier & frische Fertiggerichte",
+  "condition": "new",
+  "conditions": [
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2379110",
+  "deal_score": 3.5,
+  "description": "z.B. Tortellini Prosciutto crudo, 250 g, 5.20 statt 6.50, 100 g = 2.08, Angebot gilt nur vom 26.11. bis 2.12.2026, solange Vorrat.",
+  "discount_badge": "20%",
+  "discount_percentage": 20.0,
+  "effective_discount": 20.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "example_price": 5.2,
+  "example_reference_price": 6.5,
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "feculents",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/eb2654d9f8a38070b478f924e734bafb14a3b1cf.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 0.85,
+  "products_count": 15,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 20 %",
+    3.5
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2379110",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme",
+   "nourriture"
+  ],
+  "title": "Gesamtes Garofalo Frische-Pasta-Sortiment gekühlt"
+ },
  "migros:grp:2379120": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -13791,7 +14569,7 @@
   "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.85,
@@ -14319,6 +15097,70 @@
   ],
   "title": "Philadelphia"
  },
+ "migros:grp:2379583": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.2,
+  "canonical_entity_id": "t:migros:bio-kefir-nature-drink-und-joghurt",
+  "category": "Milchprodukte, Eier & frische Fertiggerichte",
+  "condition": "new",
+  "conditions": [
+   "Ab 2 Stück",
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2379583",
+  "deal_score": 3.2,
+  "description": "ab 2 Stück, z.B. Joghurt, 180 g, –.84 statt 1.05, 100 g = 0.44, Angebot gilt nur vom 26.11. bis 2.12.2026, solange Vorrat.",
+  "discount_badge": "20%, Ab 2 Stück",
+  "discount_percentage": 20.0,
+  "effective_discount": 20.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "laitier_oeufs",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/0b697ac529c7c9a69549cfa5779b4f23aaf90420.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "minimum_quantity": 2.0,
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 1.0,
+  "products_count": 2,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 20 %",
+    3.5
+   ],
+   [
+    "achat minimum 2 unités",
+    -0.28
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2379583",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme",
+   "nourriture"
+  ],
+  "title": "Bio Kefir Nature Drink und Joghurt"
+ },
  "migros:grp:2379638": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -14384,6 +15226,66 @@
    "nourriture"
   ],
   "title": "M-Classic Käsescheiben"
+ },
+ "migros:grp:2379752": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.5,
+  "canonical_entity_id": "t:migros:alle-frischen-migros-bio-pilze",
+  "category": "Früchte & Gemüse",
+  "condition": "new",
+  "conditions": [
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2379752",
+  "deal_score": 3.5,
+  "description": "z.B. Champignons braun, Schweiz, Schale, 250 g, 3.16 statt 3.95, 100 g = 1.26, Angebot gilt nur vom 26.11. bis 2.12.2026, solange Vorrat.",
+  "discount_badge": "20%",
+  "discount_percentage": 20.0,
+  "effective_discount": 20.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "example_price": 3.16,
+  "example_reference_price": 3.95,
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "fruits_legumes",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/cff31f7cfc450ad2ad82dbe6dc8bd1ad5a294006.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 0.85,
+  "products_count": 7,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 20 %",
+    3.5
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2379752",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme",
+   "nourriture"
+  ],
+  "title": "Alle frischen Migros Bio Pilze"
  },
  "migros:grp:2379934": {
   "access": "PUBLIC",
@@ -14503,6 +15405,64 @@
    "nourriture"
   ],
   "title": "Migros Bio Champignons"
+ },
+ "migros:grp:2379990": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 4.1,
+  "canonical_entity_id": "t:migros:birnen-kaiser-alexander",
+  "category": "Früchte & Gemüse",
+  "condition": "new",
+  "conditions": [
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2379990",
+  "deal_score": 4.1,
+  "description": "Schweiz, per kg, Angebot gilt nur vom 26.11. bis 2.12.2026, solange Vorrat.",
+  "discount_badge": "24%",
+  "discount_percentage": 24.0,
+  "effective_discount": 24.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "fruits_legumes",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/0fca925fa2f992015f3811d06e10f5e3e25b5a7b.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 0.85,
+  "products_count": 2,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 24 %",
+    4.1
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2379990",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme",
+   "nourriture"
+  ],
+  "title": "Birnen Kaiser Alexander"
  },
  "migros:grp:2379998": {
   "access": "PUBLIC",
@@ -15102,11 +16062,11 @@
   "group": "retail",
   "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/9daf5cfa7501306002a28139159a74737cec4918.jpg",
   "last_changed_at": "2026-11-19T03:51:56+01:00",
-  "last_seen_at": "2026-11-25T15:25:33+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
   "minimum_quantity": 2.0,
-  "missing_scans": 1,
+  "missing_scans": 0,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.4,
@@ -15951,7 +16911,7 @@
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
   "minimum_quantity": 2.0,
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.4,
@@ -16065,7 +17025,7 @@
   "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.8,
@@ -16118,7 +17078,7 @@
   "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.8,
@@ -16172,7 +17132,7 @@
   "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.8,
@@ -16281,7 +17241,7 @@
   "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.8,
@@ -16390,7 +17350,7 @@
   "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.8,
@@ -16507,7 +17467,7 @@
   "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.4,
@@ -16597,6 +17557,71 @@
    "action_gamme"
   ],
   "title": "Gesamtes Twist Bodenreinigungs-Sortiment"
+ },
+ "migros:grp:2381398": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.2,
+  "canonical_entity_id": "t:migros:alle-clean-schwamme",
+  "category": "Reinigung, Wäschepflege & Haushalt",
+  "condition": "new",
+  "conditions": [
+   "Ab 2 Stück",
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2381398",
+  "deal_score": 3.2,
+  "description": "ab 2 Packungen, z.B. Strong synthetisch, 3 Stück, 1.56 statt 1.95, Angebot gilt nur vom 26.11. bis 2.12.2026, solange Vorrat.",
+  "discount_badge": "20%, Ab 2 Stück",
+  "discount_percentage": 20.0,
+  "effective_discount": 20.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "example_price": 1.56,
+  "example_reference_price": 1.95,
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "retail",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "retail",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/7ec344aef0e001dce829ec55f8ee7e4073559f68.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "minimum_quantity": 2.0,
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 0.4,
+  "products_count": 21,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 20 %",
+    3.5
+   ],
+   [
+    "achat minimum 2 unités",
+    -0.28
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2381398",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme"
+  ],
+  "title": "Alle Clean Schwämme"
  },
  "migros:grp:2381492": {
   "access": "PUBLIC",
@@ -16816,7 +17841,7 @@
   "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.4,
@@ -16995,7 +18020,7 @@
   "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.4,
@@ -17054,7 +18079,7 @@
   "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.8,
@@ -17078,6 +18103,65 @@
    "action_gamme"
   ],
   "title": "Gesamtes Erwachsenenbekleidungs-Sortiment"
+ },
+ "migros:grp:2382715": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 5.0,
+  "canonical_entity_id": "t:migros:gesamtes-spielwaren-sortiment",
+  "category": "Spiele, Hobbys & Partybedarf, Baby und Kind",
+  "condition": "new",
+  "conditions": [
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2382715",
+  "deal_score": 5.0,
+  "description": "(ohne Pokémonsammelkarten), z.B. iDance, pro Stück, 62.97 statt 89.95, Angebot gilt nur vom 26.11. bis 29.11.2026, solange Vorrat.",
+  "discount_badge": "30%",
+  "discount_percentage": 30.0,
+  "effective_discount": 30.0,
+  "ends_at": "2026-11-29T23:59:59+01:00",
+  "example_price": 62.97,
+  "example_reference_price": 89.95,
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "autres",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/d810c753ed977d446b32e21ecf9278d43f0bf826.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 0.8,
+  "products_count": 100,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 30 %",
+    5.0
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2382715",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme"
+  ],
+  "title": "Gesamtes Spielwaren-Sortiment"
  },
  "migros:grp:2386876": {
   "access": "PUBLIC",
@@ -17900,6 +18984,72 @@
   ],
   "title": "Gesamtes Condy-Essiggemüse und -Antipasti-Sortiment"
  },
+ "migros:grp:2434160": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 4.6,
+  "canonical_entity_id": "t:migros:alle-condy-essiggemuse-und-antipasti",
+  "category": "Pasta, Würzmittel & Konserven",
+  "condition": "new",
+  "conditions": [
+   "Ab 2 Stück",
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2434160",
+  "deal_score": 4.6,
+  "description": "ab 2 Stück, z.B. Gewürzgurken, 290 g, 2.07 statt 2.95, 100 g = 0.71, Angebot gilt nur vom 26.11. bis 2.12.2026, solange Vorrat.",
+  "discount_badge": "30%, Ab 2 Stück",
+  "discount_percentage": 30.0,
+  "effective_discount": 30.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "example_price": 2.07,
+  "example_reference_price": 2.95,
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "fruits_legumes",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/bf40a6f0084259914a14972761fb4c21e6b6cea1.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "minimum_quantity": 2.0,
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 0.85,
+  "products_count": 21,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 30 %",
+    5.0
+   ],
+   [
+    "achat minimum 2 unités",
+    -0.4
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2434160",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme",
+   "nourriture"
+  ],
+  "title": "Alle Condy-Essiggemüse und -Antipasti"
+ },
  "migros:grp:2435651": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -17934,7 +19084,7 @@
   "last_seen_at": "2026-11-26T00:21:10+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.8,
@@ -18017,6 +19167,70 @@
   ],
   "title": "Kartoffelbrot hell mit Nüssen, IP-SUISSE"
  },
+ "migros:grp:2436959": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.2,
+  "canonical_entity_id": "t:migros:alle-silser-kleinbrote-im-offenverkauf",
+  "category": "Brot, Backwaren & Frühstück",
+  "condition": "new",
+  "conditions": [
+   "Ab 2 Stück",
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2436959",
+  "deal_score": 3.2,
+  "description": "ab 2 Stück, (ohne Gipfeli), z.B. Fussballbrötchen, 65 g, –.80 statt 1.–, 100 g = 1.23, Angebot gilt nur vom 26.11. bis 2.12.2026, solange Vorrat.",
+  "discount_badge": "20%, Ab 2 Stück",
+  "discount_percentage": 20.0,
+  "effective_discount": 20.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "feculents",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/2376b952ec2863de1c71a9dad005bd140c2db6a3.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "minimum_quantity": 2.0,
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 0.85,
+  "products_count": 7,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 20 %",
+    3.5
+   ],
+   [
+    "achat minimum 2 unités",
+    -0.28
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2436959",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme",
+   "nourriture"
+  ],
+  "title": "Alle Silser-Kleinbrote im Offenverkauf"
+ },
  "migros:grp:2438115": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -18053,7 +19267,7 @@
   "lifecycle": "ACTIVE",
   "merchant": "Migros",
   "minimum_quantity": 2.0,
-  "missing_scans": 0,
+  "missing_scans": 1,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.8,
@@ -18978,6 +20192,65 @@
    "nourriture"
   ],
   "title": "Alle Christmas Bakery Biscuits"
+ },
+ "migros:grp:2467515": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.5,
+  "canonical_entity_id": "t:migros:alle-grand-mere-weihnachtsguetzli",
+  "category": "Snacks & Süssigkeiten",
+  "condition": "new",
+  "conditions": [
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2467515",
+  "deal_score": 3.5,
+  "description": "z.B. Mailänderli, 200 g, 3.60 statt 4.50, 100 g = 1.80, Angebot gilt nur vom 26.11. bis 2.12.2026, solange Vorrat.",
+  "discount_badge": "20%",
+  "discount_percentage": 20.0,
+  "effective_discount": 20.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "example_price": 3.6,
+  "example_reference_price": 4.5,
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "autres",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/5335b35ed52d72b69c63ac539dabd6389b237415.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 0.8,
+  "products_count": 11,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 20 %",
+    3.5
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2467515",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme"
+  ],
+  "title": "Alle Grand-Mère Weihnachtsguetzli"
  },
  "migros:grp:2467523": {
   "access": "PUBLIC",
@@ -20530,6 +21803,71 @@
    "cumulus_points"
   ],
   "title": "House of Thêom Parfüme"
+ },
+ "migros:grp:2511363": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 4.2,
+  "canonical_entity_id": "t:migros:gesamtes-gourmet-und-vital-balance-katzenfutter-sortiment",
+  "category": "Tierbedarf",
+  "condition": "new",
+  "conditions": [
+   "Ab 3 Stück",
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2511363",
+  "deal_score": 4.2,
+  "description": "ab 3 Stück, z.B. Vital Balance Senior mit Huhn und grünen Bohnen, 4 x 85 g, 3.22 statt 4.60, 100 g = 0.95, Angebot gilt nur vom 26.11. bis 2.12.2026, solange Vorrat.",
+  "discount_badge": "30%, Ab 3 Stück",
+  "discount_percentage": 30.0,
+  "effective_discount": 30.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "example_price": 3.22,
+  "example_reference_price": 4.6,
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "retail",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "retail",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/c456ce751f63a9adc263558789ec17859396859e.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "minimum_quantity": 3.0,
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 0.4,
+  "products_count": 63,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 30 %",
+    5.0
+   ],
+   [
+    "achat minimum 3 unités",
+    -0.75
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2511363",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme"
+  ],
+  "title": "Gesamtes Gourmet- und Vital Balance-Katzenfutter Sortiment"
  },
  "migros:grp:2511388": {
   "access": "PUBLIC",
@@ -22623,6 +23961,71 @@
   ],
   "title": "Alle Migros Bio Joghurts"
  },
+ "migros:grp:2537014": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 3.2,
+  "canonical_entity_id": "t:migros:gesamtes-sushi-mania-sortiment",
+  "category": "Milchprodukte, Eier & frische Fertiggerichte, Fleisch & Fisch",
+  "condition": "new",
+  "conditions": [
+   "Ab 2 Stück",
+   "action sur une gamme d'articles : prix variable selon l'article"
+  ],
+  "deal_id": "migros:grp:2537014",
+  "deal_score": 3.2,
+  "description": "ab 2 Stück, z.B. Best of Salmon Mix, 205 g, 7.96 statt 9.95, 100 g = 3.88, Angebot gilt nur vom 26.11. bis 2.12.2026, solange Vorrat.",
+  "discount_badge": "20%, Ab 2 Stück",
+  "discount_percentage": 20.0,
+  "effective_discount": 20.0,
+  "ends_at": "2026-12-02T23:59:59+01:00",
+  "example_price": 7.96,
+  "example_reference_price": 9.95,
+  "extra_tags": [
+   "action_gamme"
+  ],
+  "family": "grocery",
+  "first_seen_at": "2026-11-26T06:07:48+01:00",
+  "geographic_note": "prix Migros Ostschweiz (gmos) ; stock du magasin local inconnu",
+  "geographic_scope": "REGIONAL",
+  "geographic_scope_resolved": "REGIONAL",
+  "group": "autres",
+  "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/6bdfc86e268672e04cfa0d5368ff86bf50b0c064.jpg",
+  "last_changed_at": "2026-11-26T06:07:48+01:00",
+  "last_seen_at": "2026-11-26T06:07:48+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Migros",
+  "minimum_quantity": 2.0,
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "range_promotion",
+  "personal_relevance": 0.8,
+  "products_count": 49,
+  "promotion_integrity": "unchecked",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 20 %",
+    3.5
+   ],
+   [
+    "achat minimum 2 unités",
+    -0.28
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "migros",
+  "source_offer_id": "2537014",
+  "source_type": "merchant",
+  "source_url": "https://www.migros.ch/de/offers/home",
+  "starts_at": "2026-11-26T00:00:00+01:00",
+  "store_type": "instore",
+  "tags": [
+   "action_gamme"
+  ],
+  "title": "Gesamtes Sushi Mania Sortiment"
+ },
  "migros:grp:2537198": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -23083,14 +24486,15 @@
   "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/9e36bf1eac56d9d7604ab9d800ab7735dfefc634.jpg",
   "last_changed_at": "2026-11-19T03:51:56+01:00",
   "last_seen_at": "2026-11-25T15:25:33+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Migros",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.4,
   "products_count": 6,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-26T06:07:48+01:00",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -23198,14 +24602,15 @@
   "image_url": "https://image.migros.ch/d/mo-custom/v-w-400-h-340/o-af-1-t.clr-fff/f5315587d42bbc3da9b67b60aada4ce2f8595104.jpg",
   "last_changed_at": "2026-11-19T03:51:56+01:00",
   "last_seen_at": "2026-11-25T15:25:33+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "merchant": "Migros",
-  "missing_scans": 1,
+  "missing_scans": 2,
   "net_savings": null,
   "offer_type": "range_promotion",
   "personal_relevance": 0.4,
   "products_count": 6,
   "promotion_integrity": "unknown",
+  "removed_at": "2026-11-26T06:07:48+01:00",
   "score_components": [
    [
     "aucune référence vérifiable",

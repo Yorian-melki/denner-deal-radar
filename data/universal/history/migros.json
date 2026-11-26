@@ -678,6 +678,19 @@
    "unit_price": 15.0
   }
  ],
+ "gtin:07623186537295": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "current_price": 1.2,
+   "deal_id": "migros:100170127",
+   "quantity": 0.5,
+   "reference_price": 2.0,
+   "reference_price_type": "merchant_previous",
+   "unit": "CHF/kg",
+   "unit_price": 2.4
+  }
+ ],
  "gtin:07623186580192": [
   {
    "at": "2026-10-14T03:07:57+02:00",
@@ -1237,6 +1250,19 @@
    "unit_price": 3.8
   }
  ],
+ "sku:migros:111283000000": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "current_price": 2.7,
+   "deal_id": "migros:100005574",
+   "quantity": 0.73,
+   "reference_price": 3.4,
+   "reference_price_type": "merchant_previous",
+   "unit": "CHF/kg",
+   "unit_price": 3.7
+  }
+ ],
  "sku:migros:111492800500": [
   {
    "at": "2026-10-22T10:41:06+02:00",
@@ -1320,6 +1346,19 @@
    "reference_price_type": "merchant_previous",
    "unit": "CHF/l",
    "unit_price": 7.3
+  }
+ ],
+ "sku:migros:204126100000": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "current_price": 1.79,
+   "deal_id": "migros:100005010",
+   "quantity": 0.5,
+   "reference_price": 2.1,
+   "reference_price_type": "merchant_previous",
+   "unit": "CHF/l",
+   "unit_price": 3.6
   }
  ],
  "sku:migros:205210200000": [
@@ -1447,6 +1486,19 @@
    "unit_price": 1.1
   }
  ],
+ "sku:migros:264400913300": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "current_price": 1.0,
+   "deal_id": "migros:100103859",
+   "quantity": 1.0,
+   "reference_price": 1.4,
+   "reference_price_type": "merchant_previous",
+   "unit": "CHF/pièce",
+   "unit_price": 1.0
+  }
+ ],
  "sku:migros:264500313200": [
   {
    "at": "2026-11-19T03:51:56+01:00",
@@ -1551,6 +1603,19 @@
    "unit_price": 6.9
   }
  ],
+ "sku:migros:271413502300": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "current_price": 2.5,
+   "deal_id": "migros:100048522",
+   "quantity": 0.5,
+   "reference_price": 3.95,
+   "reference_price_type": "merchant_previous",
+   "unit": "CHF/kg",
+   "unit_price": 5.0
+  }
+ ],
  "sku:migros:271415602300": [
   {
    "at": "2026-11-05T04:31:30+01:00",
@@ -1614,6 +1679,19 @@
    "reference_price_type": "merchant_previous",
    "unit": "CHF/kg",
    "unit_price": 2.4
+  }
+ ],
+ "sku:migros:273800502400": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "current_price": 2.2,
+   "deal_id": "migros:100042922",
+   "quantity": 0.5,
+   "reference_price": 2.8,
+   "reference_price_type": "merchant_previous",
+   "unit": "CHF/kg",
+   "unit_price": 4.4
   }
  ],
  "sku:migros:274300601000": [
@@ -1694,6 +1772,12 @@
    "at": "2026-10-28T10:45:11+01:00",
    "condition": "new",
    "deal_id": "migros:grp:2378647",
+   "reference_price_type": "stated_percent_only"
+  },
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2378633",
    "reference_price_type": "stated_percent_only"
   }
  ],
@@ -1841,6 +1925,22 @@
    "reference_price_type": "stated_percent_only"
   }
  ],
+ "t:migros:alle-clean-schwamme": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2381398",
+   "reference_price_type": "stated_percent_only"
+  }
+ ],
+ "t:migros:alle-condy-essiggemuse-und-antipasti": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2434160",
+   "reference_price_type": "stated_percent_only"
+  }
+ ],
  "t:migros:alle-crea-d-or-biscuits": [
   {
    "at": "2026-10-29T02:15:56+01:00",
@@ -1951,11 +2051,25 @@
    "reference_price_type": "stated_percent_only"
   }
  ],
+ "t:migros:alle-frischen-migros-bio-pilze": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2379752",
+   "reference_price_type": "stated_percent_only"
+  }
+ ],
  "t:migros:alle-grand-mere-weihnachtsguetzli": [
   {
    "at": "2026-11-12T02:41:23+01:00",
    "condition": "new",
    "deal_id": "migros:grp:2467498",
+   "reference_price_type": "stated_percent_only"
+  },
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2467515",
    "reference_price_type": "stated_percent_only"
   }
  ],
@@ -1975,6 +2089,14 @@
    "reference_price_type": "stated_percent_only"
   }
  ],
+ "t:migros:alle-kaffeekapseln": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2377419",
+   "reference_price_type": "stated_percent_only"
+  }
+ ],
  "t:migros:alle-kitchen-co-servietten-tischsets-und-tischtucher-aus-papier-fsc": [
   {
    "at": "2026-11-19T03:51:56+01:00",
@@ -1988,6 +2110,14 @@
    "at": "2026-11-12T02:41:23+01:00",
    "condition": "new",
    "deal_id": "migros:grp:2373985",
+   "reference_price_type": "stated_percent_only"
+  }
+ ],
+ "t:migros:alle-lindt-tafelschokoladen": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2374181",
    "reference_price_type": "stated_percent_only"
   }
  ],
@@ -2137,11 +2267,27 @@
    "reference_price_type": "stated_percent_only"
   }
  ],
+ "t:migros:alle-reis-und-maiswaffeln": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2374802",
+   "reference_price_type": "stated_percent_only"
+  }
+ ],
  "t:migros:alle-rio-mare-und-albo-fischkonserven": [
   {
    "at": "2026-10-14T03:07:57+02:00",
    "condition": "new",
    "deal_id": "migros:grp:2446042",
+   "reference_price_type": "stated_percent_only"
+  }
+ ],
+ "t:migros:alle-silser-kleinbrote-im-offenverkauf": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2436959",
    "reference_price_type": "stated_percent_only"
   }
  ],
@@ -2285,6 +2431,14 @@
    "deal_id": "migros:grp:2487850"
   }
  ],
+ "t:migros:bio-kefir-nature-drink-und-joghurt": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2379583",
+   "reference_price_type": "stated_percent_only"
+  }
+ ],
  "t:migros:bio-kornerbrotchen-im-offenverkauf": [
   {
    "at": "2026-11-26T00:21:10+01:00",
@@ -2319,6 +2473,12 @@
    "at": "2026-10-22T10:41:06+02:00",
    "condition": "new",
    "deal_id": "migros:grp:2424803",
+   "reference_price_type": "stated_percent_only"
+  },
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2379990",
    "reference_price_type": "stated_percent_only"
   }
  ],
@@ -2527,6 +2687,22 @@
    "at": "2026-10-22T00:23:02+02:00",
    "condition": "new",
    "deal_id": "migros:grp:2381618",
+   "reference_price_type": "stated_percent_only"
+  }
+ ],
+ "t:migros:gesamtes-garofalo-frische-pasta-sortiment-gekuhlt": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2379110",
+   "reference_price_type": "stated_percent_only"
+  }
+ ],
+ "t:migros:gesamtes-gourmet-und-vital-balance-katzenfutter-sortiment": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2511363",
    "reference_price_type": "stated_percent_only"
   }
  ],
@@ -2782,6 +2958,12 @@
    "condition": "new",
    "deal_id": "migros:grp:2381526",
    "reference_price_type": "stated_percent_only"
+  },
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2382715",
+   "reference_price_type": "stated_percent_only"
   }
  ],
  "t:migros:gesamtes-sun-queen-trockenfruchte-und-nusse-sortiment": [
@@ -2789,6 +2971,14 @@
    "at": "2026-10-15T03:31:07+02:00",
    "condition": "new",
    "deal_id": "migros:grp:2377414",
+   "reference_price_type": "stated_percent_only"
+  }
+ ],
+ "t:migros:gesamtes-sushi-mania-sortiment": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2537014",
    "reference_price_type": "stated_percent_only"
   }
  ],
@@ -3397,6 +3587,14 @@
    "at": "2026-10-29T02:15:56+01:00",
    "condition": "new",
    "deal_id": "migros:grp:2374707",
+   "reference_price_type": "stated_percent_only"
+  }
+ ],
+ "t:migros:valflora-saurer-halbrahm-saucenhalbrahm-und-m-dessert": [
+  {
+   "at": "2026-11-26T06:07:48+01:00",
+   "condition": "new",
+   "deal_id": "migros:grp:2378941",
    "reference_price_type": "stated_percent_only"
   }
  ],
