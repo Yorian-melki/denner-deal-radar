@@ -19,7 +19,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2021/08/Preipirat-265x250-dt-300x283.jpg",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Zak",
   "missing_scans": 0,
@@ -431,7 +431,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2025/09/c06f93d1-95a8-473f-a906-aa54f986758c-e1791814925689-256x300.png",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "IKEA",
   "missing_scans": 0,
@@ -1463,7 +1463,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/05/werkzeuge-black-friday-2026tiny-253x300.png",
   "last_changed_at": "2026-11-15T19:52:45+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -2105,8 +2105,8 @@
    ],
    "code": "SCORE",
    "ok_streak": 0,
-   "since": "2026-11-26T14:55:30+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "HIDDEN"
   }
  },
  "preispirat:744475": {
@@ -2558,13 +2558,15 @@
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/06/update-fitness-cropped-300x122.png",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
   "last_seen_at": "2026-11-21T03:18:00+01:00",
-  "lifecycle": "ACTIVE",
+  "lifecycle": "REMOVED",
   "missing_scans": 0,
   "net_savings": null,
   "offer_type": "freebie",
   "personal_relevance": 0.6,
   "promotion_integrity": null,
   "published_at": "2026-09-12T14:00:49+02:00",
+  "removed_at": "2026-11-28T05:45:27+01:00",
+  "removed_reason": "non revue depuis 168 h (flux à fenêtre)",
   "score_components": [
    [
     "valeur inconnue : gratuit non évalué",
@@ -4256,10 +4258,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-26T23:59:57+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:764920": {
@@ -4433,7 +4435,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/hrspiele-mit-kasimir-1791629054-300x100.jpeg",
   "last_changed_at": "2026-10-14T03:07:57+02:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "BZfE",
   "missing_scans": 0,
@@ -4687,10 +4689,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-19T22:37:43+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:765602": {
@@ -7003,11 +7005,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2026-11-30T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
@@ -7015,6 +7012,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -19992,7 +19994,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/8a123a056672e427f38a3d4a5d9779fb_image_picker_AF0AA73B-80CE-45BC-9BBA-096D6497EB25-26617-000002A1D0A20FF1-1-300x244.jpg",
   "last_changed_at": "2026-10-26T17:48:20+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -20017,11 +20019,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2026-12-03T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2026-12-03T06:07:48+01:00",
      "http": 200
@@ -20029,6 +20026,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-03T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-03T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -23923,7 +23925,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/Unbenannt-2-300x170.jpg",
   "last_changed_at": "2026-10-28T22:39:55+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -23948,11 +23950,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2026-12-31T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2026-12-31T06:07:48+01:00",
      "http": 200
@@ -23960,6 +23957,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-31T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-31T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -26969,11 +26971,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2026-11-30T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
@@ -26981,6 +26978,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -27120,7 +27122,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/10/cb8970340aca1d677bdc90fe5b19e471_1000043043-1-300x200.png",
   "last_changed_at": "2026-10-30T22:31:19+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -27145,11 +27147,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2027-12-31T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2027-12-31T06:07:48+01:00",
      "http": 200
@@ -27157,6 +27154,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2027-12-31T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2027-12-31T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -30252,7 +30254,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/IMG_0358-300x120.jpeg",
   "last_changed_at": "2026-11-01T18:10:47+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -30277,11 +30279,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2026-12-31T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2026-12-31T06:07:48+01:00",
      "http": 200
@@ -30289,6 +30286,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-31T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-31T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -31074,7 +31076,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/IMG_2913-271x300.jpeg",
   "last_changed_at": "2026-11-02T12:16:38+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": 14.9,
@@ -31102,11 +31104,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2026-11-29T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2026-11-29T06:07:48+01:00",
      "http": 200
@@ -31114,6 +31111,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-29T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-29T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -32052,11 +32054,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2026-11-30T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
@@ -32064,6 +32061,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -32966,11 +32968,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2026-11-30T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
@@ -32978,6 +32975,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -33183,10 +33185,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:772618": {
@@ -33262,10 +33264,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-13T13:14:33+01:00",
-   "state": "HIDDEN"
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:772619": {
@@ -33591,11 +33593,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2026-11-30T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
@@ -33603,6 +33600,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -33871,11 +33873,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2026-12-07T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2026-12-07T06:07:48+01:00",
      "http": 200
@@ -33883,6 +33880,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-07T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-07T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -36572,11 +36574,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2026-12-06T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2026-12-06T06:07:48+01:00",
      "http": 200
@@ -36584,6 +36581,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-06T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-06T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -37151,11 +37153,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-19T22:37:43+01:00",
-     "ends": "2026-11-30T22:37:43+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
@@ -37163,6 +37160,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -38930,7 +38932,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/69f6db4752065c11b6f131cdd6dca8a2_1000045620-1-214x300.jpg",
   "last_changed_at": "2026-11-05T21:17:54+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -38955,11 +38957,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2027-01-01T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2027-01-01T06:07:48+01:00",
      "http": 200
@@ -38967,6 +38964,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2027-01-01T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2027-01-01T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -44953,7 +44955,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/Screenshot-2026-11-07-at-13.15.58-300x250.png",
   "last_changed_at": "2026-11-07T17:50:41+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -44978,11 +44980,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2027-02-07T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2027-02-07T06:07:48+01:00",
      "http": 200
@@ -44990,6 +44987,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2027-02-07T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2027-02-07T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -45017,7 +45019,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/06/Gemini_Generated_Image_sq5n1vsq5n1vsq5n-299x300.png",
   "last_changed_at": "2026-11-07T21:54:14+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -45042,11 +45044,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2027-01-03T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2027-01-03T06:07:48+01:00",
      "http": 200
@@ -45054,6 +45051,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2027-01-03T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2027-01-03T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -47866,11 +47868,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-16T03:46:45+01:00",
-     "ends": "2026-12-07T03:46:45+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-16T13:47:21+01:00",
      "ends": "2026-12-07T13:47:21+01:00",
      "http": 200
@@ -47878,6 +47875,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-07T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-07T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -54711,7 +54713,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/Screenshot-2026-11-12-125712-300x212.png",
   "last_changed_at": "2026-11-12T13:44:49+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -54736,11 +54738,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2028-12-31T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2028-12-31T06:07:48+01:00",
      "http": 200
@@ -54748,6 +54745,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2028-12-31T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2028-12-31T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -54987,7 +54989,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_SjkYHUBzSU-273x300.png",
   "last_changed_at": "2026-11-12T21:29:32+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -55012,11 +55014,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2027-02-02T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2027-02-02T06:07:48+01:00",
      "http": 200
@@ -55024,6 +55021,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2027-02-02T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2027-02-02T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -60636,7 +60638,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/image-300x78.png",
   "last_changed_at": "2026-11-14T12:30:00+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "IKEA",
   "missing_scans": 0,
@@ -62200,7 +62202,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/2612_zd_kombi_v3_rgb-300x300.png",
   "last_changed_at": "2026-11-14T22:41:33+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -62613,7 +62615,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_ZvALKfb95y-300x117.png",
   "last_changed_at": "2026-11-15T12:01:23+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "NASA",
   "missing_scans": 0,
@@ -63483,11 +63485,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T15:25:33+01:00",
-     "ends": "2026-12-07T15:25:33+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T06:07:48+01:00",
      "ends": "2026-12-07T06:07:48+01:00",
      "http": 200
@@ -63495,6 +63492,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-07T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-07T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -67195,6 +67197,56 @@
    ]
   }
  },
+ "preispirat:779340": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:nettoshop:black-week-bis-zu-70-rabatt",
+  "category": "Wohnen & Haushalt",
+  "deal_id": "preispirat:779340",
+  "deal_score": null,
+  "description": "Die Black Week bei nettoshop.ch ist da: Entdecken Sie eine riesige Auswahl an stark reduzierten Artikeln für Haushalt und Küche und profitieren Sie von zahlreichen attraktiven Markenrabatten. Sichern Sie sich jetzt unsere stärksten Deals mit bis zu 70% Rabatt – nur solange Vorrat.",
+  "effective_discount": null,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/fe986300-59c6-42f8-987b-c4acd8a4414a__Logo_DE_600x300-300x150.png",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Nettoshop",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-27T23:45:00+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "779340",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/black-week-bis-zu-70-rabatt-2/",
+  "tags": [],
+  "title": "Black Week: bis zu 70% Rabatt",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-28T23:59:59+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
  "preispirat:779345": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -67365,6 +67417,55 @@
    "ok_streak": 0,
    "since": "2026-11-27T06:05:25+01:00",
    "state": "ENDED"
+  }
+ },
+ "preispirat:779357": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:preispirat:bis-zu-70-rabatt-auf-sextoys-dessous",
+  "category": "Verschiedenes, blackfriday, Gold",
+  "deal_id": "preispirat:779357",
+  "deal_score": null,
+  "description": "Profitiere von bis zu 70% Rabatt zur Black Friday Week 2026 bei Amorana. Jetzt beim Loveshop Nr. 1 der Schweiz bestellen. Denn mit den Produkten von Amorana sorgst du garantiert für lustvolle Momente - alleine und auch zu zweit. Stöbere durch die grosse Auswahl von vielen verschiedenen Sextoys für M",
+  "effective_discount": null,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2024/11/6f99833e-2797-4c7f-9144-8fb6d7de6765__cedi_logo-300x150.png",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-27T23:45:00+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "779357",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/bis-zu-70-rabatt-auf-sextoys-dessous-15/",
+  "tags": [],
+  "title": "Bis zu 70% Rabatt auf Sextoys & Dessous",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-29T05:45:27+01:00",
+     "http": 200
+    }
+   ]
   }
  },
  "preispirat:779366": {
@@ -67994,7 +68095,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/7b563dd5bb5407ed3c52426248a74087_55065-1-274x300.png",
   "last_changed_at": "2026-11-16T23:54:09+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -70241,11 +70342,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-27T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-27T00:21:10+01:00",
      "http": 200
@@ -70254,8 +70350,17 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-27T23:59:59+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "flag": "expired",
+     "http": 200
     }
-   ]
+   ],
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:779877": {
@@ -70459,6 +70564,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -70574,11 +70684,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-29T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-29T00:21:10+01:00",
      "http": 200
@@ -70586,6 +70691,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-29T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-29T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -70938,6 +71048,59 @@
      "ends": "2026-11-27T23:59:59+01:00",
      "http": 200
     }
+   ],
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
+  }
+ },
+ "preispirat:779984": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:preispirat:black-saturday-extra-20-sparen",
+  "category": "Fashion & Schmuck, Lebensmittel, nonpartner",
+  "deal_id": "preispirat:779984",
+  "deal_score": null,
+  "description": "Sichere zum Ende der Black Week nochmal 20% Rabatt auf (fast) alles und schnapp dir deine Favoriten bei EMP!",
+  "effective_discount": null,
+  "family": "grocery",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "autres",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/6e0dcbeb-57c2-421e-9d65-8a79746ebe9c__SAM_11571_Aff_Patoc_CH_BlackWeek26_Logo_black-300x150.png",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-27T23:45:00+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "779984",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/black-saturday-extra-20-sparen/",
+  "tags": [],
+  "title": "Black Saturday: Extra 20% sparen!",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-28T23:59:59+01:00",
+     "http": 200
+    }
    ]
   }
  },
@@ -70992,8 +71155,17 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-27T23:59:59+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "flag": "expired",
+     "http": 200
     }
-   ]
+   ],
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:780011": {
@@ -71390,10 +71562,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-27T23:43:50+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:780090": {
@@ -71445,6 +71617,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -71861,11 +72038,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -71873,6 +72045,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -71923,11 +72100,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -71935,6 +72107,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -72108,7 +72285,11 @@
      "ends": "2026-11-27T23:59:59+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:780208": {
@@ -72167,6 +72348,55 @@
    "ok_streak": 0,
    "since": "2026-11-27T06:05:25+01:00",
    "state": "ENDED"
+  }
+ },
+ "preispirat:780210": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:preispirat:braun-all-in-one-series-3-nur-chf-24-90",
+  "category": "Beauty & Gesundheit, Wohnen & Haushalt, nonpartner",
+  "deal_id": "preispirat:780210",
+  "deal_score": null,
+  "description": "Gepflegter Look für jeden Tag. Der Braun All-in-One Series 3 bietet dir ein vielseitiges Styling für Bart und Haare. Jetzt zum Top-Preis!",
+  "effective_discount": null,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/3b5041a6-3194-4aba-bbab-90b000a1b781__LidlLogo-300x150.png",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-27T23:45:00+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "780210",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/braun-all-in-one-series-3-nur-chf-24-90/",
+  "tags": [],
+  "title": "Braun All-in-One Series 3 nur CHF 24.90",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-28T23:59:59+01:00",
+     "http": 200
+    }
+   ]
   }
  },
  "preispirat:780244": {
@@ -72374,10 +72604,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-26T23:59:57+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:780341": {
@@ -72448,10 +72678,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-27T23:43:50+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:780388": {
@@ -72708,11 +72938,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -72720,6 +72945,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -72943,10 +73173,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-27T23:43:50+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:780457": {
@@ -73681,6 +73911,55 @@
    "state": "SUSPECT"
   }
  },
+ "preispirat:780529": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:preispirat:avalon-nano-3s-q-bis-chf-300-rabatt",
+  "category": "Home Entertainment & Foto, nonpartner",
+  "deal_id": "preispirat:780529",
+  "deal_score": null,
+  "description": "Bitcoin Mining zum Black Friday! Sichere dir den Avalon Nano 3S für CHF 279.- statt CHF 359.- oder den Avalon Q für CHF 1’550.- statt CHF 1’850.-!",
+  "effective_discount": null,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/0874641b-0565-4ad7-848a-46310e099e4b__bitConsult-300x150.png",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-27T23:45:00+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "780529",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/avalon-nano-3s-q-bis-chf-300-rabatt-2/",
+  "tags": [],
+  "title": "Avalon Nano 3S & Q: Bis CHF 300 Rabatt",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-28T23:59:59+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
  "preispirat:780531": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -73848,7 +74127,11 @@
      "ends": "2026-11-27T23:59:59+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:780540": {
@@ -73952,11 +74235,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -73964,6 +74242,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -74208,6 +74491,58 @@
    "state": "ENDED"
   }
  },
+ "preispirat:780622": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 2.8,
+  "canonical_entity_id": "t:preispirat:15-rabatt-auf-lumibricks-klemmbausteine",
+  "category": "Lebensmittel, nonpartner",
+  "deal_id": "preispirat:780622",
+  "deal_score": 2.8,
+  "description": "Entdecke die Klemmbausteine von Lumibricks mit integrierter LED-Beleuchtung und profitiere von Black Friday Rabatten",
+  "discount_percentage": 15.0,
+  "effective_discount": 15.0,
+  "family": "grocery",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "autres",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/c905008b-052e-40ae-bed0-4b8074b00005__logo_wog_600x300-300x150.png",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-27T23:45:00+01:00",
+  "reference_price_type": "stated_percent_only",
+  "score_components": [
+   [
+    "pourcentage annoncé seul : 15 %",
+    2.75
+   ]
+  ],
+  "score_confidence": 0.55,
+  "source_id": "preispirat",
+  "source_offer_id": "780622",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/15-rabatt-auf-lumibricks-klemmbausteine/",
+  "tags": [],
+  "title": "15% Rabatt auf Lumibricks Klemmbausteine",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-28T23:59:59+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
  "preispirat:780623": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -74262,7 +74597,11 @@
      "ends": "2026-11-27T23:59:59+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:780627": {
@@ -74307,11 +74646,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -74319,6 +74653,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -74384,10 +74723,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-27T23:43:50+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:780661": {
@@ -74450,10 +74789,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-27T23:43:50+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:780674": {
@@ -74498,11 +74837,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -74510,6 +74844,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -74923,11 +75262,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-29T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-29T00:21:10+01:00",
      "http": 200
@@ -74935,6 +75269,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-29T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-29T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -74960,7 +75299,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_spgHN2AAl0-300x196.png",
   "last_changed_at": "2026-11-19T03:51:56+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Spotify",
   "missing_scans": 0,
@@ -74986,11 +75325,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T06:27:32+01:00",
-     "ends": "2026-12-31T06:27:32+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-31T00:21:10+01:00",
      "http": 200
@@ -74998,6 +75332,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-31T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-31T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -75208,10 +75547,10 @@
      "http": 200
     }
    ],
-   "code": "SCORE",
+   "code": "T_PP_REMAINING",
    "ok_streak": 0,
-   "since": "2026-11-27T23:43:50+01:00",
-   "state": "SUSPECT"
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:780802": {
@@ -75330,6 +75669,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -75431,7 +75775,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/sddefault-300x170.jpg",
   "last_changed_at": "2026-11-18T22:27:09+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -75456,11 +75800,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T06:27:32+01:00",
-     "ends": "2026-12-14T06:27:32+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-14T00:21:10+01:00",
      "http": 200
@@ -75468,6 +75807,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-14T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-14T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -75740,11 +76084,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T06:27:32+01:00",
-     "ends": "2026-12-06T06:27:32+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-06T00:21:10+01:00",
      "http": 200
@@ -75752,6 +76091,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-06T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-06T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -75925,11 +76269,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T06:27:32+01:00",
-     "ends": "2026-12-06T06:27:32+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-06T00:21:10+01:00",
      "http": 200
@@ -75937,6 +76276,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-06T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-06T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -76302,7 +76646,11 @@
      "ends": "2026-11-29T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781190": {
@@ -76397,7 +76745,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_KaMmj5avb7-300x140.png",
   "last_changed_at": "2026-11-19T14:12:43+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Coop",
   "missing_scans": 0,
@@ -76508,7 +76856,11 @@
      "ends": "2026-12-06T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781246": {
@@ -76579,7 +76931,11 @@
      "ends": "2026-11-29T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781298": {
@@ -76650,7 +77006,11 @@
      "ends": "2026-12-06T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781307": {
@@ -76721,7 +77081,11 @@
      "ends": "2026-12-06T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781310": {
@@ -76795,7 +77159,11 @@
      "ends": "2026-12-06T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781318": {
@@ -76941,7 +77309,11 @@
      "ends": "2026-12-06T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781323": {
@@ -77012,7 +77384,11 @@
      "ends": "2026-12-06T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781328": {
@@ -77083,7 +77459,11 @@
      "ends": "2026-12-20T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781330": {
@@ -77154,7 +77534,11 @@
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781337": {
@@ -77225,7 +77609,11 @@
      "ends": "2026-12-20T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781363": {
@@ -77296,7 +77684,11 @@
      "ends": "2026-12-06T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781368": {
@@ -77460,11 +77852,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -77472,6 +77859,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -77586,7 +77978,11 @@
      "ends": "2026-11-27T23:59:59+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:781407": {
@@ -77807,7 +78203,11 @@
      "ends": "2026-11-29T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781463": {
@@ -77878,7 +78278,11 @@
      "ends": "2026-11-29T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781465": {
@@ -77949,7 +78353,11 @@
      "ends": "2026-12-06T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781521": {
@@ -78156,7 +78564,11 @@
      "ends": "2026-12-06T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781560": {
@@ -78434,7 +78846,11 @@
      "ends": "2026-11-29T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781608": {
@@ -78505,7 +78921,11 @@
      "ends": "2026-12-06T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781619": {
@@ -78576,7 +78996,11 @@
      "ends": "2026-12-01T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781640": {
@@ -78725,7 +79149,11 @@
      "ends": "2026-12-30T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781654": {
@@ -78799,7 +79227,11 @@
      "ends": "2026-11-29T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781657": {
@@ -79008,7 +79440,11 @@
      "ends": "2026-11-29T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781673": {
@@ -79070,7 +79506,11 @@
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781734": {
@@ -79278,7 +79718,11 @@
      "ends": "2026-11-29T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781800": {
@@ -79339,7 +79783,11 @@
      "ends": "2026-12-06T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781831": {
@@ -79476,7 +79924,11 @@
      "ends": "2026-11-29T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781879": {
@@ -79547,7 +79999,11 @@
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781887": {
@@ -79683,7 +80139,11 @@
      "ends": "2026-11-29T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781950": {
@@ -79738,6 +80198,59 @@
     {
      "at": "2026-11-27T23:43:50+01:00",
      "ends": "2026-11-27T23:59:59+01:00",
+     "http": 200
+    }
+   ],
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
+  }
+ },
+ "preispirat:781956": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:preispirat:20-auf-nahrungserganzung",
+  "category": "Beauty & Gesundheit, Lebensmittel, nonpartner",
+  "deal_id": "preispirat:781956",
+  "deal_score": null,
+  "description": "20% Rabatt auf ausgewählte Marken für Nahrungsergänzung wie Burgerstein, pure und Vita. Jetzt entdecken auf amavita.ch.",
+  "effective_discount": null,
+  "family": "grocery",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "autres",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/3c791715-8789-4e05-8e05-8ae5117402b0__Amavita_Logo_600x300_DE-300x150.png",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.8,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-27T23:45:00+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "781956",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/20-auf-nahrungsergaenzung/",
+  "tags": [],
+  "title": "20% auf Nahrungsergänzung",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-29T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -79811,7 +80324,11 @@
      "ends": "2026-11-29T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:781971": {
@@ -79882,7 +80399,11 @@
      "ends": "2026-11-29T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:782053": {
@@ -79944,7 +80465,11 @@
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:782090": {
@@ -80074,7 +80599,11 @@
      "ends": "2026-12-06T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:782110": {
@@ -80204,7 +80733,11 @@
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:782180": {
@@ -80275,7 +80808,11 @@
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:782189": {
@@ -80337,7 +80874,11 @@
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:782200": {
@@ -80398,7 +80939,11 @@
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:782208": {
@@ -80740,7 +81285,11 @@
      "ends": "2026-11-30T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:782276": {
@@ -80763,7 +81312,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_xTT8G2yi6k-300x159.png",
   "last_changed_at": "2026-11-20T22:07:36+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -81157,7 +81706,11 @@
      "ends": "2026-12-06T06:07:48+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "SCORE",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "SUSPECT"
   }
  },
  "preispirat:782305": {
@@ -81183,7 +81736,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/45d53c3523495dc7c656041d72156c9d_image_picker_5B2E6A37-F1A4-4F9C-A1DD-B66E70C406C1-3398-000000B57A9BAFDA-1-300x300.png",
   "last_changed_at": "2026-11-20T13:55:55+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Coop",
   "missing_scans": 0,
@@ -82601,7 +83154,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/KW47_100_Gratis_Games-300x300.png",
   "last_changed_at": "2026-11-21T13:41:09+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -82785,7 +83338,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/image-3-300x240.png",
   "last_changed_at": "2026-11-21T13:41:09+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": 9.9,
@@ -83789,11 +84342,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-29T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-29T00:21:10+01:00",
      "http": 200
@@ -83801,6 +84349,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-29T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-29T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -83926,11 +84479,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -83938,6 +84486,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -83995,11 +84548,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-06T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-06T00:21:10+01:00",
      "http": 200
@@ -84007,6 +84555,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-06T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-06T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -84986,11 +85539,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -84998,6 +85546,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -85196,11 +85749,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -85209,8 +85757,17 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "flag": "expired",
+     "http": 200
     }
-   ]
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:783967": {
@@ -85264,11 +85821,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -85276,6 +85828,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -85333,11 +85890,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -85345,6 +85897,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -85470,11 +86027,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-02T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-02T00:21:10+01:00",
      "http": 200
@@ -85482,6 +86034,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-02T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-02T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -85538,11 +86095,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-28T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-28T00:21:10+01:00",
      "http": 200
@@ -85550,6 +86102,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-28T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-28T23:59:59+01:00",
      "http": 200
     }
    ]
@@ -85615,11 +86172,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-06T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-06T00:21:10+01:00",
      "http": 200
@@ -85627,6 +86179,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-06T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-06T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -85684,11 +86241,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-06T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-06T00:21:10+01:00",
      "http": 200
@@ -85696,6 +86248,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-06T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-06T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -85815,11 +86372,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -85827,6 +86379,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -85884,11 +86441,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-29T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-29T00:21:10+01:00",
      "http": 200
@@ -85896,6 +86448,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-29T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-29T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -87792,6 +88349,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-03T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-03T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -87848,11 +88410,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -87860,6 +88417,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -87921,11 +88483,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -87933,6 +88490,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -88132,11 +88694,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-03T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-03T00:21:10+01:00",
      "http": 200
@@ -88144,6 +88701,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-03T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-03T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -88408,11 +88970,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-03T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-03T00:21:10+01:00",
      "http": 200
@@ -88420,6 +88977,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-03T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-03T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -88477,11 +89039,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-03T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-03T00:21:10+01:00",
      "http": 200
@@ -88489,6 +89046,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-03T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-03T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -88610,11 +89172,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-03T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-04T00:21:10+01:00",
      "http": 200
@@ -88622,6 +89179,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-03T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-03T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -88649,7 +89211,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_3cRNLiQXok-300x288.png",
   "last_changed_at": "2026-11-24T02:55:03+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Google Play",
   "missing_scans": 0,
@@ -88675,11 +89237,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -88687,6 +89244,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -88744,11 +89306,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -88756,6 +89313,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -88813,11 +89375,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -88825,6 +89382,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -88882,7 +89444,11 @@
      "ends": "2026-11-27T23:59:59+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:785114": {
@@ -88992,11 +89558,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-06T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-06T00:21:10+01:00",
      "http": 200
@@ -89004,6 +89565,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-06T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-06T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -89061,11 +89627,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-03T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-03T00:21:10+01:00",
      "http": 200
@@ -89073,6 +89634,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-03T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-03T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -89263,11 +89829,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-03T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-03T00:21:10+01:00",
      "http": 200
@@ -89275,6 +89836,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-03T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-03T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -89332,11 +89898,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-03T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-03T00:21:10+01:00",
      "http": 200
@@ -89344,6 +89905,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-03T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-03T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -89469,11 +90035,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-07T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-08T00:21:10+01:00",
      "http": 200
@@ -89481,6 +90042,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-07T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-07T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -91101,7 +91667,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/das-eine-million-dollar-date-ein-neuer-versuch-fr-ein-date-1-1795510794-200x300.jpeg",
   "last_changed_at": "2026-11-25T00:54:48+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Orell Füssli",
   "missing_scans": 0,
@@ -91127,11 +91693,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-31T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-31T00:21:10+01:00",
      "http": 200
@@ -91139,6 +91700,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-31T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-31T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -91189,11 +91755,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -91201,6 +91762,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -91321,11 +91887,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-04T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-04T00:21:10+01:00",
      "http": 200
@@ -91333,6 +91894,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-04T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-04T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -91463,11 +92029,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-04T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-04T00:21:10+01:00",
      "http": 200
@@ -91475,6 +92036,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-04T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-04T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -91532,11 +92098,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-04T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-04T00:21:10+01:00",
      "http": 200
@@ -91544,6 +92105,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-04T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-04T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -91927,11 +92493,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-04T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-05T00:21:10+01:00",
      "http": 200
@@ -91939,6 +92500,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-04T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-04T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -91995,11 +92561,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-04T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-04T00:21:10+01:00",
      "http": 200
@@ -92007,6 +92568,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-04T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-04T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -92064,11 +92630,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-01T00:21:10+01:00",
      "http": 200
@@ -92076,6 +92637,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -92133,11 +92699,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-04T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-04T00:21:10+01:00",
      "http": 200
@@ -92145,6 +92706,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-04T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-04T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -92202,11 +92768,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-04T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-05T00:21:10+01:00",
      "http": 200
@@ -92214,6 +92775,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-04T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-04T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -92344,11 +92910,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-04T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-04T00:21:10+01:00",
      "http": 200
@@ -92356,6 +92917,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-04T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-04T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -92404,11 +92970,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-04T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-04T00:21:10+01:00",
      "http": 200
@@ -92416,6 +92977,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-04T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-04T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -92464,11 +93030,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-24T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-24T00:21:10+01:00",
      "http": 200
@@ -92476,6 +93037,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-24T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-24T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -92533,11 +93099,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-04T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-04T00:21:10+01:00",
      "http": 200
@@ -92545,6 +93106,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-04T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-04T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -92602,11 +93168,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-04T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-04T00:21:10+01:00",
      "http": 200
@@ -92615,8 +93176,17 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-04T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "flag": "expired",
+     "http": 200
     }
-   ]
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:786327": {
@@ -92674,11 +93244,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2027-03-31T00:54:48+02:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2027-04-01T00:21:10+02:00",
      "http": 200
@@ -92686,6 +93251,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2027-03-31T06:05:25+02:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2027-03-31T05:45:27+02:00",
      "http": 200
     }
    ]
@@ -92743,11 +93313,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-12-01T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-12-01T00:21:10+01:00",
      "http": 200
@@ -92755,6 +93320,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-01T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-01T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -92862,11 +93432,6 @@
   "verify": {
    "checks": [
     {
-     "at": "2026-11-25T00:54:48+01:00",
-     "ends": "2026-11-30T00:54:48+01:00",
-     "http": 200
-    },
-    {
      "at": "2026-11-26T00:21:10+01:00",
      "ends": "2026-11-30T00:21:10+01:00",
      "http": 200
@@ -92874,6 +93439,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -94318,6 +94888,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-05T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-05T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -94503,6 +95078,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-01T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-01T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -94616,6 +95196,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-06T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-06T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -94680,6 +95265,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -94734,6 +95324,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-05T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-05T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -94798,6 +95393,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-05T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-05T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -94930,6 +95530,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -94992,6 +95597,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -95126,6 +95736,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -95188,6 +95803,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -95253,6 +95873,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -95317,8 +95942,17 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-06T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "flag": "expired",
+     "http": 200
     }
-   ]
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:787103": {
@@ -95380,6 +96014,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-29T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-29T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -95510,6 +96149,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-01T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-01T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -96957,6 +97601,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-06T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-06T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -96983,7 +97632,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/bread-fred-1795695126-300x169.jpeg",
   "last_changed_at": "2026-11-26T23:59:57+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Epic Games",
   "missing_scans": 0,
@@ -97027,7 +97676,7 @@
   "accessibility_notes": [],
   "best_score": 0.0,
   "canonical_entity_id": "t:nettoshop:siemens-eq700-iaroma-kaffeevollautomat-touchdisplay-zum-bestpreis",
-  "category": "Wohnen & Haushalt",
+  "category": "Wohnen & Haushalt, redaktion",
   "cost_assumptions": [],
   "current_price": 579.0,
   "deal_id": "preispirat:787811",
@@ -97044,7 +97693,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/10822240-1-300x300.jpg",
   "last_changed_at": "2026-11-26T23:59:57+01:00",
-  "last_seen_at": "2026-11-26T23:59:57+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Nettoshop",
   "missing_scans": 0,
@@ -97052,7 +97701,7 @@
   "offer_type": "community_deal",
   "personal_relevance": 0.55,
   "promotion_integrity": "unchecked",
-  "published_at": "2026-11-26T21:32:35+01:00",
+  "published_at": "2026-11-28T02:30:35+01:00",
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 699.0,
   "reference_price_type": "competitor",
@@ -97185,6 +97834,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-05T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-05T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -97375,7 +98029,11 @@
      "ends": "2026-11-27T23:59:59+01:00",
      "http": 200
     }
-   ]
+   ],
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:788004": {
@@ -97717,7 +98375,7 @@
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/sky-300x234.jpg",
   "last_changed_at": "2026-11-26T23:59:57+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Sky",
   "missing_scans": 0,
@@ -98400,7 +99058,7 @@
   "accessibility": 1.0,
   "accessibility_notes": [],
   "canonical_entity_id": "t:chmobile:chmobile-abo-ch-alles-unlimitiert-5gb-roaming-daten-neu-nur-12-monate-mindestver",
-  "category": "Abonnemente & Karten",
+  "category": "Abonnemente & Karten, redaktion",
   "deal_id": "preispirat:788544",
   "deal_score": null,
   "description": "Bei CHmobile gibt’s seit Beginn im November bekanntermassen das Abo CHmobile Plus wieder in Aktion für nur 9.90 Franken pro Monat - mit lebenslangem Rabatt. Bei dem Abo habt ihr folgende Leistungen inklusive: Schweizweit unlimitierte Telefonie & SMS Unlimitierte Internet-Daten in der Schweiz mit 5G-",
@@ -98413,7 +99071,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/Discord_X6YB9jtkmW-300x205.png",
   "last_changed_at": "2026-11-26T23:59:57+01:00",
-  "last_seen_at": "2026-11-26T23:59:57+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "CHmobile",
   "missing_scans": 0,
@@ -98421,7 +99079,7 @@
   "offer_type": "community_deal",
   "personal_relevance": 0.4,
   "promotion_integrity": "unknown",
-  "published_at": "2026-11-26T23:54:18+01:00",
+  "published_at": "2026-11-28T01:30:18+01:00",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -98504,6 +99162,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-06T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-06T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -98553,6 +99216,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -98613,8 +99281,17 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-27T23:59:59+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "flag": "expired",
+     "http": 200
     }
-   ]
+   ],
+   "code": "T_PP_REMAINING",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:788588": {
@@ -98662,6 +99339,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-29T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-29T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -98722,6 +99404,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-06T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-06T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -98779,6 +99466,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -98839,6 +99531,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -98898,6 +99595,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -98955,6 +99657,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -99015,6 +99722,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -99072,6 +99784,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -99132,6 +99849,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -99190,8 +99912,17 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-06T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "flag": "expired",
+     "http": 200
     }
-   ]
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:788687": {
@@ -99239,6 +99970,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -99288,6 +100024,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-30T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -99339,6 +100080,11 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-07T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-07T05:45:27+01:00",
+     "http": 200
     }
    ]
   }
@@ -99387,6 +100133,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-03T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-03T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -99447,8 +100198,17 @@
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-11-29T06:05:25+01:00",
      "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "flag": "expired",
+     "http": 200
     }
-   ]
+   ],
+   "code": "T_SRC_EXPIRED_FLAG",
+   "ok_streak": 0,
+   "since": "2026-11-28T05:45:27+01:00",
+   "state": "ENDED"
   }
  },
  "preispirat:788748": {
@@ -99507,6 +100267,11 @@
     {
      "at": "2026-11-27T06:05:25+01:00",
      "ends": "2026-12-07T06:05:25+01:00",
+     "http": 200
+    },
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-07T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -99749,6 +100514,120 @@
    ]
   }
  },
+ "preispirat:788880": {
+  "access": "PUBLIC",
+  "accessibility": 0.95,
+  "accessibility_notes": [
+   "code requis"
+  ],
+  "best_score": 4.2,
+  "canonical_entity_id": "t:fressnapf:katzenzubehor-und-katzenbedarf-bei-fressnapf-25-rabatt-ab-chf-89",
+  "category": "Gutschein, Verschiedenes, Wohnen & Haushalt, redaktion",
+  "deal_id": "preispirat:788880",
+  "deal_score": 4.2,
+  "discount_percentage": 25.0,
+  "effective_discount": 25.0,
+  "family": "coupon",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "ONLINE",
+  "geographic_scope_resolved": "ONLINE",
+  "group": "coupon",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_wqqYOj0HxE-300x121.png",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "FRESSNAPF",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "coupon",
+  "personal_relevance": 0.35,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-28T04:30:05+01:00",
+  "reference_price_type": "stated_percent_only",
+  "requires_coupon": true,
+  "score_components": [
+   [
+    "code de réduction 25 % : 25 % au mieux",
+    4.25
+   ]
+  ],
+  "score_confidence": 0.35,
+  "source_id": "preispirat",
+  "source_offer_id": "788880",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/katzenzubehoer-und-katzenbedarf-bei-fressnapf-25-rabatt-ab-chf-89/",
+  "tags": [],
+  "title": "Katzenzubehör und Katzenbedarf bei FRESSNAPF (25% Rabatt ab CHF 89.-)",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-07T05:45:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "preispirat:788904": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:interdiscount:philips-hue-play-gradient-led-stehleuchte-135-cm-1040-lm-14-6-w-rgb-bei-interdis",
+  "category": "Wohnen & Haushalt, redaktion",
+  "cost_assumptions": [],
+  "current_price": 99.95,
+  "deal_id": "preispirat:788904",
+  "deal_score": 0.0,
+  "description": "Bei Interdiscount findet ihr aktuell die Philips Hue Play Gradient LED-Stehleuchte (135 cm, 1’040 lm, 14.6 W, RGB) zum Preis von 99.95 Franken. Der aktuelle Vergleichspreis liegt bei 110.70 Franken. Das Angebot gilt bis zum 6.12.2026 oder solange Vorrat. Die Philips Hue Play Gradient bringt farbige ",
+  "discount_absolute": 10.75,
+  "discount_percentage": 9.7,
+  "effective_discount": 0.0,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_Az7Qhtg8aZ-279x300.png",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Interdiscount",
+  "missing_scans": 0,
+  "net_savings": -11.39,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-28T03:30:34+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 110.7,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "788904",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/philips-hue-play-gradient-led-stehleuchte-135-cm-1040-lm-14-6-w-rgb-bei-interdiscount-in-aktion/",
+  "tags": [],
+  "title": "Philips Hue Play Gradient LED-Stehleuchte (135 cm, 1040 lm, 14.6 W, RGB) bei Interdiscount in Aktion",
+  "total_acquisition_cost": 99.95,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-06T05:45:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
  "preispirat:788985": {
   "access": "PUBLIC",
   "accessibility": 1.0,
@@ -99814,7 +100693,7 @@
   "accessibility_notes": [],
   "best_score": 0.0,
   "canonical_entity_id": "t:mediamarkt:sony-alpha-7c-vollformat-systemkamera-inkl-28-60-mm-objektiv-24-2-mp-4k-bei-medi",
-  "category": "Home Entertainment & Foto",
+  "category": "Home Entertainment & Foto, redaktion",
   "cost_assumptions": [],
   "current_price": 899.0,
   "deal_id": "preispirat:789017",
@@ -99831,7 +100710,7 @@
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_IdLg9vxzEp-300x237.png",
   "last_changed_at": "2026-11-27T14:54:02+01:00",
-  "last_seen_at": "2026-11-27T14:54:02+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "MediaMarkt",
   "missing_scans": 0,
@@ -99839,7 +100718,7 @@
   "offer_type": "community_deal",
   "personal_relevance": 0.65,
   "promotion_integrity": "unchecked",
-  "published_at": "2026-11-27T11:50:34+01:00",
+  "published_at": "2026-11-27T23:46:34+01:00",
   "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
   "reference_price": 999.0,
   "reference_price_type": "competitor",
@@ -100110,7 +100989,7 @@
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/S209d96680b4a470f820edf0e1bfe7628C.png_960x960.png_-300x282.png",
   "last_changed_at": "2026-11-27T23:43:50+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "AliExpress",
   "missing_scans": 0,
@@ -101252,7 +102131,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/chrome_8b1QI63f8g-250x300.png",
   "last_changed_at": "2026-11-27T23:43:50+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Manor",
   "missing_scans": 0,
@@ -101310,7 +102189,7 @@
   "group": "digital_free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/a-tiny-sticker-tale-1795782921-300x169.png",
   "last_changed_at": "2026-11-27T23:43:50+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": null,
@@ -101474,7 +102353,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/dreame-saug-und-wischroboter-d30-ultra-1795788229-300x200.jpeg",
   "last_changed_at": "2026-11-27T23:43:50+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Jumbo",
   "missing_scans": 0,
@@ -101533,7 +102412,7 @@
   "group": "retail",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/7030105-001-300x300.jpg",
   "last_changed_at": "2026-11-27T23:43:50+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Christ",
   "missing_scans": 0,
@@ -101564,6 +102443,65 @@
     {
      "at": "2026-11-27T23:43:50+01:00",
      "ends": "2026-12-07T23:43:50+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "preispirat:789505": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:amorana:tracey-cox-automatic-suction-penispumpe-3-stufen-bei-amorana",
+  "category": "Beauty & Gesundheit",
+  "cost_assumptions": [],
+  "current_price": 55.4,
+  "deal_id": "preispirat:789505",
+  "deal_score": 0.0,
+  "description": "Bei Amorana gibt es momentan die Tracey-Cox Automatic Suction Penispumpe zum Aktionspreis von 55.40 CHF. Der Deal gehet noch bis zum 29.11.26. Die Tracey Cox EDGE Penispumpe übernimmt die Saugarbeit automatisch und unterstützt dich dabei, deine Erektion und sexuelle Ausdauer zu verbessern. Drei Saug",
+  "discount_absolute": 13.85,
+  "discount_percentage": 20.0,
+  "effective_discount": 0.0,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/5625aadf-e90e-4b72-9ec2-fcf8ea3be887.png_720-225x300.jpg",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amorana",
+  "missing_scans": 0,
+  "net_savings": 0.0,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-28T00:31:45+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 69.25,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "789505",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/tracey-cox-automatic-suction-penispumpe-3-stufen-bei-amorana/",
+  "tags": [],
+  "title": "Tracey-Cox Automatic Suction Penispumpe (3 Stufen) bei Amorana",
+  "total_acquisition_cost": 55.4,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-29T05:45:27+01:00",
      "http": 200
     }
    ]
@@ -101685,14 +102623,14 @@
   "discount_percentage": 100.0,
   "effective_discount": 100.0,
   "family": "free",
-  "feed": "https://www.preispirat.ch/feed/",
+  "feed": "https://www.preispirat.ch/cat/freebies/feed/",
   "first_seen_at": "2026-11-27T23:43:50+01:00",
   "geographic_scope": "NATIONAL",
   "geographic_scope_resolved": "NATIONAL",
   "group": "free",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/imgi_1_filters_quality70-300x200.jpeg",
   "last_changed_at": "2026-11-27T23:43:50+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "missing_scans": 0,
   "net_savings": 15.0,
@@ -101813,7 +102751,7 @@
   "group": "autres",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/rare_vinho_verde_bottle_1200x800-2-1-300x200.png",
   "last_changed_at": "2026-11-27T23:43:50+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "SCHULER",
   "missing_scans": 0,
@@ -102009,7 +102947,7 @@
   ],
   "best_score": 6.2,
   "canonical_entity_id": "t:ackermann:nur-bis-sonntag-40-rabatt-auf-fast-alles-bei-ackermann-mit-ausschlussfehlern-z-b",
-  "category": "Computer & Büro, Gutschein, Wohnen & Haushalt",
+  "category": "Computer & Büro, Gutschein, Wohnen & Haushalt, redaktion",
   "deal_id": "preispirat:789764",
   "deal_score": 6.2,
   "discount_percentage": 40.0,
@@ -102022,7 +102960,7 @@
   "group": "coupon",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/ackermann-40-prozent-300x169.png",
   "last_changed_at": "2026-11-27T23:43:50+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Ackermann",
   "missing_scans": 0,
@@ -102030,7 +102968,7 @@
   "offer_type": "coupon",
   "personal_relevance": 0.35,
   "promotion_integrity": "unknown",
-  "published_at": "2026-11-27T20:16:07+01:00",
+  "published_at": "2026-11-28T05:30:07+01:00",
   "reference_price_type": "stated_percent_only",
   "requires_coupon": true,
   "score_components": [
@@ -102111,7 +103049,7 @@
   "accessibility": 1.0,
   "accessibility_notes": [],
   "canonical_entity_id": "t:brack:letzte-chance-letzte-black-friday-highlights-bei-brack",
-  "category": "Beauty & Gesundheit, Computer & Büro, Gaming & Apps, Garten & Baumarkt, Home Entertainment & Foto, Kids & Spielwaren, Lebensmittel, Smartphones, Wearables & Kopfhörer, Sport & Outdoor, Verschiedenes, Wohnen & Haushalt",
+  "category": "Beauty & Gesundheit, Computer & Büro, Gaming & Apps, Garten & Baumarkt, Home Entertainment & Foto, Kids & Spielwaren, Lebensmittel, Smartphones, Wearables & Kopfhörer, Sport & Outdoor, Verschiedenes, Wohnen & Haushalt, redaktion",
   "deal_id": "preispirat:789855",
   "deal_score": null,
   "description": "Achtung liebe Piraten - bei BRACK könnt ihr nur noch für kurze Zeit von den Black Friday Deals profitieren. Einige Deals wurden auch bereits vorgestellt, gingen im ganzen Trubel aber evtl. etwas unter. Hier jedenfalls eine Übersicht zu den verbliebenen Deal-Perlen, die interessant sein könnten für e",
@@ -102124,7 +103062,7 @@
   "group": "tech",
   "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/Neon-Elektronik-mit-grimmiger-Katze-300x300.png",
   "last_changed_at": "2026-11-27T23:43:50+01:00",
-  "last_seen_at": "2026-11-27T23:43:50+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
   "lifecycle": "ACTIVE",
   "merchant": "Brack",
   "missing_scans": 0,
@@ -102132,7 +103070,7 @@
   "offer_type": "community_deal",
   "personal_relevance": 0.5,
   "promotion_integrity": "unknown",
-  "published_at": "2026-11-27T22:42:43+01:00",
+  "published_at": "2026-11-28T00:40:43+01:00",
   "score_components": [
    [
     "aucune référence vérifiable",
@@ -102151,6 +103089,464 @@
     {
      "at": "2026-11-27T23:43:50+01:00",
      "ends": "2026-11-29T23:43:50+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "preispirat:789867": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:sunrise:samsung-smart-tag2-4-pack-black-white",
+  "category": "Smartphones, Wearables & Kopfhörer",
+  "deal_id": "preispirat:789867",
+  "deal_score": null,
+  "description": "Bei Sunrise findet ihr aktuell den Samsung Smart Tag2 4 Pack Black/White in Aktion für 38.90 CHF! *Mit vier SmartTags behältst du wichtige Gegenstände wie Schlüssel, Taschen oder Gepäck leichter im Blick. Die Ortung über Bluetooth Low Energy funktioniert mit kompatiblen Galaxy-Geräten und erreicht e",
+  "effective_discount": null,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/Screenshot-2026-11-27-at-18.37.18-300x225.png",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Sunrise",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-28T00:16:34+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "789867",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/samsung-smart-tag2-4-pack-black-white/",
+  "tags": [],
+  "title": "Samsung Smart Tag2 4 Pack Black/White",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-01T05:45:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "preispirat:789878": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:amazon:dog-deluxe-brandi-dog-alternative",
+  "category": "Kids & Spielwaren",
+  "cost_assumptions": [],
+  "current_price": 22.2,
+  "deal_id": "preispirat:789878",
+  "deal_score": 0.0,
+  "description": "Bei Amazon findet ihr aktuell das Schmidt Spiele: Dog Deluxe in Aktion für 15.82 CHF Dog Deluxe verbindet einfache Regeln mit taktischen Entscheidungen und bringt Familien sowie Freundesrunden schnell an einen Tisch. Durch die Kartenmechanik bleibt jede Partie abwechslungsreich, während das grosse m",
+  "discount_absolute": 5.2,
+  "discount_percentage": 19.0,
+  "effective_discount": 0.0,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/schmidt-spiele-49274-dog-deluxe-1795815833-198x300.jpeg",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": -0.28,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-28T00:17:30+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 27.4,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "789878",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/dog-deluxe-braendi-dog-alternative/",
+  "tags": [],
+  "title": "DOG Deluxe (Brändi Dog Alternative)",
+  "total_acquisition_cost": 22.2,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-01T05:45:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "preispirat:789887": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:amazon:fitbit-google-edge-alle-farben",
+  "category": "Smartphones, Wearables & Kopfhörer",
+  "cost_assumptions": [],
+  "current_price": 118.48,
+  "deal_id": "preispirat:789887",
+  "deal_score": 0.0,
+  "description": "Bei Amazon.it findet ihr aktuell den Fitbit Google Edge in Aktion für 118.48! Schlagt schnell zu, denn der Gutschein ist nur bis zum 2026-11-30 gültig. Der Fitbit Google Edge begleitet dich dezent durch den Alltag und zeichnet Schlaf, Herzfrequenz sowie Aktivitäten übersichtlich auf. Das AMOLED-Disp",
+  "discount_absolute": 26.02,
+  "discount_percentage": 18.0,
+  "effective_discount": 0.0,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/fitbit-google-edge-gehuse-in-satin-pyrite-mit-armband-in-olive-green-1795817690-249x300.jpeg",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": -2.88,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-28T00:18:36+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 144.5,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "789887",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/fitbit-google-edge-alle-farben/",
+  "tags": [],
+  "title": "Fitbit Google Edge – alle Farben",
+  "total_acquisition_cost": 118.48,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-11-30T05:45:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "preispirat:789889": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 0.0,
+  "canonical_entity_id": "t:gonser-ch:samsung-tv-55-u8000f-series-inkl-lautsprecher-music-frame-hw-ls60d",
+  "category": "Home Entertainment & Foto",
+  "cost_assumptions": [],
+  "current_price": 379.0,
+  "deal_id": "preispirat:789889",
+  "deal_score": 0.0,
+  "description": "Bei GONSER.CH findet ihr aktuell den Samsung TV 55″ U8000F Series inkl. Lautsprecher Music Frame HW-LS60D in Aktion für 399.00 CHF! Bis wann der Deal noch gilt, ist leider unbekannt. _ Mit dem 55-Zoll-Fernseher erlebt ihr Filme, Serien und Spiele in scharfer 4K-Auflösung mit klaren Kontrasten und le",
+  "discount_absolute": 49.0,
+  "discount_percentage": 11.4,
+  "effective_discount": 0.0,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/Samsung-TV-55-Zoll-U8000F-Series-mit-Music-Frame-Anzeigebild.jpg-300x300.png",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "GONSER.CH",
+  "missing_scans": 0,
+  "net_savings": -36.6,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.5,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-28T00:20:24+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 428.0,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 0 %",
+    0.0
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "789889",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/samsung-tv-55-u8000f-series-inkl-lautsprecher-music-frame-hw-ls60d/",
+  "tags": [],
+  "title": "Samsung TV 55″ U8000F Series inkl. Lautsprecher Music Frame HW-LS60D",
+  "total_acquisition_cost": 379.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-07T05:45:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "preispirat:789901": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 2.2,
+  "canonical_entity_id": "t:amazon:metal-gear-solid-delta-snake-eater-deluxe-edition-ps5-zum-bestpreis",
+  "category": "Gaming & Apps",
+  "cost_assumptions": [],
+  "current_price": 40.4,
+  "deal_id": "preispirat:789901",
+  "deal_score": 2.2,
+  "description": "Bei Amazon findet ihr aktuell das Metal Gear Solid Delta Snake Eater Deluxe Edition - PS5 in Aktion für 44.40 CHF inklusive Transportkosten. Bis wann der Deal noch gilt, ist unklar – besser nicht zu lange zögern. Metal Gear Solid Delta: Snake Eater versetzt dich in die 1960er-Jahre und erzählt die V",
+  "discount_absolute": 16.5,
+  "discount_percentage": 29.0,
+  "effective_discount": 11.2,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/metal-gear-solid-delta-snake-eater-deluxe-edition-ps5-1795818838-300x169.jpeg",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Amazon",
+  "missing_scans": 0,
+  "net_savings": 5.12,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.65,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-28T00:40:23+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 56.9,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 11 %",
+    2.19
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "789901",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/metal-gear-solid-delta-snake-eater-deluxe-edition-ps5-zum-bestpreis/",
+  "tags": [],
+  "title": "Metal Gear Solid Delta Snake Eater Deluxe Edition (PS5) zum Bestpreis",
+  "total_acquisition_cost": 40.4,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-07T05:45:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "preispirat:789927": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "canonical_entity_id": "t:gonser-ch:kindervelo-16-rookie",
+  "category": "Kids & Spielwaren",
+  "deal_id": "preispirat:789927",
+  "deal_score": null,
+  "description": "Bei GONSER.CH bekommt ihr derzeit das Kindervelo 16“ ROOKIE für 66.00. Wie lange der Deal noch gilt, ist unklar – besser nicht zu lange zögern. *Das Kindervelo ROOKIE bringt Kinder mit seinem leuchtend grünen Design gerne nach draussen und eignet sich für erste Ausflüge und Entdeckungstouren. Die Ko",
+  "effective_discount": null,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/Kindervelo-16-Zoll-ROOKIE-2.jpg-300x300.png",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "GONSER.CH",
+  "missing_scans": 0,
+  "net_savings": null,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unknown",
+  "published_at": "2026-11-28T01:00:25+01:00",
+  "score_components": [
+   [
+    "aucune référence vérifiable",
+    null
+   ]
+  ],
+  "score_confidence": 0.2,
+  "source_id": "preispirat",
+  "source_offer_id": "789927",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/kindervelo-16-rookie/",
+  "tags": [],
+  "title": "Kindervelo 16“ ROOKIE",
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-07T05:45:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "preispirat:789932": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 5.0,
+  "canonical_entity_id": "t:mediamarkt:lost-soul-aside-ps5-zum-neuen-tiefstpreis",
+  "category": "Gaming & Apps",
+  "cost_assumptions": [],
+  "current_price": 10.0,
+  "deal_id": "preispirat:789932",
+  "deal_score": 5.0,
+  "description": "Bei MediaMarkt findet ihr aktuell Lost Soul Aside für PlayStation 5 in Aktion für versandkostenfreie 10 Franken. Bis wann der Deal noch gilt, ist leider unbekannt. In Lost Soul Aside begleitest du Kaser auf einer gefährlichen Reise durch fremde Dimensionen, um seine Schwester zu retten und die Mensc",
+  "discount_absolute": 7.9,
+  "discount_percentage": 44.1,
+  "effective_discount": 30.2,
+  "family": "tech",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "tech",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/ASSET_MMS_150733206-300x225.png",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "MediaMarkt",
+  "missing_scans": 0,
+  "net_savings": 4.32,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.65,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-28T00:15:31+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 17.9,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 30 %",
+    5.02
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "789932",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/lost-soul-aside-ps5-zum-neuen-tiefstpreis/",
+  "tags": [],
+  "title": "Lost Soul Aside (PS5) zum neuen Tiefstpreis",
+  "total_acquisition_cost": 10.0,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-07T05:45:27+01:00",
+     "http": 200
+    }
+   ]
+  }
+ },
+ "preispirat:789959": {
+  "access": "PUBLIC",
+  "accessibility": 1.0,
+  "accessibility_notes": [],
+  "best_score": 6.4,
+  "canonical_entity_id": "t:fust:tumbler-bauknecht-trcef-118",
+  "category": "Wohnen & Haushalt",
+  "cost_assumptions": [],
+  "current_price": 589.95,
+  "deal_id": "preispirat:789959",
+  "deal_score": 6.4,
+  "description": "Bei Fust bekommt ihr derzeit den Tumbler Bauknecht TRCEF 118 für CHF 589.95. Wie lange der Deal noch gilt, ist unklar – besser nicht zu lange zögern. Der Bauknecht TRCEF 118 trocknet bis zu 8 kg Wäsche und eignet sich damit gut für mittelgrosse Haushalte. Dank der Schnelltrocknungsfunktion ist die K",
+  "discount_absolute": 595.15,
+  "discount_percentage": 50.2,
+  "effective_discount": 37.8,
+  "family": "retail",
+  "feed": "https://www.preispirat.ch/feed/",
+  "first_seen_at": "2026-11-28T05:45:27+01:00",
+  "geographic_scope": "NATIONAL",
+  "geographic_scope_resolved": "NATIONAL",
+  "group": "retail",
+  "image_url": "https://www.preispirat.ch/wp-content/uploads/2026/11/image-6-300x300.png",
+  "last_changed_at": "2026-11-28T05:45:27+01:00",
+  "last_seen_at": "2026-11-28T05:45:27+01:00",
+  "lifecycle": "ACTIVE",
+  "merchant": "Fust",
+  "missing_scans": 0,
+  "net_savings": 358.13,
+  "offer_type": "community_deal",
+  "personal_relevance": 0.4,
+  "promotion_integrity": "unchecked",
+  "published_at": "2026-11-28T00:46:56+01:00",
+  "reference_note": "deuxième meilleur prix du marché (comparateur Preispirat)",
+  "reference_price": 1185.1,
+  "reference_price_type": "competitor",
+  "score_components": [
+   [
+    "réduction vs prix concurrent (−20 %) : 38 %",
+    5.93
+   ],
+   [
+    "économie absolue élevée (~CHF 358)",
+    0.5
+   ]
+  ],
+  "score_confidence": 0.5,
+  "source_id": "preispirat",
+  "source_offer_id": "789959",
+  "source_type": "community",
+  "source_url": "https://www.preispirat.ch/tumbler-bauknecht-trcef-118/",
+  "tags": [],
+  "title": "Tumbler Bauknecht TRCEF 118",
+  "total_acquisition_cost": 589.95,
+  "verify": {
+   "checks": [
+    {
+     "at": "2026-11-28T05:45:27+01:00",
+     "ends": "2026-12-07T05:45:27+01:00",
      "http": 200
     }
    ]
